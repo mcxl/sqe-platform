@@ -1,0 +1,40 @@
+name: Release Quality Gates
+
+on:
+  push:
+    tags:
+      - v*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-release:
+    name: Python Release
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install locked Python dependencies
+        run: uv sync --frozen --extra test
+      - name: Run Python release checks
+        run: uv run python tools/run_tests.py release --component python
+
+  web-release:
+    name: Web Release
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/relationship-review-pilot/package-lock.json
+      - name: Install locked web dependencies
+        working-directory: apps/relationship-review-pilot
+        run: npm ci
+      - name: Run web release checks
+        run: python3 tools/run_tests.py release --component web

@@ -1,0 +1,135 @@
+name: Quality Gates
+
+on:
+  push:
+    branches:
+      - main
+      - codex/sqe-pivot-integration
+    paths:
+      - src/**
+      - tests/**
+      - ios/**
+      - apps/relationship-review-pilot/**
+      - docs/**
+      - '**.md'
+      - '**.html'
+      - '**.docx'
+      - '**.xlsx'
+      - pyproject.toml
+      - uv.lock
+      - quality/test-groups.json
+      - tools/run_tests.py
+      - .github/workflows/quality-gates.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/**
+      - tests/**
+      - ios/**
+      - apps/relationship-review-pilot/**
+      - docs/**
+      - '**.md'
+      - '**.html'
+      - '**.docx'
+      - '**.xlsx'
+      - pyproject.toml
+      - uv.lock
+      - quality/test-groups.json
+      - tools/run_tests.py
+      - .github/workflows/quality-gates.yml
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Changed Paths
+    runs-on: ubuntu-24.04
+    outputs:
+      python: ${{ steps.paths.outputs.python }}
+      web: ${{ steps.paths.outputs.web }}
+      docs: ${{ steps.paths.outputs.docs }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python_changed=false
+          web_changed=false
+          docs_changed=false
+          if [[ "$BASE_SHA" =~ ^0+$ ]]; then
+            changed_files="$(git diff-tree --no-commit-id --name-only -r "$HEAD_SHA")"
+          else
+            changed_files="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
+          fi
+          while IFS= read -r file; do
+            case "$file" in
+              src/*|tests/*|pyproject.toml|uv.lock|quality/test-groups.json|tools/run_tests.py)
+                python_changed=true
+                ;;
+              apps/relationship-review-pilot/*|quality/test-groups.json|tools/run_tests.py)
+                web_changed=true
+                ;;
+              docs/*|*.md|*.html|*.docx|*.xlsx)
+                docs_changed=true
+                ;;
+              .github/workflows/quality-gates.yml)
+                python_changed=true
+                web_changed=true
+                docs_changed=true
+                ;;
+            esac
+          done <<< "$changed_files"
+          echo "python=$python_changed" >> "$GITHUB_OUTPUT"
+          echo "web=$web_changed" >> "$GITHUB_OUTPUT"
+          echo "docs=$docs_changed" >> "$GITHUB_OUTPUT"
+
+  python-core:
+    name: Python Core
+    needs: changes
+    if: needs.changes.outputs.python == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install locked Python dependencies
+        run: uv sync --frozen --extra test
+      - name: Run Python core checks
+        run: uv run python tools/run_tests.py core --component python
+
+  web-core:
+    name: Web Core
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/relationship-review-pilot/package-lock.json
+      - name: Install locked web dependencies
+        working-directory: apps/relationship-review-pilot
+        run: npm ci
+      - name: Run web core checks
+        run: python3 tools/run_tests.py core --component web
+
+  document-check:
+    name: Document Mapping Check
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate the controlled mapping without client evidence
+        run: python3 tools/run_tests.py evidence-check
