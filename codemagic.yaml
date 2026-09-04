@@ -1,0 +1,654 @@
+workflows:
+  ace-ios-client:
+    name: ACE iOS Read-Only Client
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+      vars:
+        ACE_PREVIEW_ORIGIN: "https://example.com"
+        ACE_BUNDLE_IDENTIFIER: "com.example.aceclientapp"
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: vorflux/mcx-15-adaptive
+    scripts:
+      - name: Clean derived data
+        script: make -C sqe/ios/ACEClientApp clean
+      - name: Verify UI test Release settings
+        script: |
+          set -euo pipefail
+          settings="$(xcodebuild -showBuildSettings -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -target ACEClientAppUITests -configuration Release -sdk iphonesimulator)"
+          printf '%s\n' "$settings"
+          printf '%s\n' "$settings" | grep -Eq '^[[:space:]]*SWIFT_OPTIMIZATION_LEVEL = -O$'
+          printf '%s\n' "$settings" | grep -Eq '^[[:space:]]*SWIFT_COMPILATION_MODE = wholemodule$'
+      - name: Build for testing
+        script: make -C sqe/ios/ACEClientApp build-for-testing
+      - name: Run unit tests
+        script: make -C sqe/ios/ACEClientApp test
+    artifacts:
+      - sqe/ios/ACEClientApp/build/derived/**/*.app
+
+  ace-ios-client-phase6-1-controlled-evidence:
+    name: ACE iOS Phase 6.1 Controlled Evidence (Manual)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+      vars:
+        ACE_PREVIEW_ORIGIN: "https://preview.example.invalid"
+        ACE_BUNDLE_IDENTIFIER: "com.example.aceclientapp"
+    scripts:
+      - name: Create pending-evidence artifact directories
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          mkdir -p "$artifact_root/logs" "$artifact_root/results" "$artifact_root/screenshots"
+      - name: Verify controlled evidence ancestry
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          protected_candidate="cdc4f458bfd3ede385844b31eed117d3c06e854d"
+          preparation_commit="5f88563248650f263b4b0fc6c333731868114a25"
+          simulator_destination_correction="b36f89c7fee9e37f1014933408fea78bd9eb80a1"
+          ui_test_platform_correction="b0eaaa74fa45f60e1ccbda6c3b4ec6faa5e07982"
+          controlled_gate_correction="ffa73729ab1c45e947ec13d6db00a7b709143b3a"
+          ui_test_product_name_correction="d9aacced1d451c64649a08ac3f2012df43b7f27d"
+          app_plist_correction="e90efc6123537633dcc8fcb7c27b5bdf2627c3d3"
+          debug_fixture_correction="f0cb10b68cce137826c44327f9f433e6b60d3361"
+          copy_control_query_correction="4650a614032d227054bf7f143f409eb7e66e0a38"
+          screenshot_path_pilot_parent="ddace288d47766172aa8a6fa6b3e5a3e500e0bc6"
+          ui_readiness_correction_parent="ff0556229f17d3ee05487391c9c4e26da346fea4"
+          screenshot_absolute_path_correction_parent="921d38e096ad4214f44f0f9c32cdad96ab1a49cf"
+          test -n "${CM_COMMIT:-}"
+          build_parent="$(git rev-parse "$CM_COMMIT^")"
+          preparation_parent="$(git rev-parse "$preparation_commit^")"
+          simulator_destination_parent="$(git rev-parse "$simulator_destination_correction^")"
+          ui_test_platform_parent="$(git rev-parse "$ui_test_platform_correction^")"
+          controlled_gate_parent="$(git rev-parse "$controlled_gate_correction^")"
+          ui_test_product_name_parent="$(git rev-parse "$ui_test_product_name_correction^")"
+          app_plist_parent="$(git rev-parse "$app_plist_correction^")"
+          debug_fixture_parent="$(git rev-parse "$debug_fixture_correction^")"
+          copy_control_query_parent="$(git rev-parse "$copy_control_query_correction^")"
+          screenshot_path_pilot_parent_parent="$(git rev-parse "$screenshot_path_pilot_parent^")"
+          ui_readiness_correction_parent_parent="$(git rev-parse "$ui_readiness_correction_parent^")"
+          screenshot_absolute_path_correction_parent_parent="$(git rev-parse "$screenshot_absolute_path_correction_parent^")"
+          test "$preparation_parent" = "$protected_candidate"
+          test "$simulator_destination_parent" = "$preparation_commit"
+          test "$ui_test_platform_parent" = "$simulator_destination_correction"
+          test "$controlled_gate_parent" = "$ui_test_platform_correction"
+          test "$ui_test_product_name_parent" = "$controlled_gate_correction"
+          test "$app_plist_parent" = "$ui_test_product_name_correction"
+          test "$debug_fixture_parent" = "$app_plist_correction"
+          test "$copy_control_query_parent" = "$debug_fixture_correction"
+          test "$screenshot_path_pilot_parent_parent" = "$copy_control_query_correction"
+          test "$ui_readiness_correction_parent_parent" = "$screenshot_path_pilot_parent"
+          test "$screenshot_absolute_path_correction_parent_parent" = "$ui_readiness_correction_parent"
+          if test "$CM_COMMIT" = "$preparation_commit"; then
+            ancestry_route="preparation-commit"
+          elif test "$build_parent" = "$preparation_commit"; then
+            ancestry_route="direct-correction-child"
+          elif test "$build_parent" = "$ui_test_platform_correction"; then
+            ancestry_route="ui-test-platform-correction-child"
+          elif test "$build_parent" = "$controlled_gate_correction"; then
+            ancestry_route="ui-test-product-name-correction-child"
+          elif test "$build_parent" = "$ui_test_product_name_correction"; then
+            ancestry_route="app-plist-correction-child"
+          elif test "$build_parent" = "$app_plist_correction"; then
+            ancestry_route="debug-fixture-correction-child"
+          elif test "$build_parent" = "$debug_fixture_correction"; then
+            ancestry_route="copy-control-query-correction-child"
+          elif test "$build_parent" = "$copy_control_query_correction"; then
+            ancestry_route="app-launch-screen-correction-child"
+          elif test "$build_parent" = "$screenshot_path_pilot_parent"; then
+            ancestry_route="screenshot-path-pilot-child"
+          elif test "$build_parent" = "$ui_readiness_correction_parent"; then
+            ancestry_route="ui-readiness-correction-child"
+          elif test "$build_parent" = "$screenshot_absolute_path_correction_parent"; then
+            ancestry_route="screenshot-absolute-path-correction-child"
+          else
+            printf '%s\n' "Rejected evidence build ancestry: $CM_COMMIT" >&2
+            exit 1
+          fi
+          printf '%s\n' "$CM_COMMIT" > "$artifact_root/logs/build-commit.txt"
+          printf '%s\n' "$build_parent" > "$artifact_root/logs/build-parent.txt"
+          printf '%s\n' "$preparation_commit" > "$artifact_root/logs/preparation-commit.txt"
+          printf '%s\n' "$protected_candidate" > "$artifact_root/logs/protected-candidate.txt"
+          printf '%s\n' "$preparation_parent" > "$artifact_root/logs/preparation-parent.txt"
+          printf '%s\n' "$ancestry_route" > "$artifact_root/logs/ancestry-route.txt"
+          git diff --name-only "$protected_candidate" "$CM_COMMIT" > "$artifact_root/logs/preparation-diff-files.txt"
+          if test "$ancestry_route" = "app-plist-correction-child" || test "$ancestry_route" = "debug-fixture-correction-child"; then
+            expected_file_count=8
+            required_files="codemagic.yaml sqe/ios/ACEClientApp/RuntimeEvidencePlan.md sqe/ios/ACEClientApp/RuntimeEvidencePlan.json sqe/ios/ACEClientApp/evidence-matrix-audit.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj sqe/ios/ACEClientApp/ACEClientApp/Info.plist"
+            elif test "$ancestry_route" = "copy-control-query-correction-child" || test "$ancestry_route" = "app-launch-screen-correction-child" || test "$ancestry_route" = "screenshot-path-pilot-child" || test "$ancestry_route" = "ui-readiness-correction-child" || test "$ancestry_route" = "screenshot-absolute-path-correction-child"; then
+            expected_file_count=9
+            required_files="codemagic.yaml sqe/ios/ACEClientApp/RuntimeEvidencePlan.md sqe/ios/ACEClientApp/RuntimeEvidencePlan.json sqe/ios/ACEClientApp/evidence-matrix-audit.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj sqe/ios/ACEClientApp/ACEClientApp/Info.plist sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+          elif test "$ancestry_route" = "ui-test-platform-correction-child" || test "$ancestry_route" = "ui-test-product-name-correction-child"; then
+            expected_file_count=7
+            required_files="codemagic.yaml sqe/ios/ACEClientApp/RuntimeEvidencePlan.md sqe/ios/ACEClientApp/RuntimeEvidencePlan.json sqe/ios/ACEClientApp/evidence-matrix-audit.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj"
+          else
+            expected_file_count=6
+            required_files="codemagic.yaml sqe/ios/ACEClientApp/RuntimeEvidencePlan.md sqe/ios/ACEClientApp/RuntimeEvidencePlan.json sqe/ios/ACEClientApp/evidence-matrix-audit.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json"
+          fi
+          test "$(sed '/^$/d' "$artifact_root/logs/preparation-diff-files.txt" | wc -l | tr -d ' ')" = "$expected_file_count"
+          for required_file in $required_files; do
+            grep -F -x -q "$required_file" "$artifact_root/logs/preparation-diff-files.txt"
+          done
+      - name: Verify Xcode 26.4.1
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          xcode_version="$(xcodebuild -version)"
+          printf '%s\n' "$xcode_version" | tee "$artifact_root/logs/xcode-version.txt"
+          printf '%s\n' "$xcode_version" | grep -Fx 'Xcode 26.4.1'
+      - name: Verify UI test product names
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          for configuration in Debug Release; do
+            if ! settings="$(xcodebuild -showBuildSettings -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -target ACEClientAppUITests -configuration "$configuration" -sdk iphonesimulator CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO)"; then
+              printf '%s\n' "xcodebuild settings failed for $configuration" >&2
+              exit 1
+            fi
+            product_name="$(printf '%s\n' "$settings" | awk -F ' = ' '/^[[:space:]]*PRODUCT_NAME = / { print $2 }')"
+            executable_name="$(printf '%s\n' "$settings" | awk -F ' = ' '/^[[:space:]]*EXECUTABLE_NAME = / { print $2 }')"
+            full_product_name="$(printf '%s\n' "$settings" | awk -F ' = ' '/^[[:space:]]*FULL_PRODUCT_NAME = / { print $2 }')"
+            wrapper_name="$(printf '%s\n' "$settings" | awk -F ' = ' '/^[[:space:]]*WRAPPER_NAME = / { print $2 }')"
+            test "$product_name" = ACEClientAppUITests
+            test "$executable_name" = ACEClientAppUITests
+            test "$full_product_name" = ACEClientAppUITests.xctest
+            test "$wrapper_name" = ACEClientAppUITests.xctest
+            {
+              printf 'configuration=%s\n' "$configuration"
+              printf 'PRODUCT_NAME=%s\n' "$product_name"
+              printf 'EXECUTABLE_NAME=%s\n' "$executable_name"
+              printf 'FULL_PRODUCT_NAME=%s\n' "$full_product_name"
+              printf 'WRAPPER_NAME=%s\n' "$wrapper_name"
+            } | tee -a "$artifact_root/logs/ui-test-product-names.txt"
+          done
+      - name: Resolve or create required iOS 26 simulators
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          python3 - "$artifact_root" <<'PY'
+          import json
+          import os
+          import pathlib
+          import re
+          import subprocess
+          import sys
+          import time
+          import uuid
+
+          artifact_root = pathlib.Path(sys.argv[1])
+          logs = artifact_root / "logs"
+          xcrun_binary = os.environ.get("SIMCTL_XCRUN", "xcrun")
+          poll_timeout_seconds = 30.0
+          poll_interval_seconds = 1.0
+          if os.environ.get("SIMCTL_TEST_NO_SLEEP") == "1":
+              # Resolver fixtures use virtual time. Controlled builds use real time.
+              virtual_elapsed_seconds = [0.0]
+
+              def monotonic_seconds():
+                  return virtual_elapsed_seconds[0]
+
+              def wait_for_poll(seconds):
+                  virtual_elapsed_seconds[0] += seconds
+          else:
+              def monotonic_seconds():
+                  return time.monotonic()
+
+              def wait_for_poll(seconds):
+                  time.sleep(seconds)
+          runtime_prefix = "com.apple.CoreSimulator.SimRuntime.iOS-26-"
+          targets = (
+              ("iPhone SE (3rd generation)", "iphone-se-3rd-generation"),
+              ("iPhone 16 Pro Max", "iphone-16-pro-max"),
+          )
+
+          def write_log(name, content):
+              (logs / name).write_text(content, encoding="utf-8")
+
+          def canonical_udid(value, context):
+              if not isinstance(value, str) or not re.fullmatch(r"[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}", value):
+                  raise SystemExit(f"Invalid simulator UDID for {context}: {value!r}")
+              try:
+                  parsed = uuid.UUID(value)
+              except ValueError as error:
+                  raise SystemExit(f"Invalid simulator UDID for {context}: {value!r}") from error
+              return str(parsed).upper()
+
+          class SimctlPollTimeout(Exception):
+              pass
+
+          def subprocess_output(value):
+              if value is None:
+                  return ""
+              if isinstance(value, bytes):
+                  return value.decode("utf-8", errors="replace")
+              return value
+
+          def simctl_json(log_name, *arguments, timeout_seconds=None):
+              try:
+                  result = subprocess.run(
+                      [xcrun_binary, "simctl", *arguments],
+                      text=True,
+                      capture_output=True,
+                      check=False,
+                      timeout=timeout_seconds,
+                  )
+              except subprocess.TimeoutExpired as error:
+                  write_log(log_name, subprocess_output(error.stdout) + subprocess_output(error.stderr))
+                  raise SimctlPollTimeout(log_name) from error
+              write_log(log_name, result.stdout + result.stderr)
+              if result.returncode:
+                  raise SystemExit(f"simctl {' '.join(arguments)} failed; read {logs / log_name}")
+              try:
+                  return json.loads(result.stdout)
+              except json.JSONDecodeError as error:
+                  raise SystemExit(f"simctl {' '.join(arguments)} returned invalid JSON; read {logs / log_name}") from error
+
+          def simctl_create(log_name, name, device_type, runtime):
+              result = subprocess.run(
+                  [xcrun_binary, "simctl", "create", name, device_type, runtime],
+                  text=True,
+                  capture_output=True,
+                  check=False,
+              )
+              write_log(log_name, result.stdout + result.stderr)
+              if result.returncode:
+                  raise SystemExit(f"simctl create failed for {name!r}; read {logs / log_name}")
+              device_id = result.stdout.strip()
+              if not device_id:
+                  raise SystemExit(f"simctl create returned no device identifier for {name!r}; read {logs / log_name}")
+              return canonical_udid(device_id, f"simctl create for {name!r}")
+
+          def available(record):
+              return record.get("isAvailable") is True
+
+          def iOS_26_version(runtime):
+              identifier = runtime.get("identifier")
+              version = runtime.get("version")
+              if not isinstance(identifier, str) or not identifier.startswith(runtime_prefix):
+                  return None
+              if not isinstance(version, str):
+                  raise SystemExit(f"Available iOS 26 simulator runtime has invalid version data: {identifier!r}")
+              parts = version.split(".")
+              if len(parts) < 2 or parts[0] != "26" or not all(part.isdigit() for part in parts):
+                  raise SystemExit(f"Available iOS 26 simulator runtime has invalid version data: {identifier!r} version={version!r}")
+              return tuple(int(part) for part in parts)
+
+          def matching_existing_udid(device, target_name, device_type):
+              if not (available(device) and device.get("name") == target_name and device.get("deviceTypeIdentifier") == device_type):
+                  return None
+              return canonical_udid(device.get("udid"), f"existing device for {target_name!r}")
+
+          def finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, outcome, reason):
+              write_log(
+                  f"simulator-created-device-verification-{slug}.txt",
+                  f"target={target_name}\nselected_runtime={runtime}\ndevice_type={device_type}\ncanonical_uuid={device_id}\npoll_timeout_seconds={poll_timeout_seconds:g}\npoll_interval_seconds={poll_interval_seconds:g}\npolls={polls}\noutcome={outcome}\nreason={reason}\n",
+              )
+
+          def verify_created_device(slug, target_name, runtime, device_type, device_id):
+              start = monotonic_seconds()
+              polls = 0
+              last_state = "missing"
+              while True:
+                  elapsed = monotonic_seconds() - start
+                  if elapsed >= poll_timeout_seconds:
+                      if last_state == "unavailable":
+                          reason = f"canonical UUID {device_id} remained unavailable after {poll_timeout_seconds:g} seconds"
+                      else:
+                          reason = f"canonical UUID {device_id} did not appear after {poll_timeout_seconds:g} seconds"
+                      finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                      raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                  remaining_seconds = poll_timeout_seconds - elapsed
+                  polls += 1
+                  poll_log_name = f"simctl-devices-registration-{slug}-poll-{polls:02d}.json"
+                  try:
+                      devices = simctl_json(
+                          poll_log_name,
+                          "list",
+                          "devices",
+                          "-j",
+                          timeout_seconds=remaining_seconds,
+                      ).get("devices", {})
+                  except SimctlPollTimeout:
+                      reason = f"unfiltered device poll timed out after the remaining {remaining_seconds:g}-second verification time"
+                      finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                      raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}; read {logs / poll_log_name}")
+                  if monotonic_seconds() - start >= poll_timeout_seconds:
+                      reason = "unfiltered device poll reached the verification deadline before identity validation"
+                      finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                      raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                  matches = []
+                  for runtime_key, records in devices.items():
+                      if not isinstance(records, list):
+                          continue
+                      for record in records:
+                          if not isinstance(record, dict):
+                              continue
+                          raw_udid = record.get("udid")
+                          if isinstance(raw_udid, str) and raw_udid.lower() == device_id.lower():
+                              record_udid = canonical_udid(raw_udid, f"created device record for {target_name!r}")
+                              if record_udid == device_id:
+                                  matches.append((runtime_key, record))
+                  if len(matches) > 1:
+                      reason = f"duplicate canonical UUID {device_id} appeared in {len(matches)} runtime records"
+                      finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                      raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                  if len(matches) == 1:
+                      actual_runtime, record = matches[0]
+                      if actual_runtime != runtime:
+                          reason = f"canonical UUID {device_id} appeared under wrong runtime {actual_runtime!r}; expected {runtime!r}"
+                          finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                          raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                      if record.get("name") != target_name:
+                          reason = f"canonical UUID {device_id} has wrong name {record.get('name')!r}; expected {target_name!r}"
+                          finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                          raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                      if record.get("deviceTypeIdentifier") != device_type:
+                          reason = f"canonical UUID {device_id} has wrong device type {record.get('deviceTypeIdentifier')!r}; expected {device_type!r}"
+                          finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "failed", reason)
+                          raise SystemExit(f"Created simulator verification failed for {target_name!r}: {reason}")
+                      if available(record):
+                          finish_created_device_verification(slug, target_name, runtime, device_type, device_id, polls, "passed", "registered, exact, and available")
+                          return
+                      last_state = "unavailable"
+                  elapsed = monotonic_seconds() - start
+                  wait_for_poll(min(poll_interval_seconds, poll_timeout_seconds - elapsed))
+
+          device_types = simctl_json("simctl-device-types.json", "list", "devicetypes", "-j").get("devicetypes", [])
+          runtimes = simctl_json("simctl-runtimes.json", "list", "runtimes", "-j").get("runtimes", [])
+          devices_before = simctl_json("simctl-devices-before.json", "list", "devices", "available", "-j").get("devices", {})
+          available_runtimes = [
+              (iOS_26_version(runtime), runtime["identifier"])
+              for runtime in runtimes
+              if available(runtime) and runtime.get("identifier", "").startswith(runtime_prefix)
+          ]
+          if not available_runtimes:
+              raise SystemExit("Expected at least one available iOS 26 simulator runtime; found none")
+
+          def select_highest_runtime(candidates, description):
+              highest_version = max(version for version, _ in candidates)
+              highest_runtimes = [
+                  identifier
+                  for version, identifier in candidates
+                  if version == highest_version
+              ]
+              if len(highest_runtimes) != 1:
+                  raise SystemExit(f"Ambiguous highest {description} iOS 26 simulator runtime version {highest_version}: {len(highest_runtimes)} matches")
+              return highest_version, highest_runtimes[0]
+
+          runtime_version, runtime = select_highest_runtime(available_runtimes, "available")
+
+          for target_name, slug in targets:
+              type_matches = [
+                  device_type.get("identifier")
+                  for device_type in device_types
+                  if device_type.get("name") == target_name and device_type.get("identifier")
+              ]
+              if len(type_matches) != 1:
+                  raise SystemExit(f"Expected one exact simulator device type for {target_name!r}; found {len(type_matches)}")
+              device_type = type_matches[0]
+              existing = [
+                  existing_udid
+                  for device in devices_before.get(runtime, [])
+                  for existing_udid in [matching_existing_udid(device, target_name, device_type)]
+                  if existing_udid is not None
+              ]
+              if existing:
+                  if len(existing) != 1:
+                      raise SystemExit(f"Ambiguous exact available simulator resolution for {target_name!r} in selected highest runtime {runtime!r}: {len(existing)} matches")
+                  device_id = existing[0]
+                  action = "existing"
+              else:
+                  device_id = simctl_create(f"simctl-create-{slug}.log", target_name, device_type, runtime)
+                  verify_created_device(slug, target_name, runtime, device_type, device_id)
+                  action = "created"
+              write_log(
+                  f"simulator-runtime-selection-{slug}.txt",
+                  f"selected_runtime={runtime}\nversion={'.'.join(str(part) for part in runtime_version)}\navailable_iOS_26_runtime_count={len(available_runtimes)}\n",
+              )
+              (artifact_root / f"{slug}.uuid").write_text(f"{device_id}\n", encoding="utf-8")
+              write_log(
+                  f"simulator-resolution-{slug}.txt",
+                  f"target={target_name}\naction={action}\nruntime={runtime}\ndevice_type={device_type}\ndevice_id={device_id}\n",
+              )
+          PY
+      - name: Boot required iOS 26 simulators and apply controlled settings
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          iphone_16_id="$(cat "$artifact_root/iphone-16-pro-max.uuid")"
+          xcrun simctl bootstatus "$iphone_se_id" -b 2>&1 | tee "$artifact_root/logs/iphone-se-boot.log"
+          xcrun simctl bootstatus "$iphone_16_id" -b 2>&1 | tee "$artifact_root/logs/iphone-16-pro-max-boot.log"
+          for device_id in "$iphone_se_id" "$iphone_16_id"; do
+            xcrun simctl ui "$device_id" appearance dark
+            xcrun simctl ui "$device_id" content_size accessibility-extra-extra-extra-large
+            xcrun simctl spawn "$device_id" defaults write com.apple.Accessibility BoldTextEnabled -bool YES
+            xcrun simctl spawn "$device_id" defaults write com.apple.Accessibility ReduceMotionEnabled -bool YES
+            xcrun simctl spawn "$device_id" defaults write com.apple.Accessibility IncreaseContrastEnabled -bool YES
+          done 2>&1 | tee "$artifact_root/logs/controlled-accessibility-settings.log"
+      - name: Reject missing fictional Preview origin
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          log="$artifact_root/logs/negative-preview-origin-missing.log"
+          if env -u ACE_PREVIEW_ORIGIN xcodebuild build -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientApp -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/negative-missing CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO > "$log" 2>&1; then
+            printf '%s\n' 'Expected the missing fictional Preview origin build to fail.' | tee -a "$log"
+            exit 1
+          fi
+          grep -F 'ACE_PREVIEW_ORIGIN must be an approved HTTPS origin' "$log"
+      - name: Reject invalid fictional Preview origin
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          log="$artifact_root/logs/negative-preview-origin-invalid.log"
+          if ACE_PREVIEW_ORIGIN='https://invalid..fictional.invalid' xcodebuild build -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientApp -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/negative-invalid CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO > "$log" 2>&1; then
+            printf '%s\n' 'Expected the invalid fictional Preview origin build to fail.' | tee -a "$log"
+            exit 1
+          fi
+          grep -F 'ACE_PREVIEW_ORIGIN has an invalid host' "$log"
+      - name: Build Release XCTest bundle with the existing Makefile
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          make -C sqe/ios/ACEClientApp build-for-testing 2>&1 | tee "$artifact_root/logs/release-build-for-testing.log"
+      - name: Run Release XCTest on iPhone SE (3rd generation)
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          xcodebuild test-without-building -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientApp -configuration Release -destination "platform=iOS Simulator,id=$iphone_se_id" -derivedDataPath sqe/ios/ACEClientApp/build/derived -resultBundlePath "$artifact_root/results/iphone-se-release-xctest.xcresult" -only-testing ACEClientAppTests CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$artifact_root/logs/iphone-se-release-xctest.log"
+      - name: Run accessibility audits and release orientation hook on iPhone SE (3rd generation) in light appearance
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          xcrun simctl ui "$iphone_se_id" appearance light
+          xcodebuild test -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientAppUITests -configuration Debug -destination "platform=iOS Simulator,id=$iphone_se_id" -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-se-light -resultBundlePath "$artifact_root/results/iphone-se-ui-audits-light.xcresult" -only-testing ACEClientAppUITests/ACEClientAppUITests/testLaunchShowsSafeConfigurationState -only-testing ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure -only-testing ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls -only-testing ACEClientAppUITests/ACEClientAppUITests/testAllControlledScenariosShowExpectedStateAndAudit -only-testing ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$artifact_root/logs/iphone-se-ui-audits-light.log"
+      - name: Run accessibility audits and release orientation hook on iPhone SE (3rd generation) in dark appearance
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          xcrun simctl ui "$iphone_se_id" appearance dark
+          xcodebuild test -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientAppUITests -configuration Debug -destination "platform=iOS Simulator,id=$iphone_se_id" -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-se-dark -resultBundlePath "$artifact_root/results/iphone-se-ui-audits-dark.xcresult" -only-testing ACEClientAppUITests/ACEClientAppUITests/testLaunchShowsSafeConfigurationState -only-testing ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure -only-testing ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls -only-testing ACEClientAppUITests/ACEClientAppUITests/testAllControlledScenariosShowExpectedStateAndAudit -only-testing ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$artifact_root/logs/iphone-se-ui-audits-dark.log"
+      - name: Run accessibility audits and release orientation hook on iPhone 16 Pro Max in light appearance
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_16_id="$(cat "$artifact_root/iphone-16-pro-max.uuid")"
+          xcrun simctl ui "$iphone_16_id" appearance light
+          xcodebuild test -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientAppUITests -configuration Debug -destination "platform=iOS Simulator,id=$iphone_16_id" -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-16-light -resultBundlePath "$artifact_root/results/iphone-16-pro-max-ui-audits-light.xcresult" -only-testing ACEClientAppUITests/ACEClientAppUITests/testLaunchShowsSafeConfigurationState -only-testing ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure -only-testing ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls -only-testing ACEClientAppUITests/ACEClientAppUITests/testAllControlledScenariosShowExpectedStateAndAudit -only-testing ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$artifact_root/logs/iphone-16-pro-max-ui-audits-light.log"
+      - name: Run accessibility audits and release orientation hook on iPhone 16 Pro Max in dark appearance
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          iphone_16_id="$(cat "$artifact_root/iphone-16-pro-max.uuid")"
+          xcrun simctl ui "$iphone_16_id" appearance dark
+          xcodebuild test -project sqe/ios/ACEClientApp/ACEClientApp.xcodeproj -scheme ACEClientAppUITests -configuration Debug -destination "platform=iOS Simulator,id=$iphone_16_id" -derivedDataPath sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-16-dark -resultBundlePath "$artifact_root/results/iphone-16-pro-max-ui-audits-dark.xcresult" -only-testing ACEClientAppUITests/ACEClientAppUITests/testLaunchShowsSafeConfigurationState -only-testing ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure -only-testing ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls -only-testing ACEClientAppUITests/ACEClientAppUITests/testAllControlledScenariosShowExpectedStateAndAudit -only-testing ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$artifact_root/logs/iphone-16-pro-max-ui-audits-dark.log"
+      - name: Diagnose screenshot output paths
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          clone_root="$(pwd -P)"
+          artifact_root_abs="$(cd "$artifact_root" && pwd -P)"
+          logs_abs="$artifact_root_abs/logs"
+          test ! -L "$artifact_root"
+          test ! -L "$artifact_root/logs"
+          case "$artifact_root_abs" in
+            "$clone_root"/*) ;;
+            *) printf '%s\n' 'Artifact root is outside the current clone.' >&2; exit 1 ;;
+          esac
+          test -d "$logs_abs"
+          test -r "$logs_abs"
+          test -w "$logs_abs"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          case "$iphone_se_id" in ????????-????-????-????-????????????) ;; *) printf '%s\n' 'Unexpected iPhone SE simulator identifier.' >&2; exit 1 ;; esac
+          commit_token="${CM_COMMIT:-}"
+          case "$commit_token" in [0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]) ;; *) printf '%s\n' 'CM_COMMIT is not a 40-character hexadecimal commit.' >&2; exit 1 ;; esac
+          pilot_stem="screenshot-path-pilot-$commit_token-$iphone_se_id"
+          log_abs="$logs_abs/$pilot_stem.log"
+          test ! -e "$log_abs"
+          test ! -L "$log_abs"
+          report() { printf '%s\n' "$1" | tee -a "$log_abs"; }
+          original_dir_rel="$artifact_root/screenshots"
+          original_dir_abs="$artifact_root_abs/screenshots"
+          control_dir_rel="$artifact_root/$pilot_stem"
+          control_dir_abs="$artifact_root_abs/$pilot_stem"
+          report "diagnostic_only=pending"
+          report "clone_pwd=$clone_root"
+          report "artifact_root_relative=$artifact_root"
+          report "artifact_root_absolute=$artifact_root_abs"
+          report "original_screenshots_relative=$original_dir_rel"
+          report "original_screenshots_absolute=$original_dir_abs"
+          report "control_directory_relative=$control_dir_rel"
+          report "control_directory_absolute=$control_dir_abs"
+          report "iphone_se_id=$iphone_se_id"
+          xcode_version="$(xcodebuild -version | tr '\n' ';')"
+          report "xcode_version=$xcode_version"
+          if test -e "$original_dir_abs"; then original_exists=present; else original_exists=absent; fi
+          if test -d "$original_dir_abs"; then original_type=directory; elif test -e "$original_dir_abs"; then original_type=non-directory; else original_type=absent; fi
+          if test -r "$original_dir_abs"; then original_readable=yes; else original_readable=no; fi
+          if test -w "$original_dir_abs"; then original_writable=yes; else original_writable=no; fi
+          report "original_directory_before=exists:$original_exists,type:$original_type,readable:$original_readable,writable:$original_writable"
+          test ! -L "$original_dir_abs"
+          test ! -e "$control_dir_abs"
+          test ! -L "$control_dir_abs"
+          mkdir "$control_dir_abs"
+          app_path="sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-se-light/Build/Products/Debug-iphonesimulator/ACEClientApp.app"
+          test -d "$app_path"
+          xcrun simctl install "$iphone_se_id" "$app_path" >> "$log_abs" 2>&1
+          xcrun simctl ui "$iphone_se_id" appearance light >> "$log_abs" 2>&1
+          xcrun simctl terminate "$iphone_se_id" com.example.aceclientapp >> "$log_abs" 2>&1 || true
+          SIMCTL_CHILD_ACE_UI_TEST_SCENARIO=signIn xcrun simctl launch "$iphone_se_id" com.example.aceclientapp >> "$log_abs" 2>&1
+          sleep 2
+          capture_attempts=0
+          preexisting_destination=0
+          png_status() {
+            python3 - "$1" <<'PY'
+          import struct
+          import sys
+          data = open(sys.argv[1], "rb").read(24)
+          if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR" or len(data) != 24:
+              raise SystemExit(1)
+          width, height = struct.unpack(">II", data[16:24])
+          if width == 0 or height == 0:
+              raise SystemExit(1)
+          print(f"valid:{width}x{height}")
+          PY
+          }
+          capture_case() {
+            case_name="$1"
+            destination_argument="$2"
+            expected_file="$3"
+            case_log="$logs_abs/$pilot_stem-$case_name.native.log"
+            case "$expected_file" in "$artifact_root_abs"/*) ;; *) exit 1 ;; esac
+            test ! -e "$case_log"
+            test ! -L "$case_log"
+            if test -e "$expected_file" || test -L "$expected_file"; then
+              preexisting_destination=1
+              report "case=$case_name,destination=$destination_argument,native_exit=not-run-existing,expected_exists=present,expected_nonempty=$(test -s "$expected_file" && printf yes || printf no),png=not-checked"
+              return
+            fi
+            capture_attempts=$((capture_attempts + 1))
+            test "$capture_attempts" -le 4
+            if xcrun simctl io "$iphone_se_id" screenshot "$destination_argument" > "$case_log" 2>&1; then native_exit=0; else native_exit=$?; fi
+            if test -e "$expected_file"; then expected_exists=present; else expected_exists=absent; fi
+            if test -s "$expected_file"; then expected_nonempty=yes; else expected_nonempty=no; fi
+            if test "$native_exit" -eq 0 && test "$expected_nonempty" = yes; then
+              if png_result="$(png_status "$expected_file")"; then png="$png_result"; else png=invalid; fi
+            else
+              png=not-checked
+            fi
+            report "case=$case_name,destination=$destination_argument,native_exit=$native_exit,expected_exists=$expected_exists,expected_nonempty=$expected_nonempty,png=$png"
+          }
+          capture_case original-relative "$original_dir_rel/$pilot_stem-original-relative.png" "$original_dir_abs/$pilot_stem-original-relative.png"
+          capture_case original-absolute "$original_dir_abs/$pilot_stem-original-absolute.png" "$original_dir_abs/$pilot_stem-original-absolute.png"
+          capture_case control-relative "$control_dir_rel/$pilot_stem-control-relative.png" "$control_dir_abs/$pilot_stem-control-relative.png"
+          capture_case control-absolute "$control_dir_abs/$pilot_stem-control-absolute.png" "$control_dir_abs/$pilot_stem-control-absolute.png"
+          report "capture_attempts=$capture_attempts"
+          report "original_directory_repaired=no"
+          report "diagnostic_complete=pending; configured screenshot capture follows"
+          test "$capture_attempts" -eq 4
+          test "$preexisting_destination" -eq 0
+      - name: Capture fictional release and privacy-view screenshots
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          screenshot_directory="$(cd "$artifact_root/screenshots" && pwd -P)"
+          iphone_se_id="$(cat "$artifact_root/iphone-se-3rd-generation.uuid")"
+          iphone_16_id="$(cat "$artifact_root/iphone-16-pro-max.uuid")"
+          app_path="sqe/ios/ACEClientApp/build/phase6-1-derived/ui-iphone-se-light/Build/Products/Debug-iphonesimulator/ACEClientApp.app"
+          test -d "$app_path"
+          for device_id in "$iphone_se_id" "$iphone_16_id"; do
+            xcrun simctl install "$device_id" "$app_path"
+            for appearance in light dark; do
+              xcrun simctl ui "$device_id" appearance "$appearance"
+              xcrun simctl terminate "$device_id" com.example.aceclientapp || true
+              SIMCTL_CHILD_ACE_UI_TEST_SCENARIO=signIn xcrun simctl launch "$device_id" com.example.aceclientapp
+              sleep 2
+              xcrun simctl io "$device_id" screenshot "$screenshot_directory/$device_id-fictional-sign-in-$appearance.png"
+              xcrun simctl terminate "$device_id" com.example.aceclientapp || true
+              SIMCTL_CHILD_ACE_UI_TEST_SCENARIO=release xcrun simctl launch "$device_id" com.example.aceclientapp
+              sleep 2
+              xcrun simctl io "$device_id" screenshot "$screenshot_directory/$device_id-fictional-release-$appearance.png"
+            done
+            xcrun simctl terminate "$device_id" com.example.aceclientapp || true
+            SIMCTL_CHILD_ACE_UI_TEST_SCENARIO=privacy xcrun simctl launch "$device_id" com.example.aceclientapp
+            sleep 2
+            xcrun simctl io "$device_id" screenshot "$screenshot_directory/$device_id-fictional-privacy-view.png"
+          done 2>&1 | tee "$artifact_root/logs/fictional-screenshot-capture.log"
+      - name: Fail closed on prohibited controlled text artifacts
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          log="$artifact_root/logs/artifact-privacy-scan.log"
+          pattern='([Aa]uthorization[[:space:]]*:[[:space:]]*[^[:space:]]+|[Bb]earer[[:space:]]+[A-Za-z0-9._~+/-]{8,}|[Pp]assword[[:space:]]*[:=][[:space:]]*[^[:space:]]+|[Kk]eychain[[:space:]_-]*(secret|value|data)[[:space:]]*[:=][[:space:]]*[^[:space:]]+|([Aa][Pp][Ii][_-]?[Kk]ey|[Tt]oken|[Ss]ecret)[[:space:]]*[:=][[:space:]]*[A-Za-z0-9._~+/-]{8,})'
+          found=0
+          while IFS= read -r -d '' file; do
+            if grep -E -I -q "$pattern" "$file"; then
+              printf '%s\n' "Prohibited data pattern in: $file" | tee -a "$log"
+              found=1
+            fi
+          done < <(find "$artifact_root" -type f \( -name '*.log' -o -name '*.txt' -o -name '*.json' \) -print0)
+          if [ "$found" -ne 0 ]; then
+            exit 1
+          fi
+          printf '%s\n' 'No prohibited text pattern was printed. Manual artefact review remains pending.' | tee -a "$log"
+      - name: Record pending manual screenshot and result-bundle review gate
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          printf '%s\n' 'Pending: An approved reviewer must inspect every fictional PNG screenshot and XCTest result bundle for prohibited data and correct redaction.' | tee "$artifact_root/logs/manual-screenshot-and-result-bundle-review-gate.txt"
+      - name: Record pending manual privacy-cover capture gate
+        script: |
+          set -euo pipefail
+          artifact_root="sqe/ios/ACEClientApp/build/phase6-1"
+          printf '%s\n' 'Pending: An approved operator must use the simulator app switcher and capture the privacy cover with fictional data.' | tee "$artifact_root/logs/manual-privacy-cover-gate.txt"
+    artifacts:
+      - sqe/ios/ACEClientApp/build/phase6-1/**

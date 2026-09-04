@@ -1,0 +1,226 @@
+{
+  "protectedCandidate": "cdc4f458bfd3ede385844b31eed117d3c06e854d",
+  "base": "f0ca3f958334af7b6727742460ed060cf9c077aa",
+  "controlledRegister": {
+    "path": "Phase6_1EvidenceRegister.json",
+    "workflow": "ace-ios-client-phase6-1-controlled-evidence",
+    "status": "pending",
+    "preparationCommitGuard": {
+      "preparationCommit": "5f88563248650f263b4b0fc6c333731868114a25",
+      "preparationFirstParent": "cdc4f458bfd3ede385844b31eed117d3c06e854d",
+      "simulatorDestinationCorrection": "b36f89c7fee9e37f1014933408fea78bd9eb80a1",
+      "simulatorDestinationCorrectionFirstParent": "5f88563248650f263b4b0fc6c333731868114a25",
+      "uiTestPlatformCorrection": "b0eaaa74fa45f60e1ccbda6c3b4ec6faa5e07982",
+      "uiTestPlatformCorrectionFirstParent": "b36f89c7fee9e37f1014933408fea78bd9eb80a1",
+      "controlledGateCorrection": "ffa73729ab1c45e947ec13d6db00a7b709143b3a",
+      "controlledGateCorrectionFirstParent": "b0eaaa74fa45f60e1ccbda6c3b4ec6faa5e07982",
+      "uiTestProductNameCorrection": "d9aacced1d451c64649a08ac3f2012df43b7f27d",
+      "uiTestProductNameCorrectionFirstParent": "ffa73729ab1c45e947ec13d6db00a7b709143b3a",
+      "appPlistCorrection": "e90efc6123537633dcc8fcb7c27b5bdf2627c3d3",
+      "appPlistCorrectionFirstParent": "d9aacced1d451c64649a08ac3f2012df43b7f27d",
+      "debugFixtureCorrection": "f0cb10b68cce137826c44327f9f433e6b60d3361",
+      "debugFixtureCorrectionFirstParent": "e90efc6123537633dcc8fcb7c27b5bdf2627c3d3",
+      "copyControlQueryCorrection": "4650a614032d227054bf7f143f409eb7e66e0a38",
+      "copyControlQueryCorrectionFirstParent": "f0cb10b68cce137826c44327f9f433e6b60d3361",
+      "screenshotPathPilotParent": "ddace288d47766172aa8a6fa6b3e5a3e500e0bc6",
+      "screenshotPathPilotParentFirstParent": "4650a614032d227054bf7f143f409eb7e66e0a38",
+      "uiReadinessCorrectionParent": "ff0556229f17d3ee05487391c9c4e26da346fea4",
+      "uiReadinessCorrectionParentFirstParent": "ddace288d47766172aa8a6fa6b3e5a3e500e0bc6",
+      "screenshotAbsolutePathCorrectionParent": "921d38e096ad4214f44f0f9c32cdad96ab1a49cf",
+      "screenshotAbsolutePathCorrectionParentFirstParent": "ff0556229f17d3ee05487391c9c4e26da346fea4",
+      "allowedBuildRoutes": ["preparation-commit", "direct-correction-child", "ui-test-platform-correction-child", "ui-test-product-name-correction-child", "app-plist-correction-child", "debug-fixture-correction-child", "copy-control-query-correction-child", "app-launch-screen-correction-child", "screenshot-path-pilot-child", "ui-readiness-correction-child", "screenshot-absolute-path-correction-child"],
+      "files": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json"
+      ],
+      "uiTestPlatformCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj"
+      ],
+      "uiTestProductNameCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj"
+      ],
+      "appPlistCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist"
+      ],
+      "debugFixtureCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist"
+      ],
+      "copyControlQueryCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist",
+        "sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      ],
+      "appLaunchScreenCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist",
+        "sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      ],
+      "screenshotPathPilotChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist",
+        "sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      ],
+      "uiReadinessCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist",
+        "sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      ],
+      "screenshotAbsolutePathCorrectionChildFiles": [
+        "codemagic.yaml",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "sqe/ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "sqe/ios/ACEClientApp/evidence-matrix-audit.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "sqe/ios/ACEClientApp/ACEClientApp/Info.plist",
+        "sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      ],
+      "resultCommitField": "Record the protected source candidate, evidence-preparation commit 5f88563248650f263b4b0fc6c333731868114a25, and the exact build commit when it is a correction child.",
+      "status": "pending"
+    },
+    "simulatorProvisioning": {
+      "status": "pending",
+      "exactTargets": ["iPhone SE (3rd generation)", "iPhone 16 Pro Max"],
+      "runtime": "the highest available iOS 26.x simulator runtime",
+      "procedure": "Resolve one exact device type before device selection. Existing and created devices must have that type identifier and a canonical 36-character hyphenated hexadecimal UUID. Ignore a same-name wrong-type device. Select one highest available iOS 26.x runtime before target resolution. Ignore exact targets in older runtimes. Accept one exact available target only in the selected runtime. Fail when that runtime has more than one exact available target. Otherwise, create the target once from the exact device type in the selected runtime. Then poll unfiltered simctl list devices -j snapshots for no more than 30 seconds at one-second intervals. Give each poll subprocess only the remaining verification time. On a poll timeout, save the partial snapshot and final verification log, then fail closed. Locate the returned canonical UUID across all runtime records. Accept one available record only when it has the selected runtime key, exact target name, and exact device type. Save device-type, runtime, pre-creation device, creation, poll snapshot, final verification, and resolution logs below the controlled artifact root.",
+      "failure": "Fail when the exact device type is absent or ambiguous, a matching device UUID is invalid, no available iOS 26.x runtime exists, highest-version selection is invalid or ambiguous, the selected runtime has multiple exact available targets, creation fails, a poll subprocess exceeds its remaining verification time, the returned UUID appears more than once, its record has a wrong runtime, name, or device type, it never appears, it remains unavailable at the 30-second deadline, or exact device resolution is ambiguous within the selected highest runtime. Do not create the target again."
+    }
+  },
+  "entries": [
+    {
+      "identifiers": ["IOS-BASE-001"],
+      "stage": "Approved repository ancestry validation",
+      "device": "Approved Git repository with protected candidate cdc4f458bfd3ede385844b31eed117d3c06e854d",
+      "procedure": "Validate approved ancestry from protected candidate cdc4f458bfd3ede385844b31eed117d3c06e854d and stated base f0ca3f958334af7b6727742460ed060cf9c077aa. Compare the approved sanitized manifest.",
+      "expectedResult": "The approved ancestry is valid and the sanitized manifest matches the approved record.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-AUTH-038"],
+      "stage": "Approved signed Keychain returned-attribute validation",
+      "device": "Approved signed iPhone with the approved access group",
+      "procedure": "Run the approved returned-attribute matrix. Cover every required inventory and exact-read attribute rule, including a valid signed access group.",
+      "expectedResult": "Each required inventory and exact-read attribute rule passes or enters deletion-only recovery as specified.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-AUTH-053"],
+      "stage": "Approved signed access-group validation",
+      "device": "Approved signed iPhone with the approved access group",
+      "procedure": "Store and load with the approved signed access group. Test a mismatched access group.",
+      "expectedResult": "The approved signed access group loads successfully. Mismatches fail closed.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-ACC-001", "IOS-ACC-002", "IOS-ACC-003", "IOS-ACC-004", "IOS-ACC-005", "IOS-ACC-006", "IOS-ACC-007", "IOS-ACC-008", "IOS-ACC-010", "IOS-ACC-011", "IOS-ACC-012", "IOS-ACC-013", "IOS-ACC-014", "IOS-ACC-015", "IOS-ACC-018", "IOS-ACC-019"],
+      "stage": "Approved macOS with Xcode 26 and iOS 26 simulator runtime",
+      "device": "iPhone SE (3rd generation) with iOS 26; iPhone 16 Pro Max with iOS 26",
+      "procedure": "Run the existing controlled-scenario UI tests in light and dark appearance on both specified simulators. The tests run accessibility audits and the release orientation hook. An approved operator must run the pending orientation matrix for every other listed screen and state on both simulators. Run Dynamic Type, Bold Text, Reduce Motion, and Increase Contrast.",
+      "expectedResult": "The approved records must show the accessibility audit and release orientation hook. The manual orientation matrix remains pending until separately recorded.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-AUTH-023", "IOS-ACC-009", "IOS-ACC-016", "IOS-ACC-017", "IOS-SHOT-007"],
+      "stage": "Approved physical pilot validation after signing, device, and Security approvals",
+      "device": "Approved iPhone 15 Pro or later with iOS 26",
+      "procedure": "Run the locked-device, VoiceOver, and app-switcher journeys with fictional data only.",
+      "expectedResult": "Keychain access is unavailable while locked. VoiceOver order is correct. The app-switcher image contains no release information.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-AUTH-036", "IOS-AUTH-037"],
+      "stage": "Approved controlled-evidence review after Pocock approval",
+      "device": "Approved controlled evidence package",
+      "procedure": "Inspect the approved evidence package for visible usernames, passwords, Authorization values, and Keychain secrets.",
+      "expectedResult": "Every username is redacted. No password, Authorization value, or Keychain secret is present.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-NET-007", "IOS-NET-008", "IOS-NET-028", "IOS-STATE-017", "IOS-STATE-018"],
+      "stage": "Approved macOS network validation after ACE operations and Security approve the Preview endpoint and certificate",
+      "device": "iPhone SE (3rd generation) with iOS 26",
+      "procedure": "Run controlled trust and hostname failure cases. Capture no credentials and make no bypass attempt.",
+      "expectedResult": "The secure-connection message appears. No request or authorization value reaches a rejected endpoint.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-NET-015", "IOS-NET-016"],
+      "stage": "Approved macOS Xcode controlled build validation",
+      "device": "macOS with Xcode 26.4.1",
+      "procedure": "Run the existing build with missing and invalid approved Preview input values. Retain only fictional input values and build logs.",
+      "expectedResult": "The Validate Preview Inputs build phase rejects both missing and invalid origin input before compilation completes.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-SHOT-001", "IOS-SHOT-010"],
+      "stage": "Approved macOS simulator screenshot validation",
+      "device": "Approved iPhone simulator with iOS 26",
+      "procedure": "Run make ui-test on the approved simulator. Capture normal screenshots with fictional release and sign-in values only. Review the captured images.",
+      "expectedResult": "Normal screenshots remain available. The sign-in screenshot shows only the permitted visible username field and no password.",
+      "status": "pending"
+    },
+    {
+      "identifiers": ["IOS-STATE-009", "IOS-STATE-010", "IOS-SHOT-003", "IOS-SHOT-004", "IOS-SHOT-005", "IOS-SHOT-006", "IOS-SHOT-008", "IOS-SHOT-009", "IOS-BOUND-006"],
+      "stage": "Approved macOS simulator and server-record review after Security and Pocock approval",
+      "device": "iPhone 16 Pro Max with iOS 26",
+      "procedure": "Verify active and inactive callbacks, app-switcher cover timing, and the separate unchanged server compatibility record.",
+      "expectedResult": "SwiftUI content remains visible while active. The cover installs before inactive return and removes after activation. Server compatibility evidence remains separate and unchanged.",
+      "status": "pending"
+    }
+  ]
+}
