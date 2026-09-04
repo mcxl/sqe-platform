@@ -1,4 +1,5 @@
 from typing import Any
+import weakref
 
 import pytest
 from pydantic import ValidationError
@@ -24,6 +25,7 @@ from src.ace.engine.approval import (
     ApprovalBlockedError,
     build_approved_assessment,
     evaluate_approved_assessment,
+    rehydrate_verified_g0_mate,
 )
 
 
@@ -914,6 +916,89 @@ def test_evaluation_rejects_internally_consistent_constructed_assessment() -> No
         match="approved assessment invariants are invalid",
     ):
         evaluate_approved_assessment(adversarial)
+
+
+def test_evaluation_rejects_content_alteration_of_the_issued_assessment() -> None:
+    assessment = build_assessment()
+
+    object.__setattr__(assessment, "reviewer_notes", "Altered after approval.")
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(assessment)
+
+
+def test_evaluation_rejects_closure_registry_injection() -> None:
+    issued = build_assessment()
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(issued, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+    closure_values = [
+        cell.cell_contents
+        for cell in approval_module.evaluate_approved_assessment.__closure__ or ()
+    ]
+    registry = next(
+        value
+        for value in closure_values
+        if isinstance(value, dict) and id(issued) in value
+    )
+    raw_record = registry[id(issued)]
+    digest_function = next(
+        value
+        for value in closure_values
+        if callable(value)
+        and _one_argument_string_result(value, adversarial) is not None
+    )
+    digest = _one_argument_string_result(digest_function, adversarial)
+    assert isinstance(digest, str)
+    registry[id(adversarial)] = (
+        weakref.ref(adversarial),
+        digest,
+        b"\\0" * len(raw_record[2]),
+    )
+
+    try:
+        with pytest.raises(
+            ApprovalBlockedError,
+            match="approved assessment invariants are invalid",
+        ):
+            evaluate_approved_assessment(adversarial)
+    finally:
+        del registry[id(adversarial)]
+
+
+def _one_argument_string_result(function: object, value: object) -> str | None:
+    if not callable(function):
+        return None
+    try:
+        result = function(value)
+    except TypeError:
+        return None
+    return result if isinstance(result, str) else None
+
+
+def test_rehydration_accepts_only_the_exact_controlled_g0_assessment() -> None:
+    from src.ace.workbench.relationship_review_storage import RelationshipReviewStorage
+
+    snapshot = RelationshipReviewStorage._fictional_trace_input_snapshot()[
+        "mate_assessment"
+    ]
+    assert isinstance(snapshot, dict)
+    assessment = rehydrate_verified_g0_mate(
+        snapshot,
+        "2026-08-01T00:00:00Z",
+        "seed",
+    )
+    assert assessment.control_id == "CTL-FIC-0001"
+
+    snapshot["description"] = "Altered G0 snapshot."
+    with pytest.raises(ValueError, match="not the verified G0 record"):
+        rehydrate_verified_g0_mate(snapshot, "2026-08-01T00:00:00Z", "seed")
 
 
 def test_named_mate_provenance_apis_reject_arbitrary_assessments() -> None:

@@ -8,6 +8,7 @@ CONFIG    := Release
 UI_CONFIG := Debug
 DEST      := generic/platform=iOS Simulator
 DERIVED   := build/derived
+UI_TEST_APPEARANCE ?= light
 
 .PHONY: build-for-testing test ui-test clean
 
@@ -60,6 +61,7 @@ ui-test:
 		-destination "platform=iOS Simulator,id=$$SIM_ID" \
 		-derivedDataPath $(DERIVED) \
 		-only-testing ACEClientAppUITests \
+		ACE_UI_TEST_APPEARANCE=$(UI_TEST_APPEARANCE) \
 		CODE_SIGN_IDENTITY= \
 		CODE_SIGNING_REQUIRED=NO \
 		CODE_SIGNING_ALLOWED=NO

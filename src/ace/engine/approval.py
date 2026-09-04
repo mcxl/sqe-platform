@@ -2,7 +2,9 @@
 
 from collections.abc import Callable, Sequence
 from hashlib import sha256
+import hmac
 import json
+import secrets
 from typing import TypeVar
 import weakref
 
@@ -236,19 +238,52 @@ def _approval_boundary() -> tuple[
     Callable[[ApprovedMATEAssessment], EvaluationResult],
     Callable[..., ApprovedMATEAssessment],
 ]:
-    """Keep MATE origin records inaccessible outside this approval boundary."""
+    """Keep MATE origin records inaccessible outside this approval boundary.
 
-    origins: weakref.WeakValueDictionary[int, ApprovedMATEAssessment] = (
-        weakref.WeakValueDictionary()
-    )
+    This binds an issued object to its canonical content in this Python process. It
+    does not make a hostile in-process importer a security boundary.
+    """
+
+    origins: dict[
+        int, tuple[weakref.ReferenceType[ApprovedMATEAssessment], str, bytes]
+    ] = {}
+    origin_key = secrets.token_bytes(32)
     g0_digest = "bdc022399d6e4a7d1558776b5bafdd406dda0e7a537dbd7ef3aa46d2ae4dad3c"
     g0_created_at = "2026-08-01T00:00:00Z"
     g0_created_by = "seed"
 
+    def content_digest(assessment: ApprovedMATEAssessment) -> str:
+        return sha256(
+            json.dumps(
+                assessment.model_dump(mode="json"),
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode()
+        ).hexdigest()
+
+    def origin_authentication(
+        assessment: ApprovedMATEAssessment, digest: str
+    ) -> bytes:
+        return hmac.digest(
+            origin_key,
+            f"{id(assessment)}:{digest}".encode(),
+            "sha256",
+        )
+
+    def register(assessment: ApprovedMATEAssessment) -> ApprovedMATEAssessment:
+        identifier = id(assessment)
+        reference = weakref.ref(assessment)
+        digest = content_digest(assessment)
+        origins[identifier] = (
+            reference,
+            digest,
+            origin_authentication(assessment, digest),
+        )
+        return assessment
+
     def build(**values: object) -> ApprovedMATEAssessment:
         assessment = _complete_approval_gate(**values)
-        origins[id(assessment)] = assessment
-        return assessment
+        return register(assessment)
 
     def rehydrate(
         values: dict[str, object], created_at: str, created_by: str
@@ -270,12 +305,22 @@ def _approval_boundary() -> tuple[
                 "approved_mate_construction": _APPROVED_MATE_CONSTRUCTION_CONTEXT
             },
         )
-        origins[id(assessment)] = assessment
-        return assessment
+        return register(assessment)
 
     def evaluate(assessment: ApprovedMATEAssessment) -> EvaluationResult:
         try:
-            if origins.get(id(assessment)) is not assessment:
+            origin = origins.get(id(assessment))
+            if (
+                not isinstance(origin, tuple)
+                or len(origin) != 3
+                or origin[0]() is not assessment
+                or not isinstance(origin[1], str)
+                or not isinstance(origin[2], bytes)
+                or origin[1] != (digest := content_digest(assessment))
+                or not hmac.compare_digest(
+                    origin[2], origin_authentication(assessment, digest)
+                )
+            ):
                 raise ValueError("approved MATE assessment has no trusted origin")
             assessment = ApprovedMATEAssessment.model_validate(
                 assessment.model_dump(),

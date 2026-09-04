@@ -53,7 +53,7 @@ class RunnerContractTests(unittest.TestCase):
         snapshot = self.simulator_snapshot([
             {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True},
         ])
-        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"):
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0, 30]):
             with self.assertRaisesRegex(runner.SimulatorResolutionError, "did not become available"):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
 
@@ -116,10 +116,24 @@ class RunnerContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             plan_path = Path(directory) / "plan.json"
             register = {
+                "packages": [
+                    {
+                        "package": "P01",
+                        "status": "reviewed",
+                        "identifiers": ["IOS-TEST-001"],
+                    }
+                ],
                 "results": {
                     "IOS-TEST-001": {
                         "status": "reviewed",
-                        "result": {field: "value" for field in runner.EVIDENCE_RESULT_FIELDS},
+                        "result": {
+                            **{
+                                field: "value"
+                                for field in runner.EVIDENCE_RESULT_FIELDS
+                            },
+                            "package": "P01",
+                            "entry": "IOS-TEST-001",
+                        },
                     }
                 }
             }
@@ -132,16 +146,69 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(state, "invalid")
         self.assertTrue(any("artifact" in error for error in errors))
 
+    def test_reviewed_public_evidence_requires_its_package_and_entry(self):
+        plan = {"controlledRegister": {"path": "register.json"}}
+        with tempfile.TemporaryDirectory() as directory:
+            plan_path = Path(directory) / "plan.json"
+            register = {
+                "packages": [
+                    {
+                        "package": "P01",
+                        "status": "reviewed",
+                        "identifiers": ["IOS-TEST-001"],
+                    }
+                ],
+                "results": {
+                    "IOS-TEST-001": {
+                        "status": "reviewed",
+                        "result": {
+                            **{
+                                field: "value"
+                                for field in runner.EVIDENCE_RESULT_FIELDS
+                            },
+                            "package": "P99",
+                            "entry": "IOS-TEST-999",
+                        },
+                    }
+                },
+            }
+            (Path(directory) / "register.json").write_text(
+                json.dumps(register), encoding="utf-8"
+            )
+            errors, state = runner.validate_public_evidence_records(
+                plan_path,
+                ["IOS-TEST-001"],
+                plan,
+            )
+        self.assertEqual(state, "invalid")
+        self.assertTrue(any("package is invalid" in error for error in errors))
+        self.assertTrue(any("entry is invalid" in error for error in errors))
+
     def test_ios_core_commands_use_controlled_fictional_inputs(self):
         destinations = {runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"}
         with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
             runner.component_checks("core", "ios")
         self.assertEqual(run_ios_test.call_count, 6)
         for call in run_ios_test.call_args_list:
-            self.assertEqual(call.args[3], runner.IOS_TEST_ENVIRONMENT)
+            if call.args[0].startswith("ios-core-ui-"):
+                self.assertEqual(call.args[3]["ACE_UI_TEST_APPEARANCE"], "light")
+                self.assertIn("ACE_UI_TEST_APPEARANCE=light", call.args[1])
+            else:
+                self.assertEqual(call.args[3], runner.IOS_TEST_ENVIRONMENT)
         ui_calls = [call for call in run_ios_test.call_args_list if call.args[0].startswith("ios-core-ui-")]
         self.assertTrue(all("ACEClientAppUITests" in call.args[1] for call in ui_calls))
         self.assertTrue(all("Debug" in call.args[1] for call in ui_calls))
+
+    def test_simulator_poll_uses_the_remaining_monotonic_deadline(self):
+        created_uuid = "77777777-7777-7777-7777-777777777777"
+        initial = self.simulator_snapshot([])
+        resolved = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": created_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]) as listing, mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 100]):
+            runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+        self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 30)
+        self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 30)
 
     def test_ios_release_matrix_uses_appearance_and_expected_rejection(self):
         destinations = {name: f"platform=iOS Simulator,id={number * 11111111:08d}-1111-1111-1111-111111111111" for number, name in enumerate(runner.IOS_RELEASE_DEVICES, 1)}
@@ -167,6 +234,16 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn('key="ACE_UI_TEST_APPEARANCE"', scheme)
         self.assertIn('value="$(ACE_UI_TEST_APPEARANCE)"', scheme)
         self.assertIn('<TestAction buildConfiguration="Debug"', scheme)
+
+    def test_make_ui_test_sets_an_overridable_light_appearance(self):
+        makefile = (ROOT / "ios/ACEClientApp/Makefile").read_text(encoding="utf-8")
+        ui_test_target = makefile.split("ui-test:", 1)[1].split(
+            "# Remove derived data.", 1
+        )[0]
+        self.assertIn("UI_TEST_APPEARANCE ?= light", makefile)
+        self.assertIn(
+            "ACE_UI_TEST_APPEARANCE=$(UI_TEST_APPEARANCE)", ui_test_target
+        )
 
     def test_xcresult_counts_fail_closed_when_summary_is_missing_or_wrong(self):
         self.assertIsNone(runner._xcresult_counts({}))

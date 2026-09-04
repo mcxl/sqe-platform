@@ -1,6 +1,35 @@
 {
   "scope": "G0-public-planning-only",
   "releaseEvidence": false,
+  "activeRecordRequirements": {
+    "repository": "mcxl/sqe-platform",
+    "commit": "executing Git head",
+    "status": "pending until an approved reviewer completes the record",
+    "reviewedRecordFields": [
+      "repository",
+      "commit",
+      "package",
+      "entry",
+      "artifact",
+      "status",
+      "reviewer",
+      "device when applicable",
+      "software when applicable"
+    ]
+  },
+  "resultFieldSchema": [
+    "repository",
+    "commit",
+    "package",
+    "entry",
+    "device",
+    "software",
+    "operator",
+    "date",
+    "result",
+    "artifact",
+    "reviewer"
+  ],
   "workflow": "ace-ios-evidence-preflight-manual",
   "simulatorProvisioning": {
     "status": "pending",
@@ -133,6 +162,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -147,6 +178,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -161,6 +194,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -175,6 +210,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -189,6 +226,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -203,6 +242,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -217,6 +258,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -231,6 +274,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -245,6 +290,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -259,6 +306,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -273,6 +322,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -287,6 +338,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -301,6 +354,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -315,6 +370,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -329,6 +386,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -343,6 +402,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -357,6 +418,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -371,6 +434,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -385,6 +450,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -399,6 +466,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -413,6 +482,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -427,6 +498,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -441,6 +514,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -455,6 +530,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -469,6 +546,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -483,6 +562,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -497,6 +578,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -511,6 +594,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -525,6 +610,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -539,6 +626,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -553,6 +642,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -567,6 +658,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -581,6 +674,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -595,6 +690,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -609,6 +706,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -623,6 +722,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -637,6 +738,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -651,6 +754,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -665,6 +770,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -679,6 +786,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -693,6 +802,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -707,6 +818,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -721,6 +834,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",
@@ -735,6 +850,8 @@
       "status": "pending",
       "result": {
         "commit": "",
+        "package": "",
+        "entry": "",
         "device": "",
         "software": "",
         "operator": "",

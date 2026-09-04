@@ -1,18 +1,23 @@
 import XCTest
 
 final class ACEClientAppUITests: XCTestCase {
+    private func requiredAppearance() -> String {
+        guard let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"],
+              ["light", "dark"].contains(appearance) else {
+            XCTFail("ACE_UI_TEST_APPEARANCE must be light or dark")
+            return "light"
+        }
+        return appearance
+    }
+
     private func launch(_ scenario: String) -> XCUIApplication {
         let app = XCUIApplication()
+        let appearance = requiredAppearance()
         app.launchEnvironment["ACE_UI_TEST_SCENARIO"] = scenario
-        if let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
-            XCTAssertTrue(["light", "dark"].contains(appearance))
-            app.launchEnvironment["ACE_UI_TEST_APPEARANCE"] = appearance
-            app.launchArguments += ["-AppleInterfaceStyle", appearance == "dark" ? "Dark" : "Light"]
-        }
+        app.launchEnvironment["ACE_UI_TEST_APPEARANCE"] = appearance
+        app.launchArguments += ["-AppleInterfaceStyle", appearance == "dark" ? "Dark" : "Light"]
         app.launch()
-        if let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
-            XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)
-        }
+        XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)
         return app
     }
 

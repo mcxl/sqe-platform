@@ -5,6 +5,8 @@ Generated 2026-08-27. Covers 197 identifiers mapped across 42 acceptance-evidenc
 This is a public G0 audit. The manual `ace-ios-evidence-preflight-manual` check is not
 release evidence. It only validates public record structure and current repository paths.
 Repository: `mcxl/sqe-platform`. This audit records no pull request or runtime evidence.
+A reviewed public record must name this repository and the executing Git head. Historical
+commit text is not an active control. Pending records are not review or release evidence.
 
 ## Coverage Summary
 
@@ -41,7 +43,7 @@ The first five retain device-level risk after deterministic suspended-repository
 ### IOS-BASE (6 identifiers)
 | ID | Method | Type | Status |
 |----|--------|------|--------|
-| IOS-BASE-001 | projectConfiguration | Partial source-tree manifest + runtime pending | ◐ Deterministic sanitized-manifest evidence only. Approved ancestry validation for protected candidate `cdc4f458bfd3ede385844b31eed117d3c06e854d` from stated base `f0ca3f958334af7b6727742460ed060cf9c077aa` remains required. |
+| IOS-BASE-001 | projectConfiguration | Partial source-tree manifest + runtime pending | ◐ Deterministic sanitized-manifest evidence only. An approved review of `mcxl/sqe-platform` at the executing Git head remains required. |
 | IOS-BASE-002 | projectConfiguration | Source-scan | ✅ iPhone + iOS 26 target |
 | IOS-BASE-003 | projectConfiguration | Source-scan | ✅ Production imports are limited to Apple frameworks |
 | IOS-BASE-004 | projectConfiguration | Source-scan | ✅ Project has no package reference or linked third-party framework |
@@ -275,7 +277,7 @@ All require an approved runtime environment or controlled-evidence review. The m
 |-------|-------|-------------|---------|
 | Accessibility audit + matrix | 16 | ACC-001 through ACC-008, ACC-010-015, ACC-018-019 | iOS 26 simulator runtime |
 | Manual device journeys | 5 | AUTH-023, ACC-009, ACC-016, ACC-017, SHOT-007 | Approved physical device |
-| Repository ancestry validation | 1 | BASE-001 | Manual Phase 6.1 workflow and approved ancestry validation for protected candidate `cdc4f458bfd3ede385844b31eed117d3c06e854d` from stated base `f0ca3f958334af7b6727742460ed060cf9c077aa` |
+| Repository ancestry validation | 1 | BASE-001 | Manual Phase 6.1 workflow and approved review of `mcxl/sqe-platform` at the executing Git head |
 | Signed returned-attribute validation | 1 | AUTH-038 | Approved signed iPhone with the approved access group |
 | Signed access-group validation | 1 | AUTH-053 | Approved signed iPhone with the approved access group |
 | Controlled evidence privacy review | 2 | AUTH-036, AUTH-037 | Approved controlled evidence package |

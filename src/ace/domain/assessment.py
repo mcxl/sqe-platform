@@ -252,7 +252,11 @@ class AuditorDecision(BaseModel):
 
 
 class ApprovedMATEAssessment(BaseModel):
-    """The complete auditor-approved input to the existing evaluator."""
+    """The complete auditor-approved input to the existing evaluator.
+
+    Frozen models stop normal mutation. They do not isolate hostile code in the same
+    Python process. The approval boundary verifies the exact issued content.
+    """
 
     model_config = ConfigDict(frozen=True, str_strip_whitespace=True)
 

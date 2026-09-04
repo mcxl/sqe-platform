@@ -30,6 +30,8 @@ NEGATIVE_CONFIG_REJECTION = "ACE_PREVIEW_ORIGIN must be an approved HTTPS origin
 EVIDENCE_RESULT_FIELDS = (
     "repository",
     "commit",
+    "package",
+    "entry",
     "device",
     "software",
     "operator",
@@ -39,7 +41,7 @@ EVIDENCE_RESULT_FIELDS = (
     "reviewer",
 )
 IOS_RUNTIME_MAJOR = 26
-SIMULATOR_POLL_ATTEMPTS = 3
+SIMULATOR_VERIFICATION_SECONDS = 30
 SIMULATOR_POLL_INTERVAL_SECONDS = 1
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
@@ -107,6 +109,8 @@ def validate_public_evidence_records(
         errors.append("runtime plan must not claim release evidence")
     if plan.get("repository") != "mcxl/sqe-platform":
         errors.append("runtime plan repository is not mcxl/sqe-platform")
+    if tuple(plan.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
+        errors.append("runtime plan result field schema is invalid")
     controlled = plan.get("controlledRegister")
     if not isinstance(controlled, dict):
         return ["controlled public evidence register is missing"], "invalid"
@@ -126,12 +130,37 @@ def validate_public_evidence_records(
         errors.append("controlled public evidence register must not claim release evidence")
     if register.get("repository") != "mcxl/sqe-platform":
         errors.append("controlled public evidence register repository is not mcxl/sqe-platform")
+    if tuple(register.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
+        errors.append("controlled public evidence register result field schema is invalid")
     results = register.get("results")
     if not isinstance(results, dict):
         return ["controlled public evidence results are missing"], "invalid"
+    packages = register.get("packages")
+    if not isinstance(packages, list):
+        return ["controlled public evidence packages are missing"], "invalid"
+    package_by_identifier: dict[str, dict] = {}
+    for package in packages:
+        if (
+            not isinstance(package, dict)
+            or not isinstance(package.get("package"), str)
+            or not package["package"].strip()
+            or package.get("status") not in {"pending", "reviewed"}
+            or not isinstance(package.get("identifiers"), list)
+        ):
+            errors.append("controlled public evidence package is invalid")
+            continue
+        for identifier in package["identifiers"]:
+            if not isinstance(identifier, str) or not identifier:
+                errors.append("controlled public evidence package identifier is invalid")
+            elif identifier in package_by_identifier:
+                errors.append(f"{identifier}: public evidence package is ambiguous")
+            else:
+                package_by_identifier[identifier] = package
     expected_ids = set(source_ids)
     if set(results) != expected_ids:
         errors.append("controlled public evidence result identifiers do not match the runtime plan")
+    if set(package_by_identifier) != expected_ids:
+        errors.append("controlled public evidence package identifiers do not match the runtime plan")
     reviewed = 0
     for identifier in source_ids:
         record = results.get(identifier)
@@ -144,14 +173,29 @@ def validate_public_evidence_records(
             errors.append(f"{identifier}: public evidence status or result is invalid")
             continue
         values = {field: result.get(field) for field in EVIDENCE_RESULT_FIELDS}
+        package = package_by_identifier.get(identifier)
+        if package is None:
+            errors.append(f"{identifier}: public evidence package is missing")
+            continue
         if status == "pending":
-            if any(values.values()):
+            if package["status"] != "pending":
+                errors.append(f"{identifier}: pending public evidence has a reviewed package")
+            if any(
+                not isinstance(value, str) or value
+                for value in values.values()
+            ):
                 errors.append(f"{identifier}: pending public evidence must have blank result fields")
             continue
         reviewed += 1
+        if package["status"] != "reviewed":
+            errors.append(f"{identifier}: reviewed public evidence has a pending package")
         if any(not isinstance(value, str) or not value.strip() for value in values.values()):
             errors.append(f"{identifier}: reviewed public evidence is incomplete")
             continue
+        if values["package"] != package["package"]:
+            errors.append(f"{identifier}: reviewed public evidence package is invalid")
+        if values["entry"] != identifier:
+            errors.append(f"{identifier}: reviewed public evidence entry is invalid")
         if values["repository"] != "mcxl/sqe-platform":
             errors.append(f"{identifier}: reviewed public evidence repository is invalid")
         current_head = subprocess.run(
@@ -214,19 +258,27 @@ def ui_methods() -> list[str]:
 def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
     environment = dict(IOS_TEST_ENVIRONMENT)
     if appearance is not None:
+        if appearance not in {"light", "dark"}:
+            raise ValueError("UI test appearance must be light or dark")
         environment["ACE_UI_TEST_APPEARANCE"] = appearance
     return environment
 
 
-def _simctl_list() -> dict:
-    completed = subprocess.run(
-        ["xcrun", "simctl", "list", "-j"],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
+def _simctl_list(timeout: float | None = None) -> dict:
+    if timeout is not None and timeout <= 0:
+        raise SimulatorResolutionError("simctl list has no verification time remaining")
+    try:
+        completed = subprocess.run(
+            ["xcrun", "simctl", "list", "-j"],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError("simctl list exceeded the verification deadline") from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
             f"simctl list failed: {(completed.stdout or '').strip()}"
@@ -377,7 +429,11 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
 
     if len(names) != len(set(names)):
         raise SimulatorResolutionError("required simulator names must be unique")
-    snapshot = _simctl_list()
+    deadline = time.monotonic() + SIMULATOR_VERIFICATION_SECONDS
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise SimulatorResolutionError("simctl list has no verification time remaining")
+    snapshot = _simctl_list(timeout=remaining)
     runtime = _select_ios_runtime(snapshot)
     device_types = {
         name: _device_type_identifier(snapshot, name)
@@ -398,9 +454,14 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
             identifiers[name] = _simctl_create(name, device_types[name], runtime)
             created = True
     if created:
-        verification_error: SimulatorResolutionError | None = None
-        for attempt in range(SIMULATOR_POLL_ATTEMPTS):
-            snapshot = _simctl_list()
+        verification_error: SimulatorResolutionError | None = SimulatorResolutionError(
+            "verification deadline expired before the created simulator was observed"
+        )
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                break
+            snapshot = _simctl_list(timeout=remaining)
             try:
                 for name in names:
                     _verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])
@@ -408,8 +469,9 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
                 break
             except SimulatorResolutionError as error:
                 verification_error = error
-                if attempt + 1 < SIMULATOR_POLL_ATTEMPTS:
-                    time.sleep(SIMULATOR_POLL_INTERVAL_SECONDS)
+                remaining = deadline - time.monotonic()
+                if remaining > 0:
+                    time.sleep(min(SIMULATOR_POLL_INTERVAL_SECONDS, remaining))
         if verification_error is not None:
             raise SimulatorResolutionError(
                 f"created simulator did not become available: {verification_error}"
@@ -548,7 +610,7 @@ def component_checks(level: str, component: str) -> list[dict]:
     destination = destinations[IOS_CORE_DEVICE]
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
     checks = [{"name": "ios-simulator", "status": "passed", "exit": 0, "detail": "resolved exact simulator UUIDs"}, run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
-    checks.extend(run_ios_test(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios, ios_test_environment(), 1) for method in methods)
+    checks.extend(run_ios_test(f"ios-core-ui-light-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", "ACE_UI_TEST_APPEARANCE=light"], ios, ios_test_environment("light"), 1) for method in methods)
     if level == "release":
         for device in IOS_RELEASE_DEVICES:
             for appearance in ("light", "dark"):
