@@ -4,6 +4,10 @@ final class ACEClientAppUITests: XCTestCase {
     private func launch(_ scenario: String) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchEnvironment["ACE_UI_TEST_SCENARIO"] = scenario
+        if let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
+            app.launchEnvironment["ACE_UI_TEST_APPEARANCE"] = appearance
+            app.launchArguments += ["-AppleInterfaceStyle", appearance == "dark" ? "Dark" : "Light"]
+        }
         app.launch()
         return app
     }

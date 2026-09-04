@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -14,6 +15,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / ".artifacts" / "tests"
 CONFIG = ROOT / "quality" / "test-groups.json"
+IOS_TEST_ENVIRONMENT = {
+    "ACE_PREVIEW_ORIGIN": "https://preview.example.invalid",
+    "ACE_BUNDLE_IDENTIFIER": "com.example.aceclientapp",
+}
+NEGATIVE_CONFIG_ENVIRONMENT = {
+    "ACE_PREVIEW_ORIGIN": "http://invalid.example.invalid",
+    "ACE_BUNDLE_IDENTIFIER": "com.example.aceclientapp",
+}
+NEGATIVE_CONFIG_REJECTION = "ACE_PREVIEW_ORIGIN must be an approved HTTPS origin"
 
 
 def load_mapping() -> tuple[dict, list[str]]:
@@ -50,14 +60,32 @@ def load_mapping() -> tuple[dict, list[str]]:
     return data, errors
 
 
-def run_command(name: str, command: list[str], cwd: Path) -> dict:
+def run_command(
+    name: str,
+    command: list[str],
+    cwd: Path,
+    environment: dict[str, str] | None = None,
+    expected_failure: str | None = None,
+) -> dict:
     if shutil.which(command[0]) is None:
         return {"name": name, "status": "unavailable", "exit": 2, "detail": f"missing tool: {command[0]}"}
     try:
-        completed = subprocess.run(command, cwd=cwd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        completed = subprocess.run(
+            command,
+            cwd=cwd,
+            env={**os.environ, **environment} if environment else None,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
     except OSError as error:
         return {"name": name, "status": "unavailable", "exit": 2, "detail": str(error)}
-    return {"name": name, "status": "passed" if completed.returncode == 0 else "failed", "exit": 0 if completed.returncode == 0 else 1, "detail": completed.stdout[-4000:]}
+    detail = completed.stdout or ""
+    if expected_failure is not None:
+        passed = completed.returncode != 0 and expected_failure in detail
+        return {"name": name, "status": "passed" if passed else "failed", "exit": 0 if passed else 1, "detail": detail[-4000:]}
+    return {"name": name, "status": "passed" if completed.returncode == 0 else "failed", "exit": 0 if completed.returncode == 0 else 1, "detail": detail[-4000:]}
 
 
 def python_toolchain() -> list[str]:
@@ -70,6 +98,13 @@ def python_toolchain() -> list[str]:
 def ui_methods() -> list[str]:
     source = (ROOT / "ios" / "ACEClientApp" / "ACEClientAppUITests" / "ACEClientAppUITests.swift").read_text(encoding="utf-8")
     return [line.split("func ", 1)[1].split("(", 1)[0] for line in source.splitlines() if line.strip().startswith("func test")]
+
+
+def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
+    environment = dict(IOS_TEST_ENVIRONMENT)
+    if appearance is not None:
+        environment["ACE_UI_TEST_APPEARANCE"] = appearance
+    return environment
 
 
 def component_checks(level: str, component: str) -> list[dict]:
@@ -93,14 +128,14 @@ def component_checks(level: str, component: str) -> list[dict]:
         return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": f"expected five UI methods, found {len(methods)}"}]
     destination = "platform=iOS Simulator,name=iPhone SE (3rd generation)"
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
-    checks = [run_command("ios-65-unit", unit, ios)]
-    checks.extend(run_command(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios) for method in methods)
+    checks = [run_command("ios-65-unit", unit, ios, environment=ios_test_environment())]
+    checks.extend(run_command(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios, environment=ios_test_environment()) for method in methods)
     if level == "release":
         for device in ("iPhone SE (3rd generation)", "iPhone 16 Pro Max"):
             for appearance in ("light", "dark"):
                 for method in methods:
-                    checks.append(run_command(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", f"platform=iOS Simulator,name={device}", "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios))
-        checks.extend([run_command("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios)])
+                    checks.append(run_command(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", f"platform=iOS Simulator,name={device}", "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, environment=ios_test_environment(appearance)))
+        checks.extend([run_command("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, environment=ios_test_environment()), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 
 

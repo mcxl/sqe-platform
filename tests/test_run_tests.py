@@ -3,6 +3,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,6 +50,35 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(any("duplicate" in item for item in errors))
         self.assertTrue(any("missing" in item for item in errors))
         self.assertTrue(any("unknown" in item for item in errors))
+
+    def test_ios_core_commands_use_controlled_fictional_inputs(self):
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "run_command", return_value={"status": "passed"}) as run_command:
+            runner.component_checks("core", "ios")
+        self.assertEqual(run_command.call_count, 6)
+        for call in run_command.call_args_list:
+            self.assertEqual(call.kwargs["environment"], runner.IOS_TEST_ENVIRONMENT)
+            self.assertNotIn("expected_failure", call.kwargs)
+
+    def test_ios_release_matrix_uses_appearance_and_expected_rejection(self):
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "run_command", return_value={"status": "passed"}) as run_command:
+            runner.component_checks("release", "ios")
+        calls = run_command.call_args_list
+        release_calls = [call for call in calls if call.args[0].startswith("ios-release-")]
+        self.assertEqual(len(release_calls), 20)
+        self.assertEqual(sum(call.kwargs["environment"].get("ACE_UI_TEST_APPEARANCE") == "light" for call in release_calls), 10)
+        self.assertEqual(sum(call.kwargs["environment"].get("ACE_UI_TEST_APPEARANCE") == "dark" for call in release_calls), 10)
+        negative = next(call for call in calls if call.args[0] == "ios-negative-config")
+        self.assertEqual(negative.kwargs["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
+        self.assertEqual(negative.kwargs["expected_failure"], runner.NEGATIVE_CONFIG_REJECTION)
+
+    def test_expected_failure_requires_rejection_text_and_nonzero_exit(self):
+        cases = [(1, runner.NEGATIVE_CONFIG_REJECTION, "passed", 0), (0, runner.NEGATIVE_CONFIG_REJECTION, "failed", 1), (1, "different error", "failed", 1)]
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"):
+            for returncode, output, status, exit_code in cases:
+                with self.subTest(returncode=returncode, output=output), mock.patch.object(runner.subprocess, "run", return_value=__import__("subprocess").CompletedProcess([], returncode, output)):
+                    result = runner.run_command("negative", ["xcodebuild"], ROOT, expected_failure=runner.NEGATIVE_CONFIG_REJECTION)
+                self.assertEqual(result["status"], status)
+                self.assertEqual(result["exit"], exit_code)
 
 
 if __name__ == "__main__":

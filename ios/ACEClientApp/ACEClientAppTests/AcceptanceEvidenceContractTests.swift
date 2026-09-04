@@ -24,7 +24,7 @@ struct RuntimePlan: Decodable {
 extension AcceptanceEvidenceContractTests {
 
     private var approvedSanitizedBaseManifest: [String: String] {
-        ["sqe/docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "46c262ebd0c781f83fa19b556f67d69a8ef3791d6062e2266c2ebaaa526536ff"]
+        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "46c262ebd0c781f83fa19b556f67d69a8ef3791d6062e2266c2ebaaa526536ff"]
     }
 
     func testProjectConfiguration() throws {
@@ -1646,7 +1646,7 @@ extension AcceptanceEvidenceContractTests {
     }
 
     private func sourceTreeManifest() throws -> [String: String] {
-        let repository = root.deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let repository = root.deletingLastPathComponent().deletingLastPathComponent()
         return try Dictionary(uniqueKeysWithValues: approvedSanitizedBaseManifest.keys.map { path in
             let data = try Data(contentsOf: repository.appendingPathComponent(path))
             let text = try XCTUnwrap(String(data: data, encoding: .utf8), "Manifest file must be UTF-8")
@@ -1656,7 +1656,7 @@ extension AcceptanceEvidenceContractTests {
     }
 
     private func serverSourcePaths() throws -> [String] {
-        let repository = root.deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let repository = root.deletingLastPathComponent().deletingLastPathComponent()
         let sourceExtensions: Set<String> = ["c", "cc", "cpp", "cs", "go", "java", "js", "php", "py", "rb", "rs", "ts"]
         let files = FileManager.default.enumerator(at: repository, includingPropertiesForKeys: nil)!
         var sourcePaths: [String] = []
