@@ -556,6 +556,7 @@ class TestDocumentToolchainDoctor:
             return "C:/tools/soffice.com" if candidate == "soffice.com" else None
 
         completed = __import__("subprocess").CompletedProcess([], 0, "LibreOffice 25", "")
+        monkeypatch.setattr(document_toolchain_doctor.sys, "platform", "win32")
         monkeypatch.setattr(document_toolchain_doctor.shutil, "which", which)
         monkeypatch.setattr(document_toolchain_doctor.subprocess, "run", lambda *args, **kwargs: completed)
 
