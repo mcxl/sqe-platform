@@ -38,6 +38,7 @@ on:
       - quality/test-groups.json
       - tools/run_tests.py
       - .github/workflows/quality-gates.yml
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -56,6 +57,7 @@ jobs:
           fetch-depth: 0
       - id: paths
         env:
+          EVENT_NAME: ${{ github.event_name }}
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: bash
@@ -64,7 +66,11 @@ jobs:
           python_changed=false
           web_changed=false
           docs_changed=false
-          if [[ "$BASE_SHA" =~ ^0+$ ]]; then
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            BASE_SHA="$(git merge-base origin/main "$HEAD_SHA")"
+          fi
+          if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
             changed_files="$(git diff-tree --no-commit-id --name-only -r "$HEAD_SHA")"
           else
             changed_files="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
