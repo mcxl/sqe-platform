@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACE — Progress Guide</title>
+  <style>
+    :root { font-family: Arial, sans-serif; color: #17212b; background: #f4f7f8; }
+    body { margin: 0; }
+    main { max-width: 900px; margin: auto; padding: 2rem 1rem; }
+    h1 { margin-bottom: .25rem; }
+    .muted { color: #52606d; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d7de; padding: .5rem .75rem; text-align: left; vertical-align: top; }
+    th { background: #eaeef2; font-weight: bold; }
+    .done { color: #1a7f37; }
+    .in-progress { color: #9a6700; }
+    .pending { color: #cf222e; }
+    .section { background: #fff; border-radius: .5rem; box-shadow: 0 1px 3px #0002; padding: 1rem; margin: 1rem 0; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li::before { content: '☐ '; }
+    .checklist li.checked::before { content: '☑ '; color: #1a7f37; }
+    .checklist li { margin: .25rem 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>ACE — Progress Guide</h1>
+  <p class="muted">Last updated: 25 August 2026</p>
+
+  <div class="section">
+    <h2>Overall Status</h2>
+    <table>
+      <tr><th>Phase</th><td>ACE iOS Read-Only Client Specification Delivery Record</td></tr>
+      <tr><th>Branch</th><td><code>codex/ios-spec-state-sync</code></td></tr>
+      <tr><th>Pull Request</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/62">#62</a></td></tr>
+      <tr><th>Final Test Suite</th><td class="done"><strong>799 passed</strong>, 1 existing warning; unchanged by the specification-only merge</td></tr>
+      <tr><th>Status</th><td class="pending"><strong>Implementation Not Ready</strong> — exact-artifact Pocock and Security reviews are approved; the listed implementation gates remain open</td></tr>
+      <tr><th>Production</th><td class="pending">Excluded</td></tr>
+      <tr><th>Real Client Data</th><td class="pending">Blocked by G0</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Delivery Checklist</h2>
+    <ul class="checklist">
+      <li class="checked">MCX-5: Reconcile Relationship Review source</li>
+      <li class="checked">MCX-6: Relationship Review Queue Navigation (PR #32, merged <code>dcd7e74</code>)</li>
+      <li class="checked">MCX-7: Repair Autonomous Delivery Workflow</li>
+      <li class="checked">MCX-8: Relationship Review Pilot (PR #33, merged <code>1742cb0</code>)</li>
+      <li class="">MCX-9: Physical iPhone Safari Evidence — Canceled</li>
+      <li class="">MCX-10: Decide Relationship Review Pilot Next Phase — Todo</li>
+      <li class="checked">MCX-11: Relationship Details view (PR #37, merged <code>d71693a3</code>)</li>
+      <li class="checked">MCX-13: Phase 6A Reconciliation — Client Release View (reconciled from <a href="https://linear.app/mcxi-co/issue/MCX-12/">MCX-12</a>)</li>
+      <li class="checked">MCX-14: Phase 6B1 — Approved Actions (PR <a href="https://github.com/mcxl/agentic-os-workspace/pull/52">#52</a>, merged <code>1898e347</code>)</li>
+      <li class="checked">Phase 6 Release Engine Refactor (PRs <a href="https://github.com/mcxl/agentic-os-workspace/pull/54">#54</a>, <a href="https://github.com/mcxl/agentic-os-workspace/pull/55">#55</a>, and <a href="https://github.com/mcxl/agentic-os-workspace/pull/56">#56</a>)</li>
+      <li class="checked">Phase 6B2 — Read-Only Client Release Projection (PR <a href="https://github.com/mcxl/agentic-os-workspace/pull/59">#59</a>, merged <code>a1d52c61</code>)</li>
+      <li class="checked">ACE iOS Read-Only Client Specification (PR <a href="https://github.com/mcxl/agentic-os-workspace/pull/61">#61</a>, exact head <code>c2f3de05</code>, merged <code>436fed94</code>, Security approved)</li>
+      <li class="checked">ACE iOS implementation issue <a href="https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application">MCX-15</a> created with scope, tests, limit, exclusions, and pending inputs</li>
+      <li class="checked">Approved Mac confirmed by the user on 24 August 2026</li>
+      <li class="checked">Clipboard and app-switcher Security review — Approved for the exact listed controls; R3 quality gate 10/10</li>
+      <li class="checked">Exact-artifact Pocock review — Approved for Git blob <code>a60efb08</code></li>
+      <li class="checked">Exact-artifact Security review — Approved for Git blob <code>a60efb08</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>PR #38 — Protected Offline Drafts</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/offline-drafts</code></td></tr>
+      <tr><th>Head</th><td><code>0daa2f2</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">10/10 passed</td></tr>
+      <tr><th>Status</th><td class="in-progress">Open — Review complete, merge pending approval</td></tr>
+    </table>
+    <h3>Acceptance Criteria</h3>
+    <ul class="checklist">
+      <li class="checked">Offline save works in Chrome DevTools Offline mode</li>
+      <li class="checked">Draft remains after reload</li>
+      <li class="checked">Reconnect sync creates one server draft (HTTP 201)</li>
+      <li class="checked">Repeated sync creates no duplicate (idempotent key)</li>
+      <li class="checked">Real-client data returns HTTP 403</li>
+      <li class="checked">G0 controls remain active</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Full Record Review</h2>
+    <table>
+      <tr><th>Tests</th><td class="done">39/39 passed (including focused end-to-end flow test)</td></tr>
+      <tr><th>Browser Proof</th><td class="done">Page renders with all controls: captured evidence, source context, audit questions, decisions, proposed links, completion</td></tr>
+      <tr><th>Screenshot</th><td><code>/code/.generated_artifacts/images/evidence-review-loaded.png</code></td></tr>
+      <tr><th>Recording</th><td><code>/code/.generated_artifacts/recordings/full-record-review.webm</code></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Code Review Findings — Addressed</h2>
+    <table>
+      <tr><th>Finding</th><th>Severity</th><th>Status</th></tr>
+      <tr><td>Variable shadowing breaks sync counter and showRecord</td><td>High</td><td class="done">Fixed — renamed syncedCount / _wasSynced</td></tr>
+      <tr><td>Missing transaction.onerror on IndexedDB operations</td><td>Medium</td><td class="done">Fixed — added error and complete handlers</td></tr>
+      <tr><td>409 conflicts leave orphaned drafts permanently</td><td>Medium</td><td class="done">Fixed — remove draft on 409</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Safety Controls — Active</h2>
+    <ul class="checklist">
+      <li class="checked">G0 blocks REAL_CLIENT data classification</li>
+      <li class="checked">G0 blocks is_fictional=false</li>
+      <li class="checked">Client-side validation before offline save</li>
+      <li class="checked">Server-side validation on sync endpoint</li>
+      <li class="checked">All routes require auditor authentication</li>
+      <li class="checked">No Production deployment</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Phase 2 — Engagement Control Summary (PR #39) 🗹 MERGED</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/engagement-control-summary</code></td></tr>
+      <tr><th>Base</th><td><code>codex/ace-sprint-1</code> (merge commit <code>4ba9a8a</code>)</td></tr>
+      <tr><th>Merge commit</th><td><code>bcc5db6</code></td></tr>
+      <tr><th>Merged head</th><td><code>a4fd72e</code></td></tr>
+      <tr><th>Endpoint</th><td><code>GET /workbench/engagement/summary</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">13/13 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">378/378 passed</td></tr>
+      <tr><th>Browser Verification</th><td class="done">Page renders with all sections</td></tr>
+      <tr><th>Unauthenticated Access</th><td class="done">HTTP 401</td></tr>
+    </table>
+    <h3>Acceptance Criteria</h3>
+    <ul class="checklist">
+      <li class="checked">Current Engagement appears clearly</li>
+      <li class="checked">Reliable counts from existing records</li>
+      <li class="checked">Pending evidence is visible</li>
+      <li class="checked">Reviewed evidence is visible</li>
+      <li class="checked">Relationship conflicts are visible</li>
+      <li class="checked">Missing data is shown clearly</li>
+      <li class="checked">Recommended next action is understandable</li>
+      <li class="checked">No write action exists on the page</li>
+      <li class="checked">Unauthenticated access is blocked</li>
+      <li class="checked">Fictional test data passes</li>
+      <li class="checked">Focused tests pass</li>
+      <li class="checked">Browser verification passes</li>
+      <li class="checked">Full relevant test suite passes</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Phase 3 — Review Enhancements (Post-Merge)</h2>
+    <table>
+      <tr><th>Commit</th><td><code>8bf191a</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">17/17 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">382/382 passed</td></tr>
+      <tr><th>Browser Verification</th><td class="done">All sections + new features render</td></tr>
+    </table>
+    <h3>Enhancements</h3>
+    <ul class="checklist">
+      <li class="checked">Pending Evidence preview (up to 5 items with links)</li>
+      <li class="checked">Open Items conflict capture-only note + Relationship Review link</li>
+      <li class="checked">Recommendation navigation links (workbench / relationship review)</li>
+    </ul>
+    <p>All additions are read-only, G0-protected, use existing routes only.</p>
+  </div>
+
+  <div class="section">
+    <h2>Phase 4 — Deterministic Review Suggestions</h2>
+    <table>
+      <tr><th>Commit</th><td><code>112b9e6</code> (extraction adapter), <code>d680eec</code> (tests)</td></tr>
+      <tr><th>Focused Tests</th><td class="done">15/15 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">397/397 passed</td></tr>
+      <tr><th>Browser Verification</th><td class="done">Desktop + mobile, suggestions panel renders</td></tr>
+      <tr><th>External Dependencies</th><td class="done">Zero — regex-based, no API calls</td></tr>
+    </table>
+    <h3>Deliverables</h3>
+    <ul class="checklist">
+      <li class="checked">EvidenceExtractionAdapter with 11 regex patterns (FACT + WARNING)</li>
+      <li class="checked">source_text column on evidence table (nullable, no impact on existing records)</li>
+      <li class="checked">GET /workbench/api/v1/evidence/{evidence_id}/suggestions endpoint</li>
+      <li class="checked">Review Suggestions panel on evidence review page (advisory only)</li>
+      <li class="checked">Exact character spans for every suggestion (verified by slicing source)</li>
+      <li class="checked">Empty state for evidence without source text</li>
+      <li class="checked">No write paths (POST/PUT return 405)</li>
+    </ul>
+    <p>Zero external dependencies. No API keys. Deterministic output — same source text always produces same suggestions.</p>
+  </div>
+
+  <div class="section">
+    <h2>Phase 5 — Engagement Graph Projection</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/phase5-graph-projection</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">34/34 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">435/435 passed</td></tr>
+      <tr><th>Browser Verification</th><td class="done">SVG graph + Records table + Warnings + XLSX export</td></tr>
+      <tr><th>External Dependencies</th><td class="done">openpyxl only (MIT, no API calls)</td></tr>
+    </table>
+    <h3>Deliverables</h3>
+    <ul class="checklist">
+      <li class="checked">graph_projection() method on WorkbenchStore (nodes + edges + warnings)</li>
+      <li class="checked">GET /workbench/engagement/graph — inline SVG, no CDN</li>
+      <li class="checked">GET /workbench/engagement/graph/export — XLSX with 5 sheets</li>
+      <li class="checked">CONTRA/OPEN conflict relationships visible in warnings</li>
+      <li class="checked">Photo metadata exported, no embedding, no upload</li>
+      <li class="checked">Shared snapshot: HTML and XLSX from same graph_projection() call</li>
+      <li class="checked">SVG arrows only between nodes with actual relationship edges</li>
+      <li class="checked">Export identifier: {engagement_id}-{iso_timestamp}</li>
+      <li class="checked">No formulas, no merged cells, no hidden sheets</li>
+    </ul>
+    <p>Read-only, G0-validated, no paid providers, no external API calls.</p>
+  </div>
+
+  <div class="section">
+    <h2>Phase 5B — ACE Change Record And Export Authorities</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/phase5b-change-export</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">39/39 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">436/436 passed</td></tr>
+      <tr><th>Export Package</th><td class="done">10-file ZIP with XLSX, CSV, JSON, DOCX, PDF, manifest</td></tr>
+      <tr><th>Snapshot Engine</th><td class="done">Self-contained SQLite snapshot with SHA-256 content hash</td></tr>
+      <tr><th>Change Records</th><td class="done">Append-only with immutable triggers, time-based IDs</td></tr>
+      <tr><th>Notion Publisher</th><td class="done">Fictional test double — no network, stable publication IDs</td></tr>
+      <tr><th>Idempotency</th><td class="done">Check-before-create pattern, never 409</td></tr>
+      <tr><th>PDF Generation</th><td class="done">LibreOffice headless, gated by document-toolchain-doctor -Probe</td></tr>
+      <tr><th>Dependencies</th><td class="done">python-docx (MIT) + reportlab (BSD) + openpyxl (MIT)</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Phase 6A — Minimal Client Release View</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/phase6a-reconcile</code></td></tr>
+      <tr><th>Base</th><td><code>codex/ace-sprint-1</code> at <code>ca1f7de</code></td></tr>
+      <tr><th>PRs</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/46">#46</a> <code>1ef19ea</code>, <a href="https://github.com/mcxl/agentic-os-workspace/pull/48">#48</a> <code>5d82b39</code>, <a href="https://github.com/mcxl/agentic-os-workspace/pull/49">#49</a> <code>814bbd8</code></td></tr>
+      <tr><th>Linear</th><td><a href="https://linear.app/mcxi-co/issue/MCX-13/">MCX-13</a> ✅, <a href="https://linear.app/mcxi-co/issue/MCX-12/">MCX-12</a> ✅</td></tr>
+      <tr><th>Endpoints</th><td><code>GET /client</code> (HTML), <code>GET /client/api/v1/release/current</code> (JSON)</td></tr>
+      <tr><th>Focused Tests</th><td class="done">33/33 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">507/507 passed</td></tr>
+      <tr><th>External Dependencies</th><td class="done">Zero — existing SQLite, no new packages</td></tr>
+    </table>
+    <h3>Deliverables</h3>
+    <ul class="checklist">
+      <li class="checked">Independent HTTP Basic auth via <code>require_client()</code> (503 fail-closed)</li>
+      <li class="checked">HTML client page with engagement, conclusion, evidence reference</li>
+      <li class="checked">JSON client API for current published release</li>
+      <li class="checked">HTML escaping on all dynamic values (XSS protection)</li>
+      <li class="checked">Immutability trigger allowing PUBLISHED→WITHDRAWN only</li>
+      <li class="checked">CONCLUSION_APPROVED audit event for CON-FIC-0001 approval</li>
+      <li class="checked">RELEASE_CREATED, RELEASE_PUBLISHED, RELEASE_WITHDRAWN events for all releases</li>
+      <li class="checked">Evidence INSERT column mismatch fixed</li>
+      <li class="checked">Empty ACE_CLIENT_PASSWORD fails closed</li>
+    </ul>
+    <p>Read-only, G0-protected, client auth independent of auditor auth. Reconciled onto controlled branch <code>codex/ace-sprint-1</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>Phase 6B1 — Approved Actions</h2>
+    <table>
+      <tr><th>Branch</th><td><code>vorflux/phase6b1-approved-actions</code></td></tr>
+      <tr><th>Base</th><td><code>codex/ace-sprint-1</code> at <code>d99791f</code></td></tr>
+      <tr><th>PR</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/52">#52</a></td></tr>
+      <tr><th>Linear</th><td><a href="https://linear.app/mcxi-co/issue/MCX-14/">MCX-14</a> — Done, merged</td></tr>
+      <tr><th>Approved Head</th><td><code>1d832a5</code></td></tr>
+      <tr><th>Merge Commit</th><td><code>1898e347</code></td></tr>
+      <tr><th>Focused Tests</th><td class="done">289 passed</td></tr>
+      <tr><th>Full Suite</th><td class="done">762 passed, 1 warning</td></tr>
+      <tr><th>API And HTML</th><td class="done">27 passed</td></tr>
+      <tr><th>Reviews</th><td class="done">Pocock READY; Sol SHIP; Codex found no major issues</td></tr>
+      <tr><th>Status</th><td class="done">Complete</td></tr>
+    </table>
+    <h3>Deliverables</h3>
+    <ul class="checklist">
+      <li class="checked">Approved fictional action source with owner, target date, and delivery status</li>
+      <li class="checked">Immutable action snapshot in the client release API and HTML page</li>
+      <li class="checked">Exact source, version, approval attribution, and audit-event validation</li>
+      <li class="checked">Safe Phase 6A-to-6B1 versioned release migration</li>
+      <li class="checked">Immutable approved sources and terminal release history</li>
+      <li class="checked">Positive and increasing release versions with collision protection</li>
+      <li class="checked">Non-null release package and entry identities</li>
+      <li class="checked">Fail-closed legacy NULL handling and idempotent reopen tests</li>
+    </ul>
+    <p>Read-only and G0-protected. No client editing, real client data, Production, paid provider, or new authentication was added.</p>
+  </div>
+
+  <div class="section">
+    <h2>Phase 6 — Release Engine Refactor</h2>
+    <table>
+      <tr><th>Status</th><td class="done">Complete</td></tr>
+      <tr><th>Stage 1</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/54">PR #54</a> — head <code>7e67ee62</code>, merge <code>48829602</code></td></tr>
+      <tr><th>Stage 2</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/55">PR #55</a> — head <code>761b0cb9</code>, merge <code>6f88ce3d</code></td></tr>
+      <tr><th>Stage 3</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/56">PR #56</a> — head <code>2887c0ce</code>, merge <code>a2f8a308</code></td></tr>
+      <tr><th>Documentation</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/57">PR #57</a> — head <code>727243d8</code>, merge <code>57a669a6</code></td></tr>
+      <tr><th>Phase 6B2</th><td><a href="https://github.com/mcxl/agentic-os-workspace/pull/59">PR #59</a> — approved head <code>ddd1b69d84cdc36cb7a28f3aed6ae83a5119b0dd</code>, merge <code>a1d52c6148b64106ed1a4516aec8e72aea4ef666</code> at 19:53:25 UTC</td></tr>
+      <tr><th>Focused Release Tests</th><td class="done">325 passed</td></tr>
+      <tr><th>Complete Suite</th><td class="done">799 passed, 1 existing Starlette/HTTPX deprecation warning</td></tr>
+      <tr><th>Reviews</th><td class="done">Pocock standards and specification approved; controlled Greptile finding fixed, with its outdated thread not marked resolved before merge; final Fresh Sol and Codex approved</td></tr>
+    </table>
+
+    <h3>Final Architecture And Service Contract</h3>
+    <ul class="checklist">
+      <li class="checked"><code>ClientReleaseService</code> owns draft creation, validation, publication, withdrawal, current-release selection, history, version allocation, and creation/withdrawal audit coordination</li>
+      <li class="checked"><code>ClientReleaseStorage</code> owns parameterised release SQL and always uses the caller-supplied SQLite connection</li>
+      <li class="checked"><code>ClientReleaseProjection</code> owns pure, transport-neutral response projection from caller-supplied immutable release snapshots; it performs no SQL, connection work, authentication, G0 evaluation, HTML rendering, or writes</li>
+      <li class="checked">Web routes contain no release SQL and retain HTTP, authentication, G0, error translation, one connection, service reads, and HTML rendering</li>
+      <li class="checked"><code>begin_release_write()</code> acquires caller-owned <code>BEGIN IMMEDIATE</code> before allocation reads; the caller retains commit and rollback ownership</li>
+      <li class="checked">The completed projection is ready for a future read-only mobile adapter; no mobile application was added</li>
+    </ul>
+
+    <h3>Database Controls And Migration Evidence</h3>
+    <ul class="checklist">
+      <li class="checked">All 18 release-related triggers retained after classification; none was redundant without weakening direct-SQL, migration, lineage, isolation, immutability, uniqueness, or publication-audit protection</li>
+      <li class="checked">The <code>client_release_packages_auto_publish_event</code> trigger remains the owner of <code>RELEASE_PUBLISHED</code> audit creation</li>
+      <li class="checked"><code>WorkbenchStore</code> remains the migration and trigger-installation owner</li>
+      <li class="checked">Fresh, Phase 6A, Phase 6B1, predecessor-trigger, and repeated-reopen states retain the exact trigger inventory with no stale <code>_old</code> references</li>
+      <li class="checked">Complete immutable audit snapshots and legacy nullable-ID release history remain preserved across upgrades and reopens</li>
+      <li class="checked">API and HTML behaviour remains unchanged; G0, client read-only access, and engagement isolation remain active</li>
+      <li class="checked">All 18 release-related triggers remain present, and no-mutation snapshots confirm client reads leave packages, entries, sources, and audit rows unchanged</li>
+    </ul>
+
+    <h3>Lessons And Remaining Boundary</h3>
+    <ul>
+      <li>Acquire SQLite write intent before version-allocation reads; upgrading an already-read deferred transaction is not a safe concurrency contract.</li>
+      <li>Pass one active connection through every service and storage call; opening a second connection inside a transaction risks lock failures.</li>
+      <li>Compare complete immutable audit rows, not counts alone, when proving migration and reopen stability.</li>
+      <li>Direct SQL can still perform a minimal <code>PUBLISHED</code> → <code>WITHDRAWN</code> transition without complete withdrawal metadata or a withdrawal audit event. The service-owned workflow guarantees completeness; adding database enforcement would be a separately scoped behaviour change.</li>
+    </ul>
+
+    <h3>Phase 6B2 — Read-Only Client Release Projection</h3>
+    <p><a href="https://github.com/mcxl/agentic-os-workspace/pull/59">PR #59</a> completed the pure <code>ClientReleaseProjection</code> without changing the existing endpoints, fields, schema, triggers, authentication, dependencies, or mobile surface. The API compatibility snapshot remains 599 bytes, <code>application/json</code>, SHA-256 <code>5e19bc98c09286a2eb8181650462cfb5ae6952eb342da080643d54a8ab6856af</code>. The HTML snapshot remains 3156 bytes, <code>text/html; charset=utf-8</code>, SHA-256 <code>017f19c4e4ebf5e98cb2c9493deec789a5bbf2107a39f6326c6d4fb8b0788e3d</code>.</p>
+    <p>325 focused tests and 799 full-suite tests passed with one existing warning. The controlled Greptile finding was resolved, and final Codex and Fresh Sol approvals were recorded. Fictional-only data, G0, read-only client access, and no Production controls remain active.</p>
+
+    <h3>ACE iOS Read-Only Client Specification</h3>
+    <p><a href="https://github.com/mcxl/agentic-os-workspace/pull/61">PR #61</a> merged exact head <code>c2f3de05fb317d15f563356aaf8305be25fe434e</code> as <code>436fed942d1b45da7473f98930de11b33f861d13</code> at 11:04:09 UTC on 24 August 2026. The original Security review approved Git blob <code>5e0df37037aef24bb55ef9cbafd670d601410de0</code>.</p>
+    <p><a href="https://github.com/mcxl/agentic-os-workspace/pull/62">PR #62</a> records the final specification artifact. Its file SHA-256 is <code>15B65ECE3306E6D6918A2233001CE534A64590E9F9B3464BBA0DACA997639943</code>. Its Git blob is <code>a60efb08bdf4056bddab837f1e0f831fe8f273c6</code>. Independent Pocock and Security reviews approved this exact artifact with no remaining findings. The catalogue has 197 identifiers, 197 unique identifiers, no duplicates, no sequence gaps, and complete <code>IOS-AUTH-001</code> through <code>IOS-AUTH-070</code>.</p>
+    <p>No application code changed. <a href="https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application">MCX-15</a> records the implementation scope, tests, ten-working-day limit, exclusions, data controls, approved Mac, and pending inputs. The issue remains <code>Todo</code> and is not approved for implementation.</p>
+  </div>
+
+  <div class="section">
+    <h2>Native iOS Development Path</h2>
+    <table>
+      <tr><th>Build And Automated Tests</th><td>After provider approval, Codemagic receives only the approved private source. It uses Xcode 26 for builds and automated tests.</td></tr>
+      <tr><th>Simulator Evidence</th><td>Revyl receives only the compiled simulator <code>.app</code>. It provides the required iOS 26 simulator evidence.</td></tr>
+      <tr><th>Final Device Evidence</th><td>Use the approved Mac and an iPhone 15 Pro or later model.</td></tr>
+      <tr><th>Separate Pilots</th><td>Sift-KG and OpenViking remain separate fictional-data pilots. They are not build dependencies.</td></tr>
+      <tr><th>Data Boundary</th><td>Do not transfer personal information, client evidence, passwords, certificates, Production credentials, or usable tokens.</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Next Steps</h2>
+    <ul>
+      <li><strong>Specification Delivery:</strong> Pocock and Security approved the exact artifact. Record the final PR #62 commit and obtain user approval.</li>
+      <li><strong>Implementation Entry:</strong> Approve MCX-15.</li>
+      <li><strong>Provider Transfers:</strong> Approve Codemagic before private-source transfer. Approve Revyl before compiled-application transfer.</li>
+      <li><strong>Network And Device Testing:</strong> Approve the private test server and certificate before network testing. Approve the exact bundle identifier, signing team, and entitlements before a physical-device build.</li>
+      <li><strong>Build And Verification:</strong> Record exact Xcode 26 host evidence from Codemagic and iOS 26 simulator evidence from Revyl.</li>
+      <li><strong>Final Device Evidence:</strong> Use the approved Mac and an iPhone 15 Pro or later model after implementation.</li>
+    </ul>
+    <p>Keep fictional-only data, G0, client editing, new authentication, and Production controls excluded unless separately approved.</p>
+  </div>
+</main>
+</body>
+</html>
