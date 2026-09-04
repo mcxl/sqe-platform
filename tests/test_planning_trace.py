@@ -43,6 +43,8 @@ from src.ace.engine.tracing import (
 def validated_copy(model: Any, **changes: object) -> Any:
     values = model.model_dump()
     values.update(changes)
+    if isinstance(model, ApprovedMATEAssessment):
+        return ApprovedMATEAssessment._from_approved_gate(**values)
     return type(model).model_validate(values)
 
 

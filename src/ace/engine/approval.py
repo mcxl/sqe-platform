@@ -209,7 +209,7 @@ def build_approved_assessment(
         ordered_decisions.append(decision)
 
     dimensions = AssuranceDimensions(**approved_answers)
-    return ApprovedMATEAssessment(
+    return ApprovedMATEAssessment._from_approved_gate(
         control_id=control_id,
         title=title,
         description=description,

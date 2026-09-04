@@ -11,6 +11,7 @@ from pydantic import (
     Field,
     StrictBool,
     StrictInt,
+    ValidationInfo,
     field_validator,
     model_validator,
 )
@@ -25,6 +26,8 @@ ConfidenceScore = Annotated[float, Field(ge=0.0, le=1.0)]
 UTC_ISO_TIMESTAMP = re.compile(
     r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:\+00:00|Z)"
 )
+_APPROVED_MATE_CONTEXT_KEY = "approved_mate_assessment_factory"
+_APPROVED_MATE_FACTORY_SENTINEL = object()
 
 
 class MateDimension(str, Enum):
@@ -262,3 +265,35 @@ class ApprovedMATEAssessment(BaseModel):
     reviewer_notes: str | None = None
     decisions: tuple[AuditorDecision, ...] = Field(min_length=4, max_length=4)
     dimensions: AssuranceDimensions
+
+    @model_validator(mode="before")
+    @classmethod
+    def require_approval_gate(
+        cls,
+        values: object,
+        info: ValidationInfo,
+    ) -> object:
+        context = info.context
+        if (
+            context is None
+            or context.get(_APPROVED_MATE_CONTEXT_KEY)
+            is not _APPROVED_MATE_FACTORY_SENTINEL
+        ):
+            raise ValueError(
+                "approved MATE assessment must be built by the approval gate"
+            )
+        return values
+
+    @classmethod
+    def _from_approved_gate(
+        cls,
+        **values: object,
+    ) -> "ApprovedMATEAssessment":
+        """Construct an assessment after the application approval gate passes."""
+
+        return cls.model_validate(
+            values,
+            context={
+                _APPROVED_MATE_CONTEXT_KEY: _APPROVED_MATE_FACTORY_SENTINEL
+            },
+        )

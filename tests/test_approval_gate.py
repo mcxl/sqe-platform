@@ -18,6 +18,8 @@ from src.ace.domain.assessment import (
     SourceStatus,
 )
 from src.ace.domain.enums import ControlRating, HazardCategory
+from src.ace.domain.models import EvaluationResult
+from src.ace.engine import approval as approval_module
 from src.ace.engine.approval import (
     ApprovalBlockedError,
     build_approved_assessment,
@@ -463,6 +465,22 @@ def test_approved_assessment_is_frozen() -> None:
         assessment.control_id = "CHANGED"
 
 
+def test_approved_assessment_rejects_direct_construction() -> None:
+    values = build_assessment().model_dump()
+
+    with pytest.raises(
+        ValidationError,
+        match="approved MATE assessment must be built by the approval gate",
+    ):
+        ApprovedMATEAssessment(**values)
+
+    with pytest.raises(
+        ValidationError,
+        match="approved MATE assessment must be built by the approval gate",
+    ):
+        ApprovedMATEAssessment.model_validate(values)
+
+
 @pytest.mark.parametrize("collection_name", ["proposals", "decisions"])
 def test_gate_blocks_a_missing_dimension(collection_name: str) -> None:
     proposals, reviews, decisions = make_bundle()
@@ -828,3 +846,30 @@ def test_approved_assessment_returns_the_existing_immutable_result() -> None:
     assert result.__class__.__name__ == "EvaluationResult"
     with pytest.raises(ValidationError):
         result.reasoning = "Changed"
+
+
+def test_approved_assessment_delegates_to_the_existing_evaluator(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    assessment = build_assessment()
+    evaluator_result = EvaluationResult(
+        control_id=assessment.control_id,
+        rating=ControlRating.ADEQUATE,
+        failed_dimensions=(),
+        timestamp="2026-07-28T02:03:04.567890+00:00",
+        reasoning="Fictional result returned by the existing evaluator.",
+    )
+    received_controls = []
+
+    def evaluate_control(control: object) -> EvaluationResult:
+        received_controls.append(control)
+        return evaluator_result
+
+    monkeypatch.setattr(approval_module, "evaluate_control", evaluate_control)
+
+    result = evaluate_approved_assessment(assessment)
+
+    assert result is evaluator_result
+    assert len(received_controls) == 1
+    assert received_controls[0].control_id == assessment.control_id
+    assert received_controls[0].dimensions == assessment.dimensions
