@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "groups": {
+    "G1": "ACE/MATE rules, ratings, evidence, decisions and approvals.",
+    "G2": "Sign-in, identity, Keychain and secure storage.",
+    "G3": "Read-only controls and protected records.",
+    "G4": "Offline operation, recovery and network failures.",
+    "G5": "Privacy, redaction, logs and background protection.",
+    "G6": "Screens, accessibility, appearance, orientation and device sizes."
+  },
+  "inventories": {
+    "python": ["tests"],
+    "web": ["apps/relationship-review-pilot"],
+    "ios": ["ios/ACEClientApp"]
+  },
+  "iosRuntimeRequirementSource": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+  "iosPrimaryGroups": {
+    "G1": ["IOS-BASE-001"],
+    "G2": ["IOS-AUTH-023", "IOS-AUTH-038", "IOS-AUTH-053"],
+    "G3": ["IOS-BOUND-006", "IOS-NET-015", "IOS-NET-016"],
+    "G4": ["IOS-NET-007", "IOS-NET-008", "IOS-NET-028", "IOS-STATE-017", "IOS-STATE-018"],
+    "G5": ["IOS-AUTH-036", "IOS-AUTH-037", "IOS-SHOT-001", "IOS-SHOT-003", "IOS-SHOT-004", "IOS-SHOT-005", "IOS-SHOT-006", "IOS-SHOT-007", "IOS-SHOT-008", "IOS-SHOT-009", "IOS-SHOT-010", "IOS-STATE-009", "IOS-STATE-010"],
+    "G6": ["IOS-ACC-001", "IOS-ACC-002", "IOS-ACC-003", "IOS-ACC-004", "IOS-ACC-005", "IOS-ACC-006", "IOS-ACC-007", "IOS-ACC-008", "IOS-ACC-009", "IOS-ACC-010", "IOS-ACC-011", "IOS-ACC-012", "IOS-ACC-013", "IOS-ACC-014", "IOS-ACC-015", "IOS-ACC-016", "IOS-ACC-017", "IOS-ACC-018", "IOS-ACC-019"]
+  }
+}
