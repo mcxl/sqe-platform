@@ -14,6 +14,66 @@ SPEC.loader.exec_module(runner)
 
 
 class RunnerContractTests(unittest.TestCase):
+    def simulator_snapshot(self, devices):
+        return {
+            "runtimes": [{"identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-1", "version": "26.1", "isAvailable": True}],
+            "devicetypes": [
+                {"name": runner.IOS_CORE_DEVICE, "identifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+                {"name": "iPhone 16 Pro Max", "identifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max"},
+            ],
+            "devices": {"com.apple.CoreSimulator.SimRuntime.iOS-26-1": devices},
+        }
+
+    def test_simulator_resolution_uses_existing_exact_device_ids(self):
+        core_uuid = "11111111-1111-1111-1111-111111111111"
+        max_uuid = "22222222-2222-2222-2222-222222222222"
+        snapshot = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+            {"name": "iPhone 16 Pro Max", "udid": max_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create") as create:
+            destinations = runner.resolve_ios_destinations(runner.IOS_RELEASE_DEVICES)
+        self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={core_uuid}")
+        self.assertEqual(destinations["iPhone 16 Pro Max"], f"platform=iOS Simulator,id={max_uuid}")
+        create.assert_not_called()
+
+    def test_simulator_resolution_creates_and_verifies_missing_exact_device(self):
+        created_uuid = "33333333-3333-3333-3333-333333333333"
+        initial = self.simulator_snapshot([])
+        resolved = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": created_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid) as create:
+            destinations = runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+        self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={created_uuid}")
+        create.assert_called_once_with(runner.IOS_CORE_DEVICE, "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation", "com.apple.CoreSimulator.SimRuntime.iOS-26-1")
+
+    def test_simulator_resolution_accepts_exact_legacy_name_without_type_field(self):
+        core_uuid = "66666666-6666-6666-6666-666666666666"
+        snapshot = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True},
+        ])
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create") as create:
+            destinations = runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+        self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={core_uuid}")
+        create.assert_not_called()
+
+    def test_simulator_resolution_rejects_ambiguous_or_unverifiable_devices(self):
+        snapshot = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": "44444444-4444-4444-4444-444444444444", "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+            {"name": runner.IOS_CORE_DEVICE, "udid": "55555555-5555-5555-5555-555555555555", "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot):
+            with self.assertRaisesRegex(runner.SimulatorResolutionError, "ambiguous"):
+                runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+
+    def test_ios_component_fails_before_xcodebuild_when_resolution_fails(self):
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError("no available iOS 26 runtime")), mock.patch.object(runner, "run_ios_test") as run_ios_test:
+            checks = runner.component_checks("release", "ios")
+        self.assertEqual(checks[0]["status"], "failed")
+        self.assertIn("no available iOS 26 runtime", checks[0]["detail"])
+        run_ios_test.assert_not_called()
+
     def test_mapping_has_44_unique_known_ids_and_six_groups(self):
         mapping, errors = runner.load_mapping()
         self.assertEqual(errors, [])
@@ -74,7 +134,8 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(any("artifact" in error for error in errors))
 
     def test_ios_core_commands_use_controlled_fictional_inputs(self):
-        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
+        destinations = {runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"}
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
             runner.component_checks("core", "ios")
         self.assertEqual(run_ios_test.call_count, 6)
         for call in run_ios_test.call_args_list:
@@ -84,7 +145,8 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(all("Debug" in call.args[1] for call in ui_calls))
 
     def test_ios_release_matrix_uses_appearance_and_expected_rejection(self):
-        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test, mock.patch.object(runner, "run_command", return_value={"status": "passed"}) as run_command:
+        destinations = {name: f"platform=iOS Simulator,id={number * 11111111:08d}-1111-1111-1111-111111111111" for number, name in enumerate(runner.IOS_RELEASE_DEVICES, 1)}
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test, mock.patch.object(runner, "run_command", return_value={"status": "passed"}) as run_command:
             runner.component_checks("release", "ios")
         calls = run_ios_test.call_args_list
         release_calls = [call for call in calls if call.args[0].startswith("ios-release-")]

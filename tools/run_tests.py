@@ -6,6 +6,7 @@ import argparse
 import importlib.util
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -35,6 +36,16 @@ EVIDENCE_RESULT_FIELDS = (
     "artifact",
     "reviewer",
 )
+IOS_RUNTIME_MAJOR = 26
+IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
+IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
+SIMULATOR_UUID = re.compile(
+    r"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$"
+)
+
+
+class SimulatorResolutionError(ValueError):
+    """Raised when a required iOS simulator cannot be safely resolved."""
 
 
 def load_mapping() -> tuple[dict, list[str]]:
@@ -191,6 +202,193 @@ def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
     return environment
 
 
+def _simctl_list() -> dict:
+    completed = subprocess.run(
+        ["xcrun", "simctl", "list", "-j"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise SimulatorResolutionError(
+            f"simctl list failed: {(completed.stdout or '').strip()}"
+        )
+    try:
+        data = json.loads(completed.stdout)
+    except json.JSONDecodeError as error:
+        raise SimulatorResolutionError("simctl list returned invalid JSON") from error
+    if not isinstance(data, dict):
+        raise SimulatorResolutionError("simctl list returned an invalid object")
+    return data
+
+
+def _simctl_create(name: str, device_type: str, runtime: str) -> str:
+    completed = subprocess.run(
+        ["xcrun", "simctl", "create", name, device_type, runtime],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise SimulatorResolutionError(
+            f"simctl create failed for {name}: {(completed.stdout or '').strip()}"
+        )
+    identifier = (completed.stdout or "").strip()
+    if SIMULATOR_UUID.fullmatch(identifier) is None:
+        raise SimulatorResolutionError(
+            f"simctl create returned an invalid UUID for {name}"
+        )
+    return identifier.upper()
+
+
+def _runtime_version(runtime: dict) -> tuple[int, ...] | None:
+    identifier = runtime.get("identifier")
+    version = runtime.get("version")
+    if (
+        runtime.get("isAvailable") is not True
+        or not isinstance(identifier, str)
+        or not identifier.startswith("com.apple.CoreSimulator.SimRuntime.iOS-")
+        or not isinstance(version, str)
+        or re.fullmatch(r"\d+(?:\.\d+)*", version) is None
+    ):
+        return None
+    parsed = tuple(int(part) for part in version.split("."))
+    if parsed[0] != IOS_RUNTIME_MAJOR:
+        return None
+    return parsed
+
+
+def _select_ios_runtime(snapshot: dict) -> str:
+    runtimes = snapshot.get("runtimes")
+    if not isinstance(runtimes, list):
+        raise SimulatorResolutionError("simctl runtimes are unavailable")
+    candidates = [
+        (version, runtime["identifier"])
+        for runtime in runtimes
+        if isinstance(runtime, dict)
+        and (version := _runtime_version(runtime)) is not None
+    ]
+    if not candidates:
+        raise SimulatorResolutionError(
+            f"no available iOS {IOS_RUNTIME_MAJOR} runtime exists"
+        )
+    highest_version = max(version for version, _ in candidates)
+    highest = [identifier for version, identifier in candidates if version == highest_version]
+    if len(highest) != 1:
+        raise SimulatorResolutionError("highest available iOS runtime is ambiguous")
+    return highest[0]
+
+
+def _device_type_identifier(snapshot: dict, name: str) -> str:
+    device_types = snapshot.get("devicetypes")
+    if not isinstance(device_types, list):
+        raise SimulatorResolutionError("simctl device types are unavailable")
+    matches = [
+        device_type.get("identifier")
+        for device_type in device_types
+        if isinstance(device_type, dict)
+        and device_type.get("name") == name
+        and isinstance(device_type.get("identifier"), str)
+    ]
+    if len(matches) != 1:
+        raise SimulatorResolutionError(f"exact device type is unavailable: {name}")
+    return matches[0]
+
+
+def _matching_simulators(
+    snapshot: dict,
+    runtime: str,
+    name: str,
+    device_type: str,
+) -> list[dict]:
+    devices = snapshot.get("devices")
+    if not isinstance(devices, dict):
+        raise SimulatorResolutionError("simctl devices are unavailable")
+    runtime_devices = devices.get(runtime)
+    if not isinstance(runtime_devices, list):
+        return []
+    name_matches = [
+        device
+        for device in runtime_devices
+        if isinstance(device, dict) and device.get("name") == name
+    ]
+    return [
+        device
+        for device in name_matches
+        if device.get("deviceTypeIdentifier") in {None, device_type}
+        and device.get("isAvailable") is True
+    ]
+
+
+def _verify_simulator(
+    snapshot: dict,
+    runtime: str,
+    name: str,
+    device_type: str,
+    identifier: str,
+) -> str:
+    if SIMULATOR_UUID.fullmatch(identifier) is None:
+        raise SimulatorResolutionError(f"simulator UUID is invalid for {name}")
+    devices = snapshot.get("devices")
+    if not isinstance(devices, dict):
+        raise SimulatorResolutionError("simctl devices are unavailable")
+    matches = [
+        (runtime_id, device)
+        for runtime_id, runtime_devices in devices.items()
+        if isinstance(runtime_devices, list)
+        for device in runtime_devices
+        if isinstance(device, dict) and device.get("udid", "").upper() == identifier.upper()
+    ]
+    if len(matches) != 1:
+        raise SimulatorResolutionError(f"simulator UUID is not unique for {name}")
+    resolved_runtime, device = matches[0]
+    if (
+        resolved_runtime != runtime
+        or device.get("name") != name
+        or device.get("deviceTypeIdentifier") not in {None, device_type}
+        or device.get("isAvailable") is not True
+    ):
+        raise SimulatorResolutionError(f"simulator identity verification failed for {name}")
+    return identifier.upper()
+
+
+def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
+    """Resolve or create exact iOS 26 simulator devices before test execution."""
+
+    if len(names) != len(set(names)):
+        raise SimulatorResolutionError("required simulator names must be unique")
+    snapshot = _simctl_list()
+    runtime = _select_ios_runtime(snapshot)
+    device_types = {
+        name: _device_type_identifier(snapshot, name)
+        for name in names
+    }
+    identifiers: dict[str, str] = {}
+    created = False
+    for name in names:
+        matches = _matching_simulators(snapshot, runtime, name, device_types[name])
+        if len(matches) > 1:
+            raise SimulatorResolutionError(f"exact simulator is ambiguous: {name}")
+        if matches:
+            identifier = matches[0].get("udid")
+            if not isinstance(identifier, str):
+                raise SimulatorResolutionError(f"simulator UUID is missing for {name}")
+            identifiers[name] = identifier
+        else:
+            identifiers[name] = _simctl_create(name, device_types[name], runtime)
+            created = True
+    if created:
+        snapshot = _simctl_list()
+    return {
+        name: f"platform=iOS Simulator,id={_verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])}"
+        for name in names
+    }
+
+
 def _xcresult_counts(payload: object) -> tuple[int, int] | None:
     """Return one executed and failed count from an xcresult summary."""
 
@@ -310,15 +508,22 @@ def component_checks(level: str, component: str) -> list[dict]:
     methods = ui_methods()
     if len(methods) != 5:
         return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": f"expected five UI methods, found {len(methods)}"}]
-    destination = "platform=iOS Simulator,name=iPhone SE (3rd generation)"
+    required_devices = IOS_RELEASE_DEVICES if level == "release" else (IOS_CORE_DEVICE,)
+    if shutil.which("xcrun") is None:
+        return [{"name": "ios-simulator", "status": "unavailable", "exit": 2, "detail": "missing tool: xcrun"}]
+    try:
+        destinations = resolve_ios_destinations(required_devices)
+    except SimulatorResolutionError as error:
+        return [{"name": "ios-simulator", "status": "failed", "exit": 1, "detail": str(error)}]
+    destination = destinations[IOS_CORE_DEVICE]
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
-    checks = [run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
+    checks = [{"name": "ios-simulator", "status": "passed", "exit": 0, "detail": "resolved exact simulator UUIDs"}, run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
     checks.extend(run_ios_test(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios, ios_test_environment(), 1) for method in methods)
     if level == "release":
-        for device in ("iPhone SE (3rd generation)", "iPhone 16 Pro Max"):
+        for device in IOS_RELEASE_DEVICES:
             for appearance in ("light", "dark"):
                 for method in methods:
-                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", f"platform=iOS Simulator,name={device}", "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, ios_test_environment(appearance), 1))
+                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destinations[device], "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, ios_test_environment(appearance), 1))
         checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 
