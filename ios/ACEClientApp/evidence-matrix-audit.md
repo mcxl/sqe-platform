@@ -4,7 +4,7 @@ Generated 2026-08-27. Covers 197 identifiers mapped across 42 acceptance-evidenc
 
 This is a public G0 audit. The manual `ace-ios-evidence-preflight-manual` check is not
 release evidence. It only validates public record structure and current repository paths.
-PR: https://github.com/mcxl/ace-iphone-fictional-test/pull/1
+Repository: `mcxl/sqe-platform`. This audit records no pull request or runtime evidence.
 
 ## Coverage Summary
 

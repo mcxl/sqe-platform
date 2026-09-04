@@ -1,10 +1,14 @@
 """Auditor approval boundary for controlled MATE assessments."""
 
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
+from hashlib import sha256
+import json
 from typing import TypeVar
+import weakref
 
 from src.ace.domain.assessment import (
     ApprovedMATEAssessment,
+    _APPROVED_MATE_CONSTRUCTION_CONTEXT,
     AuditorDecision,
     AuditorDecisionStatus,
     ContradictionStatus,
@@ -88,7 +92,7 @@ def _validate_unique_record_identifiers(
         decision_ids.add(decision.decision_id)
 
 
-def build_approved_assessment(
+def _complete_approval_gate(
     *,
     control_id: str,
     title: str,
@@ -209,39 +213,94 @@ def build_approved_assessment(
         ordered_decisions.append(decision)
 
     dimensions = AssuranceDimensions(**approved_answers)
-    return ApprovedMATEAssessment._from_approved_gate(
-        control_id=control_id,
-        title=title,
-        description=description,
-        hazard_category=hazard_category,
-        confidence_score=confidence_score,
-        reviewer_notes=reviewer_notes,
-        decisions=tuple(ordered_decisions),
-        dimensions=dimensions,
+    assessment = ApprovedMATEAssessment.model_validate(
+        {
+            "control_id": control_id,
+            "title": title,
+            "description": description,
+            "hazard_category": hazard_category,
+            "confidence_score": confidence_score,
+            "reviewer_notes": reviewer_notes,
+            "decisions": tuple(ordered_decisions),
+            "dimensions": dimensions,
+        },
+        context={
+            "approved_mate_construction": _APPROVED_MATE_CONSTRUCTION_CONTEXT
+        },
     )
+    return assessment
 
 
-def evaluate_approved_assessment(
-    assessment: ApprovedMATEAssessment,
-) -> EvaluationResult:
-    """Delegate one complete approved assessment to the existing evaluator."""
+def _approval_boundary() -> tuple[
+    Callable[..., ApprovedMATEAssessment],
+    Callable[[ApprovedMATEAssessment], EvaluationResult],
+    Callable[..., ApprovedMATEAssessment],
+]:
+    """Keep MATE origin records inaccessible outside this approval boundary."""
 
-    try:
-        assessment = ApprovedMATEAssessment._from_trusted_persistence(
-            **assessment.model_dump()
+    origins: weakref.WeakValueDictionary[int, ApprovedMATEAssessment] = (
+        weakref.WeakValueDictionary()
+    )
+    g0_digest = "bdc022399d6e4a7d1558776b5bafdd406dda0e7a537dbd7ef3aa46d2ae4dad3c"
+    g0_created_at = "2026-08-01T00:00:00Z"
+    g0_created_by = "seed"
+
+    def build(**values: object) -> ApprovedMATEAssessment:
+        assessment = _complete_approval_gate(**values)
+        origins[id(assessment)] = assessment
+        return assessment
+
+    def rehydrate(
+        values: dict[str, object], created_at: str, created_by: str
+    ) -> ApprovedMATEAssessment:
+        digest = sha256(
+            json.dumps(
+                values, sort_keys=True, separators=(",", ":"), default=str
+            ).encode()
+        ).hexdigest()
+        if (
+            created_at != g0_created_at
+            or created_by != g0_created_by
+            or digest != g0_digest
+        ):
+            raise ValueError("persisted MATE snapshot is not the verified G0 record")
+        assessment = ApprovedMATEAssessment.model_validate(
+            values,
+            context={
+                "approved_mate_construction": _APPROVED_MATE_CONSTRUCTION_CONTEXT
+            },
         )
-    except (TypeError, ValueError) as error:
-        raise ApprovalBlockedError(
-            "Evaluation blocked: approved assessment invariants are invalid."
-        ) from error
+        origins[id(assessment)] = assessment
+        return assessment
 
-    control = Control(
-        control_id=assessment.control_id,
-        title=assessment.title,
-        description=assessment.description,
-        hazard_category=assessment.hazard_category,
-        dimensions=assessment.dimensions,
-        confidence_score=assessment.confidence_score,
-        reviewer_notes=assessment.reviewer_notes,
-    )
-    return evaluate_control(control)
+    def evaluate(assessment: ApprovedMATEAssessment) -> EvaluationResult:
+        try:
+            if origins.get(id(assessment)) is not assessment:
+                raise ValueError("approved MATE assessment has no trusted origin")
+            assessment = ApprovedMATEAssessment.model_validate(
+                assessment.model_dump(),
+                context={
+                    "approved_mate_construction": _APPROVED_MATE_CONSTRUCTION_CONTEXT
+                },
+            )
+        except (TypeError, ValueError) as error:
+            raise ApprovalBlockedError(
+                "Evaluation blocked: approved assessment invariants are invalid."
+            ) from error
+        control = Control(
+            control_id=assessment.control_id,
+            title=assessment.title,
+            description=assessment.description,
+            hazard_category=assessment.hazard_category,
+            dimensions=assessment.dimensions,
+            confidence_score=assessment.confidence_score,
+            reviewer_notes=assessment.reviewer_notes,
+        )
+        return evaluate_control(control)
+
+    return build, evaluate, rehydrate
+
+
+build_approved_assessment, evaluate_approved_assessment, rehydrate_verified_g0_mate = (
+    _approval_boundary()
+)

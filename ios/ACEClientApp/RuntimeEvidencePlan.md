@@ -4,6 +4,9 @@ This public G0 plan is not release evidence. The manual preflight checks only pu
 record structure and current repository paths. It does not run, collect, publish, or
 accept client evidence. Pending records fail closed as not-release-evidence.
 
+This plan binds reviewed records to `mcxl/sqe-platform` and the executing Git head.
+All historical commit-chain text below is quarantined context. It is not a control.
+
 Run these checks only on the approved macOS host.
 
 Phase 6.1 uses [Phase6_1EvidenceRegister.md](Phase6_1EvidenceRegister.md).

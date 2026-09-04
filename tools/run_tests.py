@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,6 +28,7 @@ NEGATIVE_CONFIG_ENVIRONMENT = {
 }
 NEGATIVE_CONFIG_REJECTION = "ACE_PREVIEW_ORIGIN must be an approved HTTPS origin"
 EVIDENCE_RESULT_FIELDS = (
+    "repository",
     "commit",
     "device",
     "software",
@@ -37,6 +39,8 @@ EVIDENCE_RESULT_FIELDS = (
     "reviewer",
 )
 IOS_RUNTIME_MAJOR = 26
+SIMULATOR_POLL_ATTEMPTS = 3
+SIMULATOR_POLL_INTERVAL_SECONDS = 1
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
 SIMULATOR_UUID = re.compile(
@@ -101,6 +105,8 @@ def validate_public_evidence_records(
         errors.append("runtime plan is outside public G0 scope")
     if plan.get("releaseEvidence") is not False:
         errors.append("runtime plan must not claim release evidence")
+    if plan.get("repository") != "mcxl/sqe-platform":
+        errors.append("runtime plan repository is not mcxl/sqe-platform")
     controlled = plan.get("controlledRegister")
     if not isinstance(controlled, dict):
         return ["controlled public evidence register is missing"], "invalid"
@@ -118,6 +124,8 @@ def validate_public_evidence_records(
         errors.append("controlled public evidence register is outside G0 scope")
     if register.get("releaseEvidence") is not False:
         errors.append("controlled public evidence register must not claim release evidence")
+    if register.get("repository") != "mcxl/sqe-platform":
+        errors.append("controlled public evidence register repository is not mcxl/sqe-platform")
     results = register.get("results")
     if not isinstance(results, dict):
         return ["controlled public evidence results are missing"], "invalid"
@@ -144,6 +152,14 @@ def validate_public_evidence_records(
         if any(not isinstance(value, str) or not value.strip() for value in values.values()):
             errors.append(f"{identifier}: reviewed public evidence is incomplete")
             continue
+        if values["repository"] != "mcxl/sqe-platform":
+            errors.append(f"{identifier}: reviewed public evidence repository is invalid")
+        current_head = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False,
+        )
+        if current_head.returncode != 0 or values["commit"] != current_head.stdout.strip():
+            errors.append(f"{identifier}: reviewed public evidence commit is not the executing Git head")
         artifact = (ROOT / str(values["artifact"])).resolve()
         controlled_root = (ROOT / "ios" / "ACEClientApp" / "build" / "phase6-1").resolve()
         if not artifact.is_relative_to(controlled_root) or not artifact.exists():
@@ -319,7 +335,7 @@ def _matching_simulators(
     return [
         device
         for device in name_matches
-        if device.get("deviceTypeIdentifier") in {None, device_type}
+        if device.get("deviceTypeIdentifier") == device_type
         and device.get("isAvailable") is True
     ]
 
@@ -349,7 +365,7 @@ def _verify_simulator(
     if (
         resolved_runtime != runtime
         or device.get("name") != name
-        or device.get("deviceTypeIdentifier") not in {None, device_type}
+        or device.get("deviceTypeIdentifier") != device_type
         or device.get("isAvailable") is not True
     ):
         raise SimulatorResolutionError(f"simulator identity verification failed for {name}")
@@ -382,17 +398,32 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
             identifiers[name] = _simctl_create(name, device_types[name], runtime)
             created = True
     if created:
-        snapshot = _simctl_list()
+        verification_error: SimulatorResolutionError | None = None
+        for attempt in range(SIMULATOR_POLL_ATTEMPTS):
+            snapshot = _simctl_list()
+            try:
+                for name in names:
+                    _verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])
+                verification_error = None
+                break
+            except SimulatorResolutionError as error:
+                verification_error = error
+                if attempt + 1 < SIMULATOR_POLL_ATTEMPTS:
+                    time.sleep(SIMULATOR_POLL_INTERVAL_SECONDS)
+        if verification_error is not None:
+            raise SimulatorResolutionError(
+                f"created simulator did not become available: {verification_error}"
+            )
     return {
         name: f"platform=iOS Simulator,id={_verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])}"
         for name in names
     }
 
 
-def _xcresult_counts(payload: object) -> tuple[int, int] | None:
-    """Return one executed and failed count from an xcresult summary."""
+def _xcresult_counts(payload: object) -> tuple[int, int, int] | None:
+    """Return passed, failed, and skipped counts from an xcresult summary."""
 
-    candidates: list[tuple[int, int]] = []
+    candidates: list[tuple[int, int, int]] = []
 
     def visit(value: object) -> None:
         if isinstance(value, dict):
@@ -400,7 +431,7 @@ def _xcresult_counts(payload: object) -> tuple[int, int] | None:
             failed = value.get("failedTests")
             skipped = value.get("skippedTests", 0)
             if all(isinstance(count, int) for count in (passed, failed, skipped)):
-                candidates.append((passed + failed + skipped, failed))
+                candidates.append((passed, failed, skipped))
             for child in value.values():
                 visit(child)
         elif isinstance(value, list):
@@ -408,7 +439,7 @@ def _xcresult_counts(payload: object) -> tuple[int, int] | None:
                 visit(child)
 
     visit(payload)
-    return max(candidates, default=None)
+    return max(candidates, key=lambda counts: sum(counts), default=None)
 
 
 def run_ios_test(
@@ -447,8 +478,6 @@ def run_ios_test(
                 "summary",
                 "--path",
                 str(result_path),
-                "--format",
-                "json",
             ],
             cwd,
         )
@@ -470,22 +499,23 @@ def run_ios_test(
             "exit": 1,
             "detail": "xcresult has no executed-test summary",
         }
-    executed, failed = counts
-    if executed != expected_tests or failed != 0:
+    passed, failed, skipped = counts
+    if passed != expected_tests or failed != 0 or skipped != 0:
         return {
             "name": name,
             "status": "failed",
             "exit": 1,
             "detail": (
                 "xcresult count mismatch: "
-                f"expected {expected_tests}, executed {executed}, failed {failed}"
+                f"expected {expected_tests} passed, passed {passed}, "
+                f"failed {failed}, skipped {skipped}"
             ),
         }
     return {
         "name": name,
         "status": "passed",
         "exit": 0,
-        "detail": f"xcresult executed {executed} tests with 0 failures",
+        "detail": f"xcresult passed {passed} tests with 0 failures and 0 skipped",
     }
 
 
@@ -523,7 +553,7 @@ def component_checks(level: str, component: str) -> list[dict]:
         for device in IOS_RELEASE_DEVICES:
             for appearance in ("light", "dark"):
                 for method in methods:
-                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destinations[device], "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, ios_test_environment(appearance), 1))
+                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destinations[device], "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method, f"ACE_UI_TEST_APPEARANCE={appearance}"], ios, ios_test_environment(appearance), 1))
         checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 

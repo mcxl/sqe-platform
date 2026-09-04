@@ -26,9 +26,7 @@ ConfidenceScore = Annotated[float, Field(ge=0.0, le=1.0)]
 UTC_ISO_TIMESTAMP = re.compile(
     r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:\+00:00|Z)"
 )
-_APPROVED_MATE_CONTEXT_KEY = "approved_mate_assessment_factory"
-_APPROVED_MATE_FACTORY_SENTINEL = object()
-_TRUSTED_MATE_PERSISTENCE_SENTINEL = object()
+_APPROVED_MATE_CONSTRUCTION_CONTEXT = object()
 
 
 class MateDimension(str, Enum):
@@ -269,18 +267,15 @@ class ApprovedMATEAssessment(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def require_approval_gate(
-        cls,
-        values: object,
-        info: ValidationInfo,
+    def require_approval_construction_context(
+        cls, values: object, info: ValidationInfo
     ) -> object:
         context = info.context
-        factory = None if context is None else context.get(_APPROVED_MATE_CONTEXT_KEY)
-        trusted_context = (
-            factory is _APPROVED_MATE_FACTORY_SENTINEL
-            or factory is _TRUSTED_MATE_PERSISTENCE_SENTINEL
-        )
-        if not trusted_context:
+        if (
+            context is None
+            or context.get("approved_mate_construction")
+            is not _APPROVED_MATE_CONSTRUCTION_CONTEXT
+        ):
             raise ValueError(
                 "approved MATE assessment must be built by the approval gate"
             )
@@ -317,31 +312,3 @@ class ApprovedMATEAssessment(BaseModel):
                     "approved MATE assessment dimensions do not match decisions"
                 )
         return self
-
-    @classmethod
-    def _from_approved_gate(
-        cls,
-        **values: object,
-    ) -> "ApprovedMATEAssessment":
-        """Construct an assessment after the application approval gate passes."""
-
-        return cls.model_validate(
-            values,
-            context={
-                _APPROVED_MATE_CONTEXT_KEY: _APPROVED_MATE_FACTORY_SENTINEL
-            },
-        )
-
-    @classmethod
-    def _from_trusted_persistence(
-        cls,
-        **values: object,
-    ) -> "ApprovedMATEAssessment":
-        """Rehydrate an immutable snapshot through the same approval invariants."""
-
-        return cls.model_validate(
-            values,
-            context={
-                _APPROVED_MATE_CONTEXT_KEY: _TRUSTED_MATE_PERSISTENCE_SENTINEL
-            },
-        )

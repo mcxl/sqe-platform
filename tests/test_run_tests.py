@@ -48,15 +48,14 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={created_uuid}")
         create.assert_called_once_with(runner.IOS_CORE_DEVICE, "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation", "com.apple.CoreSimulator.SimRuntime.iOS-26-1")
 
-    def test_simulator_resolution_accepts_exact_legacy_name_without_type_field(self):
+    def test_simulator_resolution_rejects_device_without_type_identifier(self):
         core_uuid = "66666666-6666-6666-6666-666666666666"
         snapshot = self.simulator_snapshot([
             {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True},
         ])
-        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create") as create:
-            destinations = runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
-        self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={core_uuid}")
-        create.assert_not_called()
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"):
+            with self.assertRaisesRegex(runner.SimulatorResolutionError, "did not become available"):
+                runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
 
     def test_simulator_resolution_rejects_ambiguous_or_unverifiable_devices(self):
         snapshot = self.simulator_snapshot([
@@ -153,6 +152,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(len(release_calls), 20)
         self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "light" for call in release_calls), 10)
         self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "dark" for call in release_calls), 10)
+        self.assertTrue(all(any(argument == f"ACE_UI_TEST_APPEARANCE={call.args[3]['ACE_UI_TEST_APPEARANCE']}" for argument in call.args[1]) for call in release_calls))
         self.assertTrue(all("ACEClientAppUITests" in call.args[1] for call in release_calls))
         negative = next(
             call
@@ -162,12 +162,31 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(negative.kwargs["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
         self.assertEqual(negative.kwargs["expected_failure"], runner.NEGATIVE_CONFIG_REJECTION)
 
+    def test_ui_scheme_forwards_the_appearance_build_setting_to_xctest(self):
+        scheme = (ROOT / "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme").read_text(encoding="utf-8")
+        self.assertIn('key="ACE_UI_TEST_APPEARANCE"', scheme)
+        self.assertIn('value="$(ACE_UI_TEST_APPEARANCE)"', scheme)
+        self.assertIn('<TestAction buildConfiguration="Debug"', scheme)
+
     def test_xcresult_counts_fail_closed_when_summary_is_missing_or_wrong(self):
         self.assertIsNone(runner._xcresult_counts({}))
         self.assertEqual(
             runner._xcresult_counts({"passedTests": 4, "failedTests": 1, "skippedTests": 2}),
-            (7, 1),
+            (4, 1, 2),
         )
+
+    def test_xcresult_command_uses_xcode_26_summary_syntax_and_rejects_skips(self):
+        responses = [
+            {"name": "ios", "status": "passed", "exit": 0, "detail": ""},
+            {"name": "summary", "status": "passed", "exit": 0, "detail": '{"passedTests": 2, "failedTests": 0, "skippedTests": 1}'},
+        ]
+        with mock.patch.object(runner.shutil, "which", return_value="xcrun"), mock.patch.object(runner, "run_command", side_effect=responses) as command:
+            result = runner.run_ios_test("ios", ["xcodebuild", "test"], ROOT, {}, 2)
+        summary_command = command.call_args_list[1].args[1]
+        self.assertEqual(summary_command[:5], ["xcrun", "xcresulttool", "get", "test-results", "summary"])
+        self.assertNotIn("--format", summary_command)
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("skipped 1", result["detail"])
 
     def test_expected_failure_requires_rejection_text_and_nonzero_exit(self):
         cases = [(1, runner.NEGATIVE_CONFIG_REJECTION, "passed", 0), (0, runner.NEGATIVE_CONFIG_REJECTION, "failed", 1), (1, "different error", "failed", 1)]

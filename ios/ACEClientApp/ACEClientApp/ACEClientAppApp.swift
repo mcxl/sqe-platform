@@ -5,10 +5,19 @@ import UIKit
 struct ACEClientApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var state = SessionState()
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some Scene {
         WindowGroup {
-            RootView(state: state).task {
+            ZStack(alignment: .topLeading) {
+                RootView(state: state)
+                #if DEBUG
+                Text(colorScheme == .dark ? "dark" : "light")
+                    .accessibilityIdentifier("Effective interface style")
+                    .opacity(0.01)
+                #endif
+            }
+                .task {
                 #if DEBUG
                 guard UITestScenario.current == nil else { return }
                 #endif

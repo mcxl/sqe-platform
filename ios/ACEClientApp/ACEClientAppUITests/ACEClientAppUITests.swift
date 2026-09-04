@@ -5,10 +5,14 @@ final class ACEClientAppUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchEnvironment["ACE_UI_TEST_SCENARIO"] = scenario
         if let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
+            XCTAssertTrue(["light", "dark"].contains(appearance))
             app.launchEnvironment["ACE_UI_TEST_APPEARANCE"] = appearance
             app.launchArguments += ["-AppleInterfaceStyle", appearance == "dark" ? "Dark" : "Light"]
         }
         app.launch()
+        if let appearance = ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
+            XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)
+        }
         return app
     }
 

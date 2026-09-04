@@ -900,6 +900,57 @@ def test_evaluation_rejects_adversarial_non_approved_decision() -> None:
         evaluate_approved_assessment(adversarial)
 
 
+def test_evaluation_rejects_internally_consistent_constructed_assessment() -> None:
+    assessment = build_assessment()
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(assessment, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
+
+
+def test_named_mate_provenance_apis_reject_arbitrary_assessments() -> None:
+    import src.ace.engine.approval as approval
+
+    assert not hasattr(approval, "_approved_mate_origins")
+    assert not hasattr(approval, "_issue_approved_mate")
+
+    assessment = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(build_assessment(), field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(assessment)
+    with pytest.raises(ValueError, match="not the verified G0 record"):
+        approval.rehydrate_verified_g0_mate({}, "2026-08-01T00:00:00Z", "seed")
+    proposals, reviews, decisions = make_bundle()
+    unregistered = approval._complete_approval_gate(
+        control_id="ACE-FICTIONAL-001",
+        title="Fictional mobilisation control",
+        description="Fictional control-design assessment for testing only.",
+        hazard_category=HazardCategory.GOVERNANCE_OVERSIGHT,
+        proposals=proposals,
+        evidence_reviews=reviews,
+        decisions=decisions,
+        confidence_score=0.95,
+        reviewer_notes="Fictional Sprint 2 approval-boundary test.",
+    )
+    with pytest.raises(ApprovalBlockedError, match="approved assessment invariants are invalid"):
+        approval.evaluate_approved_assessment(unregistered)
+
+
 def test_approved_assessment_delegates_to_the_existing_evaluator(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
