@@ -104,7 +104,7 @@ jobs:
       - name: Install declared Python test dependencies
         run: python -m pip install --disable-pip-version-check -e '.[test]'
       - name: Run Python core checks
-        run: python tools/run_tests.py core --component python
+        run: python -m pytest -q
 
   web-core:
     name: Web Core
