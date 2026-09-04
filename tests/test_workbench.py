@@ -537,7 +537,16 @@ def test_relationship_review_page_renders_workflow_fields_as_html(
     assert "Fictional relationship proposal awaiting review." in response.text
 
 
-def test_authenticated_relationship_routes_create_one_accepted_trace(client: TestClient) -> None:
+def test_authenticated_relationship_routes_create_one_accepted_trace(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.ace.workbench import routes
+    from src.ace.workbench.relationship_review import RelationshipReviewService
+    from tests.test_relationship_review import trace_input_values
+
+    monkeypatch.setattr(
+        routes,
+        "relationship_review_service",
+        lambda: RelationshipReviewService(WorkbenchStore(), trace_input_provider=trace_input_values),
+    )
     result: dict[str, object] = {}
     for number in range(1, 5):
         relationship_id = f"REL-FIC-000{number}"
