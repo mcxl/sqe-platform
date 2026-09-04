@@ -75,8 +75,8 @@ extension AcceptanceEvidenceContractTests {
     }
 
     func testSourceBoundaryInspection() throws {
-        // IOS-BASE-005: The source tree contains no server code. Its server contract
-        // document matches the approved sanitised-base manifest.
+        // IOS-BASE-005: The controlled iOS extraction contains no server code. Its
+        // server contract document matches the approved sanitised-base manifest.
         XCTAssertTrue(try serverSourcePaths().isEmpty)
         XCTAssertEqual(try sourceTreeManifest(), approvedSanitizedBaseManifest)
         // IOS-BASE-006: No Production server address
@@ -1343,6 +1343,7 @@ extension AcceptanceEvidenceContractTests {
         let viewSource = try sourceText("Views.swift")
         XCTAssertTrue(viewSource.contains("let field: CopyableReleaseField"), "Copy controls must take an approved field type")
         XCTAssertEqual(viewSource.components(separatedBy: "Button(\"Copy ").count - 1, 1, "ValueRow must contain one copy-control implementation")
+        XCTAssertFalse(viewSource.contains(".textSelection("), "Native selection must not bypass ClipboardWriteContract")
         XCTAssertTrue(viewSource.contains("let announcement = \"Copied \\(field.label).\""), "Copy confirmation must be accessible text")
         XCTAssertTrue(viewSource.contains("if let confirmation { Text(confirmation) }"), "Copy confirmation must remain visible to accessibility services")
         XCTAssertFalse(viewSource.contains("Link("), "Production source must not use Link-based external navigation")
@@ -1656,12 +1657,11 @@ extension AcceptanceEvidenceContractTests {
     }
 
     private func serverSourcePaths() throws -> [String] {
-        let repository = root.deletingLastPathComponent().deletingLastPathComponent()
         let sourceExtensions: Set<String> = ["c", "cc", "cpp", "cs", "go", "java", "js", "php", "py", "rb", "rs", "ts"]
-        let files = FileManager.default.enumerator(at: repository, includingPropertiesForKeys: nil)!
+        let files = FileManager.default.enumerator(at: root, includingPropertiesForKeys: nil)!
         var sourcePaths: [String] = []
         while let file = files.nextObject() as? URL {
-            let relativePath = file.path.replacingOccurrences(of: repository.path + "/", with: "")
+            let relativePath = file.path.replacingOccurrences(of: root.path + "/", with: "")
             let components = relativePath.split(separator: "/").map(String.init)
             if components.contains(where: { [".git", "build", "DerivedData"].contains($0) }) {
                 var isDirectory: ObjCBool = false

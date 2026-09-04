@@ -18,7 +18,7 @@ from src.ace.domain.assessment import (
     SourceStatus,
 )
 from src.ace.domain.enums import ControlRating, HazardCategory
-from src.ace.domain.models import EvaluationResult
+from src.ace.domain.models import AssuranceDimensions, EvaluationResult
 from src.ace.engine import approval as approval_module
 from src.ace.engine.approval import (
     ApprovalBlockedError,
@@ -846,6 +846,58 @@ def test_approved_assessment_returns_the_existing_immutable_result() -> None:
     assert result.__class__.__name__ == "EvaluationResult"
     with pytest.raises(ValidationError):
         result.reasoning = "Changed"
+
+
+@pytest.mark.parametrize("construction", ["copy", "construct"])
+def test_evaluation_rejects_adversarial_dimension_construction(
+    construction: str,
+) -> None:
+    assessment = build_assessment()
+    invalid_dimensions = AssuranceDimensions(
+        mandate=False,
+        accountability=True,
+        trigger=True,
+        escalation=True,
+    )
+    if construction == "copy":
+        adversarial = assessment.model_copy(
+            update={"dimensions": invalid_dimensions}
+        )
+    else:
+        values = {
+            field: getattr(assessment, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+        values["dimensions"] = invalid_dimensions
+        adversarial = ApprovedMATEAssessment.model_construct(**values)
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
+
+
+def test_evaluation_rejects_adversarial_non_approved_decision() -> None:
+    assessment = build_assessment()
+    altered_decision = assessment.decisions[0].model_copy(
+        update={"decision_status": AuditorDecisionStatus.REJECTED}
+    )
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            **{
+                field: getattr(assessment, field)
+                for field in ApprovedMATEAssessment.model_fields
+            },
+            "decisions": (altered_decision, *assessment.decisions[1:]),
+        }
+    )
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
 
 
 def test_approved_assessment_delegates_to_the_existing_evaluator(

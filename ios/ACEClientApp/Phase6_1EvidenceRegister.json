@@ -1,7 +1,9 @@
 {
+  "scope": "G0-public-planning-only",
+  "releaseEvidence": false,
   "protectedCandidate": "cdc4f458bfd3ede385844b31eed117d3c06e854d",
   "base": "f0ca3f958334af7b6727742460ed060cf9c077aa",
-  "workflow": "ace-ios-client-phase6-1-controlled-evidence",
+  "workflow": "ace-ios-evidence-preflight-manual",
   "simulatorProvisioning": {
     "status": "pending",
     "exactTargets": ["iPhone SE (3rd generation)", "iPhone 16 Pro Max"],

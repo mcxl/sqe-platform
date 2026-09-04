@@ -1,10 +1,14 @@
 # Runtime Evidence Plan
 
+This public G0 plan is not release evidence. The manual preflight checks only public
+record structure and current repository paths. It does not run, collect, publish, or
+accept client evidence. Pending records fail closed as not-release-evidence.
+
 Run these checks only on the approved macOS host.
 
 Phase 6.1 uses [Phase6_1EvidenceRegister.md](Phase6_1EvidenceRegister.md).
 It maps 44 pending identifiers into 10 work packages.
-Use the manual `ace-ios-client-phase6-1-controlled-evidence` workflow only after approval.
+Use the manual `ace-ios-evidence-preflight-manual` workflow only after approval.
 It accepts evidence-preparation commit `5f88563248650f263b4b0fc6c333731868114a25`, one direct correction child, one UI-test platform correction child of `b0eaaa74fa45f60e1ccbda6c3b4ec6faa5e07982`, one UI-test product-name correction child of `ffa73729ab1c45e947ec13d6db00a7b709143b3a`, one app-plist correction child of `d9aacced1d451c64649a08ac3f2012df43b7f27d`, one debug-fixture correction child of `e90efc6123537633dcc8fcb7c27b5bdf2627c3d3`, one copy-control query correction child of `f0cb10b68cce137826c44327f9f433e6b60d3361`, one app launch-screen correction child of `4650a614032d227054bf7f143f409eb7e66e0a38`, or one screenshot-path pilot child of `ddace288d47766172aa8a6fa6b3e5a3e500e0bc6`.
 It also accepts one UI readiness correction child of `ff0556229f17d3ee05487391c9c4e26da346fea4`.
 It also accepts one screenshot absolute-path correction child of `921d38e096ad4214f44f0f9c32cdad96ab1a49cf`.
@@ -20,10 +24,10 @@ The screenshot-path pilot parent `ddace288d47766172aa8a6fa6b3e5a3e500e0bc6` must
 The UI readiness correction parent `ff0556229f17d3ee05487391c9c4e26da346fea4` must have the screenshot-path pilot parent as its first parent.
 The screenshot absolute-path correction parent `921d38e096ad4214f44f0f9c32cdad96ab1a49cf` must have the UI readiness correction parent as its first parent.
 The evidence-preparation and direct correction routes must contain only the six Phase 6.1 preparation files.
-The UI-test platform and product-name correction children must contain exactly the six preparation files and `sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj`.
-The app-plist correction child must contain exactly these eight files: `codemagic.yaml`, `sqe/ios/ACEClientApp/RuntimeEvidencePlan.md`, `sqe/ios/ACEClientApp/RuntimeEvidencePlan.json`, `sqe/ios/ACEClientApp/evidence-matrix-audit.md`, `sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md`, `sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json`, `sqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj`, and `sqe/ios/ACEClientApp/ACEClientApp/Info.plist`.
+The UI-test platform and product-name correction children must contain exactly the six preparation files and `ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj`.
+The app-plist correction child must contain exactly these eight files: `codemagic.yaml`, `ios/ACEClientApp/RuntimeEvidencePlan.md`, `ios/ACEClientApp/RuntimeEvidencePlan.json`, `ios/ACEClientApp/evidence-matrix-audit.md`, `ios/ACEClientApp/Phase6_1EvidenceRegister.md`, `ios/ACEClientApp/Phase6_1EvidenceRegister.json`, `ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj`, and `ios/ACEClientApp/ACEClientApp/Info.plist`.
 The debug-fixture correction child must contain the same eight files.
-The copy-control query correction child must contain those eight files and `sqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift`.
+The copy-control query correction child must contain those eight files and `ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift`.
 The app launch-screen correction child must contain the same nine files.
 The screenshot-path pilot child must contain the same nine files.
 The UI readiness correction child must contain the same nine files.

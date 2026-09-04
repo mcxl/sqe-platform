@@ -28,6 +28,7 @@ UTC_ISO_TIMESTAMP = re.compile(
 )
 _APPROVED_MATE_CONTEXT_KEY = "approved_mate_assessment_factory"
 _APPROVED_MATE_FACTORY_SENTINEL = object()
+_TRUSTED_MATE_PERSISTENCE_SENTINEL = object()
 
 
 class MateDimension(str, Enum):
@@ -274,15 +275,48 @@ class ApprovedMATEAssessment(BaseModel):
         info: ValidationInfo,
     ) -> object:
         context = info.context
-        if (
-            context is None
-            or context.get(_APPROVED_MATE_CONTEXT_KEY)
-            is not _APPROVED_MATE_FACTORY_SENTINEL
-        ):
+        factory = None if context is None else context.get(_APPROVED_MATE_CONTEXT_KEY)
+        trusted_context = (
+            factory is _APPROVED_MATE_FACTORY_SENTINEL
+            or factory is _TRUSTED_MATE_PERSISTENCE_SENTINEL
+        )
+        if not trusted_context:
             raise ValueError(
                 "approved MATE assessment must be built by the approval gate"
             )
         return values
+
+    @model_validator(mode="after")
+    def validate_approval_invariants(self) -> "ApprovedMATEAssessment":
+        """Keep decisions and evaluator dimensions bound at every validation boundary."""
+
+        if len(self.decisions) != len(MateDimension):
+            raise ValueError("approved MATE assessment must have four decisions")
+        dimensions = [decision.dimension for decision in self.decisions]
+        if set(dimensions) != set(MateDimension) or len(dimensions) != len(
+            set(dimensions)
+        ):
+            raise ValueError("approved MATE assessment must cover each dimension once")
+        decision_ids = [decision.decision_id for decision in self.decisions]
+        if len(decision_ids) != len(set(decision_ids)):
+            raise ValueError("approved MATE assessment decision identifiers must be unique")
+        for decision in self.decisions:
+            if decision.decision_status is not AuditorDecisionStatus.APPROVED:
+                raise ValueError("approved MATE assessment contains a non-approved decision")
+            if (
+                decision.final_sufficiency
+                is not EvidenceSufficiency.SUFFICIENT_FOR_DESIGN_ASSESSMENT
+            ):
+                raise ValueError("approved MATE assessment contains insufficient evidence")
+            if decision.approved_answer is None:
+                raise ValueError("approved MATE assessment contains no approved answer")
+            if decision.approved_answer is not getattr(
+                self.dimensions, decision.dimension.field_name
+            ):
+                raise ValueError(
+                    "approved MATE assessment dimensions do not match decisions"
+                )
+        return self
 
     @classmethod
     def _from_approved_gate(
@@ -295,5 +329,19 @@ class ApprovedMATEAssessment(BaseModel):
             values,
             context={
                 _APPROVED_MATE_CONTEXT_KEY: _APPROVED_MATE_FACTORY_SENTINEL
+            },
+        )
+
+    @classmethod
+    def _from_trusted_persistence(
+        cls,
+        **values: object,
+    ) -> "ApprovedMATEAssessment":
+        """Rehydrate an immutable snapshot through the same approval invariants."""
+
+        return cls.model_validate(
+            values,
+            context={
+                _APPROVED_MATE_CONTEXT_KEY: _TRUSTED_MATE_PERSISTENCE_SENTINEL
             },
         )

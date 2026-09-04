@@ -187,7 +187,7 @@ struct ValueRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(field.label).font(.headline)
-            Text(value).textSelection(.enabled).accessibilityLabel("\(field.label): \(value)")
+            Text(value).accessibilityLabel("\(field.label): \(value)")
             Button("Copy \(field.label)") {
                 ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
                 let announcement = "Copied \(field.label)."

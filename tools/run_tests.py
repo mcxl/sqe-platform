@@ -9,6 +9,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -24,6 +25,16 @@ NEGATIVE_CONFIG_ENVIRONMENT = {
     "ACE_BUNDLE_IDENTIFIER": "com.example.aceclientapp",
 }
 NEGATIVE_CONFIG_REJECTION = "ACE_PREVIEW_ORIGIN must be an approved HTTPS origin"
+EVIDENCE_RESULT_FIELDS = (
+    "commit",
+    "device",
+    "software",
+    "operator",
+    "date",
+    "result",
+    "artifact",
+    "reviewer",
+)
 
 
 def load_mapping() -> tuple[dict, list[str]]:
@@ -57,7 +68,80 @@ def load_mapping() -> tuple[dict, list[str]]:
         errors.append("unknown mapped IDs: " + ", ".join(unknown))
     if unused:
         errors.append("unused groups: " + ", ".join(unused))
+    evidence_errors, evidence_state = validate_public_evidence_records(
+        source,
+        source_ids,
+        plan,
+    )
+    errors.extend(evidence_errors)
+    data["evidencePreflightState"] = evidence_state
     return data, errors
+
+
+def validate_public_evidence_records(
+    plan_path: Path,
+    source_ids: list[str],
+    plan: dict,
+) -> tuple[list[str], str]:
+    """Validate public record completeness without accepting runtime evidence."""
+
+    errors: list[str] = []
+    if plan.get("scope") != "G0-public-planning-only":
+        errors.append("runtime plan is outside public G0 scope")
+    if plan.get("releaseEvidence") is not False:
+        errors.append("runtime plan must not claim release evidence")
+    controlled = plan.get("controlledRegister")
+    if not isinstance(controlled, dict):
+        return ["controlled public evidence register is missing"], "invalid"
+    register_name = controlled.get("path")
+    if not isinstance(register_name, str) or Path(register_name).is_absolute():
+        return ["controlled public evidence register path is invalid"], "invalid"
+    register_path = (plan_path.parent / register_name).resolve()
+    if not register_path.is_relative_to(plan_path.parent.resolve()):
+        return ["controlled public evidence register path escapes the runtime plan"], "invalid"
+    try:
+        register = json.loads(register_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return [f"controlled public evidence register is unavailable: {error}"], "invalid"
+    if register.get("scope") != "G0-public-planning-only":
+        errors.append("controlled public evidence register is outside G0 scope")
+    if register.get("releaseEvidence") is not False:
+        errors.append("controlled public evidence register must not claim release evidence")
+    results = register.get("results")
+    if not isinstance(results, dict):
+        return ["controlled public evidence results are missing"], "invalid"
+    expected_ids = set(source_ids)
+    if set(results) != expected_ids:
+        errors.append("controlled public evidence result identifiers do not match the runtime plan")
+    reviewed = 0
+    for identifier in source_ids:
+        record = results.get(identifier)
+        if not isinstance(record, dict):
+            errors.append(f"{identifier}: public evidence record is invalid")
+            continue
+        status = record.get("status")
+        result = record.get("result")
+        if status not in {"pending", "reviewed"} or not isinstance(result, dict):
+            errors.append(f"{identifier}: public evidence status or result is invalid")
+            continue
+        values = {field: result.get(field) for field in EVIDENCE_RESULT_FIELDS}
+        if status == "pending":
+            if any(values.values()):
+                errors.append(f"{identifier}: pending public evidence must have blank result fields")
+            continue
+        reviewed += 1
+        if any(not isinstance(value, str) or not value.strip() for value in values.values()):
+            errors.append(f"{identifier}: reviewed public evidence is incomplete")
+            continue
+        artifact = (ROOT / str(values["artifact"])).resolve()
+        controlled_root = (ROOT / "ios" / "ACEClientApp" / "build" / "phase6-1").resolve()
+        if not artifact.is_relative_to(controlled_root) or not artifact.exists():
+            errors.append(f"{identifier}: reviewed public evidence artifact is unavailable")
+    if errors:
+        return errors, "invalid"
+    if reviewed:
+        return [], "reviewed-records-present-not-release-evidence"
+    return [], "pending-not-release-evidence"
 
 
 def run_command(
@@ -107,6 +191,106 @@ def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
     return environment
 
 
+def _xcresult_counts(payload: object) -> tuple[int, int] | None:
+    """Return one executed and failed count from an xcresult summary."""
+
+    candidates: list[tuple[int, int]] = []
+
+    def visit(value: object) -> None:
+        if isinstance(value, dict):
+            passed = value.get("passedTests")
+            failed = value.get("failedTests")
+            skipped = value.get("skippedTests", 0)
+            if all(isinstance(count, int) for count in (passed, failed, skipped)):
+                candidates.append((passed + failed + skipped, failed))
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+
+    visit(payload)
+    return max(candidates, default=None)
+
+
+def run_ios_test(
+    name: str,
+    command: list[str],
+    cwd: Path,
+    environment: dict[str, str],
+    expected_tests: int,
+) -> dict:
+    """Run one iOS test command and fail closed on absent result counts."""
+
+    if shutil.which("xcrun") is None:
+        return {
+            "name": name,
+            "status": "unavailable",
+            "exit": 2,
+            "detail": "missing tool: xcrun",
+        }
+    with tempfile.TemporaryDirectory(prefix="ace-xcresult-") as directory:
+        result_path = Path(directory) / "result.xcresult"
+        result = run_command(
+            name,
+            [*command, "-resultBundlePath", str(result_path)],
+            cwd,
+            environment=environment,
+        )
+        if result["exit"] != 0:
+            return result
+        summary = run_command(
+            f"{name}-xcresult",
+            [
+                "xcrun",
+                "xcresulttool",
+                "get",
+                "test-results",
+                "summary",
+                "--path",
+                str(result_path),
+                "--format",
+                "json",
+            ],
+            cwd,
+        )
+    if summary["exit"] != 0:
+        return {
+            "name": name,
+            "status": summary["status"],
+            "exit": summary["exit"],
+            "detail": f"xcresult summary failed: {summary['detail']}",
+        }
+    try:
+        counts = _xcresult_counts(json.loads(summary["detail"]))
+    except json.JSONDecodeError:
+        counts = None
+    if counts is None:
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": "xcresult has no executed-test summary",
+        }
+    executed, failed = counts
+    if executed != expected_tests or failed != 0:
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": (
+                "xcresult count mismatch: "
+                f"expected {expected_tests}, executed {executed}, failed {failed}"
+            ),
+        }
+    return {
+        "name": name,
+        "status": "passed",
+        "exit": 0,
+        "detail": f"xcresult executed {executed} tests with 0 failures",
+    }
+
+
 def component_checks(level: str, component: str) -> list[dict]:
     if component == "python":
         missing = python_toolchain()
@@ -128,14 +312,14 @@ def component_checks(level: str, component: str) -> list[dict]:
         return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": f"expected five UI methods, found {len(methods)}"}]
     destination = "platform=iOS Simulator,name=iPhone SE (3rd generation)"
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
-    checks = [run_command("ios-65-unit", unit, ios, environment=ios_test_environment())]
-    checks.extend(run_command(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios, environment=ios_test_environment()) for method in methods)
+    checks = [run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
+    checks.extend(run_ios_test(f"ios-core-ui-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}"], ios, ios_test_environment(), 1) for method in methods)
     if level == "release":
         for device in ("iPhone SE (3rd generation)", "iPhone 16 Pro Max"):
             for appearance in ("light", "dark"):
                 for method in methods:
-                    checks.append(run_command(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", f"platform=iOS Simulator,name={device}", "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, environment=ios_test_environment(appearance)))
-        checks.extend([run_command("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, environment=ios_test_environment()), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
+                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", f"platform=iOS Simulator,name={device}", "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method], ios, ios_test_environment(appearance), 1))
+        checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 
 
@@ -151,13 +335,13 @@ def main(argv: list[str]) -> int:
     if mapping_errors:
         results.append({"name": "mapping", "status": "failed", "exit": 1, "detail": "; ".join(mapping_errors)})
     elif args.level == "evidence-check":
-        results.append({"name": "mapping", "status": "passed", "exit": 0, "detail": "44 source IDs map once to G1-G6; manual evidence was not run"})
+        results.append({"name": "public-g0-preflight", "status": "passed", "exit": 0, "detail": f"44 source IDs map once to G1-G6; {data['evidencePreflightState']}; manual evidence was not run"})
     else:
         results.extend(component_checks(args.level, args.component))
     exits = {item["exit"] for item in results}
     exit_code = 1 if 1 in exits else 2 if 2 in exits else 0
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    report = {"timestamp": datetime.now(timezone.utc).isoformat(), "level": args.level, "component": args.component, "mapping": data.get("iosPrimaryGroups", {}), "results": results, "exit": exit_code}
+    report = {"timestamp": datetime.now(timezone.utc).isoformat(), "level": args.level, "component": args.component, "mapping": data.get("iosPrimaryGroups", {}), "evidencePreflightState": data.get("evidencePreflightState"), "releaseEvidence": False, "results": results, "exit": exit_code}
     report_path = REPORT_DIR / f"{args.level}-{args.component or 'manual'}.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(f"report={report_path.relative_to(ROOT)}")

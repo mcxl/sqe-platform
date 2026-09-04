@@ -226,6 +226,15 @@ def evaluate_approved_assessment(
 ) -> EvaluationResult:
     """Delegate one complete approved assessment to the existing evaluator."""
 
+    try:
+        assessment = ApprovedMATEAssessment._from_trusted_persistence(
+            **assessment.model_dump()
+        )
+    except (TypeError, ValueError) as error:
+        raise ApprovalBlockedError(
+            "Evaluation blocked: approved assessment invariants are invalid."
+        ) from error
+
     control = Control(
         control_id=assessment.control_id,
         title=assessment.title,

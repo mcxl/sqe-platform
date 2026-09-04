@@ -497,8 +497,8 @@ class RelationshipReviewStorage:
                 accountable_role=AccountableRoleRecord.model_validate(
                     snapshot["accountable_role"]
                 ),
-                mate_assessment=ApprovedMATEAssessment.model_validate(
-                    snapshot["mate_assessment"]
+                mate_assessment=ApprovedMATEAssessment._from_trusted_persistence(
+                    **snapshot["mate_assessment"]
                 ),
             )
         except (KeyError, TypeError, ValueError):

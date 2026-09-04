@@ -284,6 +284,15 @@ def test_default_service_creates_one_trace_from_fictional_snapshot(tmp_path: Pat
     assert trace_count == 1
 
 
+def test_persisted_mate_snapshot_completes_fourth_approval(tmp_path: Path) -> None:
+    review = service(tmp_path)
+
+    result = approve_all_current_relationships(review)
+
+    assert result["result"]["code"] == "RELATIONSHIP_DECISION_RECORDED"
+    assert result["trace_created"] is True
+
+
 @pytest.mark.parametrize("snapshot_json", [None, "{}"])
 def test_missing_or_invalid_snapshot_rolls_back_completing_approval(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, snapshot_json: str | None

@@ -1,6 +1,9 @@
 # MCX-15 Evidence Matrix Audit
 
 Generated 2026-08-27. Covers 197 identifiers mapped across 42 acceptance-evidence test names. The complete unit suite has 65 XCTest methods. The separate UI-test scheme is available for approved runtime work. No runtime UI evidence is recorded here.
+
+This is a public G0 audit. The manual `ace-ios-evidence-preflight-manual` check is not
+release evidence. It only validates public record structure and current repository paths.
 PR: https://github.com/mcxl/ace-iphone-fictional-test/pull/1
 
 ## Coverage Summary
@@ -266,7 +269,7 @@ It completes each tested retry. `testReleaseValidation` distinguishes empty sent
 
 ## Pending Items (44 identifiers)
 
-All require an approved runtime environment or controlled-evidence review. The manual `ace-ios-client-phase6-1-controlled-evidence` workflow and `Phase6_1EvidenceRegister.json` control this work. Its preparation resolves one exact device type and a canonical UUID before it accepts a target. A same-name wrong-type device is ignored. An invalid matching UUID fails the workflow. It selects one highest available iOS 26.x runtime before target resolution. It ignores exact targets in older runtimes. It accepts one exact available target only in the selected runtime and fails if that runtime has more than one. Otherwise, it creates the target once in the selected runtime. It then polls unfiltered `simctl list devices -j` snapshots for no more than 30 seconds at one-second intervals. Each poll subprocess receives only the remaining verification time. A timed-out poll keeps its partial snapshot and final verification log, then fails closed. The returned UUID must occur once with the selected runtime key, exact target name, exact device type, and `isAvailable` true. Missing or temporarily unavailable records can continue until the deadline. Duplicate UUIDs and wrong runtime, name, or device type records fail immediately. It keeps controlled device-type, runtime, pre-creation device, creation, poll snapshot, final verification, and resolution logs. This preparation does not accept evidence.
+All require an approved runtime environment or controlled-evidence review. The manual `ace-ios-evidence-preflight-manual` workflow and `Phase6_1EvidenceRegister.json` control this work. Its preparation resolves one exact device type and a canonical UUID before it accepts a target. A same-name wrong-type device is ignored. An invalid matching UUID fails the workflow. It selects one highest available iOS 26.x runtime before target resolution. It ignores exact targets in older runtimes. It accepts one exact available target only in the selected runtime and fails if that runtime has more than one. Otherwise, it creates the target once in the selected runtime. It then polls unfiltered `simctl list devices -j` snapshots for no more than 30 seconds at one-second intervals. Each poll subprocess receives only the remaining verification time. A timed-out poll keeps its partial snapshot and final verification log, then fails closed. The returned UUID must occur once with the selected runtime key, exact target name, exact device type, and `isAvailable` true. Missing or temporarily unavailable records can continue until the deadline. Duplicate UUIDs and wrong runtime, name, or device type records fail immediately. It keeps controlled device-type, runtime, pre-creation device, creation, poll snapshot, final verification, and resolution logs. This preparation does not accept evidence.
 
 | Group | Count | Identifiers | Blocker |
 |-------|-------|-------------|---------|
