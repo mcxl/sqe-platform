@@ -64,6 +64,19 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(destinations["iPhone 16 Pro Max"], f"platform=iOS Simulator,id={max_uuid}")
         create.assert_not_called()
 
+    def test_simulator_resolution_rejects_existing_exact_device_with_invalid_uuid(self):
+        snapshot = self.simulator_snapshot([
+            {
+                "name": runner.IOS_CORE_DEVICE,
+                "udid": "not-a-simulator-uuid",
+                "isAvailable": True,
+                "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation",
+            },
+        ])
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot):
+            with self.assertRaisesRegex(runner.SimulatorResolutionError, "simulator UUID is invalid"):
+                runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+
     def test_simulator_resolution_creates_and_verifies_missing_exact_device(self):
         created_uuid = "33333333-3333-3333-3333-333333333333"
         initial = self.simulator_snapshot([])
