@@ -47,7 +47,7 @@ test:
 
 # Run the dedicated UI-test scheme. This target is separate from the 65-test unit suite.
 ui-test:
-	@SIM_DEST=$$(PYTHONPATH='$(CURDIR)/../..' python3 -c 'from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations; print(resolve_ios_destinations((IOS_CORE_DEVICE,))[IOS_CORE_DEVICE])') || exit $$?; \
+	@SIM_DEST=$$(PYTHONPATH=../.. python3 -c 'from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations; print(resolve_ios_destinations((IOS_CORE_DEVICE,))[IOS_CORE_DEVICE])') || exit $$?; \
 	xcodebuild test \
 		-project $(PROJECT) \
 		-scheme $(UI_SCHEME) \

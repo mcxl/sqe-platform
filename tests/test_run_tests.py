@@ -424,6 +424,8 @@ class RunnerContractTests(unittest.TestCase):
             "print(resolve_ios_destinations((IOS_CORE_DEVICE,))[IOS_CORE_DEVICE])"
         )
         self.assertIn(resolver_call, ui_test_target)
+        self.assertIn("PYTHONPATH=../..", ui_test_target)
+        self.assertNotIn("$(CURDIR)", ui_test_target)
         self.assertNotIn("xcrun simctl list devices available", ui_test_target)
         self.assertIn('-destination "$$SIM_DEST"', ui_test_target)
         self.assertLess(
