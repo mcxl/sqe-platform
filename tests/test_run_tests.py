@@ -55,6 +55,157 @@ class RunnerContractTests(unittest.TestCase):
             )
             return runner.validate_public_evidence_records(plan_path, source_ids, plan)
 
+    def live_artifact_root(self, directory):
+        return Path(directory) / "mcx-19-live-artifacts"
+
+    def run_live_success_fixture(self, root):
+        destinations = {
+            runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111",
+            "iPhone 16 Pro Max": "platform=iOS Simulator,id=22222222-2222-2222-2222-222222222222",
+        }
+
+        def resolve(names, recorder=None):
+            self.assertEqual(names, runner.IOS_RELEASE_DEVICES)
+            assert recorder is not None
+            recorder("selected-runtime", "com.apple.CoreSimulator.SimRuntime.iOS-26-1")
+            recorder("device-types", {runner.IOS_CORE_DEVICE: "core", "iPhone 16 Pro Max": "max"})
+            recorder("resolved-destinations", destinations)
+            return destinations
+
+        def ios_test(name, command, cwd, environment, expected_tests, artifact_root):
+            manifest = json.loads(
+                (artifact_root / "live-evidence-manifest.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(manifest["status"], "failed")
+            self.assertEqual(manifest["results"], [])
+            (artifact_root / f"{name}.log").write_text("controlled result", encoding="utf-8")
+            (artifact_root / f"{name}.xcresult").mkdir()
+            (artifact_root / f"{name}.xcresult" / "Info.plist").write_text("controlled", encoding="utf-8")
+            (artifact_root / f"{name}-summary.json").write_text(
+                json.dumps({"passedTests": expected_tests, "failedTests": 0, "skippedTests": 0}),
+                encoding="utf-8",
+            )
+            return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
+
+        def negative(name, command, cwd, environment, log_path):
+            self.assertEqual(name, "ios-negative-config")
+            log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
+            return 1, "controlled rejection"
+
+        return (
+            mock.patch.object(runner, "_live_repository_metadata", return_value={"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40, "baseline": runner.LIVE_BASELINE_COMMIT}),
+            mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)),
+            mock.patch.object(runner.shutil, "which", return_value="controlled-tool"),
+            mock.patch.object(runner, "resolve_ios_destinations", side_effect=resolve),
+            mock.patch.object(runner, "_run_live_ios_test", side_effect=ios_test),
+            mock.patch.object(runner, "_run_live_command", side_effect=negative),
+        )
+
+    def test_live_evidence_success_fixture_writes_initial_external_controlled_manifest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            with self.run_live_success_fixture(root)[0], self.run_live_success_fixture(root)[1], self.run_live_success_fixture(root)[2], self.run_live_success_fixture(root)[3], self.run_live_success_fixture(root)[4], self.run_live_success_fixture(root)[5]:
+                checks = runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(len(checks), 23, checks)
+            self.assertTrue(all(check["exit"] == 0 for check in checks))
+            manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["status"], "passed-not-release-evidence")
+            self.assertFalse(manifest["releaseEvidence"])
+            self.assertEqual(manifest["commit"], "a" * 40)
+            self.assertTrue(manifest["checksums"])
+
+    def test_live_evidence_fails_closed_for_runtime_type_uuid_and_timeout_errors(self):
+        cases = (
+            ("wrong runtime", "no available iOS 26 runtime"),
+            ("wrong simulator type", "exact device type is unavailable"),
+            ("duplicate UUID", "simulator UUID is not unique"),
+            ("invalid UUID", "simulator UUID is invalid"),
+            ("timeout", "simctl list exceeded the verification deadline"),
+        )
+        for name, message in cases:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = self.live_artifact_root(directory)
+                with mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError(message)), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
+                    checks = runner.live_evidence_checks(root, "a" * 40)
+                self.assertEqual(checks[0]["status"], "failed")
+                self.assertIn(message, checks[0]["detail"])
+                ios_test.assert_not_called()
+                manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
+                self.assertEqual(manifest["status"], "failed")
+
+    def test_live_evidence_fails_closed_for_missing_artifact_and_nonzero_live_result(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            def missing_artifact(name, command, cwd, environment, expected_tests, artifact_root):
+                return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
+            with contexts[0], contexts[1], contexts[2], contexts[3], mock.patch.object(runner, "_run_live_ios_test", side_effect=missing_artifact), contexts[5]:
+                checks = runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(checks[0]["status"], "failed")
+            self.assertIn("required live artifacts are missing", checks[0]["detail"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            def nonzero(name, command, cwd, environment, expected_tests, artifact_root):
+                return {"name": name, "status": "failed", "exit": 1, "detail": "controlled non-zero live result"}
+            with contexts[0], contexts[1], contexts[2], contexts[3], mock.patch.object(runner, "_run_live_ios_test", side_effect=nonzero), contexts[5]:
+                checks = runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(checks[0]["status"], "failed")
+            self.assertIn("one or more live commands failed", checks[0]["detail"])
+
+    def test_live_artifact_checksum_and_secret_redaction_controls_fail_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            artifact = root / "controlled.log"
+            artifact.write_text("controlled", encoding="utf-8")
+            checksums = runner._live_artifact_checksums(root)
+            artifact.write_text("changed", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "checksum mismatch"):
+                runner._verify_live_artifact_checksums(root, checksums)
+            artifact.write_text("Authorization: value", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "secret or redaction"):
+                runner._scan_live_artifacts(root)
+            artifact.write_text("username=unredacted", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "secret or redaction"):
+                runner._scan_live_artifacts(root)
+
+    def test_live_command_environment_excludes_unrelated_secret_values(self):
+        with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
+            os.environ,
+            {"PATH": "controlled-path", "HOME": "controlled-home", "SENTINEL_SECRET": "must-not-pass"},
+            clear=True,
+        ), mock.patch.object(
+            runner.subprocess,
+            "run",
+            return_value=subprocess.CompletedProcess([], 0, ""),
+        ) as command:
+            exit_code, detail = runner._run_live_command(
+                "controlled",
+                ["xcodebuild", "test"],
+                ROOT,
+                runner.IOS_TEST_ENVIRONMENT,
+                Path(directory) / "controlled.log",
+            )
+        self.assertEqual((exit_code, detail), (0, "controlled completed"))
+        environment = command.call_args.kwargs["env"]
+        self.assertNotIn("SENTINEL_SECRET", environment)
+        self.assertEqual(environment["PATH"], "controlled-path")
+        self.assertEqual(environment["ACE_PREVIEW_ORIGIN"], runner.IOS_TEST_ENVIRONMENT["ACE_PREVIEW_ORIGIN"])
+        with self.assertRaisesRegex(ValueError, "unapproved environment"):
+            runner._live_command_environment({"SENTINEL_SECRET": "must-not-pass"})
+
+    def test_live_repository_binding_rejects_a_different_expected_commit(self):
+        responses = (
+            subprocess.CompletedProcess([], 0, "https://github.com/mcxl/sqe-platform.git"),
+            subprocess.CompletedProcess([], 0, "a" * 40 + "\n"),
+            subprocess.CompletedProcess([], 0, ""),
+            subprocess.CompletedProcess([], 0, ""),
+        )
+        with mock.patch.object(runner.subprocess, "run", side_effect=responses):
+            with self.assertRaisesRegex(ValueError, "commit binding failed"):
+                runner._live_repository_metadata("b" * 40)
+
     def test_simulator_resolution_uses_existing_exact_device_ids(self):
         core_uuid = "11111111-1111-1111-1111-111111111111"
         max_uuid = "22222222-2222-2222-2222-222222222222"
@@ -167,7 +318,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(any("missing" in item for item in errors))
         self.assertTrue(any("unknown" in item for item in errors))
 
-    def test_reviewed_public_evidence_requires_complete_controlled_artifact(self):
+    def test_reviewed_public_evidence_is_rejected_before_artifact_acceptance(self):
         plan, register = self.controlled_evidence_fixture()
         plan["entries"] = [plan["entries"][0]]
         plan["packageMappings"] = [plan["packageMappings"][0]]
@@ -185,9 +336,9 @@ class RunnerContractTests(unittest.TestCase):
         }
         errors, state = self.validate_fixture(plan, register)
         self.assertEqual(state, "invalid")
-        self.assertTrue(any("artifact" in error for error in errors))
+        self.assertTrue(any("pending" in error or "invalid" in error for error in errors))
 
-    def test_reviewed_public_evidence_requires_its_package_and_entry(self):
+    def test_reviewed_public_evidence_is_rejected_before_package_and_entry_acceptance(self):
         plan, register = self.controlled_evidence_fixture()
         plan["entries"] = [plan["entries"][0]]
         plan["packageMappings"] = [plan["packageMappings"][0]]
@@ -205,8 +356,7 @@ class RunnerContractTests(unittest.TestCase):
         }
         errors, state = self.validate_fixture(plan, register)
         self.assertEqual(state, "invalid")
-        self.assertTrue(any("package is invalid" in error for error in errors))
-        self.assertTrue(any("entry is invalid" in error for error in errors))
+        self.assertTrue(any("pending" in error or "invalid" in error for error in errors))
 
     def test_reviewed_field_contract_includes_operator_date_and_result(self):
         expected = (
@@ -248,7 +398,7 @@ class RunnerContractTests(unittest.TestCase):
         errors, state = self.validate_fixture(plan, register)
         self.assertEqual(state, "invalid")
         self.assertIn(
-            "IOS-BASE-001: public evidence result schema is invalid", errors
+            "IOS-BASE-001: public evidence status or result is invalid", errors
         )
 
     def test_reviewed_public_evidence_rejects_blank_required_result_values(self):
@@ -270,7 +420,7 @@ class RunnerContractTests(unittest.TestCase):
                 errors, state = self.validate_fixture(plan, register)
                 self.assertEqual(state, "invalid")
                 self.assertIn(
-                    "IOS-BASE-001: reviewed public evidence is incomplete", errors
+                    "IOS-BASE-001: public evidence status or result is invalid", errors
                 )
 
     def test_ios_core_commands_use_controlled_fictional_inputs(self):
@@ -323,7 +473,9 @@ class RunnerContractTests(unittest.TestCase):
             ("plan status", lambda plan, register: plan.update({"status": "reviewed"})),
             ("register status", lambda plan, register: register.update({"status": "reviewed"})),
             ("entry status", lambda plan, register: plan["entries"][0].update({"status": "reviewed"})),
+            ("package reviewed status", lambda plan, register: register["packages"][0].update({"status": "reviewed"})),
             ("package status", lambda plan, register: register["packages"][0].update({"status": "approved"})),
+            ("record reviewed status", lambda plan, register: register["results"]["IOS-BASE-001"].update({"status": "reviewed"})),
             ("record status", lambda plan, register: register["results"]["IOS-BASE-001"].update({"status": "approved"})),
         )
         for name, mutate in cases:
@@ -333,6 +485,19 @@ class RunnerContractTests(unittest.TestCase):
                 errors, state = self.validate_fixture(plan, register)
                 self.assertEqual(state, "invalid")
                 self.assertTrue(any("invalid" in error or "status" in error for error in errors))
+
+    def test_live_codemagic_workflow_is_manual_only_and_uses_one_exact_command(self):
+        config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
+        workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
+        self.assertNotIn("triggering:", workflow)
+        self.assertIn("max_build_duration: 90", workflow)
+        self.assertIn(
+            "python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit \"$CM_COMMIT\"",
+            workflow,
+        )
+        self.assertNotIn("push", workflow)
+        self.assertNotIn("pull_request", workflow)
+        self.assertNotIn("artifacts:", workflow)
 
     def test_public_evidence_schemas_reject_noncanonical_value_types(self):
         cases = (

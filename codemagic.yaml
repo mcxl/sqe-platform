@@ -67,3 +67,17 @@ workflows:
           python3 tools/run_tests.py evidence-check
           echo "G0 records remain pending and are not release evidence."
           exit 1
+
+  ace-ios-live-evidence-manual:
+    name: ACE iOS MCX-19 Live Evidence (Manual Only)
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+    # No triggering events: an approved operator must start this workflow manually.
+    # It writes raw artifacts only to /tmp/mcx-19-live-evidence, outside the Git tree.
+    scripts:
+      - name: Run the MCX-19 controlled live evidence gate
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"
