@@ -13,7 +13,7 @@ The future MCX-19 live gate uses only the manual
 `ace-ios-live-evidence-manual` Codemagic workflow. It has no automatic trigger. Its
 one command is:
 
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
 
 An approved operator can use that command only after a separate approval. The command
 checks the remote repository, exact current Git commit, approved baseline ancestry,
@@ -28,7 +28,7 @@ failure. It records safe simulator metadata and result counts only. It does not 
 environment values, credentials, or raw command output.
 
 Raw logs, result bundles, summaries, manifests, and checksums go only below the
-absolute external root `/tmp/mcx-19-live-evidence`. The root must not exist before the
+absolute external root `/private/tmp/mcx-19-live-evidence`. The root must not exist before the
 run. It must not be in the Git working tree or use a symlink. Use controlled fictional
 inputs only. Do not record client data, passwords, authorisation values, Keychain
 secrets, credentials, private notes, or release claims.

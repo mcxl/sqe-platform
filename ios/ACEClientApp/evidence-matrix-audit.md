@@ -8,7 +8,7 @@ runtime evidence. The 44 pending identifiers remain public and pending.
 The manual `ace-ios-evidence-preflight-manual` workflow validates public record
 structure only. The separate `ace-ios-live-evidence-manual` workflow has no automatic
 trigger. Its only proposed live command is
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`.
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`.
 Use it only after approval.
 
 The live gate binds `mcxl/sqe-platform`, the exact executing Git head, clean-tree

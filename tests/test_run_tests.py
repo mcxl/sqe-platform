@@ -492,12 +492,30 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("triggering:", workflow)
         self.assertIn("max_build_duration: 90", workflow)
         self.assertIn(
-            "python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit \"$CM_COMMIT\"",
+            "python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit \"$CM_COMMIT\"",
             workflow,
         )
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
         self.assertNotIn("artifacts:", workflow)
+        owned_paths = (
+            "codemagic.yaml",
+            "tools/run_tests.py",
+            "tests/test_run_tests.py",
+            "ios/ACEClientApp/RuntimeEvidencePlan.json",
+            "ios/ACEClientApp/RuntimeEvidencePlan.md",
+            "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+            "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+            "ios/ACEClientApp/evidence-matrix-audit.md",
+        )
+        owned_source = "\n".join(
+            (ROOT / path).read_text(encoding="utf-8") for path in owned_paths
+        )
+        self.assertIn("/private/tmp/mcx-19-live-evidence", owned_source)
+        obsolete_path = "/" + "tmp/mcx-19-live-evidence"
+        self.assertIsNone(
+            runner.re.search(r"(?<!/private)" + runner.re.escape(obsolete_path), owned_source)
+        )
 
     def test_public_evidence_schemas_reject_noncanonical_value_types(self):
         cases = (

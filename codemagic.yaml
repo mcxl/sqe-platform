@@ -75,9 +75,9 @@ workflows:
     environment:
       xcode: 26.4.1
     # No triggering events: an approved operator must start this workflow manually.
-    # It writes raw artifacts only to /tmp/mcx-19-live-evidence, outside the Git tree.
+    # It writes raw artifacts only to /private/tmp/mcx-19-live-evidence, outside the Git tree.
     scripts:
       - name: Run the MCX-19 controlled live evidence gate
         script: |
           set -euo pipefail
-          python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"
+          python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"

@@ -15,7 +15,7 @@ identifiers to ten pending packages. Pending result fields remain blank.
 
 The only proposed live command is:
 
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
 
 Run it only in the manual `ace-ios-live-evidence-manual` Codemagic workflow, after
 approval. That workflow has no trigger. `CM_COMMIT` names the checked-out candidate
