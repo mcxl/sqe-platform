@@ -1,4 +1,6 @@
 import importlib.util
+from contextlib import redirect_stderr
+from io import StringIO
 import json
 import os
 import shutil
@@ -93,6 +95,8 @@ class RunnerContractTests(unittest.TestCase):
             return 1, "controlled rejection"
 
         return (
+            mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root),
+            mock.patch.object(runner, "_live_execution_context", return_value={"workflow": runner.LIVE_WORKFLOW}),
             mock.patch.object(runner, "_live_repository_metadata", return_value={"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40, "baseline": runner.LIVE_BASELINE_COMMIT}),
             mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)),
             mock.patch.object(runner.shutil, "which", return_value="controlled-tool"),
@@ -104,7 +108,8 @@ class RunnerContractTests(unittest.TestCase):
     def test_live_evidence_success_fixture_writes_initial_external_controlled_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)
-            with self.run_live_success_fixture(root)[0], self.run_live_success_fixture(root)[1], self.run_live_success_fixture(root)[2], self.run_live_success_fixture(root)[3], self.run_live_success_fixture(root)[4], self.run_live_success_fixture(root)[5]:
+            contexts = self.run_live_success_fixture(root)
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(len(checks), 23, checks)
             self.assertTrue(all(check["exit"] == 0 for check in checks))
@@ -125,7 +130,7 @@ class RunnerContractTests(unittest.TestCase):
         for name, message in cases:
             with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
                 root = self.live_artifact_root(directory)
-                with mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError(message)), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
+                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(runner, "_live_execution_context", return_value={}), mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError(message)), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
                     checks = runner.live_evidence_checks(root, "a" * 40)
                 self.assertEqual(checks[0]["status"], "failed")
                 self.assertIn(message, checks[0]["detail"])
@@ -139,7 +144,7 @@ class RunnerContractTests(unittest.TestCase):
             contexts = self.run_live_success_fixture(root)
             def missing_artifact(name, command, cwd, environment, expected_tests, artifact_root):
                 return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
-            with contexts[0], contexts[1], contexts[2], contexts[3], mock.patch.object(runner, "_run_live_ios_test", side_effect=missing_artifact), contexts[5]:
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(runner, "_run_live_ios_test", side_effect=missing_artifact), contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(checks[0]["status"], "failed")
             self.assertIn("required live artifacts are missing", checks[0]["detail"])
@@ -149,7 +154,7 @@ class RunnerContractTests(unittest.TestCase):
             contexts = self.run_live_success_fixture(root)
             def nonzero(name, command, cwd, environment, expected_tests, artifact_root):
                 return {"name": name, "status": "failed", "exit": 1, "detail": "controlled non-zero live result"}
-            with contexts[0], contexts[1], contexts[2], contexts[3], mock.patch.object(runner, "_run_live_ios_test", side_effect=nonzero), contexts[5]:
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(runner, "_run_live_ios_test", side_effect=nonzero), contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(checks[0]["status"], "failed")
             self.assertIn("one or more live commands failed", checks[0]["detail"])
@@ -166,9 +171,32 @@ class RunnerContractTests(unittest.TestCase):
             artifact.write_text("Authorization: value", encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "secret or redaction"):
                 runner._scan_live_artifacts(root)
+            artifact.write_text("username=[redacted]", encoding="utf-8")
+            runner._scan_live_artifacts(root)
+            artifact.write_text('"username": "[redacted]"', encoding="utf-8")
+            runner._scan_live_artifacts(root)
+            artifact.write_text(
+                '{"username": "[redacted]", "result": "ok"}', encoding="utf-8"
+            )
+            runner._scan_live_artifacts(root)
+            artifact.write_text('{ "user" : "[redacted]" }', encoding="utf-8")
+            runner._scan_live_artifacts(root)
             artifact.write_text("username=unredacted", encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "secret or redaction"):
                 runner._scan_live_artifacts(root)
+            for sensitive in (
+                "credential=value",
+                "token: value",
+                '"password": "value"',
+                '"credential": "value"',
+                '"token": "value"',
+                '"username": "value"',
+            ):
+                artifact.write_text(sensitive, encoding="utf-8")
+                with self.subTest(sensitive=sensitive), self.assertRaisesRegex(
+                    ValueError, "secret or redaction"
+                ):
+                    runner._scan_live_artifacts(root)
 
     def test_live_command_environment_excludes_unrelated_secret_values(self):
         with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
@@ -205,6 +233,47 @@ class RunnerContractTests(unittest.TestCase):
         with mock.patch.object(runner.subprocess, "run", side_effect=responses):
             with self.assertRaisesRegex(ValueError, "commit binding failed"):
                 runner._live_repository_metadata("b" * 40)
+
+    def test_live_execution_context_requires_codemagic_workflow_and_exact_root(self):
+        expected_commit = "a" * 40
+        environment = {
+            "CM_BUILD_ID": "controlled-build",
+            "CM_BUILD_DIR": str(ROOT),
+            "CM_COMMIT": expected_commit,
+            "CM_BRANCH": runner.LIVE_BRANCH,
+            runner.LIVE_WORKFLOW_ENVIRONMENT_KEY: runner.LIVE_WORKFLOW,
+        }
+        with mock.patch.dict(os.environ, environment, clear=True):
+            self.assertEqual(
+                runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit),
+                {"workflow": runner.LIVE_WORKFLOW},
+            )
+            with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                runner._live_execution_context(Path("/private/tmp/not-approved"), expected_commit)
+            with mock.patch.dict(
+                os.environ,
+                {runner.LIVE_WORKFLOW_ENVIRONMENT_KEY: "different-workflow"},
+            ):
+                with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                    runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
+            with mock.patch.dict(os.environ, {"CM_BRANCH": "different-branch"}):
+                with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                    runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
+            with mock.patch.dict(os.environ, {"CM_COMMIT": "b" * 40}):
+                with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                    runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
+
+    def test_live_cli_requires_a_lower_case_approved_commit_input(self):
+        with redirect_stderr(StringIO()), self.assertRaises(SystemExit):
+            runner.main([
+                "live-evidence", "--component", "ios", "--artifact-root",
+                str(runner.LIVE_ARTIFACT_ROOT),
+            ])
+        with redirect_stderr(StringIO()), self.assertRaises(SystemExit):
+            runner.main([
+                "live-evidence", "--component", "ios", "--artifact-root",
+                str(runner.LIVE_ARTIFACT_ROOT), "--expected-commit", "A" * 40,
+            ])
 
     def test_simulator_resolution_uses_existing_exact_device_ids(self):
         core_uuid = "11111111-1111-1111-1111-111111111111"
@@ -491,8 +560,10 @@ class RunnerContractTests(unittest.TestCase):
         workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
         self.assertNotIn("triggering:", workflow)
         self.assertIn("max_build_duration: 90", workflow)
+        self.assertIn("ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual", workflow)
+        self.assertIn("ACE_LIVE_EVIDENCE_APPROVED_COMMIT", workflow)
         self.assertIn(
-            "python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit \"$CM_COMMIT\"",
+            "python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit \"$ACE_LIVE_EVIDENCE_APPROVED_COMMIT\"",
             workflow,
         )
         self.assertNotIn("push", workflow)

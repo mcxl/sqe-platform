@@ -8,12 +8,14 @@ runtime evidence. The 44 pending identifiers remain public and pending.
 The manual `ace-ios-evidence-preflight-manual` workflow validates public record
 structure only. The separate `ace-ios-live-evidence-manual` workflow has no automatic
 trigger. Its only proposed live command is
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`.
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"`.
 Use it only after approval.
 
 The live gate binds `mcxl/sqe-platform`, the exact executing Git head, clean-tree
-state, and ancestry from `7da6228dc87ad970aa8d44365fbc3823c58020da`. `CM_COMMIT`
-must equal the checked-out lower-case Git SHA. It stores raw
+state, and ancestry from `7da6228dc87ad970aa8d44365fbc3823c58020da`. The separately
+approved `ACE_LIVE_EVIDENCE_APPROVED_COMMIT` must equal `CM_COMMIT` and Git HEAD.
+`CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID`, `CM_BUILD_DIR`, and the
+exact workflow variable must identify `ace-ios-live-evidence-manual`. It stores raw
 artifacts only outside the Git tree. This audit and its JSON records never become
 runtime or release evidence.
 

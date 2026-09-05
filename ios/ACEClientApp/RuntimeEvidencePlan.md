@@ -15,11 +15,15 @@ identifiers to ten pending packages. Pending result fields remain blank.
 
 The only proposed live command is:
 
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"`
 
 Run it only in the manual `ace-ios-live-evidence-manual` Codemagic workflow, after
-approval. That workflow has no trigger. `CM_COMMIT` names the checked-out candidate
-head. The runner rejects a missing, invalid, or non-matching commit. Do not run the command locally or from a push,
+approval. That workflow has no trigger. The operator must supply the separately
+approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. It must equal
+`CM_COMMIT` and Git HEAD. `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`.
+`CM_BUILD_ID` and `CM_BUILD_DIR` must identify the current Codemagic build. The
+workflow variable `ACE_LIVE_EVIDENCE_WORKFLOW` must equal
+`ace-ios-live-evidence-manual`. The runner rejects another context. Do not run the command locally or from a push,
 pull request, tag, schedule, or another workflow.
 
 The artifact root is an absolute path outside the Git tree. The runner rejects an

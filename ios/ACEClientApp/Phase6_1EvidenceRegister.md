@@ -13,12 +13,14 @@ The future MCX-19 live gate uses only the manual
 `ace-ios-live-evidence-manual` Codemagic workflow. It has no automatic trigger. Its
 one command is:
 
-`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$CM_COMMIT"`
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"`
 
 An approved operator can use that command only after a separate approval. The command
 checks the remote repository, exact current Git commit, approved baseline ancestry,
-and clean Git tree. `CM_COMMIT` must exactly match the checked-out lower-case Git SHA.
-It retains the commit in its external manifest. No repository file
+and clean Git tree. The operator input `ACE_LIVE_EVIDENCE_APPROVED_COMMIT` must exactly
+match `CM_COMMIT` and the checked-out lower-case Git SHA. `CM_BRANCH` must equal
+`codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID` and `CM_BUILD_DIR` must identify the current build. The workflow variable
+must equal `ace-ios-live-evidence-manual`. It retains the commit in its external manifest. No repository file
 becomes a live artifact or a release record.
 
 The gate selects the highest available iOS 26.x runtime and exact simulator types. It

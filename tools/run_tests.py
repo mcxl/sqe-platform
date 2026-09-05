@@ -106,6 +106,10 @@ LIVE_COMMAND_TIMEOUT_SECONDS = 600
 LIVE_ARTIFACT_MAX_BYTES = 64 * 1024 * 1024
 LIVE_BASELINE_COMMIT = "7da6228dc87ad970aa8d44365fbc3823c58020da"
 LIVE_REPOSITORY = "mcxl/sqe-platform"
+LIVE_ARTIFACT_ROOT = Path("/private/tmp/mcx-19-live-evidence")
+LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
+LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
+LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
 LIVE_OPERATING_ENVIRONMENT_KEYS = (
     "PATH",
     "HOME",
@@ -535,6 +539,30 @@ def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
             raise ValueError("UI test appearance must be light or dark")
         environment["ACE_UI_TEST_APPEARANCE"] = appearance
     return environment
+
+
+def ios_release_ui_matrix(
+    destinations: dict[str, str], methods: tuple[str, ...] | list[str]
+) -> list[tuple[str, list[str], dict[str, str], int]]:
+    """Build the one approved release UI selector matrix for both runner paths."""
+
+    return [
+        (
+            f"ios-release-{device}-{appearance}-{method}",
+            [
+                "xcodebuild", "test", "-project", "ACEClientApp.xcodeproj",
+                "-scheme", "ACEClientAppUITests", "-configuration", "Debug",
+                "-destination", destinations[device],
+                f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}",
+                f"ACE_UI_TEST_APPEARANCE={appearance}",
+            ],
+            ios_test_environment(appearance),
+            1,
+        )
+        for device in IOS_RELEASE_DEVICES
+        for appearance in ("light", "dark")
+        for method in methods
+    ]
 
 
 def _simctl_list(timeout: float | None = None) -> dict:
@@ -1011,11 +1039,11 @@ def _verify_live_artifact_checksums(root: Path, expected: dict[str, str]) -> Non
 def _scan_live_artifacts(root: Path) -> None:
     """Reject clear secret or unredacted username values without echoing content."""
 
-    forbidden = re.compile(
-        r"(?i)(?:password|authorization|keychain[ _-]?secret)\s*[:=]\s*\S+"
-    )
+    sensitive_key = r'(?:"(?:password|authorization|keychain[ _-]?secret|credential|token)"|(?:password|authorization|keychain[ _-]?secret|credential|token))'
+    username_key = r'(?:"(?:username|user)"|(?:username|user))'
+    forbidden = re.compile(rf"(?i){sensitive_key}\s*[:=]\s*\S+")
     unredacted_username = re.compile(
-        r"(?i)(?:username|user)\s*[:=]\s*(?!\[redacted\]\b)\S+"
+        rf'(?i){username_key}\s*[:=]\s*(?!"?\[redacted\]"?(?:\s|,|\}}|$))\S+'
     )
     for path in sorted(root.rglob("*")):
         if path.is_symlink():
@@ -1161,6 +1189,23 @@ def _live_repository_metadata(expected_commit: str) -> dict[str, str]:
     return {"repository": LIVE_REPOSITORY, "commit": commit, "baseline": LIVE_BASELINE_COMMIT}
 
 
+def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[str, str]:
+    """Require the exact manual Codemagic workflow and checked-out build context."""
+
+    build_directory = os.environ.get("CM_BUILD_DIR")
+    if (
+        artifact_root != LIVE_ARTIFACT_ROOT
+        or not _is_non_empty_string(os.environ.get("CM_BUILD_ID"))
+        or not _is_non_empty_string(build_directory)
+        or Path(build_directory).resolve() != ROOT.resolve()
+        or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != LIVE_WORKFLOW
+        or os.environ.get("CM_COMMIT") != expected_commit
+        or os.environ.get("CM_BRANCH") != LIVE_BRANCH
+    ):
+        raise ValueError("verified Codemagic live workflow context is invalid")
+    return {"workflow": LIVE_WORKFLOW}
+
+
 def _write_live_manifest(root: Path, manifest: dict) -> None:
     """Write controlled review metadata without command output or environment values."""
 
@@ -1197,6 +1242,8 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     except OSError as error:
         return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": _live_failure_detail(error)}]
     try:
+        manifest.update(_live_execution_context(artifact_root, expected_commit))
+        _write_live_manifest(root, manifest)
         metadata = _live_repository_metadata(expected_commit)
         manifest.update(metadata)
         _write_live_manifest(root, manifest)
@@ -1223,14 +1270,12 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
                 ios, ios_test_environment(), 65, root,
             )
         ]
-        for device in IOS_RELEASE_DEVICES:
-            for appearance in ("light", "dark"):
-                for method in LIVE_UI_METHODS:
-                    checks.append(_run_live_ios_test(
-                        f"ios-release-{device}-{appearance}-{method}",
-                        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destinations[device], f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", f"ACE_UI_TEST_APPEARANCE={appearance}"],
-                        ios, ios_test_environment(appearance), 1, root,
-                    ))
+        checks.extend(
+            _run_live_ios_test(name, command, ios, environment, expected, root)
+            for name, command, environment, expected in ios_release_ui_matrix(
+                destinations, LIVE_UI_METHODS
+            )
+        )
         checks.append(_run_live_ios_test(
             "ios-evidence-contract",
             ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"],
@@ -1305,10 +1350,12 @@ def component_checks(level: str, component: str) -> list[dict]:
     checks = [{"name": "ios-simulator", "status": "passed", "exit": 0, "detail": "resolved exact simulator UUIDs"}, run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
     checks.extend(run_ios_test(f"ios-core-ui-light-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", "ACE_UI_TEST_APPEARANCE=light"], ios, ios_test_environment("light"), 1) for method in methods)
     if level == "release":
-        for device in IOS_RELEASE_DEVICES:
-            for appearance in ("light", "dark"):
-                for method in methods:
-                    checks.append(run_ios_test(f"ios-release-{device}-{appearance}-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destinations[device], "-only-testing:ACEClientAppUITests/ACEClientAppUITests/" + method, f"ACE_UI_TEST_APPEARANCE={appearance}"], ios, ios_test_environment(appearance), 1))
+        checks.extend(
+            run_ios_test(name, command, ios, environment, expected)
+            for name, command, environment, expected in ios_release_ui_matrix(
+                destinations, methods
+            )
+        )
         checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 
