@@ -45,11 +45,14 @@ ACTIVE_RECORD_REVIEWED_FIELDS = (
     "commit",
     "package",
     "entry",
+    "device",
+    "software",
+    "operator",
+    "date",
+    "result",
     "artifact",
-    "status",
     "reviewer",
-    "device when applicable",
-    "software when applicable",
+    "status",
 )
 PLAN_FIELDS = frozenset(
     {

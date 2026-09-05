@@ -13,9 +13,9 @@ includes package and entry.
 
 An approved reviewer can mark an entry reviewed only when these fields are complete:
 
-- Repository, commit, package, entry, status, artifact, and reviewer.
-- Device and software, when the package uses them.
-- Operator, date, and result.
+- Repository, commit, package, entry, device, software, operator, date, result,
+  artifact, and reviewer.
+- Status: reviewed.
 
 The repository must be `mcxl/sqe-platform`. The commit must be the executing Git head.
 The package and entry must match the controlled mapping. The artifact must be below the

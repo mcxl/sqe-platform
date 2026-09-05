@@ -204,6 +204,49 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(any("package is invalid" in error for error in errors))
         self.assertTrue(any("entry is invalid" in error for error in errors))
 
+    def test_reviewed_field_contract_includes_operator_date_and_result(self):
+        expected = (
+            "repository",
+            "commit",
+            "package",
+            "entry",
+            "device",
+            "software",
+            "operator",
+            "date",
+            "result",
+            "artifact",
+            "reviewer",
+            "status",
+        )
+        plan, register = self.controlled_evidence_fixture()
+        self.assertEqual(runner.ACTIVE_RECORD_REVIEWED_FIELDS, expected)
+        self.assertEqual(
+            plan["activeRecordRequirements"]["reviewedRecordFields"], list(expected)
+        )
+        self.assertEqual(
+            register["activeRecordRequirements"]["reviewedRecordFields"], list(expected)
+        )
+        self.assertEqual(plan["resultFieldSchema"], list(runner.EVIDENCE_RESULT_FIELDS))
+        self.assertEqual(register["resultFieldSchema"], list(runner.EVIDENCE_RESULT_FIELDS))
+
+    def test_reviewed_public_evidence_rejects_a_missing_required_result_field(self):
+        plan, register = self.controlled_evidence_fixture()
+        plan["entries"] = [plan["entries"][0]]
+        plan["packageMappings"] = [plan["packageMappings"][0]]
+        register["packages"] = [register["packages"][0]]
+        register["packages"][0]["status"] = "reviewed"
+        result = {field: "value" for field in runner.EVIDENCE_RESULT_FIELDS}
+        del result["operator"]
+        register["results"] = {
+            "IOS-BASE-001": {"status": "reviewed", "result": result}
+        }
+        errors, state = self.validate_fixture(plan, register)
+        self.assertEqual(state, "invalid")
+        self.assertIn(
+            "IOS-BASE-001: public evidence result schema is invalid", errors
+        )
+
     def test_ios_core_commands_use_controlled_fictional_inputs(self):
         destinations = {runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"}
         with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
