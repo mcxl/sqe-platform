@@ -40,6 +40,17 @@ EVIDENCE_RESULT_FIELDS = (
     "artifact",
     "reviewer",
 )
+ACTIVE_RECORD_REVIEWED_FIELDS = (
+    "repository",
+    "commit",
+    "package",
+    "entry",
+    "artifact",
+    "status",
+    "reviewer",
+    "device when applicable",
+    "software when applicable",
+)
 PLAN_FIELDS = frozenset(
     {
         "scope",
@@ -107,6 +118,66 @@ def _require_exact_fields(
 
     if not isinstance(value, dict) or set(value) != set(expected):
         errors.append(f"{context} schema is invalid")
+        return False
+    return True
+
+
+def _is_non_empty_string(value: object) -> bool:
+    """Return true only for a string with visible content."""
+
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _is_canonical_string_list(value: object, expected: tuple[str, ...]) -> bool:
+    """Return true only for the specified ordered list of strings."""
+
+    return isinstance(value, list) and value == list(expected)
+
+
+def _validate_active_record_requirements(
+    requirements: object,
+    context: str,
+    errors: list[str],
+) -> bool:
+    """Validate the controlled pending-record requirements."""
+
+    if not _require_exact_fields(
+        requirements, ACTIVE_RECORD_REQUIREMENT_FIELDS, context, errors
+    ):
+        return False
+    if (
+        requirements["repository"] != "mcxl/sqe-platform"
+        or requirements["commit"] != "executing Git head"
+        or requirements["status"] != "pending"
+        or not _is_canonical_string_list(
+            requirements["reviewedRecordFields"], ACTIVE_RECORD_REVIEWED_FIELDS
+        )
+    ):
+        errors.append(f"{context} is invalid")
+        return False
+    return True
+
+
+def _validate_simulator_provisioning(
+    simulator: object,
+    context: str,
+    errors: list[str],
+) -> bool:
+    """Validate the controlled pending simulator-provisioning record."""
+
+    if not _require_exact_fields(
+        simulator, SIMULATOR_PROVISIONING_FIELDS, context, errors
+    ):
+        return False
+    if (
+        simulator["status"] != "pending"
+        or not _is_canonical_string_list(simulator["exactTargets"], IOS_RELEASE_DEVICES)
+        or any(
+            not _is_non_empty_string(simulator[field])
+            for field in ("runtime", "procedure", "failure")
+        )
+    ):
+        errors.append(f"{context} is invalid")
         return False
     return True
 
@@ -218,34 +289,43 @@ def validate_public_evidence_records(
         errors.append("runtime plan status must be pending")
     if plan.get("repository") != "mcxl/sqe-platform":
         errors.append("runtime plan repository is not mcxl/sqe-platform")
-    if tuple(plan.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
+    if not _is_canonical_string_list(
+        plan.get("resultFieldSchema"), EVIDENCE_RESULT_FIELDS
+    ):
         errors.append("runtime plan result field schema is invalid")
     active_requirements = plan.get("activeRecordRequirements")
-    if _require_exact_fields(
+    _validate_active_record_requirements(
         active_requirements,
-        ACTIVE_RECORD_REQUIREMENT_FIELDS,
         "runtime plan active record requirements",
         errors,
-    ) and (
-        active_requirements["repository"] != "mcxl/sqe-platform"
-        or active_requirements["commit"] != "executing Git head"
-        or active_requirements["status"] != "pending"
-        or not isinstance(active_requirements["reviewedRecordFields"], list)
-    ):
-        errors.append("runtime plan active record requirements are invalid")
+    )
     entries = plan.get("entries")
     if not isinstance(entries, list):
         errors.append("runtime plan entries are invalid")
     else:
+        entry_identifiers: set[str] = set()
         for entry in entries:
             if not _require_exact_fields(entry, PLAN_ENTRY_FIELDS, "runtime plan entry", errors):
                 continue
+            identifiers = entry["identifiers"]
             if (
                 entry["status"] != "pending"
-                or not isinstance(entry["identifiers"], list)
-                or not entry["identifiers"]
+                or not isinstance(identifiers, list)
+                or not identifiers
+                or any(not _is_non_empty_string(identifier) for identifier in identifiers)
+                or len(identifiers) != len(set(identifiers))
+                or any(
+                    not _is_non_empty_string(entry[field])
+                    for field in ("stage", "device", "procedure", "expectedResult")
+                )
             ):
                 errors.append("runtime plan entry is invalid")
+                continue
+            duplicate_identifiers = entry_identifiers & set(identifiers)
+            if duplicate_identifiers:
+                errors.append("runtime plan entry identifiers are ambiguous")
+                continue
+            entry_identifiers.update(identifiers)
     plan_packages = _package_identifier_mapping(
         plan.get("packageMappings"), source_ids, "runtime plan", errors
     )
@@ -260,20 +340,19 @@ def validate_public_evidence_records(
     ):
         errors.append("runtime plan controlled register is invalid")
     simulator = controlled["simulatorProvisioning"]
-    if not _require_exact_fields(
-        simulator,
-        SIMULATOR_PROVISIONING_FIELDS,
-        "runtime plan simulator provisioning",
-        errors,
-    ) or simulator.get("status") != "pending":
-        errors.append("runtime plan simulator provisioning is invalid")
+    _validate_simulator_provisioning(
+        simulator, "runtime plan simulator provisioning", errors
+    )
     historical = controlled["historicalCommitChain"]
     if not _require_exact_fields(
         historical,
         HISTORICAL_COMMIT_CHAIN_FIELDS,
         "runtime plan historical commit chain",
         errors,
-    ) or historical.get("status") != "quarantined":
+    ) or (
+        historical.get("status") != "quarantined"
+        or not _is_non_empty_string(historical.get("note"))
+    ):
         errors.append("runtime plan historical commit chain is invalid")
     register_name = controlled.get("path")
     if not isinstance(register_name, str) or Path(register_name).is_absolute():
@@ -294,12 +373,13 @@ def validate_public_evidence_records(
         errors.append("controlled public evidence register status does not match the runtime plan")
     if register.get("repository") != "mcxl/sqe-platform":
         errors.append("controlled public evidence register repository is not mcxl/sqe-platform")
-    if tuple(register.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
+    if not _is_canonical_string_list(
+        register.get("resultFieldSchema"), EVIDENCE_RESULT_FIELDS
+    ):
         errors.append("controlled public evidence register result field schema is invalid")
     register_requirements = register.get("activeRecordRequirements")
-    if _require_exact_fields(
+    if _validate_active_record_requirements(
         register_requirements,
-        ACTIVE_RECORD_REQUIREMENT_FIELDS,
         "controlled public evidence register active record requirements",
         errors,
     ) and register_requirements != active_requirements:
@@ -307,9 +387,8 @@ def validate_public_evidence_records(
     if register.get("workflow") != controlled["workflow"]:
         errors.append("controlled public evidence register workflow does not match the runtime plan")
     register_simulator = register.get("simulatorProvisioning")
-    if not _require_exact_fields(
+    if not _validate_simulator_provisioning(
         register_simulator,
-        SIMULATOR_PROVISIONING_FIELDS,
         "controlled public evidence register simulator provisioning",
         errors,
     ) or register_simulator.get("status") != controlled["simulatorProvisioning"].get("status"):
@@ -327,6 +406,7 @@ def validate_public_evidence_records(
             not _require_exact_fields(package, PACKAGE_FIELDS, "controlled public evidence package", errors)
             or not isinstance(package.get("package"), str)
             or not package["package"].strip()
+            or not _is_non_empty_string(package.get("name"))
             or package.get("status") not in {"pending", "reviewed"}
             or not isinstance(package.get("identifiers"), list)
         ):
@@ -606,6 +686,18 @@ def _verify_simulator(
     devices = snapshot.get("devices")
     if not isinstance(devices, dict):
         raise SimulatorResolutionError("simctl devices are unavailable")
+    runtime_devices = devices.get(runtime)
+    if not isinstance(runtime_devices, list):
+        raise SimulatorResolutionError(f"simulator runtime is unavailable for {name}")
+    exact_matches = [
+        device
+        for device in runtime_devices
+        if isinstance(device, dict)
+        and device.get("name") == name
+        and device.get("deviceTypeIdentifier") == device_type
+    ]
+    if len(exact_matches) != 1:
+        raise SimulatorResolutionError(f"exact simulator is ambiguous after creation: {name}")
     matches = [
         (runtime_id, device)
         for runtime_id, runtime_devices in devices.items()
@@ -621,6 +713,7 @@ def _verify_simulator(
         or device.get("name") != name
         or device.get("deviceTypeIdentifier") != device_type
         or device.get("isAvailable") is not True
+        or device.get("udid", "").upper() != identifier.upper()
     ):
         raise SimulatorResolutionError(f"simulator identity verification failed for {name}")
     return identifier.upper()
@@ -676,6 +769,8 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
                 break
             except SimulatorResolutionError as error:
                 verification_error = error
+                if "ambiguous after creation" in str(error):
+                    break
                 remaining = deadline - time.monotonic()
                 if remaining > 0:
                     time.sleep(min(SIMULATOR_POLL_INTERVAL_SECONDS, remaining))

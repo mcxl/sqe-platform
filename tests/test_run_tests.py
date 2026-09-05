@@ -75,6 +75,18 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={created_uuid}")
         create.assert_called_once_with(runner.IOS_CORE_DEVICE, "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation", "com.apple.CoreSimulator.SimRuntime.iOS-26-1", timeout=mock.ANY)
 
+    def test_simulator_creation_rejects_a_concurrent_exact_device(self):
+        created_uuid = "cccccccc-cccc-cccc-cccc-cccccccccccc"
+        concurrent_uuid = "dddddddd-dddd-dddd-dddd-dddddddddddd"
+        initial = self.simulator_snapshot([])
+        concurrent = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": created_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+            {"name": runner.IOS_CORE_DEVICE, "udid": concurrent_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, concurrent]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0]):
+            with self.assertRaisesRegex(runner.SimulatorResolutionError, "ambiguous"):
+                runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+
     def test_simulator_resolution_rejects_device_without_type_identifier(self):
         core_uuid = "66666666-6666-6666-6666-666666666666"
         snapshot = self.simulator_snapshot([
@@ -239,6 +251,36 @@ class RunnerContractTests(unittest.TestCase):
                 errors, state = self.validate_fixture(plan, register)
                 self.assertEqual(state, "invalid")
                 self.assertTrue(any("invalid" in error or "status" in error for error in errors))
+
+    def test_public_evidence_schemas_reject_noncanonical_value_types(self):
+        cases = (
+            ("plan result field schema", lambda plan, register: plan.update({"resultFieldSchema": "repository"})),
+            ("register result field schema", lambda plan, register: register.update({"resultFieldSchema": "repository"})),
+            ("plan reviewed fields", lambda plan, register: plan["activeRecordRequirements"].update({"reviewedRecordFields": "repository"})),
+            ("register reviewed fields", lambda plan, register: register["activeRecordRequirements"].update({"reviewedRecordFields": "repository"})),
+            ("reviewed fields list", lambda plan, register: plan["activeRecordRequirements"].update({"reviewedRecordFields": ["repository"]})),
+            ("entry identifiers type", lambda plan, register: plan["entries"][0].update({"identifiers": [1]})),
+            ("entry identifiers duplicate", lambda plan, register: plan["entries"][0].update({"identifiers": ["IOS-BASE-001", "IOS-BASE-001"]})),
+            ("entry stage", lambda plan, register: plan["entries"][0].update({"stage": 1})),
+            ("entry device", lambda plan, register: plan["entries"][0].update({"device": []})),
+            ("entry procedure", lambda plan, register: plan["entries"][0].update({"procedure": None})),
+            ("entry expected result", lambda plan, register: plan["entries"][0].update({"expectedResult": ""})),
+            ("plan simulator targets", lambda plan, register: plan["controlledRegister"]["simulatorProvisioning"].update({"exactTargets": "iPhone SE (3rd generation)"})),
+            ("register simulator targets", lambda plan, register: register["simulatorProvisioning"].update({"exactTargets": "iPhone SE (3rd generation)"})),
+            ("simulator target list", lambda plan, register: plan["controlledRegister"]["simulatorProvisioning"].update({"exactTargets": [runner.IOS_CORE_DEVICE, runner.IOS_CORE_DEVICE]})),
+            ("simulator runtime", lambda plan, register: plan["controlledRegister"]["simulatorProvisioning"].update({"runtime": 1})),
+            ("simulator procedure", lambda plan, register: plan["controlledRegister"]["simulatorProvisioning"].update({"procedure": []})),
+            ("simulator failure", lambda plan, register: plan["controlledRegister"]["simulatorProvisioning"].update({"failure": None})),
+            ("historical note", lambda plan, register: plan["controlledRegister"]["historicalCommitChain"].update({"note": 1})),
+            ("package name", lambda plan, register: register["packages"][0].update({"name": {}})),
+        )
+        for name, mutate in cases:
+            with self.subTest(name=name):
+                plan, register = self.controlled_evidence_fixture()
+                mutate(plan, register)
+                errors, state = self.validate_fixture(plan, register)
+                self.assertEqual(state, "invalid")
+                self.assertTrue(any("invalid" in error for error in errors))
 
     def test_simulator_creation_uses_the_remaining_monotonic_deadline(self):
         created_uuid = "88888888-8888-8888-8888-888888888888"
