@@ -20,8 +20,8 @@ For each reviewed record, check these identity fields:
 - Repository: `mcxl/sqe-platform`.
 - Commit: the executing Git head.
 - Package and entry: the registered package and identifier.
-- Status, artifact, and reviewer.
-- Device and software, when the package uses them.
+- Device, software, operator, date, result, artifact, and reviewer.
+- Status: reviewed.
 
 Keep every pending result field blank. A pending record cannot claim review or release
 evidence.
