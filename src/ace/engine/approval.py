@@ -5,6 +5,7 @@ from hashlib import sha256
 import hmac
 import json
 import secrets
+import threading
 from typing import TypeVar
 import weakref
 
@@ -247,6 +248,7 @@ def _approval_boundary() -> tuple[
     origins: dict[
         int, tuple[weakref.ReferenceType[ApprovedMATEAssessment], str, bytes]
     ] = {}
+    origins_lock = threading.Lock()
     origin_key = secrets.token_bytes(32)
     g0_digest = "bdc022399d6e4a7d1558776b5bafdd406dda0e7a537dbd7ef3aa46d2ae4dad3c"
     g0_created_at = "2026-08-01T00:00:00Z"
@@ -272,13 +274,27 @@ def _approval_boundary() -> tuple[
 
     def register(assessment: ApprovedMATEAssessment) -> ApprovedMATEAssessment:
         identifier = id(assessment)
-        reference = weakref.ref(assessment)
+
+        def remove_origin(
+            reference: weakref.ReferenceType[ApprovedMATEAssessment],
+        ) -> None:
+            with origins_lock:
+                current_origin = origins.get(identifier)
+                if (
+                    isinstance(current_origin, tuple)
+                    and len(current_origin) == 3
+                    and current_origin[0] is reference
+                ):
+                    del origins[identifier]
+
+        reference = weakref.ref(assessment, remove_origin)
         digest = content_digest(assessment)
-        origins[identifier] = (
-            reference,
-            digest,
-            origin_authentication(assessment, digest),
-        )
+        with origins_lock:
+            origins[identifier] = (
+                reference,
+                digest,
+                origin_authentication(assessment, digest),
+            )
         return assessment
 
     def build(**values: object) -> ApprovedMATEAssessment:
@@ -309,7 +325,8 @@ def _approval_boundary() -> tuple[
 
     def evaluate(assessment: ApprovedMATEAssessment) -> EvaluationResult:
         try:
-            origin = origins.get(id(assessment))
+            with origins_lock:
+                origin = origins.get(id(assessment))
             if (
                 not isinstance(origin, tuple)
                 or len(origin) != 3

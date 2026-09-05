@@ -1,3 +1,5 @@
+import gc
+import threading
 from typing import Any
 import weakref
 
@@ -930,7 +932,126 @@ def test_evaluation_rejects_content_alteration_of_the_issued_assessment() -> Non
         evaluate_approved_assessment(assessment)
 
 
-def test_evaluation_rejects_closure_registry_injection() -> None:
+def _origin_registry() -> dict[int, tuple[weakref.ReferenceType[object], str, bytes]]:
+    closure_values = [
+        cell.cell_contents
+        for cell in approval_module.evaluate_approved_assessment.__closure__ or ()
+    ]
+    return next(
+        value
+        for value in closure_values
+        if isinstance(value, dict)
+    )
+
+
+def _origin_lock() -> object:
+    closure_values = [
+        cell.cell_contents
+        for cell in approval_module.evaluate_approved_assessment.__closure__ or ()
+    ]
+    return next(
+        value
+        for value in closure_values
+        if hasattr(value, "acquire") and hasattr(value, "release")
+    )
+
+
+def test_origin_record_is_removed_when_its_assessment_is_collected() -> None:
+    assessment = build_assessment()
+    identifier = id(assessment)
+    registry = _origin_registry()
+
+    assert identifier in registry
+
+    del assessment
+    gc.collect()
+
+    assert identifier not in registry
+
+
+def test_collecting_one_assessment_preserves_a_live_origin_record() -> None:
+    target = build_assessment()
+    survivor = build_assessment()
+    target_identifier = id(target)
+    survivor_identifier = id(survivor)
+    registry = _origin_registry()
+
+    del target
+    gc.collect()
+
+    assert target_identifier not in registry
+    assert survivor_identifier in registry
+    assert evaluate_approved_assessment(survivor).control_id == survivor.control_id
+
+
+def test_origin_cleanup_removes_only_its_matching_record() -> None:
+    assessment = build_assessment()
+    identifier = id(assessment)
+    registry = _origin_registry()
+    reference = registry[identifier][0]
+    callback = reference.__callback__
+
+    assert callback is not None
+    callback(reference)
+
+    assert identifier not in registry
+
+
+def test_old_origin_cleanup_does_not_remove_a_replacement_record() -> None:
+    assessment = build_assessment()
+    identifier = id(assessment)
+    registry = _origin_registry()
+    old_record = registry[identifier]
+    replacement = build_assessment()
+    replacement_record = registry[id(replacement)]
+    registry[identifier] = replacement_record
+    callback = old_record[0].__callback__
+
+    assert callback is not None
+    callback(old_record[0])
+
+    assert registry[identifier] is replacement_record
+
+    del registry[identifier]
+
+
+def test_blocked_old_cleanup_preserves_a_replacement_record() -> None:
+    assessment = build_assessment()
+    identifier = id(assessment)
+    registry = _origin_registry()
+    old_record = registry[identifier]
+    replacement = build_assessment()
+    replacement_record = registry[id(replacement)]
+    lock = _origin_lock()
+    callback_started = threading.Event()
+    callback_finished = threading.Event()
+
+    def invoke_callback() -> None:
+        callback = old_record[0].__callback__
+        assert callback is not None
+        callback_started.set()
+        callback(old_record[0])
+        callback_finished.set()
+
+    lock.acquire()
+    cleanup_thread = threading.Thread(target=invoke_callback)
+    try:
+        cleanup_thread.start()
+        assert callback_started.wait(timeout=1)
+        registry[identifier] = replacement_record
+        assert not callback_finished.wait(timeout=0.1)
+    finally:
+        lock.release()
+    cleanup_thread.join(timeout=1)
+
+    assert not cleanup_thread.is_alive()
+    assert callback_finished.is_set()
+    assert registry[identifier] is replacement_record
+
+    del registry[identifier]
+
+
+def test_evaluation_rejects_a_stale_origin_for_a_different_object() -> None:
     issued = build_assessment()
     adversarial = ApprovedMATEAssessment.model_construct(
         **{
@@ -938,16 +1059,33 @@ def test_evaluation_rejects_closure_registry_injection() -> None:
             for field in ApprovedMATEAssessment.model_fields
         }
     )
+    registry = _origin_registry()
+    registry[id(adversarial)] = registry[id(issued)]
+
+    try:
+        with pytest.raises(
+            ApprovalBlockedError,
+            match="approved assessment invariants are invalid",
+        ):
+            evaluate_approved_assessment(adversarial)
+    finally:
+        del registry[id(adversarial)]
+
+
+def test_evaluation_rejects_an_invalid_origin_hmac() -> None:
+    issued = build_assessment()
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(issued, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+    registry = _origin_registry()
+    raw_record = registry[id(issued)]
     closure_values = [
         cell.cell_contents
         for cell in approval_module.evaluate_approved_assessment.__closure__ or ()
     ]
-    registry = next(
-        value
-        for value in closure_values
-        if isinstance(value, dict) and id(issued) in value
-    )
-    raw_record = registry[id(issued)]
     digest_function = next(
         value
         for value in closure_values
