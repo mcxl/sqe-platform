@@ -3,6 +3,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -431,13 +432,38 @@ class RunnerContractTests(unittest.TestCase):
         )
 
     def test_make_ui_test_executes_the_resolver_command_path_and_fails_closed(self):
+        if os.name == "nt":
+            self.skipTest("the ui-test command-path test requires a Unix shell")
         make = shutil.which("make")
         if make is None:
-            if os.name == "nt":
-                self.skipTest("make is not available on Windows")
             self.fail("make is required for the ui-test command-path test")
 
-        destination = "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"
+        simulator_uuid = "11111111-1111-1111-1111-111111111111"
+        destination = f"platform=iOS Simulator,id={simulator_uuid.upper()}"
+        runtime = "com.apple.CoreSimulator.SimRuntime.iOS-26-1"
+        device_type = "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"
+        simulator_snapshot = {
+            "runtimes": [
+                {
+                    "identifier": runtime,
+                    "version": "26.1",
+                    "isAvailable": True,
+                }
+            ],
+            "devicetypes": [
+                {"name": runner.IOS_CORE_DEVICE, "identifier": device_type}
+            ],
+            "devices": {
+                runtime: [
+                    {
+                        "name": runner.IOS_CORE_DEVICE,
+                        "udid": simulator_uuid,
+                        "isAvailable": True,
+                        "deviceTypeIdentifier": device_type,
+                    }
+                ]
+            },
+        }
         app_directory = ROOT / "ios" / "ACEClientApp"
         with tempfile.TemporaryDirectory() as directory:
             temporary = Path(directory)
@@ -446,15 +472,29 @@ class RunnerContractTests(unittest.TestCase):
             python_command = command_directory / "python3"
             python_command.write_text(
                 "#!/bin/sh\n"
-                "case \"$*\" in\n"
+                "if [ \"$1\" != -c ]; then\n"
+                "  echo 'unexpected python3 command' >&2\n"
+                "  exit 41\n"
+                "fi\n"
+                "case \"$2\" in\n"
                 "  *\"from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations\"*) ;;\n"
                 "  *) echo 'unexpected resolver command' >&2; exit 41 ;;\n"
                 "esac\n"
-                "if [ \"$FAKE_PYTHON3_MODE\" = fail ]; then\n"
+                "exec \"$FAKE_TEST_PYTHON\" \"$@\"\n",
+                encoding="utf-8",
+            )
+            xcrun_command = command_directory / "xcrun"
+            xcrun_command.write_text(
+                "#!/bin/sh\n"
+                "if [ \"$1\" != simctl ] || [ \"$2\" != list ] || [ \"$3\" != -j ]; then\n"
+                "  echo 'unexpected xcrun command' >&2\n"
+                "  exit 42\n"
+                "fi\n"
+                "if [ \"$FAKE_XCRUN_MODE\" = fail ]; then\n"
                 "  echo 'controlled resolver failure' >&2\n"
                 "  exit 17\n"
                 "fi\n"
-                "printf '%s\\n' \"$FAKE_IOS_DESTINATION\"\n",
+                "printf '%s\\n' \"$FAKE_SIMCTL_SNAPSHOT\"\n",
                 encoding="utf-8",
             )
             xcodebuild_command = command_directory / "xcodebuild"
@@ -464,12 +504,14 @@ class RunnerContractTests(unittest.TestCase):
                 encoding="utf-8",
             )
             python_command.chmod(python_command.stat().st_mode | 0o111)
+            xcrun_command.chmod(xcrun_command.stat().st_mode | 0o111)
             xcodebuild_command.chmod(xcodebuild_command.stat().st_mode | 0o111)
 
             log_path = temporary / "xcodebuild-arguments.txt"
             environment = os.environ | {
                 "PATH": str(command_directory) + os.pathsep + os.environ["PATH"],
-                "FAKE_IOS_DESTINATION": destination,
+                "FAKE_TEST_PYTHON": sys.executable,
+                "FAKE_SIMCTL_SNAPSHOT": json.dumps(simulator_snapshot),
                 "FAKE_XCODEBUILD_LOG": str(log_path),
             }
             success = subprocess.run(
@@ -488,7 +530,7 @@ class RunnerContractTests(unittest.TestCase):
             failure = subprocess.run(
                 [make, "ui-test"],
                 cwd=app_directory,
-                env=environment | {"FAKE_PYTHON3_MODE": "fail"},
+                env=environment | {"FAKE_XCRUN_MODE": "fail"},
                 text=True,
                 capture_output=True,
                 check=False,
