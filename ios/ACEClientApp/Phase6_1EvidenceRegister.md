@@ -6,9 +6,10 @@ run, collect, publish, or accept client evidence.
 Use `mcxl/sqe-platform`. A reviewed record must name the executing Git head. Historical
 commit text is not an active control.
 
-`Phase6_1EvidenceRegister.json` is the controlled mapping. It contains 44 pending
-entries in ten pending packages. The JSON record is authoritative.
-Each result uses its controlled schema. It includes package and entry.
+`RuntimeEvidencePlan.json` owns the controlled package-to-identifier mapping.
+`Phase6_1EvidenceRegister.json` contains the checked register mapping. It has 44
+pending entries in ten pending packages. Each result uses its controlled schema. It
+includes package and entry.
 
 An approved reviewer can mark an entry reviewed only when these fields are complete:
 
@@ -27,9 +28,10 @@ Use `ace-ios-evidence-preflight-manual` only after approval. The workflow has no
 automatic trigger. Use fictional data only.
 
 For simulator preparation, select one exact device type and the highest available iOS
-26.x runtime. Poll for no more than 30 seconds. Give each `simctl list -j` command the
-remaining monotonic time. Fail on a command timeout, missing type, duplicate UUID,
-wrong runtime, or unavailable device. Do not create the target again.
+26.x runtime. Use one 30-second monotonic deadline for creation and polling. Give each
+`simctl create` or `simctl list -j` command only the remaining time. Fail on a command
+timeout, missing type, duplicate UUID, wrong runtime, or unavailable device. Do not
+create the target again.
 
 Keep logs, result bundles, and fictional images below
 `ios/ACEClientApp/build/phase6-1/`. Review them before record acceptance. Do not record

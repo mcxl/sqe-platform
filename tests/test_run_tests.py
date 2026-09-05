@@ -24,6 +24,33 @@ class RunnerContractTests(unittest.TestCase):
             "devices": {"com.apple.CoreSimulator.SimRuntime.iOS-26-1": devices},
         }
 
+    def controlled_evidence_fixture(self):
+        plan = json.loads(
+            (ROOT / "ios/ACEClientApp/RuntimeEvidencePlan.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        register = json.loads(
+            (ROOT / "ios/ACEClientApp/Phase6_1EvidenceRegister.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        plan["controlledRegister"]["path"] = "register.json"
+        return plan, register
+
+    def validate_fixture(self, plan, register):
+        source_ids = [
+            identifier
+            for entry in plan["entries"]
+            for identifier in entry["identifiers"]
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            plan_path = Path(directory) / "plan.json"
+            (Path(directory) / "register.json").write_text(
+                json.dumps(register), encoding="utf-8"
+            )
+            return runner.validate_public_evidence_records(plan_path, source_ids, plan)
+
     def test_simulator_resolution_uses_existing_exact_device_ids(self):
         core_uuid = "11111111-1111-1111-1111-111111111111"
         max_uuid = "22222222-2222-2222-2222-222222222222"
@@ -46,14 +73,14 @@ class RunnerContractTests(unittest.TestCase):
         with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid) as create:
             destinations = runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
         self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={created_uuid}")
-        create.assert_called_once_with(runner.IOS_CORE_DEVICE, "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation", "com.apple.CoreSimulator.SimRuntime.iOS-26-1")
+        create.assert_called_once_with(runner.IOS_CORE_DEVICE, "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation", "com.apple.CoreSimulator.SimRuntime.iOS-26-1", timeout=mock.ANY)
 
     def test_simulator_resolution_rejects_device_without_type_identifier(self):
         core_uuid = "66666666-6666-6666-6666-666666666666"
         snapshot = self.simulator_snapshot([
             {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True},
         ])
-        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0, 30]):
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0, 0, 30]):
             with self.assertRaisesRegex(runner.SimulatorResolutionError, "did not become available"):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
 
@@ -112,74 +139,42 @@ class RunnerContractTests(unittest.TestCase):
         self.assertTrue(any("unknown" in item for item in errors))
 
     def test_reviewed_public_evidence_requires_complete_controlled_artifact(self):
-        plan = {"controlledRegister": {"path": "register.json"}}
-        with tempfile.TemporaryDirectory() as directory:
-            plan_path = Path(directory) / "plan.json"
-            register = {
-                "packages": [
-                    {
-                        "package": "P01",
-                        "status": "reviewed",
-                        "identifiers": ["IOS-TEST-001"],
-                    }
-                ],
-                "results": {
-                    "IOS-TEST-001": {
-                        "status": "reviewed",
-                        "result": {
-                            **{
-                                field: "value"
-                                for field in runner.EVIDENCE_RESULT_FIELDS
-                            },
-                            "package": "P01",
-                            "entry": "IOS-TEST-001",
-                        },
-                    }
-                }
+        plan, register = self.controlled_evidence_fixture()
+        plan["entries"] = [plan["entries"][0]]
+        plan["packageMappings"] = [plan["packageMappings"][0]]
+        register["packages"] = [register["packages"][0]]
+        register["packages"][0]["status"] = "reviewed"
+        register["results"] = {
+            "IOS-BASE-001": {
+                "status": "reviewed",
+                "result": {
+                    **{field: "value" for field in runner.EVIDENCE_RESULT_FIELDS},
+                    "package": "P01",
+                    "entry": "IOS-BASE-001",
+                },
             }
-            (Path(directory) / "register.json").write_text(json.dumps(register), encoding="utf-8")
-            errors, state = runner.validate_public_evidence_records(
-                plan_path,
-                ["IOS-TEST-001"],
-                plan,
-            )
+        }
+        errors, state = self.validate_fixture(plan, register)
         self.assertEqual(state, "invalid")
         self.assertTrue(any("artifact" in error for error in errors))
 
     def test_reviewed_public_evidence_requires_its_package_and_entry(self):
-        plan = {"controlledRegister": {"path": "register.json"}}
-        with tempfile.TemporaryDirectory() as directory:
-            plan_path = Path(directory) / "plan.json"
-            register = {
-                "packages": [
-                    {
-                        "package": "P01",
-                        "status": "reviewed",
-                        "identifiers": ["IOS-TEST-001"],
-                    }
-                ],
-                "results": {
-                    "IOS-TEST-001": {
-                        "status": "reviewed",
-                        "result": {
-                            **{
-                                field: "value"
-                                for field in runner.EVIDENCE_RESULT_FIELDS
-                            },
-                            "package": "P99",
-                            "entry": "IOS-TEST-999",
-                        },
-                    }
+        plan, register = self.controlled_evidence_fixture()
+        plan["entries"] = [plan["entries"][0]]
+        plan["packageMappings"] = [plan["packageMappings"][0]]
+        register["packages"] = [register["packages"][0]]
+        register["packages"][0]["status"] = "reviewed"
+        register["results"] = {
+            "IOS-BASE-001": {
+                "status": "reviewed",
+                "result": {
+                    **{field: "value" for field in runner.EVIDENCE_RESULT_FIELDS},
+                    "package": "P99",
+                    "entry": "IOS-TEST-999",
                 },
             }
-            (Path(directory) / "register.json").write_text(
-                json.dumps(register), encoding="utf-8"
-            )
-            errors, state = runner.validate_public_evidence_records(
-                plan_path,
-                ["IOS-TEST-001"],
-                plan,
-            )
+        }
+        errors, state = self.validate_fixture(plan, register)
         self.assertEqual(state, "invalid")
         self.assertTrue(any("package is invalid" in error for error in errors))
         self.assertTrue(any("entry is invalid" in error for error in errors))
@@ -205,10 +200,60 @@ class RunnerContractTests(unittest.TestCase):
         resolved = self.simulator_snapshot([
             {"name": runner.IOS_CORE_DEVICE, "udid": created_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
         ])
-        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]) as listing, mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 100]):
+        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]) as listing, mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 100, 100]):
             runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
         self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 30)
         self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 30)
+
+    def test_register_package_mapping_must_match_the_independent_plan_mapping(self):
+        plan, register = self.controlled_evidence_fixture()
+        register["packages"][0]["identifiers"], register["packages"][1]["identifiers"] = (
+            register["packages"][1]["identifiers"],
+            register["packages"][0]["identifiers"],
+        )
+        errors, state = self.validate_fixture(plan, register)
+        self.assertEqual(state, "invalid")
+        self.assertIn(
+            "controlled public evidence package mappings do not match the runtime plan",
+            errors,
+        )
+
+    def test_public_evidence_schemas_reject_extra_claims_and_non_pending_statuses(self):
+        cases = (
+            ("plan", lambda plan, register: plan.update({"releaseApproval": "approved"})),
+            ("register", lambda plan, register: register.update({"approval": "approved"})),
+            ("package", lambda plan, register: register["packages"][0].update({"release": "approved"})),
+            ("entry", lambda plan, register: plan["entries"][0].update({"approval": "approved"})),
+            ("record", lambda plan, register: register["results"]["IOS-BASE-001"].update({"release": "approved"})),
+            ("result", lambda plan, register: register["results"]["IOS-BASE-001"]["result"].update({"approval": "approved"})),
+            ("plan status", lambda plan, register: plan.update({"status": "reviewed"})),
+            ("register status", lambda plan, register: register.update({"status": "reviewed"})),
+            ("entry status", lambda plan, register: plan["entries"][0].update({"status": "reviewed"})),
+            ("package status", lambda plan, register: register["packages"][0].update({"status": "approved"})),
+            ("record status", lambda plan, register: register["results"]["IOS-BASE-001"].update({"status": "approved"})),
+        )
+        for name, mutate in cases:
+            with self.subTest(name=name):
+                plan, register = self.controlled_evidence_fixture()
+                mutate(plan, register)
+                errors, state = self.validate_fixture(plan, register)
+                self.assertEqual(state, "invalid")
+                self.assertTrue(any("invalid" in error or "status" in error for error in errors))
+
+    def test_simulator_creation_uses_the_remaining_monotonic_deadline(self):
+        created_uuid = "88888888-8888-8888-8888-888888888888"
+        initial = self.simulator_snapshot([])
+        resolved = self.simulator_snapshot([
+            {"name": runner.IOS_CORE_DEVICE, "udid": created_uuid, "isAvailable": True, "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"},
+        ])
+        with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid) as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 105, 105]):
+            runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+        self.assertEqual(create.call_args.kwargs["timeout"], 25)
+
+        with mock.patch.object(runner, "_simctl_list", return_value=initial), mock.patch.object(runner, "_simctl_create") as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 130]):
+            with self.assertRaisesRegex(runner.SimulatorResolutionError, "create has no verification time remaining"):
+                runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
+        create.assert_not_called()
 
     def test_ios_release_matrix_uses_appearance_and_expected_rejection(self):
         destinations = {name: f"platform=iOS Simulator,id={number * 11111111:08d}-1111-1111-1111-111111111111" for number, name in enumerate(runner.IOS_RELEASE_DEVICES, 1)}

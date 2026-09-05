@@ -6,9 +6,11 @@ accept client evidence. All records are pending.
 Use `mcxl/sqe-platform`. A reviewed record must name the executing Git head. Do not
 use an old commit as an active control.
 
-The machine-readable plan is `RuntimeEvidencePlan.json`. The controlled register is
-`Phase6_1EvidenceRegister.json`. They map 44 identifiers to ten pending packages.
-Each result uses the controlled result-field schema. It includes package and entry.
+The machine-readable plan is `RuntimeEvidencePlan.json`. It contains the independent
+controlled package-to-identifier map. The controlled register is
+`Phase6_1EvidenceRegister.json`. The runner checks its map against the plan map.
+They map 44 identifiers to ten pending packages. Each result uses the controlled
+result-field schema. It includes package and entry.
 
 Use `ace-ios-evidence-preflight-manual` only after approval. It prepares evidence. It
 does not accept evidence or change `releaseEvidence`.
@@ -25,9 +27,10 @@ Keep every pending result field blank. A pending record cannot claim review or r
 evidence.
 
 For simulator preparation, resolve exact device types and one highest available iOS
-26.x runtime. Poll for no more than 30 seconds. Use the remaining monotonic time as
-each `simctl list -j` timeout. Fail on a hang, missing type, duplicate UUID, wrong
-runtime, or unavailable device. Do not create a target again.
+26.x runtime. Use one 30-second monotonic deadline for creation and polling. Use only
+the remaining time as each `simctl create` or `simctl list -j` timeout. Fail on a
+hang, missing type, duplicate UUID, wrong runtime, or unavailable device. Do not
+create a target again.
 
 Keep only controlled fictional artifacts. Do not record passwords, authorisation
 values, Keychain secrets, or client data.

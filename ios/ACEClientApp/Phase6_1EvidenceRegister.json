@@ -1,10 +1,11 @@
 {
   "scope": "G0-public-planning-only",
   "releaseEvidence": false,
+  "status": "pending",
   "activeRecordRequirements": {
     "repository": "mcxl/sqe-platform",
     "commit": "executing Git head",
-    "status": "pending until an approved reviewer completes the record",
+    "status": "pending",
     "reviewedRecordFields": [
       "repository",
       "commit",

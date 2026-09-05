@@ -40,6 +40,49 @@ EVIDENCE_RESULT_FIELDS = (
     "artifact",
     "reviewer",
 )
+PLAN_FIELDS = frozenset(
+    {
+        "scope",
+        "releaseEvidence",
+        "status",
+        "activeRecordRequirements",
+        "resultFieldSchema",
+        "controlledRegister",
+        "entries",
+        "packageMappings",
+        "repository",
+    }
+)
+REGISTER_FIELDS = frozenset(
+    {
+        "scope",
+        "releaseEvidence",
+        "status",
+        "activeRecordRequirements",
+        "resultFieldSchema",
+        "workflow",
+        "simulatorProvisioning",
+        "packages",
+        "results",
+        "repository",
+    }
+)
+ACTIVE_RECORD_REQUIREMENT_FIELDS = frozenset(
+    {"repository", "commit", "status", "reviewedRecordFields"}
+)
+CONTROLLED_REGISTER_FIELDS = frozenset(
+    {"path", "workflow", "status", "simulatorProvisioning", "historicalCommitChain"}
+)
+HISTORICAL_COMMIT_CHAIN_FIELDS = frozenset({"status", "note"})
+SIMULATOR_PROVISIONING_FIELDS = frozenset(
+    {"status", "exactTargets", "runtime", "procedure", "failure"}
+)
+PLAN_ENTRY_FIELDS = frozenset(
+    {"identifiers", "stage", "device", "procedure", "expectedResult", "status"}
+)
+PACKAGE_MAPPING_FIELDS = frozenset({"package", "identifiers"})
+PACKAGE_FIELDS = frozenset({"package", "name", "status", "identifiers"})
+EVIDENCE_RECORD_FIELDS = frozenset({"status", "result"})
 IOS_RUNTIME_MAJOR = 26
 SIMULATOR_VERIFICATION_SECONDS = 30
 SIMULATOR_POLL_INTERVAL_SECONDS = 1
@@ -54,6 +97,63 @@ class SimulatorResolutionError(ValueError):
     """Raised when a required iOS simulator cannot be safely resolved."""
 
 
+def _require_exact_fields(
+    value: object,
+    expected: frozenset[str] | tuple[str, ...],
+    context: str,
+    errors: list[str],
+) -> bool:
+    """Reject a controlled object with absent or extra claim fields."""
+
+    if not isinstance(value, dict) or set(value) != set(expected):
+        errors.append(f"{context} schema is invalid")
+        return False
+    return True
+
+
+def _package_identifier_mapping(
+    mappings: object,
+    source_ids: list[str],
+    context: str,
+    errors: list[str],
+) -> dict[str, set[str]]:
+    """Read one controlled package map and reject incomplete mappings."""
+
+    if not isinstance(mappings, list):
+        errors.append(f"{context} package mappings are invalid")
+        return {}
+    package_ids: dict[str, set[str]] = {}
+    identifiers: set[str] = set()
+    for mapping in mappings:
+        if not _require_exact_fields(mapping, PACKAGE_MAPPING_FIELDS, context, errors):
+            continue
+        package = mapping["package"]
+        mapped_ids = mapping["identifiers"]
+        if (
+            not isinstance(package, str)
+            or not package.strip()
+            or package in package_ids
+            or not isinstance(mapped_ids, list)
+            or not mapped_ids
+            or any(not isinstance(identifier, str) or not identifier for identifier in mapped_ids)
+            or len(mapped_ids) != len(set(mapped_ids))
+        ):
+            errors.append(f"{context} package mapping is invalid")
+            continue
+        mapped_set = set(mapped_ids)
+        duplicate_ids = identifiers & mapped_set
+        if duplicate_ids:
+            errors.append(
+                f"{context} package mapping is ambiguous: {', '.join(sorted(duplicate_ids))}"
+            )
+            continue
+        package_ids[package] = mapped_set
+        identifiers.update(mapped_set)
+    if identifiers != set(source_ids):
+        errors.append(f"{context} package identifiers do not match the runtime plan")
+    return package_ids
+
+
 def load_mapping() -> tuple[dict, list[str]]:
     data = json.loads(CONFIG.read_text(encoding="utf-8"))
     errors: list[str] = []
@@ -65,7 +165,13 @@ def load_mapping() -> tuple[dict, list[str]]:
         plan = json.loads(source.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         return data, [f"runtime requirement source is unavailable: {error}"]
-    source_ids = [identifier for entry in plan.get("entries", []) for identifier in entry.get("identifiers", [])]
+    entries = plan.get("entries", [])
+    source_ids = [
+        identifier
+        for entry in entries
+        if isinstance(entry, dict)
+        for identifier in entry.get("identifiers", [])
+    ]
     mapping = data.get("iosPrimaryGroups", {})
     mapping_ids = [identifier for group in mapping.values() for identifier in group]
     duplicates = sorted({item for item in mapping_ids if mapping_ids.count(item) > 1})
@@ -103,17 +209,72 @@ def validate_public_evidence_records(
     """Validate public record completeness without accepting runtime evidence."""
 
     errors: list[str] = []
+    _require_exact_fields(plan, PLAN_FIELDS, "runtime plan", errors)
     if plan.get("scope") != "G0-public-planning-only":
         errors.append("runtime plan is outside public G0 scope")
     if plan.get("releaseEvidence") is not False:
         errors.append("runtime plan must not claim release evidence")
+    if plan.get("status") != "pending":
+        errors.append("runtime plan status must be pending")
     if plan.get("repository") != "mcxl/sqe-platform":
         errors.append("runtime plan repository is not mcxl/sqe-platform")
     if tuple(plan.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
         errors.append("runtime plan result field schema is invalid")
+    active_requirements = plan.get("activeRecordRequirements")
+    if _require_exact_fields(
+        active_requirements,
+        ACTIVE_RECORD_REQUIREMENT_FIELDS,
+        "runtime plan active record requirements",
+        errors,
+    ) and (
+        active_requirements["repository"] != "mcxl/sqe-platform"
+        or active_requirements["commit"] != "executing Git head"
+        or active_requirements["status"] != "pending"
+        or not isinstance(active_requirements["reviewedRecordFields"], list)
+    ):
+        errors.append("runtime plan active record requirements are invalid")
+    entries = plan.get("entries")
+    if not isinstance(entries, list):
+        errors.append("runtime plan entries are invalid")
+    else:
+        for entry in entries:
+            if not _require_exact_fields(entry, PLAN_ENTRY_FIELDS, "runtime plan entry", errors):
+                continue
+            if (
+                entry["status"] != "pending"
+                or not isinstance(entry["identifiers"], list)
+                or not entry["identifiers"]
+            ):
+                errors.append("runtime plan entry is invalid")
+    plan_packages = _package_identifier_mapping(
+        plan.get("packageMappings"), source_ids, "runtime plan", errors
+    )
     controlled = plan.get("controlledRegister")
-    if not isinstance(controlled, dict):
+    if not _require_exact_fields(
+        controlled, CONTROLLED_REGISTER_FIELDS, "runtime plan controlled register", errors
+    ):
         return ["controlled public evidence register is missing"], "invalid"
+    if (
+        controlled["workflow"] != "ace-ios-evidence-preflight-manual"
+        or controlled["status"] != "pending"
+    ):
+        errors.append("runtime plan controlled register is invalid")
+    simulator = controlled["simulatorProvisioning"]
+    if not _require_exact_fields(
+        simulator,
+        SIMULATOR_PROVISIONING_FIELDS,
+        "runtime plan simulator provisioning",
+        errors,
+    ) or simulator.get("status") != "pending":
+        errors.append("runtime plan simulator provisioning is invalid")
+    historical = controlled["historicalCommitChain"]
+    if not _require_exact_fields(
+        historical,
+        HISTORICAL_COMMIT_CHAIN_FIELDS,
+        "runtime plan historical commit chain",
+        errors,
+    ) or historical.get("status") != "quarantined":
+        errors.append("runtime plan historical commit chain is invalid")
     register_name = controlled.get("path")
     if not isinstance(register_name, str) or Path(register_name).is_absolute():
         return ["controlled public evidence register path is invalid"], "invalid"
@@ -124,24 +285,46 @@ def validate_public_evidence_records(
         register = json.loads(register_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         return [f"controlled public evidence register is unavailable: {error}"], "invalid"
+    _require_exact_fields(register, REGISTER_FIELDS, "controlled public evidence register", errors)
     if register.get("scope") != "G0-public-planning-only":
         errors.append("controlled public evidence register is outside G0 scope")
     if register.get("releaseEvidence") is not False:
         errors.append("controlled public evidence register must not claim release evidence")
+    if register.get("status") != controlled["status"]:
+        errors.append("controlled public evidence register status does not match the runtime plan")
     if register.get("repository") != "mcxl/sqe-platform":
         errors.append("controlled public evidence register repository is not mcxl/sqe-platform")
     if tuple(register.get("resultFieldSchema", ())) != EVIDENCE_RESULT_FIELDS:
         errors.append("controlled public evidence register result field schema is invalid")
+    register_requirements = register.get("activeRecordRequirements")
+    if _require_exact_fields(
+        register_requirements,
+        ACTIVE_RECORD_REQUIREMENT_FIELDS,
+        "controlled public evidence register active record requirements",
+        errors,
+    ) and register_requirements != active_requirements:
+        errors.append("controlled public evidence register active record requirements do not match the runtime plan")
+    if register.get("workflow") != controlled["workflow"]:
+        errors.append("controlled public evidence register workflow does not match the runtime plan")
+    register_simulator = register.get("simulatorProvisioning")
+    if not _require_exact_fields(
+        register_simulator,
+        SIMULATOR_PROVISIONING_FIELDS,
+        "controlled public evidence register simulator provisioning",
+        errors,
+    ) or register_simulator.get("status") != controlled["simulatorProvisioning"].get("status"):
+        errors.append("controlled public evidence register simulator provisioning is invalid")
     results = register.get("results")
     if not isinstance(results, dict):
         return ["controlled public evidence results are missing"], "invalid"
     packages = register.get("packages")
     if not isinstance(packages, list):
         return ["controlled public evidence packages are missing"], "invalid"
+    register_packages: list[dict] = []
     package_by_identifier: dict[str, dict] = {}
     for package in packages:
         if (
-            not isinstance(package, dict)
+            not _require_exact_fields(package, PACKAGE_FIELDS, "controlled public evidence package", errors)
             or not isinstance(package.get("package"), str)
             or not package["package"].strip()
             or package.get("status") not in {"pending", "reviewed"}
@@ -149,6 +332,7 @@ def validate_public_evidence_records(
         ):
             errors.append("controlled public evidence package is invalid")
             continue
+        register_packages.append({"package": package["package"], "identifiers": package["identifiers"]})
         for identifier in package["identifiers"]:
             if not isinstance(identifier, str) or not identifier:
                 errors.append("controlled public evidence package identifier is invalid")
@@ -156,6 +340,11 @@ def validate_public_evidence_records(
                 errors.append(f"{identifier}: public evidence package is ambiguous")
             else:
                 package_by_identifier[identifier] = package
+    registered_mappings = _package_identifier_mapping(
+        register_packages, source_ids, "controlled public evidence register", errors
+    )
+    if registered_mappings != plan_packages:
+        errors.append("controlled public evidence package mappings do not match the runtime plan")
     expected_ids = set(source_ids)
     if set(results) != expected_ids:
         errors.append("controlled public evidence result identifiers do not match the runtime plan")
@@ -164,12 +353,19 @@ def validate_public_evidence_records(
     reviewed = 0
     for identifier in source_ids:
         record = results.get(identifier)
-        if not isinstance(record, dict):
+        if not _require_exact_fields(
+            record, EVIDENCE_RECORD_FIELDS, f"{identifier}: public evidence record", errors
+        ):
             errors.append(f"{identifier}: public evidence record is invalid")
             continue
         status = record.get("status")
         result = record.get("result")
-        if status not in {"pending", "reviewed"} or not isinstance(result, dict):
+        if (
+            status not in {"pending", "reviewed"}
+            or not _require_exact_fields(
+                result, EVIDENCE_RESULT_FIELDS, f"{identifier}: public evidence result", errors
+            )
+        ):
             errors.append(f"{identifier}: public evidence status or result is invalid")
             continue
         values = {field: result.get(field) for field in EVIDENCE_RESULT_FIELDS}
@@ -292,15 +488,21 @@ def _simctl_list(timeout: float | None = None) -> dict:
     return data
 
 
-def _simctl_create(name: str, device_type: str, runtime: str) -> str:
-    completed = subprocess.run(
-        ["xcrun", "simctl", "create", name, device_type, runtime],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
+def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) -> str:
+    if timeout <= 0:
+        raise SimulatorResolutionError("simctl create has no verification time remaining")
+    try:
+        completed = subprocess.run(
+            ["xcrun", "simctl", "create", name, device_type, runtime],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError("simctl create exceeded the verification deadline") from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
             f"simctl create failed for {name}: {(completed.stdout or '').strip()}"
@@ -451,7 +653,12 @@ def resolve_ios_destinations(names: tuple[str, ...]) -> dict[str, str]:
                 raise SimulatorResolutionError(f"simulator UUID is missing for {name}")
             identifiers[name] = identifier
         else:
-            identifiers[name] = _simctl_create(name, device_types[name], runtime)
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise SimulatorResolutionError("simctl create has no verification time remaining")
+            identifiers[name] = _simctl_create(
+                name, device_types[name], runtime, timeout=remaining
+            )
             created = True
     if created:
         verification_error: SimulatorResolutionError | None = SimulatorResolutionError(
