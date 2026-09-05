@@ -47,18 +47,12 @@ test:
 
 # Run the dedicated UI-test scheme. This target is separate from the 65-test unit suite.
 ui-test:
-	@SIM_ID=$$(xcrun simctl list devices available \
-		| grep iPhone \
-		| head -1 \
-		| sed -E 's/.*\(([A-F0-9-]+)\).*/\1/'); \
-	if [ -z "$$SIM_ID" ]; then \
-		echo "No available iPhone simulator found."; exit 1; \
-	fi; \
+	@SIM_DEST=$$(PYTHONPATH=../.. python3 -c 'from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations; print(resolve_ios_destinations((IOS_CORE_DEVICE,))[IOS_CORE_DEVICE])') || exit $$?; \
 	xcodebuild test \
 		-project $(PROJECT) \
 		-scheme $(UI_SCHEME) \
 		-configuration $(UI_CONFIG) \
-		-destination "platform=iOS Simulator,id=$$SIM_ID" \
+		-destination "$$SIM_DEST" \
 		-derivedDataPath $(DERIVED) \
 		-only-testing ACEClientAppUITests \
 		ACE_UI_TEST_APPEARANCE=$(UI_TEST_APPEARANCE) \
