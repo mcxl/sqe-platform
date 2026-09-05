@@ -247,6 +247,28 @@ class RunnerContractTests(unittest.TestCase):
             "IOS-BASE-001: public evidence result schema is invalid", errors
         )
 
+    def test_reviewed_public_evidence_rejects_blank_required_result_values(self):
+        for field in ("operator", "date", "result"):
+            with self.subTest(field=field):
+                plan, register = self.controlled_evidence_fixture()
+                plan["entries"] = [plan["entries"][0]]
+                plan["packageMappings"] = [plan["packageMappings"][0]]
+                register["packages"] = [register["packages"][0]]
+                register["packages"][0]["status"] = "reviewed"
+                result = {
+                    required_field: "value"
+                    for required_field in runner.EVIDENCE_RESULT_FIELDS
+                }
+                result[field] = " "
+                register["results"] = {
+                    "IOS-BASE-001": {"status": "reviewed", "result": result}
+                }
+                errors, state = self.validate_fixture(plan, register)
+                self.assertEqual(state, "invalid")
+                self.assertIn(
+                    "IOS-BASE-001: reviewed public evidence is incomplete", errors
+                )
+
     def test_ios_core_commands_use_controlled_fictional_inputs(self):
         destinations = {runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"}
         with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
