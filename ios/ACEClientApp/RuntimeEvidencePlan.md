@@ -22,6 +22,7 @@ approval. That workflow has no trigger. The operator must supply the separately
 approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. It must equal
 `CM_COMMIT` and Git HEAD. `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`.
 `CM_BUILD_ID` and `CM_BUILD_DIR` must identify the current Codemagic build. The
+trigger source must be `api`, and `CM_BUILD_STARTED_BY` must identify the operator. The
 workflow variable `ACE_LIVE_EVIDENCE_WORKFLOW` must equal
 `ace-ios-live-evidence-manual`. The runner rejects another context. Do not run the command locally or from a push,
 pull request, tag, schedule, or another workflow.

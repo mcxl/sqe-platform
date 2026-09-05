@@ -15,7 +15,8 @@ The live gate binds `mcxl/sqe-platform`, the exact executing Git head, clean-tre
 state, and ancestry from `7da6228dc87ad970aa8d44365fbc3823c58020da`. The separately
 approved `ACE_LIVE_EVIDENCE_APPROVED_COMMIT` must equal `CM_COMMIT` and Git HEAD.
 `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID`, `CM_BUILD_DIR`, and the
-exact workflow variable must identify `ace-ios-live-evidence-manual`. It stores raw
+exact workflow variable must identify `ace-ios-live-evidence-manual`. `CM_TRIGGER_SOURCE`
+must equal `api` and `CM_BUILD_STARTED_BY` must identify the operator. It stores raw
 artifacts only outside the Git tree. This audit and its JSON records never become
 runtime or release evidence.
 

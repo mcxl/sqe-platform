@@ -1039,7 +1039,7 @@ def _verify_live_artifact_checksums(root: Path, expected: dict[str, str]) -> Non
 def _scan_live_artifacts(root: Path) -> None:
     """Reject clear secret or unredacted username values without echoing content."""
 
-    sensitive_key = r'(?:"(?:password|authorization|keychain[ _-]?secret|credential|token)"|(?:password|authorization|keychain[ _-]?secret|credential|token))'
+    sensitive_key = r'(?:"(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token)"|(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token))'
     username_key = r'(?:"(?:username|user)"|(?:username|user))'
     forbidden = re.compile(rf"(?i){sensitive_key}\s*[:=]\s*\S+")
     unredacted_username = re.compile(
@@ -1052,8 +1052,16 @@ def _scan_live_artifacts(root: Path) -> None:
             continue
         if path.stat().st_size > LIVE_ARTIFACT_MAX_BYTES:
             raise ValueError("live artifact exceeds the review size limit")
-        content = path.read_bytes().decode("utf-8", errors="ignore")
-        if forbidden.search(content) or unredacted_username.search(content):
+        raw_content = path.read_bytes()
+        text_forms = (
+            raw_content.decode("utf-8", errors="ignore"),
+            raw_content.decode("utf-16-le", errors="ignore"),
+            raw_content.decode("utf-16-be", errors="ignore"),
+        )
+        if any(
+            forbidden.search(content) or unredacted_username.search(content)
+            for content in text_forms
+        ):
             raise ValueError("live artifact secret or redaction check failed")
 
 
@@ -1201,6 +1209,8 @@ def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[s
         or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != LIVE_WORKFLOW
         or os.environ.get("CM_COMMIT") != expected_commit
         or os.environ.get("CM_BRANCH") != LIVE_BRANCH
+        or os.environ.get("CM_TRIGGER_SOURCE") != "api"
+        or not _is_non_empty_string(os.environ.get("CM_BUILD_STARTED_BY"))
     ):
         raise ValueError("verified Codemagic live workflow context is invalid")
     return {"workflow": LIVE_WORKFLOW}

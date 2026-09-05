@@ -20,7 +20,8 @@ checks the remote repository, exact current Git commit, approved baseline ancest
 and clean Git tree. The operator input `ACE_LIVE_EVIDENCE_APPROVED_COMMIT` must exactly
 match `CM_COMMIT` and the checked-out lower-case Git SHA. `CM_BRANCH` must equal
 `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID` and `CM_BUILD_DIR` must identify the current build. The workflow variable
-must equal `ace-ios-live-evidence-manual`. It retains the commit in its external manifest. No repository file
+must equal `ace-ios-live-evidence-manual`. `CM_TRIGGER_SOURCE` must equal `api` and
+`CM_BUILD_STARTED_BY` must identify the operator. It retains the commit in its external manifest. No repository file
 becomes a live artifact or a release record.
 
 The gate selects the highest available iOS 26.x runtime and exact simulator types. It

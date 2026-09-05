@@ -188,6 +188,8 @@ class RunnerContractTests(unittest.TestCase):
                 "credential=value",
                 "token: value",
                 '"password": "value"',
+                '"authorisation": "value"',
+                '"keychain secret": "value"',
                 '"credential": "value"',
                 '"token": "value"',
                 '"username": "value"',
@@ -197,6 +199,18 @@ class RunnerContractTests(unittest.TestCase):
                     ValueError, "secret or redaction"
                 ):
                     runner._scan_live_artifacts(root)
+            for encoding in ("utf-16-le", "utf-16-be"):
+                with self.subTest(encoding=encoding):
+                    artifact.write_bytes('{"token": "value"}'.encode(encoding))
+                    with self.assertRaisesRegex(ValueError, "secret or redaction"):
+                        runner._scan_live_artifacts(root)
+                    artifact.write_bytes(
+                        '{"username": "[redacted]", "result": "ok"}'.encode(encoding)
+                    )
+                    runner._scan_live_artifacts(root)
+                    artifact.write_bytes('{"user": "unredacted"}'.encode(encoding))
+                    with self.assertRaisesRegex(ValueError, "secret or redaction"):
+                        runner._scan_live_artifacts(root)
 
     def test_live_command_environment_excludes_unrelated_secret_values(self):
         with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
@@ -241,6 +255,8 @@ class RunnerContractTests(unittest.TestCase):
             "CM_BUILD_DIR": str(ROOT),
             "CM_COMMIT": expected_commit,
             "CM_BRANCH": runner.LIVE_BRANCH,
+            "CM_TRIGGER_SOURCE": "api",
+            "CM_BUILD_STARTED_BY": "controlled-operator",
             runner.LIVE_WORKFLOW_ENVIRONMENT_KEY: runner.LIVE_WORKFLOW,
         }
         with mock.patch.dict(os.environ, environment, clear=True):
@@ -262,6 +278,21 @@ class RunnerContractTests(unittest.TestCase):
             with mock.patch.dict(os.environ, {"CM_COMMIT": "b" * 40}):
                 with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
                     runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
+        for name, trigger in (("missing", None), ("webhook", "webhook"), ("schedule", "schedule")):
+            with self.subTest(trigger=name):
+                trigger_environment = dict(environment)
+                if trigger is None:
+                    del trigger_environment["CM_TRIGGER_SOURCE"]
+                else:
+                    trigger_environment["CM_TRIGGER_SOURCE"] = trigger
+                with mock.patch.dict(os.environ, trigger_environment, clear=True):
+                    with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                        runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
+        operator_environment = dict(environment)
+        operator_environment["CM_BUILD_STARTED_BY"] = " "
+        with mock.patch.dict(os.environ, operator_environment, clear=True):
+            with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit)
 
     def test_live_cli_requires_a_lower_case_approved_commit_input(self):
         with redirect_stderr(StringIO()), self.assertRaises(SystemExit):
