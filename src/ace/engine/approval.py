@@ -272,7 +272,19 @@ def _approval_boundary() -> tuple[
 
     def register(assessment: ApprovedMATEAssessment) -> ApprovedMATEAssessment:
         identifier = id(assessment)
-        reference = weakref.ref(assessment)
+
+        def remove_origin(
+            reference: weakref.ReferenceType[ApprovedMATEAssessment],
+        ) -> None:
+            current_origin = origins.get(identifier)
+            if (
+                isinstance(current_origin, tuple)
+                and len(current_origin) == 3
+                and current_origin[0] is reference
+            ):
+                del origins[identifier]
+
+        reference = weakref.ref(assessment, remove_origin)
         digest = content_digest(assessment)
         origins[identifier] = (
             reference,
