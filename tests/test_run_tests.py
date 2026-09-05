@@ -1,5 +1,8 @@
 import importlib.util
 import json
+import os
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -409,6 +412,90 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn(
             "ACE_UI_TEST_APPEARANCE=$(UI_TEST_APPEARANCE)", ui_test_target
         )
+
+    def test_make_ui_test_uses_the_strict_core_simulator_resolver(self):
+        makefile = (ROOT / "ios/ACEClientApp/Makefile").read_text(encoding="utf-8")
+        ui_test_target = makefile.split("ui-test:", 1)[1].split(
+            "# Remove derived data.", 1
+        )[0]
+        resolver_call = (
+            "from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations; "
+            "print(resolve_ios_destinations((IOS_CORE_DEVICE,))[IOS_CORE_DEVICE])"
+        )
+        self.assertIn(resolver_call, ui_test_target)
+        self.assertNotIn("xcrun simctl list devices available", ui_test_target)
+        self.assertIn('-destination "$$SIM_DEST"', ui_test_target)
+        self.assertLess(
+            ui_test_target.index("resolve_ios_destinations"),
+            ui_test_target.index("xcodebuild test"),
+        )
+
+    def test_make_ui_test_executes_the_resolver_command_path_and_fails_closed(self):
+        make = shutil.which("make")
+        if make is None:
+            if os.name == "nt":
+                self.skipTest("make is not available on Windows")
+            self.fail("make is required for the ui-test command-path test")
+
+        destination = "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"
+        app_directory = ROOT / "ios" / "ACEClientApp"
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            command_directory = temporary / "commands"
+            command_directory.mkdir()
+            python_command = command_directory / "python3"
+            python_command.write_text(
+                "#!/bin/sh\n"
+                "case \"$*\" in\n"
+                "  *\"from tools.run_tests import IOS_CORE_DEVICE, resolve_ios_destinations\"*) ;;\n"
+                "  *) echo 'unexpected resolver command' >&2; exit 41 ;;\n"
+                "esac\n"
+                "if [ \"$FAKE_PYTHON3_MODE\" = fail ]; then\n"
+                "  echo 'controlled resolver failure' >&2\n"
+                "  exit 17\n"
+                "fi\n"
+                "printf '%s\\n' \"$FAKE_IOS_DESTINATION\"\n",
+                encoding="utf-8",
+            )
+            xcodebuild_command = command_directory / "xcodebuild"
+            xcodebuild_command.write_text(
+                "#!/bin/sh\n"
+                "printf '%s\\n' \"$@\" > \"$FAKE_XCODEBUILD_LOG\"\n",
+                encoding="utf-8",
+            )
+            python_command.chmod(python_command.stat().st_mode | 0o111)
+            xcodebuild_command.chmod(xcodebuild_command.stat().st_mode | 0o111)
+
+            log_path = temporary / "xcodebuild-arguments.txt"
+            environment = os.environ | {
+                "PATH": str(command_directory) + os.pathsep + os.environ["PATH"],
+                "FAKE_IOS_DESTINATION": destination,
+                "FAKE_XCODEBUILD_LOG": str(log_path),
+            }
+            success = subprocess.run(
+                [make, "ui-test"],
+                cwd=app_directory,
+                env=environment,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(success.returncode, 0, success.stderr)
+            arguments = log_path.read_text(encoding="utf-8").splitlines()
+            self.assertEqual(arguments[arguments.index("-destination") + 1], destination)
+
+            log_path.unlink()
+            failure = subprocess.run(
+                [make, "ui-test"],
+                cwd=app_directory,
+                env=environment | {"FAKE_PYTHON3_MODE": "fail"},
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertNotEqual(failure.returncode, 0)
+            self.assertIn("controlled resolver failure", failure.stderr)
+            self.assertFalse(log_path.exists())
 
     def test_xcresult_counts_fail_closed_when_summary_is_missing_or_wrong(self):
         self.assertIsNone(runner._xcresult_counts({}))
