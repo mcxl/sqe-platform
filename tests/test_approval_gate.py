@@ -1,4 +1,5 @@
 from typing import Any
+import weakref
 
 import pytest
 from pydantic import ValidationError
@@ -18,10 +19,13 @@ from src.ace.domain.assessment import (
     SourceStatus,
 )
 from src.ace.domain.enums import ControlRating, HazardCategory
+from src.ace.domain.models import AssuranceDimensions, EvaluationResult
+from src.ace.engine import approval as approval_module
 from src.ace.engine.approval import (
     ApprovalBlockedError,
     build_approved_assessment,
     evaluate_approved_assessment,
+    rehydrate_verified_g0_mate,
 )
 
 
@@ -463,6 +467,22 @@ def test_approved_assessment_is_frozen() -> None:
         assessment.control_id = "CHANGED"
 
 
+def test_approved_assessment_rejects_direct_construction() -> None:
+    values = build_assessment().model_dump()
+
+    with pytest.raises(
+        ValidationError,
+        match="approved MATE assessment must be built by the approval gate",
+    ):
+        ApprovedMATEAssessment(**values)
+
+    with pytest.raises(
+        ValidationError,
+        match="approved MATE assessment must be built by the approval gate",
+    ):
+        ApprovedMATEAssessment.model_validate(values)
+
+
 @pytest.mark.parametrize("collection_name", ["proposals", "decisions"])
 def test_gate_blocks_a_missing_dimension(collection_name: str) -> None:
     proposals, reviews, decisions = make_bundle()
@@ -828,3 +848,216 @@ def test_approved_assessment_returns_the_existing_immutable_result() -> None:
     assert result.__class__.__name__ == "EvaluationResult"
     with pytest.raises(ValidationError):
         result.reasoning = "Changed"
+
+
+@pytest.mark.parametrize("construction", ["copy", "construct"])
+def test_evaluation_rejects_adversarial_dimension_construction(
+    construction: str,
+) -> None:
+    assessment = build_assessment()
+    invalid_dimensions = AssuranceDimensions(
+        mandate=False,
+        accountability=True,
+        trigger=True,
+        escalation=True,
+    )
+    if construction == "copy":
+        adversarial = assessment.model_copy(
+            update={"dimensions": invalid_dimensions}
+        )
+    else:
+        values = {
+            field: getattr(assessment, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+        values["dimensions"] = invalid_dimensions
+        adversarial = ApprovedMATEAssessment.model_construct(**values)
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
+
+
+def test_evaluation_rejects_adversarial_non_approved_decision() -> None:
+    assessment = build_assessment()
+    altered_decision = assessment.decisions[0].model_copy(
+        update={"decision_status": AuditorDecisionStatus.REJECTED}
+    )
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            **{
+                field: getattr(assessment, field)
+                for field in ApprovedMATEAssessment.model_fields
+            },
+            "decisions": (altered_decision, *assessment.decisions[1:]),
+        }
+    )
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
+
+
+def test_evaluation_rejects_internally_consistent_constructed_assessment() -> None:
+    assessment = build_assessment()
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(assessment, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(adversarial)
+
+
+def test_evaluation_rejects_content_alteration_of_the_issued_assessment() -> None:
+    assessment = build_assessment()
+
+    object.__setattr__(assessment, "reviewer_notes", "Altered after approval.")
+
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(assessment)
+
+
+def test_evaluation_rejects_closure_registry_injection() -> None:
+    issued = build_assessment()
+    adversarial = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(issued, field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+    closure_values = [
+        cell.cell_contents
+        for cell in approval_module.evaluate_approved_assessment.__closure__ or ()
+    ]
+    registry = next(
+        value
+        for value in closure_values
+        if isinstance(value, dict) and id(issued) in value
+    )
+    raw_record = registry[id(issued)]
+    digest_function = next(
+        value
+        for value in closure_values
+        if callable(value)
+        and _one_argument_string_result(value, adversarial) is not None
+    )
+    digest = _one_argument_string_result(digest_function, adversarial)
+    assert isinstance(digest, str)
+    registry[id(adversarial)] = (
+        weakref.ref(adversarial),
+        digest,
+        b"\\0" * len(raw_record[2]),
+    )
+
+    try:
+        with pytest.raises(
+            ApprovalBlockedError,
+            match="approved assessment invariants are invalid",
+        ):
+            evaluate_approved_assessment(adversarial)
+    finally:
+        del registry[id(adversarial)]
+
+
+def _one_argument_string_result(function: object, value: object) -> str | None:
+    if not callable(function):
+        return None
+    try:
+        result = function(value)
+    except TypeError:
+        return None
+    return result if isinstance(result, str) else None
+
+
+def test_rehydration_accepts_only_the_exact_controlled_g0_assessment() -> None:
+    from src.ace.workbench.relationship_review_storage import RelationshipReviewStorage
+
+    snapshot = RelationshipReviewStorage._fictional_trace_input_snapshot()[
+        "mate_assessment"
+    ]
+    assert isinstance(snapshot, dict)
+    assessment = rehydrate_verified_g0_mate(
+        snapshot,
+        "2026-08-01T00:00:00Z",
+        "seed",
+    )
+    assert assessment.control_id == "CTL-FIC-0001"
+
+    snapshot["description"] = "Altered G0 snapshot."
+    with pytest.raises(ValueError, match="not the verified G0 record"):
+        rehydrate_verified_g0_mate(snapshot, "2026-08-01T00:00:00Z", "seed")
+
+
+def test_named_mate_provenance_apis_reject_arbitrary_assessments() -> None:
+    import src.ace.engine.approval as approval
+
+    assert not hasattr(approval, "_approved_mate_origins")
+    assert not hasattr(approval, "_issue_approved_mate")
+
+    assessment = ApprovedMATEAssessment.model_construct(
+        **{
+            field: getattr(build_assessment(), field)
+            for field in ApprovedMATEAssessment.model_fields
+        }
+    )
+    with pytest.raises(
+        ApprovalBlockedError,
+        match="approved assessment invariants are invalid",
+    ):
+        evaluate_approved_assessment(assessment)
+    with pytest.raises(ValueError, match="not the verified G0 record"):
+        approval.rehydrate_verified_g0_mate({}, "2026-08-01T00:00:00Z", "seed")
+    proposals, reviews, decisions = make_bundle()
+    unregistered = approval._complete_approval_gate(
+        control_id="ACE-FICTIONAL-001",
+        title="Fictional mobilisation control",
+        description="Fictional control-design assessment for testing only.",
+        hazard_category=HazardCategory.GOVERNANCE_OVERSIGHT,
+        proposals=proposals,
+        evidence_reviews=reviews,
+        decisions=decisions,
+        confidence_score=0.95,
+        reviewer_notes="Fictional Sprint 2 approval-boundary test.",
+    )
+    with pytest.raises(ApprovalBlockedError, match="approved assessment invariants are invalid"):
+        approval.evaluate_approved_assessment(unregistered)
+
+
+def test_approved_assessment_delegates_to_the_existing_evaluator(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    assessment = build_assessment()
+    evaluator_result = EvaluationResult(
+        control_id=assessment.control_id,
+        rating=ControlRating.ADEQUATE,
+        failed_dimensions=(),
+        timestamp="2026-07-28T02:03:04.567890+00:00",
+        reasoning="Fictional result returned by the existing evaluator.",
+    )
+    received_controls = []
+
+    def evaluate_control(control: object) -> EvaluationResult:
+        received_controls.append(control)
+        return evaluator_result
+
+    monkeypatch.setattr(approval_module, "evaluate_control", evaluate_control)
+
+    result = evaluate_approved_assessment(assessment)
+
+    assert result is evaluator_result
+    assert len(received_controls) == 1
+    assert received_controls[0].control_id == assessment.control_id
+    assert received_controls[0].dimensions == assessment.dimensions

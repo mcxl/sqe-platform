@@ -1,0 +1,69 @@
+workflows:
+  ace-ios-core:
+    name: ACE iOS Core Quality
+    max_build_duration: 45
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: false
+        - pattern: codex/sqe-pivot-integration
+          include: true
+          source: true
+        - pattern: codex/sqe-pivot-gate-bootstrap
+          include: true
+          source: true
+      cancel_previous_builds: true
+    when:
+      changeset:
+        includes:
+          - ios/**
+          - quality/test-groups.json
+          - tools/run_tests.py
+          - codemagic.yaml
+    scripts:
+      - name: Run 65 unit and five core UI checks
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py core --component ios
+
+  ace-ios-release:
+    name: ACE iOS Release Quality
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: v*
+          include: true
+    scripts:
+      - name: Run 65 unit, five core UI and 20 release UI checks
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py release --component ios
+
+  ace-ios-evidence-preflight-manual:
+    name: ACE iOS G0 Evidence Preflight (Not Release Evidence)
+    max_build_duration: 15
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.4.1
+    # No triggering events: Codemagic can start this workflow only by manual action.
+    # It validates public G0 records only. It cannot run, collect, publish, or accept
+    # client evidence. Pending records fail closed and are not release evidence.
+    scripts:
+      - name: Validate public G0 preflight state, not release evidence
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py evidence-check
+          echo "G0 records remain pending and are not release evidence."
+          exit 1

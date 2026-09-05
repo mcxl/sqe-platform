@@ -11,6 +11,7 @@ from pydantic import (
     Field,
     StrictBool,
     StrictInt,
+    ValidationInfo,
     field_validator,
     model_validator,
 )
@@ -25,6 +26,7 @@ ConfidenceScore = Annotated[float, Field(ge=0.0, le=1.0)]
 UTC_ISO_TIMESTAMP = re.compile(
     r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:\+00:00|Z)"
 )
+_APPROVED_MATE_CONSTRUCTION_CONTEXT = object()
 
 
 class MateDimension(str, Enum):
@@ -250,7 +252,11 @@ class AuditorDecision(BaseModel):
 
 
 class ApprovedMATEAssessment(BaseModel):
-    """The complete auditor-approved input to the existing evaluator."""
+    """The complete auditor-approved input to the existing evaluator.
+
+    Frozen models stop normal mutation. They do not isolate hostile code in the same
+    Python process. The approval boundary verifies the exact issued content.
+    """
 
     model_config = ConfigDict(frozen=True, str_strip_whitespace=True)
 
@@ -262,3 +268,51 @@ class ApprovedMATEAssessment(BaseModel):
     reviewer_notes: str | None = None
     decisions: tuple[AuditorDecision, ...] = Field(min_length=4, max_length=4)
     dimensions: AssuranceDimensions
+
+    @model_validator(mode="before")
+    @classmethod
+    def require_approval_construction_context(
+        cls, values: object, info: ValidationInfo
+    ) -> object:
+        context = info.context
+        if (
+            context is None
+            or context.get("approved_mate_construction")
+            is not _APPROVED_MATE_CONSTRUCTION_CONTEXT
+        ):
+            raise ValueError(
+                "approved MATE assessment must be built by the approval gate"
+            )
+        return values
+
+    @model_validator(mode="after")
+    def validate_approval_invariants(self) -> "ApprovedMATEAssessment":
+        """Keep decisions and evaluator dimensions bound at every validation boundary."""
+
+        if len(self.decisions) != len(MateDimension):
+            raise ValueError("approved MATE assessment must have four decisions")
+        dimensions = [decision.dimension for decision in self.decisions]
+        if set(dimensions) != set(MateDimension) or len(dimensions) != len(
+            set(dimensions)
+        ):
+            raise ValueError("approved MATE assessment must cover each dimension once")
+        decision_ids = [decision.decision_id for decision in self.decisions]
+        if len(decision_ids) != len(set(decision_ids)):
+            raise ValueError("approved MATE assessment decision identifiers must be unique")
+        for decision in self.decisions:
+            if decision.decision_status is not AuditorDecisionStatus.APPROVED:
+                raise ValueError("approved MATE assessment contains a non-approved decision")
+            if (
+                decision.final_sufficiency
+                is not EvidenceSufficiency.SUFFICIENT_FOR_DESIGN_ASSESSMENT
+            ):
+                raise ValueError("approved MATE assessment contains insufficient evidence")
+            if decision.approved_answer is None:
+                raise ValueError("approved MATE assessment contains no approved answer")
+            if decision.approved_answer is not getattr(
+                self.dimensions, decision.dimension.field_name
+            ):
+                raise ValueError(
+                    "approved MATE assessment dimensions do not match decisions"
+                )
+        return self
