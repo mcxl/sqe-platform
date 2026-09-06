@@ -237,6 +237,14 @@ class RunnerContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unapproved environment"):
             runner._live_command_environment({"SENTINEL_SECRET": "must-not-pass"})
 
+    def test_live_command_environment_accepts_supported_ui_test_appearances(self):
+        for appearance in ("light", "dark"):
+            with self.subTest(appearance=appearance):
+                environment = runner._live_command_environment(
+                    runner.ios_test_environment(appearance)
+                )
+                self.assertEqual(environment["ACE_UI_TEST_APPEARANCE"], appearance)
+
     def live_repository_responses(
         self, remote, head="a" * 40, ancestry_exit=0, clean_output="", remote_output=None
     ):
