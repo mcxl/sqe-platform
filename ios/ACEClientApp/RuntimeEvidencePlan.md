@@ -19,12 +19,15 @@ The only proposed live command is:
 
 Run it only in the manual `ace-ios-live-evidence-manual` Codemagic workflow, after
 approval. That workflow has no trigger. The operator must supply the separately
-approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. The dedicated
-`mcx19_live_evidence` Codemagic variable group supplies this value at run time. Do
-not record an approved SHA in the group or repository. It must equal `CM_COMMIT` and
-Git HEAD. `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID`
-and `CM_BUILD_DIR` must identify the current Codemagic build. The trigger source must
-be `api`, and `CM_BUILD_STARTED_BY` must identify the operator. The workflow variable
+approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. Immediately before a
+separately approved API start, an authorised operator sets
+`ACE_LIVE_EVIDENCE_APPROVED_COMMIT` in the dedicated `mcx19_live_evidence` Codemagic
+variable group to the exact approved lower-case SHA. The group supplies the value at
+run time. The repository must not store or hard-code the SHA. The operator removes the
+group value after the build completes or stops. It must equal `CM_COMMIT` and Git HEAD.
+`CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID` and
+`CM_BUILD_DIR` must identify the current Codemagic build. The trigger source must be
+`api`, and `CM_BUILD_STARTED_BY` must identify the operator. The workflow variable
 `ACE_LIVE_EVIDENCE_WORKFLOW` must equal `ace-ios-live-evidence-manual`. The runner
 rejects another context. Do not run the command locally or from a push, pull request,
 tag, schedule, or another workflow.
