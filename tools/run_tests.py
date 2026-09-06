@@ -131,6 +131,18 @@ LIVE_UI_METHODS = (
     "testReleaseOrientationHooks",
 )
 LIVE_FAILURE_SUMMARY_MAX_ITEMS = 23
+LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
+    {
+        "command-timeout",
+        "command-start-failed",
+        "command-nonzero",
+        "result-bundle-missing",
+        "result-summary-invalid",
+        "result-count-mismatch",
+        "negative-configuration-not-rejected",
+        "controlled-failure",
+    }
+)
 SIMULATOR_UUID = re.compile(
     r"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$"
 )
@@ -138,6 +150,17 @@ SIMULATOR_UUID = re.compile(
 
 class SimulatorResolutionError(ValueError):
     """Raised when a required iOS simulator cannot be safely resolved."""
+
+
+class LiveCommandResult(tuple):
+    """Keep a command result reason separate from its two public tuple values."""
+
+    def __new__(
+        cls, exit_code: int, detail: str, reason: str | None = None
+    ) -> "LiveCommandResult":
+        result = super().__new__(cls, (exit_code, detail))
+        result.reason = reason
+        return result
 
 
 def _require_exact_fields(
@@ -1103,12 +1126,18 @@ def _run_live_command(
                 timeout=LIVE_COMMAND_TIMEOUT_SECONDS,
             )
     except subprocess.TimeoutExpired:
-        return 1, f"{name} exceeded its time limit"
+        return LiveCommandResult(
+            1, f"{name} exceeded its time limit", "command-timeout"
+        )
     except OSError:
-        return 1, f"{name} could not start"
+        return LiveCommandResult(
+            1, f"{name} could not start", "command-start-failed"
+        )
     if completed.returncode != 0:
-        return 1, f"{name} returned a non-zero result"
-    return 0, f"{name} completed"
+        return LiveCommandResult(
+            1, f"{name} returned a non-zero result", "command-nonzero"
+        )
+    return LiveCommandResult(0, f"{name} completed")
 
 
 def _run_live_ios_test(
@@ -1123,19 +1152,34 @@ def _run_live_ios_test(
 
     result_path = _safe_live_path(root, f"{name}.xcresult")
     log_path = _safe_live_path(root, f"{name}.log")
-    exit_code, detail = _run_live_command(
+    command_result = _run_live_command(
         name,
         [*command, "-resultBundlePath", str(result_path)],
         cwd,
         environment,
         log_path,
     )
+    exit_code, detail = command_result
     if exit_code:
-        return {"name": name, "status": "failed", "exit": 1, "detail": detail}
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": detail,
+            "reason": _published_live_failure_reason(
+                getattr(command_result, "reason", None)
+            ),
+        }
     if not result_path.is_dir() or result_path.is_symlink():
-        return {"name": name, "status": "failed", "exit": 1, "detail": f"{name} result bundle is missing"}
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": f"{name} result bundle is missing",
+            "reason": "result-bundle-missing",
+        }
     summary_path = _safe_live_path(root, f"{name}-summary.json")
-    summary_exit, summary_detail = _run_live_command(
+    summary_result = _run_live_command(
         f"{name}-xcresult",
         [
             "xcrun", "xcresulttool", "get", "test-results", "summary",
@@ -1145,14 +1189,29 @@ def _run_live_ios_test(
         {},
         summary_path,
     )
+    summary_exit, summary_detail = summary_result
     if summary_exit:
-        return {"name": name, "status": "failed", "exit": 1, "detail": summary_detail}
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": summary_detail,
+            "reason": _published_live_failure_reason(
+                getattr(summary_result, "reason", None)
+            ),
+        }
     try:
         counts = _xcresult_counts(json.loads(summary_path.read_text(encoding="utf-8")))
     except (OSError, json.JSONDecodeError):
         counts = None
     if counts is None:
-        return {"name": name, "status": "failed", "exit": 1, "detail": f"{name} has no executed-test summary"}
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": f"{name} has no executed-test summary",
+            "reason": "result-summary-invalid",
+        }
     passed, failed, skipped = counts
     if passed != expected_tests or failed != 0 or skipped != 0:
         return {
@@ -1160,6 +1219,7 @@ def _run_live_ios_test(
             "status": "failed",
             "exit": 1,
             "detail": f"{name} result count mismatch",
+            "reason": "result-count-mismatch",
         }
     return {"name": name, "status": "passed", "exit": 0, "detail": f"{name} executed {passed} tests"}
 
@@ -1248,8 +1308,33 @@ def _live_failure_detail(error: Exception) -> str:
     return detail
 
 
+def _published_live_failure_reason(reason: object, name: object = None) -> str:
+    """Return one fixed public reason code for a failed live command."""
+
+    if name == "ios-negative-config":
+        return "negative-configuration-not-rejected"
+    if isinstance(reason, str) and reason in LIVE_PUBLISHED_FAILURE_REASONS:
+        return reason
+    return "controlled-failure"
+
+
+def _published_live_result(check: dict) -> dict:
+    """Remove untrusted failure detail before a live result is published."""
+
+    result = dict(check)
+    if result.get("exit") != 0:
+        reason = _published_live_failure_reason(
+            result.get("reason"), result.get("name")
+        )
+        result["reason"] = reason
+        result["detail"] = "controlled live command failed"
+    else:
+        result.pop("reason", None)
+    return result
+
+
 def _live_command_failure_summary(checks: list[dict]) -> str:
-    """Return bounded, ordered names for failed controlled live commands."""
+    """Return bounded, ordered live command names and controlled reason codes."""
 
     destinations = {device: "" for device in IOS_RELEASE_DEVICES}
     allowed_names = {
@@ -1258,18 +1343,23 @@ def _live_command_failure_summary(checks: list[dict]) -> str:
         "ios-negative-config",
         *(name for name, *_ in ios_release_ui_matrix(destinations, LIVE_UI_METHODS)),
     }
-    names = sorted(
-        {
-            item["name"]
-            for item in checks
-            if item.get("exit") != 0
-            and isinstance(item.get("name"), str)
-            and item["name"] in allowed_names
-        }
+    reasons_by_name: dict[str, set[str]] = {}
+    for item in checks:
+        name = item.get("name")
+        if (
+            item.get("exit") != 0
+            and isinstance(name, str)
+            and name in allowed_names
+        ):
+            reasons_by_name.setdefault(name, set()).add(
+                _published_live_failure_reason(item.get("reason"), name)
+            )
+    names = sorted(reasons_by_name)[:LIVE_FAILURE_SUMMARY_MAX_ITEMS]
+    names_text = ", ".join(names)
+    reasons_text = ", ".join(
+        f"{name}={min(reasons_by_name[name])}" for name in names
     )
-    return "failed live commands: " + ", ".join(
-        names[:LIVE_FAILURE_SUMMARY_MAX_ITEMS]
-    )
+    return f"failed live commands: {names_text}; reasons: {reasons_text}"
 
 
 def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict]:
@@ -1335,10 +1425,27 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"],
             ios, NEGATIVE_CONFIG_ENVIRONMENT, negative_log,
         )
-        if negative_exit == 0 or NEGATIVE_CONFIG_REJECTION not in negative_log.read_text(encoding="utf-8", errors="replace"):
-            checks.append({"name": "ios-negative-config", "status": "failed", "exit": 1, "detail": "negative configuration did not fail as required"})
+        try:
+            negative_rejected = (
+                negative_exit != 0
+                and NEGATIVE_CONFIG_REJECTION
+                in negative_log.read_text(encoding="utf-8", errors="replace")
+            )
+        except OSError:
+            negative_rejected = False
+        if not negative_rejected:
+            checks.append(
+                {
+                    "name": "ios-negative-config",
+                    "status": "failed",
+                    "exit": 1,
+                    "detail": "negative configuration did not fail as required",
+                    "reason": "negative-configuration-not-rejected",
+                }
+            )
         else:
             checks.append({"name": "ios-negative-config", "status": "passed", "exit": 0, "detail": "negative configuration rejected"})
+        checks = [_published_live_result(check) for check in checks]
         manifest["results"] = checks
         _write_live_manifest(root, manifest)
         if any(check["exit"] != 0 for check in checks):
