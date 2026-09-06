@@ -1,5 +1,5 @@
 import importlib.util
-from contextlib import redirect_stderr
+from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 import json
 import os
@@ -157,7 +157,58 @@ class RunnerContractTests(unittest.TestCase):
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(runner, "_run_live_ios_test", side_effect=nonzero), contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(checks[0]["status"], "failed")
-            self.assertIn("one or more live commands failed", checks[0]["detail"])
+            self.assertTrue(checks[0]["detail"].startswith("failed live commands: "))
+            self.assertIn("ios-65-unit", checks[0]["detail"])
+
+    def test_live_evidence_command_failure_summary_identifies_the_failed_command(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            raw_output = "raw command output\nsecret-like=value\nunrelated-value"
+
+            def command_result(name, command, cwd, environment, expected_tests, artifact_root):
+                status = "failed" if name == "ios-65-unit" else "passed"
+                return {
+                    "name": name,
+                    "status": status,
+                    "exit": 1 if status == "failed" else 0,
+                    "detail": raw_output,
+                }
+
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(
+                runner, "_run_live_ios_test", side_effect=command_result
+            ), contexts[7], mock.patch.object(runner, "load_mapping", return_value=({}, [])):
+                output = StringIO()
+                with redirect_stdout(output):
+                    exit_code = runner.main([
+                        "live-evidence", "--component", "ios", "--artifact-root",
+                        str(root), "--expected-commit", "a" * 40,
+                    ])
+
+        self.assertEqual(exit_code, 1)
+        self.assertEqual(
+            output.getvalue().splitlines(),
+            [
+                "report=external-artifact-root/live-evidence-manifest.json",
+                "live-evidence: failed: failed live commands: ios-65-unit",
+            ],
+        )
+        for unsafe_value in ("raw command output", "secret-like=value", "unrelated-value"):
+            self.assertNotIn(unsafe_value, output.getvalue())
+
+    def test_live_command_failure_summary_has_only_ordered_controlled_names(self):
+        summary = runner._live_command_failure_summary([
+            {"name": "ios-negative-config", "exit": 1, "detail": "raw output"},
+            {"name": "unexpected-command", "exit": 1, "detail": "secret-like=value"},
+            {"name": "ios-65-unit", "exit": 1, "detail": "unrelated-value"},
+            {"name": "ios-negative-config", "exit": 1, "detail": "duplicate"},
+        ])
+        self.assertEqual(
+            summary,
+            "failed live commands: ios-65-unit, ios-negative-config",
+        )
+        for unsafe_value in ("raw output", "secret-like=value", "unrelated-value", "unexpected-command"):
+            self.assertNotIn(unsafe_value, summary)
 
     def test_live_artifact_checksum_and_secret_redaction_controls_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory:

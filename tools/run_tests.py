@@ -130,6 +130,7 @@ LIVE_UI_METHODS = (
     "testAllControlledScenariosShowExpectedStateAndAudit",
     "testReleaseOrientationHooks",
 )
+LIVE_FAILURE_SUMMARY_MAX_ITEMS = 23
 SIMULATOR_UUID = re.compile(
     r"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$"
 )
@@ -1247,6 +1248,30 @@ def _live_failure_detail(error: Exception) -> str:
     return detail
 
 
+def _live_command_failure_summary(checks: list[dict]) -> str:
+    """Return bounded, ordered names for failed controlled live commands."""
+
+    destinations = {device: "" for device in IOS_RELEASE_DEVICES}
+    allowed_names = {
+        "ios-65-unit",
+        "ios-evidence-contract",
+        "ios-negative-config",
+        *(name for name, *_ in ios_release_ui_matrix(destinations, LIVE_UI_METHODS)),
+    }
+    names = sorted(
+        {
+            item["name"]
+            for item in checks
+            if item.get("exit") != 0
+            and isinstance(item.get("name"), str)
+            and item["name"] in allowed_names
+        }
+    )
+    return "failed live commands: " + ", ".join(
+        names[:LIVE_FAILURE_SUMMARY_MAX_ITEMS]
+    )
+
+
 def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict]:
     """Run the approved manual live scope and fail closed on every control error."""
 
@@ -1317,7 +1342,10 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         manifest["results"] = checks
         _write_live_manifest(root, manifest)
         if any(check["exit"] != 0 for check in checks):
-            raise ValueError("one or more live commands failed")
+            detail = _live_command_failure_summary(checks)
+            manifest["failure"] = detail
+            _write_live_manifest(root, manifest)
+            return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": detail}]
         required_files = {"simulator-resolution.json", "ios-negative-config.log"}
         required_bundles: set[str] = set()
         for check in checks:
