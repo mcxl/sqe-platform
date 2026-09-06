@@ -119,24 +119,101 @@ class RunnerContractTests(unittest.TestCase):
             self.assertEqual(manifest["commit"], "a" * 40)
             self.assertTrue(manifest["checksums"])
 
-    def test_live_evidence_fails_closed_for_runtime_type_uuid_and_timeout_errors(self):
+    def test_live_evidence_publishes_fixed_simulator_failure_codes(self):
         cases = (
-            ("wrong runtime", "no available iOS 26 runtime"),
-            ("wrong simulator type", "exact device type is unavailable"),
-            ("duplicate UUID", "simulator UUID is not unique"),
-            ("invalid UUID", "simulator UUID is invalid"),
-            ("timeout", "simctl list exceeded the verification deadline"),
+            ("wrong runtime", "injected runtime detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
+            ("wrong simulator type", "injected type detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
+            ("duplicate UUID", "injected UUID detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
+            ("timeout", "injected timeout detail", runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON),
         )
-        for name, message in cases:
+        for name, message, expected_reason in cases:
             with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
                 root = self.live_artifact_root(directory)
-                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(runner, "_live_execution_context", return_value={}), mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError(message)), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
+                error = runner.SimulatorResolutionError(message, expected_reason)
+                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(runner, "_live_execution_context", return_value={}), mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=error), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
                     checks = runner.live_evidence_checks(root, "a" * 40)
                 self.assertEqual(checks[0]["status"], "failed")
-                self.assertIn(message, checks[0]["detail"])
+                self.assertEqual(checks[0]["reason"], expected_reason)
+                self.assertEqual(
+                    checks[0]["detail"],
+                    "simulator resolution timed out"
+                    if expected_reason == runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON
+                    else "simulator resolution failed",
+                )
+                self.assertNotIn(message, checks[0]["detail"])
                 ios_test.assert_not_called()
                 manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
                 self.assertEqual(manifest["status"], "failed")
+                self.assertEqual(manifest["failure"], expected_reason)
+                self.assertNotIn(message, json.dumps(manifest))
+
+    def test_live_setup_failures_publish_fixed_reason_and_safe_text(self):
+        injected = "injected-path-or-environment=value"
+        with mock.patch.object(
+            runner, "_live_artifact_root", side_effect=ValueError(injected)
+        ):
+            artifact_failure = runner.live_evidence_checks(Path("relative"), "a" * 40)
+        self.assertEqual(artifact_failure[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertEqual(artifact_failure[0]["detail"], "live setup failed")
+        self.assertNotIn(injected, json.dumps(artifact_failure))
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_write_live_manifest", side_effect=OSError(injected)
+            ):
+                manifest_failure = runner.live_evidence_checks(root, "a" * 40)
+        self.assertEqual(manifest_failure[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertEqual(manifest_failure[0]["detail"], "live setup failed")
+        self.assertNotIn(injected, json.dumps(manifest_failure))
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_live_execution_context", side_effect=ValueError(injected)
+            ):
+                context_failure = runner.live_evidence_checks(root, "a" * 40)
+            manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(context_failure[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertEqual(context_failure[0]["detail"], "live setup failed")
+        self.assertEqual(manifest["failure"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertNotIn(injected, json.dumps(manifest))
+
+    def test_manifest_value_errors_publish_fixed_safe_failure(self):
+        initial_injected = "injected initial manifest value error"
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_write_live_manifest", side_effect=ValueError(initial_injected)
+            ):
+                initial_failure = runner.live_evidence_checks(root, "a" * 40)
+        self.assertEqual(initial_failure[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertEqual(initial_failure[0]["detail"], "live setup failed")
+        self.assertNotIn(initial_injected, json.dumps(initial_failure))
+
+        context_injected = "injected context value error"
+        reporting_injected = "injected reporting manifest value error"
+        original_write = runner._write_live_manifest
+
+        def fail_failure_report(root, manifest):
+            if "failure" in manifest:
+                raise ValueError(reporting_injected)
+            original_write(root, manifest)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_live_execution_context", side_effect=ValueError(context_injected)
+            ), mock.patch.object(runner, "_write_live_manifest", side_effect=fail_failure_report):
+                reporting_failure = runner.live_evidence_checks(root, "a" * 40)
+            manifest = json.loads(
+                (root / "live-evidence-manifest.json").read_text(encoding="utf-8")
+            )
+        self.assertEqual(reporting_failure[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+        self.assertEqual(reporting_failure[0]["detail"], "live setup failed")
+        public_json = json.dumps({"result": reporting_failure, "manifest": manifest})
+        self.assertNotIn(context_injected, public_json)
+        self.assertNotIn(reporting_injected, public_json)
 
     def test_live_evidence_fails_closed_for_missing_artifact_and_nonzero_live_result(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -147,7 +224,8 @@ class RunnerContractTests(unittest.TestCase):
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(runner, "_run_live_ios_test", side_effect=missing_artifact), contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(checks[0]["status"], "failed")
-            self.assertIn("required live artifacts are missing", checks[0]["detail"])
+            self.assertEqual(checks[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+            self.assertEqual(checks[0]["detail"], "live setup failed")
 
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)
@@ -253,6 +331,32 @@ class RunnerContractTests(unittest.TestCase):
                         Path(directory) / f"{name}.log",
                     )
                 self.assertEqual(result.reason, expected_reason)
+
+    def test_simctl_timeouts_publish_the_simulator_timeout_code(self):
+        with self.assertRaises(runner.SimulatorResolutionError) as expired_list:
+            runner._simctl_list(timeout=0)
+        self.assertEqual(
+            expired_list.exception.reason,
+            runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
+
+        with self.assertRaises(runner.SimulatorResolutionError) as expired_create:
+            runner._simctl_create("test", "device", "runtime", timeout=0)
+        self.assertEqual(
+            expired_create.exception.reason,
+            runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
+
+        timeout = subprocess.TimeoutExpired(["xcrun", "simctl"], 1)
+        with mock.patch.object(runner.subprocess, "run", side_effect=timeout):
+            with self.assertRaises(runner.SimulatorResolutionError) as listed:
+                runner._simctl_list(timeout=1)
+        self.assertEqual(listed.exception.reason, runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON)
+
+        with mock.patch.object(runner.subprocess, "run", side_effect=timeout):
+            with self.assertRaises(runner.SimulatorResolutionError) as created:
+                runner._simctl_create("test", "device", "runtime", timeout=1)
+        self.assertEqual(created.exception.reason, runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON)
 
     def test_live_ios_test_failure_paths_publish_fixed_reason_codes(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -657,7 +761,7 @@ class RunnerContractTests(unittest.TestCase):
         snapshot = self.simulator_snapshot([
             {"name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True},
         ])
-        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0, 0, 30]):
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(runner, "_simctl_create", return_value=core_uuid), mock.patch.object(runner.time, "sleep"), mock.patch.object(runner.time, "monotonic", side_effect=[0, 0, 0, 0, 0, 180]):
             with self.assertRaisesRegex(runner.SimulatorResolutionError, "did not become available"):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
 
@@ -671,10 +775,13 @@ class RunnerContractTests(unittest.TestCase):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
 
     def test_ios_component_fails_before_xcodebuild_when_resolution_fails(self):
-        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError("no available iOS 26 runtime")), mock.patch.object(runner, "run_ios_test") as run_ios_test:
+        injected = "injected simulator error"
+        with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=runner.SimulatorResolutionError(injected)), mock.patch.object(runner, "run_ios_test") as run_ios_test:
             checks = runner.component_checks("release", "ios")
         self.assertEqual(checks[0]["status"], "failed")
-        self.assertIn("no available iOS 26 runtime", checks[0]["detail"])
+        self.assertEqual(checks[0]["reason"], runner.SIMULATOR_RESOLUTION_FAILURE_REASON)
+        self.assertEqual(checks[0]["detail"], "simulator resolution failed")
+        self.assertNotIn(injected, json.dumps(checks))
         run_ios_test.assert_not_called()
 
     def test_mapping_has_44_unique_known_ids_and_six_groups(self):
@@ -843,8 +950,14 @@ class RunnerContractTests(unittest.TestCase):
         ])
         with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]) as listing, mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 100, 100]):
             runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
-        self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 30)
-        self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 30)
+        self.assertEqual(runner.SIMULATOR_VERIFICATION_SECONDS, 180)
+        self.assertEqual(runner.LIVE_COMMAND_TIMEOUT_SECONDS, 600)
+        self.assertLess(
+            runner.SIMULATOR_VERIFICATION_SECONDS,
+            runner.LIVE_COMMAND_TIMEOUT_SECONDS,
+        )
+        self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 180)
+        self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 180)
 
     def test_register_package_mapping_must_match_the_independent_plan_mapping(self):
         plan, register = self.controlled_evidence_fixture()
@@ -956,9 +1069,9 @@ class RunnerContractTests(unittest.TestCase):
         ])
         with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid) as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 105, 105]):
             runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
-        self.assertEqual(create.call_args.kwargs["timeout"], 25)
+        self.assertEqual(create.call_args.kwargs["timeout"], 175)
 
-        with mock.patch.object(runner, "_simctl_list", return_value=initial), mock.patch.object(runner, "_simctl_create") as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 130]):
+        with mock.patch.object(runner, "_simctl_list", return_value=initial), mock.patch.object(runner, "_simctl_create") as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 280]):
             with self.assertRaisesRegex(runner.SimulatorResolutionError, "create has no verification time remaining"):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,))
         create.assert_not_called()

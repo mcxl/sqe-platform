@@ -100,7 +100,7 @@ PACKAGE_MAPPING_FIELDS = frozenset({"package", "identifiers"})
 PACKAGE_FIELDS = frozenset({"package", "name", "status", "identifiers"})
 EVIDENCE_RECORD_FIELDS = frozenset({"status", "result"})
 IOS_RUNTIME_MAJOR = 26
-SIMULATOR_VERIFICATION_SECONDS = 30
+SIMULATOR_VERIFICATION_SECONDS = 180
 SIMULATOR_POLL_INTERVAL_SECONDS = 1
 LIVE_COMMAND_TIMEOUT_SECONDS = 600
 LIVE_ARTIFACT_MAX_BYTES = 64 * 1024 * 1024
@@ -131,6 +131,9 @@ LIVE_UI_METHODS = (
     "testReleaseOrientationHooks",
 )
 LIVE_FAILURE_SUMMARY_MAX_ITEMS = 23
+LIVE_SETUP_FAILURE_REASON = "live-setup-failed"
+SIMULATOR_RESOLUTION_FAILURE_REASON = "simulator-resolution-failed"
+SIMULATOR_RESOLUTION_TIMEOUT_REASON = "simulator-resolution-timeout"
 LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
     {
         "command-timeout",
@@ -140,6 +143,9 @@ LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
         "result-summary-invalid",
         "result-count-mismatch",
         "negative-configuration-not-rejected",
+        LIVE_SETUP_FAILURE_REASON,
+        SIMULATOR_RESOLUTION_FAILURE_REASON,
+        SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         "controlled-failure",
     }
 )
@@ -150,6 +156,14 @@ SIMULATOR_UUID = re.compile(
 
 class SimulatorResolutionError(ValueError):
     """Raised when a required iOS simulator cannot be safely resolved."""
+
+    def __init__(
+        self,
+        message: str,
+        reason: str = SIMULATOR_RESOLUTION_FAILURE_REASON,
+    ) -> None:
+        super().__init__(message)
+        self.reason = reason
 
 
 class LiveCommandResult(tuple):
@@ -591,7 +605,10 @@ def ios_release_ui_matrix(
 
 def _simctl_list(timeout: float | None = None) -> dict:
     if timeout is not None and timeout <= 0:
-        raise SimulatorResolutionError("simctl list has no verification time remaining")
+        raise SimulatorResolutionError(
+            "simctl list has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
     try:
         completed = subprocess.run(
             ["xcrun", "simctl", "list", "-j"],
@@ -603,7 +620,10 @@ def _simctl_list(timeout: float | None = None) -> dict:
             timeout=timeout,
         )
     except subprocess.TimeoutExpired as error:
-        raise SimulatorResolutionError("simctl list exceeded the verification deadline") from error
+        raise SimulatorResolutionError(
+            "simctl list exceeded the verification deadline",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        ) from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
             f"simctl list failed: {(completed.stdout or '').strip()}"
@@ -619,7 +639,10 @@ def _simctl_list(timeout: float | None = None) -> dict:
 
 def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) -> str:
     if timeout <= 0:
-        raise SimulatorResolutionError("simctl create has no verification time remaining")
+        raise SimulatorResolutionError(
+            "simctl create has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
     try:
         completed = subprocess.run(
             ["xcrun", "simctl", "create", name, device_type, runtime],
@@ -631,7 +654,10 @@ def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) ->
             timeout=timeout,
         )
     except subprocess.TimeoutExpired as error:
-        raise SimulatorResolutionError("simctl create exceeded the verification deadline") from error
+        raise SimulatorResolutionError(
+            "simctl create exceeded the verification deadline",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        ) from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
             f"simctl create failed for {name}: {(completed.stdout or '').strip()}"
@@ -829,7 +855,10 @@ def resolve_ios_destinations(
     deadline = time.monotonic() + SIMULATOR_VERIFICATION_SECONDS
     remaining = deadline - time.monotonic()
     if remaining <= 0:
-        raise SimulatorResolutionError("simctl list has no verification time remaining")
+        raise SimulatorResolutionError(
+            "simctl list has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
     snapshot = _simctl_list(timeout=remaining)
     _record_simulator_event(
         recorder, "initial-snapshot", _controlled_simulator_snapshot(snapshot, names)
@@ -855,7 +884,10 @@ def resolve_ios_destinations(
         else:
             remaining = deadline - time.monotonic()
             if remaining <= 0:
-                raise SimulatorResolutionError("simctl create has no verification time remaining")
+                raise SimulatorResolutionError(
+                    "simctl create has no verification time remaining",
+                    SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+                )
             identifiers[name] = _simctl_create(
                 name, device_types[name], runtime, timeout=remaining
             )
@@ -867,11 +899,16 @@ def resolve_ios_destinations(
             created = True
     if created:
         verification_error: SimulatorResolutionError | None = SimulatorResolutionError(
-            "verification deadline expired before the created simulator was observed"
+            "verification deadline expired before the created simulator was observed",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         )
         while True:
             remaining = deadline - time.monotonic()
             if remaining <= 0:
+                verification_error = SimulatorResolutionError(
+                    "created simulator did not become available before the verification deadline",
+                    SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+                )
                 break
             snapshot = _simctl_list(timeout=remaining)
             _record_simulator_event(
@@ -891,7 +928,8 @@ def resolve_ios_destinations(
                     time.sleep(min(SIMULATOR_POLL_INTERVAL_SECONDS, remaining))
         if verification_error is not None:
             raise SimulatorResolutionError(
-                f"created simulator did not become available: {verification_error}"
+                f"created simulator did not become available: {verification_error}",
+                verification_error.reason,
             )
     destinations = {
         name: f"platform=iOS Simulator,id={_verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])}"
@@ -1298,14 +1336,38 @@ def _write_live_manifest(root: Path, manifest: dict) -> None:
 
 
 def _live_failure_detail(error: Exception) -> str:
-    """Return a safe failure class without command output or environment content."""
+    """Return fixed safe text for a live setup or simulator failure."""
 
-    detail = str(error)
-    if detail.startswith("simctl list failed:"):
-        return "simctl list failed"
-    if detail.startswith("simctl create failed for "):
-        return detail.split(":", 1)[0]
-    return detail
+    reason = _live_failure_reason(error)
+    if reason == SIMULATOR_RESOLUTION_TIMEOUT_REASON:
+        return "simulator resolution timed out"
+    if reason == SIMULATOR_RESOLUTION_FAILURE_REASON:
+        return "simulator resolution failed"
+    return "live setup failed"
+
+
+def _live_failure_reason(error: Exception) -> str:
+    """Return one fixed reason code without reading exception text."""
+
+    if isinstance(error, SimulatorResolutionError):
+        reason = getattr(error, "reason", SIMULATOR_RESOLUTION_FAILURE_REASON)
+        if reason == SIMULATOR_RESOLUTION_TIMEOUT_REASON:
+            return reason
+        return SIMULATOR_RESOLUTION_FAILURE_REASON
+    return LIVE_SETUP_FAILURE_REASON
+
+
+def _live_setup_failure(error: Exception) -> dict:
+    """Build one public live setup failure without exception data."""
+
+    reason = _live_failure_reason(error)
+    return {
+        "name": "live-evidence",
+        "status": "failed",
+        "exit": 1,
+        "detail": _live_failure_detail(error),
+        "reason": reason,
+    }
 
 
 def _published_live_failure_reason(reason: object, name: object = None) -> str:
@@ -1368,7 +1430,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     try:
         root = _live_artifact_root(artifact_root)
     except (OSError, ValueError) as error:
-        return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": _live_failure_detail(error)}]
+        return [_live_setup_failure(error)]
     manifest: dict[str, object] = {
         "scope": "MCX-19-manual-live-evidence",
         "releaseEvidence": False,
@@ -1377,8 +1439,8 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     }
     try:
         _write_live_manifest(root, manifest)
-    except OSError as error:
-        return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": _live_failure_detail(error)}]
+    except (OSError, ValueError) as error:
+        return [_live_setup_failure(error)]
     try:
         manifest.update(_live_execution_context(artifact_root, expected_commit))
         _write_live_manifest(root, manifest)
@@ -1471,10 +1533,13 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         _write_live_manifest(root, manifest)
         return checks
     except (OSError, ValueError, SimulatorResolutionError) as error:
-        detail = _live_failure_detail(error)
-        manifest["failure"] = detail
-        _write_live_manifest(root, manifest)
-        return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": detail}]
+        result = _live_setup_failure(error)
+        manifest["failure"] = result["reason"]
+        try:
+            _write_live_manifest(root, manifest)
+        except (OSError, ValueError):
+            pass
+        return [result]
 
 
 def component_checks(level: str, component: str) -> list[dict]:
@@ -1502,7 +1567,14 @@ def component_checks(level: str, component: str) -> list[dict]:
     try:
         destinations = resolve_ios_destinations(required_devices)
     except SimulatorResolutionError as error:
-        return [{"name": "ios-simulator", "status": "failed", "exit": 1, "detail": str(error)}]
+        reason = _live_failure_reason(error)
+        return [{
+            "name": "ios-simulator",
+            "status": "failed",
+            "exit": 1,
+            "detail": _live_failure_detail(error),
+            "reason": reason,
+        }]
     destination = destinations[IOS_CORE_DEVICE]
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
     checks = [{"name": "ios-simulator", "status": "passed", "exit": 0, "detail": "resolved exact simulator UUIDs"}, run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
