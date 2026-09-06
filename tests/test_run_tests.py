@@ -237,15 +237,135 @@ class RunnerContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unapproved environment"):
             runner._live_command_environment({"SENTINEL_SECRET": "must-not-pass"})
 
-    def test_live_repository_binding_rejects_a_different_expected_commit(self):
-        responses = (
-            subprocess.CompletedProcess([], 0, "https://github.com/mcxl/sqe-platform.git"),
-            subprocess.CompletedProcess([], 0, "a" * 40 + "\n"),
-            subprocess.CompletedProcess([], 0, ""),
-            subprocess.CompletedProcess([], 0, ""),
+    def live_repository_responses(
+        self, remote, head="a" * 40, ancestry_exit=0, clean_output="", remote_output=None
+    ):
+        return (
+            subprocess.CompletedProcess(
+                [], 0, remote + "\n" if remote_output is None else remote_output
+            ),
+            subprocess.CompletedProcess([], 0, head + "\n"),
+            subprocess.CompletedProcess([], ancestry_exit, ""),
+            subprocess.CompletedProcess([], 0, clean_output),
         )
-        with mock.patch.object(runner.subprocess, "run", side_effect=responses):
-            with self.assertRaisesRegex(ValueError, "commit binding failed"):
+
+    def test_live_repository_binding_accepts_only_approved_remote_forms(self):
+        approved_remotes = (
+            "https://github.com/mcxl/sqe-platform.git",
+            "git@github.com:mcxl/sqe-platform.git",
+            "ssh://git@github.com/mcxl/sqe-platform.git",
+            "https://mcxl@github.com/mcxl/sqe-platform",
+        )
+        for remote in approved_remotes:
+            with self.subTest(remote=remote), mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=self.live_repository_responses(remote),
+            ):
+                self.assertEqual(
+                    runner._live_repository_metadata("a" * 40),
+                    {
+                        "repository": runner.LIVE_REPOSITORY,
+                        "commit": "a" * 40,
+                        "baseline": runner.LIVE_BASELINE_COMMIT,
+                    },
+                )
+
+    def test_live_repository_binding_accepts_one_crlf_terminator(self):
+        remote = "https://mcxl@github.com/mcxl/sqe-platform"
+        with mock.patch.object(
+            runner.subprocess,
+            "run",
+            side_effect=self.live_repository_responses(
+                remote, remote_output=remote + "\r\n"
+            ),
+        ):
+            self.assertEqual(
+                runner._live_repository_metadata("a" * 40)["repository"],
+                runner.LIVE_REPOSITORY,
+            )
+
+    def test_live_repository_binding_rejects_unapproved_remote_forms_without_values(self):
+        rejected_remotes = (
+            "https://mcxl:password@github.com/mcxl/sqe-platform",
+            "https://github.com:443/mcxl/sqe-platform",
+            "https://github.com/mcxl/sqe-platform?branch=main",
+            "https://github.com/mcxl/sqe-platform#fragment",
+            "https://mcxl@github.example.com/mcxl/sqe-platform",
+            "https://mcxl@github.com/other-owner/sqe-platform",
+            "https://mcxl@github.com/mcxl/other-repository",
+            "http://github.com/mcxl/sqe-platform.git",
+            "ftp://github.com/mcxl/sqe-platform.git",
+            "https://other-user@github.com/mcxl/sqe-platform",
+            " https://mcxl@github.com/mcxl/sqe-platform ",
+        )
+        for remote in rejected_remotes:
+            with self.subTest(remote=remote), mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=self.live_repository_responses(remote),
+            ):
+                with self.assertRaises(ValueError) as error:
+                    runner._live_repository_metadata("a" * 40)
+                self.assertEqual(
+                    str(error.exception),
+                    "repository binding failed: repository-identity",
+                )
+                self.assertNotIn(remote, str(error.exception))
+
+    def test_live_repository_binding_rejects_extra_or_embedded_line_breaks(self):
+        approved = "https://mcxl@github.com/mcxl/sqe-platform"
+        unsafe_outputs = (
+            approved + "\n\n",
+            approved + "\r\n\r\n",
+            approved + "\nextra-value\n",
+        )
+        for remote_output in unsafe_outputs:
+            with self.subTest(remote_output=repr(remote_output)), mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=self.live_repository_responses(
+                    approved, remote_output=remote_output
+                ),
+            ):
+                with self.assertRaisesRegex(
+                    ValueError, "repository binding failed: repository-identity"
+                ):
+                    runner._live_repository_metadata("a" * 40)
+
+    def test_live_repository_binding_reports_only_failed_check_names(self):
+        remote = "https://mcxl:password@github.example:8443/other-owner/other-repository?secret=value#fragment"
+        head = "c" * 40
+        expected = "d" * 40
+        clean_output = "secret-clean-tree"
+        with mock.patch.object(
+            runner.subprocess,
+            "run",
+            side_effect=self.live_repository_responses(
+                remote, head, ancestry_exit=1, clean_output=clean_output
+            ),
+        ):
+            with self.assertRaises(ValueError) as error:
+                runner._live_repository_metadata(expected)
+        detail = str(error.exception)
+        self.assertEqual(
+            detail,
+            "repository binding failed: repository-identity, expected-commit-match, baseline-ancestry, clean-tree",
+        )
+        for supplied_value in (remote, head, expected, clean_output):
+            self.assertNotIn(supplied_value, detail)
+
+    def test_live_repository_binding_rejects_a_different_expected_commit(self):
+        with mock.patch.object(
+            runner.subprocess,
+            "run",
+            side_effect=self.live_repository_responses(
+                "https://github.com/mcxl/sqe-platform.git"
+            ),
+        ):
+            with self.assertRaisesRegex(
+                ValueError, "repository binding failed: expected-commit-match"
+            ):
                 runner._live_repository_metadata("b" * 40)
 
     def test_live_execution_context_requires_codemagic_workflow_and_exact_root(self):

@@ -1180,20 +1180,33 @@ def _live_repository_metadata(expected_commit: str) -> dict[str, str]:
         "https://github.com/mcxl/sqe-platform.git",
         "git@github.com:mcxl/sqe-platform.git",
         "ssh://git@github.com/mcxl/sqe-platform.git",
+        "https://mcxl@github.com/mcxl/sqe-platform",
     }
+    remote_value = remote.stdout
+    if remote_value.endswith("\r\n"):
+        remote_value = remote_value[:-2]
+    elif remote_value.endswith("\n"):
+        remote_value = remote_value[:-1]
     commit = head.stdout.strip()
+    failed_checks = []
+    if remote.returncode != 0 or remote_value not in allowed_remotes:
+        failed_checks.append("repository-identity")
+    if re.fullmatch(r"[0-9a-f]{40}", expected_commit) is None:
+        failed_checks.append("expected-commit-format")
+    if head.returncode != 0 or re.fullmatch(r"[0-9a-f]{40}", commit) is None:
+        failed_checks.append("git-head")
     if (
-        remote.returncode != 0
-        or remote.stdout.strip() not in allowed_remotes
-        or head.returncode != 0
-        or re.fullmatch(r"[0-9a-f]{40}", expected_commit) is None
-        or re.fullmatch(r"[0-9a-f]{40}", commit) is None
-        or commit != expected_commit
-        or ancestry.returncode != 0
-        or clean.returncode != 0
-        or clean.stdout.strip()
+        re.fullmatch(r"[0-9a-f]{40}", expected_commit) is not None
+        and re.fullmatch(r"[0-9a-f]{40}", commit) is not None
+        and commit != expected_commit
     ):
-        raise ValueError("repository, baseline, clean-tree, or commit binding failed")
+        failed_checks.append("expected-commit-match")
+    if ancestry.returncode != 0:
+        failed_checks.append("baseline-ancestry")
+    if clean.returncode != 0 or clean.stdout.strip():
+        failed_checks.append("clean-tree")
+    if failed_checks:
+        raise ValueError("repository binding failed: " + ", ".join(failed_checks))
     return {"repository": LIVE_REPOSITORY, "commit": commit, "baseline": LIVE_BASELINE_COMMIT}
 
 
