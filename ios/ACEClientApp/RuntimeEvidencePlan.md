@@ -19,13 +19,15 @@ The only proposed live command is:
 
 Run it only in the manual `ace-ios-live-evidence-manual` Codemagic workflow, after
 approval. That workflow has no trigger. The operator must supply the separately
-approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. It must equal
-`CM_COMMIT` and Git HEAD. `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`.
-`CM_BUILD_ID` and `CM_BUILD_DIR` must identify the current Codemagic build. The
-trigger source must be `api`, and `CM_BUILD_STARTED_BY` must identify the operator. The
-workflow variable `ACE_LIVE_EVIDENCE_WORKFLOW` must equal
-`ace-ios-live-evidence-manual`. The runner rejects another context. Do not run the command locally or from a push,
-pull request, tag, schedule, or another workflow.
+approved lower-case SHA in `ACE_LIVE_EVIDENCE_APPROVED_COMMIT`. The dedicated
+`mcx19_live_evidence` Codemagic variable group supplies this value at run time. Do
+not record an approved SHA in the group or repository. It must equal `CM_COMMIT` and
+Git HEAD. `CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID`
+and `CM_BUILD_DIR` must identify the current Codemagic build. The trigger source must
+be `api`, and `CM_BUILD_STARTED_BY` must identify the operator. The workflow variable
+`ACE_LIVE_EVIDENCE_WORKFLOW` must equal `ace-ios-live-evidence-manual`. The runner
+rejects another context. Do not run the command locally or from a push, pull request,
+tag, schedule, or another workflow.
 
 The artifact root is an absolute path outside the Git tree. The runner rejects an
 existing root, a symlink, a path escape, a missing artifact, a changed checksum, or a
