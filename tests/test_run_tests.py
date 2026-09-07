@@ -409,6 +409,60 @@ class RunnerContractTests(unittest.TestCase):
                 )
             self.assertEqual(count_mismatch["reason"], "result-count-mismatch")
 
+    def test_live_ios_test_places_result_bundle_before_build_settings(self):
+        command = runner.ios_release_ui_matrix(
+            {
+                device: f"platform=iOS Simulator,id=controlled-{index}"
+                for index, device in enumerate(runner.IOS_RELEASE_DEVICES)
+            },
+            [runner.LIVE_UI_METHODS[0]],
+        )[0][1]
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner,
+            "_run_live_command",
+            return_value=runner.LiveCommandResult(1, "controlled"),
+        ) as live_command:
+            runner._run_live_ios_test(
+                "ios-release-controlled",
+                command,
+                ROOT,
+                runner.ios_test_environment("light"),
+                1,
+                Path(directory),
+            )
+        executed = live_command.call_args.args[1]
+        self.assertLess(
+            executed.index("-resultBundlePath"),
+            executed.index("ACE_UI_TEST_APPEARANCE=light"),
+        )
+
+    def test_live_negative_configuration_passes_controlled_build_settings(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            captured = {}
+
+            def negative(name, command, cwd, environment, log_path):
+                self.assertEqual(name, "ios-negative-config")
+                captured["command"] = command
+                captured["environment"] = environment
+                log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
+                return 1, "controlled rejection"
+
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], mock.patch.object(
+                runner, "_run_live_command", side_effect=negative
+            ):
+                checks = runner.live_evidence_checks(root, "a" * 40)
+        self.assertTrue(all(check["exit"] == 0 for check in checks))
+        self.assertEqual(captured["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
+        self.assertEqual(
+            captured["command"][-2:],
+            [
+                f"ACE_PREVIEW_ORIGIN={runner.NEGATIVE_CONFIG_ENVIRONMENT['ACE_PREVIEW_ORIGIN']}",
+                f"ACE_BUNDLE_IDENTIFIER={runner.NEGATIVE_CONFIG_ENVIRONMENT['ACE_BUNDLE_IDENTIFIER']}",
+            ],
+        )
+
     def test_negative_configuration_failure_publishes_its_fixed_reason_code(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)

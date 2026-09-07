@@ -1178,6 +1178,17 @@ def _run_live_command(
     return LiveCommandResult(0, f"{name} completed")
 
 
+def _xcodebuild_options_before_build_settings(
+    command: list[str], options: list[str]
+) -> list[str]:
+    """Put Xcode options before controlled command-line build settings."""
+
+    for index, argument in enumerate(command):
+        if re.fullmatch(r"ACE_[A-Z0-9_]+=.*", argument):
+            return [*command[:index], *options, *command[index:]]
+    return [*command, *options]
+
+
 def _run_live_ios_test(
     name: str,
     command: list[str],
@@ -1192,7 +1203,9 @@ def _run_live_ios_test(
     log_path = _safe_live_path(root, f"{name}.log")
     command_result = _run_live_command(
         name,
-        [*command, "-resultBundlePath", str(result_path)],
+        _xcodebuild_options_before_build_settings(
+            command, ["-resultBundlePath", str(result_path)]
+        ),
         cwd,
         environment,
         log_path,
@@ -1484,7 +1497,11 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         negative_log = _safe_live_path(root, "ios-negative-config.log")
         negative_exit, _ = _run_live_command(
             "ios-negative-config",
-            ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"],
+            [
+                "xcodebuild", "build", "-project", "ACEClientApp.xcodeproj",
+                "-scheme", "ACEClientApp",
+                *(f"{key}={value}" for key, value in NEGATIVE_CONFIG_ENVIRONMENT.items()),
+            ],
             ios, NEGATIVE_CONFIG_ENVIRONMENT, negative_log,
         )
         try:
