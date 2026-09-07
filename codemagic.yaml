@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       groups:
-        - mcx19_live_evidence
+        - mcx19_diagnostic
       xcode: 26.4.1
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-diagnostic-manual

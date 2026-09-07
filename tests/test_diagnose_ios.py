@@ -46,6 +46,8 @@ def test_exact_scope_and_retention_contract():
     section = yaml.split("  ace-ios-diagnostic-manual:", 1)[1].split("  ace-ios-core:", 1)[0]
     assert "max_build_duration: 15" in section
     assert "triggering:" not in section
+    assert "- mcx19_diagnostic" in section
+    assert "mcx19_live_evidence" not in section
     assert "/private/tmp/mcx-19-diagnostic-safe/diagnostic.json" in section
     assert "live-evidence --" not in section
     assert "ios_release_ui_matrix" not in source
