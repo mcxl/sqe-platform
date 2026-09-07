@@ -79,7 +79,7 @@ class RunnerContractTests(unittest.TestCase):
                 (artifact_root / "live-evidence-manifest.json").read_text(encoding="utf-8")
             )
             self.assertEqual(manifest["status"], "failed")
-            self.assertEqual(manifest["results"], [])
+            self.assertNotIn(name, [item["name"] for item in manifest["results"]])
             (artifact_root / f"{name}.log").write_text("controlled result", encoding="utf-8")
             (artifact_root / f"{name}.xcresult").mkdir()
             (artifact_root / f"{name}.xcresult" / "Info.plist").write_text("controlled", encoding="utf-8")
@@ -107,6 +107,91 @@ class RunnerContractTests(unittest.TestCase):
             mock.patch.object(runner, "_run_live_command", side_effect=negative),
         )
 
+    def test_live_progress_survives_interruption_after_one_completed_command(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            output = StringIO()
+            first = {"name": "ios-65-unit", "exit": 0, "detail": "ios-65-unit executed 65 tests", "process_exit": 0}
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(
+                runner, "_run_live_ios_test", side_effect=[first, KeyboardInterrupt()]
+            ), contexts[7], redirect_stdout(output):
+                with self.assertRaises(KeyboardInterrupt):
+                    runner.live_evidence_checks(root, "a" * 40)
+            progress = json.loads((root / "live-evidence-progress.json").read_text())
+            manifest = json.loads((root / "live-evidence-manifest.json").read_text())
+            self.assertFalse(progress["releaseEvidence"])
+            self.assertEqual(progress["status"], "incomplete")
+            self.assertEqual(progress["completed"], [runner._published_live_result(first)])
+            self.assertIn(progress["activeCommand"], runner._live_command_names())
+            self.assertNotEqual(progress["activeCommand"], "ios-65-unit")
+            self.assertEqual(manifest["results"], progress["completed"])
+            self.assertIn('"processExit": 0', output.getvalue())
+
+    def test_live_progress_filters_data_flushes_and_preserves_previous_file_on_write_failure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            raw = {"name": "ios-65-unit", "exit": 1, "process_exit": 65,
+                   "detail": "password=do-not-publish", "reason": "token=do-not-publish"}
+            with mock.patch("builtins.print") as printed:
+                runner._write_live_progress(root, [raw], "ios-negative-config")
+            self.assertTrue(printed.call_args.kwargs["flush"])
+            path = root / "live-evidence-progress.json"
+            before = path.read_bytes()
+            self.assertNotIn(b"do-not-publish", before)
+            self.assertNotIn("do-not-publish", str(printed.call_args))
+            self.assertEqual(json.loads(before)["completed"][0]["processExit"], 65)
+            with mock.patch.object(runner.os, "replace", side_effect=OSError("write failed")):
+                with self.assertRaises(OSError):
+                    runner._write_live_progress(root, [], "setup")
+            self.assertEqual(path.read_bytes(), before)
+            self.assertEqual(list(root.iterdir()), [path])
+            with self.assertRaises(ValueError):
+                runner._write_live_progress(root, [], "password=do-not-publish")
+
+    def test_live_progress_survives_abrupt_process_exit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            code = (
+                "import os, runpy; from pathlib import Path; "
+                f"runner = runpy.run_path({str(ROOT / 'tools/run_tests.py')!r}); "
+                f"runner['_write_live_progress'](Path({directory!r}), "
+                "[{'name': 'ios-65-unit', 'exit': 0, 'process_exit': 0}], 'ios-negative-config'); "
+                "os._exit(17)"
+            )
+            process = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, timeout=15)
+            self.assertEqual(process.returncode, 17)
+            event = json.loads(process.stdout.removeprefix("live-progress="))
+            self.assertEqual(event["completedCount"], 1)
+            self.assertEqual(event["activeCommand"], "ios-negative-config")
+            progress = json.loads((Path(directory) / "live-evidence-progress.json").read_text())
+            self.assertEqual(progress["completed"][0]["processExit"], 0)
+            self.assertFalse(progress["releaseEvidence"])
+
+    def test_live_progress_retries_only_bounded_windows_sharing_errors(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            original_replace = runner.os.replace
+            sharing_error = PermissionError("transient sharing failure")
+            sharing_error.winerror = 5
+            calls = []
+
+            def replace(source, destination):
+                calls.append(destination)
+                if len(calls) == 1:
+                    raise sharing_error
+                return original_replace(source, destination)
+
+            with mock.patch.object(runner.os, "replace", side_effect=replace), mock.patch.object(runner.time, "sleep") as sleep:
+                runner._write_live_progress(root, [], "setup")
+            self.assertEqual(len(calls), 2)
+            sleep.assert_called_once_with(0.1)
+            before = (root / "live-evidence-progress.json").read_bytes()
+            with mock.patch.object(runner.os, "replace", side_effect=sharing_error) as replace_mock, mock.patch.object(runner.time, "sleep"):
+                with self.assertRaises(PermissionError):
+                    runner._write_live_progress(root, [], "artifact-validation")
+            self.assertEqual(replace_mock.call_count, 3)
+            self.assertEqual((root / "live-evidence-progress.json").read_bytes(), before)
+
     def test_live_evidence_success_fixture_writes_initial_external_controlled_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)
@@ -120,6 +205,13 @@ class RunnerContractTests(unittest.TestCase):
             self.assertFalse(manifest["releaseEvidence"])
             self.assertEqual(manifest["commit"], "a" * 40)
             self.assertTrue(manifest["checksums"])
+            progress = json.loads((root / "live-evidence-progress.json").read_text())
+            self.assertEqual(progress["completed"], checks)
+            self.assertEqual(len(progress["completed"]), 23)
+            self.assertEqual(progress["completed"][-1]["reason"], "negative-configuration-rejected")
+            self.assertEqual(progress["activeCommand"], "artifact-validation")
+            self.assertEqual(progress["status"], "incomplete")
+            self.assertFalse(progress["releaseEvidence"])
 
     def test_live_evidence_publishes_fixed_simulator_failure_codes(self):
         cases = (
@@ -291,7 +383,7 @@ class RunnerContractTests(unittest.TestCase):
                 )
 
         self.assertEqual(exit_code, 1)
-        output_lines = output.getvalue().splitlines()
+        output_lines = [line for line in output.getvalue().splitlines() if not line.startswith("live-progress=")]
         self.assertEqual(output_lines[0], "report=external-artifact-root/live-evidence-manifest.json")
         self.assertIn("ios-65-unit=71", output_lines[1])
         self.assertNotIn("ios-evidence-contract=", output_lines[1].split("; process exits: ")[1])
@@ -1289,7 +1381,8 @@ class RunnerContractTests(unittest.TestCase):
         )
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
-        self.assertNotIn("artifacts:", workflow)
+        self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
+                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json")
         owned_paths = (
             "codemagic.yaml",
             "tools/run_tests.py",

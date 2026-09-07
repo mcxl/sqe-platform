@@ -102,3 +102,6 @@ workflows:
         script: |
           set -euo pipefail
           python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    # Only the allowlisted progress summary is published. Raw logs and bundles stay private.
+    artifacts:
+      - /private/tmp/mcx-19-live-evidence/live-evidence-progress.json

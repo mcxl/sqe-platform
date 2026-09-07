@@ -1536,6 +1536,51 @@ def _write_live_manifest(root: Path, manifest: dict) -> None:
     path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def _write_live_progress(root: Path, checks: list[dict], active: str | None) -> None:
+    """Retain atomic, allowlisted progress; never publish raw command output."""
+
+    names = _live_command_names()
+    if active not in names | {None, "setup", "artifact-validation"} or len(checks) > len(names):
+        raise ValueError("invalid live progress scope")
+    completed = [_published_live_result(check) for check in checks]
+    progress = {
+        "releaseEvidence": False,
+        "status": "incomplete",
+        "activeCommand": active,
+        "completed": completed,
+    }
+    path = _safe_live_path(root, "live-evidence-progress.json")
+    if path.is_symlink():
+        raise ValueError("live progress path is a symlink")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=root, delete=False) as handle:
+            temporary = Path(handle.name)
+            json.dump(progress, handle, sort_keys=True)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        for attempt in range(3):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError as error:
+                # Windows file scanners can briefly hold the previous summary open.
+                if getattr(error, "winerror", None) not in (5, 32) or attempt == 2:
+                    raise
+                time.sleep(0.1)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+    # The console record survives even if the provider cannot collect artifacts on cancellation.
+    print("live-progress=" + json.dumps({
+        "activeCommand": active,
+        "completedCount": len(completed),
+        "lastCompleted": completed[-1] if completed else None,
+        "releaseEvidence": False,
+    }, sort_keys=True), flush=True)
+
+
 def _live_failure_detail(error: Exception) -> str:
     """Return fixed safe text for a live setup or simulator failure."""
 
@@ -1751,6 +1796,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     }
     try:
         _write_live_manifest(root, manifest)
+        _write_live_progress(root, [], "setup")
     except (OSError, ValueError) as error:
         return [_live_setup_failure(error)]
     try:
@@ -1775,33 +1821,40 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         manifest["simulatorMetadata"] = "simulator-resolution.json"
         _write_live_manifest(root, manifest)
         ios = ROOT / "ios" / "ACEClientApp"
-        checks = [
-            _run_live_ios_test(
-                "ios-65-unit",
-                ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests"],
-                ios, ios_test_environment(), 65, root,
-            )
-        ]
-        checks.extend(
-            _run_live_ios_test(name, command, ios, environment, expected, root)
-            for name, command, environment, expected in ios_release_ui_matrix(
-                destinations, LIVE_UI_METHODS
-            )
-        )
-        checks.append(_run_live_ios_test(
+        checks: list[dict] = []
+
+        def record(check: dict) -> None:
+            checks.append(check)
+            _write_live_progress(root, checks, None)
+            manifest["results"] = [_published_live_result(item) for item in checks]
+            _write_live_manifest(root, manifest)
+
+        commands = [(
+            "ios-65-unit",
+            ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests"],
+            ios_test_environment(), 65,
+        )]
+        commands.extend(ios_release_ui_matrix(destinations, LIVE_UI_METHODS))
+        commands.append((
             "ios-evidence-contract",
             ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"],
-            ios, ios_test_environment(), 42, root,
+            ios_test_environment(), 42,
         ))
+        for name, command, environment, expected in commands:
+            _write_live_progress(root, checks, name)
+            record(_run_live_ios_test(name, command, ios, environment, expected, root))
         negative_log = _safe_live_path(root, "ios-negative-config.log")
+        _write_live_progress(root, checks, "ios-negative-config")
         negative_result = _run_live_command(
             "ios-negative-config",
             ios_negative_configuration_command(),
             ios, NEGATIVE_CONFIG_ENVIRONMENT, negative_log,
         )
-        checks.append(
+        record(
             _negative_configuration_result(root, negative_log, negative_result)
         )
+        if all(check["exit"] == 0 for check in checks):
+            _write_live_progress(root, checks, "artifact-validation")
         checks = [_published_live_result(check) for check in checks]
         manifest["results"] = checks
         _write_live_manifest(root, manifest)
