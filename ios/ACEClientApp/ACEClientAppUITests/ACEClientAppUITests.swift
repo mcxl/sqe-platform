@@ -10,15 +10,32 @@ final class ACEClientAppUITests: XCTestCase {
         return appearance
     }
 
-    private func launch(_ scenario: String) -> XCUIApplication {
+    private func launch(_ scenario: String, appearance requestedAppearance: String? = nil) -> XCUIApplication {
         let app = XCUIApplication()
-        let appearance = requiredAppearance()
+        let appearance = requestedAppearance ?? requiredAppearance()
         app.launchEnvironment["ACE_UI_TEST_SCENARIO"] = scenario
         app.launchEnvironment["ACE_UI_TEST_APPEARANCE"] = appearance
-        app.launchArguments += ["-AppleInterfaceStyle", appearance == "dark" ? "Dark" : "Light"]
         app.launch()
-        XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)
         return app
+    }
+
+    func testBothAppearances() {
+        for appearance in ["light", "dark"] {
+            let app = launch("release", appearance: appearance)
+            defer { app.terminate() }
+            let indicator = app.staticTexts["Effective interface style"]
+            XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+            let displayedAppearance = XCTNSPredicateExpectation(
+                predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+            )
+            XCTAssertEqual(XCTWaiter.wait(for: [displayedAppearance], timeout: 5), .completed,
+                           "The displayed view must use \(appearance) appearance")
+            XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
+            let screenshot = XCTAttachment(screenshot: app.screenshot())
+            screenshot.name = "Fictional release — \(appearance)"
+            screenshot.lifetime = .keepAlways
+            add(screenshot)
+        }
     }
 
     func testLaunchShowsSafeConfigurationState() throws {

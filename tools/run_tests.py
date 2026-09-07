@@ -125,13 +125,14 @@ LIVE_CONTROLLED_ENVIRONMENT_KEYS = frozenset(
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
 LIVE_UI_METHODS = (
+    "testBothAppearances",
     "testLaunchShowsSafeConfigurationState",
     "testSignInPasswordFieldIsSecure",
     "testFictionalReleaseHasApprovedCopyControls",
     "testAllControlledScenariosShowExpectedStateAndAudit",
     "testReleaseOrientationHooks",
 )
-LIVE_FAILURE_SUMMARY_MAX_ITEMS = 23
+LIVE_FAILURE_SUMMARY_MAX_ITEMS = 27
 LIVE_RESULT_SUMMARY_MAX_BYTES = 1024 * 1024
 LIVE_RESULT_SUMMARY_MAX_NODES = 10_000
 LIVE_PROCESS_EXIT_MIN = -(2**31)
@@ -1907,8 +1908,8 @@ def component_checks(level: str, component: str) -> list[dict]:
     if shutil.which("xcodebuild") is None:
         return [{"name": "ios-xcode", "status": "unavailable", "exit": 2, "detail": "xcodebuild is unavailable"}]
     methods = ui_methods()
-    if len(methods) != 5:
-        return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": f"expected five UI methods, found {len(methods)}"}]
+    if tuple(methods) != LIVE_UI_METHODS:
+        return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": "UI methods do not match the controlled inventory"}]
     required_devices = IOS_RELEASE_DEVICES if level == "release" else (IOS_CORE_DEVICE,)
     if shutil.which("xcrun") is None:
         return [{"name": "ios-simulator", "status": "unavailable", "exit": 2, "detail": "missing tool: xcrun"}]

@@ -198,7 +198,7 @@ class RunnerContractTests(unittest.TestCase):
             contexts = self.run_live_success_fixture(root)
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
-            self.assertEqual(len(checks), 23, checks)
+            self.assertEqual(len(checks), 27, checks)
             self.assertTrue(all(check["exit"] == 0 for check in checks))
             manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["status"], "passed-not-release-evidence")
@@ -207,7 +207,7 @@ class RunnerContractTests(unittest.TestCase):
             self.assertTrue(manifest["checksums"])
             progress = json.loads((root / "live-evidence-progress.json").read_text())
             self.assertEqual(progress["completed"], checks)
-            self.assertEqual(len(progress["completed"]), 23)
+            self.assertEqual(len(progress["completed"]), 27)
             self.assertEqual(progress["completed"][-1]["reason"], "negative-configuration-rejected")
             self.assertEqual(progress["activeCommand"], "artifact-validation")
             self.assertEqual(progress["status"], "incomplete")
@@ -1301,7 +1301,7 @@ class RunnerContractTests(unittest.TestCase):
         destinations = {runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111"}
         with mock.patch.object(runner.shutil, "which", return_value="xcodebuild"), mock.patch.object(runner, "resolve_ios_destinations", return_value=destinations), mock.patch.object(runner, "run_ios_test", return_value={"status": "passed"}) as run_ios_test:
             runner.component_checks("core", "ios")
-        self.assertEqual(run_ios_test.call_count, 6)
+        self.assertEqual(run_ios_test.call_count, 7)
         for call in run_ios_test.call_args_list:
             if call.args[0].startswith("ios-core-ui-"):
                 self.assertEqual(call.args[3]["ACE_UI_TEST_APPEARANCE"], "light")
@@ -1453,9 +1453,9 @@ class RunnerContractTests(unittest.TestCase):
             runner.component_checks("release", "ios")
         calls = run_ios_test.call_args_list
         release_calls = [call for call in calls if call.args[0].startswith("ios-release-")]
-        self.assertEqual(len(release_calls), 20)
-        self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "light" for call in release_calls), 10)
-        self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "dark" for call in release_calls), 10)
+        self.assertEqual(len(release_calls), 24)
+        self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "light" for call in release_calls), 12)
+        self.assertEqual(sum(call.args[3].get("ACE_UI_TEST_APPEARANCE") == "dark" for call in release_calls), 12)
         self.assertTrue(all(any(argument == f"ACE_UI_TEST_APPEARANCE={call.args[3]['ACE_UI_TEST_APPEARANCE']}" for argument in call.args[1]) for call in release_calls))
         self.assertTrue(all("ACEClientAppUITests" in call.args[1] for call in release_calls))
         negative = next(
@@ -1487,9 +1487,24 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn(r"@Environment(\.colorScheme)", indicator)
         self.assertIn('Text(colorScheme == .dark ? "dark" : "light")', indicator)
         self.assertNotIn("ProcessInfo", indicator)
-        self.assertNotIn("preferredColorScheme", source)
+        self.assertIn(".preferredColorScheme(uiTestColorScheme)", app)
+        override = app.split("#if DEBUG", 1)[1].split("#endif", 1)[0]
+        self.assertIn("guard UITestScenario.current != nil else { return nil }", override)
+        self.assertIn('case "light": return .light', override)
+        self.assertIn('case "dark": return .dark', override)
+        self.assertIn('default: return nil', override)
         ui_test = (ROOT / "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift").read_text(encoding="utf-8")
-        self.assertIn('XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)', ui_test)
+        launch = ui_test.split("private func launch(", 1)[1].split("func testBothAppearances", 1)[0]
+        self.assertNotIn("XCTAssert", launch)
+        self.assertNotIn("AppleInterfaceStyle", ui_test)
+        appearance_test = ui_test.split("func testBothAppearances", 1)[1].split("func testLaunch", 1)[0]
+        self.assertIn('for appearance in ["light", "dark"]', appearance_test)
+        self.assertIn('defer { app.terminate() }', appearance_test)
+        self.assertIn('indicator.waitForExistence(timeout: 5)', appearance_test)
+        self.assertIn('NSPredicate(format: "label == %@", appearance), object: indicator', appearance_test)
+        self.assertIn('XCTWaiter.wait(for: [displayedAppearance], timeout: 5)', appearance_test)
+        self.assertIn('testBothAppearances', runner.LIVE_UI_METHODS)
+        self.assertEqual(runner.LIVE_FAILURE_SUMMARY_MAX_ITEMS, 27)
 
     def test_negative_command_is_unsigned_simulator_and_keeps_invalid_inputs(self):
         command = runner.ios_negative_configuration_command()

@@ -6,6 +6,17 @@ struct ACEClientApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var state = SessionState()
 
+    #if DEBUG
+    private var uiTestColorScheme: ColorScheme? {
+        guard UITestScenario.current != nil else { return nil }
+        switch ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
+        case "light": return .light
+        case "dark": return .dark
+        default: return nil
+        }
+    }
+    #endif
+
     var body: some Scene {
         WindowGroup {
             ZStack(alignment: .topLeading) {
@@ -14,6 +25,9 @@ struct ACEClientApp: App {
                 EffectiveInterfaceStyleIndicator()
                 #endif
             }
+                #if DEBUG
+                .preferredColorScheme(uiTestColorScheme)
+                #endif
                 .task {
                 #if DEBUG
                 guard UITestScenario.current == nil else { return }

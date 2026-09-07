@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One manual G0 diagnostic: dark orientation selector only. Not evidence."""
+"""One manual G0 diagnostic: both appearances in one UI selector. Not evidence."""
 from __future__ import annotations
 
 import json
@@ -18,7 +18,7 @@ except ModuleNotFoundError:
 WORKFLOW = "ace-ios-diagnostic-manual"
 ROOT = Path("/private/tmp/mcx-19-diagnostic")
 SAFE_ROOT = Path("/private/tmp/mcx-19-diagnostic-safe")
-METHOD = "testReleaseOrientationHooks"
+METHOD = "testBothAppearances"
 
 
 def redact(text: str) -> str:
@@ -97,7 +97,7 @@ def main() -> int:
     except (OSError, ValueError):
         print("diagnostic setup rejected; no test started", flush=True)
         return 1
-    report = {"scope": "one-dark-orientation-diagnostic", "releaseEvidence": False,
+    report = {"scope": "one-light-dark-appearance-diagnostic", "releaseEvidence": False,
               "commit": commit, "results": {}}
     publish(report)
     try:
