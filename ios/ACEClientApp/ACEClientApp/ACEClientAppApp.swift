@@ -5,16 +5,13 @@ import UIKit
 struct ACEClientApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var state = SessionState()
-    @Environment(\.colorScheme) private var colorScheme
 
     var body: some Scene {
         WindowGroup {
             ZStack(alignment: .topLeading) {
                 RootView(state: state)
                 #if DEBUG
-                Text(colorScheme == .dark ? "dark" : "light")
-                    .accessibilityIdentifier("Effective interface style")
-                    .opacity(0.01)
+                EffectiveInterfaceStyleIndicator()
                 #endif
             }
                 .task {
@@ -26,6 +23,19 @@ struct ACEClientApp: App {
         }
     }
 }
+
+#if DEBUG
+private struct EffectiveInterfaceStyleIndicator: View {
+    // Read the window's environment, not the App's scene-level environment.
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        Text(colorScheme == .dark ? "dark" : "light")
+            .accessibilityIdentifier("Effective interface style")
+            .opacity(0.01)
+    }
+}
+#endif
 
 @MainActor
 final class AppDelegate: NSObject, UIApplicationDelegate {

@@ -1478,6 +1478,19 @@ class RunnerContractTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             runner._live_command_environment({"TEST_RUNNER_UNAPPROVED": "blocked"})
 
+    def test_appearance_indicator_reads_the_window_view_environment(self):
+        source = (ROOT / "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift").read_text(encoding="utf-8")
+        app, indicator = source.split("private struct EffectiveInterfaceStyleIndicator: View {", 1)
+        indicator = indicator.split("@MainActor", 1)[0]
+        self.assertNotIn("@Environment", app)
+        self.assertIn("EffectiveInterfaceStyleIndicator()", app.split("WindowGroup {", 1)[1])
+        self.assertIn(r"@Environment(\.colorScheme)", indicator)
+        self.assertIn('Text(colorScheme == .dark ? "dark" : "light")', indicator)
+        self.assertNotIn("ProcessInfo", indicator)
+        self.assertNotIn("preferredColorScheme", source)
+        ui_test = (ROOT / "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift").read_text(encoding="utf-8")
+        self.assertIn('XCTAssertEqual(app.staticTexts["Effective interface style"].label, appearance)', ui_test)
+
     def test_negative_command_is_unsigned_simulator_and_keeps_invalid_inputs(self):
         command = runner.ios_negative_configuration_command()
         self.assertEqual(command[command.index("-sdk") + 1], "iphonesimulator")
