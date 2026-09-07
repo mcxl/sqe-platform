@@ -102,8 +102,7 @@ def main() -> int:
     publish(report)
     # Negative first: retain its error even if simulator setup or UI execution fails.
     negative_log = ROOT / "negative.log"
-    negative = run(["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj",
-        "-scheme", "ACEClientApp", *(f"{k}={v}" for k, v in rt.NEGATIVE_CONFIG_ENVIRONMENT.items())],
+    negative = run(rt.ios_negative_configuration_command(),
         rt.NEGATIVE_CONFIG_ENVIRONMENT, negative_log, 120)
     negative["errors"] = errors(negative_log)
     negative["requiredRejectionFound"] = (

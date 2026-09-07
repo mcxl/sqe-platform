@@ -678,6 +678,7 @@ class RunnerContractTests(unittest.TestCase):
                 checks = runner.live_evidence_checks(root, "a" * 40)
         self.assertTrue(all(check["exit"] == 0 for check in checks))
         self.assertEqual(captured["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
+        self.assertEqual(captured["command"], runner.ios_negative_configuration_command())
         self.assertEqual(
             captured["command"][-2:],
             [
@@ -1371,12 +1372,26 @@ class RunnerContractTests(unittest.TestCase):
         )
         self.assertEqual(negative.kwargs["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
         self.assertEqual(negative.kwargs["expected_failure"], runner.NEGATIVE_CONFIG_REJECTION)
+        self.assertEqual(negative.args[1], runner.ios_negative_configuration_command())
 
-    def test_ui_scheme_forwards_the_appearance_build_setting_to_xctest(self):
+    def test_ui_runner_receives_appearance_without_conflicting_scheme_macro(self):
         scheme = (ROOT / "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme").read_text(encoding="utf-8")
-        self.assertIn('key="ACE_UI_TEST_APPEARANCE"', scheme)
-        self.assertIn('value="$(ACE_UI_TEST_APPEARANCE)"', scheme)
+        self.assertNotIn('key="ACE_UI_TEST_APPEARANCE"', scheme)
         self.assertIn('<TestAction buildConfiguration="Debug"', scheme)
+        for appearance in ("light", "dark"):
+            environment = runner.ios_test_environment(appearance)
+            self.assertEqual(environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"], appearance)
+            self.assertEqual(runner._live_command_environment(environment)["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"], appearance)
+        with self.assertRaises(ValueError):
+            runner._live_command_environment({"TEST_RUNNER_UNAPPROVED": "blocked"})
+
+    def test_negative_command_is_unsigned_simulator_and_keeps_invalid_inputs(self):
+        command = runner.ios_negative_configuration_command()
+        self.assertEqual(command[command.index("-sdk") + 1], "iphonesimulator")
+        self.assertEqual(command[command.index("-destination") + 1], "generic/platform=iOS Simulator")
+        self.assertIn("CODE_SIGNING_ALLOWED=NO", command)
+        self.assertIn("ACE_PREVIEW_ORIGIN=http://invalid.example.invalid", command)
+        self.assertNotIn("-allowProvisioningUpdates", command)
 
     def test_make_ui_test_sets_an_overridable_light_appearance(self):
         makefile = (ROOT / "ios/ACEClientApp/Makefile").read_text(encoding="utf-8")
@@ -1384,6 +1399,7 @@ class RunnerContractTests(unittest.TestCase):
             "# Remove derived data.", 1
         )[0]
         self.assertIn("UI_TEST_APPEARANCE ?= light", makefile)
+        self.assertIn('TEST_RUNNER_ACE_UI_TEST_APPEARANCE="$(UI_TEST_APPEARANCE)" xcodebuild test', ui_test_target)
         self.assertIn(
             "ACE_UI_TEST_APPEARANCE=$(UI_TEST_APPEARANCE)", ui_test_target
         )

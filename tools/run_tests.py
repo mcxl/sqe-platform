@@ -119,7 +119,8 @@ LIVE_OPERATING_ENVIRONMENT_KEYS = (
     "LC_ALL",
 )
 LIVE_CONTROLLED_ENVIRONMENT_KEYS = frozenset(
-    (*IOS_TEST_ENVIRONMENT, *NEGATIVE_CONFIG_ENVIRONMENT, "ACE_UI_TEST_APPEARANCE")
+    (*IOS_TEST_ENVIRONMENT, *NEGATIVE_CONFIG_ENVIRONMENT, "ACE_UI_TEST_APPEARANCE",
+     "TEST_RUNNER_ACE_UI_TEST_APPEARANCE")
 )
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
@@ -620,7 +621,19 @@ def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
         if appearance not in {"light", "dark"}:
             raise ValueError("UI test appearance must be light or dark")
         environment["ACE_UI_TEST_APPEARANCE"] = appearance
+        # xcodebuild forwards TEST_RUNNER_ variables to XCTest without the prefix.
+        environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] = appearance
     return environment
+
+
+def ios_negative_configuration_command() -> list[str]:
+    """Reach the invalid-input build phase without device signing requirements."""
+    return [
+        "xcodebuild", "build", "-project", "ACEClientApp.xcodeproj",
+        "-scheme", "ACEClientApp", "-sdk", "iphonesimulator",
+        "-destination", "generic/platform=iOS Simulator", "CODE_SIGNING_ALLOWED=NO",
+        *(f"{key}={value}" for key, value in NEGATIVE_CONFIG_ENVIRONMENT.items()),
+    ]
 
 
 def ios_release_ui_matrix(
@@ -1783,11 +1796,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         negative_log = _safe_live_path(root, "ios-negative-config.log")
         negative_result = _run_live_command(
             "ios-negative-config",
-            [
-                "xcodebuild", "build", "-project", "ACEClientApp.xcodeproj",
-                "-scheme", "ACEClientApp",
-                *(f"{key}={value}" for key, value in NEGATIVE_CONFIG_ENVIRONMENT.items()),
-            ],
+            ios_negative_configuration_command(),
             ios, NEGATIVE_CONFIG_ENVIRONMENT, negative_log,
         )
         checks.append(
@@ -1872,7 +1881,7 @@ def component_checks(level: str, component: str) -> list[dict]:
                 destinations, methods
             )
         )
-        checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ["xcodebuild", "build", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp"], ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
+        checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ios_negative_configuration_command(), ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])
     return checks
 
 
