@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One manual G0 diagnostic: one UI selector and one negative build. Not evidence."""
+"""One manual G0 diagnostic: dark orientation selector only. Not evidence."""
 from __future__ import annotations
 
 import json
@@ -18,7 +18,7 @@ except ModuleNotFoundError:
 WORKFLOW = "ace-ios-diagnostic-manual"
 ROOT = Path("/private/tmp/mcx-19-diagnostic")
 SAFE_ROOT = Path("/private/tmp/mcx-19-diagnostic-safe")
-METHOD = "testLaunchShowsSafeConfigurationState"
+METHOD = "testReleaseOrientationHooks"
 
 
 def redact(text: str) -> str:
@@ -97,18 +97,8 @@ def main() -> int:
     except (OSError, ValueError):
         print("diagnostic setup rejected; no test started", flush=True)
         return 1
-    report = {"scope": "one-ui-and-negative-diagnostic", "releaseEvidence": False,
+    report = {"scope": "one-dark-orientation-diagnostic", "releaseEvidence": False,
               "commit": commit, "results": {}}
-    publish(report)
-    # Negative first: retain its error even if simulator setup or UI execution fails.
-    negative_log = ROOT / "negative.log"
-    negative = run(rt.ios_negative_configuration_command(),
-        rt.NEGATIVE_CONFIG_ENVIRONMENT, negative_log, 120)
-    negative["errors"] = errors(negative_log)
-    negative["requiredRejectionFound"] = (
-        negative_log.is_file() and negative_log.stat().st_size <= 16 * 1024 * 1024
-        and rt.NEGATIVE_CONFIG_REJECTION in negative_log.read_text(encoding="utf-8", errors="replace"))
-    report["results"]["negative"] = negative
     publish(report)
     try:
         destination = rt.resolve_ios_destinations((rt.IOS_CORE_DEVICE,))[rt.IOS_CORE_DEVICE]
@@ -122,8 +112,8 @@ def main() -> int:
         "-scheme", "ACEClientAppUITests", "-configuration", "Debug",
         "-destination", destination,
         f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{METHOD}",
-        "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
-        rt.ios_test_environment("light"), ui_log, 360)
+        "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=dark"],
+        rt.ios_test_environment("dark"), ui_log, 360)
     ui["selector"] = METHOD
     ui["errors"] = errors(ui_log)
     report["results"]["ui"] = ui

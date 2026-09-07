@@ -1,6 +1,6 @@
 workflows:
   ace-ios-diagnostic-manual:
-    name: ACE iOS MCX-19 Two-Command Diagnostic (Not Evidence)
+    name: ACE iOS MCX-19 Dark Orientation Diagnostic (Not Evidence)
     max_build_duration: 15
     instance_type: mac_mini_m2
     environment:
@@ -9,9 +9,9 @@ workflows:
       xcode: 26.4.1
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-diagnostic-manual
-    # No automatic trigger. One UI selector and one negative build only.
+    # No automatic trigger. One dark orientation UI selector only.
     scripts:
-      - name: Retain the two redacted failure records
+      - name: Retain the dark orientation assertion
         script: python3 tools/diagnose_ios.py
     artifacts:
       - /private/tmp/mcx-19-diagnostic-safe/diagnostic.json

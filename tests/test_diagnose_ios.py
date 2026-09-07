@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 from unittest.mock import patch
 
@@ -51,6 +52,42 @@ def test_exact_scope_and_retention_contract():
     assert "/private/tmp/mcx-19-diagnostic-safe/diagnostic.json" in section
     assert "live-evidence --" not in section
     assert "ios_release_ui_matrix" not in source
-    assert diagnostic.METHOD == "testLaunchShowsSafeConfigurationState"
-    assert "negative_log, 120" in source
+    assert diagnostic.METHOD == "testReleaseOrientationHooks"
     assert "ui_log, 360" in source
+
+
+def test_diagnostic_runs_only_dark_orientation_and_retains_failure(tmp_path, monkeypatch):
+    """Catch an extra build, wrong selector/appearance, or lost assertion details."""
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices: {devices[0]: "platform=iOS Simulator,id=fixture"})
+    commands = []
+
+    def run(command, environment, log, timeout):
+        commands.append(command)
+        if command[:2] == ["xcodebuild", "test"]:
+            assert "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks" in command
+            assert "ACE_UI_TEST_APPEARANCE=dark" in command
+            assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "dark"
+            assert timeout == 360
+            (root / "ui.xcresult").mkdir()
+            log.write_text('error: XCTAssertEqual failed: light is not dark\n')
+            return {"processExit": 65}
+        assert command[:4] == ["xcrun", "xcresulttool", "get", "test-results"]
+        log.write_text(json.dumps({"passedTests": 0, "failedTests": 1, "skippedTests": 0,
+            "testFailures": [{"failureText": "XCTAssertEqual failed: light is not dark"}]}))
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    assert diagnostic.main() == 1
+    report = json.loads((safe / "diagnostic.json").read_text())
+    assert len(commands) == 2
+    assert set(report["results"]) == {"ui"}
+    assert report["releaseEvidence"] is False
+    assert "light is not dark" in report["results"]["ui"]["testFailureDetails"]
