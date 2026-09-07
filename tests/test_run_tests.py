@@ -92,7 +92,9 @@ class RunnerContractTests(unittest.TestCase):
         def negative(name, command, cwd, environment, log_path):
             self.assertEqual(name, "ios-negative-config")
             log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
-            return 1, "controlled rejection"
+            return runner.LiveCommandResult(
+                1, "controlled rejection", "command-nonzero", 1
+            )
 
         return (
             mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root),
@@ -243,15 +245,35 @@ class RunnerContractTests(unittest.TestCase):
             root = self.live_artifact_root(directory)
             contexts = self.run_live_success_fixture(root)
             raw_output = "raw command output\nsecret-like=value\nunrelated-value"
+            start_failure_name = (
+                f"ios-release-{runner.IOS_CORE_DEVICE}-light-"
+                f"{runner.LIVE_UI_METHODS[0]}"
+            )
 
             def command_result(name, command, cwd, environment, expected_tests, artifact_root):
-                status = "failed" if name == "ios-65-unit" else "passed"
-                return {
+                failure = {
+                    "ios-65-unit": ("command-nonzero", 71),
+                    "ios-evidence-contract": ("command-timeout", None),
+                    start_failure_name: ("command-start-failed", None),
+                }.get(name)
+                if failure is None:
+                    return {
+                        "name": name,
+                        "status": "passed",
+                        "exit": 0,
+                        "detail": raw_output,
+                    }
+                reason, process_exit = failure
+                result = {
                     "name": name,
-                    "status": status,
-                    "exit": 1 if status == "failed" else 0,
+                    "status": "failed",
+                    "exit": 1,
                     "detail": raw_output,
+                    "reason": reason,
                 }
+                if process_exit is not None:
+                    result["process_exit"] = process_exit
+                return result
 
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(
                 runner, "_run_live_ios_test", side_effect=command_result
@@ -269,19 +291,25 @@ class RunnerContractTests(unittest.TestCase):
                 )
 
         self.assertEqual(exit_code, 1)
-        self.assertEqual(
-            output.getvalue().splitlines(),
-            [
-                "report=external-artifact-root/live-evidence-manifest.json",
-                "live-evidence: failed: failed live commands: ios-65-unit; reasons: ios-65-unit=controlled-failure",
-            ],
-        )
+        output_lines = output.getvalue().splitlines()
+        self.assertEqual(output_lines[0], "report=external-artifact-root/live-evidence-manifest.json")
+        self.assertIn("ios-65-unit=71", output_lines[1])
+        self.assertNotIn("ios-evidence-contract=", output_lines[1].split("; process exits: ")[1])
+        self.assertNotIn(f"{start_failure_name}=", output_lines[1].split("; process exits: ")[1])
         failed_result = next(
             result
             for result in manifest["results"]
             if result["name"] == "ios-65-unit"
         )
-        self.assertEqual(failed_result["reason"], "controlled-failure")
+        self.assertEqual(failed_result["reason"], "command-nonzero")
+        self.assertEqual(failed_result["processExit"], 71)
+        start_failure = next(
+            result
+            for result in manifest["results"]
+            if result["name"] == start_failure_name
+        )
+        self.assertEqual(start_failure["reason"], "command-start-failed")
+        self.assertNotIn("processExit", start_failure)
         for unsafe_value in ("raw command output", "secret-like=value", "unrelated-value"):
             self.assertNotIn(unsafe_value, output.getvalue())
 
@@ -305,16 +333,18 @@ class RunnerContractTests(unittest.TestCase):
                 "timeout",
                 subprocess.TimeoutExpired(["xcodebuild"], 30),
                 "command-timeout",
+                None,
             ),
-            ("start", OSError("controlled"), "command-start-failed"),
+            ("start", OSError("controlled"), "command-start-failed", None),
             (
                 "nonzero",
-                subprocess.CompletedProcess(["xcodebuild"], 1, "controlled"),
+                subprocess.CompletedProcess(["xcodebuild"], 37, "controlled"),
                 "command-nonzero",
+                37,
             ),
         )
         with tempfile.TemporaryDirectory() as directory:
-            for name, response, expected_reason in cases:
+            for name, response, expected_reason, expected_process_exit in cases:
                 response_keyword = (
                     {"side_effect": response}
                     if isinstance(response, BaseException)
@@ -329,8 +359,199 @@ class RunnerContractTests(unittest.TestCase):
                         ROOT,
                         {},
                         Path(directory) / f"{name}.log",
-                    )
+                )
                 self.assertEqual(result.reason, expected_reason)
+                self.assertEqual(result.process_exit, expected_process_exit)
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner.subprocess,
+            "run",
+            return_value=subprocess.CompletedProcess(["xcodebuild"], 0, "controlled"),
+        ):
+            result = runner._run_live_command(
+                "ios-65-unit", ["xcodebuild", "test"], ROOT, {},
+                Path(directory) / "completed.log",
+            )
+        self.assertEqual(tuple(result), (0, "ios-65-unit completed"))
+        self.assertEqual(result.process_exit, 0)
+
+    def test_failed_live_ios_result_summaries_publish_fixed_diagnostics(self):
+        cases = (
+            ("failed-tests", json.dumps({"passedTests": 0, "failedTests": 2}), "test-failures-recorded"),
+            ("no-failed-tests", json.dumps({"passedTests": 0, "failedTests": 0}), "result-summary-no-failed-tests"),
+            ("missing-summary", None, "result-summary-missing"),
+            ("malformed-summary", "not-json", "result-summary-malformed"),
+            ("oversized-summary", "x" * (runner.LIVE_RESULT_SUMMARY_MAX_BYTES + 1), "result-summary-oversized"),
+            ("over-complex-summary", json.dumps(list(range(runner.LIVE_RESULT_SUMMARY_MAX_NODES + 1))), "result-summary-over-complex"),
+            ("secret-like-summary", '{"token":"secret-like=value"}', "diagnostic-gap"),
+            ("rejected-number", '{"failedTests": ' + "9" * 5_000 + "}", "result-summary-malformed"),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            result_path = root / "ios-65-unit.xcresult"
+            result_path.mkdir()
+            for case_name, summary, diagnostic in cases:
+                with self.subTest(case=case_name):
+                    summary_path = root / "ios-65-unit-summary.json"
+                    summary_path.unlink(missing_ok=True)
+
+                    def command(name, _command, _cwd, _environment, log_path):
+                        if name == "ios-65-unit":
+                            return runner.LiveCommandResult(1, "raw=secret", "command-nonzero", 71)
+                        if summary is not None:
+                            log_path.write_text(summary, encoding="utf-8")
+                        return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+                    with mock.patch.object(runner, "_run_live_command", side_effect=command):
+                        result = runner._run_live_ios_test(
+                            "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
+                        )
+                    published = runner._published_live_result(result)
+                    self.assertEqual(result["status"], "failed")
+                    self.assertEqual(result["exit"], 1)
+                    self.assertEqual(published["diagnostic"], diagnostic)
+                    self.assertEqual(published["processExit"], 71)
+                    self.assertNotIn("secret-like=value", json.dumps(published))
+
+    def test_failed_live_ios_result_bundle_and_summary_command_have_fixed_diagnostics(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            primary_failure = runner.LiveCommandResult(
+                1, "raw=secret", "command-nonzero", 71
+            )
+            with mock.patch.object(runner, "_run_live_command", return_value=primary_failure):
+                missing_bundle = runner._run_live_ios_test(
+                    "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
+                )
+            self.assertEqual(missing_bundle["diagnostic"], "result-bundle-missing")
+            (root / "ios-65-unit.xcresult").mkdir()
+            with mock.patch.object(
+                runner,
+                "_run_live_command",
+                side_effect=(primary_failure, runner.LiveCommandResult(1, "raw", "command-nonzero", 3)),
+            ):
+                summary_failure = runner._run_live_ios_test(
+                    "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
+                )
+            self.assertEqual(summary_failure["diagnostic"], "result-summary-command-failed")
+            self.assertEqual(summary_failure["exit"], 1)
+
+    def test_summary_command_failure_uses_only_its_process_exit_metadata(self):
+        cases = (
+            ("nonzero", runner.LiveCommandResult(1, "raw", "command-nonzero", 83), "command-nonzero", 83),
+            ("timeout", runner.LiveCommandResult(1, "raw", "command-timeout"), "command-timeout", None),
+            ("start", runner.LiveCommandResult(1, "raw", "command-start-failed"), "command-start-failed", None),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "ios-65-unit.xcresult").mkdir()
+            primary_result = runner.LiveCommandResult(0, "controlled", process_exit=0)
+            for case_name, summary_result, reason, process_exit in cases:
+                with self.subTest(case=case_name), mock.patch.object(
+                    runner,
+                    "_run_live_command",
+                    side_effect=(primary_result, summary_result),
+                ):
+                    result = runner._run_live_ios_test(
+                        "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
+                    )
+                manifest_result = runner._published_live_result(result)
+                aggregate = runner._live_command_failure_summary([manifest_result])
+                self.assertEqual(manifest_result["status"], "failed")
+                self.assertEqual(manifest_result["reason"], reason)
+                self.assertEqual(
+                    manifest_result["diagnostic"], "result-summary-command-failed"
+                )
+                if process_exit is None:
+                    self.assertNotIn("processExit", manifest_result)
+                    self.assertNotIn("process exits:", aggregate)
+                else:
+                    self.assertEqual(manifest_result["processExit"], process_exit)
+                    self.assertIn("process exits: ios-65-unit=83", aggregate)
+
+    def test_negative_configuration_result_has_fixed_outcomes_and_metadata(self):
+        cases = (
+            ("exited-zero", runner.LiveCommandResult(0, "raw", process_exit=0), None, "negative-configuration-exited-zero", 1),
+            ("unrelated", runner.LiveCommandResult(1, "raw", "command-nonzero", 54), "other failure", "negative-configuration-unrelated-nonzero", 1),
+            ("timeout", runner.LiveCommandResult(1, "raw", "command-timeout"), None, "negative-configuration-timeout", 1),
+            ("start", runner.LiveCommandResult(1, "raw", "command-start-failed"), None, "negative-configuration-start-failed", 1),
+            ("missing", runner.LiveCommandResult(1, "raw", "command-nonzero", 4), None, "negative-configuration-log-missing", 1),
+            ("oversized", runner.LiveCommandResult(1, "raw", "command-nonzero", 4), "x" * (runner.LIVE_RESULT_SUMMARY_MAX_BYTES + 1), "negative-configuration-log-oversized", 1),
+            ("rejected", runner.LiveCommandResult(1, "raw", "command-nonzero", 4), runner.NEGATIVE_CONFIG_REJECTION, "negative-configuration-rejected", 0),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            log_path = root / "ios-negative-config.log"
+            for case_name, command_result, content, reason, logical_exit in cases:
+                with self.subTest(case=case_name):
+                    log_path.unlink(missing_ok=True)
+                    if content is not None:
+                        log_path.write_text(content, encoding="utf-8")
+                    result = runner._negative_configuration_result(root, log_path, command_result)
+                    published = runner._published_live_result(result)
+                    self.assertEqual(result["exit"], logical_exit)
+                    self.assertEqual(published["reason"], reason)
+                    if command_result.process_exit is None:
+                        self.assertNotIn("processExit", published)
+                    else:
+                        self.assertEqual(published["processExit"], command_result.process_exit)
+                    self.assertNotIn("raw", json.dumps(published))
+            log_path.unlink(missing_ok=True)
+            log_path.mkdir()
+            unsafe = runner._negative_configuration_result(
+                root, log_path, runner.LiveCommandResult(1, "raw", "command-nonzero", 4)
+            )
+            log_path.rmdir()
+            with mock.patch.object(
+                runner, "_bounded_live_file_text", return_value=("unreadable", None)
+            ):
+                unreadable = runner._negative_configuration_result(
+                    root, log_path, runner.LiveCommandResult(1, "raw", "command-nonzero", 4)
+                )
+        self.assertEqual(unsafe["reason"], "negative-configuration-log-unsafe")
+        self.assertEqual(unreadable["reason"], "negative-configuration-log-unreadable")
+
+    def test_live_publication_rejects_untrusted_diagnostics_and_exit_metadata(self):
+        published = runner._published_live_result(
+            {
+                "name": "ios-65-unit",
+                "status": "failed",
+                "exit": 1,
+                "detail": "raw command output secret-like=value",
+                "reason": "untrusted-value",
+                "diagnostic": "secret-like=value",
+                "process_exit": "raw=17",
+            }
+        )
+        self.assertEqual(published["reason"], "controlled-failure")
+        self.assertNotIn("diagnostic", published)
+        self.assertNotIn("processExit", published)
+        self.assertNotIn("secret-like=value", json.dumps(published))
+        oversized_exit = runner._published_live_result(
+            {"name": "ios-65-unit", "exit": 1, "process_exit": 2**40}
+        )
+        self.assertNotIn("processExit", oversized_exit)
+        successful = runner._published_live_result(
+            {"name": "ios-65-unit", "status": "passed", "exit": 0, "detail": "raw", "process_exit": 0}
+        )
+        self.assertEqual(successful["status"], "passed")
+        self.assertEqual(successful["exit"], 0)
+        self.assertEqual(successful["processExit"], 0)
+        self.assertEqual(
+            runner._published_live_success_detail(
+                "ios-65-unit", "ios-65-unit executed " + "9" * 5_000 + " tests"
+            ),
+            "controlled live command completed",
+        )
+        summary = runner._live_command_failure_summary([
+            {"name": "ios-65-unit", "exit": 1, "reason": "command-nonzero", "diagnostic": "test-failures-recorded"},
+            {"name": "ios-evidence-contract", "exit": 1, "reason": "raw=secret", "diagnostic": "raw=secret", "process_exit": "secret-like=17"},
+            {"name": "unexpected-command", "exit": 1, "reason": "command-nonzero", "process_exit": 71},
+        ])
+        self.assertEqual(
+            summary,
+            "failed live commands: ios-65-unit, ios-evidence-contract; reasons: ios-65-unit=command-nonzero, ios-evidence-contract=controlled-failure; diagnostics: ios-65-unit=test-failures-recorded",
+        )
+        self.assertNotIn("raw=secret", summary)
 
     def test_simctl_timeouts_publish_the_simulator_timeout_code(self):
         with self.assertRaises(runner.SimulatorResolutionError) as expired_list:
@@ -447,7 +668,9 @@ class RunnerContractTests(unittest.TestCase):
                 captured["command"] = command
                 captured["environment"] = environment
                 log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
-                return 1, "controlled rejection"
+                return runner.LiveCommandResult(
+                    1, "controlled rejection", "command-nonzero", 1
+                )
 
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], mock.patch.object(
                 runner, "_run_live_command", side_effect=negative
@@ -482,7 +705,7 @@ class RunnerContractTests(unittest.TestCase):
             if result["name"] == "ios-negative-config"
         )
         self.assertEqual(
-            negative["reason"], "negative-configuration-not-rejected"
+            negative["reason"], "negative-configuration-exited-zero"
         )
         self.assertNotIn("untrusted detail", json.dumps(manifest))
 
