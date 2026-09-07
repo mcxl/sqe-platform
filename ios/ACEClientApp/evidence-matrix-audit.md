@@ -1,12 +1,24 @@
-# MCX-15 Evidence Matrix Audit
+# MCX-19 Evidence Matrix Audit
 
 Generated 2026-08-27. Covers 197 identifiers mapped across 42 acceptance-evidence test names. The complete unit suite has 65 XCTest methods. The separate UI-test scheme is available for approved runtime work. No runtime UI evidence is recorded here.
 
-This is a public G0 audit. The manual `ace-ios-evidence-preflight-manual` check is not
-release evidence. It only validates public record structure and current repository paths.
-Repository: `mcxl/sqe-platform`. This audit records no pull request or runtime evidence.
-A reviewed public record must name this repository and the executing Git head. Historical
-commit text is not an active control. Pending records are not review or release evidence.
+This is a public G0 audit. It is not release evidence. It records no pull request or
+runtime evidence. The 44 pending identifiers remain public and pending.
+
+The manual `ace-ios-evidence-preflight-manual` workflow validates public record
+structure only. The separate `ace-ios-live-evidence-manual` workflow has no automatic
+trigger. Its only proposed live command is
+`python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"`.
+Use it only after approval.
+
+The live gate binds `mcxl/sqe-platform`, the exact executing Git head, clean-tree
+state, and ancestry from `7da6228dc87ad970aa8d44365fbc3823c58020da`. The separately
+approved `ACE_LIVE_EVIDENCE_APPROVED_COMMIT` must equal `CM_COMMIT` and Git HEAD.
+`CM_BRANCH` must equal `codex/mcx-19-live-evidence-harness`. `CM_BUILD_ID`, `CM_BUILD_DIR`, and the
+exact workflow variable must identify `ace-ios-live-evidence-manual`. `CM_TRIGGER_SOURCE`
+must equal `api` and `CM_BUILD_STARTED_BY` must identify the operator. It stores raw
+artifacts only outside the Git tree. This audit and its JSON records never become
+runtime or release evidence.
 
 ## Coverage Summary
 
