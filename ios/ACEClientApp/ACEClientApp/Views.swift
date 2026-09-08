@@ -64,6 +64,12 @@ struct SignInView: View {
 
     var body: some View {
         Form {
+            Text("Sign In")
+                .font(.title2)
+                .bold()
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("Sign In heading")
             Section {
                 TextField("Username", text: $username)
                     .textInputAutocapitalization(.never)
@@ -84,11 +90,6 @@ struct SignInView: View {
                         .contentShape(Rectangle())
                 }
                 .accessibilityLabel("Sign in")
-            } header: {
-                Text("Sign In")
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                    .accessibilityAddTraits(.isHeader)
             }
         }
     }

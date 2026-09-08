@@ -8,16 +8,22 @@ VIEWS = ROOT / "ios/ACEClientApp/ACEClientApp/Views.swift"
 APP = ROOT / "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift"
 
 
-def test_sign_in_header_uses_primary_high_contrast_semantics():
+def test_sign_in_heading_is_an_ordinary_form_row_with_high_contrast_semantics():
     source = VIEWS.read_text(encoding="utf-8")
     sign_in = source.split("struct SignInView: View {", 1)[1].split(
         "struct CurrentReleaseMessageView", 1
     )[0]
 
-    assert 'header: {\n                Text("Sign In")' in sign_in
-    assert ".font(.headline)" in sign_in
-    assert ".foregroundStyle(.primary)" in sign_in
-    assert ".accessibilityAddTraits(.isHeader)" in sign_in
+    heading = '''Text("Sign In")
+                .font(.title2)
+                .bold()
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("Sign In heading")'''
+
+    assert heading in sign_in
+    assert f"{heading}\n            Section {{" in sign_in
+    assert "header:" not in sign_in
 
 
 def test_value_row_groups_label_and_wrapping_value_for_accessibility_geometry():

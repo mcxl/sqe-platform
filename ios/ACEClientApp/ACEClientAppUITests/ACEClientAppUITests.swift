@@ -47,6 +47,9 @@ final class ACEClientAppUITests: XCTestCase {
 
     func testSignInPasswordFieldIsSecure() throws {
         let app = launch("signIn")
+        let heading = app.staticTexts["Sign In heading"]
+        XCTAssertTrue(heading.exists)
+        XCTAssertEqual(heading.label, "Sign In")
         XCTAssertTrue(app.secureTextFields["Password"].exists)
         assertMinimumActionTargets(in: app)
         try assertAccessibilityAudit(in: app, scenario: "signIn")
