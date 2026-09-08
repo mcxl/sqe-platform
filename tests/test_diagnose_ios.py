@@ -35,6 +35,99 @@ def test_error_limit(tmp_path):
     assert len(diagnostic.errors(log)) == 30
 
 
+def test_accessibility_issue_retention_is_bounded_redacted_and_separate_from_errors(tmp_path):
+    log = tmp_path / "ui.log"
+    issue = {
+        "scenario": "signIn",
+        "auditType": "contrast",
+        "compactDescription": "Contrast failed",
+        "detailedDescription": "secret=hidden-token-123 " + "x" * 400,
+        "element": {
+            "identifier": "Password",
+            "label": "Password",
+            "type": "SecureTextField",
+            "frame": {"x": 1, "y": 2, "width": 3, "height": 4},
+            "value": "must-not-retain",
+        },
+    }
+    lines = [f"error: unrelated {index}" for index in range(35)]
+    lines += ["ACE_A11Y_ISSUE " + json.dumps(issue) for _ in range(31)]
+    log.write_text("\n".join(lines), encoding="utf-8")
+
+    assert len(diagnostic.errors(log)) == 30
+    retained, status = diagnostic.accessibility_issues(log)
+    assert status == "truncated"
+    assert len(retained) == diagnostic.A11Y_ISSUE_LIMIT
+    assert retained[0]["scenario"] == "signIn"
+    assert retained[0]["element"] == {
+        "identifier": "Password", "label": "Password", "type": "SecureTextField",
+        "frame": {"x": 1, "y": 2, "width": 3, "height": 4},
+    }
+    assert "hidden-token-123" not in retained[0]["detailedDescription"]
+    assert len(retained[0]["detailedDescription"]) <= diagnostic.A11Y_ISSUE_TEXT_LIMIT
+    assert "must-not-retain" not in json.dumps(retained)
+
+
+def test_accessibility_issue_rejects_invalid_or_oversized_records(tmp_path):
+    log = tmp_path / "ui.log"
+    log.write_text(
+        "ACE_A11Y_ISSUE not-json\n"
+        "ACE_A11Y_ISSUE {\"scenario\": \"missing fields\"}\n"
+        + "ACE_A11Y_ISSUE " + "x" * (diagnostic.A11Y_ISSUE_LINE_LIMIT + 1),
+        encoding="utf-8",
+    )
+    assert diagnostic.accessibility_issues(log) == ([], "truncated")
+
+
+def test_accessibility_issue_retains_maximum_escaped_producer_record(tmp_path):
+    log = tmp_path / "ui.log"
+    escaped = ('"\\' * 128)
+    issue = {
+        "scenario": escaped,
+        "auditType": escaped,
+        "compactDescription": escaped,
+        "detailedDescription": escaped,
+        "element": {"identifier": escaped, "label": escaped, "type": escaped},
+    }
+    line = "ACE_A11Y_ISSUE " + json.dumps(issue)
+    assert len(line) > 2 * 1024
+    assert len(line) <= diagnostic.A11Y_ISSUE_LINE_LIMIT
+    log.write_text(line, encoding="utf-8")
+
+    retained, status = diagnostic.accessibility_issues(log)
+    assert status is None
+    assert retained[0]["scenario"] == escaped
+
+
+def test_accessibility_issue_reports_truncation_and_unavailable_input(tmp_path):
+    oversized = tmp_path / "oversized.log"
+    oversized.write_text("ACE_A11Y_ISSUE " + "x" * (diagnostic.A11Y_ISSUE_LINE_LIMIT + 1), encoding="utf-8")
+    assert diagnostic.accessibility_issues(oversized) == ([], "truncated")
+    assert diagnostic.accessibility_issues(tmp_path / "missing.log") == ([], "unavailable")
+
+
+def test_accessibility_issue_rejects_deep_or_nonfinite_or_boolean_frames(tmp_path):
+    log = tmp_path / "ui.log"
+    valid = {
+        "scenario": "signIn", "auditType": "contrast", "compactDescription": "Contrast failed",
+        "detailedDescription": "Text contrast failed", "element": {
+            "identifier": "Password", "label": "Password", "type": "SecureTextField",
+        },
+    }
+    boolean_frame = valid | {"element": valid["element"] | {"frame": {"x": True, "y": 2, "width": 3, "height": 4}}}
+    nonfinite_frame = valid | {"element": valid["element"] | {"frame": {"x": float("nan"), "y": 2, "width": 3, "height": 4}}}
+    deep_json = "[" * 1500 + "]" * 1500
+    log.write_text(
+        "\n".join((
+            "ACE_A11Y_ISSUE " + json.dumps(boolean_frame),
+            "ACE_A11Y_ISSUE " + json.dumps(nonfinite_frame),
+            "ACE_A11Y_ISSUE " + deep_json,
+        )),
+        encoding="utf-8",
+    )
+    assert diagnostic.accessibility_issues(log) == ([], None)
+
+
 def test_context_rejects_local_execution():
     with patch.dict(os.environ, {}, clear=True):
         with pytest.raises(ValueError):
@@ -83,7 +176,14 @@ def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_p
             assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
             assert timeout == 360
             (root / "ui.xcresult").mkdir()
-            log.write_text('error: XCTAssertEqual failed: light is not dark\n')
+            log.write_text(
+                'error: XCTAssertEqual failed: light is not dark\n'
+                'ACE_A11Y_ISSUE {"scenario":"signIn","auditType":"contrast",'
+                '"compactDescription":"Contrast failed","detailedDescription":"Text contrast failed",'
+                '"element":{"identifier":"Password","label":"Password","type":"SecureTextField",'
+                '"frame":{"x":1,"y":2,"width":3,"height":4}}}\n',
+                encoding="utf-8",
+            )
             return {"processExit": 65}
         assert command[:4] == ["xcrun", "xcresulttool", "get", "test-results"]
         log.write_text(json.dumps({"passedTests": 0, "failedTests": 1, "skippedTests": 0,
@@ -98,3 +198,10 @@ def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_p
     assert report["releaseEvidence"] is False
     assert report["results"]["ui"]["selectors"] == list(diagnostic.METHODS)
     assert "light is not dark" in report["results"]["ui"]["testFailureDetails"]
+    assert report["results"]["ui"]["accessibilityIssues"] == [{
+        "scenario": "signIn", "auditType": "contrast", "compactDescription": "Contrast failed",
+        "detailedDescription": "Text contrast failed", "element": {
+            "identifier": "Password", "label": "Password", "type": "SecureTextField",
+            "frame": {"x": 1, "y": 2, "width": 3, "height": 4},
+        },
+    }]

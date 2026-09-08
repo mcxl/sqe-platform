@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -23,6 +24,10 @@ METHODS = (
     "testFictionalReleaseHasApprovedCopyControls",
     "testAllControlledScenariosShowExpectedStateAndAudit",
 )
+A11Y_ISSUE_TAG = "ACE_A11Y_ISSUE "
+A11Y_ISSUE_LIMIT = 30
+A11Y_ISSUE_LINE_LIMIT = 16 * 1024
+A11Y_ISSUE_TEXT_LIMIT = 256
 
 
 def redact(text: str) -> str:
@@ -53,6 +58,66 @@ def errors(path: Path) -> list[str]:
         if len(selected) == 30:
             break
     return selected or ["no matching error lines; cause unknown"]
+
+
+def accessibility_issues(path: Path) -> tuple[list[dict[str, object]], str | None]:
+    """Retain bounded, redacted fault locations without a UI hierarchy or values."""
+    if not path.is_file() or path.is_symlink() or path.stat().st_size > 16 * 1024 * 1024:
+        return [], "unavailable"
+    selected = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        _, tag, payload = line.partition(A11Y_ISSUE_TAG)
+        if not tag or len(payload) > A11Y_ISSUE_LINE_LIMIT:
+            if tag:
+                return selected, "truncated"
+            continue
+        try:
+            parsed = json.loads(payload)
+        except (json.JSONDecodeError, RecursionError):
+            continue
+        issue = _normalise_accessibility_issue(parsed)
+        if issue is not None:
+            selected.append(issue)
+        if len(selected) > A11Y_ISSUE_LIMIT:
+            return selected[:A11Y_ISSUE_LIMIT], "truncated"
+    return selected, None
+
+
+def _normalise_accessibility_issue(payload: object) -> dict[str, object] | None:
+    if not isinstance(payload, dict):
+        return None
+    element = payload.get("element")
+    if not isinstance(element, dict):
+        return None
+    fields = ("scenario", "auditType", "compactDescription", "detailedDescription")
+    if not all(isinstance(payload.get(field), str) for field in fields):
+        return None
+    result: dict[str, object] = {
+        field: _bounded_a11y_text(payload[field]) for field in fields
+    }
+    result["element"] = {
+        "identifier": _bounded_a11y_text(element.get("identifier", "")),
+        "label": _bounded_a11y_text(element.get("label", "")),
+        "type": _bounded_a11y_text(element.get("type", "")),
+    }
+    if "frame" in element:
+        frame = element["frame"]
+        if not isinstance(frame, dict) or not all(_finite_frame_value(frame.get(field)) for field in ("x", "y", "width", "height")):
+            return None
+        result["element"]["frame"] = {
+            field: frame[field] for field in ("x", "y", "width", "height")
+        }
+    return result
+
+
+def _bounded_a11y_text(value: object) -> str:
+    if not isinstance(value, str):
+        return ""
+    return redact(value)[:A11Y_ISSUE_TEXT_LIMIT]
+
+
+def _finite_frame_value(value: object) -> bool:
+    return type(value) in (int, float) and math.isfinite(value)
 
 
 def run(command: list[str], environment: dict[str, str], log: Path, timeout: int) -> dict:
@@ -120,6 +185,10 @@ def main() -> int:
         rt.ios_test_environment("light"), ui_log, 360)
     ui["selectors"] = list(METHODS)
     ui["errors"] = errors(ui_log)
+    issues, issue_status = accessibility_issues(ui_log)
+    ui["accessibilityIssues"] = issues
+    if issue_status is not None:
+        ui["accessibilityIssueStatus"] = issue_status
     report["results"]["ui"] = ui
     publish(report)
     # Save test failure messages as well as console error lines, without raw JSON.

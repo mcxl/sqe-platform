@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 
 final class ACEClientAppUITests: XCTestCase {
@@ -41,14 +42,14 @@ final class ACEClientAppUITests: XCTestCase {
     func testLaunchShowsSafeConfigurationState() throws {
         let app = launch("configuration")
         XCTAssertTrue(app.staticTexts["This app is not configured for access."].exists)
-        try app.performAccessibilityAudit()
+        try assertAccessibilityAudit(in: app, scenario: "configuration")
     }
 
     func testSignInPasswordFieldIsSecure() throws {
         let app = launch("signIn")
         XCTAssertTrue(app.secureTextFields["Password"].exists)
         assertMinimumActionTargets(in: app)
-        try app.performAccessibilityAudit()
+        try assertAccessibilityAudit(in: app, scenario: "signIn")
     }
 
     func testFictionalReleaseHasApprovedCopyControls() throws {
@@ -62,7 +63,7 @@ final class ACEClientAppUITests: XCTestCase {
         let copyButtons = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy "))
         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must not expose an unapproved copy control")
         assertMinimumActionTargets(in: app)
-        try app.performAccessibilityAudit()
+        try assertAccessibilityAudit(in: app, scenario: "release")
         app.terminate()
 
         let confirmationApp = launch("copyConfirmation")
@@ -91,7 +92,7 @@ final class ACEClientAppUITests: XCTestCase {
             )
             XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
             assertMinimumActionTargets(in: app)
-            try app.performAccessibilityAudit()
+            try assertAccessibilityAudit(in: app, scenario: scenario)
             app.terminate()
         }
     }
@@ -110,5 +111,50 @@ final class ACEClientAppUITests: XCTestCase {
             XCTAssertGreaterThanOrEqual(button.frame.width, 44, button.label, file: file, line: line)
             XCTAssertGreaterThanOrEqual(button.frame.height, 44, button.label, file: file, line: line)
         }
+    }
+
+    private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
+        try app.performAccessibilityAudit(for: .all) { issue in
+            // Keep bounded failure diagnostics for the approved controlled runner.
+            print("ACE_A11Y_ISSUE \(accessibilityIssueJSON(issue, scenario: scenario))")
+            // Returning false retains XCTest's native audit failure.
+            return false
+        }
+    }
+
+    private func accessibilityIssueJSON(_ issue: XCUIAccessibilityAuditIssue, scenario: String) -> String {
+        var element: [String: Any] = [
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+        ]
+        if let auditedElement = issue.element {
+            element["identifier"] = limitedAuditText(auditedElement.identifier)
+            element["label"] = limitedAuditText(auditedElement.label)
+            element["type"] = limitedAuditText(String(describing: auditedElement.elementType))
+            let frame = auditedElement.frame
+            element["frame"] = [
+                "height": Double(frame.height),
+                "width": Double(frame.width),
+                "x": Double(frame.origin.x),
+                "y": Double(frame.origin.y)
+            ]
+        }
+        let payload: [String: Any] = [
+            "auditType": limitedAuditText(String(describing: issue.auditType)),
+            "compactDescription": limitedAuditText(issue.compactDescription),
+            "detailedDescription": limitedAuditText(issue.detailedDescription),
+            "element": element,
+            "scenario": limitedAuditText(scenario)
+        ]
+        guard let data = try? JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]),
+              let text = String(data: data, encoding: .utf8) else {
+            return "{\"auditType\":\"serialization-failed\",\"compactDescription\":\"\",\"detailedDescription\":\"\",\"element\":{\"identifier\":\"\",\"label\":\"\",\"type\":\"unavailable\"},\"scenario\":\"unknown\"}"
+        }
+        return text
+    }
+
+    private func limitedAuditText(_ value: String) -> String {
+        String(value.prefix(256))
     }
 }

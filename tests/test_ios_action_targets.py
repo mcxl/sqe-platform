@@ -27,8 +27,16 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     assert "XCTAssertGreaterThanOrEqual(button.frame.width, 44" in source
     assert "XCTAssertGreaterThanOrEqual(button.frame.height, 44" in source
     assert source.count("assertMinimumActionTargets(in: app)") == 3
-    assert source.count("try app.performAccessibilityAudit()") == 4
+    assert source.count("try app.performAccessibilityAudit(for: .all)") == 1
+    assert source.count("try assertAccessibilityAudit(in: app, scenario:") == 4
+    assert source.count("performAccessibilityAudit") == 1
+    for scenario in ('scenario: "configuration"', 'scenario: "signIn"', 'scenario: "release"', "scenario: scenario"):
+        assert scenario in source
     assert "try? app.performAccessibilityAudit" not in source
+    audit_helper = source.split("private func assertAccessibilityAudit", 1)[1]
+    assert "ACE_A11Y_ISSUE" in audit_helper
+    assert "return false" in audit_helper
+    assert "return true" not in audit_helper
     assert "for identifier in approvedCopyControls" in source
     assert "XCTAssertEqual(copyButtons.count, approvedCopyControls.count" in source
     assert 'app.secureTextFields["Password"].exists' in source
