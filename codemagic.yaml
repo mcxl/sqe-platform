@@ -2,7 +2,7 @@ workflows:
   ace-ios-diagnostic-manual:
     name: ACE iOS MCX-19 Functional Diagnostic (Not Evidence)
     max_build_duration: 15
-    instance_type: mac_mini_m2
+    instance_type: mac_mini_m4
     environment:
       groups:
         - mcx19_diagnostic
