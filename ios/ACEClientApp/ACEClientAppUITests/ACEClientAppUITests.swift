@@ -116,7 +116,7 @@ final class ACEClientAppUITests: XCTestCase {
     private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
         try app.performAccessibilityAudit(for: .all) { issue in
             // Keep bounded failure diagnostics for the approved controlled runner.
-            print("ACE_A11Y_ISSUE \(accessibilityIssueJSON(issue, scenario: scenario))")
+            print("ACE_A11Y_ISSUE \(self.accessibilityIssueJSON(issue, scenario: scenario))")
             // Returning false retains XCTest's native audit failure.
             return false
         }

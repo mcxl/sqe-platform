@@ -35,6 +35,7 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     assert "try? app.performAccessibilityAudit" not in source
     audit_helper = source.split("private func assertAccessibilityAudit", 1)[1]
     assert "ACE_A11Y_ISSUE" in audit_helper
+    assert 'self.accessibilityIssueJSON(issue, scenario: scenario)' in audit_helper
     assert "return false" in audit_helper
     assert "return true" not in audit_helper
     assert "for identifier in approvedCopyControls" in source
