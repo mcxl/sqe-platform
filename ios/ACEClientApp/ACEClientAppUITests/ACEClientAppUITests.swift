@@ -114,15 +114,16 @@ final class ACEClientAppUITests: XCTestCase {
     }
 
     private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
-        try app.performAccessibilityAudit(for: .all) { issue in
+        let auditIssueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
             // Keep bounded failure diagnostics for the approved controlled runner.
-            print("ACE_A11Y_ISSUE \(self.accessibilityIssueJSON(issue, scenario: scenario))")
+            print("ACE_A11Y_ISSUE \(Self.accessibilityIssueJSON(issue, scenario: scenario))")
             // Returning false retains XCTest's native audit failure.
             return false
         }
+        try app.performAccessibilityAudit(for: .all, auditIssueHandler)
     }
 
-    private func accessibilityIssueJSON(_ issue: XCUIAccessibilityAuditIssue, scenario: String) -> String {
+    private static func accessibilityIssueJSON(_ issue: XCUIAccessibilityAuditIssue, scenario: String) -> String {
         var element: [String: Any] = [
             "identifier": "",
             "label": "",
@@ -154,7 +155,7 @@ final class ACEClientAppUITests: XCTestCase {
         return text
     }
 
-    private func limitedAuditText(_ value: String) -> String {
+    private static func limitedAuditText(_ value: String) -> String {
         String(value.prefix(256))
     }
 }

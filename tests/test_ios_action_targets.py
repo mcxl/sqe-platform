@@ -27,7 +27,7 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     assert "XCTAssertGreaterThanOrEqual(button.frame.width, 44" in source
     assert "XCTAssertGreaterThanOrEqual(button.frame.height, 44" in source
     assert source.count("assertMinimumActionTargets(in: app)") == 3
-    assert source.count("try app.performAccessibilityAudit(for: .all)") == 1
+    assert source.count("try app.performAccessibilityAudit(for: .all, auditIssueHandler)") == 1
     assert source.count("try assertAccessibilityAudit(in: app, scenario:") == 4
     assert source.count("performAccessibilityAudit") == 1
     for scenario in ('scenario: "configuration"', 'scenario: "signIn"', 'scenario: "release"', "scenario: scenario"):
@@ -35,7 +35,11 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     assert "try? app.performAccessibilityAudit" not in source
     audit_helper = source.split("private func assertAccessibilityAudit", 1)[1]
     assert "ACE_A11Y_ISSUE" in audit_helper
-    assert 'self.accessibilityIssueJSON(issue, scenario: scenario)' in audit_helper
+    assert "let auditIssueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool" in audit_helper
+    assert 'Self.accessibilityIssueJSON(issue, scenario: scenario)' in audit_helper
+    assert 'self.accessibilityIssueJSON' not in audit_helper
+    assert "private static func accessibilityIssueJSON" in source
+    assert "private static func limitedAuditText" in source
     assert "return false" in audit_helper
     assert "return true" not in audit_helper
     assert "for identifier in approvedCopyControls" in source
