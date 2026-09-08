@@ -19,15 +19,15 @@ struct ACEClientApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ZStack(alignment: .topLeading) {
-                RootView(state: state)
-                #if DEBUG
-                EffectiveInterfaceStyleIndicator()
-                #endif
-            }
-                #if DEBUG
+            RootView(state: state)
+            #if DEBUG
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    if UITestScenario.current != nil {
+                        EffectiveInterfaceStyleIndicator()
+                    }
+                }
                 .preferredColorScheme(uiTestColorScheme)
-                #endif
+            #endif
                 .task {
                 #if DEBUG
                 guard UITestScenario.current == nil else { return }
@@ -45,8 +45,13 @@ private struct EffectiveInterfaceStyleIndicator: View {
 
     var body: some View {
         Text(colorScheme == .dark ? "dark" : "light")
+            .font(.body)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .background(.background)
             .accessibilityIdentifier("Effective interface style")
-            .opacity(0.01)
     }
 }
 #endif

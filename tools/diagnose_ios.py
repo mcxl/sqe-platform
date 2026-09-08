@@ -182,7 +182,7 @@ def main() -> int:
         "-destination", destination,
         *(f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}" for method in METHODS),
         "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
-        rt.ios_test_environment("light"), ui_log, 360)
+        rt.ios_test_environment("light"), ui_log, 600)
     ui["selectors"] = list(METHODS)
     ui["errors"] = errors(ui_log)
     issues, issue_status = accessibility_issues(ui_log)

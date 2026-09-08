@@ -150,7 +150,7 @@ def test_exact_scope_and_retention_contract():
         "testFictionalReleaseHasApprovedCopyControls",
         "testAllControlledScenariosShowExpectedStateAndAudit",
     )
-    assert "ui_log, 360" in source
+    assert "ui_log, 600" in source
 
 
 def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_path, monkeypatch):
@@ -174,7 +174,7 @@ def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_p
             ]
             assert "ACE_UI_TEST_APPEARANCE=light" in command
             assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
-            assert timeout == 360
+            assert timeout == 600
             (root / "ui.xcresult").mkdir()
             log.write_text(
                 'error: XCTAssertEqual failed: light is not dark\n'

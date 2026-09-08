@@ -64,7 +64,7 @@ struct SignInView: View {
 
     var body: some View {
         Form {
-            Section("Sign In") {
+            Section {
                 TextField("Username", text: $username)
                     .textInputAutocapitalization(.never)
                     .accessibilityLabel("Username")
@@ -84,6 +84,11 @@ struct SignInView: View {
                         .contentShape(Rectangle())
                 }
                 .accessibilityLabel("Sign in")
+            } header: {
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                    .accessibilityAddTraits(.isHeader)
             }
         }
     }
@@ -218,8 +223,14 @@ struct ValueRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(field.label).font(.headline)
-            Text(value).accessibilityLabel("\(field.label): \(value)")
+            VStack(alignment: .leading, spacing: 4) {
+                Text(field.label).font(.headline)
+                Text(value)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(field.label): \(value)")
             Button {
                 ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
                 let announcement = "Copied \(field.label)."
