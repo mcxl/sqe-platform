@@ -47,6 +47,7 @@ final class ACEClientAppUITests: XCTestCase {
     func testSignInPasswordFieldIsSecure() throws {
         let app = launch("signIn")
         XCTAssertTrue(app.secureTextFields["Password"].exists)
+        assertMinimumActionTargets(in: app)
         try app.performAccessibilityAudit()
     }
 
@@ -60,6 +61,7 @@ final class ACEClientAppUITests: XCTestCase {
         for identifier in approvedCopyControls { XCTAssertTrue(app.buttons[identifier].exists, identifier) }
         let copyButtons = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy "))
         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must not expose an unapproved copy control")
+        assertMinimumActionTargets(in: app)
         try app.performAccessibilityAudit()
         app.terminate()
 
@@ -88,6 +90,7 @@ final class ACEClientAppUITests: XCTestCase {
                 object: nil
             )
             XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
+            assertMinimumActionTargets(in: app)
             try app.performAccessibilityAudit()
             app.terminate()
         }
@@ -99,5 +102,13 @@ final class ACEClientAppUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
         XCUIDevice.shared.orientation = .portrait
         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
+    }
+
+    private func assertMinimumActionTargets(in app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
+        // Off-screen elements need scrolling before their hit area can be measured.
+        for button in app.buttons.allElementsBoundByIndex where button.isHittable {
+            XCTAssertGreaterThanOrEqual(button.frame.width, 44, button.label, file: file, line: line)
+            XCTAssertGreaterThanOrEqual(button.frame.height, 44, button.label, file: file, line: line)
+        }
     }
 }

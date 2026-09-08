@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One manual G0 diagnostic: both appearances in one UI selector. Not evidence."""
+"""One manual G0 diagnostic: three functional UI checks. Not evidence."""
 from __future__ import annotations
 
 import json
@@ -18,7 +18,11 @@ except ModuleNotFoundError:
 WORKFLOW = "ace-ios-diagnostic-manual"
 ROOT = Path("/private/tmp/mcx-19-diagnostic")
 SAFE_ROOT = Path("/private/tmp/mcx-19-diagnostic-safe")
-METHOD = "testBothAppearances"
+METHODS = (
+    "testSignInPasswordFieldIsSecure",
+    "testFictionalReleaseHasApprovedCopyControls",
+    "testAllControlledScenariosShowExpectedStateAndAudit",
+)
 
 
 def redact(text: str) -> str:
@@ -97,7 +101,7 @@ def main() -> int:
     except (OSError, ValueError):
         print("diagnostic setup rejected; no test started", flush=True)
         return 1
-    report = {"scope": "one-light-dark-appearance-diagnostic", "releaseEvidence": False,
+    report = {"scope": "three-light-functional-checks-diagnostic", "releaseEvidence": False,
               "commit": commit, "results": {}}
     publish(report)
     try:
@@ -111,10 +115,10 @@ def main() -> int:
     ui = run(["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj",
         "-scheme", "ACEClientAppUITests", "-configuration", "Debug",
         "-destination", destination,
-        f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{METHOD}",
-        "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=dark"],
-        rt.ios_test_environment("dark"), ui_log, 360)
-    ui["selector"] = METHOD
+        *(f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}" for method in METHODS),
+        "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
+        rt.ios_test_environment("light"), ui_log, 360)
+    ui["selectors"] = list(METHODS)
     ui["errors"] = errors(ui_log)
     report["results"]["ui"] = ui
     publish(report)

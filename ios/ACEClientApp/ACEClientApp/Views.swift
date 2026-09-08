@@ -72,12 +72,16 @@ struct SignInView: View {
                     .textInputAutocapitalization(.never)
                     .accessibilityLabel("Password")
                 if let message { Text(message) }
-                Button("Sign in") {
+                Button {
                     let enteredUsername = username
                     let enteredPassword = password
                     username = ""
                     password = ""
                     submit(enteredUsername, enteredPassword)
+                } label: {
+                    Text("Sign in")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
                 }
                 .accessibilityLabel("Sign in")
             }
@@ -94,9 +98,20 @@ struct CurrentReleaseMessageView: View {
         VStack(spacing: 20) {
             HandlingLabel()
             Text(message).multilineTextAlignment(.center)
-            Button(retry == .keychainRead ? "Try again" : "Refresh") { state.retry(retry) }
-                .accessibilityLabel(retry == .keychainRead ? "Retry saved sign-in read" : "Refresh current release")
-            if retry == .refresh { Button("Sign out") { state.signOut() }.accessibilityLabel("Sign out") }
+            Button { state.retry(retry) } label: {
+                Text(retry == .keychainRead ? "Try again" : "Refresh")
+                    .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                    .contentShape(Rectangle())
+            }
+            .accessibilityLabel(retry == .keychainRead ? "Retry saved sign-in read" : "Refresh current release")
+            if retry == .refresh {
+                Button { state.signOut() } label: {
+                    Text("Sign out")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Sign out")
+            }
         }
     }
 }
@@ -107,7 +122,14 @@ struct SafeMessageView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text(message).multilineTextAlignment(.center)
-            if let action { Button(action.0, action: action.1).accessibilityLabel(action.0) }
+            if let action {
+                Button { action.1() } label: {
+                    Text(action.0)
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel(action.0)
+            }
         }
     }
 }
@@ -146,8 +168,18 @@ struct ReleaseView: View {
                     }
                 }
                 ForEach(notices, id: \.self) { notice in Text(notice) }
-                Button("Refresh", action: refresh).accessibilityLabel("Refresh current release")
-                Button("Sign out", action: signOut).accessibilityLabel("Sign out")
+                Button { refresh() } label: {
+                    Text("Refresh")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Refresh current release")
+                Button { signOut() } label: {
+                    Text("Sign out")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Sign out")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -188,11 +220,15 @@ struct ValueRow: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(field.label).font(.headline)
             Text(value).accessibilityLabel("\(field.label): \(value)")
-            Button("Copy \(field.label)") {
+            Button {
                 ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
                 let announcement = "Copied \(field.label)."
                 confirmation = announcement
                 UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
+            } label: {
+                Text("Copy \(field.label)")
+                    .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                    .contentShape(Rectangle())
             }
             .accessibilityLabel("Copy \(field.label)")
             if let confirmation { Text(confirmation) }

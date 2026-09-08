@@ -1342,7 +1342,10 @@ extension AcceptanceEvidenceContractTests {
         XCTAssertTrue(labels.contains("Action status"))
         let viewSource = try sourceText("Views.swift")
         XCTAssertTrue(viewSource.contains("let field: CopyableReleaseField"), "Copy controls must take an approved field type")
-        XCTAssertEqual(viewSource.components(separatedBy: "Button(\"Copy ").count - 1, 1, "ValueRow must contain one copy-control implementation")
+        let valueRowSource = viewSource.components(separatedBy: "struct ValueRow: View {").last ?? ""
+        XCTAssertEqual(valueRowSource.components(separatedBy: "Button {").count - 1, 1, "ValueRow must contain one copy-control implementation")
+        XCTAssertEqual(viewSource.components(separatedBy: "Text(\"Copy ").count - 1, 1, "ValueRow must contain one copy-control label")
+        XCTAssertTrue(viewSource.contains(".accessibilityLabel(\"Copy \\(field.label)\")"), "The copy button must retain its accessible name")
         XCTAssertFalse(viewSource.contains(".textSelection("), "Native selection must not bypass ClipboardWriteContract")
         XCTAssertTrue(viewSource.contains("let announcement = \"Copied \\(field.label).\""), "Copy confirmation must be accessible text")
         XCTAssertTrue(viewSource.contains("if let confirmation { Text(confirmation) }"), "Copy confirmation must remain visible to accessibility services")

@@ -52,11 +52,15 @@ def test_exact_scope_and_retention_contract():
     assert "/private/tmp/mcx-19-diagnostic-safe/diagnostic.json" in section
     assert "live-evidence --" not in section
     assert "ios_release_ui_matrix" not in source
-    assert diagnostic.METHOD == "testBothAppearances"
+    assert diagnostic.METHODS == (
+        "testSignInPasswordFieldIsSecure",
+        "testFictionalReleaseHasApprovedCopyControls",
+        "testAllControlledScenariosShowExpectedStateAndAudit",
+    )
     assert "ui_log, 360" in source
 
 
-def test_diagnostic_runs_only_both_appearances_and_retains_failure(tmp_path, monkeypatch):
+def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_path, monkeypatch):
     """Catch an extra build, wrong selector/appearance, or lost assertion details."""
     root = tmp_path / "raw"
     safe = tmp_path / "safe"
@@ -72,9 +76,11 @@ def test_diagnostic_runs_only_both_appearances_and_retains_failure(tmp_path, mon
     def run(command, environment, log, timeout):
         commands.append(command)
         if command[:2] == ["xcodebuild", "test"]:
-            assert "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testBothAppearances" in command
-            assert "ACE_UI_TEST_APPEARANCE=dark" in command
-            assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "dark"
+            assert [arg for arg in command if arg.startswith("-only-testing:")] == [
+                f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}" for method in diagnostic.METHODS
+            ]
+            assert "ACE_UI_TEST_APPEARANCE=light" in command
+            assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
             assert timeout == 360
             (root / "ui.xcresult").mkdir()
             log.write_text('error: XCTAssertEqual failed: light is not dark\n')
@@ -90,4 +96,5 @@ def test_diagnostic_runs_only_both_appearances_and_retains_failure(tmp_path, mon
     assert len(commands) == 2
     assert set(report["results"]) == {"ui"}
     assert report["releaseEvidence"] is False
+    assert report["results"]["ui"]["selectors"] == list(diagnostic.METHODS)
     assert "light is not dark" in report["results"]["ui"]["testFailureDetails"]
