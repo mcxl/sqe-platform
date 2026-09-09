@@ -91,17 +91,31 @@ final class ACEClientAppUITests: XCTestCase {
         let copyButtons = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy "))
         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must not expose an unapproved copy control")
         assertMinimumActionTargets(in: app)
+        let appearance = requiredAppearance()
+        let indicator = app.staticTexts["Effective interface style"]
+        XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+        let displayedAppearance = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+        )
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [displayedAppearance], timeout: 5),
+            .completed,
+            "The displayed view must use \(appearance) appearance before the initial audit"
+        )
+        if ProcessInfo.processInfo.environment["ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"] == "1" {
+            addScreenshot(of: app, named: "Fictional release — initial-audit — \(appearance)")
+        }
         try assertAccessibilityAudit(in: app, scenario: "release-initial")
-        assertFullReleaseInformation(in: app, appearance: requiredAppearance())
+        assertFullReleaseInformation(in: app, appearance: appearance)
         assertMinimumActionTargets(in: app)
-        addScreenshot(of: app, named: "Fictional release — approved-controls — \(requiredAppearance())")
+        addScreenshot(of: app, named: "Fictional release — approved-controls — \(appearance)")
         try assertAccessibilityAudit(in: app, scenario: "release")
         app.terminate()
 
         let confirmationApp = launch("copyConfirmation")
         confirmationApp.buttons["Copy Engagement name"].tap()
         XCTAssertTrue(confirmationApp.staticTexts["Copied Engagement name."].exists, "Copy confirmation must be available to VoiceOver")
-        addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(requiredAppearance())")
+        addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(appearance)")
         confirmationApp.terminate()
     }
 

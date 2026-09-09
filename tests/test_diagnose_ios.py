@@ -152,6 +152,48 @@ def test_context_rejects_local_execution():
             diagnostic.context()
 
 
+def test_diagnostic_environment_transports_only_approved_screenshot_flag(tmp_path, monkeypatch):
+    captured = []
+
+    class Process:
+        pid = 1
+
+        def wait(self, timeout):
+            return 0
+
+    def popen(command, cwd, env, stdout, stderr, start_new_session):
+        captured.append(env)
+        return Process()
+
+    monkeypatch.setattr(diagnostic.subprocess, "Popen", popen)
+    monkeypatch.setattr(diagnostic.rt, "ROOT", tmp_path)
+
+    assert diagnostic.run(["xcodebuild"], diagnostic.DIAGNOSTIC_TEST_ENVIRONMENT, tmp_path / "ui.log", 1) == {"processExit": 0}
+    assert captured[0][diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY] == "1"
+
+    assert diagnostic.run(["xcrun"], {}, tmp_path / "probe.log", 1) == {"processExit": 0}
+    assert diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY not in captured[1]
+
+
+def test_diagnostic_environment_rejects_unapproved_flag_values_and_keys(tmp_path):
+    with pytest.raises(ValueError):
+        diagnostic.run(
+            ["xcodebuild"],
+            {**diagnostic.DIAGNOSTIC_TEST_ENVIRONMENT, diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: "0"},
+            tmp_path / "invalid-flag.log",
+            1,
+        )
+    with pytest.raises(ValueError):
+        diagnostic.run(
+            ["xcodebuild"],
+            {diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: None},
+            tmp_path / "missing-flag-value.log",
+            1,
+        )
+    with pytest.raises(ValueError):
+        diagnostic.run(["xcodebuild"], {"UNRELATED_ENVIRONMENT_KEY": "1"}, tmp_path / "unknown-key.log", 1)
+
+
 def test_exact_scope_and_retention_contract():
     source = Path(diagnostic.__file__).read_text(encoding="utf-8")
     yaml = (diagnostic.rt.ROOT / "codemagic.yaml").read_text(encoding="utf-8")
@@ -165,10 +207,16 @@ def test_exact_scope_and_retention_contract():
     assert "live-evidence --" not in section
     assert "ios_release_ui_matrix" not in source
     assert diagnostic.METHOD == "testFictionalReleaseHasApprovedCopyControls"
-    assert diagnostic.SCREENSHOT_NAMES == diagnostic.rt._expected_logical_screenshot_names(
+    expected_runner_names = diagnostic.rt._expected_logical_screenshot_names(
         f"ios-release-{diagnostic.rt.IOS_CORE_DEVICE}-light-{diagnostic.METHOD}"
     )
-    assert "rt.ios_test_environment(\"light\"), ui_log, 420" in source
+    assert len(expected_runner_names) == 13
+    assert diagnostic.SCREENSHOT_NAMES == (*expected_runner_names, diagnostic.INITIAL_AUDIT_SCREENSHOT_NAME)
+    assert diagnostic.DIAGNOSTIC_TEST_ENVIRONMENT == {
+        **diagnostic.rt.ios_test_environment("light"),
+        diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: "1",
+    }
+    assert "DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420" in source
 
 
 def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, monkeypatch):
@@ -190,12 +238,14 @@ def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, mon
         commands.append(command)
         if command[:3] == ["xcrun", "simctl", "ui"]:
             assert len(command) == 5
+            assert timeout == 10
             log.write_text("light" if command[-1] == "appearance" else "medium", encoding="utf-8")
             return {"processExit": 0}
         if command[:2] == ["xcodebuild", "test"]:
             assert [arg for arg in command if arg.startswith("-only-testing:")] == [f"-only-testing:{diagnostic.METHOD_PATH}"]
             assert "ACE_UI_TEST_APPEARANCE=light" in command
             assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
+            assert environment["TEST_RUNNER_ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"] == "1"
             assert timeout == 420
             (root / "ui.xcresult").mkdir()
             log.write_text("error: XCTAssertEqual failed at /Users/builder/project/ios/ACEClientApp/ACEClientAppUITests.swift:92\n", encoding="utf-8")
@@ -209,12 +259,61 @@ def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, mon
     monkeypatch.setattr(diagnostic, "run", run)
     assert diagnostic.main() == 1
     report = json.loads((safe / "diagnostic.json").read_text())
-    assert [command[:3] for command in commands[:2]] == [["xcrun", "simctl", "ui"], ["xcrun", "simctl", "ui"]]
+    assert [command[:3] for command in commands[:5]] == [
+        ["xcrun", "simctl", "ui"],
+        ["xcrun", "simctl", "ui"],
+        ["xcodebuild", "test", "-project"],
+        ["xcrun", "simctl", "ui"],
+        ["xcrun", "simctl", "ui"],
+    ]
+    assert [probe["phase"] for probe in report["results"]["simulatorProbes"]["beforeTest"]] == ["beforeTest", "beforeTest"]
+    assert [probe["setting"] for probe in report["results"]["simulatorProbes"]["beforeTest"]] == ["appearance", "content_size"]
+    assert [probe["phase"] for probe in report["results"]["simulatorProbes"]["afterTest"]] == ["afterTest", "afterTest"]
+    assert [probe["setting"] for probe in report["results"]["simulatorProbes"]["afterTest"]] == ["appearance", "content_size"]
     assert report["releaseEvidence"] is False
     assert report["diagnosticStatus"] == "completed-not-release-evidence"
     assert report["results"]["ui"]["counts"] == {"passed": 0, "failed": 1, "skipped": 0}
     assert report["results"]["ui"]["testFailureDetails"][0]["sourceLocation"] == "ios/ACEClientApp/ACEClientAppUITests.swift:92"
     assert report["results"]["ui"]["screenshotStatus"] == "attachment-export-failed"
+
+
+def test_diagnostic_publishes_test_failure_before_post_test_probe(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    root_marker = type("Root", (), {"resolve": lambda self: "/Users/builder/project"})()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic.rt, "ROOT", root_marker)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices: {devices[0]: "platform=iOS Simulator,id=fixture"})
+    simctl_calls = 0
+
+    def run(command, environment, log, timeout):
+        nonlocal simctl_calls
+        if command[:3] == ["xcrun", "simctl", "ui"]:
+            simctl_calls += 1
+            if simctl_calls == 3:
+                raise KeyboardInterrupt
+            log.write_text("light", encoding="utf-8")
+            return {"processExit": 0}
+        if command[:2] == ["xcodebuild", "test"]:
+            log.write_text("error: XCTest failure evidence\n", encoding="utf-8")
+            return {"processExit": 65}
+        raise AssertionError(f"unexpected command: {command}")
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    with pytest.raises(KeyboardInterrupt):
+        diagnostic.main()
+
+    report = json.loads((safe / "diagnostic.json").read_text())
+    assert report["diagnosticStatus"] == "started"
+    assert report["results"]["ui"]["processExit"] == 65
+    assert report["results"]["ui"]["errors"] == ["error: XCTest failure evidence"]
+    assert [probe["phase"] for probe in report["results"]["simulatorProbes"]["beforeTest"]] == ["beforeTest", "beforeTest"]
+    assert "afterTest" not in report["results"]["simulatorProbes"]
 
 
 def test_large_private_summary_retains_only_redacted_failure_fields(tmp_path, monkeypatch):
@@ -312,5 +411,8 @@ def test_valid_selector_attachments_are_copied_to_safe_root(tmp_path, monkeypatc
     ui = {}
     diagnostic.retain_screenshots(ui, bundle)
     assert ui["screenshotStatus"] == "available"
-    assert len(ui["screenshots"]) == len(diagnostic.SCREENSHOT_NAMES)
+    assert ui["screenshots"] == [
+        f"screenshots/{diagnostic.METHOD}/{number:02d}.png"
+        for number in range(1, len(diagnostic.SCREENSHOT_NAMES) + 1)
+    ]
     assert all((safe / path).is_file() for path in ui["screenshots"])

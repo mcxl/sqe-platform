@@ -39,6 +39,12 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     )
     for method in action_methods:
         assert "assertMinimumActionTargets(in: app)" in method_source(method)
+    release_method = method_source("testFictionalReleaseHasApprovedCopyControls")
+    assert 'ProcessInfo.processInfo.environment["ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"] == "1"' in release_method
+    assert '"Fictional release — initial-audit — \\(appearance)"' in release_method
+    assert release_method.index("Fictional release — initial-audit") < release_method.index(
+        'try assertAccessibilityAudit(in: app, scenario: "release-initial")'
+    )
     assert source.count("try app.performAccessibilityAudit(for: .all, auditIssueHandler)") == 1
     audit_methods = (*action_methods[:4], "testLaunchShowsSafeConfigurationState")
     for method in audit_methods:

@@ -22,7 +22,15 @@ ROOT = Path("/private/tmp/mcx-19-diagnostic")
 SAFE_ROOT = Path("/private/tmp/mcx-19-diagnostic-safe")
 METHOD = "testFictionalReleaseHasApprovedCopyControls"
 METHOD_PATH = f"ACEClientAppUITests/ACEClientAppUITests/{METHOD}"
-SCREENSHOT_NAMES = rt._expected_logical_screenshot_names(f"ios-release-{rt.IOS_CORE_DEVICE}-light-{METHOD}")
+RUNNER_SCREENSHOT_NAMES = rt._expected_logical_screenshot_names(f"ios-release-{rt.IOS_CORE_DEVICE}-light-{METHOD}")
+INITIAL_AUDIT_SCREENSHOT_NAME = "Fictional release — initial-audit — light"
+SCREENSHOT_NAMES = (*RUNNER_SCREENSHOT_NAMES, INITIAL_AUDIT_SCREENSHOT_NAME)
+INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY = "TEST_RUNNER_ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"
+DIAGNOSTIC_TEST_ENVIRONMENT = {
+    **rt.ios_test_environment("light"),
+    # xcodebuild forwards this TEST_RUNNER_ value to XCTest without the prefix.
+    INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: "1",
+}
 A11Y_ISSUE_TAG = "ACE_A11Y_ISSUE "
 A11Y_ISSUE_LIMIT = 30
 A11Y_ISSUE_LINE_LIMIT = 16 * 1024
@@ -148,11 +156,28 @@ def _command_record(kind: str, result: dict, log: Path) -> dict[str, object]:
     return record
 
 
+def diagnostic_command_environment(environment: dict[str, str]) -> dict[str, str]:
+    """Add the approved diagnostic screenshot flag after shared environment validation."""
+    screenshot_flag = None
+    if INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY in environment:
+        screenshot_flag = environment[INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY]
+        if screenshot_flag != "1":
+            raise ValueError("diagnostic screenshot flag is invalid")
+    shared_environment = {
+        key: value for key, value in environment.items()
+        if key != INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY
+    }
+    command_environment = rt._live_command_environment(shared_environment)
+    if screenshot_flag == "1":
+        command_environment[INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY] = screenshot_flag
+    return command_environment
+
+
 def run(command: list[str], environment: dict[str, str], log: Path, timeout: int) -> dict:
     with log.open("w", encoding="utf-8") as stream:
         try:
             process = subprocess.Popen(
-                command, cwd=rt.ROOT / "ios/ACEClientApp", env=rt._live_command_environment(environment),
+                command, cwd=rt.ROOT / "ios/ACEClientApp", env=diagnostic_command_environment(environment),
                 stdout=stream, stderr=subprocess.STDOUT, start_new_session=True,
             )
             try:
@@ -195,16 +220,16 @@ def _simulator_identifier(destination: str) -> str | None:
     return None
 
 
-def settings_probes(identifier: str) -> list[dict[str, object]]:
+def settings_probes(identifier: str, phase: str) -> list[dict[str, object]]:
     """Read simulator settings only. This helper never changes simulator settings."""
     probes = []
     for setting in ("appearance", "content_size"):
-        log = ROOT / f"simctl-{setting}-query.log"
-        result = run(["xcrun", "simctl", "ui", identifier, setting], {}, log, 30)
+        log = ROOT / f"simctl-{phase}-{setting}-query.log"
+        result = run(["xcrun", "simctl", "ui", identifier, setting], {}, log, 10)
         record = _command_record("simctl-ui-query", result, log)
         if isinstance(record.get("response"), str):
             record["response"] = record["response"].replace(identifier, "[simulator]")
-        probes.append(record | {"setting": setting})
+        probes.append(record | {"phase": phase, "setting": setting})
     return probes
 
 
@@ -425,21 +450,25 @@ def main() -> int:
         report["results"] = {"ui": {"status": "simulator-identifier-unavailable"}}
         publish(report)
         return 1
-    report["results"] = {"simulatorProbes": settings_probes(identifier)}
+    simulator_probes = {"beforeTest": settings_probes(identifier, "beforeTest")}
+    report["results"] = {"simulatorProbes": simulator_probes}
     publish(report)
     bundle = ROOT / "ui.xcresult"
     ui_log = ROOT / "ui.log"
     ui: dict[str, object] = run(
         ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:{METHOD_PATH}", "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
-        rt.ios_test_environment("light"), ui_log, 420,
+        DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420,
     )
     ui.update({"commandKind": "xcodebuild-test", "selector": METHOD, "device": rt.IOS_CORE_DEVICE, "appearance": "light", "errors": errors(ui_log)})
     issues, issue_status = accessibility_issues(ui_log)
     ui["accessibilityIssues"] = issues
     if issue_status is not None:
         ui["accessibilityIssueStatus"] = issue_status
-    report["results"] = {"simulatorProbes": report["results"]["simulatorProbes"], "ui": ui}
-    # Publish the test failure before summary or attachment export work starts.
+    report["results"] = {"simulatorProbes": simulator_probes, "ui": ui}
+    # Publish the test result before post-test probes, summary, or attachment export starts.
+    publish(report)
+    simulator_probes["afterTest"] = settings_probes(identifier, "afterTest")
+    report["results"] = {"simulatorProbes": simulator_probes, "ui": ui}
     publish(report)
     collect_summary(ui, bundle)
     publish(report)
