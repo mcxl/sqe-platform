@@ -58,6 +58,7 @@ NATIVE_CYCLE_TEST_SELECTOR = (
 NATIVE_CYCLE_EXPECTED_TEST_COUNT = 1
 UNIT_WORKFLOW_SECONDS = 300
 UNIT_SETUP_SECONDS = 90
+NATIVE_CYCLE_SETUP_SECONDS = 180
 UNIT_UI_SYNTAX_SECONDS = 8
 UNIT_SETTINGS_QUERY_SECONDS = 8
 UNIT_XCODEBUILD_SECONDS = 120
@@ -73,7 +74,7 @@ NATIVE_CYCLE_WORKFLOW_SECONDS = 480
 NATIVE_CYCLE_ATTACHMENT_SECONDS = 30
 NATIVE_CYCLE_PACKAGING_SECONDS = 45
 NATIVE_CYCLE_ALLOCATED_SECONDS = (
-    UNIT_SETUP_SECONDS + UNIT_UI_SYNTAX_SECONDS + (2 * UNIT_SETTINGS_QUERY_SECONDS)
+    NATIVE_CYCLE_SETUP_SECONDS + UNIT_UI_SYNTAX_SECONDS + (2 * UNIT_SETTINGS_QUERY_SECONDS)
     + UNIT_XCODEBUILD_SECONDS + UNIT_SUMMARY_SECONDS
     + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS
     + (UNIT_PUBLICATION_COUNT * UNIT_PUBLICATION_SECONDS)
@@ -276,6 +277,15 @@ def _existing_core_destination() -> str:
 
     return rt.resolve_ios_destinations(
         (rt.IOS_CORE_DEVICE,), verification_seconds=UNIT_SETUP_SECONDS,
+        require_ready=True,
+    )[rt.IOS_CORE_DEVICE]
+
+
+def _native_cycle_destination() -> str:
+    """Resolve the core simulator within the native-cycle setup limit."""
+
+    return rt.resolve_ios_destinations(
+        (rt.IOS_CORE_DEVICE,), verification_seconds=NATIVE_CYCLE_SETUP_SECONDS,
         require_ready=True,
     )[rt.IOS_CORE_DEVICE]
 
@@ -750,7 +760,7 @@ def native_cycle_main() -> int:
         print("diagnostic setup rejected; no test started", flush=True)
         return 1
     try:
-        destination = _existing_core_destination()
+        destination = _native_cycle_destination()
     except (rt.SimulatorResolutionError, OSError, ValueError) as error:
         report["diagnosticStatus"] = "setup-failed"
         report["results"] = {"setup": {

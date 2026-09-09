@@ -519,7 +519,7 @@ def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tm
     monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
     monkeypatch.setattr(diagnostic, "context", lambda workflow=diagnostic.WORKFLOW: "a" * 40)
     monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
-    monkeypatch.setattr(diagnostic, "_existing_core_destination", lambda: "platform=iOS Simulator,id=fixture")
+    monkeypatch.setattr(diagnostic, "_native_cycle_destination", lambda: "platform=iOS Simulator,id=fixture")
     monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
     original = b"original-result-byte"
     commands = []
@@ -628,7 +628,7 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
             local.setattr(diagnostic, "PRIVATE_ROOT", tmp_path / name / "private")
             local.setattr(diagnostic, "context", lambda workflow=diagnostic.WORKFLOW: "a" * 40)
             local.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
-            local.setattr(diagnostic, "_existing_core_destination", lambda: "platform=iOS Simulator,id=fixture")
+            local.setattr(diagnostic, "_native_cycle_destination", lambda: "platform=iOS Simulator,id=fixture")
             local.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
             local.setattr(diagnostic, "_collect_native_cycle_records", lambda *_args: collection)
             publication_calls = []
@@ -760,7 +760,7 @@ def test_private_collection_rejects_symlink_and_invalid_archive_path(tmp_path, m
         ], "complete")
 
 
-def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):
+def test_destination_resolvers_use_their_bounded_ready_core_limits(monkeypatch):
     calls = []
 
     def resolve(names, recorder=None, verification_seconds=None, require_ready=False):
@@ -769,7 +769,16 @@ def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):
 
     monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", resolve)
     assert diagnostic._existing_core_destination() == "platform=iOS Simulator,id=fixture"
-    assert calls == [((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS, True)]
+    assert diagnostic._native_cycle_destination() == "platform=iOS Simulator,id=fixture"
+    assert calls == [
+        ((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS, True),
+        ((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.NATIVE_CYCLE_SETUP_SECONDS, True),
+    ]
+    assert diagnostic.UNIT_SETUP_SECONDS == 90
+    assert diagnostic.NATIVE_CYCLE_SETUP_SECONDS == 180
+    assert diagnostic.UNIT_ALLOCATED_SECONDS == 266
+    assert diagnostic.NATIVE_CYCLE_ALLOCATED_SECONDS == 431
+    assert diagnostic.NATIVE_CYCLE_ALLOCATED_SECONDS < diagnostic.NATIVE_CYCLE_WORKFLOW_SECONDS == 480
 
 
 def test_unit_readiness_failure_publishes_safe_fixed_result_before_probes(tmp_path, monkeypatch):
@@ -873,6 +882,43 @@ def test_unit_readiness_timeout_publishes_safe_fixed_result_before_probes(tmp_pa
     calls = []
     monkeypatch.setattr(diagnostic, "run", lambda *args: calls.append(args) or {"processExit": 0})
     monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
+    assert diagnostic.main() == 1
+    assert calls == []
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    assert report["releaseEvidence"] is False
+    assert report["diagnosticStatus"] == "setup-failed"
+    assert report["results"] == {"setup": {
+        "phase": "simulator-readiness", "reason": "timeout",
+    }}
+    assert "private timeout output" not in json.dumps(report)
+
+
+def test_native_cycle_readiness_timeout_publishes_safe_fixed_result_before_probes(
+    tmp_path, monkeypatch
+):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(
+        diagnostic, "context", lambda workflow=diagnostic.WORKFLOW: "a" * 40
+    )
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(
+        diagnostic,
+        "_native_cycle_destination",
+        lambda: (_ for _ in ()).throw(
+            diagnostic.rt.SimulatorResolutionError(
+                "private timeout output", diagnostic.rt.SIMULATOR_RESOLUTION_TIMEOUT_REASON
+            )
+        ),
+    )
+    calls = []
+    monkeypatch.setattr(diagnostic, "run", lambda *args: calls.append(args) or {"processExit": 0})
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
+
     assert diagnostic.main() == 1
     assert calls == []
     report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
