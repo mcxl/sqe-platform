@@ -218,6 +218,7 @@ def test_exact_scope_and_retention_contract():
         diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: "1",
     }
     assert "DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420" in source
+    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
 
 
 def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, monkeypatch):
@@ -489,7 +490,12 @@ def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypa
         diagnostic.UNIT_XCODEBUILD_SECONDS,
         diagnostic.UNIT_SUMMARY_SECONDS,
     ]
+    assert diagnostic.UNIT_SETUP_SECONDS == 90
+    assert diagnostic.UNIT_XCODEBUILD_SECONDS == 120
+    assert diagnostic.UNIT_ALLOCATED_SECONDS == 266
     assert diagnostic.UNIT_ALLOCATED_SECONDS < 270
+    assert diagnostic.UNIT_WORKFLOW_SECONDS == 300
+    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
 
 
 def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):
@@ -504,7 +510,88 @@ def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):
     assert calls == [((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS, True)]
 
 
-def test_unit_readiness_failure_halts_before_simulator_probes(tmp_path, monkeypatch):
+def test_unit_readiness_failure_publishes_safe_fixed_result_before_probes(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    private_error = "private readiness token=secret"
+    monkeypatch.setattr(
+        diagnostic.rt, "resolve_ios_destinations",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            diagnostic.rt.SimulatorResolutionError(private_error)
+        ),
+    )
+    calls = []
+    monkeypatch.setattr(diagnostic, "run", lambda *args: calls.append(args) or {"processExit": 0})
+    published = []
+    original_publish = diagnostic.publish
+
+    def capture_publish(report, deadline=None):
+        published.append(json.loads(json.dumps(report)))
+        original_publish(report, deadline)
+
+    monkeypatch.setattr(diagnostic, "publish", capture_publish)
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
+    assert diagnostic.main() == 1
+    assert calls == []
+    assert published[0]["diagnosticStatus"] == "started"
+    assert published[0]["releaseEvidence"] is False
+    assert published[0]["results"] == {}
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    assert report["releaseEvidence"] is False
+    assert report["diagnosticStatus"] == "setup-failed"
+    assert report["results"] == {"setup": {
+        "phase": "simulator-readiness", "reason": "resolution-failed",
+    }}
+    assert private_error not in json.dumps(report)
+
+
+@pytest.mark.parametrize("error_type", [OSError, ValueError])
+def test_unit_readiness_resolver_error_publishes_safe_fixed_result_before_probes(
+    tmp_path, monkeypatch, capsys, error_type
+):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    private_error = "private simctl output=secret /Users/client/ios/Secret.swift"
+    monkeypatch.setattr(
+        diagnostic.rt, "resolve_ios_destinations",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(error_type(private_error)),
+    )
+    calls = []
+    monkeypatch.setattr(diagnostic, "run", lambda *args: calls.append(args) or {"processExit": 0})
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
+
+    assert diagnostic.main() == 1
+    captured = capsys.readouterr()
+    assert '"diagnosticStatus": "started"' in captured.out
+    assert '"diagnosticStatus": "setup-failed"' in captured.out
+    assert '"reason": "resolution-failed"' in captured.out
+    assert captured.out.endswith("diagnostic setup rejected; no test started\n")
+    assert captured.err == ""
+    assert private_error not in captured.out
+    assert private_error not in captured.err
+    assert calls == []
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    assert report["releaseEvidence"] is False
+    assert report["diagnosticStatus"] == "setup-failed"
+    assert report["results"] == {"setup": {
+        "phase": "simulator-readiness", "reason": "resolution-failed",
+    }}
+    assert private_error not in json.dumps(report)
+
+
+def test_unit_readiness_timeout_publishes_safe_fixed_result_before_probes(tmp_path, monkeypatch):
     root = tmp_path / "raw"
     safe = tmp_path / "safe"
     root.mkdir()
@@ -516,7 +603,9 @@ def test_unit_readiness_failure_halts_before_simulator_probes(tmp_path, monkeypa
     monkeypatch.setattr(
         diagnostic.rt, "resolve_ios_destinations",
         lambda *_args, **_kwargs: (_ for _ in ()).throw(
-            diagnostic.rt.SimulatorResolutionError("bootstatus failed")
+            diagnostic.rt.SimulatorResolutionError(
+                "private timeout output", diagnostic.rt.SIMULATOR_RESOLUTION_TIMEOUT_REASON
+            )
         ),
     )
     calls = []
@@ -524,6 +613,13 @@ def test_unit_readiness_failure_halts_before_simulator_probes(tmp_path, monkeypa
     monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
     assert diagnostic.main() == 1
     assert calls == []
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    assert report["releaseEvidence"] is False
+    assert report["diagnosticStatus"] == "setup-failed"
+    assert report["results"] == {"setup": {
+        "phase": "simulator-readiness", "reason": "timeout",
+    }}
+    assert "private timeout output" not in json.dumps(report)
 
 
 def test_unit_publication_deadline_retains_previous_report(tmp_path, monkeypatch):

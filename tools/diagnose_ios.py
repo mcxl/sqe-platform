@@ -45,10 +45,10 @@ DIAGNOSTIC_MODE_ENVIRONMENT_KEY = "ACE_IOS_DIAGNOSTIC_MODE"
 UNIT_TEST_TARGET = "ACEClientAppTests"
 UNIT_EXPECTED_TEST_COUNT = 65
 UNIT_WORKFLOW_SECONDS = 300
-UNIT_SETUP_SECONDS = 40
+UNIT_SETUP_SECONDS = 90
 UNIT_UI_SYNTAX_SECONDS = 8
 UNIT_SETTINGS_QUERY_SECONDS = 8
-UNIT_XCODEBUILD_SECONDS = 170
+UNIT_XCODEBUILD_SECONDS = 120
 UNIT_SUMMARY_SECONDS = 12
 UNIT_PUBLICATION_SECONDS = 5
 UNIT_PUBLICATION_COUNT = 4
@@ -333,19 +333,15 @@ def _collect_unit_summary(unit: dict[str, object], bundle: Path) -> None:
 def unit_settings_main() -> int:
     """Run one non-accepting unit diagnostic against an existing simulator."""
 
-    if UNIT_ALLOCATED_SECONDS >= 270:
+    if UNIT_ALLOCATED_SECONDS != 266 or UNIT_ALLOCATED_SECONDS >= 270:
         raise RuntimeError("unit diagnostic time budget is invalid")
     deadline = time.monotonic() + UNIT_WORKFLOW_SECONDS
     try:
         commit = context()
         rt._live_artifact_root(ROOT)
         rt._live_artifact_root(SAFE_ROOT)
-        destination = _existing_core_destination()
-    except (OSError, ValueError, rt.SimulatorResolutionError):
+    except (OSError, ValueError):
         print("diagnostic setup rejected; no test started", flush=True)
-        return 1
-    identifier = _simulator_identifier(destination)
-    if identifier is None:
         return 1
     report: dict[str, object] = {
         "scope": "one-core-unit-settings-diagnostic", "diagnosticMode": UNIT_SETTINGS_MODE,
@@ -356,7 +352,28 @@ def unit_settings_main() -> int:
     build_id = _build_id()
     if build_id is not None:
         report["buildId"] = build_id
-    if not _publish_unit_report(report, deadline):
+    try:
+        publish(report, deadline)
+    except OSError:
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    try:
+        destination = _existing_core_destination()
+    except (rt.SimulatorResolutionError, OSError, ValueError) as error:
+        report["diagnosticStatus"] = "setup-failed"
+        report["results"] = {"setup": {
+            "phase": "simulator-readiness",
+            "reason": (
+                "timeout"
+                if getattr(error, "reason", None) == rt.SIMULATOR_RESOLUTION_TIMEOUT_REASON
+                else "resolution-failed"
+            ),
+        }}
+        _publish_unit_report(report, deadline)
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    identifier = _simulator_identifier(destination)
+    if identifier is None:
         return 1
     probes = {
         "uiSyntax": _bounded_ui_syntax_probe(identifier),
