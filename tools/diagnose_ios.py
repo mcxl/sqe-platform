@@ -374,6 +374,55 @@ def _collect_unit_summary(unit: dict[str, object], bundle: Path) -> None:
 class PrivateRecordCollectionError(ValueError):
     """Stop private collection without disclosing a raw record."""
 
+    def __init__(self, reason: str, diagnostic: dict[str, object] | None = None) -> None:
+        super().__init__(reason)
+        self.diagnostic = diagnostic
+
+
+def _archive_path_source(archive_path: str) -> str:
+    if archive_path.startswith("records/unit.xcresult/"):
+        return "result-bundle"
+    if archive_path.startswith("records/unit-attachment-export/"):
+        return "attachment-export"
+    return "generated-record"
+
+
+def _archive_path_diagnostic(archive_path: str) -> dict[str, object]:
+    """Classify an invalid archive path without retaining it."""
+
+    punctuation = []
+    for character, label in (
+        ("=", "equals"), ("+", "plus"), ("~", "tilde"), (" ", "space"),
+    ):
+        if character in archive_path:
+            punctuation.append(label)
+    allowed_diagnostic_characters = (
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._/-=+~ "
+    )
+    if any(
+        ord(character) < 128 and character not in allowed_diagnostic_characters
+        for character in archive_path
+    ):
+        punctuation.append("other-ascii")
+    if any(ord(character) > 127 for character in archive_path):
+        punctuation.append("non-ascii")
+    relative = archive_path.removeprefix("records/")
+    if not archive_path.startswith("records/") or not relative:
+        rule = "prefix"
+    elif len(relative) > 1024:
+        rule = "path-length"
+    elif any(part == "" for part in relative.split("/")):
+        rule = "empty-segment"
+    elif any(part in {".", ".."} for part in relative.split("/")):
+        rule = "dot-segment"
+    else:
+        rule = "unsupported-character"
+    return {
+        "source": _archive_path_source(archive_path),
+        "rule": rule,
+        "punctuationClasses": punctuation,
+    }
+
 
 def _private_collection_root() -> Path:
     if PRIVATE_ROOT.exists() or PRIVATE_ROOT.is_symlink():
@@ -504,7 +553,9 @@ def _private_record_entries(
             or not relative
             or any(part in {"", ".", ".."} for part in relative.split("/"))
         ):
-            raise PrivateRecordCollectionError("archive-path-invalid")
+            raise PrivateRecordCollectionError(
+                "archive-path-invalid", _archive_path_diagnostic(archive_path)
+            )
         if archive_path in archive_paths:
             raise PrivateRecordCollectionError("archive-path-duplicate")
         archive_paths.add(archive_path)
@@ -644,6 +695,8 @@ def _collect_native_cycle_records(commit: str, unit: dict[str, object], bundle: 
         _write_private_archive(private_root, [*sources, inventory_source], [*entries, *inventory_entry])
         return "complete"
     except PrivateRecordCollectionError as error:
+        if error.diagnostic is not None:
+            unit["privateRecordCollectionDiagnostic"] = error.diagnostic
         return str(error)
 
 

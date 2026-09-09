@@ -617,7 +617,7 @@ def test_native_cycle_context_requires_its_workflow_and_api_trigger(tmp_path, mo
 
 
 def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publication(tmp_path, monkeypatch):
-    def run_case(name, collection, final_publication, expected_exit):
+    def run_case(name, collection, final_publication, expected_exit, path_diagnostic=None):
         root = tmp_path / name / "raw"
         safe = tmp_path / name / "safe"
         root.mkdir(parents=True)
@@ -630,7 +630,12 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
             local.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
             local.setattr(diagnostic, "_native_cycle_destination", lambda: "platform=iOS Simulator,id=fixture")
             local.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
-            local.setattr(diagnostic, "_collect_native_cycle_records", lambda *_args: collection)
+            def collect_records(_commit, unit, _bundle):
+                if path_diagnostic is not None:
+                    unit["privateRecordCollectionDiagnostic"] = path_diagnostic
+                return collection
+
+            local.setattr(diagnostic, "_collect_native_cycle_records", collect_records)
             publication_calls = []
             publication_reports = []
 
@@ -665,10 +670,17 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
             report = publication_reports[-1]
             assert report["results"]["unit"]["status"] == "passed"
             assert report["results"]["unit"]["privateRecordCollection"] == collection
+            assert report["results"]["unit"].get("privateRecordCollectionDiagnostic") == path_diagnostic
             assert "intentionalNonZeroExit" not in report
 
     run_case("pass", "complete", True, 0)
-    run_case("collection-failure", "sensitive-record", True, 1)
+    run_case(
+        "collection-failure",
+        "archive-path-invalid",
+        True,
+        1,
+        {"source": "result-bundle", "rule": "unsupported-character", "punctuationClasses": ["equals"]},
+    )
     run_case("publication-failure", "complete", False, 1)
 
 
@@ -743,11 +755,33 @@ def test_private_collection_rejects_symlink_and_invalid_archive_path(tmp_path, m
     )
     with pytest.raises(diagnostic.PrivateRecordCollectionError, match="symlink-record"):
         diagnostic._private_regular_files(root)
-    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid"):
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
         diagnostic._private_record_entries([(safe, "unexpected/file", "test")], "complete")
+    assert error.value.diagnostic == {
+        "source": "generated-record", "rule": "prefix", "punctuationClasses": [],
+    }
     for unsafe_path in ("records/../outside", "records/./same", "records//same"):
-        with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid"):
+        with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
             diagnostic._private_record_entries([(safe, unsafe_path, "test")], "complete")
+        assert error.value.diagnostic["source"] == "generated-record"
+        assert error.value.diagnostic["rule"] in {"dot-segment", "empty-segment"}
+    secret_path = "records/unit.xcresult/secret=not-public"
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries([(safe, secret_path, "test")], "complete")
+    assert str(error.value) == "archive-path-invalid"
+    assert secret_path not in json.dumps(error.value.diagnostic)
+    boundary_path = "records/" + ("a" * 1016) + "="
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries([(safe, boundary_path, "test")], "complete")
+    assert error.value.diagnostic == {
+        "source": "generated-record",
+        "rule": "unsupported-character",
+        "punctuationClasses": ["equals"],
+    }
+    too_long_path = "records/" + ("a" * 1025)
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries([(safe, too_long_path, "test")], "complete")
+    assert error.value.diagnostic["rule"] == "path-length"
     with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-duplicate"):
         diagnostic._private_record_entries([
             (safe, "records/duplicate", "test"),
@@ -758,6 +792,42 @@ def test_private_collection_rejects_symlink_and_invalid_archive_path(tmp_path, m
             (safe, f"records/{number}", "test")
             for number in range(diagnostic.PRIVATE_RECORD_MAX_FILES + 1)
         ], "complete")
+
+
+def test_native_collection_publishes_bounded_result_bundle_path_diagnostic(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    private = tmp_path / "private"
+    bundle = root / "unit.xcresult" / "Data"
+    bundle.mkdir(parents=True)
+    rejected_name = "data.fixture=="
+    (bundle / rejected_name).write_text("controlled", encoding="utf-8")
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+    ):
+        (root / name).write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+
+    def run(command, _environment, log, _timeout):
+        assert command[:4] == ["xcrun", "xcresulttool", "export", "attachments"]
+        Path(command[-1]).mkdir()
+        log.write_text("controlled", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    unit = {"summaryStatus": "available", "processExit": 65}
+    assert diagnostic._collect_native_cycle_records(
+        "a" * 40, unit, root / "unit.xcresult"
+    ) == "archive-path-invalid"
+    assert unit["privateRecordCollectionDiagnostic"] == {
+        "source": "result-bundle",
+        "rule": "unsupported-character",
+        "punctuationClasses": ["equals"],
+    }
+    assert rejected_name not in json.dumps(unit)
+    assert "secret=not-public" not in json.dumps(unit)
+    assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
 
 
 def test_destination_resolvers_use_their_bounded_ready_core_limits(monkeypatch):
