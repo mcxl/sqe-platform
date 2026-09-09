@@ -444,6 +444,73 @@ def _sensitive_record_matcher(content: bytes) -> str | None:
     return None
 
 
+def _credential_prefix_classification(content: bytes) -> dict[str, str]:
+    """Classify a matched credential prefix without retaining its bytes."""
+
+    match = PRIVATE_RECORD_CREDENTIAL_PREFIX.search(content)
+    if match is None:
+        return {}
+    observed = match.group()
+    if observed.startswith(b"github_pat_"):
+        family = "github-pat-style"
+    elif observed.startswith(b"sk-"):
+        family = "sk-dash"
+    else:
+        family = "github-legacy-style"
+    if len(observed) <= 20:
+        length_bucket = "up-to-20"
+    elif len(observed) <= 40:
+        length_bucket = "21-to-40"
+    elif len(observed) <= 80:
+        length_bucket = "41-to-80"
+    else:
+        length_bucket = "81-or-more"
+    if match.start() < 64 or len(content) - match.end() < 64:
+        neighbourhood_shape = "boundary-truncated"
+    else:
+        neighbourhood = content[match.start() - 64:match.end() + 64]
+        try:
+            decoded = neighbourhood.decode("utf-8")
+        except UnicodeDecodeError:
+            neighbourhood_shape = "non-utf8"
+        else:
+            neighbourhood_shape = (
+                "utf8-with-control"
+                if any(
+                    not character.isprintable() and character not in "\t\n\r"
+                    for character in decoded
+                )
+                else "utf8-printable"
+            )
+    return {
+        "prefixFamily": family,
+        "observedLengthBucket": length_bucket,
+        "neighbourhoodShape": neighbourhood_shape,
+    }
+
+
+def _private_record_kind(archive_path: str) -> str:
+    """Classify a record name without retaining the name."""
+
+    name = archive_path.rsplit("/", 1)[-1]
+    if name == "Info.plist":
+        return "info-plist"
+    if (
+        archive_path == "records/unit.xcresult/Data"
+        or archive_path.startswith("records/unit.xcresult/Data/")
+    ):
+        return "data-object"
+    if name.endswith(".plist"):
+        return "plist"
+    if name.endswith(".json"):
+        return "json"
+    if name.endswith(".log"):
+        return "text-log"
+    if name.endswith(".xcactivitylog"):
+        return "activity-log"
+    return "other"
+
+
 def _private_collection_root() -> Path:
     if PRIVATE_ROOT.exists() or PRIVATE_ROOT.is_symlink():
         raise PrivateRecordCollectionError("private-root-unavailable")
@@ -500,8 +567,15 @@ def _private_file_metadata(path: Path) -> tuple[int, str]:
                 inspected = carry + chunk
                 matcher = _sensitive_record_matcher(inspected)
                 if matcher is not None:
+                    classification = (
+                        _credential_prefix_classification(inspected)
+                        if matcher == "credential-prefix"
+                        else None
+                    )
                     raise PrivateRecordCollectionError(
-                        "sensitive-record", sensitive_matcher=matcher
+                        "sensitive-record",
+                        sensitive_matcher=matcher,
+                        diagnostic=classification,
                     )
                 digest.update(chunk)
                 carry = inspected[-256:]
@@ -589,12 +663,16 @@ def _private_record_entries(
             size, digest = _private_file_metadata(path)
         except PrivateRecordCollectionError as error:
             if error.sensitive_matcher is not None:
+                record_diagnostic = {
+                    "source": _archive_path_source(archive_path),
+                    "matcher": error.sensitive_matcher,
+                }
+                if error.diagnostic is not None:
+                    record_diagnostic.update(error.diagnostic)
+                    record_diagnostic["recordKind"] = _private_record_kind(archive_path)
                 raise PrivateRecordCollectionError(
                     "sensitive-record",
-                    {
-                        "source": _archive_path_source(archive_path),
-                        "matcher": error.sensitive_matcher,
-                    },
+                    record_diagnostic,
                 ) from error
             raise
         entries.append({

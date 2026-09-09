@@ -697,7 +697,29 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
     run_case("publication-failure", "complete", False, 1)
 
 
-def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path, monkeypatch):
+@pytest.mark.parametrize(
+    ("blocked_content", "expected_diagnostic"),
+    [
+        (
+            b'{"token":"blocked"}',
+            {"source": "result-bundle", "matcher": "key-value"},
+        ),
+        (
+            (b" " * 64) + b"ghp_fixture_token" + (b" " * 64),
+            {
+                "source": "result-bundle",
+                "matcher": "credential-prefix",
+                "prefixFamily": "github-legacy-style",
+                "observedLengthBucket": "up-to-20",
+                "recordKind": "info-plist",
+                "neighbourhoodShape": "utf8-printable",
+            },
+        ),
+    ],
+)
+def test_native_collection_stops_for_missing_bundle_or_sensitive_record(
+    tmp_path, monkeypatch, blocked_content, expected_diagnostic
+):
     root = tmp_path / "raw"
     private = tmp_path / "private"
     root.mkdir()
@@ -710,7 +732,7 @@ def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path
 
     bundle = root / "unit.xcresult"
     bundle.mkdir()
-    (bundle / "Info.plist").write_text('{"token":"blocked"}', encoding="utf-8")
+    (bundle / "Info.plist").write_bytes(blocked_content)
     for name in (
         "unit.log", "unit-summary.json", "simctl-help-ui.log",
         "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
@@ -726,11 +748,10 @@ def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path
 
     monkeypatch.setattr(diagnostic, "run", run)
     assert diagnostic._collect_native_cycle_records("a" * 40, unit, bundle) == "sensitive-record"
-    assert report["results"]["unit"]["privateRecordCollectionDiagnostic"] == {
-        "source": "result-bundle", "matcher": "key-value",
-    }
-    assert "token" not in json.dumps(report)
-    assert "blocked" not in json.dumps(report)
+    assert report["results"]["unit"]["privateRecordCollectionDiagnostic"] == expected_diagnostic
+    assert blocked_content.decode("utf-8") not in json.dumps(report)
+    assert "ghp_fixture_token" not in json.dumps(report)
+    assert "Info.plist" not in json.dumps(report)
     assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
 
 
@@ -769,9 +790,132 @@ def test_sensitive_record_diagnostic_uses_only_fixed_source_and_matcher(
     with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
         diagnostic._private_record_entries([(record, archive_path, command)], "complete")
 
-    assert error.value.diagnostic == {"source": source, "matcher": matcher}
+    expected = {"source": source, "matcher": matcher}
+    if matcher == "credential-prefix":
+        expected.update({
+            "prefixFamily": "github-legacy-style",
+            "observedLengthBucket": "up-to-20",
+            "recordKind": "other",
+            "neighbourhoodShape": "boundary-truncated",
+        })
+    assert error.value.diagnostic == expected
     assert content.decode("utf-8") not in json.dumps(error.value.diagnostic)
     assert str(error.value) == "sensitive-record"
+
+
+def _credential_prefix(total_length: int, prefix: bytes = b"ghp_") -> bytes:
+    return prefix + (b"a" * (total_length - len(prefix)))
+
+
+@pytest.mark.parametrize(
+    ("prefix", "expected_family"),
+    [
+        (b"ghp_", "github-legacy-style"),
+        (b"github_pat_", "github-pat-style"),
+        (b"sk-", "sk-dash"),
+    ],
+)
+@pytest.mark.parametrize(
+    ("total_length", "expected_bucket"),
+    [
+        (20, "up-to-20"),
+        (21, "21-to-40"),
+        (40, "21-to-40"),
+        (41, "41-to-80"),
+        (80, "41-to-80"),
+        (81, "81-or-more"),
+    ],
+)
+def test_credential_prefix_diagnostic_uses_only_safe_family_and_length_buckets(
+    tmp_path, prefix, expected_family, total_length, expected_bucket
+):
+    record = tmp_path / "record"
+    record.write_bytes((b" " * 64) + _credential_prefix(total_length, prefix) + (b" " * 64))
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries(
+            [(record, "records/unit.xcresult/Info.plist", "xcodebuild-test")], "complete"
+        )
+
+    assert error.value.diagnostic == {
+        "source": "result-bundle",
+        "matcher": "credential-prefix",
+        "prefixFamily": expected_family,
+        "observedLengthBucket": expected_bucket,
+        "recordKind": "info-plist",
+        "neighbourhoodShape": "utf8-printable",
+    }
+    assert _credential_prefix(total_length, prefix).decode("utf-8") not in json.dumps(error.value.diagnostic)
+
+
+@pytest.mark.parametrize(
+    ("archive_path", "expected_kind"),
+    [
+        ("records/unit.xcresult/Data", "data-object"),
+        ("records/unit.xcresult/Data/synthetic-object", "data-object"),
+        ("records/unit.xcresult/Other/Data", "other"),
+        ("records/unit.xcresult/result.plist", "plist"),
+        ("records/unit.xcresult/result.json", "json"),
+        ("records/unit.xcresult/result.log", "text-log"),
+        ("records/unit.xcresult/result.xcactivitylog", "activity-log"),
+        ("records/unit.xcresult/result", "other"),
+    ],
+)
+def test_credential_prefix_diagnostic_uses_fixed_record_kinds(
+    tmp_path, archive_path, expected_kind
+):
+    record = tmp_path / "record"
+    record.write_bytes((b" " * 64) + _credential_prefix(21) + (b" " * 64))
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries([(record, archive_path, "xcodebuild-test")], "complete")
+
+    assert error.value.diagnostic["recordKind"] == expected_kind
+    assert set(error.value.diagnostic) == {
+        "source", "matcher", "prefixFamily", "observedLengthBucket", "recordKind", "neighbourhoodShape",
+    }
+
+
+@pytest.mark.parametrize(
+    ("content", "expected_shape"),
+    [
+        ((b" " * 63) + b"\n" + _credential_prefix(21) + (b" " * 64), "utf8-printable"),
+        ((b" " * 63) + b"\t" + _credential_prefix(21) + (b" " * 64), "utf8-printable"),
+        ((b" " * 63) + b"\r" + _credential_prefix(21) + (b" " * 64), "utf8-printable"),
+        ((b" " * 63) + b"\x7f" + _credential_prefix(21) + (b" " * 64), "utf8-with-control"),
+        ((b" " * 63) + b"\xc2\x85" + _credential_prefix(21) + (b" " * 64), "utf8-with-control"),
+        ((b" " * 63) + b"\xff" + _credential_prefix(21) + (b" " * 64), "non-utf8"),
+        (_credential_prefix(21) + (b" " * 64), "boundary-truncated"),
+        ((b" " * 64) + _credential_prefix(21), "boundary-truncated"),
+    ],
+)
+def test_credential_prefix_diagnostic_classifies_only_safe_neighbourhood_shape(
+    tmp_path, content, expected_shape
+):
+    record = tmp_path / "record"
+    record.write_bytes(content)
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries(
+            [(record, "records/unit.xcresult/Data", "xcodebuild-test")], "complete"
+        )
+
+    assert error.value.diagnostic["neighbourhoodShape"] == expected_shape
+    assert content not in json.dumps(error.value.diagnostic).encode("utf-8")
+
+
+def test_credential_prefix_diagnostic_marks_a_chunk_crossing_match_without_raw_data(tmp_path):
+    record = tmp_path / "record"
+    candidate = _credential_prefix(21)
+    record.write_bytes((b" " * ((64 * 1024) - 2)) + candidate + (b" " * 64))
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries(
+            [(record, "records/unit.xcresult/Data", "xcodebuild-test")], "complete"
+        )
+
+    assert error.value.diagnostic["neighbourhoodShape"] == "utf8-printable"
+    assert candidate.decode("utf-8") not in json.dumps(error.value.diagnostic)
 
 
 def test_native_collection_rejects_an_empty_result_bundle(tmp_path, monkeypatch):
