@@ -687,6 +687,7 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
             assert "intentionalNonZeroExit" not in report
 
     run_case("pass", "complete", True, 0)
+    run_case("quarantined", "quarantined-pending-review", True, 1)
     run_case(
         "collection-failure",
         "archive-path-invalid",
@@ -1161,6 +1162,68 @@ def test_private_decoder_process_keeps_stderr_private_and_bounds_combined_output
     assert terminated == [overflow_process]
 
 
+def test_private_command_retains_only_bounded_exit_and_error_classification(tmp_path, monkeypatch):
+    class Stream:
+        def __init__(self, descriptor):
+            self.descriptor = descriptor
+
+        def fileno(self):
+            return self.descriptor
+
+        def close(self):
+            pass
+
+    class Process:
+        pid = 101
+        stdout = Stream(10)
+        stderr = Stream(11)
+
+        def poll(self):
+            return 17
+
+        def wait(self, timeout=None):
+            return 17
+
+    class Selector:
+        def __init__(self):
+            self.values = {}
+
+        def register(self, stream, _event, data):
+            self.values[stream.fileno()] = type(
+                "Key", (), {"fd": stream.fileno(), "fileobj": stream, "data": data}
+            )()
+
+        def get_map(self):
+            return self.values
+
+        def select(self, _timeout):
+            return [(key, None) for key in self.values.values()]
+
+        def unregister(self, stream):
+            self.values.pop(stream.fileno())
+
+        def close(self):
+            pass
+
+    private_error = b"unknown option secret=must-not-retain"
+    output = {10: [b""], 11: [private_error, b""]}
+    monkeypatch.setattr(diagnostic.subprocess, "Popen", lambda *args, **kwargs: Process())
+    monkeypatch.setattr(diagnostic.selectors, "DefaultSelector", Selector)
+    monkeypatch.setattr(diagnostic.os, "read", lambda descriptor, _size: output[descriptor].pop(0))
+    record = {}
+    streams = (tmp_path / "stdout", tmp_path / "stderr")
+
+    assert diagnostic._private_xcresult_command(
+        ["xcrun", "fixture"], 1, 1024, record, streams
+    ) == (
+        "command-failed", None
+    )
+    assert record == {"processExit": 17, "errorClassification": "unsupported-option"}
+    assert private_error.decode("utf-8") not in json.dumps(record)
+    assert streams[0].read_bytes() == b""
+    assert streams[1].read_bytes() == private_error
+
+
 def test_private_decoder_termination_kills_its_group_after_leader_exit(monkeypatch):
     class Process:
         pid = 99
@@ -1365,12 +1428,13 @@ def test_private_decoder_fails_closed_for_negative_limited_and_malformed_results
     assert candidate.decode("utf-8") not in json.dumps(result)
 
 
-def test_sensitive_collection_decodes_privately_and_withholds_the_archive(tmp_path, monkeypatch):
+def test_binary_data_prefix_enters_private_quarantine_with_exact_original_bytes(tmp_path, monkeypatch):
     root = tmp_path / "raw"
     bundle = root / "unit.xcresult" / "Data"
     bundle.mkdir(parents=True)
     candidate = b"sk-fixturetoken"
-    (bundle / "opaque").write_bytes((b" " * 64) + candidate + (b" " * 64))
+    original = (b" " * 63) + b"\xff" + candidate + (b" " * 64)
+    (bundle / "opaque").write_bytes(original)
     for name in (
         "unit.log", "unit-summary.json", "simctl-help-ui.log",
         "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
@@ -1381,20 +1445,219 @@ def test_sensitive_collection_decodes_privately_and_withholds_the_archive(tmp_pa
     monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", tmp_path / "private")
     attachments = root / "attachments"
     attachments.mkdir()
+    (root / "unit-attachment-export.log").write_text("controlled", encoding="utf-8")
     monkeypatch.setattr(diagnostic, "_native_attachment_export", lambda _bundle, _unit: attachments)
-    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
-        "root": ("complete", json.dumps({"value": candidate.decode("utf-8")}).encode("utf-8")),
-    }))
+    unit = {"summaryStatus": "available", "processExit": 65}
+
+    assert diagnostic._collect_native_cycle_records(
+        "a" * 40, unit, root / "unit.xcresult"
+    ) == "quarantined-pending-review"
+    safe = json.dumps(unit)
+    assert candidate.decode("utf-8") not in safe
+    assert "opaque" not in safe
+    archive = tmp_path / "private" / diagnostic.PRIVATE_ARCHIVE_NAME
+    with tarfile.open(archive, "r:gz") as records:
+        assert records.extractfile("records/unit.xcresult/Data/opaque").read() == original
+        inventory = json.load(records.extractfile("records/collection-inventory.json"))
+    quarantined = next(
+        item for item in inventory["records"]
+        if item["relativePath"] == "records/unit.xcresult/Data/opaque"
+    )
+    assert inventory["collectionState"] == "quarantined-pending-review"
+    assert quarantined["scannerStatus"] == "quarantined-pending-review"
+
+
+def test_quarantine_scans_the_full_file_and_rejects_a_later_confirmed_secret(tmp_path):
+    record = tmp_path / "opaque"
+    record.write_bytes(
+        (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)
+        + b' token=confirmed-secret'
+    )
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries(
+            [(record, "records/unit.xcresult/Data/opaque", "xcodebuild-test")],
+            "complete",
+            allow_quarantine=True,
+        )
+
+    assert error.value.diagnostic == {
+        "source": "result-bundle", "matcher": "key-value"
+    }
+
+
+def test_private_inspection_streams_remain_strict_and_withhold_the_archive(
+    tmp_path, monkeypatch
+):
+    root = tmp_path / "raw"
+    bundle = root / "unit.xcresult" / "Data"
+    bundle.mkdir(parents=True)
+    (bundle / "opaque").write_bytes(
+        (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)
+    )
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+        "unit-attachment-export.log",
+    ):
+        (root / name).write_text("controlled", encoding="utf-8")
+    (root / "unit-summary.json").write_text("{}", encoding="utf-8")
+    attachments = root / "attachments"
+    attachments.mkdir()
+    private = tmp_path / "private"
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+    monkeypatch.setattr(diagnostic, "_native_attachment_export", lambda _bundle, _unit: attachments)
+
+    def inspection(_bundle, private_root, _deadline):
+        stdout = private_root / "inspection-test-details.stdout"
+        stderr = private_root / "inspection-test-details.stderr"
+        stdout.write_bytes(b"token=must-not-archive")
+        stderr.write_bytes(b"")
+        return ({"test-details": {"status": "available"}}, [
+            (stdout, "records/private-inspection/test-details.stdout", "xcresult-private-inspection"),
+            (stderr, "records/private-inspection/test-details.stderr", "xcresult-private-inspection"),
+        ])
+
+    monkeypatch.setattr(diagnostic, "_private_xcresult_inspection_capabilities", inspection)
     unit = {"summaryStatus": "available", "processExit": 65}
 
     assert diagnostic._collect_native_cycle_records(
         "a" * 40, unit, root / "unit.xcresult", diagnostic.time.monotonic() + 30
     ) == "sensitive-record"
-    assert unit["privateDecodeDiagnostic"]["status"] == "decoded-string-match"
-    safe = json.dumps(unit)
-    assert candidate.decode("utf-8") not in safe
-    assert "opaque" not in safe
-    assert not (tmp_path / "private" / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
+    assert "must-not-archive" not in json.dumps(unit)
+    assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
+
+
+def test_private_inspection_streams_are_exact_private_archive_records(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    bundle = root / "unit.xcresult" / "Data"
+    bundle.mkdir(parents=True)
+    (bundle / "opaque").write_bytes(
+        (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)
+    )
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+        "unit-attachment-export.log",
+    ):
+        (root / name).write_text("controlled", encoding="utf-8")
+    (root / "unit-summary.json").write_text("{}", encoding="utf-8")
+    attachments = root / "attachments"
+    attachments.mkdir()
+    private = tmp_path / "private"
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+    monkeypatch.setattr(diagnostic, "_native_attachment_export", lambda _bundle, _unit: attachments)
+    stdout = b"controlled output"
+    stderr = b"unknown option --controlled"
+
+    def inspection(_bundle, private_root, _deadline):
+        output = private_root / "inspection-test-details.stdout"
+        error = private_root / "inspection-test-details.stderr"
+        output.write_bytes(stdout)
+        error.write_bytes(stderr)
+        return ({"test-details": {
+            "status": "command-failed", "processExit": 17,
+            "errorClassification": "unsupported-option",
+        }}, [
+            (output, "records/private-inspection/test-details.stdout", "xcresult-private-inspection"),
+            (error, "records/private-inspection/test-details.stderr", "xcresult-private-inspection"),
+        ])
+
+    monkeypatch.setattr(diagnostic, "_private_xcresult_inspection_capabilities", inspection)
+    unit = {"summaryStatus": "available", "processExit": 65}
+
+    assert diagnostic._collect_native_cycle_records(
+        "a" * 40, unit, root / "unit.xcresult", diagnostic.time.monotonic() + 30
+    ) == "quarantined-pending-review"
+    with tarfile.open(private / diagnostic.PRIVATE_ARCHIVE_NAME, "r:gz") as records:
+        assert records.extractfile("records/private-inspection/test-details.stdout").read() == stdout
+        assert records.extractfile("records/private-inspection/test-details.stderr").read() == stderr
+        inventory = json.load(records.extractfile("records/collection-inventory.json"))
+    entries = {entry["relativePath"]: entry for entry in inventory["records"]}
+    assert entries["records/private-inspection/test-details.stderr"]["producingCommand"] == "xcresult-private-inspection"
+    assert entries["records/private-inspection/test-details.stderr"]["sha256"] == hashlib.sha256(stderr).hexdigest()
+
+
+@pytest.mark.parametrize(
+    ("archive_path", "command", "content"),
+    [
+        ("records/unit.xcresult/Data", "xcodebuild-test", (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)),
+        ("records/unit.xcresult/DataX/opaque", "xcodebuild-test", (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)),
+        ("records/unit.xcresult/Data/opaque", "xcresult-summary", (b" " * 63) + b"\xffsk-fixturetoken" + (b" " * 64)),
+        ("records/unit.xcresult/Data/opaque", "xcodebuild-test", (b" " * 64) + b"sk-fixturetoken" + (b" " * 64)),
+    ],
+)
+def test_quarantine_rejects_near_paths_unapproved_provenance_and_utf8_matches(
+    tmp_path, archive_path, command, content
+):
+    record = tmp_path / "record"
+    record.write_bytes(content)
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record"):
+        diagnostic._private_record_entries(
+            [(record, archive_path, command)], "complete", allow_quarantine=True
+        )
+
+
+def test_private_inspection_uses_only_help_approved_apple_commands(tmp_path, monkeypatch):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    private = tmp_path / "private"
+    private.mkdir()
+    calls = []
+
+    def command(arguments, _timeout, _limit, private_result=None, private_streams=None):
+        calls.append(arguments)
+        assert private_streams is not None
+        private_streams[0].write_bytes(b"controlled stdout")
+        private_streams[1].write_bytes(b"controlled stderr")
+        if arguments[-1] == "--help":
+            return "complete", b"USAGE: xcresulttool fixture --path <path>"
+        assert private_result is not None
+        private_result.update({"processExit": 17, "errorClassification": "unsupported-option"})
+        return "command-failed", None
+
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", command)
+    result, sources = diagnostic._private_xcresult_inspection_capabilities(
+        bundle, private, diagnostic.time.monotonic() + 30
+    )
+
+    assert set(result) == {"test-details", "activities", "test-list", "log"}
+    assert all(item["status"] == "command-failed" for item in result.values())
+    assert all(item["processExit"] == 17 for item in result.values())
+    assert all(item["errorClassification"] == "unsupported-option" for item in result.values())
+    assert all("sk-fixturetoken" not in json.dumps(item) for item in result.values())
+    assert all(call[:3] == ["xcrun", "xcresulttool", "get"] for call in calls)
+    assert len(sources) == 16
+    assert all(path.read_bytes().startswith(b"controlled") for path, _, _ in sources)
+
+
+def test_private_inspection_keeps_help_and_stays_pending_for_unknown_required_flags(
+    tmp_path, monkeypatch
+):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    private = tmp_path / "private"
+    private.mkdir()
+    calls = []
+
+    def command(arguments, _timeout, _limit, private_result=None, private_streams=None):
+        calls.append(arguments)
+        assert private_streams is not None
+        private_streams[0].write_bytes(b"USAGE: fixture --path <path> --id <id>")
+        private_streams[1].write_bytes(b"")
+        return "complete", b"USAGE: fixture --path <path> --id <id>"
+
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", command)
+    result, sources = diagnostic._private_xcresult_inspection_capabilities(
+        bundle, private, diagnostic.time.monotonic() + 30
+    )
+
+    assert all(item["status"] == "syntax-pending" for item in result.values())
+    assert len(calls) == 4
+    assert len(sources) == 8
 
 
 def test_unit_readiness_failure_publishes_safe_fixed_result_before_probes(tmp_path, monkeypatch):

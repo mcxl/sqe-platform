@@ -458,10 +458,12 @@ def _sensitive_record_matcher(content: bytes) -> str | None:
     return None
 
 
-def _credential_prefix_classification(content: bytes) -> dict[str, str]:
+def _credential_prefix_classification(
+    content: bytes, match: re.Match[bytes] | None = None
+) -> dict[str, str]:
     """Classify a matched credential prefix without retaining its bytes."""
 
-    match = PRIVATE_RECORD_CREDENTIAL_PREFIX.search(content)
+    match = match or PRIVATE_RECORD_CREDENTIAL_PREFIX.search(content)
     if match is None:
         return {}
     observed = match.group()
@@ -564,7 +566,9 @@ def _private_regular_files(root: Path) -> list[Path]:
     return selected
 
 
-def _private_file_metadata(path: Path) -> tuple[int, str]:
+def _private_file_metadata(path: Path) -> tuple[int, str, list[dict[str, str]]]:
+    """Read every byte and return safe scanner observations with file metadata."""
+
     if path.is_symlink() or not path.is_file():
         raise PrivateRecordCollectionError("record-unavailable")
     try:
@@ -573,34 +577,67 @@ def _private_file_metadata(path: Path) -> tuple[int, str]:
         raise PrivateRecordCollectionError("record-stat-failed") from error
     if size > PRIVATE_RECORD_MAX_FILE_BYTES:
         raise PrivateRecordCollectionError("record-size-exceeded")
-    digest = hashlib.sha256()
-    carry = b""
     try:
         with path.open("rb") as stream:
-            while chunk := stream.read(64 * 1024):
-                inspected = carry + chunk
-                matcher = _sensitive_record_matcher(inspected)
-                if matcher is not None:
-                    classification = (
-                        _credential_prefix_classification(inspected)
-                        if matcher == "credential-prefix"
-                        else None
-                    )
-                    raise PrivateRecordCollectionError(
-                        "sensitive-record",
-                        sensitive_matcher=matcher,
-                        diagnostic=classification,
-                        private_candidate=(
-                            PRIVATE_RECORD_CREDENTIAL_PREFIX.search(inspected).group()
-                            if matcher == "credential-prefix"
-                            else None
-                        ),
-                    )
-                digest.update(chunk)
-                carry = inspected[-256:]
+            content = stream.read(PRIVATE_RECORD_MAX_FILE_BYTES + 1)
+        if len(content) > PRIVATE_RECORD_MAX_FILE_BYTES:
+            raise PrivateRecordCollectionError("record-size-exceeded")
+        if path.stat().st_size != len(content):
+            raise PrivateRecordCollectionError("record-changed-during-read")
     except OSError as error:
         raise PrivateRecordCollectionError("record-read-failed") from error
-    return size, digest.hexdigest()
+    observations: list[dict[str, str]] = []
+    for matcher, pattern in (
+        ("key-value", PRIVATE_RECORD_SECRET),
+        ("credential-prefix", PRIVATE_RECORD_CREDENTIAL_PREFIX),
+        ("real-client", PRIVATE_RECORD_REAL_CLIENT),
+    ):
+        for match in pattern.finditer(content):
+            observation = {"matcher": matcher}
+            if matcher == "credential-prefix":
+                observation.update(_credential_prefix_classification(content, match))
+            observations.append(observation)
+    return size, hashlib.sha256(content).hexdigest(), observations
+
+
+def _private_quarantine_permitted(
+    archive_path: str, command: str, observation: dict[str, str], allow_quarantine: bool
+) -> bool:
+    """Allow only the approved unresolved binary result-data exception."""
+
+    return (
+        allow_quarantine
+        and command == "xcodebuild-test"
+        and archive_path.startswith("records/unit.xcresult/Data/")
+        and observation.get("matcher") == "credential-prefix"
+        and observation.get("neighbourhoodShape") == "non-utf8"
+    )
+
+
+def _private_record_metadata(
+    path: Path, archive_path: str, command: str, allow_quarantine: bool
+) -> tuple[int, str, str]:
+    """Reject every non-approved match after the complete-file scan."""
+
+    size, digest, observations = _private_file_metadata(path)
+    quarantined = False
+    for observation in observations:
+        if _private_quarantine_permitted(
+            archive_path, command, observation, allow_quarantine
+        ):
+            quarantined = True
+            continue
+        diagnostic = {
+            "source": _archive_path_source(archive_path),
+            **observation,
+        }
+        if observation.get("matcher") == "credential-prefix":
+            diagnostic["recordKind"] = _private_record_kind(archive_path)
+        raise PrivateRecordCollectionError(
+            "sensitive-record", diagnostic,
+            sensitive_matcher=observation.get("matcher"),
+        )
+    return size, digest, "quarantined-pending-review" if quarantined else "complete"
 
 
 def _write_private_json(root: Path, name: str, value: object) -> Path:
@@ -669,8 +706,43 @@ def _private_terminate(process: subprocess.Popen[bytes]) -> bool:
     return True
 
 
+def _private_xcresult_error_classification(stderr: bytes) -> str:
+    """Classify bounded private stderr without retaining its text or values."""
+
+    lowered = stderr.lower()
+    if b"unrecognized option" in lowered or b"unknown option" in lowered:
+        return "unsupported-option"
+    if b"unknown command" in lowered or b"unrecognized command" in lowered:
+        return "unsupported-command"
+    if b"invalid" in lowered:
+        return "invalid-request"
+    return "unclassified"
+
+
+def _write_private_streams(
+    streams: tuple[Path, Path], stdout: bytes, stderr: bytes
+) -> None:
+    """Write bounded exact command streams only to fixed private paths."""
+
+    for path, content in zip(streams, (stdout, stderr), strict=True):
+        temporary = path.with_name(f".{path.name}.tmp")
+        if (
+            path.exists() or path.is_symlink()
+            or temporary.exists() or temporary.is_symlink()
+        ):
+            raise PrivateRecordCollectionError("private-record-path-unavailable")
+        try:
+            temporary.write_bytes(content)
+            os.replace(temporary, path)
+        except OSError as error:
+            temporary.unlink(missing_ok=True)
+            raise PrivateRecordCollectionError("private-record-write-failed") from error
+
+
 def _private_xcresult_command(
-    command: list[str], timeout_seconds: float, output_limit: int
+    command: list[str], timeout_seconds: float, output_limit: int,
+    private_result: dict[str, object] | None = None,
+    private_streams: tuple[Path, Path] | None = None,
 ) -> tuple[str, bytes | None]:
     """Run native decoding with private, bounded output and no log file."""
 
@@ -678,6 +750,8 @@ def _private_xcresult_command(
         return "timeout", None
     process: subprocess.Popen[bytes] | None = None
     selector: selectors.BaseSelector | None = None
+    content = bytearray()
+    errors = bytearray()
     try:
         process = subprocess.Popen(
             command,
@@ -694,11 +768,12 @@ def _private_xcresult_command(
         selector.register(process.stdout, selectors.EVENT_READ, "stdout")
         selector.register(process.stderr, selectors.EVENT_READ, "stderr")
         deadline = time.monotonic() + timeout_seconds
-        content = bytearray()
         combined_size = 0
         while selector.get_map():
             remaining = deadline - time.monotonic()
             if remaining <= 0:
+                if private_streams is not None:
+                    _write_private_streams(private_streams, bytes(content), bytes(errors))
                 return ("timeout", None) if _private_terminate(process) else ("cleanup-failed", None)
             events = selector.select(min(remaining, 0.1))
             for key, _event in events:
@@ -708,10 +783,24 @@ def _private_xcresult_command(
                     continue
                 combined_size += len(chunk)
                 if combined_size > output_limit:
+                    if private_streams is not None:
+                        _write_private_streams(private_streams, bytes(content), bytes(errors))
                     return ("output-limit", None) if _private_terminate(process) else ("cleanup-failed", None)
                 if key.data == "stdout":
                     content.extend(chunk)
+                else:
+                    errors.extend(chunk)
         exit_code = process.wait(timeout=max(0.1, deadline - time.monotonic()))
+        if private_streams is not None:
+            _write_private_streams(private_streams, bytes(content), bytes(errors))
+        if private_result is not None:
+            published_exit = rt._published_process_exit(exit_code)
+            if published_exit is not None:
+                private_result["processExit"] = published_exit
+            if exit_code != 0:
+                private_result["errorClassification"] = _private_xcresult_error_classification(
+                    bytes(errors)
+                )
         return ("complete", bytes(content)) if exit_code == 0 else ("command-failed", None)
     except (OSError, ValueError, subprocess.SubprocessError):
         if process is not None:
@@ -947,8 +1036,98 @@ def _private_decode_result_bundle(
     }
 
 
+def _private_help_supports_path_only_command(help_output: bytes) -> bool:
+    """Accept a command only when its installed usage requires no extra flags."""
+
+    try:
+        text = help_output.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    for line in text.splitlines():
+        if "usage:" not in line.casefold():
+            continue
+        required = re.sub(r"\[[^\]]*\]", "", line)
+        flags = set(re.findall(r"--[A-Za-z][A-Za-z0-9-]*", required))
+        if flags == {"--path"}:
+            return True
+    return False
+
+
+def _private_xcresult_inspection_capabilities(
+    bundle: Path, private_root: Path, deadline: float
+) -> tuple[dict[str, dict[str, object]], list[tuple[Path, str, str]]]:
+    """Use only installed help-approved Apple inspection commands.
+
+    This helper records command outcomes only.  It does not map an export to a raw
+    Data member and it does not resolve a quarantined record.
+    """
+
+    capabilities: dict[str, dict[str, object]] = {}
+    sources: list[tuple[Path, str, str]] = []
+    commands = (
+        ("test-details", ["xcrun", "xcresulttool", "get", "test-results", "test-details"]),
+        ("activities", ["xcrun", "xcresulttool", "get", "test-results", "activities"]),
+        ("test-list", ["xcrun", "xcresulttool", "get", "test-results", "tests"]),
+        ("log", ["xcrun", "xcresulttool", "get", "log"]),
+    )
+    for name, base in commands:
+        remaining = deadline - time.monotonic()
+        record: dict[str, object] = {"status": "unavailable"}
+        help_streams = (
+            private_root / f"inspection-{name}-help.stdout",
+            private_root / f"inspection-{name}-help.stderr",
+        )
+        if remaining <= 0:
+            record["status"] = "time-reserve-exhausted"
+            capabilities[name] = record
+            continue
+        sources.extend((
+            (help_streams[0], f"records/private-inspection/{name}-help.stdout", "xcresult-private-inspection-help"),
+            (help_streams[1], f"records/private-inspection/{name}-help.stderr", "xcresult-private-inspection-help"),
+        ))
+        help_record: dict[str, object] = {}
+        help_status, help_output = _private_xcresult_command(
+            [*base, "--help"], min(3.0, remaining), 64 * 1024, help_record,
+            help_streams,
+        )
+        if (
+            help_status != "complete"
+            or help_output is None
+            or not _private_help_supports_path_only_command(help_output)
+        ):
+            record.update(help_record)
+            record["status"] = "syntax-pending"
+            capabilities[name] = record
+            continue
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            record["status"] = "time-reserve-exhausted"
+            capabilities[name] = record
+            continue
+        command_record: dict[str, object] = {}
+        command_streams = (
+            private_root / f"inspection-{name}.stdout",
+            private_root / f"inspection-{name}.stderr",
+        )
+        sources.extend((
+            (command_streams[0], f"records/private-inspection/{name}.stdout", "xcresult-private-inspection"),
+            (command_streams[1], f"records/private-inspection/{name}.stderr", "xcresult-private-inspection"),
+        ))
+        command_status, _ = _private_xcresult_command(
+            [*base, "--path", str(bundle)],
+            min(3.0, remaining),
+            PRIVATE_DECODE_MAX_OBJECT_BYTES,
+            command_record,
+            command_streams,
+        )
+        record.update(command_record)
+        record["status"] = "available" if command_status == "complete" else command_status
+        capabilities[name] = record
+    return capabilities, sources
+
+
 def _private_record_entries(
-    sources: list[tuple[Path, str, str]], state: str
+    sources: list[tuple[Path, str, str]], state: str, allow_quarantine: bool = False
 ) -> list[dict[str, object]]:
     if len(sources) > PRIVATE_RECORD_MAX_FILES:
         raise PrivateRecordCollectionError("record-count-exceeded")
@@ -974,50 +1153,47 @@ def _private_record_entries(
         if archive_path in archive_paths:
             raise PrivateRecordCollectionError("archive-path-duplicate")
         archive_paths.add(archive_path)
-        try:
-            size, digest = _private_file_metadata(path)
-        except PrivateRecordCollectionError as error:
-            if error.sensitive_matcher is not None:
-                record_diagnostic = {
-                    "source": _archive_path_source(archive_path),
-                    "matcher": error.sensitive_matcher,
-                }
-                if error.diagnostic is not None:
-                    record_diagnostic.update(error.diagnostic)
-                    record_diagnostic["recordKind"] = _private_record_kind(archive_path)
-                raise PrivateRecordCollectionError(
-                    "sensitive-record",
-                    record_diagnostic,
-                    sensitive_matcher=error.sensitive_matcher,
-                    private_candidate=error.private_candidate,
-                    private_record_identity=archive_path,
-                ) from error
-            raise
-        entries.append({
+        size, digest, scanner_state = _private_record_metadata(
+            path, archive_path, command, allow_quarantine
+        )
+        entry: dict[str, object] = {
             "relativePath": archive_path,
             "producingCommand": command,
             "size": size,
             "sha256": digest,
             "state": state,
-        })
+        }
+        if scanner_state != "complete":
+            entry["scannerStatus"] = scanner_state
+        entries.append(entry)
     return entries
 
 
 def _write_private_archive(
-    private_root: Path, sources: list[tuple[Path, str, str]], entries: list[dict[str, object]]
+    private_root: Path,
+    sources: list[tuple[Path, str, str]],
+    entries: list[dict[str, object]],
+    allow_quarantine: bool = False,
 ) -> Path:
     archive = private_root / PRIVATE_ARCHIVE_NAME
     temporary = private_root / f".{PRIVATE_ARCHIVE_NAME}.tmp"
     if archive.exists() or archive.is_symlink() or temporary.exists() or temporary.is_symlink():
         raise PrivateRecordCollectionError("archive-path-unavailable")
-    expected = {entry["relativePath"]: (entry["size"], entry["sha256"]) for entry in entries}
+    expected = {
+        entry["relativePath"]: (
+            entry["size"], entry["sha256"], entry.get("scannerStatus", "complete")
+        )
+        for entry in entries
+    }
     if len(expected) != len(entries) or sum(entry["size"] for entry in entries) > PRIVATE_RECORD_MAX_ARCHIVE_BYTES:
         raise PrivateRecordCollectionError("archive-size-or-path-invalid")
     try:
         with tarfile.open(temporary, "w:gz", format=tarfile.PAX_FORMAT) as output:
-            for path, archive_path, _command in sources:
-                size, digest = _private_file_metadata(path)
-                if expected.get(archive_path) != (size, digest):
+            for path, archive_path, command in sources:
+                size, digest, scanner_state = _private_record_metadata(
+                    path, archive_path, command, allow_quarantine
+                )
+                if expected.get(archive_path) != (size, digest, scanner_state):
                     raise PrivateRecordCollectionError("record-changed-during-packaging")
                 info = output.gettarinfo(str(path), arcname=archive_path)
                 if not info.isreg():
@@ -1040,7 +1216,9 @@ def _write_private_archive(
     return archive
 
 
-def _verify_private_archive(archive: Path, expected: dict[str, tuple[object, object]]) -> None:
+def _verify_private_archive(
+    archive: Path, expected: dict[str, tuple[object, object, object]]
+) -> None:
     try:
         with tarfile.open(archive, "r:gz") as input_archive:
             members = input_archive.getmembers()
@@ -1104,7 +1282,22 @@ def _collect_native_cycle_records(
             (attachment_inventory, "records/unit-attachment-inventory.json", "attachment-inventory"),
             *attachment_sources,
         ]
-        entries = _private_record_entries(sources, state)
+        entries = _private_record_entries(sources, state, allow_quarantine=True)
+        collection_state = (
+            "quarantined-pending-review"
+            if any(entry.get("scannerStatus") == "quarantined-pending-review" for entry in entries)
+            else state
+        )
+        inspection, inspection_sources = (
+            _private_xcresult_inspection_capabilities(
+                bundle, private_root, decode_deadline
+            )
+            if collection_state == "quarantined-pending-review" and decode_deadline is not None
+            else ({}, [])
+        )
+        sources.extend(inspection_sources)
+        if inspection_sources:
+            entries = _private_record_entries(sources, state, allow_quarantine=True)
         commands = {
             "xcodebuild-test": unit.get("executedCommand"),
             "xcresult-summary": unit.get("summaryCommand"),
@@ -1113,11 +1306,13 @@ def _collect_native_cycle_records(
         probe_commands = unit.get("probeCommands")
         if isinstance(probe_commands, dict):
             commands.update(probe_commands)
+        if inspection:
+            commands["private-inspection"] = inspection
         inventory = _write_private_json(private_root, "collection-inventory.json", {
             "candidateCommit": commit,
             "buildId": _build_id(),
             "workflow": NATIVE_CYCLE_WORKFLOW,
-            "collectionState": state,
+            "collectionState": collection_state,
             "testSelector": NATIVE_CYCLE_TEST_SELECTOR,
             "processExit": unit.get("processExit"),
             "actualCounts": unit.get("actualCounts"),
@@ -1127,8 +1322,13 @@ def _collect_native_cycle_records(
         })
         inventory_source = (inventory, "records/collection-inventory.json", "collection-inventory")
         inventory_entry = _private_record_entries([inventory_source], state)
-        _write_private_archive(private_root, [*sources, inventory_source], [*entries, *inventory_entry])
-        return "complete"
+        _write_private_archive(
+            private_root,
+            [*sources, inventory_source],
+            [*entries, *inventory_entry],
+            allow_quarantine=True,
+        )
+        return collection_state
     except PrivateRecordCollectionError as error:
         if (
             error.sensitive_matcher == "credential-prefix"

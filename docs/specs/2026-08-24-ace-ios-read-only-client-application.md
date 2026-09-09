@@ -1331,7 +1331,8 @@ for 30 days, then expire them. Verify authorised retrieval and unauthorised deni
 a paid test suite.
 
 Do not publish raw Xcode logs or raw result bundles in public artifacts. Do not collect
-credentials or real client information. Keep raw records out of Git, PR comments, public
+confirmed credentials or real client information. Unresolved matches follow the narrow
+quarantine rule below. Keep raw records out of Git, PR comments, public
 links, and public artifact downloads. Do not put temporary authenticated download URLs in
 reports, logs, commits, or messages. Do not use a public bearer link that bypasses the
 approved access boundary.
@@ -1348,8 +1349,25 @@ images as controlled review records, separately.
 Exclude environment dumps, credential files, Keychain contents, signing material, caches,
 source exports, and unrelated machine files. Check paths, links, file types, size limits,
 and the exact producing command before upload. Reject unexpected files. Stop collection if
-a secret or real client information is detected. Do not silently remove evidence or report
+a confirmed secret or real client information is detected. Apply only the narrow unresolved
+match exception below. Do not silently remove evidence or report
 collection success.
+
+For planned `.xcresult/Data/*` members from approved fictional XCTest commands only,
+permit unresolved `credential-prefix` byte matches with `neighbourhoodShape=non-utf8`
+in the existing authenticated private storage. Preserve exact bytes, provenance and
+hashes. Record `quarantined-pending-review`. The match can be a real credential. This
+status does not establish scanner clearance, collection acceptance or release acceptance.
+Keep all other matchers and all text, decoded-data, metadata and path checks unchanged.
+Resolve a record only after mapping the match to its object and reading and classifying
+all required children. Missing mapping, read errors or partial coverage remain pending.
+Keep raw matched bytes, object identifiers and command errors private. Stop collection
+if a genuine credential or real client information is confirmed.
+
+Before the next paid run, verify authenticated retrieval of an existing approved fictional
+artifact, unauthorised denial and effective 30-day retention. The first focused run must
+then prove original-bundle retrieval before the corrected case or complete suite. Do not
+bypass a blocked download. Keep the candidate unverified while any record is unresolved.
 
 The 31 planned commands, 135 XCTest cases, and 200 named fictional review images remain
 unchanged. This requirement records no result. Original bundle access, approved Mac access,

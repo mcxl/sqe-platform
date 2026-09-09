@@ -56,7 +56,24 @@ source exports, unrelated machine files, and real client information. Keep raw r
 of Git, PR comments, public links, and public artifact downloads. Do not put temporary
 authenticated download URLs in reports, logs, commits, or messages. Do not use public
 bearer-link bypass. Check paths, links, types, sizes, and producing commands. Reject
-unexpected files. Stop on a secret or real client information finding.
+unexpected files. Stop on a confirmed secret or real client information finding. Apply only
+the narrow unresolved-match exception below.
+
+For planned `.xcresult/Data/*` members from approved fictional XCTest commands only,
+permit unresolved `credential-prefix` byte matches with `neighbourhoodShape=non-utf8`
+in the existing authenticated private storage. Preserve exact bytes, provenance and
+hashes. Record `quarantined-pending-review`. The match can be a real credential. This
+status does not establish scanner clearance, collection acceptance or release acceptance.
+Keep all other matchers and all text, decoded-data, metadata and path checks unchanged.
+Resolve a record only after mapping the match to its object and reading and classifying
+all required children. Missing mapping, read errors or partial coverage remain pending.
+Keep raw matched bytes, object identifiers and command errors private. Stop collection
+if a genuine credential or real client information is confirmed.
+
+Before the next paid run, verify authenticated retrieval of an existing approved fictional
+artifact, unauthorised denial and effective 30-day retention. The first focused run must
+then prove original-bundle retrieval before the corrected case or complete suite. Do not
+bypass a blocked download. Keep the candidate unverified while any record is unresolved.
 
 The 31 planned commands, 135 XCTest cases, 200 named fictional review images, and
 `releaseEvidence: false` remain unchanged. Original bundle, approved Mac, provider
