@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import os
 import re
 import shutil
@@ -127,7 +128,9 @@ LIVE_CONTROLLED_ENVIRONMENT_KEYS = frozenset(
     (*IOS_TEST_ENVIRONMENT, *NEGATIVE_CONFIG_ENVIRONMENT, "ACE_UI_TEST_APPEARANCE",
      "TEST_RUNNER_ACE_UI_TEST_APPEARANCE",
      "ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE",
-     "TEST_RUNNER_ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE")
+     "TEST_RUNNER_ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE",
+     "ACE_EXPECTED_CONTENT_SIZE_CATEGORY",
+     "TEST_RUNNER_ACE_EXPECTED_CONTENT_SIZE_CATEGORY")
 )
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
@@ -669,6 +672,8 @@ def ios_normal_settings_environment(appearance: str) -> dict[str, str]:
         **IOS_TEST_ENVIRONMENT,
         "ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE": appearance,
         "TEST_RUNNER_ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE": appearance,
+        "ACE_EXPECTED_CONTENT_SIZE_CATEGORY": LIVE_CONTENT_SIZE,
+        "TEST_RUNNER_ACE_EXPECTED_CONTENT_SIZE_CATEGORY": LIVE_CONTENT_SIZE,
     }
 
 
@@ -971,12 +976,25 @@ def _controlled_simulator_snapshot(snapshot: dict, names: tuple[str, ...]) -> di
 def resolve_ios_destinations(
     names: tuple[str, ...],
     recorder: Callable[[str, object], None] | None = None,
+    verification_seconds: float | None = None,
 ) -> dict[str, str]:
     """Resolve or create exact iOS 26 simulator devices before test execution."""
 
     if len(names) != len(set(names)):
         raise SimulatorResolutionError("required simulator names must be unique")
-    deadline = time.monotonic() + SIMULATOR_VERIFICATION_SECONDS
+    if (
+        verification_seconds is not None
+        and (
+            not isinstance(verification_seconds, (int, float))
+            or not math.isfinite(verification_seconds)
+            or verification_seconds <= 0
+        )
+    ):
+        raise SimulatorResolutionError("simulator verification time is invalid")
+    deadline = time.monotonic() + (
+        SIMULATOR_VERIFICATION_SECONDS
+        if verification_seconds is None else verification_seconds
+    )
     remaining = deadline - time.monotonic()
     if remaining <= 0:
         raise SimulatorResolutionError(
@@ -1468,7 +1486,11 @@ def _retain_live_screenshots(
 
 
 def _simctl_ui_value(
-    root: Path, identifier: str, setting: str, value: str | None = None
+    root: Path,
+    identifier: str,
+    setting: str,
+    value: str | None = None,
+    query_evidence: list[dict[str, object]] | None = None,
 ) -> tuple[bool, str | None]:
     """Use simctl only through a controlled log and accept fixed setting values."""
 
@@ -1479,13 +1501,36 @@ def _simctl_ui_value(
         command.append(value)
     result = _run_live_command(f"simctl-{setting}-{suffix}", command, ROOT, {}, log_path)
     if result[0] != 0:
+        if value is None and query_evidence is not None:
+            query_evidence.append({
+                "setting": setting,
+                "processExit": _published_process_exit(getattr(result, "process_exit", None)),
+                "responseStatus": "command-failed",
+            })
         return False, None
     state, content = _bounded_live_file_text(root, log_path)
     if state != "available" or content is None:
+        if value is None and query_evidence is not None:
+            query_evidence.append({
+                "setting": setting,
+                "processExit": _published_process_exit(getattr(result, "process_exit", None)),
+                "responseStatus": state,
+            })
         return False, None
     if value is not None:
         return True, value
     observed = content.strip().lower()
+    if query_evidence is not None:
+        evidence: dict[str, object] = {
+            "setting": setting,
+            "processExit": _published_process_exit(getattr(result, "process_exit", None)),
+            "responseStatus": "available",
+        }
+        if re.fullmatch(r"[a-z-]{1,80}", observed):
+            evidence["response"] = observed
+        else:
+            evidence["responseStatus"] = "unpublished-invalid"
+        query_evidence.append(evidence)
     if setting == "appearance" and observed in {"light", "dark"}:
         return True, observed
     if setting == "content_size" and observed in LIVE_CONTENT_SIZES:
@@ -1504,13 +1549,19 @@ def _normal_settings_result(
 ) -> dict:
     """Set and restore simulator settings around one non-forced UI test."""
 
-    appearance_ok, previous_appearance = _simctl_ui_value(root, identifier, "appearance")
-    content_ok, previous_content = _simctl_ui_value(root, identifier, "content_size")
+    query_evidence: list[dict[str, object]] = []
+    appearance_ok, previous_appearance = _simctl_ui_value(
+        root, identifier, "appearance", query_evidence=query_evidence
+    )
+    content_ok, previous_content = _simctl_ui_value(
+        root, identifier, "content_size", query_evidence=query_evidence
+    )
     observations = {
         "appearanceBefore": previous_appearance,
         "contentSizeBefore": previous_content,
         "appearanceRequested": appearance,
         "contentSizeRequested": LIVE_CONTENT_SIZE,
+        "queryEvidence": query_evidence,
     }
     if not appearance_ok or not content_ok:
         return {"name": name, "status": "failed", "exit": 1,
@@ -1641,18 +1692,175 @@ def _published_process_exit(value: object) -> int | None:
     return None
 
 
-def _live_ios_failure_diagnostic(
+def _bounded_failure_text(value: object) -> tuple[str | None, str]:
+    """Return a short assertion field without public private command output."""
+
+    if value is None:
+        return None, "absent"
+    if type(value) in (int, float, bool):
+        return str(value).lower(), "available"
+    if not isinstance(value, str):
+        return None, "invalid"
+    text = value.strip()
+    if not text:
+        return None, "absent"
+    environment_values = {
+        candidate for candidate in os.environ.values()
+        if isinstance(candidate, str) and len(candidate) >= 8
+    }
+    if (
+        len(text) > 512
+        or not all(character.isprintable() for character in text)
+        or any(candidate in text for candidate in environment_values)
+        or re.search(r"(?i)(?:https?|ssh)://|\b[^\s@]+@[^\s@]+\b", text)
+        or re.search(r"(?i)[\"']?(?:password|token|authorization|credential|secret)[\"']?\s*[:=]", text)
+        or re.search(r"(?i)\b(?:ghp_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]+)\b", text)
+        or re.search(r"(?:(?:[A-Za-z]:)?[\\/](?:Users|private|var|Volumes|Applications)[\\/])", text)
+    ):
+        return None, "redacted"
+    return text, "available"
+
+
+def _repository_relative_source_path(value: object) -> tuple[str | None, str]:
+    """Accept a source file only below an approved repository directory."""
+
+    if not isinstance(value, str):
+        return None, "absent" if value is None else "invalid"
+    path = value.strip().replace("\\", "/")
+    root = str(ROOT.resolve()).replace("\\", "/").rstrip("/")
+    absolute = path.startswith("/") or re.match(r"^[A-Za-z]:/", path) is not None
+    if absolute:
+        if not path.casefold().startswith(root.casefold() + "/"):
+            return None, "invalid"
+        relative = path[len(root) + 1:]
+    else:
+        relative = path
+    if re.fullmatch(
+        r"(?:apps|ios|quality|security|src|tests|tools|workflows)/[^\s:]+", relative
+    ) is None:
+        return None, "invalid"
+    if (
+        len(relative) > 256
+        or ".." in relative.split("/")
+        or not re.fullmatch(r"[A-Za-z0-9._/ -]+", relative)
+    ):
+        return None, "invalid"
+    return relative, "available"
+
+
+def _published_test_identifier(value: object) -> tuple[str | None, str]:
+    """Return one bounded, non-sensitive XCTest identifier."""
+
+    identifier, status = _bounded_failure_text(value)
+    if identifier is None:
+        return None, status
+    if re.fullmatch(r"[A-Za-z0-9_.\-\[\]() /:]+", identifier) is None:
+        return None, "invalid"
+    return identifier, "available"
+
+
+def _normalise_xcresult_failure(failure: object) -> dict[str, object] | None:
+    """Create one fixed-shape failure record from an XCResult test failure."""
+
+    if not isinstance(failure, dict):
+        return None
+
+    def field_value(names: tuple[str, ...]) -> object:
+        for field in names:
+            if field in failure:
+                return failure[field]
+        return None
+
+    detail: dict[str, object] = {}
+    identifier, identifier_status = _published_test_identifier(
+        field_value(("testCaseName", "testIdentifier", "testName"))
+    )
+    detail["testIdentifierStatus"] = identifier_status
+    if identifier is not None:
+        detail["testIdentifier"] = identifier
+
+    source_value = field_value(("file", "fileName", "filePath", "sourceFile"))
+    source_line = field_value(("line", "lineNumber", "sourceLine"))
+    location = field_value(("location", "sourceLocation", "sourceCodeLocation"))
+    if isinstance(location, dict):
+        if source_value is None:
+            for key in ("file", "fileName", "filePath", "sourceFile"):
+                if key in location:
+                    source_value = location[key]
+                    break
+        if source_line is None:
+            for key in ("line", "lineNumber", "sourceLine"):
+                if key in location:
+                    source_line = location[key]
+                    break
+    elif isinstance(location, str) and source_value is None:
+        candidate, separator, line_text = location.rpartition(":")
+        source_value = candidate if separator and line_text.isdigit() else location
+        if separator and line_text.isdigit():
+            source_line = int(line_text)
+    source_file, source_file_status = _repository_relative_source_path(source_value)
+    detail["sourceFileStatus"] = source_file_status
+    if source_file is not None:
+        detail["sourceFile"] = source_file
+    if type(source_line) is int and 0 < source_line <= 1_000_000:
+        detail["sourceLine"] = source_line
+        detail["sourceLineStatus"] = "available"
+    else:
+        detail["sourceLineStatus"] = "absent" if source_line is None else "invalid"
+    for output, names in (
+        ("expected", ("expected", "expectedValue", "expectedOutcome")),
+        ("actual", ("actual", "actualValue", "actualOutcome")),
+        ("failureMessage", ("failureText", "failureMessage", "message", "description")),
+    ):
+        value, status = _bounded_failure_text(field_value(names))
+        detail[output + "Status"] = status
+        if value is not None:
+            detail[output] = value
+    return detail
+
+
+def _xcresult_failure_details(payload: object) -> tuple[list[dict[str, object]], str]:
+    """Find bounded XCResult failures without accepting arbitrary result objects."""
+
+    selected: list[dict[str, object]] = []
+    pending = [payload]
+    visited = 0
+    found = False
+    while pending:
+        value = pending.pop()
+        visited += 1
+        if visited > LIVE_RESULT_SUMMARY_MAX_NODES:
+            return selected, "truncated"
+        if isinstance(value, dict):
+            failures = value.get("testFailures")
+            if failures is not None:
+                if not isinstance(failures, list):
+                    return selected, "invalid"
+                found = True
+                for failure in failures:
+                    detail = _normalise_xcresult_failure(failure)
+                    if detail is not None:
+                        selected.append(detail)
+                    if len(selected) == 30:
+                        return selected, "truncated"
+            pending.extend(value.values())
+        elif isinstance(value, list):
+            pending.extend(value)
+    return selected, "available" if found else "not-recorded"
+
+
+def _live_ios_failure_evidence(
     name: str, cwd: Path, root: Path, result_path: Path
-) -> str:
-    """Read a failed command result bundle for fixed, factual diagnostics only."""
+) -> tuple[str, list[dict[str, object]], str]:
+    """Read bounded XCTest failures while keeping raw XCResult data private."""
 
     try:
         if not result_path.is_dir() or result_path.is_symlink():
-            return "result-bundle-missing"
+            return "result-bundle-missing", [], "unavailable"
         if not result_path.resolve().is_relative_to(root.resolve()):
-            return "result-bundle-missing"
+            return "result-bundle-missing", [], "unavailable"
     except OSError:
-        return "result-bundle-missing"
+        return "result-bundle-missing", [], "unavailable"
     summary_path = _safe_live_path(root, f"{name}-summary.json")
     summary_result = _run_live_command(
         f"{name}-xcresult",
@@ -1665,24 +1873,33 @@ def _live_ios_failure_diagnostic(
         summary_path,
     )
     if summary_result[0] != 0:
-        return "result-summary-command-failed"
+        return "result-summary-command-failed", [], "unavailable"
     state, content = _bounded_live_file_text(root, summary_path)
     if state != "available":
-        return f"result-summary-{state}"
+        return f"result-summary-{state}", [], "unavailable"
     try:
         payload = json.loads(content)
     except (TypeError, ValueError):
-        return "result-summary-malformed"
+        return "result-summary-malformed", [], "unavailable"
     except RecursionError:
-        return "result-summary-over-complex"
+        return "result-summary-over-complex", [], "unavailable"
     counts, over_complex = _bounded_xcresult_counts(payload)
     if over_complex:
-        return "result-summary-over-complex"
+        return "result-summary-over-complex", [], "unavailable"
+    details, detail_status = _xcresult_failure_details(payload)
     if counts is None:
-        return "diagnostic-gap"
+        return "diagnostic-gap", details, detail_status
     if counts[1] > 0:
-        return "test-failures-recorded"
-    return "result-summary-no-failed-tests"
+        return "test-failures-recorded", details, detail_status
+    return "result-summary-no-failed-tests", [], "not-recorded"
+
+
+def _live_ios_failure_diagnostic(
+    name: str, cwd: Path, root: Path, result_path: Path
+) -> str:
+    """Return the legacy fixed diagnostic code for callers that need it."""
+
+    return _live_ios_failure_evidence(name, cwd, root, result_path)[0]
 
 
 def _run_live_ios_test(
@@ -1708,6 +1925,11 @@ def _run_live_ios_test(
     )
     exit_code, detail = command_result
     if exit_code:
+        diagnostic, failures, failure_status = _live_ios_failure_evidence(
+            name, cwd, root, result_path
+        ) if getattr(command_result, "reason", None) == "command-nonzero" else (
+            "diagnostic-gap", [], "unavailable"
+        )
         return {
             "name": name,
             "status": "failed",
@@ -1716,11 +1938,9 @@ def _run_live_ios_test(
             "reason": _published_live_failure_reason(
                 getattr(command_result, "reason", None)
             ),
-            "diagnostic": _live_ios_failure_diagnostic(
-                name, cwd, root, result_path
-            )
-            if getattr(command_result, "reason", None) == "command-nonzero"
-            else "diagnostic-gap",
+            "diagnostic": diagnostic,
+            "test_failures": failures,
+            "test_failure_status": failure_status,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     if not result_path.is_dir() or result_path.is_symlink():
@@ -1784,12 +2004,15 @@ def _run_live_ios_test(
         }
     passed, failed, skipped = counts
     if passed != expected_tests or failed != 0 or skipped != 0:
+        failures, failure_status = _xcresult_failure_details(payload)
         return {
             "name": name,
             "status": "failed",
             "exit": 1,
             "detail": f"{name} result count mismatch",
             "reason": "result-count-mismatch",
+            "test_failures": failures,
+            "test_failure_status": failure_status,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     screenshots, screenshot_failure = _retain_live_screenshots(
@@ -2055,6 +2278,73 @@ def _published_simulator_settings(value: object) -> dict[str, str]:
     return result
 
 
+def _published_test_failures(value: object, failed: bool) -> list[dict[str, object]]:
+    """Revalidate failure records at the public manifest boundary."""
+
+    if not failed or not isinstance(value, list):
+        return []
+    records = []
+    for item in value[:30]:
+        if not isinstance(item, dict):
+            continue
+        record: dict[str, object] = {}
+        valid = True
+        for field in (
+            "testIdentifier", "sourceFile", "sourceLine", "expected", "actual", "failureMessage"
+        ):
+            status = item.get(field + "Status")
+            if status not in {"available", "absent", "invalid", "redacted"}:
+                valid = False
+                break
+            if status == "available":
+                candidate = item.get(field)
+                if field == "testIdentifier":
+                    published, published_status = _published_test_identifier(candidate)
+                elif field == "sourceFile":
+                    published, published_status = _repository_relative_source_path(candidate)
+                elif field == "sourceLine":
+                    published = candidate if type(candidate) is int and 0 < candidate <= 1_000_000 else None
+                    published_status = "available" if published is not None else "invalid"
+                else:
+                    published, published_status = _bounded_failure_text(candidate)
+                if published is None or published_status != "available":
+                    record[field + "Status"] = (
+                        published_status if published_status != "absent" else "invalid"
+                    )
+                else:
+                    record[field + "Status"] = "available"
+                    record[field] = published
+            elif field in item:
+                valid = False
+                break
+            else:
+                record[field + "Status"] = status
+        if valid:
+            records.append(record)
+    return records
+
+
+def _published_simulator_query_evidence(value: object) -> list[dict[str, object]]:
+    """Publish only the two fixed simulator query responses."""
+
+    if not isinstance(value, list):
+        return []
+    records = []
+    for item in value[:2]:
+        if not isinstance(item, dict) or item.get("setting") not in {"appearance", "content_size"}:
+            continue
+        record: dict[str, object] = {"setting": item["setting"]}
+        process_exit = _published_process_exit(item.get("processExit"))
+        if process_exit is not None:
+            record["processExit"] = process_exit
+        if item.get("responseStatus") in {"available", "command-failed", "missing", "unsafe", "oversized", "unreadable", "unpublished-invalid"}:
+            record["responseStatus"] = item["responseStatus"]
+        if item.get("responseStatus") == "available" and isinstance(item.get("response"), str) and re.fullmatch(r"[a-z-]{1,80}", item["response"]):
+            record["response"] = item["response"]
+        records.append(record)
+    return records
+
+
 def _published_live_result(check: dict) -> dict:
     """Publish only fixed data and bounded completed-process metadata."""
 
@@ -2075,19 +2365,32 @@ def _published_live_result(check: dict) -> dict:
             else "controlled live command failed"
         ),
     }
-    process_exit = _published_process_exit(check.get("process_exit"))
+    process_exit = _published_process_exit(check.get("processExit"))
+    if process_exit is None:
+        process_exit = _published_process_exit(check.get("process_exit"))
     if process_exit is not None:
         result["processExit"] = process_exit
     if name.startswith("ios-normal-settings-"):
-        settings = _published_simulator_settings(check.get("simulator_settings"))
+        raw_settings = check.get("simulatorSettings")
+        if not isinstance(raw_settings, dict):
+            raw_settings = check.get("simulator_settings")
+        settings = _published_simulator_settings(raw_settings)
         if settings:
             result["simulatorSettings"] = settings
-        before_restore = check.get("check_exit_before_restore")
+        raw_queries = check.get("simulatorQueryEvidence")
+        if raw_queries is None and isinstance(raw_settings, dict):
+            raw_queries = raw_settings.get("queryEvidence")
+        queries = _published_simulator_query_evidence(raw_queries)
+        if queries:
+            result["simulatorQueryEvidence"] = queries
+        before_restore = check.get("checkExitBeforeRestore")
+        if before_restore is None:
+            before_restore = check.get("check_exit_before_restore")
         if type(before_restore) is int and before_restore in {0, 1}:
             result["checkExitBeforeRestore"] = before_restore
             if before_restore != 0:
                 result["checkReasonBeforeRestore"] = _published_live_failure_reason(
-                    check.get("check_reason_before_restore"), name
+                    check.get("checkReasonBeforeRestore", check.get("check_reason_before_restore")), name
                 )
     if logical_exit != 0:
         result["reason"] = _published_live_failure_reason(check.get("reason"), name)
@@ -2096,6 +2399,15 @@ def _published_live_result(check: dict) -> dict:
             result["diagnostic"] = diagnostic
     elif name == "ios-negative-config":
         result["reason"] = "negative-configuration-rejected"
+    result["testFailures"] = _published_test_failures(
+        check.get("testFailures", check.get("test_failures")), logical_exit != 0
+    )
+    if logical_exit != 0:
+        status = check.get("testFailureStatus", check.get("test_failure_status"))
+        result["testFailureStatus"] = (
+            status if status in {"available", "not-recorded", "truncated", "invalid", "unavailable"}
+            else "unavailable"
+        )
     return result
 
 

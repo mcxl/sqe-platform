@@ -42,6 +42,25 @@ struct ACEClientApp: App {
 private struct EffectiveInterfaceStyleIndicator: View {
     // Read the window's environment, not the App's scene-level environment.
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    private var contentSizeCategory: String {
+        switch dynamicTypeSize {
+        case .xSmall: return "extra-small"
+        case .small: return "small"
+        case .medium: return "medium"
+        case .large: return "large"
+        case .xLarge: return "extra-large"
+        case .xxLarge: return "extra-extra-large"
+        case .xxxLarge: return "extra-extra-extra-large"
+        case .accessibility1: return "accessibility-medium"
+        case .accessibility2: return "accessibility-large"
+        case .accessibility3: return "accessibility-extra-large"
+        case .accessibility4: return "accessibility-extra-extra-large"
+        case .accessibility5: return "accessibility-extra-extra-extra-large"
+        @unknown default: return "unknown"
+        }
+    }
 
     var body: some View {
         Text(colorScheme == .dark ? "dark" : "light")
@@ -52,6 +71,7 @@ private struct EffectiveInterfaceStyleIndicator: View {
             .padding(.vertical, 8)
             .background(.background)
             .accessibilityIdentifier("Effective interface style")
+            .accessibilityValue(contentSizeCategory)
     }
 }
 #endif

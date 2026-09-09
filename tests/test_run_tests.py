@@ -575,6 +575,167 @@ class RunnerContractTests(unittest.TestCase):
             self.assertEqual(summary_failure["diagnostic"], "result-summary-command-failed")
             self.assertEqual(summary_failure["exit"], 1)
 
+    def test_failed_live_ios_result_retains_only_bounded_structured_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "ios-65-unit.xcresult").mkdir()
+            payload = {
+                "passedTests": 0,
+                "failedTests": 1,
+                "testFailures": [{
+                    "testCaseName": "ACEClientAppTests.testRelease",
+                    "fileName": str(ROOT / "ios" / "ACEClientApp" / "Tests.swift"),
+                    "lineNumber": 42,
+                    "expected": "RELEASED",
+                    "actual": "DRAFT",
+                    "failureText": "XCTAssertEqual failed",
+                }],
+            }
+
+            def command(name, _command, _cwd, _environment, log_path):
+                if name == "ios-65-unit":
+                    return runner.LiveCommandResult(1, "raw", "command-nonzero", 65)
+                log_path.write_text(json.dumps(payload), encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+            with mock.patch.object(runner, "_run_live_command", side_effect=command):
+                result = runner._run_live_ios_test(
+                    "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 1, root
+                )
+        published = runner._published_live_result(result)
+        self.assertEqual(published["testFailureStatus"], "available")
+        self.assertEqual(published["testFailures"], [{
+            "testIdentifier": "ACEClientAppTests.testRelease",
+            "testIdentifierStatus": "available",
+            "sourceFile": "ios/ACEClientApp/Tests.swift",
+            "sourceFileStatus": "available",
+            "sourceLine": 42,
+            "sourceLineStatus": "available",
+            "expected": "RELEASED",
+            "expectedStatus": "available",
+            "actual": "DRAFT",
+            "actualStatus": "available",
+            "failureMessage": "XCTAssertEqual failed",
+            "failureMessageStatus": "available",
+        }])
+        self.assertEqual(
+            runner._published_live_result({"name": "ios-65-unit", "exit": 0})["testFailures"],
+            [],
+        )
+
+    def test_public_failure_boundary_preserves_withheld_field_statuses(self):
+        retained = {
+            "testIdentifierStatus": "absent",
+            "sourceFileStatus": "invalid",
+            "sourceLineStatus": "absent",
+            "expectedStatus": "redacted",
+            "actualStatus": "redacted",
+            "failureMessageStatus": "redacted",
+        }
+        published = runner._published_live_result({
+            "name": "ios-65-unit", "exit": 1,
+            "test_failures": [retained], "test_failure_status": "available",
+        })
+        self.assertEqual(published["testFailures"], [retained])
+        self.assertEqual(published["testFailureStatus"], "available")
+        unsafe = "token=private https://private.invalid /Users/person/private.swift " + "x" * 513
+        normalised = runner._normalise_xcresult_failure({
+            "testCaseName": unsafe, "fileName": "outside.swift",
+            "expected": unsafe, "actual": unsafe, "failureText": unsafe,
+        })
+        assert normalised is not None
+        safe = runner._published_live_result({
+            "name": "ios-65-unit", "exit": 1,
+            "test_failures": [normalised], "test_failure_status": "available",
+        })
+        self.assertNotIn("private", json.dumps(safe))
+        self.assertEqual(safe["testFailures"][0]["sourceFileStatus"], "invalid")
+
+    def test_live_result_publication_is_idempotent_for_published_evidence(self):
+        name = next(
+            candidate for candidate in runner._live_command_names()
+            if candidate.startswith("ios-normal-settings-")
+        )
+        raw = {
+            "name": name,
+            "exit": 1,
+            "reason": "command-nonzero",
+            "process_exit": 65,
+            "simulator_settings": {
+                "appearanceObserved": "dark",
+                "contentSizeObserved": runner.LIVE_CONTENT_SIZE,
+                "queryEvidence": [{
+                    "setting": "appearance", "processExit": 0,
+                    "responseStatus": "available", "response": "dark",
+                }],
+            },
+            "check_exit_before_restore": 1,
+            "check_reason_before_restore": "command-nonzero",
+            "test_failures": [{
+                "testIdentifierStatus": "absent", "sourceFileStatus": "absent",
+                "sourceLineStatus": "absent", "expectedStatus": "redacted",
+                "actualStatus": "redacted", "failureMessageStatus": "redacted",
+            }],
+            "test_failure_status": "available",
+        }
+        published = runner._published_live_result(raw)
+        self.assertEqual(runner._published_live_result(published), published)
+
+    def test_failure_publication_redacts_environment_tokens_and_foreign_paths(self):
+        with mock.patch.dict(os.environ, {"MCX19_TEST_SECRET": "unit-secret-123"}):
+            for value in (
+                "unit-secret-123", "prefix unit-secret-123 suffix", "ghp_abcdefghi",
+                "github_pat_abcdefghi", "sk-abcdefghi", '{"password":"fictional-secret"}',
+            ):
+                self.assertEqual(runner._bounded_failure_text(value), (None, "redacted"))
+            self.assertEqual(
+                runner._repository_relative_source_path(
+                    str(ROOT / "ios" / "ACEClientApp" / "ACEClientApp" / "ACEClientAppApp.swift")
+                ),
+                ("ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift", "available"),
+            )
+            self.assertEqual(
+                runner._repository_relative_source_path("tests/test_run_tests.py"),
+                ("tests/test_run_tests.py", "available"),
+            )
+            self.assertEqual(
+                runner._repository_relative_source_path("/Users/client/ios/Customer.swift"),
+                (None, "invalid"),
+            )
+            published = runner._published_test_failures([{
+                "testIdentifier": "unit-secret-123", "testIdentifierStatus": "available",
+                "sourceFile": str(ROOT / "ios" / "ACEClientApp" / "ACEClientApp" / "ACEClientAppApp.swift"),
+                "sourceFileStatus": "available", "sourceLine": 12, "sourceLineStatus": "available",
+                "expectedStatus": "redacted", "actualStatus": "redacted",
+                "failureMessageStatus": "redacted",
+            }], True)
+        self.assertEqual(published[0]["testIdentifierStatus"], "redacted")
+        self.assertNotIn("testIdentifier", published[0])
+        self.assertEqual(published[0]["sourceFile"], "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift")
+
+    def test_failure_evidence_keeps_safe_details_when_counts_are_unusable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bundle = root / "ios-65-unit.xcresult"
+            bundle.mkdir()
+            payload = {"testFailures": [{
+                "testCaseName": "ACEClientAppTests.testUnit",
+                "fileName": str(ROOT / "ios" / "ACEClientApp" / "Tests.swift"),
+                "lineNumber": 12,
+            }]}
+
+            def command(_name, _command, _cwd, _environment, log_path):
+                log_path.write_text(json.dumps(payload), encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+            with mock.patch.object(runner, "_run_live_command", side_effect=command):
+                diagnostic, failures, status = runner._live_ios_failure_evidence(
+                    "ios-65-unit", ROOT, root, bundle
+                )
+        self.assertEqual(diagnostic, "diagnostic-gap")
+        self.assertEqual(status, "available")
+        self.assertEqual(failures[0]["sourceFile"], "ios/ACEClientApp/Tests.swift")
+
     def test_summary_command_failure_uses_only_its_process_exit_metadata(self):
         cases = (
             ("nonzero", runner.LiveCommandResult(1, "raw", "command-nonzero", 83), "command-nonzero", 83),
@@ -1740,7 +1901,7 @@ class RunnerContractTests(unittest.TestCase):
         settings = {"appearance": "light", "content_size": "large"}
         name = f"ios-normal-settings-{runner.IOS_CORE_DEVICE}-dark"
 
-        def setting(root, identifier, key, value=None):
+        def setting(root, identifier, key, value=None, query_evidence=None):
             if value is None:
                 return True, settings[key]
             if key == "appearance" and value == "light":
@@ -1767,7 +1928,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(published["simulatorSettings"]["contentSizeRestored"], "large")
 
     def test_normal_settings_rejects_successful_set_without_matching_readback(self):
-        def unchanged_setting(root, identifier, key, value=None):
+        def unchanged_setting(root, identifier, key, value=None, query_evidence=None):
             return True, value if value is not None else {"appearance": "light", "content_size": "large"}[key]
 
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
@@ -1785,7 +1946,7 @@ class RunnerContractTests(unittest.TestCase):
         original = {"appearance": "light", "content_size": "large"}
         settings = dict(original)
 
-        def setting(root, identifier, key, value=None):
+        def setting(root, identifier, key, value=None, query_evidence=None):
             if value is not None:
                 settings[key] = value
             return True, settings[key]
@@ -1875,8 +2036,13 @@ class RunnerContractTests(unittest.TestCase):
                 self.assertFalse((root / runner.LIVE_REVIEW_ARTIFACTS).exists())
 
     def test_normal_settings_stops_when_simulator_query_fails(self):
+        responses = iter(((False, None), (False, None)))
+
+        def query(*_args, **_kwargs):
+            return next(responses)
+
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
-            runner, "_simctl_ui_value", return_value=(False, None)
+            runner, "_simctl_ui_value", side_effect=query
         ):
             result = runner._normal_settings_result(
                 "ios-normal-settings-test-light", ["xcodebuild", "test"], ROOT,
@@ -1884,6 +2050,33 @@ class RunnerContractTests(unittest.TestCase):
                 "11111111-1111-1111-1111-111111111111", "light",
             )
         self.assertEqual(result["reason"], "simulator-setting-query-failed")
+
+    def test_normal_settings_retains_supported_unknown_query_evidence(self):
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner,
+            "_run_live_command",
+            return_value=runner.LiveCommandResult(0, "controlled", process_exit=0),
+        ):
+            query_evidence = []
+            log = Path(directory) / "query.log"
+            log.write_text("unknown\n", encoding="utf-8")
+            with mock.patch.object(runner, "_safe_live_path", return_value=log):
+                observed, value = runner._simctl_ui_value(
+                    Path(directory), "11111111-1111-1111-1111-111111111111",
+                    "appearance", query_evidence=query_evidence,
+                )
+        self.assertFalse(observed)
+        self.assertIsNone(value)
+        self.assertEqual(query_evidence, [{
+            "setting": "appearance", "processExit": 0,
+            "responseStatus": "available", "response": "unknown",
+        }])
+        published = runner._published_simulator_query_evidence([
+            {"setting": "appearance", "responseStatus": "unpublished-invalid", "response": "unknown"},
+            {"setting": "content_size", "responseStatus": "available", "response": "unknown"},
+        ])
+        self.assertNotIn("response", published[0])
+        self.assertEqual(published[1]["response"], "unknown")
 
     def test_png_validation_rejects_oversized_or_incomplete_pixel_streams(self):
         with tempfile.TemporaryDirectory() as directory:

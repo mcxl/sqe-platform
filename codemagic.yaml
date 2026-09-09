@@ -1,7 +1,7 @@
 workflows:
   ace-ios-diagnostic-manual:
     name: ACE iOS MCX-19 Focused Diagnostic (Not Release Evidence)
-    max_build_duration: 10
+    max_build_duration: 5
     instance_type: mac_mini_m4
     environment:
       groups:
@@ -9,9 +9,10 @@ workflows:
       xcode: 26.4.1
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-diagnostic-manual
-    # No automatic trigger. One copy-controls check runs in light mode.
+        ACE_IOS_DIAGNOSTIC_MODE: unit-settings
+    # No automatic trigger. One 65-test unit diagnostic runs without settings changes.
     scripts:
-      - name: Capture copy-controls failure and simulator query diagnostics
+      - name: Capture unit failure and read-only simulator query diagnostics
         script: python3 tools/diagnose_ios.py
     artifacts:
       - /private/tmp/mcx-19-diagnostic-safe/diagnostic.json

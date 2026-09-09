@@ -11,6 +11,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import time
 
 try:
     from tools import run_tests as rt
@@ -38,11 +39,31 @@ A11Y_ISSUE_TEXT_LIMIT = 256
 LOG_RESPONSE_LIMIT = 2 * 1024
 FAILURE_DETAIL_LIMIT = 30
 FAILURE_TEXT_LIMIT = 2 * 1024
+COPY_CONTROLS_MODE = "copy-controls"
+UNIT_SETTINGS_MODE = "unit-settings"
+DIAGNOSTIC_MODE_ENVIRONMENT_KEY = "ACE_IOS_DIAGNOSTIC_MODE"
+UNIT_TEST_TARGET = "ACEClientAppTests"
+UNIT_EXPECTED_TEST_COUNT = 65
+UNIT_WORKFLOW_SECONDS = 300
+UNIT_SETUP_SECONDS = 40
+UNIT_UI_SYNTAX_SECONDS = 8
+UNIT_SETTINGS_QUERY_SECONDS = 8
+UNIT_XCODEBUILD_SECONDS = 170
+UNIT_SUMMARY_SECONDS = 12
+UNIT_PUBLICATION_SECONDS = 5
+UNIT_PUBLICATION_COUNT = 4
+UNIT_ALLOCATED_SECONDS = (
+    UNIT_SETUP_SECONDS + UNIT_UI_SYNTAX_SECONDS + (2 * UNIT_SETTINGS_QUERY_SECONDS)
+    + UNIT_XCODEBUILD_SECONDS + UNIT_SUMMARY_SECONDS
+    + (UNIT_PUBLICATION_COUNT * UNIT_PUBLICATION_SECONDS)
+)
 
 
 def redact(text: str) -> str:
     """Remove private data, while retaining allowlisted repository locations."""
-    repository_root = re.escape(str(rt.ROOT.resolve()).replace("\\", "/"))
+    repository_root = re.escape(str(rt.ROOT.resolve()).replace("\\", "/")).replace(
+        "/", r"[\\/]"
+    )
     text = re.sub(
         rf"{repository_root}[\\/](?P<path>"
         r"(?:apps|ios|quality|security|src|tests|tools|workflows)[\\/][^\s:]+"
@@ -210,6 +231,162 @@ def context() -> str:
 def _build_id() -> str | None:
     value = os.environ.get("CM_BUILD_ID", "")
     return value if re.fullmatch(r"[A-Za-z0-9_-]{1,128}", value) else None
+
+
+def diagnostic_mode() -> str:
+    mode = os.environ.get(DIAGNOSTIC_MODE_ENVIRONMENT_KEY, COPY_CONTROLS_MODE)
+    if mode not in {COPY_CONTROLS_MODE, UNIT_SETTINGS_MODE}:
+        raise ValueError("diagnostic mode rejected")
+    return mode
+
+
+def _existing_core_destination() -> str:
+    """Resolve or create the verified core simulator without changing settings."""
+
+    return rt.resolve_ios_destinations(
+        (rt.IOS_CORE_DEVICE,), verification_seconds=UNIT_SETUP_SECONDS
+    )[rt.IOS_CORE_DEVICE]
+
+
+def _bounded_ui_syntax_probe(identifier: str) -> dict[str, object]:
+    """Retain only the two requested simctl UI syntax tokens."""
+
+    log = ROOT / "simctl-help-ui.log"
+    result = run(["xcrun", "simctl", "help", "ui"], {}, log, UNIT_UI_SYNTAX_SECONDS)
+    state, content = _safe_text(log, LOG_RESPONSE_LIMIT)
+    record: dict[str, object] = {
+        "commandKind": "simctl-help-ui", **result, "responseStatus": state,
+        "requestedSettings": ["appearance", "content_size"],
+    }
+    if state == "available" and content is not None:
+        record["supportedSettings"] = [
+            setting for setting in ("appearance", "content_size")
+            if re.search(rf"(?m)^\s*{re.escape(setting)}(?:\s|$)", content)
+        ]
+    return record
+
+
+def _bounded_unit_settings_probes(identifier: str) -> list[dict[str, object]]:
+    """Read only fixed single-token simulator responses for the unit probe."""
+
+    probes = []
+    for setting in ("appearance", "content_size"):
+        log = ROOT / f"unit-simctl-{setting}-query.log"
+        result = run(
+            ["xcrun", "simctl", "ui", identifier, setting], {}, log,
+            UNIT_SETTINGS_QUERY_SECONDS,
+        )
+        state, content = _safe_text(log, 128)
+        record: dict[str, object] = {
+            "commandKind": "simctl-ui-query", "setting": setting,
+            **result, "responseStatus": state,
+        }
+        if state == "available" and content is not None:
+            value = content.strip().lower()
+            if re.fullmatch(r"[a-z-]{1,80}", value):
+                record["response"] = value
+            else:
+                record["responseStatus"] = "unpublished-invalid"
+        probes.append(record)
+    return probes
+
+
+def _collect_unit_summary(unit: dict[str, object], bundle: Path) -> None:
+    """Collect counts and structured failures without publishing summary text."""
+
+    unit["testFailures"] = []
+    unit["testFailureStatus"] = "unavailable"
+    if not bundle.is_dir() or bundle.is_symlink():
+        unit["summaryStatus"] = "result-bundle-unavailable"
+        return
+    summary = ROOT / "unit-summary.json"
+    result = run(
+        ["xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(bundle)],
+        {}, summary, UNIT_SUMMARY_SECONDS,
+    )
+    unit["summaryCommand"] = {
+        "commandKind": "xcresult-summary", **result,
+        "responseStatus": "not-published" if result.get("processExit") == 0 else "command-failed",
+    }
+    if result.get("processExit") != 0:
+        unit["summaryStatus"] = "command-failed"
+        return
+    state, content = rt._bounded_live_file_text(ROOT, summary, rt.LIVE_RESULT_SUMMARY_MAX_BYTES)
+    if state != "available" or content is None:
+        unit["summaryStatus"] = state
+        return
+    try:
+        payload = json.loads(content)
+    except (ValueError, RecursionError):
+        unit["summaryStatus"] = "unreadable"
+        return
+    counts = rt._xcresult_counts(payload)
+    if counts is not None:
+        unit["actualCounts"] = {"passed": counts[0], "failed": counts[1], "skipped": counts[2]}
+    failures, failure_status = rt._xcresult_failure_details(payload)
+    unit["testFailures"] = rt._published_test_failures(failures, True)
+    unit["testFailureStatus"] = failure_status
+    unit["summaryStatus"] = "available"
+
+
+def unit_settings_main() -> int:
+    """Run one non-accepting unit diagnostic against an existing simulator."""
+
+    if UNIT_ALLOCATED_SECONDS >= 270:
+        raise RuntimeError("unit diagnostic time budget is invalid")
+    deadline = time.monotonic() + UNIT_WORKFLOW_SECONDS
+    try:
+        commit = context()
+        rt._live_artifact_root(ROOT)
+        rt._live_artifact_root(SAFE_ROOT)
+        destination = _existing_core_destination()
+    except (OSError, ValueError, rt.SimulatorResolutionError):
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    identifier = _simulator_identifier(destination)
+    if identifier is None:
+        return 1
+    report: dict[str, object] = {
+        "scope": "one-core-unit-settings-diagnostic", "diagnosticMode": UNIT_SETTINGS_MODE,
+        "workflow": WORKFLOW, "branch": rt.LIVE_BRANCH, "device": rt.IOS_CORE_DEVICE,
+        "releaseEvidence": False, "diagnosticStatus": "started",
+        "intentionalNonZeroExit": True, "commit": commit, "results": {},
+    }
+    build_id = _build_id()
+    if build_id is not None:
+        report["buildId"] = build_id
+    if not _publish_unit_report(report, deadline):
+        return 1
+    probes = {
+        "uiSyntax": _bounded_ui_syntax_probe(identifier),
+        "settings": _bounded_unit_settings_probes(identifier),
+    }
+    report["results"] = {"simulatorProbes": probes}
+    if not _publish_unit_report(report, deadline):
+        return 1
+    bundle = ROOT / "unit.xcresult"
+    unit_log = ROOT / "unit.log"
+    unit: dict[str, object] = run(
+        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, f"-only-testing:{UNIT_TEST_TARGET}", "-resultBundlePath", str(bundle)],
+        rt.ios_test_environment(), unit_log, UNIT_XCODEBUILD_SECONDS,
+    )
+    unit.update({"commandKind": "xcodebuild-test", "target": UNIT_TEST_TARGET,
+                 "expectedTestCount": UNIT_EXPECTED_TEST_COUNT, "device": rt.IOS_CORE_DEVICE})
+    if type(unit.get("processExit")) is int and unit["processExit"] != 0:
+        unit["logErrorLines"] = errors(unit_log)
+    report["results"] = {"simulatorProbes": probes, "unit": unit}
+    if not _publish_unit_report(report, deadline):
+        return 1
+    _collect_unit_summary(unit, bundle)
+    actual = unit.get("actualCounts")
+    unit["status"] = "passed" if (
+        unit.get("processExit") == 0
+        and actual == {"passed": UNIT_EXPECTED_TEST_COUNT, "failed": 0, "skipped": 0}
+    ) else "failed"
+    report["diagnosticStatus"] = "completed-not-release-evidence"
+    if not _publish_unit_report(report, deadline):
+        return 1
+    return 1
 
 
 def _simulator_identifier(destination: str) -> str | None:
@@ -407,13 +584,36 @@ def retain_screenshots(ui: dict[str, object], bundle: Path) -> None:
     ui["screenshotStatus"] = "available" if not missing and not rejected else "partial"
 
 
-def publish(report: dict) -> None:
+def _publish_unit_report(report: dict, deadline: float) -> bool:
+    """Publish the latest partial unit report before its fixed deadline."""
+
+    try:
+        publish(report, deadline)
+    except OSError:
+        print("diagnostic publication stopped; previous report retained", flush=True)
+        return False
+    return True
+
+
+def publish(report: dict, deadline: float | None = None) -> None:
+    """Atomically publish one report within an optional fixed deadline."""
+
+    if deadline is not None and time.monotonic() >= deadline:
+        raise OSError("diagnostic publication time expired")
     content = json.dumps(report, indent=2, sort_keys=True)
-    (SAFE_ROOT / "diagnostic.json").write_text(content + "\n", encoding="utf-8")
+    target = SAFE_ROOT / "diagnostic.json"
+    temporary = SAFE_ROOT / ".diagnostic.json.tmp"
+    if temporary.exists() or temporary.is_symlink():
+        raise OSError("diagnostic publication staging path is unavailable")
+    temporary.write_text(content + "\n", encoding="utf-8")
+    if deadline is not None and time.monotonic() >= deadline:
+        temporary.unlink(missing_ok=True)
+        raise OSError("diagnostic publication time expired")
+    os.replace(temporary, target)
     print(content, flush=True)
 
 
-def main() -> int:
+def copy_controls_main() -> int:
     # Do not publish exception values, environment values, raw bundles, or raw logs.
     try:
         commit = context()
@@ -476,6 +676,17 @@ def main() -> int:
     report["diagnosticStatus"] = "completed-not-release-evidence"
     publish(report)
     return 1
+
+
+def main() -> int:
+    """Select one explicit non-accepting diagnostic mode."""
+
+    try:
+        mode = diagnostic_mode()
+    except ValueError:
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    return unit_settings_main() if mode == UNIT_SETTINGS_MODE else copy_controls_main()
 
 
 if __name__ == "__main__":

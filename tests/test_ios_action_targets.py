@@ -39,6 +39,10 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     )
     for method in action_methods:
         assert "assertMinimumActionTargets(in: app)" in method_source(method)
+    normal_method = method_source("testNormalDeviceSettings")
+    assert "requiredNormalDeviceContentSize()" in normal_method
+    assert 'NSPredicate(format: "value == %@", expectedContentSize)' in normal_method
+    assert "ACE_UI_TEST_APPEARANCE" not in normal_method
     release_method = method_source("testFictionalReleaseHasApprovedCopyControls")
     assert 'ProcessInfo.processInfo.environment["ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"] == "1"' in release_method
     assert '"Fictional release — initial-audit — \\(appearance)"' in release_method

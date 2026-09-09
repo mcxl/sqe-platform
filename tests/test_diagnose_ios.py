@@ -198,7 +198,8 @@ def test_exact_scope_and_retention_contract():
     source = Path(diagnostic.__file__).read_text(encoding="utf-8")
     yaml = (diagnostic.rt.ROOT / "codemagic.yaml").read_text(encoding="utf-8")
     section = yaml.split("  ace-ios-diagnostic-manual:", 1)[1].split("  ace-ios-core:", 1)[0]
-    assert "max_build_duration: 10" in section
+    assert "max_build_duration: 5" in section
+    assert "ACE_IOS_DIAGNOSTIC_MODE: unit-settings" in section
     assert "triggering:" not in section
     assert "- mcx19_diagnostic" in section
     assert "mcx19_live_evidence" not in section
@@ -416,3 +417,103 @@ def test_valid_selector_attachments_are_copied_to_safe_root(tmp_path, monkeypatc
         for number in range(1, len(diagnostic.SCREENSHOT_NAMES) + 1)
     ]
     assert all((safe / path).is_file() for path in ui["screenshots"])
+
+
+def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(diagnostic, "_existing_core_destination", lambda: "platform=iOS Simulator,id=fixture")
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
+    commands = []
+    timeouts = []
+
+    def run(command, environment, log, timeout):
+        commands.append(command)
+        timeouts.append(timeout)
+        if command[:4] == ["xcrun", "simctl", "help", "ui"]:
+            log.write_text("appearance\ncontent_size\nprivate-token=value", encoding="utf-8")
+            return {"processExit": 0}
+        if command[:3] == ["xcrun", "simctl", "ui"]:
+            log.write_text("unknown\n", encoding="utf-8")
+            return {"processExit": 0}
+        if command[:2] == ["xcodebuild", "test"]:
+            assert [arg for arg in command if arg.startswith("-only-testing:")] == ["-only-testing:ACEClientAppTests"]
+            assert timeout == diagnostic.UNIT_XCODEBUILD_SECONDS
+            assert diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY not in environment
+            (root / "unit.xcresult").mkdir()
+            log.write_text(
+                f"error: XCTest failed at {diagnostic.rt.ROOT}/ios/ACEClientApp/ACEClientAppTests.swift:92\n",
+                encoding="utf-8",
+            )
+            return {"processExit": 65}
+        assert command[:5] == ["xcrun", "xcresulttool", "get", "test-results", "summary"]
+        log.write_text(json.dumps({
+            "passedTests": 64, "failedTests": 1, "skippedTests": 0,
+                "testFailures": [{
+                    "testCaseName": "ACEClientAppTests.testUnit", "expected": "A", "actual": "B",
+                    "failureText": "ghp_abcdefghi /Users/client/ios/Customer.swift",
+                }],
+        }), encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    assert diagnostic.main() == 1
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    assert report["releaseEvidence"] is False
+    assert report["diagnosticStatus"] == "completed-not-release-evidence"
+    assert report["results"]["unit"]["expectedTestCount"] == 65
+    assert report["results"]["unit"]["actualCounts"] == {"passed": 64, "failed": 1, "skipped": 0}
+    assert report["results"]["unit"]["testFailures"][0]["expected"] == "A"
+    assert report["results"]["unit"]["testFailures"][0]["sourceFileStatus"] == "absent"
+    assert report["results"]["unit"]["testFailures"][0]["sourceLineStatus"] == "absent"
+    assert report["results"]["unit"]["logErrorLines"] == [
+        "error: XCTest failed at ios/ACEClientApp/ACEClientAppTests.swift:92"
+    ]
+    assert report["results"]["simulatorProbes"]["settings"][0]["response"] == "unknown"
+    assert "private-token=value" not in json.dumps(report)
+    assert "ghp_abcdefghi" not in json.dumps(report)
+    assert "/Users/client/ios/Customer.swift" not in json.dumps(report)
+    assert len(commands) == 5
+    assert timeouts == [
+        diagnostic.UNIT_UI_SYNTAX_SECONDS,
+        diagnostic.UNIT_SETTINGS_QUERY_SECONDS,
+        diagnostic.UNIT_SETTINGS_QUERY_SECONDS,
+        diagnostic.UNIT_XCODEBUILD_SECONDS,
+        diagnostic.UNIT_SUMMARY_SECONDS,
+    ]
+    assert diagnostic.UNIT_ALLOCATED_SECONDS < 270
+
+
+def test_unit_destination_uses_bounded_core_resolver(monkeypatch):
+    calls = []
+
+    def resolve(names, recorder=None, verification_seconds=None):
+        calls.append((names, recorder, verification_seconds))
+        return {diagnostic.rt.IOS_CORE_DEVICE: "platform=iOS Simulator,id=fixture"}
+
+    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", resolve)
+    assert diagnostic._existing_core_destination() == "platform=iOS Simulator,id=fixture"
+    assert calls == [((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS)]
+
+
+def test_unit_publication_deadline_retains_previous_report(tmp_path, monkeypatch):
+    safe = tmp_path / "safe"
+    safe.mkdir()
+    target = safe / "diagnostic.json"
+    target.write_text('{"diagnosticStatus":"started"}\n', encoding="utf-8")
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic.time, "monotonic", lambda: 100.0)
+    assert diagnostic._publish_unit_report({"diagnosticStatus": "later"}, 100.0) is False
+    assert target.read_text(encoding="utf-8") == '{"diagnosticStatus":"started"}\n'
+    assert not (safe / ".diagnostic.json.tmp").exists()
+
+
+def test_copy_controls_mode_remains_the_default(monkeypatch):
+    monkeypatch.delenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, raising=False)
+    assert diagnostic.diagnostic_mode() == diagnostic.COPY_CONTROLS_MODE

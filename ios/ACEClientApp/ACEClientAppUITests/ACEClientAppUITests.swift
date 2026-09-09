@@ -46,6 +46,21 @@ final class ACEClientAppUITests: XCTestCase {
         return appearance
     }
 
+    private func requiredNormalDeviceContentSize() -> String {
+        let supported = [
+            "extra-small", "small", "medium", "large", "extra-large",
+            "extra-extra-large", "extra-extra-extra-large", "accessibility-medium",
+            "accessibility-large", "accessibility-extra-large",
+            "accessibility-extra-extra-large", "accessibility-extra-extra-extra-large"
+        ]
+        guard let contentSize = ProcessInfo.processInfo.environment["ACE_EXPECTED_CONTENT_SIZE_CATEGORY"],
+              supported.contains(contentSize) else {
+            XCTFail("ACE_EXPECTED_CONTENT_SIZE_CATEGORY must be supported")
+            return "medium"
+        }
+        return contentSize
+    }
+
     func testBothAppearances() {
         for appearance in ["light", "dark"] {
             let app = launch("release", appearance: appearance)
@@ -174,6 +189,7 @@ final class ACEClientAppUITests: XCTestCase {
 
     func testNormalDeviceSettings() throws {
         let expectedAppearance = requiredNormalDeviceAppearance()
+        let expectedContentSize = requiredNormalDeviceContentSize()
         XCUIDevice.shared.orientation = .portrait
         let app = launchWithNormalDeviceSettings("release")
         defer { app.terminate() }
@@ -186,6 +202,14 @@ final class ACEClientAppUITests: XCTestCase {
             XCTWaiter.wait(for: [displayedAppearance], timeout: 5),
             .completed,
             "The displayed view must use the simulator's \(expectedAppearance) appearance"
+        )
+        let displayedContentSize = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", expectedContentSize), object: indicator
+        )
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [displayedContentSize], timeout: 5),
+            .completed,
+            "The displayed view must use the simulator's \(expectedContentSize) content size"
         )
         assertMinimumActionTargets(in: app)
         try assertAccessibilityAudit(in: app, scenario: "release-normal-device-settings-initial")

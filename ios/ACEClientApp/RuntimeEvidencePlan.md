@@ -40,14 +40,19 @@ that external root.
 
 The gate resolves exact simulator device types and the highest available iOS 26.x
 runtime. It accepts canonical unique UUIDs only. It gives simulator creation and
-polling one 30-second monotonic deadline. Each test command has a 600-second limit.
+polling one 180-second monotonic deadline. Each test command has a 600-second limit.
 It fails on a wrong runtime or type, duplicate or invalid UUID, timeout, unavailable
 device, non-zero result, missing summary, skipped test, failed test, or wrong count.
 
-The approved scope is 65 unit tests, twenty one-test UI selectors across two named
-simulators and two appearances, 42 acceptance-contract tests, and one negative
-configuration rejection. The gate checks 127 executed XCTest cases. It uses only the
-existing schemes and selectors with controlled fictional inputs.
+The runner checks 65 unit tests, 24 one-test UI commands across two named simulators
+and two forced appearances, 42 acceptance-contract tests, four normal-setting UI
+commands, and one negative configuration rejection. These 31 commands require 135
+executed XCTest cases. Normal-setting commands verify system appearance and content
+size without the app appearance override and record setting restoration. The runner
+uses the existing schemes and selectors with controlled fictional inputs.
+
+These collection counts do not establish a complete visual or manual acceptance pass.
+The candidate must also satisfy the MCX19-B Acceptance Matrix in the iOS specification.
 
 Do not add client data, passwords, authorisation values, Keychain secrets, credentials,
 private notes, release claims, or evidence records to the repository.
