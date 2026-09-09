@@ -1,5 +1,6 @@
 import os
 import json
+import hashlib
 import struct
 import tarfile
 import zlib
@@ -522,6 +523,8 @@ def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tm
     monkeypatch.setattr(diagnostic, "_native_cycle_destination", lambda: "platform=iOS Simulator,id=fixture")
     monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
     original = b"original-result-byte"
+    compatible_name = "data.0~fixture=="
+    compatible_record = b"original-compatible-record"
     commands = []
 
     def run(command, _environment, log, _timeout):
@@ -539,6 +542,9 @@ def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tm
             bundle = root / "unit.xcresult"
             bundle.mkdir()
             (bundle / "Info.plist").write_bytes(original)
+            data = bundle / "Data"
+            data.mkdir()
+            (data / compatible_name).write_bytes(compatible_record)
             log.write_text(
                 "error: XCTAssertEqual failed: (\"MCX19-B intentional fail\") is not equal to (\"Second\")\n",
                 encoding="utf-8",
@@ -581,6 +587,9 @@ def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tm
         names = records.getnames()
         assert "records/unit.xcresult/Info.plist" in names
         assert records.extractfile("records/unit.xcresult/Info.plist").read() == original
+        compatible_path = f"records/unit.xcresult/Data/{compatible_name}"
+        assert compatible_path in names
+        assert records.extractfile(compatible_path).read() == compatible_record
         inventory = json.load(records.extractfile("records/collection-inventory.json"))
     assert inventory["candidateCommit"] == "a" * 40
     assert inventory["collectionState"] == "complete"
@@ -592,6 +601,10 @@ def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tm
     assert inventory["commands"]["xcresult-summary"] == unit["summaryCommand"]
     assert inventory["commands"]["xcresult-attachment-export"] == unit["attachmentExportCommand"]
     assert any(entry["relativePath"] == "records/unit.log" for entry in inventory["records"])
+    compatible_entry = next(
+        entry for entry in inventory["records"] if entry["relativePath"] == compatible_path
+    )
+    assert compatible_entry["sha256"] == hashlib.sha256(compatible_record).hexdigest()
     assert len([item for item in commands if item[:2] == ["xcodebuild", "test"]]) == 1
 
 
@@ -760,6 +773,34 @@ def test_private_collection_rejects_symlink_and_invalid_archive_path(tmp_path, m
     assert error.value.diagnostic == {
         "source": "generated-record", "rule": "prefix", "punctuationClasses": [],
     }
+    outside_result_bundle = "records/generated/data.0~fixture=="
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries(
+            [(safe, outside_result_bundle, "xcodebuild-test")], "complete"
+        )
+    assert error.value.diagnostic == {
+        "source": "generated-record",
+        "rule": "unsupported-character",
+        "punctuationClasses": ["equals", "tilde"],
+    }
+    result_bundle_traversal = "records/unit.xcresult/../data.0~fixture=="
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries(
+            [(safe, result_bundle_traversal, "xcodebuild-test")], "complete"
+        )
+    assert error.value.diagnostic["rule"] == "dot-segment"
+    result_prefix = "records/unit.xcresult/"
+    allowed_result_bundle_path = result_prefix + ("a" * 1010)
+    assert len(allowed_result_bundle_path.removeprefix("records/")) == 1024
+    assert diagnostic._private_record_entries(
+        [(safe, allowed_result_bundle_path, "xcodebuild-test")], "complete"
+    )[0]["relativePath"] == allowed_result_bundle_path
+    too_long_result_bundle_path = result_prefix + ("a" * 1011)
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
+        diagnostic._private_record_entries(
+            [(safe, too_long_result_bundle_path, "xcodebuild-test")], "complete"
+        )
+    assert error.value.diagnostic["rule"] == "path-length"
     for unsafe_path in ("records/../outside", "records/./same", "records//same"):
         with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid") as error:
             diagnostic._private_record_entries([(safe, unsafe_path, "test")], "complete")
@@ -799,7 +840,7 @@ def test_native_collection_publishes_bounded_result_bundle_path_diagnostic(tmp_p
     private = tmp_path / "private"
     bundle = root / "unit.xcresult" / "Data"
     bundle.mkdir(parents=True)
-    rejected_name = "data.fixture=="
+    rejected_name = "data.fixture+"
     (bundle / rejected_name).write_text("controlled", encoding="utf-8")
     for name in (
         "unit.log", "unit-summary.json", "simctl-help-ui.log",
@@ -823,7 +864,7 @@ def test_native_collection_publishes_bounded_result_bundle_path_diagnostic(tmp_p
     assert unit["privateRecordCollectionDiagnostic"] == {
         "source": "result-bundle",
         "rule": "unsupported-character",
-        "punctuationClasses": ["equals"],
+        "punctuationClasses": ["plus"],
     }
     assert rejected_name not in json.dumps(unit)
     assert "secret=not-public" not in json.dumps(unit)

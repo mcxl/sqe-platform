@@ -89,6 +89,10 @@ PRIVATE_RECORD_CREDENTIAL_PREFIX = re.compile(
     rb"\b(?:gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]+)\b"
 )
 PRIVATE_RECORD_REAL_CLIENT = re.compile(rb"(?i)real[ _-]?client")
+PRIVATE_ARCHIVE_PATH = re.compile(r"records/[A-Za-z0-9._/-]{1,1024}")
+PRIVATE_RESULT_BUNDLE_ARCHIVE_PATH = re.compile(
+    r"records/unit\.xcresult/[A-Za-z0-9._/~=-]{1,1024}"
+)
 
 
 def redact(text: str) -> str:
@@ -548,8 +552,15 @@ def _private_record_entries(
     archive_paths: set[str] = set()
     for path, archive_path, command in sources:
         relative = archive_path.removeprefix("records/")
+        path_pattern = (
+            PRIVATE_RESULT_BUNDLE_ARCHIVE_PATH
+            if archive_path.startswith("records/unit.xcresult/")
+            and command == "xcodebuild-test"
+            else PRIVATE_ARCHIVE_PATH
+        )
         if (
-            not re.fullmatch(r"records/[A-Za-z0-9._/-]{1,1024}", archive_path)
+            len(relative) > 1024
+            or not path_pattern.fullmatch(archive_path)
             or not relative
             or any(part in {"", ".", ".."} for part in relative.split("/"))
         ):
