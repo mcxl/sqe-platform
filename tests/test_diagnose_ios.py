@@ -1,5 +1,7 @@
 import os
 import json
+import struct
+import zlib
 from pathlib import Path
 from unittest.mock import patch
 
@@ -8,12 +10,28 @@ import pytest
 from tools import diagnose_ios as diagnostic
 
 
-def test_redaction_keeps_error_but_removes_private_values():
+def _png() -> bytes:
+    def chunk(kind: bytes, content: bytes) -> bytes:
+        return struct.pack(">I", len(content)) + kind + content + struct.pack(">I", zlib.crc32(kind + content) & 0xFFFFFFFF)
+
+    return (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0))
+        + chunk(b"IDAT", zlib.compress(b"\0\0\0\0"))
+        + chunk(b"IEND", b"")
+    )
+
+
+def test_redaction_keeps_error_but_removes_private_values(monkeypatch):
+    root = type("Root", (), {"resolve": lambda self: "/Users/builder/project"})()
+    monkeypatch.setattr(diagnostic.rt, "ROOT", root)
     with patch.dict(os.environ, {"PRIVATE_TEST_VALUE": "hidden-token-123"}):
-        text = diagnostic.redact('error: hidden-token-123 /Users/builder/project/file.swift:18 user@host.invalid https://private.invalid token=secret')
+        text = diagnostic.redact("error: hidden-token-123 /Users/builder/project/ios/ACEClientApp/ACEClientAppUITests.swift:92 /Users/person/private/src/customer.swift user@host.invalid https://private.invalid token=secret")
     assert "error:" in text
+    assert "ios/ACEClientApp/ACEClientAppUITests.swift:92" in text
     assert "hidden-token-123" not in text
     assert "/Users/" not in text
+    assert "customer.swift" not in text
     assert "user@" not in text
     assert "https://" not in text
     assert "token=secret" not in text
@@ -138,29 +156,31 @@ def test_exact_scope_and_retention_contract():
     source = Path(diagnostic.__file__).read_text(encoding="utf-8")
     yaml = (diagnostic.rt.ROOT / "codemagic.yaml").read_text(encoding="utf-8")
     section = yaml.split("  ace-ios-diagnostic-manual:", 1)[1].split("  ace-ios-core:", 1)[0]
-    assert "max_build_duration: 15" in section
+    assert "max_build_duration: 10" in section
     assert "triggering:" not in section
     assert "- mcx19_diagnostic" in section
     assert "mcx19_live_evidence" not in section
     assert "/private/tmp/mcx-19-diagnostic-safe/diagnostic.json" in section
+    assert "/private/tmp/mcx-19-diagnostic-safe/screenshots/**/*.png" in section
     assert "live-evidence --" not in section
     assert "ios_release_ui_matrix" not in source
-    assert diagnostic.METHODS == (
-        "testSignInPasswordFieldIsSecure",
-        "testFictionalReleaseHasApprovedCopyControls",
-        "testAllControlledScenariosShowExpectedStateAndAudit",
+    assert diagnostic.METHOD == "testFictionalReleaseHasApprovedCopyControls"
+    assert diagnostic.SCREENSHOT_NAMES == diagnostic.rt._expected_logical_screenshot_names(
+        f"ios-release-{diagnostic.rt.IOS_CORE_DEVICE}-light-{diagnostic.METHOD}"
     )
-    assert "ui_log, 600" in source
+    assert "rt.ios_test_environment(\"light\"), ui_log, 420" in source
 
 
-def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_path, monkeypatch):
-    """Catch an extra build, wrong selector/appearance, or lost assertion details."""
+def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, monkeypatch):
+    """Catch an extra build, wrong selector or appearance, and lost failure data."""
     root = tmp_path / "raw"
     safe = tmp_path / "safe"
     root.mkdir()
     safe.mkdir()
+    root_marker = type("Root", (), {"resolve": lambda self: "/Users/builder/project"})()
     monkeypatch.setattr(diagnostic, "ROOT", root)
     monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic.rt, "ROOT", root_marker)
     monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
     monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
     monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices: {devices[0]: "platform=iOS Simulator,id=fixture"})
@@ -168,40 +188,129 @@ def test_diagnostic_runs_only_three_functional_methods_and_retains_failure(tmp_p
 
     def run(command, environment, log, timeout):
         commands.append(command)
+        if command[:3] == ["xcrun", "simctl", "ui"]:
+            assert len(command) == 5
+            log.write_text("light" if command[-1] == "appearance" else "medium", encoding="utf-8")
+            return {"processExit": 0}
         if command[:2] == ["xcodebuild", "test"]:
-            assert [arg for arg in command if arg.startswith("-only-testing:")] == [
-                f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}" for method in diagnostic.METHODS
-            ]
+            assert [arg for arg in command if arg.startswith("-only-testing:")] == [f"-only-testing:{diagnostic.METHOD_PATH}"]
             assert "ACE_UI_TEST_APPEARANCE=light" in command
             assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
-            assert timeout == 600
+            assert timeout == 420
             (root / "ui.xcresult").mkdir()
-            log.write_text(
-                'error: XCTAssertEqual failed: light is not dark\n'
-                'ACE_A11Y_ISSUE {"scenario":"signIn","auditType":"contrast",'
-                '"compactDescription":"Contrast failed","detailedDescription":"Text contrast failed",'
-                '"element":{"identifier":"Password","label":"Password","type":"SecureTextField",'
-                '"frame":{"x":1,"y":2,"width":3,"height":4}}}\n',
-                encoding="utf-8",
-            )
+            log.write_text("error: XCTAssertEqual failed at /Users/builder/project/ios/ACEClientApp/ACEClientAppUITests.swift:92\n", encoding="utf-8")
             return {"processExit": 65}
-        assert command[:4] == ["xcrun", "xcresulttool", "get", "test-results"]
-        log.write_text(json.dumps({"passedTests": 0, "failedTests": 1, "skippedTests": 0,
-            "testFailures": [{"failureText": "XCTAssertEqual failed: light is not dark"}]}))
-        return {"processExit": 0}
+        if command[2] == "get":
+            log.write_text(json.dumps({"passedTests": 0, "failedTests": 1, "skippedTests": 0, "testFailures": [{"testCaseName": diagnostic.METHOD, "failureText": "XCTAssertEqual failed", "fileName": "/Users/builder/project/ios/ACEClientApp/ACEClientAppUITests.swift", "lineNumber": 92}]}), encoding="utf-8")
+            return {"processExit": 0}
+        log.write_text("export failed", encoding="utf-8")
+        return {"processExit": 1}
 
     monkeypatch.setattr(diagnostic, "run", run)
     assert diagnostic.main() == 1
     report = json.loads((safe / "diagnostic.json").read_text())
-    assert len(commands) == 2
-    assert set(report["results"]) == {"ui"}
+    assert [command[:3] for command in commands[:2]] == [["xcrun", "simctl", "ui"], ["xcrun", "simctl", "ui"]]
     assert report["releaseEvidence"] is False
-    assert report["results"]["ui"]["selectors"] == list(diagnostic.METHODS)
-    assert "light is not dark" in report["results"]["ui"]["testFailureDetails"]
-    assert report["results"]["ui"]["accessibilityIssues"] == [{
-        "scenario": "signIn", "auditType": "contrast", "compactDescription": "Contrast failed",
-        "detailedDescription": "Text contrast failed", "element": {
-            "identifier": "Password", "label": "Password", "type": "SecureTextField",
-            "frame": {"x": 1, "y": 2, "width": 3, "height": 4},
-        },
-    }]
+    assert report["diagnosticStatus"] == "completed-not-release-evidence"
+    assert report["results"]["ui"]["counts"] == {"passed": 0, "failed": 1, "skipped": 0}
+    assert report["results"]["ui"]["testFailureDetails"][0]["sourceLocation"] == "ios/ACEClientApp/ACEClientAppUITests.swift:92"
+    assert report["results"]["ui"]["screenshotStatus"] == "attachment-export-failed"
+
+
+def test_large_private_summary_retains_only_redacted_failure_fields(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    root.mkdir()
+    bundle = root / "ui.xcresult"
+    bundle.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    with patch.dict(os.environ, {"PRIVATE_TEST_VALUE": "hidden-token-123"}):
+        def run(command, environment, log, timeout):
+            log.write_text(json.dumps({"padding": "x" * 3000, "passedTests": 0, "failedTests": 1, "testFailures": [{"failureText": "hidden-token-123"}]}), encoding="utf-8")
+            return {"processExit": 0}
+        monkeypatch.setattr(diagnostic, "run", run)
+        ui = {}
+        diagnostic.collect_summary(ui, bundle)
+    assert ui["counts"] == {"passed": 0, "failed": 1, "skipped": 0}
+    assert ui["testFailureDetails"][0]["failureText"] == "[redacted]"
+    assert ui["summaryCommand"] == {"commandKind": "xcresult-summary", "processExit": 0, "responseStatus": "not-published"}
+
+
+def test_missing_attachments_do_not_erase_failure_details(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    bundle = root / "ui.xcresult"
+    bundle.mkdir()
+    ui = {"testFailureDetails": [{"failureText": "retained failure"}]}
+
+    def run(command, environment, log, timeout):
+        log.write_text("no attachments", encoding="utf-8")
+        export = root / "attachment-export"
+        export.mkdir()
+        (export / "manifest.json").write_text("[]", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "run", run)
+    diagnostic.retain_screenshots(ui, bundle)
+    assert ui["testFailureDetails"] == [{"failureText": "retained failure"}]
+    assert ui["screenshots"] == []
+    assert ui["screenshotStatus"] == "attachment-missing"
+
+
+def test_partial_valid_attachments_are_retained_with_a_clear_gap(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    bundle = root / "ui.xcresult"
+    bundle.mkdir()
+
+    def run(command, environment, log, timeout):
+        export = root / "attachment-export"
+        export.mkdir()
+        (export / "01.png").write_bytes(_png())
+        (export / "manifest.json").write_text(json.dumps([{"attachments": [{"suggestedHumanReadableName": diagnostic.SCREENSHOT_NAMES[0], "exportedFileName": "01.png"}]}]), encoding="utf-8")
+        log.write_text("exported", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "run", run)
+    ui = {}
+    diagnostic.retain_screenshots(ui, bundle)
+    assert ui["screenshotStatus"] == "partial"
+    assert ui["screenshots"] == [f"screenshots/{diagnostic.METHOD}/01.png"]
+    assert ui["missingScreenshotNames"] == list(diagnostic.SCREENSHOT_NAMES[1:])
+
+
+def test_valid_selector_attachments_are_copied_to_safe_root(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    bundle = root / "ui.xcresult"
+    bundle.mkdir()
+
+    def run(command, environment, log, timeout):
+        export = root / "attachment-export"
+        export.mkdir()
+        attachments = []
+        for number, name in enumerate(diagnostic.SCREENSHOT_NAMES, 1):
+            exported = f"{number}.png"
+            (export / exported).write_bytes(_png())
+            attachments.append({"suggestedHumanReadableName": name, "exportedFileName": exported})
+        (export / "manifest.json").write_text(json.dumps([{"attachments": attachments}]), encoding="utf-8")
+        log.write_text("exported", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "run", run)
+    ui = {}
+    diagnostic.retain_screenshots(ui, bundle)
+    assert ui["screenshotStatus"] == "available"
+    assert len(ui["screenshots"]) == len(diagnostic.SCREENSHOT_NAMES)
+    assert all((safe / path).is_file() for path in ui["screenshots"])
