@@ -704,6 +704,7 @@ def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path
     monkeypatch.setattr(diagnostic, "ROOT", root)
     monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
     unit = {"summaryStatus": "available", "processExit": 65}
+    report = {"results": {"unit": unit}}
     assert diagnostic._collect_native_cycle_records("a" * 40, unit, root / "missing.xcresult") == "result-bundle-unavailable"
     assert not private.exists()
 
@@ -725,7 +726,52 @@ def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path
 
     monkeypatch.setattr(diagnostic, "run", run)
     assert diagnostic._collect_native_cycle_records("a" * 40, unit, bundle) == "sensitive-record"
+    assert report["results"]["unit"]["privateRecordCollectionDiagnostic"] == {
+        "source": "result-bundle", "matcher": "key-value",
+    }
+    assert "token" not in json.dumps(report)
+    assert "blocked" not in json.dumps(report)
     assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
+
+
+@pytest.mark.parametrize(
+    ("archive_path", "command", "content", "source", "matcher"),
+    [
+        (
+            "records/unit.xcresult/Info.plist",
+            "xcodebuild-test",
+            b'{"token":"blocked"}',
+            "result-bundle",
+            "key-value",
+        ),
+        (
+            "records/unit-attachment-export/attachment",
+            "xcresult-attachment-export",
+            b"ghp_fixture_token",
+            "attachment-export",
+            "credential-prefix",
+        ),
+        (
+            "records/generated-record",
+            "generated-record",
+            b"Real Client",
+            "generated-record",
+            "real-client",
+        ),
+    ],
+)
+def test_sensitive_record_diagnostic_uses_only_fixed_source_and_matcher(
+    tmp_path, archive_path, command, content, source, matcher
+):
+    record = tmp_path / "record"
+    record.write_bytes(content)
+
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="sensitive-record") as error:
+        diagnostic._private_record_entries([(record, archive_path, command)], "complete")
+
+    assert error.value.diagnostic == {"source": source, "matcher": matcher}
+    assert content.decode("utf-8") not in json.dumps(error.value.diagnostic)
+    assert str(error.value) == "sensitive-record"
 
 
 def test_native_collection_rejects_an_empty_result_bundle(tmp_path, monkeypatch):

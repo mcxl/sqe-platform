@@ -378,9 +378,15 @@ def _collect_unit_summary(unit: dict[str, object], bundle: Path) -> None:
 class PrivateRecordCollectionError(ValueError):
     """Stop private collection without disclosing a raw record."""
 
-    def __init__(self, reason: str, diagnostic: dict[str, object] | None = None) -> None:
+    def __init__(
+        self,
+        reason: str,
+        diagnostic: dict[str, object] | None = None,
+        sensitive_matcher: str | None = None,
+    ) -> None:
         super().__init__(reason)
         self.diagnostic = diagnostic
+        self.sensitive_matcher = sensitive_matcher
 
 
 def _archive_path_source(archive_path: str) -> str:
@@ -426,6 +432,16 @@ def _archive_path_diagnostic(archive_path: str) -> dict[str, object]:
         "rule": rule,
         "punctuationClasses": punctuation,
     }
+
+
+def _sensitive_record_matcher(content: bytes) -> str | None:
+    if PRIVATE_RECORD_SECRET.search(content):
+        return "key-value"
+    if PRIVATE_RECORD_CREDENTIAL_PREFIX.search(content):
+        return "credential-prefix"
+    if PRIVATE_RECORD_REAL_CLIENT.search(content):
+        return "real-client"
+    return None
 
 
 def _private_collection_root() -> Path:
@@ -482,12 +498,11 @@ def _private_file_metadata(path: Path) -> tuple[int, str]:
         with path.open("rb") as stream:
             while chunk := stream.read(64 * 1024):
                 inspected = carry + chunk
-                if (
-                    PRIVATE_RECORD_SECRET.search(inspected)
-                    or PRIVATE_RECORD_CREDENTIAL_PREFIX.search(inspected)
-                    or PRIVATE_RECORD_REAL_CLIENT.search(inspected)
-                ):
-                    raise PrivateRecordCollectionError("sensitive-record")
+                matcher = _sensitive_record_matcher(inspected)
+                if matcher is not None:
+                    raise PrivateRecordCollectionError(
+                        "sensitive-record", sensitive_matcher=matcher
+                    )
                 digest.update(chunk)
                 carry = inspected[-256:]
     except OSError as error:
@@ -570,7 +585,18 @@ def _private_record_entries(
         if archive_path in archive_paths:
             raise PrivateRecordCollectionError("archive-path-duplicate")
         archive_paths.add(archive_path)
-        size, digest = _private_file_metadata(path)
+        try:
+            size, digest = _private_file_metadata(path)
+        except PrivateRecordCollectionError as error:
+            if error.sensitive_matcher is not None:
+                raise PrivateRecordCollectionError(
+                    "sensitive-record",
+                    {
+                        "source": _archive_path_source(archive_path),
+                        "matcher": error.sensitive_matcher,
+                    },
+                ) from error
+            raise
         entries.append({
             "relativePath": archive_path,
             "producingCommand": command,
