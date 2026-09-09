@@ -244,7 +244,8 @@ def _existing_core_destination() -> str:
     """Resolve or create the verified core simulator without changing settings."""
 
     return rt.resolve_ios_destinations(
-        (rt.IOS_CORE_DEVICE,), verification_seconds=UNIT_SETUP_SECONDS
+        (rt.IOS_CORE_DEVICE,), verification_seconds=UNIT_SETUP_SECONDS,
+        require_ready=True,
     )[rt.IOS_CORE_DEVICE]
 
 
@@ -367,7 +368,7 @@ def unit_settings_main() -> int:
     bundle = ROOT / "unit.xcresult"
     unit_log = ROOT / "unit.log"
     unit: dict[str, object] = run(
-        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, f"-only-testing:{UNIT_TEST_TARGET}", "-resultBundlePath", str(bundle)],
+        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-parallel-testing-enabled", "NO", f"-only-testing:{UNIT_TEST_TARGET}", "-resultBundlePath", str(bundle)],
         rt.ios_test_environment(), unit_log, UNIT_XCODEBUILD_SECONDS,
     )
     unit.update({"commandKind": "xcodebuild-test", "target": UNIT_TEST_TARGET,
@@ -656,7 +657,7 @@ def copy_controls_main() -> int:
     bundle = ROOT / "ui.xcresult"
     ui_log = ROOT / "ui.log"
     ui: dict[str, object] = run(
-        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:{METHOD_PATH}", "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
+        ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, "-parallel-testing-enabled", "NO", f"-only-testing:{METHOD_PATH}", "-resultBundlePath", str(bundle), "ACE_UI_TEST_APPEARANCE=light"],
         DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420,
     )
     ui.update({"commandKind": "xcodebuild-test", "selector": METHOD, "device": rt.IOS_CORE_DEVICE, "appearance": "light", "errors": errors(ui_log)})

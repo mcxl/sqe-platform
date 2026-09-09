@@ -85,9 +85,10 @@ class RunnerContractTests(unittest.TestCase):
             "iPhone 16 Pro Max": "platform=iOS Simulator,id=22222222-2222-2222-2222-222222222222",
         }
 
-        def resolve(names, recorder=None):
+        def resolve(names, recorder=None, verification_seconds=None, require_ready=False):
             self.assertEqual(names, runner.IOS_RELEASE_DEVICES)
             assert recorder is not None
+            self.assertTrue(require_ready)
             recorder("selected-runtime", "com.apple.CoreSimulator.SimRuntime.iOS-26-1")
             recorder("device-types", {runner.IOS_CORE_DEVICE: "core", "iPhone 16 Pro Max": "max"})
             recorder("resolved-destinations", destinations)
@@ -266,6 +267,7 @@ class RunnerContractTests(unittest.TestCase):
             ("wrong runtime", "injected runtime detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
             ("wrong simulator type", "injected type detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
             ("duplicate UUID", "injected UUID detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
+            ("bootstatus", "private bootstatus detail", runner.SIMULATOR_RESOLUTION_FAILURE_REASON),
             ("timeout", "injected timeout detail", runner.SIMULATOR_RESOLUTION_TIMEOUT_REASON),
         )
         for name, message, expected_reason in cases:
@@ -957,6 +959,14 @@ class RunnerContractTests(unittest.TestCase):
             executed.index("-resultBundlePath"),
             executed.index("ACE_UI_TEST_APPEARANCE=light"),
         )
+        self.assertEqual(
+            executed[executed.index("-parallel-testing-enabled"):executed.index("-parallel-testing-enabled") + 2],
+            ["-parallel-testing-enabled", "NO"],
+        )
+        self.assertLess(
+            executed.index("-parallel-testing-enabled"),
+            executed.index("ACE_UI_TEST_APPEARANCE=light"),
+        )
 
     def test_live_negative_configuration_passes_controlled_build_settings(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -1302,6 +1312,44 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={core_uuid}")
         self.assertEqual(destinations["iPhone 16 Pro Max"], f"platform=iOS Simulator,id={max_uuid}")
         create.assert_not_called()
+
+    def test_simulator_readiness_boots_each_verified_uuid_with_one_deadline(self):
+        core_uuid = "11111111-1111-1111-1111-111111111111"
+        snapshot = self.simulator_snapshot([{
+            "name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True,
+            "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation",
+        }])
+        completed = [
+            subprocess.CompletedProcess([], 149, "already booted"),
+            subprocess.CompletedProcess([], 0, "ready"),
+        ]
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot) as listing, mock.patch.object(
+            runner.time, "monotonic", side_effect=[100, 101, 102, 103]
+        ), mock.patch.object(runner.subprocess, "run", side_effect=completed) as command:
+            destinations = runner.resolve_ios_destinations(
+                (runner.IOS_CORE_DEVICE,), require_ready=True
+            )
+        self.assertEqual(destinations[runner.IOS_CORE_DEVICE], f"platform=iOS Simulator,id={core_uuid}")
+        self.assertEqual(
+            [call.args[0] for call in command.call_args_list],
+            [["xcrun", "simctl", "boot", core_uuid], ["xcrun", "simctl", "bootstatus", core_uuid, "-b"]],
+        )
+        self.assertEqual(listing.call_args.kwargs["timeout"], 179)
+        self.assertEqual([call.kwargs["timeout"] for call in command.call_args_list], [178, 177])
+
+    def test_simulator_readiness_bootstatus_failure_halts_before_live_tests(self):
+        core_uuid = "11111111-1111-1111-1111-111111111111"
+        snapshot = self.simulator_snapshot([{
+            "name": runner.IOS_CORE_DEVICE, "udid": core_uuid, "isAvailable": True,
+            "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation",
+        }])
+        with mock.patch.object(runner, "_simctl_list", return_value=snapshot), mock.patch.object(
+            runner.subprocess, "run", side_effect=[
+                subprocess.CompletedProcess([], 0, ""),
+                subprocess.CompletedProcess([], 1, "private failure"),
+            ]
+        ), self.assertRaisesRegex(runner.SimulatorResolutionError, "bootstatus failed"):
+            runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,), require_ready=True)
 
     def test_simulator_resolution_rejects_existing_exact_device_with_invalid_uuid(self):
         snapshot = self.simulator_snapshot([

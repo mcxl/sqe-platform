@@ -799,6 +799,63 @@ def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) ->
     return identifier.upper()
 
 
+def _simctl_boot(identifier: str, timeout: float) -> bool:
+    """Request boot of one verified simulator without retaining command output."""
+
+    if timeout <= 0:
+        raise SimulatorResolutionError(
+            "simctl boot has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
+    try:
+        completed = subprocess.run(
+            ["xcrun", "simctl", "boot", identifier],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError(
+            "simctl boot exceeded the verification deadline",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        ) from error
+    except OSError as error:
+        raise SimulatorResolutionError("simctl boot could not start") from error
+    return completed.returncode == 0
+
+
+def _simctl_bootstatus(identifier: str, timeout: float) -> None:
+    """Require boot completion for one verified simulator without retaining output."""
+
+    if timeout <= 0:
+        raise SimulatorResolutionError(
+            "simctl bootstatus has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
+    try:
+        completed = subprocess.run(
+            ["xcrun", "simctl", "bootstatus", identifier, "-b"],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError(
+            "simctl bootstatus exceeded the verification deadline",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        ) from error
+    except OSError as error:
+        raise SimulatorResolutionError("simctl bootstatus could not start") from error
+    if completed.returncode != 0:
+        raise SimulatorResolutionError("simctl bootstatus failed")
+
+
 def _runtime_version(runtime: dict) -> tuple[int, ...] | None:
     identifier = runtime.get("identifier")
     version = runtime.get("version")
@@ -977,11 +1034,14 @@ def resolve_ios_destinations(
     names: tuple[str, ...],
     recorder: Callable[[str, object], None] | None = None,
     verification_seconds: float | None = None,
+    require_ready: bool = False,
 ) -> dict[str, str]:
     """Resolve or create exact iOS 26 simulator devices before test execution."""
 
     if len(names) != len(set(names)):
         raise SimulatorResolutionError("required simulator names must be unique")
+    if type(require_ready) is not bool:
+        raise SimulatorResolutionError("simulator readiness option is invalid")
     if (
         verification_seconds is not None
         and (
@@ -1073,8 +1133,19 @@ def resolve_ios_destinations(
                 f"created simulator did not become available: {verification_error}",
                 verification_error.reason,
             )
+    verified_identifiers = {
+        name: _verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])
+        for name in names
+    }
+    if require_ready:
+        for name in names:
+            identifier = verified_identifiers[name]
+            remaining = deadline - time.monotonic()
+            _simctl_boot(identifier, remaining)
+            remaining = deadline - time.monotonic()
+            _simctl_bootstatus(identifier, remaining)
     destinations = {
-        name: f"platform=iOS Simulator,id={_verify_simulator(snapshot, runtime, name, device_types[name], identifiers[name])}"
+        name: f"platform=iOS Simulator,id={verified_identifiers[name]}"
         for name in names
     }
     _record_simulator_event(recorder, "resolved-destinations", destinations)
@@ -1917,7 +1988,8 @@ def _run_live_ios_test(
     command_result = _run_live_command(
         name,
         _xcodebuild_options_before_build_settings(
-            command, ["-resultBundlePath", str(result_path)]
+            command,
+            ["-parallel-testing-enabled", "NO", "-resultBundlePath", str(result_path)],
         ),
         cwd,
         environment,
@@ -2565,6 +2637,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         destinations = resolve_ios_destinations(
             IOS_RELEASE_DEVICES,
             recorder=lambda name, value: events.append({"event": name, "value": value}),
+            require_ready=True,
         )
         _safe_live_path(root, "simulator-resolution.json").write_text(
             json.dumps(events, indent=2, sort_keys=True) + "\n", encoding="utf-8"

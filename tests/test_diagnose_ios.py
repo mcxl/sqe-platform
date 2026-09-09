@@ -244,6 +244,7 @@ def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, mon
             return {"processExit": 0}
         if command[:2] == ["xcodebuild", "test"]:
             assert [arg for arg in command if arg.startswith("-only-testing:")] == [f"-only-testing:{diagnostic.METHOD_PATH}"]
+            assert command[command.index("-parallel-testing-enabled") + 1] == "NO"
             assert "ACE_UI_TEST_APPEARANCE=light" in command
             assert environment["TEST_RUNNER_ACE_UI_TEST_APPEARANCE"] == "light"
             assert environment["TEST_RUNNER_ACE_UI_TEST_RETAIN_INITIAL_AUDIT_SCREENSHOT"] == "1"
@@ -444,6 +445,7 @@ def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypa
             return {"processExit": 0}
         if command[:2] == ["xcodebuild", "test"]:
             assert [arg for arg in command if arg.startswith("-only-testing:")] == ["-only-testing:ACEClientAppTests"]
+            assert command[command.index("-parallel-testing-enabled") + 1] == "NO"
             assert timeout == diagnostic.UNIT_XCODEBUILD_SECONDS
             assert diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY not in environment
             (root / "unit.xcresult").mkdir()
@@ -490,16 +492,38 @@ def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypa
     assert diagnostic.UNIT_ALLOCATED_SECONDS < 270
 
 
-def test_unit_destination_uses_bounded_core_resolver(monkeypatch):
+def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):
     calls = []
 
-    def resolve(names, recorder=None, verification_seconds=None):
-        calls.append((names, recorder, verification_seconds))
+    def resolve(names, recorder=None, verification_seconds=None, require_ready=False):
+        calls.append((names, recorder, verification_seconds, require_ready))
         return {diagnostic.rt.IOS_CORE_DEVICE: "platform=iOS Simulator,id=fixture"}
 
     monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", resolve)
     assert diagnostic._existing_core_destination() == "platform=iOS Simulator,id=fixture"
-    assert calls == [((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS)]
+    assert calls == [((diagnostic.rt.IOS_CORE_DEVICE,), None, diagnostic.UNIT_SETUP_SECONDS, True)]
+
+
+def test_unit_readiness_failure_halts_before_simulator_probes(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(
+        diagnostic.rt, "resolve_ios_destinations",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            diagnostic.rt.SimulatorResolutionError("bootstatus failed")
+        ),
+    )
+    calls = []
+    monkeypatch.setattr(diagnostic, "run", lambda *args: calls.append(args) or {"processExit": 0})
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.UNIT_SETTINGS_MODE)
+    assert diagnostic.main() == 1
+    assert calls == []
 
 
 def test_unit_publication_deadline_retains_previous_report(tmp_path, monkeypatch):
