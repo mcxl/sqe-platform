@@ -1,6 +1,7 @@
 import os
 import json
 import struct
+import tarfile
 import zlib
 from pathlib import Path
 from unittest.mock import patch
@@ -219,6 +220,15 @@ def test_exact_scope_and_retention_contract():
     }
     assert "DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420" in source
     assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
+    native = yaml.split("  ace-ios-native-cycle-manual:", 1)[1].split("  ace-ios-core:", 1)[0]
+    assert "max_build_duration: 8" in native
+    assert "instance_type: mac_mini_m4" in native
+    assert "xcode: 26.4.1" in native
+    assert "ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-native-cycle-manual" in native
+    assert "ACE_IOS_DIAGNOSTIC_MODE: native-cycle" in native
+    assert "triggering:" not in native
+    assert diagnostic.PRIVATE_ARCHIVE_NAME in native
+    assert "**" not in native
 
 
 def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, monkeypatch):
@@ -496,6 +506,258 @@ def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypa
     assert diagnostic.UNIT_ALLOCATED_SECONDS < 270
     assert diagnostic.UNIT_WORKFLOW_SECONDS == 300
     assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
+
+
+def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    safe = tmp_path / "safe"
+    private = tmp_path / "private"
+    root.mkdir()
+    safe.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "SAFE_ROOT", safe)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+    monkeypatch.setattr(diagnostic, "context", lambda workflow=diagnostic.WORKFLOW: "a" * 40)
+    monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+    monkeypatch.setattr(diagnostic, "_existing_core_destination", lambda: "platform=iOS Simulator,id=fixture")
+    monkeypatch.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
+    original = b"original-result-byte"
+    commands = []
+
+    def run(command, _environment, log, _timeout):
+        commands.append(command)
+        if command[:4] == ["xcrun", "simctl", "help", "ui"]:
+            log.write_text("appearance\ncontent_size\n", encoding="utf-8")
+            return {"processExit": 0}
+        if command[:3] == ["xcrun", "simctl", "ui"]:
+            log.write_text("medium\n", encoding="utf-8")
+            return {"processExit": 0}
+        if command[:2] == ["xcodebuild", "test"]:
+            assert [item for item in command if item.startswith("-only-testing:")] == [
+                f"-only-testing:{diagnostic.NATIVE_CYCLE_TEST_SELECTOR}"
+            ]
+            bundle = root / "unit.xcresult"
+            bundle.mkdir()
+            (bundle / "Info.plist").write_bytes(original)
+            log.write_text(
+                "error: XCTAssertEqual failed: (\"MCX19-B intentional fail\") is not equal to (\"Second\")\n",
+                encoding="utf-8",
+            )
+            return {"processExit": 65}
+        if command[:5] == ["xcrun", "xcresulttool", "get", "test-results", "summary"]:
+            log.write_text(json.dumps({
+                "passedTests": 0, "failedTests": 1, "skippedTests": 0,
+                "testFailures": [{
+                    "testCaseName": "ACEClientAppTests.testActionOrderAndUnknownFieldsRemainSafe",
+                    "expected": "Second", "actual": "MCX19-B intentional fail",
+                }],
+            }), encoding="utf-8")
+            return {"processExit": 0}
+        assert command[:4] == ["xcrun", "xcresulttool", "export", "attachments"]
+        Path(command[-1]).mkdir()
+        log.write_text("no attachments\n", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    assert diagnostic.main() == 1
+    report = json.loads((safe / "diagnostic.json").read_text(encoding="utf-8"))
+    unit = report["results"]["unit"]
+    assert unit["status"] == "failed"
+    assert unit["actualCounts"] == {"passed": 0, "failed": 1, "skipped": 0}
+    assert unit["resolvedDestination"] == "platform=iOS Simulator,id=fixture"
+    assert unit["executedCommand"][-3:] == [
+        f"-only-testing:{diagnostic.NATIVE_CYCLE_TEST_SELECTOR}",
+        "-resultBundlePath", str(root / "unit.xcresult"),
+    ]
+    assert unit["summaryCommand"]["executedCommand"][:5] == [
+        "xcrun", "xcresulttool", "get", "test-results", "summary",
+    ]
+    assert unit["attachmentExportCommand"]["executedCommand"][:4] == [
+        "xcrun", "xcresulttool", "export", "attachments",
+    ]
+    assert unit["privateRecordCollection"] == "complete"
+    archive = private / diagnostic.PRIVATE_ARCHIVE_NAME
+    with tarfile.open(archive, "r:gz") as records:
+        names = records.getnames()
+        assert "records/unit.xcresult/Info.plist" in names
+        assert records.extractfile("records/unit.xcresult/Info.plist").read() == original
+        inventory = json.load(records.extractfile("records/collection-inventory.json"))
+    assert inventory["candidateCommit"] == "a" * 40
+    assert inventory["collectionState"] == "complete"
+    assert inventory["testSelector"] == diagnostic.NATIVE_CYCLE_TEST_SELECTOR
+    assert inventory["processExit"] == 65
+    assert inventory["actualCounts"] == {"passed": 0, "failed": 1, "skipped": 0}
+    assert inventory["failureStatus"] == "available"
+    assert inventory["commands"]["xcodebuild-test"] == unit["executedCommand"]
+    assert inventory["commands"]["xcresult-summary"] == unit["summaryCommand"]
+    assert inventory["commands"]["xcresult-attachment-export"] == unit["attachmentExportCommand"]
+    assert any(entry["relativePath"] == "records/unit.log" for entry in inventory["records"])
+    assert len([item for item in commands if item[:2] == ["xcodebuild", "test"]]) == 1
+
+
+def test_native_cycle_context_requires_its_workflow_and_api_trigger(tmp_path, monkeypatch):
+    monkeypatch.setattr(diagnostic.sys, "platform", "darwin")
+    monkeypatch.setattr(diagnostic.rt, "ROOT", tmp_path)
+    monkeypatch.setattr(diagnostic.rt, "_live_repository_metadata", lambda commit: {"commit": commit})
+    environment = {
+        "ACE_LIVE_EVIDENCE_APPROVED_COMMIT": "a" * 40,
+        diagnostic.rt.LIVE_WORKFLOW_ENVIRONMENT_KEY: diagnostic.NATIVE_CYCLE_WORKFLOW,
+        "CM_COMMIT": "a" * 40,
+        "CM_BRANCH": diagnostic.rt.LIVE_BRANCH,
+        "CM_TRIGGER_SOURCE": "api",
+        "CM_BUILD_ID": "build-1",
+        "CM_BUILD_STARTED_BY": "operator",
+        "CM_BUILD_DIR": str(tmp_path),
+    }
+    with patch.dict(os.environ, environment, clear=True):
+        assert diagnostic.context(diagnostic.NATIVE_CYCLE_WORKFLOW) == "a" * 40
+    environment["CM_TRIGGER_SOURCE"] = "webhook"
+    with patch.dict(os.environ, environment, clear=True), pytest.raises(ValueError):
+        diagnostic.context(diagnostic.NATIVE_CYCLE_WORKFLOW)
+
+
+def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publication(tmp_path, monkeypatch):
+    def run_case(name, collection, final_publication, expected_exit):
+        root = tmp_path / name / "raw"
+        safe = tmp_path / name / "safe"
+        root.mkdir(parents=True)
+        safe.mkdir()
+        with monkeypatch.context() as local:
+            local.setattr(diagnostic, "ROOT", root)
+            local.setattr(diagnostic, "SAFE_ROOT", safe)
+            local.setattr(diagnostic, "PRIVATE_ROOT", tmp_path / name / "private")
+            local.setattr(diagnostic, "context", lambda workflow=diagnostic.WORKFLOW: "a" * 40)
+            local.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
+            local.setattr(diagnostic, "_existing_core_destination", lambda: "platform=iOS Simulator,id=fixture")
+            local.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
+            local.setattr(diagnostic, "_collect_native_cycle_records", lambda *_args: collection)
+            publication_calls = []
+            publication_reports = []
+
+            def publish_unit(report, _deadline):
+                publication_calls.append(True)
+                publication_reports.append(report)
+                return final_publication or len(publication_calls) < 3
+
+            def run(command, _environment, log, _timeout):
+                if command[:4] == ["xcrun", "simctl", "help", "ui"]:
+                    log.write_text("appearance\ncontent_size\n", encoding="utf-8")
+                    return {"processExit": 0}
+                if command[:3] == ["xcrun", "simctl", "ui"]:
+                    log.write_text("medium\n", encoding="utf-8")
+                    return {"processExit": 0}
+                if command[:2] == ["xcodebuild", "test"]:
+                    bundle = root / "unit.xcresult"
+                    bundle.mkdir()
+                    (bundle / "Info.plist").write_bytes(b"original-pass-result")
+                    log.write_text("Test Suite passed\n", encoding="utf-8")
+                    return {"processExit": 0}
+                assert command[:5] == ["xcrun", "xcresulttool", "get", "test-results", "summary"]
+                log.write_text(json.dumps({
+                    "passedTests": 1, "failedTests": 0, "skippedTests": 0,
+                    "testFailures": [],
+                }), encoding="utf-8")
+                return {"processExit": 0}
+
+            local.setattr(diagnostic, "run", run)
+            local.setattr(diagnostic, "_publish_unit_report", publish_unit)
+            assert diagnostic.main() == expected_exit
+            report = publication_reports[-1]
+            assert report["results"]["unit"]["status"] == "passed"
+            assert report["results"]["unit"]["privateRecordCollection"] == collection
+            assert "intentionalNonZeroExit" not in report
+
+    run_case("pass", "complete", True, 0)
+    run_case("collection-failure", "sensitive-record", True, 1)
+    run_case("publication-failure", "complete", False, 1)
+
+
+def test_native_collection_stops_for_missing_bundle_or_sensitive_record(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    private = tmp_path / "private"
+    root.mkdir()
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+    unit = {"summaryStatus": "available", "processExit": 65}
+    assert diagnostic._collect_native_cycle_records("a" * 40, unit, root / "missing.xcresult") == "result-bundle-unavailable"
+    assert not private.exists()
+
+    bundle = root / "unit.xcresult"
+    bundle.mkdir()
+    (bundle / "Info.plist").write_text('{"token":"blocked"}', encoding="utf-8")
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+    ):
+        (root / name).write_text("controlled", encoding="utf-8")
+    (root / "unit-summary.json").write_text("{}", encoding="utf-8")
+
+    def run(command, _environment, log, _timeout):
+        assert command[:4] == ["xcrun", "xcresulttool", "export", "attachments"]
+        Path(command[-1]).mkdir()
+        log.write_text("controlled", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    assert diagnostic._collect_native_cycle_records("a" * 40, unit, bundle) == "sensitive-record"
+    assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
+
+
+def test_native_collection_rejects_an_empty_result_bundle(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    private = tmp_path / "private"
+    root.mkdir()
+    (root / "unit.xcresult").mkdir()
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+    ):
+        (root / name).write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", private)
+
+    def run(command, _environment, log, _timeout):
+        assert command[:4] == ["xcrun", "xcresulttool", "export", "attachments"]
+        Path(command[-1]).mkdir()
+        log.write_text("controlled", encoding="utf-8")
+        return {"processExit": 0}
+
+    monkeypatch.setattr(diagnostic, "run", run)
+    unit = {"summaryStatus": "available", "processExit": 65}
+    assert diagnostic._collect_native_cycle_records(
+        "a" * 40, unit, root / "unit.xcresult"
+    ) == "result-bundle-empty"
+    assert not (private / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
+
+
+def test_private_collection_rejects_symlink_and_invalid_archive_path(tmp_path, monkeypatch):
+    root = tmp_path / "records"
+    root.mkdir()
+    target = root / "file"
+    target.write_text("controlled", encoding="utf-8")
+    safe = root / "safe"
+    safe.write_text("controlled", encoding="utf-8")
+    original_is_symlink = Path.is_symlink
+    monkeypatch.setattr(
+        Path, "is_symlink", lambda path: path == target or original_is_symlink(path)
+    )
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="symlink-record"):
+        diagnostic._private_regular_files(root)
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid"):
+        diagnostic._private_record_entries([(safe, "unexpected/file", "test")], "complete")
+    for unsafe_path in ("records/../outside", "records/./same", "records//same"):
+        with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-invalid"):
+            diagnostic._private_record_entries([(safe, unsafe_path, "test")], "complete")
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="archive-path-duplicate"):
+        diagnostic._private_record_entries([
+            (safe, "records/duplicate", "test"),
+            (safe, "records/duplicate", "test"),
+        ], "complete")
+    with pytest.raises(diagnostic.PrivateRecordCollectionError, match="record-count-exceeded"):
+        diagnostic._private_record_entries([
+            (safe, f"records/{number}", "test")
+            for number in range(diagnostic.PRIVATE_RECORD_MAX_FILES + 1)
+        ], "complete")
 
 
 def test_unit_destination_uses_bounded_ready_core_resolver(monkeypatch):

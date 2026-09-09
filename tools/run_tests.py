@@ -105,6 +105,7 @@ IOS_RUNTIME_MAJOR = 26
 SIMULATOR_VERIFICATION_SECONDS = 180
 SIMULATOR_POLL_INTERVAL_SECONDS = 1
 LIVE_COMMAND_TIMEOUT_SECONDS = 600
+LIVE_DIAGNOSTIC_COLLECTION_TIMEOUT_SECONDS = 30
 LIVE_ARTIFACT_MAX_BYTES = 64 * 1024 * 1024
 LIVE_BASELINE_COMMIT = "7da6228dc87ad970aa8d44365fbc3823c58020da"
 LIVE_REPOSITORY = "mcxl/sqe-platform"
@@ -113,6 +114,7 @@ LIVE_REVIEW_MANIFEST = "live-evidence-review-manifest.json"
 LIVE_REVIEW_STAGE = ".review-artifact-stage"
 LIVE_REVIEW_ARTIFACTS = "review-artifacts"
 LIVE_SCREENSHOT_DIRECTORY = "screenshots"
+LIVE_DIAGNOSTIC_IMAGE_DIRECTORY = "diagnostic-images"
 LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
 LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
 LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
@@ -189,6 +191,7 @@ LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
         "attachment-export-failed",
         "attachment-missing",
         "attachment-invalid",
+        "safe-image-retention-failed",
         "simulator-setting-query-failed",
         "simulator-setting-set-failed",
         "simulator-setting-restore-failed",
@@ -213,6 +216,19 @@ LIVE_PUBLISHED_DIAGNOSTICS = frozenset(
         "result-summary-over-complex",
         "diagnostic-gap",
     }
+)
+LIVE_DIAGNOSTIC_IMAGE_STATUSES = frozenset(
+    {
+        "available",
+        "partial",
+        "attachment-export-failed",
+        "attachment-invalid",
+        "attachment-missing",
+        "result-bundle-unavailable",
+    }
+)
+LIVE_DIAGNOSTIC_ATTACHMENT_PROBLEMS = frozenset(
+    {"attachment-ambiguous", "attachment-invalid"}
 )
 NEGATIVE_CONFIGURATION_REASONS = frozenset(
     {
@@ -241,6 +257,10 @@ class SimulatorResolutionError(ValueError):
     ) -> None:
         super().__init__(message)
         self.reason = reason
+
+
+class SafeImageRetentionError(ValueError):
+    """Stop the run after a checked safe-image collection failure."""
 
 
 class LiveCommandResult(tuple):
@@ -1556,6 +1576,205 @@ def _retain_live_screenshots(
     return retained, None
 
 
+def _retain_live_diagnostic_images(
+    name: str,
+    cwd: Path,
+    root: Path,
+    result_path: Path,
+    collection_exits: dict[str, int | None] | None = None,
+) -> tuple[str, list[dict[str, str]], list[str], str | None, bool]:
+    """Retain available valid fictional attachments for a failed XCTest command.
+
+    These images are diagnostic records only.  They never enter the accepted review
+    stage, and a partial set never changes the failed command outcome.
+    """
+
+    expected = _expected_logical_screenshot_names(name)
+    if not expected:
+        return "available", [], [], None, False
+    try:
+        if (
+            not result_path.is_dir()
+            or result_path.is_symlink()
+            or not result_path.resolve().is_relative_to(root.resolve())
+        ):
+            return "result-bundle-unavailable", [], list(expected), None, False
+    except OSError:
+        return "result-bundle-unavailable", [], list(expected), None, False
+    export_directory = _safe_live_path(root, f"{name}-diagnostic-attachment-export")
+    export_log = _safe_live_path(root, f"{name}-diagnostic-attachment-export.log")
+    if export_directory.exists() or export_directory.is_symlink():
+        return "attachment-invalid", [], list(expected), "attachment-invalid", False
+    export_result = _run_live_command(
+        f"{name}-diagnostic-attachments",
+        [
+            "xcrun", "xcresulttool", "export", "attachments", "--path",
+            str(result_path), "--output-path", str(export_directory),
+        ],
+        cwd,
+        {},
+        export_log,
+    )
+    if collection_exits is not None:
+        collection_exits["attachmentExport"] = _published_process_exit(
+            getattr(export_result, "process_exit", None)
+        )
+    if export_result[0] != 0:
+        return "attachment-export-failed", [], list(expected), None, False
+    entries = _attachment_export_entries(root, export_directory)
+    if entries is None:
+        return "attachment-invalid", [], list(expected), "attachment-invalid", False
+    grouped: dict[str, list[Path]] = {}
+    for logical, source in entries:
+        matched = next((candidate for candidate in expected if logical == candidate or re.fullmatch(
+            rf"{re.escape(candidate)}_[0-9]+_[0-9A-Fa-f-]+(?:\.png)?", logical
+        )), None)
+        if matched is not None:
+            grouped.setdefault(matched, []).append(source)
+    sources: dict[str, Path] = {}
+    ambiguous = {logical for logical, sources_for_logical in grouped.items() if len(sources_for_logical) != 1}
+    invalid = False
+    for matched, sources_for_logical in grouped.items():
+        if matched in ambiguous:
+            continue
+        source = sources_for_logical[0]
+        try:
+            valid = (
+                not source.is_symlink()
+                and source.is_file()
+                and source.resolve().is_relative_to(export_directory.resolve())
+                and source.stat().st_size <= LIVE_ARTIFACT_MAX_BYTES
+                and _valid_png(source)
+            )
+        except OSError:
+            valid = False
+        if valid:
+            sources[matched] = source
+        else:
+            invalid = True
+    missing = [logical for logical in expected if logical not in sources]
+    if not sources:
+        problem = "attachment-ambiguous" if ambiguous else "attachment-invalid" if invalid else None
+        return "attachment-missing", [], missing, problem, False
+    target = _safe_live_path(root, f"{LIVE_DIAGNOSTIC_IMAGE_DIRECTORY}/{name}")
+    stage = _safe_live_path(root, f".diagnostic-image-stage-{name}")
+    if target.exists() or target.is_symlink() or stage.exists() or stage.is_symlink():
+        return "attachment-invalid", [], list(expected), "attachment-invalid", False
+    try:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        stage.mkdir(parents=True, exist_ok=False)
+        records: list[dict[str, str]] = []
+        for number, logical in enumerate(expected, 1):
+            source = sources.get(logical)
+            if source is None:
+                continue
+            filename = f"{number:02d}.png"
+            staged = stage / filename
+            shutil.copyfile(source, staged)
+            if not _valid_png(staged):
+                raise OSError("diagnostic image validation failed")
+            records.append({
+                "logicalName": logical,
+                "path": f"{LIVE_DIAGNOSTIC_IMAGE_DIRECTORY}/{name}/{filename}",
+                "sha256": hashlib.sha256(staged.read_bytes()).hexdigest(),
+            })
+        _scan_live_artifacts(stage)
+        os.replace(stage, target)
+    except (OSError, ValueError):
+        if stage.exists() and stage.is_dir() and not stage.is_symlink():
+            try:
+                for path in stage.iterdir():
+                    path.unlink(missing_ok=True)
+                stage.rmdir()
+            except OSError:
+                pass
+        return "attachment-invalid", [], list(expected), "attachment-invalid", True
+    problem = "attachment-ambiguous" if ambiguous else "attachment-invalid" if invalid else None
+    return ("available" if not missing else "partial"), records, missing, problem, False
+
+
+def _diagnostic_retention_fields(
+    name: str,
+    cwd: Path,
+    root: Path,
+    result_path: Path,
+    collection_exits: dict[str, int | None] | None = None,
+) -> dict[str, object]:
+    """Keep diagnostic retention failures separate from native command failures."""
+
+    status, images, missing, problem, retention_failed = _retain_live_diagnostic_images(
+        name, cwd, root, result_path, collection_exits
+    )
+    fields: dict[str, object] = {
+        "diagnostic_image_status": status,
+        "diagnostic_images": images,
+        "missing_diagnostic_image_names": missing,
+        "diagnostic_attachment_problem": problem,
+    }
+    if retention_failed:
+        fields["safe_image_retention_failure"] = True
+    return fields
+
+
+def _retain_completed_review_images(root: Path, checks: list[dict]) -> str | None:
+    """Copy each completed success image to the safe diagnostic path atomically."""
+
+    stage_root = _safe_live_path(root, LIVE_REVIEW_STAGE)
+    for check in checks:
+        if check.get("safe_images"):
+            continue
+        name = check.get("name")
+        screenshots = check.get("screenshots")
+        expected = _expected_logical_screenshot_names(name) if isinstance(name, str) else ()
+        if not expected:
+            continue
+        if screenshots is None:
+            if check.get("exit") != 0:
+                continue
+            return "safe-image-retention-failed"
+        if not isinstance(screenshots, list) or len(screenshots) != len(expected):
+            return "safe-image-retention-failed"
+        target = _safe_live_path(root, f"{LIVE_DIAGNOSTIC_IMAGE_DIRECTORY}/{name}")
+        stage = _safe_live_path(root, f".safe-image-stage-{name}")
+        if target.exists() or target.is_symlink() or stage.exists() or stage.is_symlink():
+            return "safe-image-retention-failed"
+        records: list[dict[str, str]] = []
+        try:
+            stage.mkdir(parents=True, exist_ok=False)
+            for number, (logical, relative) in enumerate(zip(expected, screenshots), 1):
+                if not isinstance(relative, str):
+                    raise ValueError("review screenshot path is invalid")
+                source = _safe_live_path(stage_root, relative)
+                if (
+                    source.is_symlink()
+                    or not source.is_file()
+                    or source.stat().st_size > LIVE_ARTIFACT_MAX_BYTES
+                    or not _valid_png(source)
+                ):
+                    raise ValueError("review screenshot is invalid")
+                filename = f"{number:02d}.png"
+                copied = stage / filename
+                shutil.copyfile(source, copied)
+                if not _valid_png(copied):
+                    raise ValueError("review screenshot copy is invalid")
+                records.append({
+                    "logicalName": logical,
+                    "path": f"{LIVE_DIAGNOSTIC_IMAGE_DIRECTORY}/{name}/{filename}",
+                    "sha256": hashlib.sha256(copied.read_bytes()).hexdigest(),
+                })
+            _scan_live_artifacts(stage)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(stage, target)
+        except (OSError, ValueError):
+            if stage.exists() and stage.is_dir() and not stage.is_symlink():
+                for path in stage.iterdir():
+                    path.unlink(missing_ok=True)
+                stage.rmdir()
+            return "safe-image-retention-failed"
+        check["safe_images"] = records
+    return None
+
+
 def _simctl_ui_value(
     root: Path,
     identifier: str,
@@ -1709,6 +1928,11 @@ def _run_live_command(
     """Run one approved command and retain output only outside the repository."""
 
     command_environment = _live_command_environment(environment)
+    timeout = (
+        LIVE_DIAGNOSTIC_COLLECTION_TIMEOUT_SECONDS
+        if name.endswith("-diagnostic-attachments")
+        else LIVE_COMMAND_TIMEOUT_SECONDS
+    )
     try:
         with log_path.open("w", encoding="utf-8", errors="replace") as log:
             completed = subprocess.run(
@@ -1719,7 +1943,7 @@ def _run_live_command(
                 stdout=log,
                 stderr=subprocess.STDOUT,
                 check=False,
-                timeout=LIVE_COMMAND_TIMEOUT_SECONDS,
+                timeout=timeout,
             )
     except subprocess.TimeoutExpired:
         return LiveCommandResult(
@@ -1921,7 +2145,11 @@ def _xcresult_failure_details(payload: object) -> tuple[list[dict[str, object]],
 
 
 def _live_ios_failure_evidence(
-    name: str, cwd: Path, root: Path, result_path: Path
+    name: str,
+    cwd: Path,
+    root: Path,
+    result_path: Path,
+    collection_exits: dict[str, int | None] | None = None,
 ) -> tuple[str, list[dict[str, object]], str]:
     """Read bounded XCTest failures while keeping raw XCResult data private."""
 
@@ -1943,6 +2171,10 @@ def _live_ios_failure_evidence(
         {},
         summary_path,
     )
+    if collection_exits is not None:
+        collection_exits["summary"] = _published_process_exit(
+            getattr(summary_result, "process_exit", None)
+        )
     if summary_result[0] != 0:
         return "result-summary-command-failed", [], "unavailable"
     state, content = _bounded_live_file_text(root, summary_path)
@@ -1973,6 +2205,30 @@ def _live_ios_failure_diagnostic(
     return _live_ios_failure_evidence(name, cwd, root, result_path)[0]
 
 
+def _live_test_counts(root: Path, name: str) -> dict[str, object]:
+    """Return only validated XCTest counts, or an explicit unknown state."""
+
+    state, content = _bounded_live_file_text(
+        root, _safe_live_path(root, f"{name}-summary.json")
+    )
+    if state != "available" or content is None:
+        return {"status": "unknown"}
+    try:
+        payload = json.loads(content)
+    except (TypeError, ValueError, RecursionError):
+        return {"status": "unknown"}
+    counts, over_complex = _bounded_xcresult_counts(payload)
+    if counts is None or over_complex:
+        return {"status": "unknown"}
+    passed, failed, skipped = counts
+    return {
+        "status": "available",
+        "passed": passed,
+        "failed": failed,
+        "skipped": skipped,
+    }
+
+
 def _run_live_ios_test(
     name: str,
     command: list[str],
@@ -1997,11 +2253,13 @@ def _run_live_ios_test(
     )
     exit_code, detail = command_result
     if exit_code:
+        collection_exits: dict[str, int | None] = {}
         diagnostic, failures, failure_status = _live_ios_failure_evidence(
-            name, cwd, root, result_path
+            name, cwd, root, result_path, collection_exits
         ) if getattr(command_result, "reason", None) == "command-nonzero" else (
             "diagnostic-gap", [], "unavailable"
         )
+        retention = _diagnostic_retention_fields(name, cwd, root, result_path, collection_exits)
         return {
             "name": name,
             "status": "failed",
@@ -2013,6 +2271,9 @@ def _run_live_ios_test(
             "diagnostic": diagnostic,
             "test_failures": failures,
             "test_failure_status": failure_status,
+            "test_counts": _live_test_counts(root, name),
+            **retention,
+            "collection_process_exits": collection_exits,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     if not result_path.is_dir() or result_path.is_symlink():
@@ -2037,6 +2298,12 @@ def _run_live_ios_test(
     )
     summary_exit, summary_detail = summary_result
     if summary_exit:
+        collection_exits = {
+            "summary": _published_process_exit(
+                getattr(summary_result, "process_exit", None)
+            )
+        }
+        retention = _diagnostic_retention_fields(name, cwd, root, result_path, collection_exits)
         return {
             "name": name,
             "status": "failed",
@@ -2046,7 +2313,10 @@ def _run_live_ios_test(
                 getattr(summary_result, "reason", None)
             ),
             "diagnostic": "result-summary-command-failed",
-            "process_exit": getattr(summary_result, "process_exit", None),
+            "test_counts": {"status": "unknown"},
+            "collection_process_exits": collection_exits,
+            **retention,
+            "process_exit": getattr(command_result, "process_exit", None),
         }
     summary_state, summary_content = _bounded_live_file_text(root, summary_path)
     try:
@@ -2059,6 +2329,8 @@ def _run_live_ios_test(
         counts, over_complex = _bounded_xcresult_counts(payload)
         malformed = False
     if counts is None:
+        collection_exits: dict[str, int | None] = {"summary": 0}
+        retention = _diagnostic_retention_fields(name, cwd, root, result_path, collection_exits)
         return {
             "name": name,
             "status": "failed",
@@ -2072,11 +2344,16 @@ def _run_live_ios_test(
                 if summary_state != "available"
                 else "result-summary-malformed" if malformed else "diagnostic-gap"
             ),
+            "test_counts": {"status": "unknown"},
+            "collection_process_exits": collection_exits,
+            **retention,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     passed, failed, skipped = counts
     if passed != expected_tests or failed != 0 or skipped != 0:
         failures, failure_status = _xcresult_failure_details(payload)
+        collection_exits: dict[str, int | None] = {}
+        retention = _diagnostic_retention_fields(name, cwd, root, result_path, collection_exits)
         return {
             "name": name,
             "status": "failed",
@@ -2085,18 +2362,33 @@ def _run_live_ios_test(
             "reason": "result-count-mismatch",
             "test_failures": failures,
             "test_failure_status": failure_status,
+            "test_counts": {
+                "status": "available",
+                "passed": passed,
+                "failed": failed,
+                "skipped": skipped,
+            },
+            **retention,
+            "collection_process_exits": collection_exits,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     screenshots, screenshot_failure = _retain_live_screenshots(
         name, cwd, root, result_path
     )
     if screenshot_failure is not None:
+        collection_exits: dict[str, int | None] = {"summary": 0}
+        retention = _diagnostic_retention_fields(name, cwd, root, result_path, collection_exits)
         return {
             "name": name,
             "status": "failed",
             "exit": 1,
             "detail": f"{name} required screenshot artifact is unavailable",
             "reason": screenshot_failure,
+            "test_counts": {
+                "status": "available", "passed": passed, "failed": failed, "skipped": skipped,
+            },
+            "collection_process_exits": collection_exits,
+            **retention,
             "process_exit": getattr(command_result, "process_exit", None),
         }
     return {
@@ -2160,9 +2452,11 @@ def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[s
     """Require the exact manual Codemagic workflow and checked-out build context."""
 
     build_directory = os.environ.get("CM_BUILD_DIR")
+    build_id = os.environ.get("CM_BUILD_ID")
     if (
         artifact_root != LIVE_ARTIFACT_ROOT
-        or not _is_non_empty_string(os.environ.get("CM_BUILD_ID"))
+        or not _is_non_empty_string(build_id)
+        or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", build_id or "") is None
         or not _is_non_empty_string(build_directory)
         or Path(build_directory).resolve() != ROOT.resolve()
         or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != LIVE_WORKFLOW
@@ -2172,14 +2466,42 @@ def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[s
         or not _is_non_empty_string(os.environ.get("CM_BUILD_STARTED_BY"))
     ):
         raise ValueError("verified Codemagic live workflow context is invalid")
-    return {"workflow": LIVE_WORKFLOW}
+    return {"workflow": LIVE_WORKFLOW, "branch": LIVE_BRANCH, "buildId": build_id}
 
 
 def _write_live_manifest(root: Path, manifest: dict) -> None:
     """Write controlled review metadata without command output or environment values."""
 
-    path = _safe_live_path(root, "live-evidence-manifest.json")
-    path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    _write_live_json_atomically(root, "live-evidence-manifest.json", manifest)
+
+
+def _write_live_json_atomically(root: Path, relative: str, value: object) -> None:
+    """Replace one controlled JSON record after the complete file reaches storage."""
+
+    path = _safe_live_path(root, relative)
+    if path.is_symlink():
+        raise ValueError("live JSON publication path is a symlink")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=root, delete=False
+        ) as handle:
+            temporary = Path(handle.name)
+            json.dump(value, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        for attempt in range(3):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError as error:
+                if getattr(error, "winerror", None) not in (5, 32) or attempt == 2:
+                    raise
+                time.sleep(0.1)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def _write_live_review_manifest(
@@ -2244,41 +2566,130 @@ def _write_live_review_manifest(
 
 
 def _write_live_progress(root: Path, checks: list[dict], active: str | None) -> None:
-    """Retain atomic, allowlisted progress; never publish raw command output."""
+    """Retain an atomic, checked, allowlisted snapshot after each command."""
+
+    _write_live_snapshot(root, checks, active)
+
+
+def _write_live_snapshot(
+    root: Path,
+    checks: list[dict],
+    active: str | None,
+    *,
+    planned: list[dict[str, object]] | None = None,
+    expected_identity: dict[str, str] | None = None,
+    verified_identity: dict[str, str] | None = None,
+    interrupted: bool = False,
+    fault: str | None = None,
+) -> None:
+    """Persist one safe live-run state without inferring unavailable results."""
 
     names = _live_command_names()
     if active not in names | {None, "setup", "artifact-validation"} or len(checks) > len(names):
         raise ValueError("invalid live progress scope")
     completed = [_published_live_result(check) for check in checks]
+    completed_names = [item["name"] for item in completed]
+    if len(set(completed_names)) != len(completed_names):
+        raise ValueError("duplicate completed live command")
+    planned_records: list[dict[str, object]] = []
+    for item in planned or []:
+        if (
+            not isinstance(item, dict)
+            or item.get("name") not in names
+            or (
+                item.get("expectedTests") is not None
+                and (
+                    type(item.get("expectedTests")) is not int
+                    or not 0 < item["expectedTests"] <= LIVE_RESULT_SUMMARY_MAX_NODES
+                )
+            )
+        ):
+            raise ValueError("invalid live command inventory")
+        planned_records.append({"name": item["name"], "expectedTests": item["expectedTests"]})
+    planned_names = [item["name"] for item in planned_records]
+    if len(set(planned_names)) != len(planned_names):
+        raise ValueError("duplicate planned live command")
+    if planned_names and not set(completed_names).issubset(planned_names):
+        raise ValueError("completed command is outside the planned inventory")
+    for check in completed:
+        for field in ("diagnosticImages", "safeImages"):
+            for image in check.get(field, []):
+                path = _safe_live_path(root, image["path"])
+                if (
+                    path.is_symlink()
+                    or not path.is_file()
+                    or not _valid_png(path)
+                    or hashlib.sha256(path.read_bytes()).hexdigest() != image["sha256"]
+                ):
+                    raise ValueError("retained image snapshot validation failed")
+    failed = [item for item in completed if item["exit"] != 0]
+    not_run = [
+        name for name in planned_names
+        if name not in completed_names and name != active
+    ]
     progress = {
         "releaseEvidence": False,
         "status": "incomplete",
+        "runState": (
+            "interrupted" if interrupted else "failed" if failed or fault else "complete"
+            if planned_names and not not_run and active is None else "incomplete"
+        ),
         "activeCommand": active,
+        "active": active if active in names else None,
+        "planned": planned_records,
         "completed": completed,
+        "failed": failed,
+        "interrupted": interrupted,
+        "notRun": not_run,
     }
-    path = _safe_live_path(root, "live-evidence-progress.json")
-    if path.is_symlink():
-        raise ValueError("live progress path is a symlink")
-    temporary = None
-    try:
-        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=root, delete=False) as handle:
-            temporary = Path(handle.name)
-            json.dump(progress, handle, sort_keys=True)
-            handle.write("\n")
-            handle.flush()
-            os.fsync(handle.fileno())
-        for attempt in range(3):
-            try:
-                os.replace(temporary, path)
-                break
-            except PermissionError as error:
-                # Windows file scanners can briefly hold the previous summary open.
-                if getattr(error, "winerror", None) not in (5, 32) or attempt == 2:
-                    raise
-                time.sleep(0.1)
-    finally:
-        if temporary is not None:
-            temporary.unlink(missing_ok=True)
+    for field, identity in (
+        ("expectedIdentity", expected_identity),
+        ("verifiedIdentity", verified_identity),
+    ):
+        if identity is None:
+            continue
+        expected_fields = (
+            {
+                "scope": "MCX-19-manual-live-evidence",
+                "workflow": LIVE_WORKFLOW,
+                "repository": LIVE_REPOSITORY,
+                "expectedCommit": None,
+                "expectedBranch": LIVE_BRANCH,
+                "baseline": LIVE_BASELINE_COMMIT,
+            }
+            if field == "expectedIdentity"
+            else {
+                "scope": "MCX-19-manual-live-evidence",
+                "workflow": LIVE_WORKFLOW,
+                "repository": LIVE_REPOSITORY,
+                "commit": None,
+                "branch": LIVE_BRANCH,
+                "baseline": LIVE_BASELINE_COMMIT,
+                "buildId": None,
+            }
+        )
+        commit_field = "expectedCommit" if field == "expectedIdentity" else "commit"
+        if (
+            not isinstance(identity, dict)
+            or set(identity) != set(expected_fields)
+            or any(identity[key] != value for key, value in expected_fields.items() if value is not None)
+            or not isinstance(identity.get(commit_field), str)
+            or re.fullmatch(r"[0-9a-f]{40}", identity[commit_field]) is None
+            or (
+                field == "verifiedIdentity"
+                and (
+                    not isinstance(identity.get("buildId"), str)
+                    or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", identity["buildId"]) is None
+                )
+            )
+        ):
+            raise ValueError("invalid live run identity")
+        progress[field] = dict(sorted(identity.items()))
+    if fault is not None:
+        if fault not in LIVE_PUBLISHED_FAILURE_REASONS:
+            raise ValueError("invalid live snapshot fault")
+        progress["fault"] = fault
+    _write_live_json_atomically(root, "live-evidence-progress.json", progress)
     # The console record survives even if the provider cannot collect artifacts on cancellation.
     print("live-progress=" + json.dumps({
         "activeCommand": active,
@@ -2302,6 +2713,8 @@ def _live_failure_detail(error: Exception) -> str:
 def _live_failure_reason(error: Exception) -> str:
     """Return one fixed reason code without reading exception text."""
 
+    if isinstance(error, SafeImageRetentionError):
+        return "safe-image-retention-failed"
     if isinstance(error, SimulatorResolutionError):
         reason = getattr(error, "reason", SIMULATOR_RESOLUTION_FAILURE_REASON)
         if reason == SIMULATOR_RESOLUTION_TIMEOUT_REASON:
@@ -2417,6 +2830,76 @@ def _published_simulator_query_evidence(value: object) -> list[dict[str, object]
     return records
 
 
+def _published_test_counts(value: object) -> dict[str, object]:
+    """Publish exact bounded count values only when the summary validated them."""
+
+    if not isinstance(value, dict) or value.get("status") != "available":
+        return {"status": "unknown"}
+    counts = {field: value.get(field) for field in ("passed", "failed", "skipped")}
+    if not all(type(count) is int and 0 <= count <= LIVE_RESULT_SUMMARY_MAX_NODES for count in counts.values()):
+        return {"status": "unknown"}
+    return {"status": "available", **counts}
+
+
+def _published_collection_process_exits(value: object) -> tuple[dict[str, int], dict[str, str]]:
+    """Keep collection exits separate from the XCTest process exit."""
+
+    if not isinstance(value, dict):
+        return {}, {}
+    exits: dict[str, int] = {}
+    status: dict[str, str] = {}
+    prior_status = value.get("status") if isinstance(value.get("status"), dict) else {}
+    for name in ("summary", "attachmentExport"):
+        if name not in value:
+            if prior_status.get(name) == "unknown":
+                status[name] = "unknown"
+            continue
+        process_exit = _published_process_exit(value[name])
+        if process_exit is None:
+            status[name] = "unknown"
+        else:
+            exits[name] = process_exit
+            status[name] = "available"
+    return exits, status
+
+
+def _published_retained_images(
+    name: str, value: object, directory: str
+) -> list[dict[str, str]]:
+    """Allow only fixed retained-image paths and their SHA-256 values."""
+
+    expected = _expected_logical_screenshot_names(name)
+    if not isinstance(value, list) or len(value) > len(expected):
+        return []
+    records: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in value:
+        if not isinstance(item, dict):
+            return []
+        logical = item.get("logicalName")
+        path = item.get("path")
+        digest = item.get("sha256")
+        if (
+            not isinstance(logical, str)
+            or logical not in expected
+            or logical in seen
+            or not isinstance(path, str)
+            or not isinstance(digest, str)
+            or re.fullmatch(r"[0-9a-f]{64}", digest) is None
+        ):
+            return []
+        number = expected.index(logical) + 1
+        if path != f"{directory}/{name}/{number:02d}.png":
+            return []
+        seen.add(logical)
+        records.append({"logicalName": logical, "path": path, "sha256": digest})
+    return records
+
+
+def _published_diagnostic_images(name: str, value: object) -> list[dict[str, str]]:
+    return _published_retained_images(name, value, LIVE_DIAGNOSTIC_IMAGE_DIRECTORY)
+
+
 def _published_live_result(check: dict) -> dict:
     """Publish only fixed data and bounded completed-process metadata."""
 
@@ -2469,11 +2952,64 @@ def _published_live_result(check: dict) -> dict:
         diagnostic = check.get("diagnostic")
         if isinstance(diagnostic, str) and diagnostic in LIVE_PUBLISHED_DIAGNOSTICS:
             result["diagnostic"] = diagnostic
+        result["testCounts"] = _published_test_counts(
+            check.get("testCounts", check.get("test_counts"))
+        )
+        raw_collection_exits = check.get(
+            "collectionProcessExits", check.get("collection_process_exits")
+        )
+        raw_collection_status = check.get("collectionProcessExitStatus")
+        if isinstance(raw_collection_exits, dict) and isinstance(raw_collection_status, dict):
+            raw_collection_exits = {**raw_collection_exits, "status": raw_collection_status}
+        elif raw_collection_exits is None and isinstance(raw_collection_status, dict):
+            raw_collection_exits = {"status": raw_collection_status}
+        collection_exits, collection_status = _published_collection_process_exits(
+            raw_collection_exits
+        )
+        if collection_exits:
+            result["collectionProcessExits"] = collection_exits
+        if collection_status:
+            result["collectionProcessExitStatus"] = collection_status
+        image_status = check.get(
+            "diagnosticImageStatus", check.get("diagnostic_image_status")
+        )
+        if image_status in LIVE_DIAGNOSTIC_IMAGE_STATUSES:
+            result["diagnosticImageStatus"] = image_status
+        attachment_problem = check.get(
+            "diagnosticAttachmentProblem", check.get("diagnostic_attachment_problem")
+        )
+        if attachment_problem in LIVE_DIAGNOSTIC_ATTACHMENT_PROBLEMS:
+            result["diagnosticAttachmentProblem"] = attachment_problem
+        images = _published_diagnostic_images(
+            name, check.get("diagnosticImages", check.get("diagnostic_images"))
+        )
+        if images:
+            result["diagnosticImages"] = images
+        missing = check.get(
+            "missingDiagnosticImageNames", check.get("missing_diagnostic_image_names")
+        )
+        expected_images = _expected_logical_screenshot_names(name)
+        if (
+            isinstance(missing, list)
+            and len(missing) <= len(expected_images)
+            and all(isinstance(item, str) and item in expected_images for item in missing)
+            and len(set(missing)) == len(missing)
+        ):
+            result["missingDiagnosticImageNames"] = [
+                item for item in expected_images if item in missing
+            ]
     elif name == "ios-negative-config":
         result["reason"] = "negative-configuration-rejected"
     result["testFailures"] = _published_test_failures(
         check.get("testFailures", check.get("test_failures")), logical_exit != 0
     )
+    safe_images = _published_retained_images(
+        name,
+        check.get("safeImages", check.get("safe_images")),
+        LIVE_DIAGNOSTIC_IMAGE_DIRECTORY,
+    )
+    if safe_images:
+        result["safeImages"] = safe_images
     if logical_exit != 0:
         status = check.get("testFailureStatus", check.get("test_failure_status"))
         result["testFailureStatus"] = (
@@ -2616,10 +3152,25 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         "releaseEvidence": False,
         "status": "failed",
         "results": [],
+        "expectedCommit": expected_commit,
     }
+    expected_identity = {
+        "scope": "MCX-19-manual-live-evidence",
+        "workflow": LIVE_WORKFLOW,
+        "repository": LIVE_REPOSITORY,
+        "expectedCommit": expected_commit,
+        "expectedBranch": LIVE_BRANCH,
+        "baseline": LIVE_BASELINE_COMMIT,
+    }
+    verified_identity: dict[str, str] | None = None
+    planned: list[dict[str, object]] = []
+    checks: list[dict] = []
+    active: str | None = "setup"
     try:
         _write_live_manifest(root, manifest)
-        _write_live_progress(root, [], "setup")
+        _write_live_snapshot(
+            root, checks, active, planned=planned, expected_identity=expected_identity
+        )
     except (OSError, ValueError) as error:
         return [_live_setup_failure(error)]
     try:
@@ -2627,6 +3178,21 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         _write_live_manifest(root, manifest)
         metadata = _live_repository_metadata(expected_commit)
         manifest.update(metadata)
+        manifest.pop("expectedCommit", None)
+        build_id = manifest.get("buildId")
+        if (
+            all(isinstance(metadata.get(field), str) for field in ("repository", "commit", "baseline"))
+            and isinstance(build_id, str)
+        ):
+            verified_identity = {
+                "scope": "MCX-19-manual-live-evidence",
+                "workflow": LIVE_WORKFLOW,
+            "repository": metadata["repository"],
+            "commit": metadata["commit"],
+            "branch": manifest["branch"],
+                "baseline": metadata["baseline"],
+                "buildId": build_id,
+            }
         _write_live_manifest(root, manifest)
         if tuple(ui_methods()) != (*LIVE_UI_METHODS, LIVE_NORMAL_SETTINGS_METHOD):
             raise ValueError("approved UI test scope does not match the repository")
@@ -2645,13 +3211,28 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         manifest["simulatorMetadata"] = "simulator-resolution.json"
         _write_live_manifest(root, manifest)
         ios = ROOT / "ios" / "ACEClientApp"
-        checks: list[dict] = []
-
         def record(check: dict) -> None:
+            nonlocal active
             checks.append(check)
-            _write_live_progress(root, checks, None)
+            active = None
+            retention_failure = (
+                "safe-image-retention-failed"
+                if check.get("safe_image_retention_failure")
+                else _retain_completed_review_images(root, checks)
+            )
             manifest["results"] = [_published_live_result(item) for item in checks]
+            _write_live_snapshot(
+                root,
+                checks,
+                None,
+                planned=planned,
+                expected_identity=expected_identity,
+                verified_identity=verified_identity,
+                fault=retention_failure,
+            )
             _write_live_manifest(root, manifest)
+            if retention_failure is not None:
+                raise SafeImageRetentionError("safe image retention failed")
 
         commands = [(
             "ios-65-unit",
@@ -2664,18 +3245,50 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"],
             ios_test_environment(), 42,
         ))
+        normal_settings_commands = ios_normal_settings_matrix(destinations)
+        planned = [
+            {"name": name, "expectedTests": expected}
+            for name, _command, _environment, expected in commands
+        ]
+        planned.extend(
+            {"name": name, "expectedTests": expected}
+            for name, _command, _environment, expected in normal_settings_commands
+        )
+        planned.append({"name": "ios-negative-config", "expectedTests": None})
+        manifest["plannedCommands"] = planned
+        _write_live_snapshot(
+            root,
+            checks,
+            None,
+            planned=planned,
+            expected_identity=expected_identity,
+            verified_identity=verified_identity,
+        )
+        _write_live_manifest(root, manifest)
         for name, command, environment, expected in commands:
-            _write_live_progress(root, checks, name)
+            active = name
+            _write_live_snapshot(
+                root, checks, active, planned=planned,
+                expected_identity=expected_identity, verified_identity=verified_identity,
+            )
             record(_run_live_ios_test(name, command, ios, environment, expected, root))
-        for name, command, environment, expected in ios_normal_settings_matrix(destinations):
+        for name, command, environment, expected in normal_settings_commands:
             appearance = environment["ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE"]
             identifier = command[command.index("-destination") + 1].split("id=", 1)[1]
-            _write_live_progress(root, checks, name)
+            active = name
+            _write_live_snapshot(
+                root, checks, active, planned=planned,
+                expected_identity=expected_identity, verified_identity=verified_identity,
+            )
             record(_normal_settings_result(
                 name, command, ios, environment, root, identifier, appearance
             ))
         negative_log = _safe_live_path(root, "ios-negative-config.log")
-        _write_live_progress(root, checks, "ios-negative-config")
+        active = "ios-negative-config"
+        _write_live_snapshot(
+            root, checks, active, planned=planned,
+            expected_identity=expected_identity, verified_identity=verified_identity,
+        )
         negative_result = _run_live_command(
             "ios-negative-config",
             ios_negative_configuration_command(),
@@ -2685,7 +3298,11 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             _negative_configuration_result(root, negative_log, negative_result)
         )
         if all(check["exit"] == 0 for check in checks):
-            _write_live_progress(root, checks, "artifact-validation")
+            active = "artifact-validation"
+            _write_live_snapshot(
+                root, checks, active, planned=planned,
+                expected_identity=expected_identity, verified_identity=verified_identity,
+            )
         raw_checks = checks
         checks = [_published_live_result(check) for check in raw_checks]
         manifest["results"] = checks
@@ -2716,16 +3333,45 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             raise ValueError("published review artifacts already exist")
         _scan_live_artifacts(root)
         os.replace(stage, published)
+        active = None
+        _write_live_snapshot(
+            root, raw_checks, active, planned=planned,
+            expected_identity=expected_identity, verified_identity=verified_identity,
+        )
         checksums = _live_artifact_checksums(root)
         _scan_live_artifacts(root)
         _verify_live_artifact_checksums(root, checksums)
         manifest.update({"status": "passed-not-release-evidence", "results": checks, "checksums": checksums})
         _write_live_manifest(root, manifest)
+        _verify_live_artifact_checksums(root, checksums)
         return checks
+    except KeyboardInterrupt:
+        try:
+            _write_live_snapshot(
+                root,
+                checks,
+                active,
+                planned=planned,
+                expected_identity=expected_identity,
+                verified_identity=verified_identity,
+                interrupted=True,
+            )
+        except (OSError, ValueError):
+            pass
+        raise
     except (OSError, ValueError, SimulatorResolutionError) as error:
         result = _live_setup_failure(error)
         manifest["failure"] = result["reason"]
         try:
+            _write_live_snapshot(
+                root,
+                checks,
+                active,
+                planned=planned,
+                expected_identity=expected_identity,
+                verified_identity=verified_identity,
+                fault=result["reason"],
+            )
             _write_live_manifest(root, manifest)
         except (OSError, ValueError):
             pass

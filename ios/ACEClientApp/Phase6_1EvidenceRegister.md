@@ -35,3 +35,29 @@ absolute external root `/private/tmp/mcx-19-live-evidence`. The root must not ex
 run. It must not be in the Git working tree or use a symlink. Use controlled fictional
 inputs only. Do not record client data, passwords, authorisation values, Keychain
 secrets, credentials, private notes, or release claims.
+
+## MCX19-B Private Diagnostic Records (Pending)
+
+Public artifacts still prohibit raw Xcode logs and result bundles. For approved fictional
+MCX19-B tests only, original diagnostic records may be retained in verified authenticated
+storage for authorised project operators. Records expire after 30 days. Prove authorised
+retrieval and unauthorised denial before a paid suite.
+
+Generate the private inventory exactly from the planned command set. Do not publish an
+unrestricted directory glob. Each started XCTest command has one generated `.xcresult`, with
+complete or incomplete state recorded. Retain exported summaries, individual failures, and
+attachment inventories. Retain compiler, test, simulator-setting, export, and packaging
+output only from approved commands. Retain candidate and build identity, relative path,
+producing command, size, SHA-256, and collection state. Existing checked JSON and allowed
+fictional PNG images remain controlled review records, separately.
+
+Exclude environment dumps, credential files, Keychain contents, signing material, caches,
+source exports, unrelated machine files, and real client information. Keep raw records out
+of Git, PR comments, public links, and public artifact downloads. Do not put temporary
+authenticated download URLs in reports, logs, commits, or messages. Do not use public
+bearer-link bypass. Check paths, links, types, sizes, and producing commands. Reject
+unexpected files. Stop on a secret or real client information finding.
+
+The 31 planned commands, 135 XCTest cases, 200 named fictional review images, and
+`releaseEvidence: false` remain unchanged. Original bundle, approved Mac, provider
+retention, provider interruption, retrieval, and denial evidence remain PENDING.

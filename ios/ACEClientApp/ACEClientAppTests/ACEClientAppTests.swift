@@ -28,7 +28,7 @@ final class ACEClientAppTests: XCTestCase {
     }
 
     func testActionOrderAndUnknownFieldsRemainSafe() throws {
-        let data = Data("{\"engagement_name\":\"Fictional\",\"review_status\":\"RELEASED\",\"release_version\":1,\"published_at\":\"2026-08-24T10:15:30Z\",\"conclusion\":null,\"actions\":[{\"description\":\"First\",\"owner\":\"Owner one\",\"target_date\":\"2026-08-25\",\"status\":\"OPEN\"},{\"description\":\"Second\",\"owner\":\"Owner two\",\"target_date\":\"2026-08-26\",\"status\":\"COMPLETE\"}],\"ignored\":true}".utf8)
+        let data = Data("{\"engagement_name\":\"Fictional\",\"review_status\":\"RELEASED\",\"release_version\":1,\"published_at\":\"2026-08-24T10:15:30Z\",\"conclusion\":null,\"actions\":[{\"description\":\"First\",\"owner\":\"Owner one\",\"target_date\":\"2026-08-25\",\"status\":\"OPEN\"},{\"description\":\"MCX19-B intentional fail\",\"owner\":\"Owner two\",\"target_date\":\"2026-08-26\",\"status\":\"COMPLETE\"}],\"ignored\":true}".utf8)
         let release = try JSONDecoder().decode(ClientReleaseResponse.self, from: data)
         XCTAssertEqual(release.actions.map(\.description), ["First", "Second"])
         XCTAssertEqual(try release.validated(), .release(release))

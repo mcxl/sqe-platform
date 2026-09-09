@@ -3,14 +3,17 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import os
 from pathlib import Path
 import re
 import shutil
 import signal
+import stat
 import subprocess
 import sys
+import tarfile
 import time
 
 try:
@@ -19,8 +22,11 @@ except ModuleNotFoundError:
     import run_tests as rt
 
 WORKFLOW = "ace-ios-diagnostic-manual"
+NATIVE_CYCLE_WORKFLOW = "ace-ios-native-cycle-manual"
 ROOT = Path("/private/tmp/mcx-19-diagnostic")
 SAFE_ROOT = Path("/private/tmp/mcx-19-diagnostic-safe")
+PRIVATE_ROOT = Path("/private/tmp/mcx-19-native-cycle-private")
+PRIVATE_ARCHIVE_NAME = "mcx19-native-cycle-records.tar.gz"
 METHOD = "testFictionalReleaseHasApprovedCopyControls"
 METHOD_PATH = f"ACEClientAppUITests/ACEClientAppUITests/{METHOD}"
 RUNNER_SCREENSHOT_NAMES = rt._expected_logical_screenshot_names(f"ios-release-{rt.IOS_CORE_DEVICE}-light-{METHOD}")
@@ -41,9 +47,15 @@ FAILURE_DETAIL_LIMIT = 30
 FAILURE_TEXT_LIMIT = 2 * 1024
 COPY_CONTROLS_MODE = "copy-controls"
 UNIT_SETTINGS_MODE = "unit-settings"
+NATIVE_CYCLE_MODE = "native-cycle"
 DIAGNOSTIC_MODE_ENVIRONMENT_KEY = "ACE_IOS_DIAGNOSTIC_MODE"
 UNIT_TEST_TARGET = "ACEClientAppTests"
 UNIT_EXPECTED_TEST_COUNT = 65
+NATIVE_CYCLE_TEST_SELECTOR = (
+    "ACEClientAppTests/ACEClientAppTests/"
+    "testActionOrderAndUnknownFieldsRemainSafe"
+)
+NATIVE_CYCLE_EXPECTED_TEST_COUNT = 1
 UNIT_WORKFLOW_SECONDS = 300
 UNIT_SETUP_SECONDS = 90
 UNIT_UI_SYNTAX_SECONDS = 8
@@ -57,6 +69,25 @@ UNIT_ALLOCATED_SECONDS = (
     + UNIT_XCODEBUILD_SECONDS + UNIT_SUMMARY_SECONDS
     + (UNIT_PUBLICATION_COUNT * UNIT_PUBLICATION_SECONDS)
 )
+NATIVE_CYCLE_WORKFLOW_SECONDS = 480
+NATIVE_CYCLE_ATTACHMENT_SECONDS = 30
+NATIVE_CYCLE_PACKAGING_SECONDS = 45
+NATIVE_CYCLE_ALLOCATED_SECONDS = (
+    UNIT_SETUP_SECONDS + UNIT_UI_SYNTAX_SECONDS + (2 * UNIT_SETTINGS_QUERY_SECONDS)
+    + UNIT_XCODEBUILD_SECONDS + UNIT_SUMMARY_SECONDS
+    + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS
+    + (UNIT_PUBLICATION_COUNT * UNIT_PUBLICATION_SECONDS)
+)
+PRIVATE_RECORD_MAX_FILE_BYTES = 64 * 1024 * 1024
+PRIVATE_RECORD_MAX_FILES = 4096
+PRIVATE_RECORD_MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
+PRIVATE_RECORD_SECRET = re.compile(
+    rb"(?i)(?:[\"']?(?:password|token|authorization|credential|secret)[\"']?\s*[:=]\s*[\"']?)(?!\[redacted\])[^\s,}\]]+"
+)
+PRIVATE_RECORD_CREDENTIAL_PREFIX = re.compile(
+    rb"\b(?:gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]+)\b"
+)
+PRIVATE_RECORD_REAL_CLIENT = re.compile(rb"(?i)real[ _-]?client")
 
 
 def redact(text: str) -> str:
@@ -211,11 +242,11 @@ def run(command: list[str], environment: dict[str, str], log: Path, timeout: int
             return {"status": "start-failed"}
 
 
-def context() -> str:
+def context(workflow: str = WORKFLOW) -> str:
     expected = os.environ.get("ACE_LIVE_EVIDENCE_APPROVED_COMMIT", "")
     if (
         sys.platform != "darwin"
-        or os.environ.get(rt.LIVE_WORKFLOW_ENVIRONMENT_KEY) != WORKFLOW
+        or os.environ.get(rt.LIVE_WORKFLOW_ENVIRONMENT_KEY) != workflow
         or os.environ.get("CM_COMMIT") != expected
         or os.environ.get("CM_BRANCH") != rt.LIVE_BRANCH
         or os.environ.get("CM_TRIGGER_SOURCE") != "api"
@@ -235,7 +266,7 @@ def _build_id() -> str | None:
 
 def diagnostic_mode() -> str:
     mode = os.environ.get(DIAGNOSTIC_MODE_ENVIRONMENT_KEY, COPY_CONTROLS_MODE)
-    if mode not in {COPY_CONTROLS_MODE, UNIT_SETTINGS_MODE}:
+    if mode not in {COPY_CONTROLS_MODE, UNIT_SETTINGS_MODE, NATIVE_CYCLE_MODE}:
         raise ValueError("diagnostic mode rejected")
     return mode
 
@@ -330,6 +361,282 @@ def _collect_unit_summary(unit: dict[str, object], bundle: Path) -> None:
     unit["summaryStatus"] = "available"
 
 
+class PrivateRecordCollectionError(ValueError):
+    """Stop private collection without disclosing a raw record."""
+
+
+def _private_collection_root() -> Path:
+    if PRIVATE_ROOT.exists() or PRIVATE_ROOT.is_symlink():
+        raise PrivateRecordCollectionError("private-root-unavailable")
+    PRIVATE_ROOT.mkdir(mode=0o700, parents=True)
+    return PRIVATE_ROOT
+
+
+def _private_relative(root: Path, path: Path) -> Path:
+    try:
+        relative = path.resolve().relative_to(root.resolve())
+    except (OSError, ValueError) as error:
+        raise PrivateRecordCollectionError("path-escape") from error
+    if not relative.parts or any(part in {"", ".", ".."} for part in relative.parts):
+        raise PrivateRecordCollectionError("invalid-relative-path")
+    return relative
+
+
+def _private_regular_files(root: Path) -> list[Path]:
+    if root.is_symlink() or not root.is_dir():
+        raise PrivateRecordCollectionError("record-root-unavailable")
+    selected = []
+    for path in sorted(root.rglob("*")):
+        if path.is_symlink():
+            raise PrivateRecordCollectionError("symlink-record")
+        _private_relative(root, path)
+        try:
+            mode = path.lstat().st_mode
+        except OSError as error:
+            raise PrivateRecordCollectionError("record-stat-failed") from error
+        if stat.S_ISDIR(mode):
+            continue
+        if not stat.S_ISREG(mode):
+            raise PrivateRecordCollectionError("special-record")
+        selected.append(path)
+        if len(selected) > PRIVATE_RECORD_MAX_FILES:
+            raise PrivateRecordCollectionError("record-count-exceeded")
+    return selected
+
+
+def _private_file_metadata(path: Path) -> tuple[int, str]:
+    if path.is_symlink() or not path.is_file():
+        raise PrivateRecordCollectionError("record-unavailable")
+    try:
+        size = path.stat().st_size
+    except OSError as error:
+        raise PrivateRecordCollectionError("record-stat-failed") from error
+    if size > PRIVATE_RECORD_MAX_FILE_BYTES:
+        raise PrivateRecordCollectionError("record-size-exceeded")
+    digest = hashlib.sha256()
+    carry = b""
+    try:
+        with path.open("rb") as stream:
+            while chunk := stream.read(64 * 1024):
+                inspected = carry + chunk
+                if (
+                    PRIVATE_RECORD_SECRET.search(inspected)
+                    or PRIVATE_RECORD_CREDENTIAL_PREFIX.search(inspected)
+                    or PRIVATE_RECORD_REAL_CLIENT.search(inspected)
+                ):
+                    raise PrivateRecordCollectionError("sensitive-record")
+                digest.update(chunk)
+                carry = inspected[-256:]
+    except OSError as error:
+        raise PrivateRecordCollectionError("record-read-failed") from error
+    return size, digest.hexdigest()
+
+
+def _write_private_json(root: Path, name: str, value: object) -> Path:
+    path = root / name
+    temporary = root / f".{name}.tmp"
+    if path.exists() or path.is_symlink() or temporary.exists() or temporary.is_symlink():
+        raise PrivateRecordCollectionError("private-record-path-unavailable")
+    try:
+        temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        os.replace(temporary, path)
+    except OSError as error:
+        temporary.unlink(missing_ok=True)
+        raise PrivateRecordCollectionError("private-record-write-failed") from error
+    return path
+
+
+def _native_attachment_export(bundle: Path, unit: dict[str, object]) -> Path:
+    output = ROOT / "unit-attachment-export"
+    log = ROOT / "unit-attachment-export.log"
+    if output.exists() or output.is_symlink():
+        raise PrivateRecordCollectionError("attachment-output-unavailable")
+    command = [
+        "xcrun", "xcresulttool", "export", "attachments", "--path", str(bundle),
+        "--output-path", str(output),
+    ]
+    result = run(
+        command,
+        {}, log, NATIVE_CYCLE_ATTACHMENT_SECONDS,
+    )
+    unit["attachmentExportCommand"] = {
+        "executedCommand": command,
+        "processExit": result.get("processExit"),
+    }
+    if result.get("processExit") != 0:
+        raise PrivateRecordCollectionError("attachment-export-failed")
+    _private_regular_files(output)
+    return output
+
+
+def _native_failure_export(summary: Path, private_root: Path) -> Path:
+    try:
+        payload = json.loads(summary.read_text(encoding="utf-8"))
+    except (OSError, ValueError, RecursionError) as error:
+        raise PrivateRecordCollectionError("failure-export-unavailable") from error
+    failures, status = rt._xcresult_failure_details(payload)
+    return _write_private_json(
+        private_root, "unit-failures.json", {"status": status, "failures": failures}
+    )
+
+
+def _private_record_entries(
+    sources: list[tuple[Path, str, str]], state: str
+) -> list[dict[str, object]]:
+    if len(sources) > PRIVATE_RECORD_MAX_FILES:
+        raise PrivateRecordCollectionError("record-count-exceeded")
+    entries: list[dict[str, object]] = []
+    archive_paths: set[str] = set()
+    for path, archive_path, command in sources:
+        relative = archive_path.removeprefix("records/")
+        if (
+            not re.fullmatch(r"records/[A-Za-z0-9._/-]{1,1024}", archive_path)
+            or not relative
+            or any(part in {"", ".", ".."} for part in relative.split("/"))
+        ):
+            raise PrivateRecordCollectionError("archive-path-invalid")
+        if archive_path in archive_paths:
+            raise PrivateRecordCollectionError("archive-path-duplicate")
+        archive_paths.add(archive_path)
+        size, digest = _private_file_metadata(path)
+        entries.append({
+            "relativePath": archive_path,
+            "producingCommand": command,
+            "size": size,
+            "sha256": digest,
+            "state": state,
+        })
+    return entries
+
+
+def _write_private_archive(
+    private_root: Path, sources: list[tuple[Path, str, str]], entries: list[dict[str, object]]
+) -> Path:
+    archive = private_root / PRIVATE_ARCHIVE_NAME
+    temporary = private_root / f".{PRIVATE_ARCHIVE_NAME}.tmp"
+    if archive.exists() or archive.is_symlink() or temporary.exists() or temporary.is_symlink():
+        raise PrivateRecordCollectionError("archive-path-unavailable")
+    expected = {entry["relativePath"]: (entry["size"], entry["sha256"]) for entry in entries}
+    if len(expected) != len(entries) or sum(entry["size"] for entry in entries) > PRIVATE_RECORD_MAX_ARCHIVE_BYTES:
+        raise PrivateRecordCollectionError("archive-size-or-path-invalid")
+    try:
+        with tarfile.open(temporary, "w:gz", format=tarfile.PAX_FORMAT) as output:
+            for path, archive_path, _command in sources:
+                size, digest = _private_file_metadata(path)
+                if expected.get(archive_path) != (size, digest):
+                    raise PrivateRecordCollectionError("record-changed-during-packaging")
+                info = output.gettarinfo(str(path), arcname=archive_path)
+                if not info.isreg():
+                    raise PrivateRecordCollectionError("archive-record-not-regular")
+                info.uid = 0
+                info.gid = 0
+                info.uname = ""
+                info.gname = ""
+                info.mtime = 0
+                with path.open("rb") as stream:
+                    output.addfile(info, stream)
+        _verify_private_archive(temporary, expected)
+        os.replace(temporary, archive)
+    except PrivateRecordCollectionError:
+        temporary.unlink(missing_ok=True)
+        raise
+    except (OSError, tarfile.TarError) as error:
+        temporary.unlink(missing_ok=True)
+        raise PrivateRecordCollectionError("archive-write-failed") from error
+    return archive
+
+
+def _verify_private_archive(archive: Path, expected: dict[str, tuple[object, object]]) -> None:
+    try:
+        with tarfile.open(archive, "r:gz") as input_archive:
+            members = input_archive.getmembers()
+            names = [member.name for member in members]
+            if len(names) != len(set(names)) or set(names) != set(expected):
+                raise PrivateRecordCollectionError("archive-members-invalid")
+            for member in members:
+                if not member.isreg() or expected[member.name][0] != member.size:
+                    raise PrivateRecordCollectionError("archive-member-invalid")
+                stream = input_archive.extractfile(member)
+                if stream is None:
+                    raise PrivateRecordCollectionError("archive-member-unreadable")
+                digest = hashlib.sha256()
+                while chunk := stream.read(64 * 1024):
+                    digest.update(chunk)
+                if digest.hexdigest() != expected[member.name][1]:
+                    raise PrivateRecordCollectionError("archive-member-checksum-invalid")
+    except (OSError, tarfile.TarError) as error:
+        raise PrivateRecordCollectionError("archive-validation-failed") from error
+
+
+def _collect_native_cycle_records(commit: str, unit: dict[str, object], bundle: Path) -> str:
+    """Archive one command-derived record set, or return a safe failure reason."""
+
+    try:
+        if not bundle.is_dir() or bundle.is_symlink():
+            raise PrivateRecordCollectionError("result-bundle-unavailable")
+        if unit.get("summaryStatus") != "available":
+            raise PrivateRecordCollectionError("summary-unavailable")
+        private_root = _private_collection_root()
+        summary = ROOT / "unit-summary.json"
+        attachments = _native_attachment_export(bundle, unit)
+        failure_export = _native_failure_export(summary, private_root)
+        bundle_sources = _private_regular_files(bundle)
+        if not bundle_sources:
+            raise PrivateRecordCollectionError("result-bundle-empty")
+        attachment_sources = [
+            (path, f"records/unit-attachment-export/{_private_relative(attachments, path).as_posix()}",
+             "xcresult-attachment-export")
+            for path in _private_regular_files(attachments)
+        ]
+        state = "complete" if isinstance(unit.get("processExit"), int) else "incomplete"
+        attachment_inventory = _write_private_json(
+            private_root,
+            "unit-attachment-inventory.json",
+            {"files": _private_record_entries(attachment_sources, state)},
+        )
+        sources: list[tuple[Path, str, str]] = [
+            (path, f"records/unit.xcresult/{_private_relative(bundle, path).as_posix()}", "xcodebuild-test")
+            for path in bundle_sources
+        ] + [
+            (ROOT / "unit.log", "records/unit.log", "xcodebuild-test"),
+            (ROOT / "unit-summary.json", "records/unit-summary.json", "xcresult-summary"),
+            (ROOT / "simctl-help-ui.log", "records/simctl-help-ui.log", "simctl-help-ui"),
+            (ROOT / "unit-simctl-appearance-query.log", "records/unit-simctl-appearance-query.log", "simctl-ui-appearance-query"),
+            (ROOT / "unit-simctl-content_size-query.log", "records/unit-simctl-content_size-query.log", "simctl-ui-content_size-query"),
+            (ROOT / "unit-attachment-export.log", "records/unit-attachment-export.log", "xcresult-attachment-export"),
+            (failure_export, "records/unit-failures.json", "failure-export"),
+            (attachment_inventory, "records/unit-attachment-inventory.json", "attachment-inventory"),
+            *attachment_sources,
+        ]
+        entries = _private_record_entries(sources, state)
+        commands = {
+            "xcodebuild-test": unit.get("executedCommand"),
+            "xcresult-summary": unit.get("summaryCommand"),
+            "xcresult-attachment-export": unit.get("attachmentExportCommand"),
+        }
+        probe_commands = unit.get("probeCommands")
+        if isinstance(probe_commands, dict):
+            commands.update(probe_commands)
+        inventory = _write_private_json(private_root, "collection-inventory.json", {
+            "candidateCommit": commit,
+            "buildId": _build_id(),
+            "workflow": NATIVE_CYCLE_WORKFLOW,
+            "collectionState": state,
+            "testSelector": NATIVE_CYCLE_TEST_SELECTOR,
+            "processExit": unit.get("processExit"),
+            "actualCounts": unit.get("actualCounts"),
+            "failureStatus": unit.get("testFailureStatus"),
+            "commands": commands,
+            "records": entries,
+        })
+        inventory_source = (inventory, "records/collection-inventory.json", "collection-inventory")
+        inventory_entry = _private_record_entries([inventory_source], state)
+        _write_private_archive(private_root, [*sources, inventory_source], [*entries, *inventory_entry])
+        return "complete"
+    except PrivateRecordCollectionError as error:
+        return str(error)
+
+
 def unit_settings_main() -> int:
     """Run one non-accepting unit diagnostic against an existing simulator."""
 
@@ -405,6 +712,120 @@ def unit_settings_main() -> int:
     if not _publish_unit_report(report, deadline):
         return 1
     return 1
+
+
+def native_cycle_main() -> int:
+    """Run one selected native test and retain private original records."""
+
+    if (
+        NATIVE_CYCLE_ALLOCATED_SECONDS >= NATIVE_CYCLE_WORKFLOW_SECONDS
+        or NATIVE_CYCLE_WORKFLOW_SECONDS != 480
+    ):
+        raise RuntimeError("native-cycle time budget is invalid")
+    deadline = time.monotonic() + NATIVE_CYCLE_WORKFLOW_SECONDS
+    try:
+        commit = context(NATIVE_CYCLE_WORKFLOW)
+        rt._live_artifact_root(ROOT)
+        rt._live_artifact_root(SAFE_ROOT)
+    except (OSError, ValueError):
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    report: dict[str, object] = {
+        "scope": "one-native-cycle-unit-test",
+        "diagnosticMode": NATIVE_CYCLE_MODE,
+        "workflow": NATIVE_CYCLE_WORKFLOW,
+        "branch": rt.LIVE_BRANCH,
+        "device": rt.IOS_CORE_DEVICE,
+        "releaseEvidence": False,
+        "diagnosticStatus": "started",
+        "commit": commit,
+        "results": {},
+    }
+    build_id = _build_id()
+    if build_id is not None:
+        report["buildId"] = build_id
+    try:
+        publish(report, deadline)
+    except OSError:
+        print("diagnostic setup rejected; no test started", flush=True)
+        return 1
+    try:
+        destination = _existing_core_destination()
+    except (rt.SimulatorResolutionError, OSError, ValueError) as error:
+        report["diagnosticStatus"] = "setup-failed"
+        report["results"] = {"setup": {
+            "phase": "simulator-readiness",
+            "reason": (
+                "timeout"
+                if getattr(error, "reason", None) == rt.SIMULATOR_RESOLUTION_TIMEOUT_REASON
+                else "resolution-failed"
+            ),
+        }}
+        _publish_unit_report(report, deadline)
+        return 1
+    identifier = _simulator_identifier(destination)
+    if identifier is None:
+        return 1
+    probes = {
+        "uiSyntax": _bounded_ui_syntax_probe(identifier),
+        "settings": _bounded_unit_settings_probes(identifier),
+    }
+    report["results"] = {"simulatorProbes": probes}
+    if not _publish_unit_report(report, deadline):
+        return 1
+    bundle = ROOT / "unit.xcresult"
+    unit_log = ROOT / "unit.log"
+    command = [
+        "xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp",
+        "-destination", destination, "-parallel-testing-enabled", "NO",
+        f"-only-testing:{NATIVE_CYCLE_TEST_SELECTOR}", "-resultBundlePath", str(bundle),
+    ]
+    unit: dict[str, object] = run(
+        command,
+        rt.ios_test_environment(), unit_log, UNIT_XCODEBUILD_SECONDS,
+    )
+    unit.update({
+        "commandKind": "xcodebuild-test",
+        "selector": NATIVE_CYCLE_TEST_SELECTOR,
+        "expectedTestCount": NATIVE_CYCLE_EXPECTED_TEST_COUNT,
+        "device": rt.IOS_CORE_DEVICE,
+        "resolvedDestination": destination,
+        "executedCommand": command,
+        "probeCommands": {
+            "simctl-help-ui": {"executedCommand": ["xcrun", "simctl", "help", "ui"]},
+            "simctl-ui-appearance-query": {
+                "executedCommand": ["xcrun", "simctl", "ui", identifier, "appearance"],
+            },
+            "simctl-ui-content_size-query": {
+                "executedCommand": ["xcrun", "simctl", "ui", identifier, "content_size"],
+            },
+        },
+    })
+    if type(unit.get("processExit")) is int and unit["processExit"] != 0:
+        unit["logErrorLines"] = errors(unit_log)
+    report["results"] = {"simulatorProbes": probes, "unit": unit}
+    if not _publish_unit_report(report, deadline):
+        return 1
+    _collect_unit_summary(unit, bundle)
+    if isinstance(unit.get("summaryCommand"), dict):
+        unit["summaryCommand"]["executedCommand"] = [
+            "xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(bundle),
+        ]
+    actual = unit.get("actualCounts")
+    unit["status"] = "passed" if (
+        unit.get("processExit") == 0
+        and actual == {"passed": NATIVE_CYCLE_EXPECTED_TEST_COUNT, "failed": 0, "skipped": 0}
+    ) else "failed"
+    collection = (
+        "collection-time-reserve-exhausted"
+        if time.monotonic() + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS >= deadline
+        else _collect_native_cycle_records(commit, unit, bundle)
+    )
+    unit["privateRecordCollection"] = collection
+    report["diagnosticStatus"] = "completed-not-release-evidence"
+    if not _publish_unit_report(report, deadline):
+        return 1
+    return 0 if unit["status"] == "passed" and collection == "complete" else 1
 
 
 def _simulator_identifier(destination: str) -> str | None:
@@ -704,7 +1125,11 @@ def main() -> int:
     except ValueError:
         print("diagnostic setup rejected; no test started", flush=True)
         return 1
-    return unit_settings_main() if mode == UNIT_SETTINGS_MODE else copy_controls_main()
+    if mode == UNIT_SETTINGS_MODE:
+        return unit_settings_main()
+    if mode == NATIVE_CYCLE_MODE:
+        return native_cycle_main()
+    return copy_controls_main()
 
 
 if __name__ == "__main__":

@@ -1323,6 +1323,39 @@ Controlled screenshots must use fictional scenarios and contain no entered crede
 An artifact export failure or a missing required image must fail its collection check.
 Keep collection results separate from visual inspection and release acceptance.
 
+### MCX19-B Private Diagnostic Records Exception
+
+For approved fictional MCX19-B tests only, retain original diagnostic records in verified
+authenticated storage. Restrict retrieval to authorised project operators. Retain records
+for 30 days, then expire them. Verify authorised retrieval and unauthorised denial before
+a paid test suite.
+
+Do not publish raw Xcode logs or raw result bundles in public artifacts. Do not collect
+credentials or real client information. Keep raw records out of Git, PR comments, public
+links, and public artifact downloads. Do not put temporary authenticated download URLs in
+reports, logs, commits, or messages. Do not use a public bearer link that bypasses the
+approved access boundary.
+
+Generate the private inventory exactly from the planned command set. Do not publish an
+unrestricted directory glob. For each started XCTest command, retain one generated
+`.xcresult` and record its complete or incomplete state. Retain exported summaries,
+individual failures, and attachment inventories from those bundles. Retain compiler, test,
+simulator-setting, export, and packaging output only from the approved commands. Retain a
+collection inventory with candidate and build identity, relative path, producing command,
+size, SHA-256, and collection state. Retain existing checked JSON and allowed fictional PNG
+images as controlled review records, separately.
+
+Exclude environment dumps, credential files, Keychain contents, signing material, caches,
+source exports, and unrelated machine files. Check paths, links, file types, size limits,
+and the exact producing command before upload. Reject unexpected files. Stop collection if
+a secret or real client information is detected. Do not silently remove evidence or report
+collection success.
+
+The 31 planned commands, 135 XCTest cases, and 200 named fictional review images remain
+unchanged. This requirement records no result. Original bundle access, approved Mac access,
+provider retention, provider interruption, authorised retrieval, and unauthorised denial
+remain PENDING.
+
 Record unavailable or untested settings as pending.
 Do not infer Dynamic Type support from appearance evidence.
 Do not infer normal device-setting behaviour from an app launch override.

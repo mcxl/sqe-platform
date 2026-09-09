@@ -1,6 +1,6 @@
 import importlib.util
 import hashlib
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from io import StringIO
 import json
 import os
@@ -112,7 +112,7 @@ class RunnerContractTests(unittest.TestCase):
             if logical_names:
                 directory = artifact_root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
                 directory.mkdir(parents=True)
-                png = bytes.fromhex("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d49444154789c6360f8cfc00000030101832f7f3a3d0000000049454e44ae426082")
+                png = self.png_fixture()
                 for number, _ in enumerate(logical_names, 1):
                     screenshot = directory / f"{number:02d}.png"
                     screenshot.write_bytes(png)
@@ -144,6 +144,105 @@ class RunnerContractTests(unittest.TestCase):
             mock.patch.object(runner, "_run_live_ios_test", side_effect=ios_test),
             mock.patch.object(runner, "_run_live_command", side_effect=controlled_command),
         )
+
+    def assert_diagnostic_retention_operational_failure(self, phase):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            failed_name = (
+                f"ios-release-{runner.IOS_CORE_DEVICE}-light-"
+                f"{runner.LIVE_UI_METHODS[0]}"
+            )
+            simulator_settings = {"appearance": "light", "content_size": "medium"}
+            xcodebuild_calls = []
+
+            def controlled_command(name, command, _cwd, _environment, log_path):
+                if name.startswith("simctl-"):
+                    setting = command[-2] if name.endswith("-set") else command[-1]
+                    if name.endswith("-query"):
+                        log_path.write_text(simulator_settings[setting], encoding="utf-8")
+                    else:
+                        simulator_settings[setting] = command[-1]
+                        log_path.write_text("controlled", encoding="utf-8")
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+                if name == "ios-negative-config":
+                    log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
+                    return runner.LiveCommandResult(1, "controlled", "command-nonzero", 1)
+                if name.endswith("-diagnostic-attachments"):
+                    output = Path(command[-1])
+                    output.mkdir()
+                    logical_names = runner._expected_logical_screenshot_names(failed_name)
+                    attachments = []
+                    for number, logical in enumerate(logical_names, 1):
+                        filename = f"{number:02d}.png"
+                        (output / filename).write_bytes(self.png_fixture())
+                        attachments.append({
+                            "suggestedHumanReadableName": logical,
+                            "exportedFileName": filename,
+                        })
+                    (output / "manifest.json").write_text(
+                        json.dumps([{"attachments": attachments}]), encoding="utf-8"
+                    )
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+                if name.endswith("-xcresult"):
+                    base = name.removesuffix("-xcresult")
+                    expected = 65 if base == "ios-65-unit" else 42 if base == "ios-evidence-contract" else 1
+                    log_path.write_text(json.dumps({
+                        "passedTests": expected, "failedTests": 0, "skippedTests": 0,
+                    }), encoding="utf-8")
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+                if command[0] == "xcodebuild":
+                    xcodebuild_calls.append(name)
+                    result_path = Path(command[command.index("-resultBundlePath") + 1])
+                    result_path.mkdir()
+                    if name == failed_name:
+                        return runner.LiveCommandResult(1, "controlled", "command-nonzero", 1)
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+                raise AssertionError(f"unexpected command {name}")
+
+            original_scan = runner._scan_live_artifacts
+
+            def fail_diagnostic_scan(path):
+                if Path(path).name.startswith(".diagnostic-image-stage-"):
+                    raise ValueError("controlled")
+                return original_scan(path)
+
+            with ExitStack() as stack:
+                for context in contexts[:6]:
+                    stack.enter_context(context)
+                stack.enter_context(mock.patch.object(
+                    runner, "_run_live_command", side_effect=controlled_command
+                ))
+                if phase == "copy":
+                    stack.enter_context(mock.patch.object(
+                        runner.shutil, "copyfile", side_effect=OSError("controlled")
+                    ))
+                else:
+                    stack.enter_context(mock.patch.object(
+                        runner, "_scan_live_artifacts", side_effect=fail_diagnostic_scan
+                    ))
+                    if phase == "scan-cleanup-denied":
+                        original_unlink = Path.unlink
+
+                        def deny_stage_unlink(path, *args, **kwargs):
+                            if path.parent.name.startswith(".diagnostic-image-stage-"):
+                                raise PermissionError("controlled")
+                            return original_unlink(path, *args, **kwargs)
+
+                        stack.enter_context(mock.patch.object(
+                            Path, "unlink", new=deny_stage_unlink
+                        ))
+                result = runner.live_evidence_checks(root, "a" * 40)
+
+            self.assertEqual(result[0]["reason"], "safe-image-retention-failed")
+            snapshot = json.loads((root / "live-evidence-progress.json").read_text())
+            self.assertEqual(snapshot["fault"], "safe-image-retention-failed")
+            self.assertEqual(xcodebuild_calls, ["ios-65-unit", failed_name])
+            native = snapshot["completed"][-1]
+            self.assertEqual(native["name"], failed_name)
+            self.assertEqual(native["reason"], "command-nonzero")
+            self.assertEqual(native["diagnosticImageStatus"], "attachment-invalid")
+            self.assertNotIn("safeImageRetentionFailure", native)
 
     def test_live_progress_survives_interruption_after_one_completed_command(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -205,6 +304,214 @@ class RunnerContractTests(unittest.TestCase):
             self.assertEqual(progress["completed"][0]["processExit"], 0)
             self.assertFalse(progress["releaseEvidence"])
 
+    def test_mixed_result_retains_earlier_success_images_outside_review_stage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            calls = 0
+
+            def ios_test(name, _command, _cwd, _environment, _expected, artifact_root):
+                nonlocal calls
+                calls += 1
+                if calls == 2:
+                    images = artifact_root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                    images.mkdir(parents=True)
+                    paths = []
+                    for number, _logical in enumerate(runner._expected_logical_screenshot_names(name), 1):
+                        image = images / f"{number:02d}.png"
+                        image.write_bytes(self.png_fixture())
+                        paths.append(image.relative_to(artifact_root / runner.LIVE_REVIEW_STAGE).as_posix())
+                    return {"name": name, "exit": 0, "detail": f"{name} executed 1 tests", "screenshots": paths}
+                if calls == 1:
+                    return {"name": name, "exit": 0, "detail": f"{name} executed 65 tests"}
+                return {"name": name, "exit": 1, "reason": "command-nonzero", "test_counts": {"status": "unknown"}}
+
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[7], mock.patch.object(
+                runner, "_run_live_ios_test", side_effect=ios_test
+            ):
+                result = runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(result[0]["exit"], 1)
+            progress = json.loads((root / "live-evidence-progress.json").read_text())
+            successful = next(item for item in progress["completed"] if item["name"].endswith("-testBothAppearances"))
+            retained = successful["safeImages"]
+            self.assertTrue(all((root / image["path"]).is_file() for image in retained))
+            self.assertFalse((root / runner.LIVE_REVIEW_ARTIFACTS).exists())
+
+    def test_diagnostic_attachment_rejects_valid_png_metadata_secret(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bundle = root / "result.xcresult"
+            bundle.mkdir()
+            name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testLaunchShowsSafeConfigurationState"
+            logical = runner._expected_logical_screenshot_names(name)[0]
+
+            def export(_name, command, _cwd, _environment, _log):
+                output = Path(command[-1])
+                output.mkdir()
+                image = self.png_fixture()
+                chunk_type = b"tEXt"
+                chunk_data = b"token=private"
+                chunk = (
+                    len(chunk_data).to_bytes(4, "big") + chunk_type + chunk_data
+                    + zlib.crc32(chunk_type + chunk_data).to_bytes(4, "big")
+                )
+                capture = output / "capture.png"
+                capture.write_bytes(image[:-12] + chunk + image[-12:])
+                self.assertTrue(runner._valid_png(capture))
+                (output / "manifest.json").write_text(json.dumps([{"attachments": [{"suggestedHumanReadableName": logical, "exportedFileName": "capture.png"}]}]), encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+            with mock.patch.object(runner, "_run_live_command", side_effect=export):
+                status, images, missing, problem, retention_failed = runner._retain_live_diagnostic_images(name, ROOT, root, bundle)
+            self.assertEqual(status, "attachment-invalid")
+            self.assertEqual(images, [])
+            self.assertEqual(problem, "attachment-invalid")
+            self.assertTrue(retention_failed)
+            self.assertEqual(missing, [logical])
+            self.assertFalse(any((root / runner.LIVE_DIAGNOSTIC_IMAGE_DIRECTORY).rglob("*.png")))
+
+    def test_restoration_failure_retains_validated_staged_screenshots(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            name = f"ios-normal-settings-{runner.IOS_CORE_DEVICE}-light"
+            source = root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
+            source.mkdir(parents=True)
+            paths = []
+            for number, _logical in enumerate(runner._expected_logical_screenshot_names(name), 1):
+                image = source / f"{number:02d}.png"
+                image.write_bytes(self.png_fixture())
+                paths.append(image.relative_to(root / runner.LIVE_REVIEW_STAGE).as_posix())
+            check = {"name": name, "exit": 1, "reason": "simulator-setting-restore-failed", "screenshots": paths}
+            runner._retain_completed_review_images(root, [check])
+            published = runner._published_live_result(check)
+            self.assertEqual(published["reason"], "simulator-setting-restore-failed")
+            self.assertTrue(all((root / item["path"]).is_file() for item in published["safeImages"]))
+
+    def test_safe_image_collection_failure_stops_before_next_command(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            calls = 0
+
+            def ios_test(name, _command, _cwd, _environment, _expected, artifact_root):
+                nonlocal calls
+                calls += 1
+                if calls == 1:
+                    return {"name": name, "exit": 0, "detail": f"{name} executed 65 tests"}
+                image_root = artifact_root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                image_root.mkdir(parents=True)
+                paths = []
+                for number, _logical in enumerate(runner._expected_logical_screenshot_names(name), 1):
+                    image = image_root / f"{number:02d}.png"
+                    image.write_bytes(self.png_fixture())
+                    paths.append(image.relative_to(artifact_root / runner.LIVE_REVIEW_STAGE).as_posix())
+                return {"name": name, "exit": 0, "detail": f"{name} executed 1 tests", "screenshots": paths}
+
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[7], mock.patch.object(
+                runner, "_run_live_ios_test", side_effect=ios_test
+            ), mock.patch.object(runner.shutil, "copyfile", side_effect=OSError("controlled")):
+                result = runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(calls, 2)
+            self.assertEqual(result[0]["exit"], 1)
+            snapshot = json.loads((root / "live-evidence-progress.json").read_text())
+            self.assertEqual(snapshot["fault"], "safe-image-retention-failed")
+            self.assertEqual(snapshot["completed"][-1]["exit"], 0)
+
+    def test_diagnostic_copy_failure_preserves_native_reason_and_stops(self):
+        self.assert_diagnostic_retention_operational_failure("copy")
+
+    def test_diagnostic_scan_failure_preserves_native_reason_and_stops(self):
+        self.assert_diagnostic_retention_operational_failure("scan")
+
+    def test_diagnostic_scan_cleanup_denial_preserves_native_reason_and_stops(self):
+        self.assert_diagnostic_retention_operational_failure("scan-cleanup-denied")
+
+    def test_failed_ui_without_staged_screenshots_keeps_native_reason(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testBothAppearances"
+            check = {
+                "name": name,
+                "exit": 1,
+                "reason": "command-nonzero",
+                "diagnostic": "test-failures-recorded",
+                "test_counts": {"status": "unknown"},
+            }
+            self.assertIsNone(runner._retain_completed_review_images(root, [check]))
+            published = runner._published_live_result(check)
+            self.assertEqual(published["reason"], "command-nonzero")
+            self.assertNotIn("safeImages", published)
+
+    def test_successful_ui_without_staged_screenshots_fails_safe_retention(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testBothAppearances"
+            check = {"name": name, "exit": 0, "detail": "controlled"}
+            self.assertEqual(
+                runner._retain_completed_review_images(root, [check]),
+                "safe-image-retention-failed",
+            )
+
+    def test_diagnostic_attachment_marks_duplicate_logical_name_ambiguous(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bundle = root / "result.xcresult"
+            bundle.mkdir()
+            name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testLaunchShowsSafeConfigurationState"
+            logical = runner._expected_logical_screenshot_names(name)[0]
+
+            def export(_name, command, _cwd, _environment, _log):
+                output = Path(command[-1])
+                output.mkdir()
+                for filename in ("one.png", "two.png"):
+                    (output / filename).write_bytes(self.png_fixture())
+                (output / "manifest.json").write_text(json.dumps([{"attachments": [
+                    {"suggestedHumanReadableName": logical, "exportedFileName": "one.png"},
+                    {"suggestedHumanReadableName": logical, "exportedFileName": "two.png"},
+                ]}]), encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+            with mock.patch.object(runner, "_run_live_command", side_effect=export):
+                status, images, missing, problem, retention_failed = runner._retain_live_diagnostic_images(name, ROOT, root, bundle)
+            self.assertEqual(status, "attachment-missing")
+            self.assertEqual(images, [])
+            self.assertEqual(missing, [logical])
+            self.assertEqual(problem, "attachment-ambiguous")
+            self.assertFalse(retention_failed)
+
+    def test_diagnostic_attachment_rejects_duplicate_before_image_validation(self):
+        for case, contents in (
+            ("invalid-first", (b"invalid", self.png_fixture())),
+            ("invalid-second", (self.png_fixture(), b"invalid")),
+        ):
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                bundle = root / "result.xcresult"
+                bundle.mkdir()
+                name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testLaunchShowsSafeConfigurationState"
+                logical = runner._expected_logical_screenshot_names(name)[0]
+
+                def export(_name, command, _cwd, _environment, _log):
+                    output = Path(command[-1])
+                    output.mkdir()
+                    for filename, content in zip(("one.png", "two.png"), contents):
+                        (output / filename).write_bytes(content)
+                    (output / "manifest.json").write_text(json.dumps([{"attachments": [
+                        {"suggestedHumanReadableName": logical, "exportedFileName": "one.png"},
+                        {"suggestedHumanReadableName": logical, "exportedFileName": "two.png"},
+                    ]}]), encoding="utf-8")
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+                with mock.patch.object(runner, "_run_live_command", side_effect=export):
+                    status, images, missing, problem, retention_failed = runner._retain_live_diagnostic_images(
+                        name, ROOT, root, bundle
+                    )
+                self.assertEqual(status, "attachment-missing")
+                self.assertEqual(images, [])
+                self.assertEqual(missing, [logical])
+                self.assertEqual(problem, "attachment-ambiguous")
+                self.assertFalse(retention_failed)
+
     def test_live_progress_retries_only_bounded_windows_sharing_errors(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -258,7 +565,8 @@ class RunnerContractTests(unittest.TestCase):
             self.assertEqual(progress["completed"], checks)
             self.assertEqual(len(progress["completed"]), 31)
             self.assertEqual(progress["completed"][-1]["reason"], "negative-configuration-rejected")
-            self.assertEqual(progress["activeCommand"], "artifact-validation")
+            self.assertIsNone(progress["activeCommand"])
+            self.assertEqual(progress["runState"], "complete")
             self.assertEqual(progress["status"], "incomplete")
             self.assertFalse(progress["releaseEvidence"])
 
@@ -368,7 +676,7 @@ class RunnerContractTests(unittest.TestCase):
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], mock.patch.object(runner, "_run_live_ios_test", side_effect=missing_artifact), contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
             self.assertEqual(checks[0]["status"], "failed")
-            self.assertEqual(checks[0]["reason"], runner.LIVE_SETUP_FAILURE_REASON)
+            self.assertEqual(checks[0]["reason"], "safe-image-retention-failed")
             self.assertEqual(checks[0]["detail"], "live setup failed")
 
         with tempfile.TemporaryDirectory() as directory:
@@ -399,11 +707,25 @@ class RunnerContractTests(unittest.TestCase):
                     start_failure_name: ("command-start-failed", None),
                 }.get(name)
                 if failure is None:
+                    screenshots = []
+                    logical_names = runner._expected_logical_screenshot_names(name)
+                    if logical_names:
+                        directory = artifact_root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                        directory.mkdir(parents=True)
+                        for number, _ in enumerate(logical_names, 1):
+                            screenshot = directory / f"{number:02d}.png"
+                            screenshot.write_bytes(self.png_fixture())
+                            screenshots.append(
+                                screenshot.relative_to(
+                                    artifact_root / runner.LIVE_REVIEW_STAGE
+                                ).as_posix()
+                            )
                     return {
                         "name": name,
                         "status": "passed",
                         "exit": 0,
                         "detail": raw_output,
+                        "screenshots": screenshots,
                     }
                 reason, process_exit = failure
                 result = {
@@ -682,6 +1004,16 @@ class RunnerContractTests(unittest.TestCase):
         }
         published = runner._published_live_result(raw)
         self.assertEqual(runner._published_live_result(published), published)
+        unknown_collection = runner._published_live_result({
+            "name": "ios-65-unit", "exit": 1, "reason": "command-timeout",
+            "collectionProcessExitStatus": {"summary": "unknown"},
+        })
+        self.assertEqual(
+            unknown_collection["collectionProcessExitStatus"], {"summary": "unknown"}
+        )
+        self.assertEqual(
+            runner._published_live_result(unknown_collection), unknown_collection
+        )
 
     def test_failure_publication_redacts_environment_tokens_and_foreign_paths(self):
         with mock.patch.dict(os.environ, {"MCX19_TEST_SECRET": "unit-secret-123"}):
@@ -738,7 +1070,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(status, "available")
         self.assertEqual(failures[0]["sourceFile"], "ios/ACEClientApp/Tests.swift")
 
-    def test_summary_command_failure_uses_only_its_process_exit_metadata(self):
+    def test_summary_collection_exit_does_not_replace_xctest_process_exit(self):
         cases = (
             ("nonzero", runner.LiveCommandResult(1, "raw", "command-nonzero", 83), "command-nonzero", 83),
             ("timeout", runner.LiveCommandResult(1, "raw", "command-timeout"), "command-timeout", None),
@@ -752,7 +1084,11 @@ class RunnerContractTests(unittest.TestCase):
                 with self.subTest(case=case_name), mock.patch.object(
                     runner,
                     "_run_live_command",
-                    side_effect=(primary_result, summary_result),
+                    side_effect=(
+                        primary_result,
+                        summary_result,
+                        runner.LiveCommandResult(1, "raw", "command-start-failed"),
+                    ),
                 ):
                     result = runner._run_live_ios_test(
                         "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
@@ -764,12 +1100,16 @@ class RunnerContractTests(unittest.TestCase):
                 self.assertEqual(
                     manifest_result["diagnostic"], "result-summary-command-failed"
                 )
+                self.assertEqual(manifest_result["processExit"], 0)
+                self.assertIn("process exits: ios-65-unit=0", aggregate)
                 if process_exit is None:
-                    self.assertNotIn("processExit", manifest_result)
-                    self.assertNotIn("process exits:", aggregate)
+                    self.assertNotIn("collectionProcessExits", manifest_result)
+                    self.assertEqual(
+                        manifest_result["collectionProcessExitStatus"]["summary"],
+                        "unknown",
+                    )
                 else:
-                    self.assertEqual(manifest_result["processExit"], process_exit)
-                    self.assertIn("process exits: ios-65-unit=83", aggregate)
+                    self.assertEqual(manifest_result["collectionProcessExits"]["summary"], 83)
 
     def test_negative_configuration_result_has_fixed_outcomes_and_metadata(self):
         cases = (
@@ -1256,7 +1596,11 @@ class RunnerContractTests(unittest.TestCase):
         with mock.patch.dict(os.environ, environment, clear=True):
             self.assertEqual(
                 runner._live_execution_context(runner.LIVE_ARTIFACT_ROOT, expected_commit),
-                {"workflow": runner.LIVE_WORKFLOW},
+                {
+                    "workflow": runner.LIVE_WORKFLOW,
+                    "branch": runner.LIVE_BRANCH,
+                    "buildId": "controlled-build",
+                },
             )
             with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
                 runner._live_execution_context(Path("/private/tmp/not-approved"), expected_commit)
@@ -1644,7 +1988,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
         self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
-                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png")
+                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png")
         owned_paths = (
             "codemagic.yaml",
             "tools/run_tests.py",
