@@ -643,7 +643,7 @@ def test_native_cycle_returns_zero_only_after_pass_collection_and_final_publicat
             local.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
             local.setattr(diagnostic, "_native_cycle_destination", lambda: "platform=iOS Simulator,id=fixture")
             local.setenv(diagnostic.DIAGNOSTIC_MODE_ENVIRONMENT_KEY, diagnostic.NATIVE_CYCLE_MODE)
-            def collect_records(_commit, unit, _bundle):
+            def collect_records(_commit, unit, _bundle, _decode_deadline=None):
                 if path_diagnostic is not None:
                     unit["privateRecordCollectionDiagnostic"] = path_diagnostic
                 return collection
@@ -1078,8 +1078,323 @@ def test_destination_resolvers_use_their_bounded_ready_core_limits(monkeypatch):
     assert diagnostic.UNIT_SETUP_SECONDS == 90
     assert diagnostic.NATIVE_CYCLE_SETUP_SECONDS == 180
     assert diagnostic.UNIT_ALLOCATED_SECONDS == 266
-    assert diagnostic.NATIVE_CYCLE_ALLOCATED_SECONDS == 431
+    assert diagnostic.NATIVE_CYCLE_ALLOCATED_SECONDS == 461
     assert diagnostic.NATIVE_CYCLE_ALLOCATED_SECONDS < diagnostic.NATIVE_CYCLE_WORKFLOW_SECONDS == 480
+
+
+def _native_decoder_command(payloads):
+    def command(arguments, _timeout, _limit):
+        if arguments == ["xcrun", "xcresulttool", "--help"]:
+            return "complete", b"get"
+        if arguments == ["xcrun", "xcresulttool", "get", "--help"]:
+            return "complete", b"object"
+        if arguments == ["xcrun", "xcresulttool", "get", "object", "--help"]:
+            return "complete", b"--legacy --path --format --id"
+        identifier = arguments[arguments.index("--id") + 1] if "--id" in arguments else "root"
+        return payloads[identifier]
+    return command
+
+
+def test_private_decoder_process_keeps_stderr_private_and_bounds_combined_output(monkeypatch):
+    class Stream:
+        def __init__(self, descriptor):
+            self.descriptor = descriptor
+            self.closed = False
+
+        def fileno(self):
+            return self.descriptor
+
+        def close(self):
+            self.closed = True
+
+    class Process:
+        pid = 99
+
+        def __init__(self):
+            self.stdout = Stream(10)
+            self.stderr = Stream(11)
+
+        def poll(self):
+            return 0
+
+        def wait(self, timeout=None):
+            return 0
+
+        def kill(self):
+            pass
+
+    class Selector:
+        def __init__(self):
+            self.values = {}
+
+        def register(self, stream, _event, data):
+            self.values[stream.fileno()] = type("Key", (), {"fd": stream.fileno(), "fileobj": stream, "data": data})()
+
+        def get_map(self):
+            return self.values
+
+        def select(self, _timeout):
+            return [(key, None) for key in self.values.values()]
+
+        def unregister(self, stream):
+            self.values.pop(stream.fileno())
+
+        def close(self):
+            pass
+
+    process = Process()
+    overflow_process = Process()
+    processes = [process, overflow_process]
+    output = {10: [b"{}", b"", b"12345", b""], 11: [b"warning", b"", b"67890", b""]}
+    calls = []
+    terminated = []
+    monkeypatch.setattr(diagnostic, "_private_terminate", lambda item: terminated.append(item) or True)
+    monkeypatch.setattr(diagnostic.subprocess, "Popen", lambda *args, **kwargs: calls.append((args, kwargs)) or processes.pop(0))
+    monkeypatch.setattr(diagnostic.selectors, "DefaultSelector", Selector)
+    monkeypatch.setattr(diagnostic.os, "read", lambda descriptor, _size: output[descriptor].pop(0))
+
+    assert diagnostic._private_xcresult_command(["xcrun", "fixture"], 1, 9) == ("complete", b"{}")
+    assert diagnostic._private_xcresult_command(["xcrun", "fixture"], 1, 9) == ("output-limit", None)
+    assert calls[0][1]["stderr"] == diagnostic.subprocess.PIPE
+    assert process.stdout.closed and process.stderr.closed
+    assert overflow_process.stdout.closed and overflow_process.stderr.closed
+    assert terminated == [overflow_process]
+
+
+def test_private_decoder_termination_kills_its_group_after_leader_exit(monkeypatch):
+    class Process:
+        pid = 99
+
+        def poll(self):
+            return 0
+
+        def wait(self, timeout=None):
+            assert timeout == 1
+            return 0
+
+        def kill(self):
+            raise AssertionError("group kill should be used")
+
+    calls = []
+    kill_signal = object()
+    monkeypatch.setattr(diagnostic.signal, "SIGKILL", kill_signal, raising=False)
+    monkeypatch.setattr(diagnostic.os, "killpg", lambda pid, signal: calls.append((pid, signal)), raising=False)
+    assert diagnostic._private_terminate(Process()) is True
+    assert calls == [(99, kill_signal)]
+
+
+def test_private_decoder_termination_reports_a_bounded_cleanup_failure(monkeypatch):
+    class Process:
+        pid = 99
+
+        def poll(self):
+            return None
+
+        def kill(self):
+            pass
+
+        def wait(self, timeout=None):
+            assert timeout == 1
+            raise diagnostic.subprocess.TimeoutExpired("fixture", timeout)
+
+    monkeypatch.setattr(diagnostic.os, "killpg", lambda *_args: (_ for _ in ()).throw(OSError()), raising=False)
+    assert diagnostic._private_terminate(Process()) is False
+
+
+def test_private_decoder_reports_a_value_match_without_retaining_private_data(tmp_path, monkeypatch):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    candidate = b"sk-fixturetoken"
+    root = {
+        "_type": {"_name": "Root"},
+        "child": {"_type": {"_name": "Reference"}, "_value": {"id": {"_value": "child-one"}}},
+    }
+    child = {"message": candidate.decode("utf-8"), "_type": {"_name": "Message"}}
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
+        "root": ("complete", json.dumps(root).encode("utf-8")),
+        "child-one": ("complete", json.dumps(child).encode("utf-8")),
+    }))
+
+    result = diagnostic._private_decode_result_bundle(
+        bundle, candidate, "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 30
+    )
+
+    assert result == {
+        "status": "decoded-string-match",
+        "decodeReason": "value-observed",
+        "inspectedScope": "decoded-result-object-graph",
+        "decodedGraphCoverage": "complete-graph",
+        "flaggedRecordCoverage": "unverified",
+        "decodedObjectCount": 2,
+        "observedMatchLocation": "value",
+    }
+    safe = json.dumps(result)
+    assert candidate.decode("utf-8") not in safe
+    assert "child-one" not in safe
+    assert "private" not in safe
+
+
+def test_private_decoder_distinguishes_reference_identifiers_from_values(tmp_path, monkeypatch):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    candidate = b"sk-fixturetoken"
+    root = {
+        "reference": {
+            "_type": {"_name": "Reference"},
+            "_value": {"id": {"_value": candidate.decode("utf-8")}},
+        }
+    }
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
+        "root": ("complete", json.dumps(root).encode("utf-8")),
+        candidate.decode("utf-8"): ("complete", b"{}"),
+    }))
+
+    result = diagnostic._private_decode_result_bundle(
+        bundle, candidate, "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 30
+    )
+
+    assert result["status"] == "reference-id-match"
+    assert result["observedMatchLocation"] == "reference-id"
+    assert result["flaggedRecordCoverage"] == "unverified"
+    assert candidate.decode("utf-8") not in json.dumps(result)
+
+
+def test_private_decoder_accepts_direct_reference_ids_and_rejects_invalid_references():
+    candidate = b"sk-fictional"
+    direct = {
+        "_type": {"_name": "Reference"},
+        "id": {"_type": {"_name": "String"}, "_value": "synthetic0~synthetic=="},
+    }
+    assert diagnostic._private_decoded_values(direct, candidate) == (
+        False, False, ["synthetic0~synthetic=="], True
+    )
+    matching = direct | {"id": {"_type": {"_name": "String"}, "_value": candidate.decode("utf-8")}}
+    assert diagnostic._private_decoded_values(matching, candidate) == (
+        False, True, [candidate.decode("utf-8")], True
+    )
+    invalid = {"_type": {"_name": "Reference"}, "id": {"_value": "bad/path"}}
+    assert diagnostic._private_decoded_values(invalid, candidate) == (False, False, [], False)
+
+
+def test_private_decoder_marks_invalid_unicode_and_scalar_roots_incomplete(tmp_path, monkeypatch):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    candidate = b"sk-fictional"
+    assert diagnostic._private_decoded_values({"message": "\ud800"}, candidate) == (
+        False, False, [], False
+    )
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
+        "root": ("complete", b"null"),
+    }))
+    result = diagnostic._private_decode_result_bundle(
+        bundle, candidate, "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 30
+    )
+    assert result["status"] == "coverage-incomplete"
+    assert result["decodedGraphCoverage"] == "partial-graph"
+
+
+@pytest.mark.parametrize("child", [b"null", b'"scalar"'])
+def test_private_decoder_marks_scalar_child_objects_incomplete(tmp_path, monkeypatch, child):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    root = {
+        "reference": {"_type": {"_name": "Reference"}, "id": {"_value": "child"}},
+    }
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
+        "root": ("complete", json.dumps(root).encode("utf-8")),
+        "child": ("complete", child),
+    }))
+    result = diagnostic._private_decode_result_bundle(
+        bundle, b"sk-fictional", "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 30
+    )
+    assert result["status"] == "coverage-incomplete"
+    assert result["decodedGraphCoverage"] == "partial-graph"
+    assert result["decodeReason"] == "child-schema-incomplete"
+
+
+def test_private_decoder_caps_its_total_time_and_object_reads(tmp_path, monkeypatch):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    candidate = b"sk-fictional"
+    references = [
+        {"_type": {"_name": "Reference"}, "id": {"_value": f"id{number}"}}
+        for number in range(diagnostic.PRIVATE_DECODE_MAX_OBJECTS + 2)
+    ]
+    payloads = {"root": ("complete", json.dumps(references).encode("utf-8"))}
+    payloads.update({f"id{number}": ("complete", b"{}") for number in range(100)})
+    calls = []
+    command = _native_decoder_command(payloads)
+
+    def counted(arguments, timeout, limit):
+        calls.append((arguments, timeout, limit))
+        return command(arguments, timeout, limit)
+
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", counted)
+    result = diagnostic._private_decode_result_bundle(
+        bundle, candidate, "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 600
+    )
+    object_reads = [arguments for arguments, _timeout, _limit in calls if "--path" in arguments]
+    assert result["decodedGraphCoverage"] == "partial-graph"
+    assert result["decodeReason"] == "object-limit"
+    assert len(object_reads) == diagnostic.PRIVATE_DECODE_MAX_OBJECTS
+    assert all(timeout <= 5 for _arguments, timeout, _limit in calls)
+
+@pytest.mark.parametrize(
+    ("root_result", "expected_status"),
+    [
+        (("complete", b'{"message":"ordinary"}'), "coverage-incomplete"),
+        (("output-limit", None), "decode-unavailable"),
+        (("command-failed", None), "decode-unavailable"),
+        (("complete", b"{"), "decode-unavailable"),
+    ],
+)
+def test_private_decoder_fails_closed_for_negative_limited_and_malformed_results(
+    tmp_path, monkeypatch, root_result, expected_status
+):
+    bundle = tmp_path / "unit.xcresult"
+    bundle.mkdir()
+    candidate = b"sk-fixturetoken"
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({"root": root_result}))
+
+    result = diagnostic._private_decode_result_bundle(
+        bundle, candidate, "records/unit.xcresult/Data/private", diagnostic.time.monotonic() + 30
+    )
+
+    assert result["status"] == expected_status
+    assert result["flaggedRecordCoverage"] == "unverified"
+    assert candidate.decode("utf-8") not in json.dumps(result)
+
+
+def test_sensitive_collection_decodes_privately_and_withholds_the_archive(tmp_path, monkeypatch):
+    root = tmp_path / "raw"
+    bundle = root / "unit.xcresult" / "Data"
+    bundle.mkdir(parents=True)
+    candidate = b"sk-fixturetoken"
+    (bundle / "opaque").write_bytes((b" " * 64) + candidate + (b" " * 64))
+    for name in (
+        "unit.log", "unit-summary.json", "simctl-help-ui.log",
+        "unit-simctl-appearance-query.log", "unit-simctl-content_size-query.log",
+    ):
+        (root / name).write_text("controlled", encoding="utf-8")
+    (root / "unit-summary.json").write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(diagnostic, "ROOT", root)
+    monkeypatch.setattr(diagnostic, "PRIVATE_ROOT", tmp_path / "private")
+    attachments = root / "attachments"
+    attachments.mkdir()
+    monkeypatch.setattr(diagnostic, "_native_attachment_export", lambda _bundle, _unit: attachments)
+    monkeypatch.setattr(diagnostic, "_private_xcresult_command", _native_decoder_command({
+        "root": ("complete", json.dumps({"value": candidate.decode("utf-8")}).encode("utf-8")),
+    }))
+    unit = {"summaryStatus": "available", "processExit": 65}
+
+    assert diagnostic._collect_native_cycle_records(
+        "a" * 40, unit, root / "unit.xcresult", diagnostic.time.monotonic() + 30
+    ) == "sensitive-record"
+    assert unit["privateDecodeDiagnostic"]["status"] == "decoded-string-match"
+    safe = json.dumps(unit)
+    assert candidate.decode("utf-8") not in safe
+    assert "opaque" not in safe
+    assert not (tmp_path / "private" / diagnostic.PRIVATE_ARCHIVE_NAME).exists()
 
 
 def test_unit_readiness_failure_publishes_safe_fixed_result_before_probes(tmp_path, monkeypatch):

@@ -8,6 +8,7 @@ import math
 import os
 from pathlib import Path
 import re
+import selectors
 import shutil
 import signal
 import stat
@@ -73,10 +74,12 @@ UNIT_ALLOCATED_SECONDS = (
 NATIVE_CYCLE_WORKFLOW_SECONDS = 480
 NATIVE_CYCLE_ATTACHMENT_SECONDS = 30
 NATIVE_CYCLE_PACKAGING_SECONDS = 45
+NATIVE_CYCLE_DECODER_SECONDS = 30
 NATIVE_CYCLE_ALLOCATED_SECONDS = (
     NATIVE_CYCLE_SETUP_SECONDS + UNIT_UI_SYNTAX_SECONDS + (2 * UNIT_SETTINGS_QUERY_SECONDS)
     + UNIT_XCODEBUILD_SECONDS + UNIT_SUMMARY_SECONDS
     + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS
+    + NATIVE_CYCLE_DECODER_SECONDS
     + (UNIT_PUBLICATION_COUNT * UNIT_PUBLICATION_SECONDS)
 )
 PRIVATE_RECORD_MAX_FILE_BYTES = 64 * 1024 * 1024
@@ -93,6 +96,13 @@ PRIVATE_ARCHIVE_PATH = re.compile(r"records/[A-Za-z0-9._/-]{1,1024}")
 PRIVATE_RESULT_BUNDLE_ARCHIVE_PATH = re.compile(
     r"records/unit\.xcresult/[A-Za-z0-9._/~=-]{1,1024}"
 )
+PRIVATE_DECODE_MAX_OBJECTS = 64
+PRIVATE_DECODE_MAX_OBJECT_BYTES = 1024 * 1024
+PRIVATE_DECODE_MAX_TOTAL_BYTES = 8 * 1024 * 1024
+PRIVATE_DECODE_MAX_NODES = 100_000
+PRIVATE_DECODE_MAX_STRING_CHARACTERS = 512 * 1024
+PRIVATE_DECODE_MAX_IDENTIFIER_CHARACTERS = 512
+PRIVATE_DECODE_IDENTIFIER = re.compile(r"[A-Za-z0-9_~=-]{1,512}")
 
 
 def redact(text: str) -> str:
@@ -383,10 +393,14 @@ class PrivateRecordCollectionError(ValueError):
         reason: str,
         diagnostic: dict[str, object] | None = None,
         sensitive_matcher: str | None = None,
+        private_candidate: bytes | None = None,
+        private_record_identity: str | None = None,
     ) -> None:
         super().__init__(reason)
         self.diagnostic = diagnostic
         self.sensitive_matcher = sensitive_matcher
+        self.private_candidate = private_candidate
+        self.private_record_identity = private_record_identity
 
 
 def _archive_path_source(archive_path: str) -> str:
@@ -576,6 +590,11 @@ def _private_file_metadata(path: Path) -> tuple[int, str]:
                         "sensitive-record",
                         sensitive_matcher=matcher,
                         diagnostic=classification,
+                        private_candidate=(
+                            PRIVATE_RECORD_CREDENTIAL_PREFIX.search(inspected).group()
+                            if matcher == "credential-prefix"
+                            else None
+                        ),
                     )
                 digest.update(chunk)
                 carry = inspected[-256:]
@@ -632,6 +651,302 @@ def _native_failure_export(summary: Path, private_root: Path) -> Path:
     )
 
 
+def _private_terminate(process: subprocess.Popen[bytes]) -> bool:
+    """Stop only the decoder process group that this helper started."""
+
+    try:
+        os.killpg(process.pid, signal.SIGKILL)
+    except (AttributeError, OSError):
+        if process.poll() is None:
+            try:
+                process.kill()
+            except OSError:
+                return False
+    try:
+        process.wait(timeout=1)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return True
+
+
+def _private_xcresult_command(
+    command: list[str], timeout_seconds: float, output_limit: int
+) -> tuple[str, bytes | None]:
+    """Run native decoding with private, bounded output and no log file."""
+
+    if timeout_seconds <= 0 or output_limit <= 0:
+        return "timeout", None
+    process: subprocess.Popen[bytes] | None = None
+    selector: selectors.BaseSelector | None = None
+    try:
+        process = subprocess.Popen(
+            command,
+            cwd=rt.ROOT / "ios/ACEClientApp",
+            env=diagnostic_command_environment({}),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            start_new_session=True,
+        )
+        if process.stdout is None or process.stderr is None:
+            _private_terminate(process)
+            return "start-failed", None
+        selector = selectors.DefaultSelector()
+        selector.register(process.stdout, selectors.EVENT_READ, "stdout")
+        selector.register(process.stderr, selectors.EVENT_READ, "stderr")
+        deadline = time.monotonic() + timeout_seconds
+        content = bytearray()
+        combined_size = 0
+        while selector.get_map():
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return ("timeout", None) if _private_terminate(process) else ("cleanup-failed", None)
+            events = selector.select(min(remaining, 0.1))
+            for key, _event in events:
+                chunk = os.read(key.fd, min(64 * 1024, output_limit - combined_size + 1))
+                if not chunk:
+                    selector.unregister(key.fileobj)
+                    continue
+                combined_size += len(chunk)
+                if combined_size > output_limit:
+                    return ("output-limit", None) if _private_terminate(process) else ("cleanup-failed", None)
+                if key.data == "stdout":
+                    content.extend(chunk)
+        exit_code = process.wait(timeout=max(0.1, deadline - time.monotonic()))
+        return ("complete", bytes(content)) if exit_code == 0 else ("command-failed", None)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        if process is not None:
+            return ("start-failed", None) if _private_terminate(process) else ("cleanup-failed", None)
+        return "start-failed", None
+    finally:
+        if selector is not None:
+            selector.close()
+        if process is not None:
+            if process.stdout is not None:
+                process.stdout.close()
+            if process.stderr is not None:
+                process.stderr.close()
+
+
+def _private_type_name(value: object) -> str | None:
+    if not isinstance(value, dict):
+        return None
+    descriptor = value.get("_type")
+    if not isinstance(descriptor, dict):
+        return None
+    name = descriptor.get("_name")
+    return name if isinstance(name, str) else None
+
+
+def _private_reference_identifier(value: object) -> tuple[str | None, bool]:
+    """Read only an identifier in a JSON value that declares Reference type."""
+
+    if _private_type_name(value) != "Reference" or not isinstance(value, dict):
+        return None, False
+    encoded = value.get("_value")
+    identifier = encoded.get("id") if isinstance(encoded, dict) else value.get("id")
+    if isinstance(identifier, dict):
+        identifier = identifier.get("_value")
+    if (
+        not isinstance(identifier, str)
+        or len(identifier) > PRIVATE_DECODE_MAX_IDENTIFIER_CHARACTERS
+        or PRIVATE_DECODE_IDENTIFIER.fullmatch(identifier) is None
+    ):
+        return None, True
+    return identifier, True
+
+
+def _private_decoded_values(
+    value: object, candidate: bytes
+) -> tuple[bool, bool, list[str], bool]:
+    """Inspect decoded values, excluding schema labels and Reference identifiers."""
+
+    pending = [value]
+    references: list[str] = []
+    nodes = 0
+    value_match = False
+    reference_match = False
+    while pending:
+        current = pending.pop()
+        nodes += 1
+        if nodes > PRIVATE_DECODE_MAX_NODES:
+            return value_match, reference_match, references, False
+        identifier, is_reference = _private_reference_identifier(current)
+        if is_reference:
+            if identifier is None:
+                return value_match, reference_match, references, False
+            references.append(identifier)
+            reference_match = reference_match or candidate in identifier.encode("utf-8")
+            continue
+        if isinstance(current, dict):
+            pending.extend(
+                child for key, child in current.items()
+                if key not in {"_type", "formatDescription"}
+            )
+        elif isinstance(current, list):
+            pending.extend(current)
+        elif isinstance(current, str):
+            if len(current) > PRIVATE_DECODE_MAX_STRING_CHARACTERS:
+                return value_match, reference_match, references, False
+            try:
+                encoded = current.encode("utf-8")
+            except UnicodeEncodeError:
+                return value_match, reference_match, references, False
+            if candidate in encoded and _sensitive_record_matcher(encoded) is not None:
+                value_match = True
+    return value_match, reference_match, references, True
+
+
+def _private_decode_result_bundle(
+    bundle: Path, candidate: bytes, private_record_identity: str | None, deadline: float
+) -> dict[str, object]:
+    """Compare a private candidate with native decoded strings, and fail closed."""
+
+    def unavailable(reason: str) -> dict[str, object]:
+        return {
+            "status": "decode-unavailable",
+            "decodeReason": reason,
+            "inspectedScope": "none",
+            "decodedGraphCoverage": "unavailable",
+            "flaggedRecordCoverage": "unverified",
+            "decodedObjectCount": 0,
+            "observedMatchLocation": "not-seen",
+        }
+
+    if not candidate or private_record_identity is None or not bundle.is_dir() or bundle.is_symlink():
+        return unavailable("input-unavailable")
+
+    decoder_deadline = min(deadline, time.monotonic() + NATIVE_CYCLE_DECODER_SECONDS)
+
+    def command(arguments: list[str], maximum_bytes: int) -> tuple[str, bytes | None]:
+        remaining = decoder_deadline - time.monotonic()
+        if remaining <= 0:
+            return "timeout", None
+        return _private_xcresult_command(arguments, min(5.0, remaining), maximum_bytes)
+
+    top_status, top_help = command(["xcrun", "xcresulttool", "--help"], 64 * 1024)
+    if top_status != "complete" or top_help is None or b"get" not in top_help:
+        return unavailable("top-help-unavailable")
+    get_status, get_help = command(["xcrun", "xcresulttool", "get", "--help"], 64 * 1024)
+    if get_status != "complete" or get_help is None or b"object" not in get_help:
+        return unavailable("get-help-unavailable")
+    object_status, object_help = command(
+        ["xcrun", "xcresulttool", "get", "object", "--help"], 64 * 1024
+    )
+    required_options = (b"--legacy", b"--path", b"--format", b"--id")
+    if (
+        object_status != "complete"
+        or object_help is None
+        or not all(option in object_help for option in required_options)
+    ):
+        return unavailable("object-help-unsupported")
+
+    root_status, root_data = command(
+        [
+            "xcrun", "xcresulttool", "get", "object", "--legacy", "--path",
+            str(bundle), "--format", "json",
+        ],
+        PRIVATE_DECODE_MAX_OBJECT_BYTES,
+    )
+    if root_status != "complete" or root_data is None:
+        return unavailable(f"root-{root_status}")
+    try:
+        root = json.loads(root_data)
+    except (ValueError, UnicodeDecodeError, RecursionError):
+        return unavailable("root-schema-unreadable")
+
+    pending: list[str] = []
+    visited: set[str] = set()
+    decoded_object_count = 0
+    total_bytes = len(root_data)
+    if total_bytes > PRIVATE_DECODE_MAX_TOTAL_BYTES:
+        return unavailable("total-output-limit")
+    value_match = False
+    reference_match = False
+    complete_graph = True
+    reason = "flagged-record-coverage-unverified"
+    current: object | None = root
+    if not isinstance(root, (dict, list)):
+        complete_graph = False
+        reason = "root-schema-incomplete"
+    while current is not None:
+        decoded_object_count += 1
+        current_value_match, current_reference_match, references, complete_values = _private_decoded_values(
+            current, candidate
+        )
+        value_match = value_match or current_value_match
+        reference_match = reference_match or current_reference_match
+        complete_graph = complete_graph and complete_values
+        if not complete_values:
+            reason = "decoded-values-incomplete"
+        for identifier in references:
+            if identifier not in visited and identifier not in pending:
+                pending.append(identifier)
+        if not pending:
+            break
+        if decoded_object_count >= PRIVATE_DECODE_MAX_OBJECTS:
+            complete_graph = False
+            reason = "object-limit"
+            break
+        identifier = pending.pop()
+        visited.add(identifier)
+        remaining_bytes = PRIVATE_DECODE_MAX_TOTAL_BYTES - total_bytes
+        if remaining_bytes <= 0:
+            complete_graph = False
+            reason = "total-output-limit"
+            break
+        child_status, child_data = command(
+            [
+                "xcrun", "xcresulttool", "get", "object", "--legacy", "--path",
+                str(bundle), "--id", identifier, "--format", "json",
+            ],
+            min(PRIVATE_DECODE_MAX_OBJECT_BYTES, remaining_bytes),
+        )
+        if child_status != "complete" or child_data is None:
+            complete_graph = False
+            reason = f"child-{child_status}"
+            break
+        if len(child_data) > remaining_bytes:
+            complete_graph = False
+            reason = "total-output-limit"
+            break
+        total_bytes += len(child_data)
+        try:
+            child = json.loads(child_data)
+        except (ValueError, UnicodeDecodeError, RecursionError):
+            complete_graph = False
+            reason = "child-schema-unreadable"
+            break
+        if not isinstance(child, (dict, list)):
+            complete_graph = False
+            reason = "child-schema-incomplete"
+            break
+        current = child
+
+    location = (
+        "both" if value_match and reference_match
+        else "value" if value_match
+        else "reference-id" if reference_match
+        else "not-seen"
+    )
+    return {
+        "status": (
+            "decoded-string-match" if value_match
+            else "reference-id-match" if reference_match
+            else "coverage-incomplete"
+        ),
+        "decodeReason": (
+            "value-observed" if value_match
+            else "reference-id-observed" if reference_match
+            else reason
+        ),
+        "inspectedScope": "decoded-result-object-graph",
+        "decodedGraphCoverage": "complete-graph" if complete_graph else "partial-graph",
+        "flaggedRecordCoverage": "unverified",
+        "decodedObjectCount": decoded_object_count,
+        "observedMatchLocation": location,
+    }
+
+
 def _private_record_entries(
     sources: list[tuple[Path, str, str]], state: str
 ) -> list[dict[str, object]]:
@@ -673,6 +988,9 @@ def _private_record_entries(
                 raise PrivateRecordCollectionError(
                     "sensitive-record",
                     record_diagnostic,
+                    sensitive_matcher=error.sensitive_matcher,
+                    private_candidate=error.private_candidate,
+                    private_record_identity=archive_path,
                 ) from error
             raise
         entries.append({
@@ -744,7 +1062,9 @@ def _verify_private_archive(archive: Path, expected: dict[str, tuple[object, obj
         raise PrivateRecordCollectionError("archive-validation-failed") from error
 
 
-def _collect_native_cycle_records(commit: str, unit: dict[str, object], bundle: Path) -> str:
+def _collect_native_cycle_records(
+    commit: str, unit: dict[str, object], bundle: Path, decode_deadline: float | None = None
+) -> str:
     """Archive one command-derived record set, or return a safe failure reason."""
 
     try:
@@ -810,6 +1130,14 @@ def _collect_native_cycle_records(commit: str, unit: dict[str, object], bundle: 
         _write_private_archive(private_root, [*sources, inventory_source], [*entries, *inventory_entry])
         return "complete"
     except PrivateRecordCollectionError as error:
+        if (
+            error.sensitive_matcher == "credential-prefix"
+            and error.private_candidate is not None
+            and decode_deadline is not None
+        ):
+            unit["privateDecodeDiagnostic"] = _private_decode_result_bundle(
+                bundle, error.private_candidate, error.private_record_identity, decode_deadline
+            )
         if error.diagnostic is not None:
             unit["privateRecordCollectionDiagnostic"] = error.diagnostic
         return str(error)
@@ -996,8 +1324,11 @@ def native_cycle_main() -> int:
     ) else "failed"
     collection = (
         "collection-time-reserve-exhausted"
-        if time.monotonic() + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS >= deadline
-        else _collect_native_cycle_records(commit, unit, bundle)
+        if time.monotonic() + NATIVE_CYCLE_ATTACHMENT_SECONDS + NATIVE_CYCLE_PACKAGING_SECONDS + NATIVE_CYCLE_DECODER_SECONDS + UNIT_PUBLICATION_SECONDS >= deadline
+        else _collect_native_cycle_records(
+            commit, unit, bundle,
+            deadline - NATIVE_CYCLE_PACKAGING_SECONDS - UNIT_PUBLICATION_SECONDS,
+        )
     )
     unit["privateRecordCollection"] = collection
     report["diagnosticStatus"] = "completed-not-release-evidence"
