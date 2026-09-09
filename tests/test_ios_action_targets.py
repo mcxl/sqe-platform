@@ -26,9 +26,23 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     assert "button.isHittable" in source
     assert "XCTAssertGreaterThanOrEqual(button.frame.width, 44" in source
     assert "XCTAssertGreaterThanOrEqual(button.frame.height, 44" in source
-    assert source.count("assertMinimumActionTargets(in: app)") == 3
+    def method_source(name):
+        body = source.split(f"func {name}(", 1)[1]
+        return re.split(r"\n    (?:private )?func ", body, maxsplit=1)[0]
+
+    action_methods = (
+        "testSignInPasswordFieldIsSecure",
+        "testFictionalReleaseHasApprovedCopyControls",
+        "testAllControlledScenariosShowExpectedStateAndAudit",
+        "testNormalDeviceSettings",
+        "assertFullReleaseInformation",
+    )
+    for method in action_methods:
+        assert "assertMinimumActionTargets(in: app)" in method_source(method)
     assert source.count("try app.performAccessibilityAudit(for: .all, auditIssueHandler)") == 1
-    assert source.count("try assertAccessibilityAudit(in: app, scenario:") == 4
+    audit_methods = (*action_methods[:4], "testLaunchShowsSafeConfigurationState")
+    for method in audit_methods:
+        assert "try assertAccessibilityAudit(in: app, scenario:" in method_source(method)
     assert source.count("performAccessibilityAudit") == 1
     for scenario in ('scenario: "configuration"', 'scenario: "signIn"', 'scenario: "release"', "scenario: scenario"):
         assert scenario in source

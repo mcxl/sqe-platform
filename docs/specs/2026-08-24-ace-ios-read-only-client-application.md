@@ -1290,6 +1290,47 @@ High-cost operations include:
 - Fresh Sol record.
 - Exact-head human merge approval.
 
+## MCX19-B Candidate Verification
+
+MCX19-A records a focused diagnostic at `3259048186916941bf3557d55503e7375e432c57`.
+It does not establish complete candidate evidence.
+Bind each new run and its retained artifacts to the exact tested commit.
+A change to a test, runner, workflow, or application creates a new verification candidate.
+
+### Acceptance Matrix
+
+| Check | Required Evidence | Acceptance Condition |
+| --- | --- | --- |
+| Candidate identity | Repository, branch, baseline, exact commit, changed files, and platform | The approved candidate matches the clean native checkout. |
+| Automated checks | Separate unit, UI, evidence-contract, and negative-configuration results | Every required check completes with the expected result and test count. |
+| Native result integrity | Process exit, passed tests, failed tests, and skipped tests | Process success alone cannot establish a test pass. Required tests cannot be skipped. |
+| Forced appearance | Named screenshots and native assertions for both appearances on both specified devices | The displayed appearance matches the test setting. |
+| Normal device settings | Simulator setting values, separate results, and screenshots without the app appearance override | The app follows the verified system setting. Record restoration of changed simulator settings. |
+| Screens and states | Named screenshots for every screen and state in the Accessibility Test Matrix | Inspect the actual images. Reject missing or unmatched images. |
+| Orientation | Portrait and landscape evidence for every required screen and state | Information remains readable and required controls remain reachable. |
+| Dynamic Type | Default, extra large, and accessibility extra-extra-extra large evidence; automated coverage of every iOS 26 size | Complete information remains available at every required size. Record the tested setting with each result. |
+| Additional accessibility settings | Bold Text, Reduce Motion, and Increase Contrast checks in the required combinations | Each setting meets the Accessibility Decisions and Accessibility Test Matrix. |
+| Accessibility audits | Full native audit results and the manual checklist | Do not hide elements, filter failures, or weaken assertions to obtain a pass. |
+| Retained artifacts | Sanitised result manifest, named fictional screenshots, and hashes | Validate the required artifact set before publication. Keep raw logs and result bundles private. |
+| Manual inspection | An inspection record linked to the exact commit and image hashes | A screenshot file alone does not establish a visual pass. |
+| Other delivery gates | The Required Delivery Evidence listed above | Simulator fixtures do not prove a live server connection or replace physical-device evidence. |
+
+### Evidence Collection Limits
+
+The manual workflow may publish only the explicitly allowed, checked review artifacts.
+Do not publish raw Xcode logs, raw result bundles, credentials, or real client information.
+Controlled screenshots must use fictional scenarios and contain no entered credentials.
+An artifact export failure or a missing required image must fail its collection check.
+Keep collection results separate from visual inspection and release acceptance.
+
+Record unavailable or untested settings as pending.
+Do not infer Dynamic Type support from appearance evidence.
+Do not infer normal device-setting behaviour from an app launch override.
+Do not infer normal screenshot behaviour from an XCTest attachment alone.
+Retain `releaseEvidence: false` for collection output.
+An incomplete progress record cannot satisfy this matrix.
+Keep `UNVERIFIED — UI QA INCOMPLETE` until all required native and manual checks pass.
+
 ## Further Notes
 
 This application is a read-only adapter to ACE.

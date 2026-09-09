@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 import XCTest
 
 final class ACEClientAppUITests: XCTestCase {
@@ -20,10 +21,34 @@ final class ACEClientAppUITests: XCTestCase {
         return app
     }
 
+    private func launchWithNormalDeviceSettings(_ scenario: String) -> XCUIApplication {
+        XCTAssertNil(
+            ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"],
+            "Normal-device evidence must not receive a forced appearance"
+        )
+        let app = XCUIApplication()
+        app.launchEnvironment["ACE_UI_TEST_SCENARIO"] = scenario
+        app.launchEnvironment.removeValue(forKey: "ACE_UI_TEST_APPEARANCE")
+        XCTAssertNil(
+            app.launchEnvironment["ACE_UI_TEST_APPEARANCE"],
+            "Normal-device launch must omit ACE_UI_TEST_APPEARANCE"
+        )
+        app.launch()
+        return app
+    }
+
+    private func requiredNormalDeviceAppearance() -> String {
+        guard let appearance = ProcessInfo.processInfo.environment["ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE"],
+              ["light", "dark"].contains(appearance) else {
+            XCTFail("ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE must be light or dark")
+            return "light"
+        }
+        return appearance
+    }
+
     func testBothAppearances() {
         for appearance in ["light", "dark"] {
             let app = launch("release", appearance: appearance)
-            defer { app.terminate() }
             let indicator = app.staticTexts["Effective interface style"]
             XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
             let displayedAppearance = XCTNSPredicateExpectation(
@@ -32,16 +57,15 @@ final class ACEClientAppUITests: XCTestCase {
             XCTAssertEqual(XCTWaiter.wait(for: [displayedAppearance], timeout: 5), .completed,
                            "The displayed view must use \(appearance) appearance")
             XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
-            let screenshot = XCTAttachment(screenshot: app.screenshot())
-            screenshot.name = "Fictional release — \(appearance)"
-            screenshot.lifetime = .keepAlways
-            add(screenshot)
+            addScreenshot(of: app, named: "Fictional release — forced-\(appearance)")
+            app.terminate()
         }
     }
 
     func testLaunchShowsSafeConfigurationState() throws {
         let app = launch("configuration")
         XCTAssertTrue(app.staticTexts["This app is not configured for access."].exists)
+        addScreenshot(of: app, named: "Controlled state — configuration — \(requiredAppearance())")
         try assertAccessibilityAudit(in: app, scenario: "configuration")
     }
 
@@ -52,6 +76,7 @@ final class ACEClientAppUITests: XCTestCase {
         XCTAssertEqual(heading.label, "Sign In")
         XCTAssertTrue(app.secureTextFields["Password"].exists)
         assertMinimumActionTargets(in: app)
+        addScreenshot(of: app, named: "Controlled state — signIn — \(requiredAppearance())")
         try assertAccessibilityAudit(in: app, scenario: "signIn")
     }
 
@@ -66,12 +91,17 @@ final class ACEClientAppUITests: XCTestCase {
         let copyButtons = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy "))
         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must not expose an unapproved copy control")
         assertMinimumActionTargets(in: app)
+        try assertAccessibilityAudit(in: app, scenario: "release-initial")
+        assertFullReleaseInformation(in: app, appearance: requiredAppearance())
+        assertMinimumActionTargets(in: app)
+        addScreenshot(of: app, named: "Fictional release — approved-controls — \(requiredAppearance())")
         try assertAccessibilityAudit(in: app, scenario: "release")
         app.terminate()
 
         let confirmationApp = launch("copyConfirmation")
         confirmationApp.buttons["Copy Engagement name"].tap()
         XCTAssertTrue(confirmationApp.staticTexts["Copied Engagement name."].exists, "Copy confirmation must be available to VoiceOver")
+        addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(requiredAppearance())")
         confirmationApp.terminate()
     }
 
@@ -95,6 +125,7 @@ final class ACEClientAppUITests: XCTestCase {
             )
             XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
             assertMinimumActionTargets(in: app)
+            addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
             try assertAccessibilityAudit(in: app, scenario: scenario)
             app.terminate()
         }
@@ -103,9 +134,121 @@ final class ACEClientAppUITests: XCTestCase {
     func testReleaseOrientationHooks() {
         let app = launch("release")
         XCUIDevice.shared.orientation = .landscapeLeft
+        assertOrientation(in: app, landscape: true)
         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
+        addScreenshot(of: app, named: "Release — landscape-left — \(requiredAppearance())")
         XCUIDevice.shared.orientation = .portrait
+        assertOrientation(in: app, landscape: false)
         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
+        addScreenshot(of: app, named: "Release — portrait — \(requiredAppearance())")
+    }
+
+    private func assertOrientation(in app: XCUIApplication, landscape: Bool) {
+        let displayedOrientation = XCTNSPredicateExpectation(
+            predicate: NSPredicate { _, _ in
+                let frame = app.frame
+                return landscape ? frame.width > frame.height : frame.height > frame.width
+            },
+            object: nil
+        )
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [displayedOrientation], timeout: 5),
+            .completed,
+            "The displayed app must match the requested orientation"
+        )
+    }
+
+    func testNormalDeviceSettings() throws {
+        let expectedAppearance = requiredNormalDeviceAppearance()
+        XCUIDevice.shared.orientation = .portrait
+        let app = launchWithNormalDeviceSettings("release")
+        defer { app.terminate() }
+        let indicator = app.staticTexts["Effective interface style"]
+        XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+        let displayedAppearance = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", expectedAppearance), object: indicator
+        )
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [displayedAppearance], timeout: 5),
+            .completed,
+            "The displayed view must use the simulator's \(expectedAppearance) appearance"
+        )
+        assertMinimumActionTargets(in: app)
+        try assertAccessibilityAudit(in: app, scenario: "release-normal-device-settings-initial")
+        assertFullReleaseInformation(in: app, appearance: "normal-device-settings-\(expectedAppearance)")
+        assertMinimumActionTargets(in: app)
+        addScreenshot(of: app, named: "Fictional release — normal-device-settings — \(expectedAppearance)")
+        try assertAccessibilityAudit(in: app, scenario: "release-normal-device-settings")
+    }
+
+    private func assertFullReleaseInformation(in app: XCUIApplication, appearance: String) {
+        let values = [
+            ("Engagement name", "Fictional Engagement"),
+            ("Review status", "RELEASED"),
+            ("Release version", "1"),
+            ("Published date and time", "2026-08-24T10:15:30Z"),
+            ("Conclusion title", "Fictional conclusion"),
+            ("Conclusion summary", "Fictional summary"),
+            ("Evidence reference", "FICTIONAL-REF-001"),
+            ("Action description", "Fictional action"),
+            ("Action owner", "Fictional owner"),
+            ("Action target date", "2026-08-25"),
+            ("Action status", "OPEN")
+        ]
+        for (field, value) in values {
+            let exactLabel = "\(field): \(value)"
+            let row = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label == %@", exactLabel))
+                .firstMatch
+            scrollUntilVisible(row, in: app, field: field)
+            assertMinimumActionTargets(in: app)
+            addScreenshot(of: app, named: "Release detail — \(field) — \(appearance)")
+        }
+    }
+
+    private func scrollUntilVisible(_ element: XCUIElement, in app: XCUIApplication, field: String) {
+        let scrollView = app.scrollViews.firstMatch
+        guard scrollView.waitForExistence(timeout: 5) else {
+            XCTFail("Release scroll view must exist")
+            return
+        }
+        for _ in 0..<16 {
+            if isFullyVisible(element, in: scrollView) { return }
+            let scrollViewport = scrollView.frame
+            let elementExists = element.exists
+            let elementFrame = elementExists ? element.frame : .zero
+            let shouldScrollDown = !elementExists || elementFrame == .zero || elementFrame.maxY > scrollViewport.maxY
+            drag(scrollView, upward: shouldScrollDown)
+        }
+        XCTAssertTrue(element.exists, "Missing release value for \(field)")
+        XCTAssertTrue(
+            isFullyVisible(element, in: scrollView),
+            "Release value for \(field) must become fully visible after scrolling"
+        )
+    }
+
+    private func isFullyVisible(_ element: XCUIElement, in scrollView: XCUIElement) -> Bool {
+        guard element.exists && element.isHittable else { return false }
+        let elementFrame = element.frame
+        let viewport = scrollView.frame
+        return elementFrame.width > 0 && elementFrame.height > 0
+            && elementFrame.minX >= viewport.minX && elementFrame.maxX <= viewport.maxX
+            && elementFrame.minY >= viewport.minY && elementFrame.maxY <= viewport.maxY
+    }
+
+    private func drag(_ scrollView: XCUIElement, upward: Bool) {
+        let startY: CGFloat = upward ? 0.72 : 0.28
+        let endY: CGFloat = upward ? 0.28 : 0.72
+        let start = scrollView.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: startY))
+        let end = scrollView.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: endY))
+        start.press(forDuration: 0.05, thenDragTo: end)
+    }
+
+    private func addScreenshot(of app: XCUIApplication, named name: String) {
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = name
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
     }
 
     private func assertMinimumActionTargets(in app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {

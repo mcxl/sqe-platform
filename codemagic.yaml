@@ -87,8 +87,8 @@ workflows:
 
   ace-ios-live-evidence-manual:
     name: ACE iOS MCX-19 Live Evidence (Manual Only)
-    max_build_duration: 90
-    instance_type: mac_mini_m2
+    max_build_duration: 45
+    instance_type: mac_mini_m4
     environment:
       groups:
         - mcx19_live_evidence
@@ -102,6 +102,9 @@ workflows:
         script: |
           set -euo pipefail
           python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
-    # Only the allowlisted progress summary is published. Raw logs and bundles stay private.
+    # Publish safe progress on failure. Publish screenshots only after atomic promotion.
+    # Raw logs, result bundles, and simulator metadata stay private.
     artifacts:
       - /private/tmp/mcx-19-live-evidence/live-evidence-progress.json
+      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json
+      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png

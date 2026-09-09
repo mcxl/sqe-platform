@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
@@ -107,6 +108,10 @@ LIVE_ARTIFACT_MAX_BYTES = 64 * 1024 * 1024
 LIVE_BASELINE_COMMIT = "7da6228dc87ad970aa8d44365fbc3823c58020da"
 LIVE_REPOSITORY = "mcxl/sqe-platform"
 LIVE_ARTIFACT_ROOT = Path("/private/tmp/mcx-19-live-evidence")
+LIVE_REVIEW_MANIFEST = "live-evidence-review-manifest.json"
+LIVE_REVIEW_STAGE = ".review-artifact-stage"
+LIVE_REVIEW_ARTIFACTS = "review-artifacts"
+LIVE_SCREENSHOT_DIRECTORY = "screenshots"
 LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
 LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
 LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
@@ -120,7 +125,9 @@ LIVE_OPERATING_ENVIRONMENT_KEYS = (
 )
 LIVE_CONTROLLED_ENVIRONMENT_KEYS = frozenset(
     (*IOS_TEST_ENVIRONMENT, *NEGATIVE_CONFIG_ENVIRONMENT, "ACE_UI_TEST_APPEARANCE",
-     "TEST_RUNNER_ACE_UI_TEST_APPEARANCE")
+     "TEST_RUNNER_ACE_UI_TEST_APPEARANCE",
+     "ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE",
+     "TEST_RUNNER_ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE")
 )
 IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
 IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
@@ -132,7 +139,27 @@ LIVE_UI_METHODS = (
     "testAllControlledScenariosShowExpectedStateAndAudit",
     "testReleaseOrientationHooks",
 )
-LIVE_FAILURE_SUMMARY_MAX_ITEMS = 27
+LIVE_NORMAL_SETTINGS_METHOD = "testNormalDeviceSettings"
+LIVE_NORMAL_SETTINGS_APPEARANCES = ("light", "dark")
+LIVE_CONTENT_SIZE = "accessibility-extra-extra-extra-large"
+LIVE_CONTENT_SIZES = frozenset({
+    "extra-small", "small", "medium", "large", "extra-large",
+    "extra-extra-large", "extra-extra-extra-large", "accessibility-medium",
+    "accessibility-large", "accessibility-extra-large",
+    "accessibility-extra-extra-large", "accessibility-extra-extra-extra-large",
+})
+LIVE_CONTROLLED_SCENARIOS = (
+    "loading", "emptyRelease", "emptyEngagement", "noConclusion", "noActions",
+    "denied", "unavailable", "unexpected", "connection", "timeout",
+    "invalidResponse", "secure", "keychainRead", "keychainWrite",
+    "keychainDeletion", "deletionOnly", "deletionRetry", "copyConfirmation", "privacy",
+)
+LIVE_RELEASE_DETAIL_FIELDS = (
+    "Engagement name", "Review status", "Release version", "Published date and time",
+    "Conclusion title", "Conclusion summary", "Evidence reference", "Action description",
+    "Action owner", "Action target date", "Action status",
+)
+LIVE_FAILURE_SUMMARY_MAX_ITEMS = 31
 LIVE_RESULT_SUMMARY_MAX_BYTES = 1024 * 1024
 LIVE_RESULT_SUMMARY_MAX_NODES = 10_000
 LIVE_PROCESS_EXIT_MIN = -(2**31)
@@ -156,6 +183,12 @@ LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
         "result-bundle-missing",
         "result-summary-invalid",
         "result-count-mismatch",
+        "attachment-export-failed",
+        "attachment-missing",
+        "attachment-invalid",
+        "simulator-setting-query-failed",
+        "simulator-setting-set-failed",
+        "simulator-setting-restore-failed",
         "negative-configuration-not-rejected",
         LIVE_SETUP_FAILURE_REASON,
         SIMULATOR_RESOLUTION_FAILURE_REASON,
@@ -627,6 +660,18 @@ def ios_test_environment(appearance: str | None = None) -> dict[str, str]:
     return environment
 
 
+def ios_normal_settings_environment(appearance: str) -> dict[str, str]:
+    """Provide an observed-style expectation without forcing the app appearance."""
+
+    if appearance not in {"light", "dark"}:
+        raise ValueError("normal device appearance must be light or dark")
+    return {
+        **IOS_TEST_ENVIRONMENT,
+        "ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE": appearance,
+        "TEST_RUNNER_ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE": appearance,
+    }
+
+
 def ios_negative_configuration_command() -> list[str]:
     """Reach the invalid-input build phase without device signing requirements."""
     return [
@@ -658,6 +703,27 @@ def ios_release_ui_matrix(
         for device in IOS_RELEASE_DEVICES
         for appearance in ("light", "dark")
         for method in methods
+    ]
+
+
+def ios_normal_settings_matrix(destinations: dict[str, str]) -> list[tuple[str, list[str], dict[str, str], int]]:
+    """Run the normal-device-settings check outside the forced appearance matrix."""
+
+    return [
+        (
+            f"ios-normal-settings-{device}-{appearance}",
+            [
+                "xcodebuild", "test", "-project", "ACEClientApp.xcodeproj",
+                "-scheme", "ACEClientAppUITests", "-configuration", "Debug",
+                "-destination", destinations[device],
+                "-only-testing:ACEClientAppUITests/ACEClientAppUITests/"
+                f"{LIVE_NORMAL_SETTINGS_METHOD}",
+            ],
+            ios_normal_settings_environment(appearance),
+            1,
+        )
+        for device in IOS_RELEASE_DEVICES
+        for appearance in LIVE_NORMAL_SETTINGS_APPEARANCES
     ]
 
 
@@ -1179,7 +1245,7 @@ def _live_artifact_checksums(root: Path) -> dict[str, str]:
             raise ValueError("live artifact escapes its root")
         if path.stat().st_size > LIVE_ARTIFACT_MAX_BYTES:
             raise ValueError("live artifact exceeds the review size limit")
-        relative = str(path.relative_to(root))
+        relative = path.relative_to(root).as_posix()
         if relative == "live-evidence-manifest.json":
             continue
         digest = hashlib.sha256()
@@ -1224,6 +1290,277 @@ def _scan_live_artifacts(root: Path) -> None:
             for content in text_forms
         ):
             raise ValueError("live artifact secret or redaction check failed")
+
+
+def _expected_logical_screenshot_names(name: str) -> tuple[str, ...]:
+    """Return the complete, fixed attachment inventory for one UI command."""
+
+    appearance = "dark" if "-dark-" in name or name.endswith("-dark") else "light"
+    if name.endswith("-testBothAppearances"):
+        return tuple(f"Fictional release — forced-{value}" for value in ("light", "dark"))
+    if name.endswith("-testLaunchShowsSafeConfigurationState"):
+        return (f"Controlled state — configuration — {appearance}",)
+    if name.endswith("-testSignInPasswordFieldIsSecure"):
+        return (f"Controlled state — signIn — {appearance}",)
+    if name.endswith("-testFictionalReleaseHasApprovedCopyControls"):
+        return (
+            *(f"Release detail — {field} — {appearance}" for field in LIVE_RELEASE_DETAIL_FIELDS),
+            f"Fictional release — approved-controls — {appearance}",
+            f"Controlled state — copyConfirmation — {appearance}",
+        )
+    if name.endswith("-testAllControlledScenariosShowExpectedStateAndAudit"):
+        return tuple(f"Controlled state — {scenario} — {appearance}" for scenario in LIVE_CONTROLLED_SCENARIOS)
+    if name.endswith("-testReleaseOrientationHooks"):
+        return tuple(f"Release — {orientation} — {appearance}" for orientation in ("landscape-left", "portrait"))
+    if name.startswith("ios-normal-settings-"):
+        normal = f"normal-device-settings-{appearance}"
+        return (
+            *(f"Release detail — {field} — {normal}" for field in LIVE_RELEASE_DETAIL_FIELDS),
+            f"Fictional release — normal-device-settings — {appearance}",
+        )
+    return ()
+
+
+def _valid_png(path: Path) -> bool:
+    """Validate supported iOS screenshot PNG pixels without publishing image content."""
+
+    try:
+        if path.stat().st_size > LIVE_ARTIFACT_MAX_BYTES:
+            return False
+        data = path.read_bytes()
+    except OSError:
+        return False
+    if len(data) < 45 or not data.startswith(b"\x89PNG\r\n\x1a\n"):
+        return False
+    offset, seen_ihdr, seen_idat = 8, False, False
+    width = height = channels = bit_depth = 0
+    compressed = bytearray()
+    while offset < len(data):
+        if offset + 12 > len(data):
+            return False
+        size = int.from_bytes(data[offset:offset + 4], "big")
+        kind = data[offset + 4:offset + 8]
+        end = offset + 12 + size
+        if end > len(data):
+            return False
+        chunk = data[offset + 8:offset + 8 + size]
+        checksum = int.from_bytes(data[offset + 8 + size:end], "big")
+        if zlib.crc32(kind + chunk) & 0xffffffff != checksum:
+            return False
+        if kind == b"IHDR":
+            if seen_ihdr or seen_idat or size != 13:
+                return False
+            width, height = int.from_bytes(chunk[:4], "big"), int.from_bytes(chunk[4:8], "big")
+            bit_depth, colour_type, compression, filtering, interlace = chunk[8:]
+            channels = {2: 3, 6: 4}.get(colour_type, 0)
+            if (
+                not 1 <= width <= 10000 or not 1 <= height <= 10000
+                or bit_depth not in {8, 16} or not channels
+                or compression != 0 or filtering != 0 or interlace != 0
+            ):
+                return False
+            seen_ihdr = True
+        elif kind == b"IDAT":
+            if not seen_ihdr:
+                return False
+            seen_idat = True
+            compressed.extend(chunk)
+        elif kind == b"IEND":
+            if not (seen_ihdr and seen_idat and size == 0 and end == len(data)):
+                return False
+            row_bytes = width * channels * (bit_depth // 8)
+            expected = height * (row_bytes + 1)
+            if expected > LIVE_ARTIFACT_MAX_BYTES:
+                return False
+            try:
+                decoder = zlib.decompressobj()
+                pixels = decoder.decompress(compressed, expected + 1)
+            except zlib.error:
+                return False
+            if (
+                not decoder.eof or decoder.unused_data or decoder.unconsumed_tail
+                or len(pixels) != expected
+            ):
+                return False
+            return all(pixels[index] <= 4 for index in range(0, len(pixels), row_bytes + 1))
+        elif kind[:1].isupper():
+            return False
+        offset = end
+    return False
+
+
+def _attachment_export_entries(root: Path, export_directory: Path) -> list[tuple[str, Path]] | None:
+    """Map Xcode's exported names to attachment names through its manifest JSON."""
+
+    state, content = _bounded_live_file_text(root, export_directory / "manifest.json")
+    if state != "available" or content is None:
+        return None
+    try:
+        payload = json.loads(content)
+    except (ValueError, RecursionError):
+        return None
+    if not isinstance(payload, list):
+        return None
+    entries: list[tuple[str, Path]] = []
+    for test in payload:
+        if not isinstance(test, dict) or not isinstance(test.get("attachments"), list):
+            return None
+        for attachment in test["attachments"]:
+            if not isinstance(attachment, dict):
+                return None
+            logical = attachment.get("suggestedHumanReadableName")
+            exported = attachment.get("exportedFileName")
+            if not isinstance(logical, str) or not isinstance(exported, str):
+                return None
+            path = export_directory / exported
+            if Path(exported).name != exported or not path.resolve(strict=False).is_relative_to(export_directory.resolve()):
+                return None
+            entries.append((logical, path))
+    return entries
+
+
+def _retain_live_screenshots(
+    name: str, cwd: Path, root: Path, result_path: Path
+) -> tuple[list[str] | None, str | None]:
+    """Stage exact named fictional PNG attachments for publication after final checks."""
+
+    expected = _expected_logical_screenshot_names(name)
+    if not expected:
+        return [], None
+    export_directory = _safe_live_path(root, f"{name}-attachment-export")
+    log_path = _safe_live_path(root, f"{name}-attachment-export.log")
+    if export_directory.exists() or export_directory.is_symlink():
+        return None, "attachment-invalid"
+    export_result = _run_live_command(
+        f"{name}-attachments",
+        ["xcrun", "xcresulttool", "export", "attachments", "--path", str(result_path),
+         "--output-path", str(export_directory)], cwd, {}, log_path,
+    )
+    if export_result[0] != 0:
+        return None, "attachment-export-failed"
+    entries = _attachment_export_entries(root, export_directory)
+    if entries is None:
+        return None, "attachment-invalid"
+    by_name: dict[str, Path] = {}
+    for logical, path in entries:
+        matched = next((required for required in expected if logical == required or re.fullmatch(
+            rf"{re.escape(required)}_[0-9]+_[0-9A-Fa-f-]+(?:\.png)?", logical
+        )), None)
+        if matched is None or matched in by_name:
+            return None, "attachment-missing"
+        by_name[matched] = path
+    if set(by_name) != set(expected) or len(entries) != len(expected):
+        return None, "attachment-missing"
+    target_directory = _safe_live_path(root, f"{LIVE_REVIEW_STAGE}/{LIVE_SCREENSHOT_DIRECTORY}/{name}")
+    try:
+        target_directory.mkdir(parents=True, exist_ok=False)
+        retained: list[str] = []
+        for number, logical in enumerate(expected, 1):
+            source = by_name[logical]
+            if source.is_symlink() or not source.is_file() or source.stat().st_size > LIVE_ARTIFACT_MAX_BYTES or not _valid_png(source):
+                return None, "attachment-invalid"
+            target = target_directory / f"{number:02d}.png"
+            shutil.copyfile(source, target)
+            retained.append(target.relative_to(_safe_live_path(root, LIVE_REVIEW_STAGE)).as_posix())
+    except OSError:
+        return None, "attachment-invalid"
+    return retained, None
+
+
+def _simctl_ui_value(
+    root: Path, identifier: str, setting: str, value: str | None = None
+) -> tuple[bool, str | None]:
+    """Use simctl only through a controlled log and accept fixed setting values."""
+
+    suffix = "query" if value is None else "set"
+    log_path = _safe_live_path(root, f"simctl-{identifier}-{setting}-{suffix}.log")
+    command = ["xcrun", "simctl", "ui", identifier, setting]
+    if value is not None:
+        command.append(value)
+    result = _run_live_command(f"simctl-{setting}-{suffix}", command, ROOT, {}, log_path)
+    if result[0] != 0:
+        return False, None
+    state, content = _bounded_live_file_text(root, log_path)
+    if state != "available" or content is None:
+        return False, None
+    if value is not None:
+        return True, value
+    observed = content.strip().lower()
+    if setting == "appearance" and observed in {"light", "dark"}:
+        return True, observed
+    if setting == "content_size" and observed in LIVE_CONTENT_SIZES:
+        return True, observed
+    return False, None
+
+
+def _normal_settings_result(
+    name: str,
+    command: list[str],
+    cwd: Path,
+    environment: dict[str, str],
+    root: Path,
+    identifier: str,
+    appearance: str,
+) -> dict:
+    """Set and restore simulator settings around one non-forced UI test."""
+
+    appearance_ok, previous_appearance = _simctl_ui_value(root, identifier, "appearance")
+    content_ok, previous_content = _simctl_ui_value(root, identifier, "content_size")
+    observations = {
+        "appearanceBefore": previous_appearance,
+        "contentSizeBefore": previous_content,
+        "appearanceRequested": appearance,
+        "contentSizeRequested": LIVE_CONTENT_SIZE,
+    }
+    if not appearance_ok or not content_ok:
+        return {"name": name, "status": "failed", "exit": 1,
+                "detail": "simulator settings could not be queried",
+                "reason": "simulator-setting-query-failed",
+                "simulator_settings": observations}
+    result: dict | None = None
+    setting_failed = False
+    restore_failed = False
+    try:
+        if not _simctl_ui_value(root, identifier, "appearance", appearance)[0]:
+            setting_failed = True
+        else:
+            observed, value = _simctl_ui_value(root, identifier, "appearance")
+            observations["appearanceObserved"] = value if observed else None
+            setting_failed = not observed or value != appearance
+        if not setting_failed:
+            if not _simctl_ui_value(root, identifier, "content_size", LIVE_CONTENT_SIZE)[0]:
+                setting_failed = True
+            else:
+                observed, value = _simctl_ui_value(root, identifier, "content_size")
+                observations["contentSizeObserved"] = value if observed else None
+                setting_failed = not observed or value != LIVE_CONTENT_SIZE
+        if not setting_failed:
+            result = _run_live_ios_test(name, command, cwd, environment, 1, root)
+    finally:
+        restored_appearance = _simctl_ui_value(root, identifier, "appearance", previous_appearance)[0]
+        verified_appearance, observed_appearance = _simctl_ui_value(root, identifier, "appearance")
+        restored_content = _simctl_ui_value(root, identifier, "content_size", previous_content)[0]
+        verified_content, observed_content = _simctl_ui_value(root, identifier, "content_size")
+        observations["appearanceRestored"] = observed_appearance if verified_appearance else None
+        observations["contentSizeRestored"] = observed_content if verified_content else None
+        restore_failed = not (
+            restored_appearance and verified_appearance and observed_appearance == previous_appearance
+            and restored_content and verified_content and observed_content == previous_content
+        )
+    if restore_failed:
+        return {**(result or {}), "name": name, "status": "failed", "exit": 1,
+                "detail": "simulator settings could not be restored",
+                "reason": "simulator-setting-restore-failed",
+                "check_exit_before_restore": result.get("exit") if result else None,
+                "check_reason_before_restore": result.get("reason") if result else None,
+                "simulator_settings": observations}
+    if setting_failed:
+        return {"name": name, "status": "failed", "exit": 1,
+                "detail": "simulator settings could not be set and verified",
+                "reason": "simulator-setting-set-failed",
+                "simulator_settings": observations}
+    assert result is not None
+    return {**result, "simulator_settings": observations}
 
 
 def _live_command_environment(environment: dict[str, str]) -> dict[str, str]:
@@ -1455,12 +1792,25 @@ def _run_live_ios_test(
             "reason": "result-count-mismatch",
             "process_exit": getattr(command_result, "process_exit", None),
         }
+    screenshots, screenshot_failure = _retain_live_screenshots(
+        name, cwd, root, result_path
+    )
+    if screenshot_failure is not None:
+        return {
+            "name": name,
+            "status": "failed",
+            "exit": 1,
+            "detail": f"{name} required screenshot artifact is unavailable",
+            "reason": screenshot_failure,
+            "process_exit": getattr(command_result, "process_exit", None),
+        }
     return {
         "name": name,
         "status": "passed",
         "exit": 0,
         "detail": f"{name} executed {passed} tests",
         "process_exit": getattr(command_result, "process_exit", None),
+        "screenshots": screenshots,
     }
 
 
@@ -1535,6 +1885,67 @@ def _write_live_manifest(root: Path, manifest: dict) -> None:
 
     path = _safe_live_path(root, "live-evidence-manifest.json")
     path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _write_live_review_manifest(
+    root: Path, manifest: dict[str, object], checks: list[dict], checksums: dict[str, str]
+) -> None:
+    """Write the small publication manifest without logs, bundles, or raw test data."""
+
+    stage = _safe_live_path(root, LIVE_REVIEW_STAGE)
+    screenshot_paths = [path for check in checks for path in check.get("screenshots", []) if isinstance(path, str)]
+    expected_count = sum(len(_expected_logical_screenshot_names(check["name"])) for check in checks)
+    if (
+        len(screenshot_paths) != expected_count
+        or any(f"{LIVE_REVIEW_STAGE}/{path}" not in checksums for path in screenshot_paths)
+    ):
+        raise ValueError("required named screenshot artifacts are missing")
+    screenshot_records = []
+    for check in checks:
+        name = check["name"]
+        paths = check.get("screenshots", [])
+        expected = _expected_logical_screenshot_names(name)
+        if len(paths) != len(expected):
+            raise ValueError("screenshot attachment inventory does not match")
+        device = next((item for item in IOS_RELEASE_DEVICES if f"-{item}-" in name), IOS_CORE_DEVICE)
+        appearance = "dark" if "-dark-" in name or name.endswith("-dark") else "light"
+        normal_settings = name.startswith("ios-normal-settings-")
+        observed_settings = _published_simulator_settings(check.get("simulator_settings"))
+        for logical, path in zip(expected, paths):
+            captured_appearance = logical.rsplit("forced-", 1)[1] if name.endswith("-testBothAppearances") else appearance
+            screenshot_records.append({
+                "path": path,
+                "sha256": checksums[f"{LIVE_REVIEW_STAGE}/{path}"],
+                "logicalName": logical,
+                "device": device,
+                "appearance": captured_appearance,
+                "appearanceMode": "system-setting-at-launch" if normal_settings else "app-override",
+                "contentSize": observed_settings.get("contentSizeObserved", "not-recorded"),
+            })
+    review = {
+        "scope": manifest["scope"],
+        "workflow": manifest["workflow"],
+        "repository": manifest["repository"],
+        "commit": manifest["commit"],
+        "baseline": manifest["baseline"],
+        "releaseEvidence": False,
+        "status": "pending-manual-native-inspection",
+        "results": [_published_live_result(check) for check in checks],
+        "screenshots": sorted(screenshot_records, key=lambda record: record["path"]),
+        "manualChecksPending": [
+            "Inspect retained fictional screenshots on the approved device matrix.",
+            "Verify Bold Text, Reduce Motion, and Increase Contrast manually.",
+            "Run the remaining automated Dynamic Type size matrix and inspect its screenshots.",
+            "Complete orientation checks for the remaining screens and states.",
+            "Verify settings changed while the app remains open manually.",
+            "Inspect normal-startup screenshots after simulator setting changes.",
+            "Complete VoiceOver, normal screenshot, app-switcher, physical-device, and server-connection evidence.",
+        ],
+    }
+    path = _safe_live_path(stage, LIVE_REVIEW_MANIFEST)
+    if path.is_symlink():
+        raise ValueError("live review manifest path is a symlink")
+    path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def _write_live_progress(root: Path, checks: list[dict], active: str | None) -> None:
@@ -1629,6 +2040,21 @@ def _published_live_failure_reason(reason: object, name: object = None) -> str:
     return "controlled-failure"
 
 
+def _published_simulator_settings(value: object) -> dict[str, str]:
+    """Retain only known simulator setting names and enumerated observations."""
+
+    if not isinstance(value, dict):
+        return {}
+    result = {}
+    for prefix, allowed in (("appearance", {"light", "dark"}), ("contentSize", LIVE_CONTENT_SIZES)):
+        for suffix in ("Before", "Requested", "Observed", "Restored"):
+            field = prefix + suffix
+            observed = value.get(field)
+            if isinstance(observed, str) and observed in allowed:
+                result[field] = observed
+    return result
+
+
 def _published_live_result(check: dict) -> dict:
     """Publish only fixed data and bounded completed-process metadata."""
 
@@ -1652,6 +2078,17 @@ def _published_live_result(check: dict) -> dict:
     process_exit = _published_process_exit(check.get("process_exit"))
     if process_exit is not None:
         result["processExit"] = process_exit
+    if name.startswith("ios-normal-settings-"):
+        settings = _published_simulator_settings(check.get("simulator_settings"))
+        if settings:
+            result["simulatorSettings"] = settings
+        before_restore = check.get("check_exit_before_restore")
+        if type(before_restore) is int and before_restore in {0, 1}:
+            result["checkExitBeforeRestore"] = before_restore
+            if before_restore != 0:
+                result["checkReasonBeforeRestore"] = _published_live_failure_reason(
+                    check.get("check_reason_before_restore"), name
+                )
     if logical_exit != 0:
         result["reason"] = _published_live_failure_reason(check.get("reason"), name)
         diagnostic = check.get("diagnostic")
@@ -1688,6 +2125,7 @@ def _live_command_names() -> set[str]:
         "ios-evidence-contract",
         "ios-negative-config",
         *(name for name, *_ in ios_release_ui_matrix(destinations, LIVE_UI_METHODS)),
+        *(name for name, *_ in ios_normal_settings_matrix(destinations)),
     }
 
 
@@ -1806,7 +2244,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         metadata = _live_repository_metadata(expected_commit)
         manifest.update(metadata)
         _write_live_manifest(root, manifest)
-        if tuple(ui_methods()) != LIVE_UI_METHODS:
+        if tuple(ui_methods()) != (*LIVE_UI_METHODS, LIVE_NORMAL_SETTINGS_METHOD):
             raise ValueError("approved UI test scope does not match the repository")
         if shutil.which("xcodebuild") is None or shutil.which("xcrun") is None:
             raise ValueError("required iOS test tools are unavailable")
@@ -1844,6 +2282,13 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         for name, command, environment, expected in commands:
             _write_live_progress(root, checks, name)
             record(_run_live_ios_test(name, command, ios, environment, expected, root))
+        for name, command, environment, expected in ios_normal_settings_matrix(destinations):
+            appearance = environment["ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE"]
+            identifier = command[command.index("-destination") + 1].split("id=", 1)[1]
+            _write_live_progress(root, checks, name)
+            record(_normal_settings_result(
+                name, command, ios, environment, root, identifier, appearance
+            ))
         negative_log = _safe_live_path(root, "ios-negative-config.log")
         _write_live_progress(root, checks, "ios-negative-config")
         negative_result = _run_live_command(
@@ -1856,7 +2301,8 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         )
         if all(check["exit"] == 0 for check in checks):
             _write_live_progress(root, checks, "artifact-validation")
-        checks = [_published_live_result(check) for check in checks]
+        raw_checks = checks
+        checks = [_published_live_result(check) for check in raw_checks]
         manifest["results"] = checks
         _write_live_manifest(root, manifest)
         if any(check["exit"] != 0 for check in checks):
@@ -1876,6 +2322,16 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             or any(not _safe_live_path(root, bundle).is_dir() for bundle in required_bundles)
         ):
             raise ValueError("one or more required live artifacts are missing")
+        _scan_live_artifacts(root)
+        _verify_live_artifact_checksums(root, checksums)
+        _write_live_review_manifest(root, manifest, raw_checks, checksums)
+        stage = _safe_live_path(root, LIVE_REVIEW_STAGE)
+        published = _safe_live_path(root, LIVE_REVIEW_ARTIFACTS)
+        if published.exists() or published.is_symlink():
+            raise ValueError("published review artifacts already exist")
+        _scan_live_artifacts(root)
+        os.replace(stage, published)
+        checksums = _live_artifact_checksums(root)
         _scan_live_artifacts(root)
         _verify_live_artifact_checksums(root, checksums)
         manifest.update({"status": "passed-not-release-evidence", "results": checks, "checksums": checksums})
@@ -1908,7 +2364,7 @@ def component_checks(level: str, component: str) -> list[dict]:
     if shutil.which("xcodebuild") is None:
         return [{"name": "ios-xcode", "status": "unavailable", "exit": 2, "detail": "xcodebuild is unavailable"}]
     methods = ui_methods()
-    if tuple(methods) != LIVE_UI_METHODS:
+    if tuple(methods) != (*LIVE_UI_METHODS, LIVE_NORMAL_SETTINGS_METHOD):
         return [{"name": "ios-matrix", "status": "unavailable", "exit": 2, "detail": "UI methods do not match the controlled inventory"}]
     required_devices = IOS_RELEASE_DEVICES if level == "release" else (IOS_CORE_DEVICE,)
     if shutil.which("xcrun") is None:
@@ -1927,12 +2383,12 @@ def component_checks(level: str, component: str) -> list[dict]:
     destination = destinations[IOS_CORE_DEVICE]
     unit = ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests"]
     checks = [{"name": "ios-simulator", "status": "passed", "exit": 0, "detail": "resolved exact simulator UUIDs"}, run_ios_test("ios-65-unit", unit, ios, ios_test_environment(), 65)]
-    checks.extend(run_ios_test(f"ios-core-ui-light-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", "ACE_UI_TEST_APPEARANCE=light"], ios, ios_test_environment("light"), 1) for method in methods)
+    checks.extend(run_ios_test(f"ios-core-ui-light-{method}", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests", "-configuration", "Debug", "-destination", destination, f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", "ACE_UI_TEST_APPEARANCE=light"], ios, ios_test_environment("light"), 1) for method in LIVE_UI_METHODS)
     if level == "release":
         checks.extend(
             run_ios_test(name, command, ios, environment, expected)
             for name, command, environment, expected in ios_release_ui_matrix(
-                destinations, methods
+                destinations, LIVE_UI_METHODS
             )
         )
         checks.extend([run_ios_test("ios-evidence-contract", ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destination, "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests"], ios, ios_test_environment(), 42), run_command("ios-negative-config", ios_negative_configuration_command(), ios, environment=NEGATIVE_CONFIG_ENVIRONMENT, expected_failure=NEGATIVE_CONFIG_REJECTION)])

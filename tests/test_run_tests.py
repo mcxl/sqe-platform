@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 import json
@@ -8,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
 from unittest import mock
 
@@ -20,6 +22,23 @@ SPEC.loader.exec_module(runner)
 
 
 class RunnerContractTests(unittest.TestCase):
+    @staticmethod
+    def png_fixture(
+        payload: bytes | None = None, width: int = 1, height: int = 1
+    ) -> bytes:
+        def chunk(kind: bytes, data: bytes) -> bytes:
+            return (
+                len(data).to_bytes(4, "big") + kind + data
+                + zlib.crc32(kind + data).to_bytes(4, "big")
+            )
+
+        pixels = payload if payload is not None else b"\x00\x00\x00\x00\x00"
+        return (
+            b"\x89PNG\r\n\x1a\n"
+            + chunk(b"IHDR", width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x06\x00\x00\x00")
+            + chunk(b"IDAT", zlib.compress(pixels))
+            + chunk(b"IEND", b"")
+        )
     def simulator_snapshot(self, devices):
         return {
             "runtimes": [{"identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-1", "version": "26.1", "isAvailable": True}],
@@ -87,24 +106,42 @@ class RunnerContractTests(unittest.TestCase):
                 json.dumps({"passedTests": expected_tests, "failedTests": 0, "skippedTests": 0}),
                 encoding="utf-8",
             )
-            return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
+            screenshots = []
+            logical_names = runner._expected_logical_screenshot_names(name)
+            if logical_names:
+                directory = artifact_root / runner.LIVE_REVIEW_STAGE / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                directory.mkdir(parents=True)
+                png = bytes.fromhex("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d49444154789c6360f8cfc00000030101832f7f3a3d0000000049454e44ae426082")
+                for number, _ in enumerate(logical_names, 1):
+                    screenshot = directory / f"{number:02d}.png"
+                    screenshot.write_bytes(png)
+                    screenshots.append(screenshot.relative_to(artifact_root / runner.LIVE_REVIEW_STAGE).as_posix())
+            return {"name": name, "status": "passed", "exit": 0, "detail": "controlled", "screenshots": screenshots}
 
-        def negative(name, command, cwd, environment, log_path):
+        simulator_settings = {"appearance": "light", "content_size": "medium"}
+
+        def controlled_command(name, command, cwd, environment, log_path):
+            if name.startswith("simctl-"):
+                setting = command[-2] if name.endswith("-set") else command[-1]
+                if name.endswith("-query"):
+                    log_path.write_text(simulator_settings[setting], encoding="utf-8")
+                else:
+                    simulator_settings[setting] = command[-1]
+                    log_path.write_text("controlled", encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
             self.assertEqual(name, "ios-negative-config")
             log_path.write_text(runner.NEGATIVE_CONFIG_REJECTION, encoding="utf-8")
-            return runner.LiveCommandResult(
-                1, "controlled rejection", "command-nonzero", 1
-            )
+            return runner.LiveCommandResult(1, "controlled rejection", "command-nonzero", 1)
 
         return (
             mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root),
             mock.patch.object(runner, "_live_execution_context", return_value={"workflow": runner.LIVE_WORKFLOW}),
             mock.patch.object(runner, "_live_repository_metadata", return_value={"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40, "baseline": runner.LIVE_BASELINE_COMMIT}),
-            mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)),
+            mock.patch.object(runner, "ui_methods", return_value=[*runner.LIVE_UI_METHODS, runner.LIVE_NORMAL_SETTINGS_METHOD]),
             mock.patch.object(runner.shutil, "which", return_value="controlled-tool"),
             mock.patch.object(runner, "resolve_ios_destinations", side_effect=resolve),
             mock.patch.object(runner, "_run_live_ios_test", side_effect=ios_test),
-            mock.patch.object(runner, "_run_live_command", side_effect=negative),
+            mock.patch.object(runner, "_run_live_command", side_effect=controlled_command),
         )
 
     def test_live_progress_survives_interruption_after_one_completed_command(self):
@@ -198,16 +235,27 @@ class RunnerContractTests(unittest.TestCase):
             contexts = self.run_live_success_fixture(root)
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], contexts[7]:
                 checks = runner.live_evidence_checks(root, "a" * 40)
-            self.assertEqual(len(checks), 27, checks)
+            self.assertEqual(len(checks), 31, checks)
             self.assertTrue(all(check["exit"] == 0 for check in checks))
             manifest = json.loads((root / "live-evidence-manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["status"], "passed-not-release-evidence")
             self.assertFalse(manifest["releaseEvidence"])
             self.assertEqual(manifest["commit"], "a" * 40)
             self.assertTrue(manifest["checksums"])
+            published = root / runner.LIVE_REVIEW_ARTIFACTS
+            review = json.loads((published / runner.LIVE_REVIEW_MANIFEST).read_text(encoding="utf-8"))
+            self.assertFalse(review["releaseEvidence"])
+            self.assertEqual(review["status"], "pending-manual-native-inspection")
+            for screenshot in review["screenshots"]:
+                self.assertEqual(screenshot["sha256"], hashlib.sha256((published / screenshot["path"]).read_bytes()).hexdigest())
+                if "forced-" in screenshot["logicalName"]:
+                    self.assertEqual(screenshot["appearance"], screenshot["logicalName"].rsplit("forced-", 1)[1])
+                if screenshot["appearanceMode"] == "system-setting-at-launch":
+                    self.assertEqual(screenshot["contentSize"], runner.LIVE_CONTENT_SIZE)
+            self.assertFalse((root / runner.LIVE_REVIEW_STAGE).exists())
             progress = json.loads((root / "live-evidence-progress.json").read_text())
             self.assertEqual(progress["completed"], checks)
-            self.assertEqual(len(progress["completed"]), 27)
+            self.assertEqual(len(progress["completed"]), 31)
             self.assertEqual(progress["completed"][-1]["reason"], "negative-configuration-rejected")
             self.assertEqual(progress["activeCommand"], "artifact-validation")
             self.assertEqual(progress["status"], "incomplete")
@@ -224,7 +272,7 @@ class RunnerContractTests(unittest.TestCase):
             with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
                 root = self.live_artifact_root(directory)
                 error = runner.SimulatorResolutionError(message, expected_reason)
-                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(runner, "_live_execution_context", return_value={}), mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=list(runner.LIVE_UI_METHODS)), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=error), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
+                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(runner, "_live_execution_context", return_value={}), mock.patch.object(runner, "_live_repository_metadata", return_value={}), mock.patch.object(runner, "ui_methods", return_value=[*runner.LIVE_UI_METHODS, runner.LIVE_NORMAL_SETTINGS_METHOD]), mock.patch.object(runner.shutil, "which", return_value="controlled-tool"), mock.patch.object(runner, "resolve_ios_destinations", side_effect=error), mock.patch.object(runner, "_run_live_ios_test") as ios_test:
                     checks = runner.live_evidence_checks(root, "a" * 40)
                 self.assertEqual(checks[0]["status"], "failed")
                 self.assertEqual(checks[0]["reason"], expected_reason)
@@ -766,6 +814,10 @@ class RunnerContractTests(unittest.TestCase):
 
             with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], mock.patch.object(
                 runner, "_run_live_command", side_effect=negative
+            ), mock.patch.object(
+                runner, "_normal_settings_result",
+                side_effect=lambda name, command, cwd, environment, root, identifier, appearance:
+                runner._run_live_ios_test(name, command, cwd, environment, 1, root),
             ):
                 checks = runner.live_evidence_checks(root, "a" * 40)
         self.assertTrue(all(check["exit"] == 0 for check in checks))
@@ -1370,7 +1422,8 @@ class RunnerContractTests(unittest.TestCase):
         config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
         workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
         self.assertNotIn("triggering:", workflow)
-        self.assertIn("max_build_duration: 90", workflow)
+        self.assertIn("max_build_duration: 45", workflow)
+        self.assertIn("instance_type: mac_mini_m4", workflow)
         self.assertIn("groups:\n        - mcx19_live_evidence", workflow)
         self.assertEqual(config.count("mcx19_live_evidence"), 1)
         self.assertIn("ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual", workflow)
@@ -1382,7 +1435,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
         self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
-                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json")
+                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png")
         owned_paths = (
             "codemagic.yaml",
             "tools/run_tests.py",
@@ -1494,17 +1547,19 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn('case "dark": return .dark', override)
         self.assertIn('default: return nil', override)
         ui_test = (ROOT / "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift").read_text(encoding="utf-8")
-        launch = ui_test.split("private func launch(", 1)[1].split("func testBothAppearances", 1)[0]
+        launch = ui_test.split("private func launch(", 1)[1].split("private func launchWithNormalDeviceSettings", 1)[0]
         self.assertNotIn("XCTAssert", launch)
         self.assertNotIn("AppleInterfaceStyle", ui_test)
         appearance_test = ui_test.split("func testBothAppearances", 1)[1].split("func testLaunch", 1)[0]
         self.assertIn('for appearance in ["light", "dark"]', appearance_test)
-        self.assertIn('defer { app.terminate() }', appearance_test)
+        self.assertIn('app.terminate()', appearance_test)
         self.assertIn('indicator.waitForExistence(timeout: 5)', appearance_test)
         self.assertIn('NSPredicate(format: "label == %@", appearance), object: indicator', appearance_test)
         self.assertIn('XCTWaiter.wait(for: [displayedAppearance], timeout: 5)', appearance_test)
         self.assertIn('testBothAppearances', runner.LIVE_UI_METHODS)
-        self.assertEqual(runner.LIVE_FAILURE_SUMMARY_MAX_ITEMS, 27)
+        self.assertIn('func testNormalDeviceSettings()', ui_test)
+        self.assertNotIn('ACE_UI_TEST_APPEARANCE"] =', ui_test.split("private func launchWithNormalDeviceSettings", 1)[1].split("func testBothAppearances", 1)[0])
+        self.assertEqual(runner.LIVE_FAILURE_SUMMARY_MAX_ITEMS, 31)
 
     def test_negative_command_is_unsigned_simulator_and_keeps_invalid_inputs(self):
         command = runner.ios_negative_configuration_command()
@@ -1680,6 +1735,175 @@ class RunnerContractTests(unittest.TestCase):
                     result = runner.run_command("negative", ["xcodebuild"], ROOT, expected_failure=runner.NEGATIVE_CONFIG_REJECTION)
                 self.assertEqual(result["status"], status)
                 self.assertEqual(result["exit"], exit_code)
+
+    def test_normal_settings_keeps_test_outcome_when_restore_fails(self):
+        settings = {"appearance": "light", "content_size": "large"}
+        name = f"ios-normal-settings-{runner.IOS_CORE_DEVICE}-dark"
+
+        def setting(root, identifier, key, value=None):
+            if value is None:
+                return True, settings[key]
+            if key == "appearance" and value == "light":
+                return False, None
+            settings[key] = value
+            return True, value
+
+        native = {"name": name, "exit": 0, "process_exit": 0, "screenshots": []}
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner, "_simctl_ui_value", side_effect=setting
+        ), mock.patch.object(runner, "_run_live_ios_test", return_value=native):
+            result = runner._normal_settings_result(
+                name, ["xcodebuild", "test"], ROOT,
+                runner.ios_normal_settings_environment("dark"), Path(directory),
+                "11111111-1111-1111-1111-111111111111", "dark",
+            )
+        published = runner._published_live_result(result)
+        self.assertEqual(published["exit"], 1)
+        self.assertEqual(published["reason"], "simulator-setting-restore-failed")
+        self.assertEqual(published["processExit"], 0)
+        self.assertEqual(published["checkExitBeforeRestore"], 0)
+        self.assertEqual(published["simulatorSettings"]["appearanceObserved"], "dark")
+        self.assertEqual(published["simulatorSettings"]["contentSizeObserved"], runner.LIVE_CONTENT_SIZE)
+        self.assertEqual(published["simulatorSettings"]["contentSizeRestored"], "large")
+
+    def test_normal_settings_rejects_successful_set_without_matching_readback(self):
+        def unchanged_setting(root, identifier, key, value=None):
+            return True, value if value is not None else {"appearance": "light", "content_size": "large"}[key]
+
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner, "_simctl_ui_value", side_effect=unchanged_setting
+        ), mock.patch.object(runner, "_run_live_ios_test") as native:
+            result = runner._normal_settings_result(
+                f"ios-normal-settings-{runner.IOS_CORE_DEVICE}-dark", ["xcodebuild"], ROOT,
+                runner.ios_normal_settings_environment("dark"), Path(directory),
+                "11111111-1111-1111-1111-111111111111", "dark",
+            )
+        native.assert_not_called()
+        self.assertEqual(result["reason"], "simulator-setting-set-failed")
+
+    def test_normal_settings_restores_both_values_when_native_command_raises(self):
+        original = {"appearance": "light", "content_size": "large"}
+        settings = dict(original)
+
+        def setting(root, identifier, key, value=None):
+            if value is not None:
+                settings[key] = value
+            return True, settings[key]
+
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner, "_simctl_ui_value", side_effect=setting
+        ), mock.patch.object(runner, "_run_live_ios_test", side_effect=OSError("controlled")):
+            with self.assertRaises(OSError):
+                runner._normal_settings_result(
+                    f"ios-normal-settings-{runner.IOS_CORE_DEVICE}-dark", ["xcodebuild"], ROOT,
+                    runner.ios_normal_settings_environment("dark"), Path(directory),
+                    "11111111-1111-1111-1111-111111111111", "dark",
+                )
+        self.assertEqual(settings, original)
+
+    def test_simulator_observations_publish_only_known_enumerated_values(self):
+        result = runner._published_simulator_settings({
+            "appearanceBefore": "light", "appearanceObserved": "password=private",
+            "contentSizeRequested": runner.LIVE_CONTENT_SIZE, "contentSizeRestored": [],
+            "unexpected": "private", "contentSizeObserved": True,
+        })
+        self.assertEqual(result, {"appearanceBefore": "light", "contentSizeRequested": runner.LIVE_CONTENT_SIZE})
+
+    def test_attachment_export_requires_the_complete_named_png_inventory(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            result = root / "result.xcresult"
+            result.mkdir()
+            name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testLaunchShowsSafeConfigurationState"
+
+            def export(command_name, command, cwd, environment, log_path):
+                output = Path(command[-1])
+                output.mkdir()
+                logical = runner._expected_logical_screenshot_names(name)[0]
+                (output / "capture.png").write_bytes(self.png_fixture())
+                (output / "manifest.json").write_text(json.dumps([{"attachments": [{"suggestedHumanReadableName": logical + "_0_123e4567-e89b-12d3-a456-426614174000.png", "exportedFileName": "capture.png"}]}]), encoding="utf-8")
+                return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+            with mock.patch.object(runner, "_run_live_command", side_effect=export):
+                paths, failure = runner._retain_live_screenshots(name, ROOT, root, result)
+            self.assertIsNone(failure)
+            self.assertEqual(paths, [f"screenshots/{name}/01.png"])
+            self.assertTrue((root / runner.LIVE_REVIEW_STAGE / paths[0]).is_file())
+            self.assertFalse((root / runner.LIVE_REVIEW_ARTIFACTS).exists())
+
+    def test_normal_settings_matrix_uses_two_devices_without_forced_appearance(self):
+        destinations = {device: f"platform=iOS Simulator,id={index:08d}-1111-1111-1111-111111111111" for index, device in enumerate(runner.IOS_RELEASE_DEVICES, 1)}
+        matrix = runner.ios_normal_settings_matrix(destinations)
+        self.assertEqual(len(matrix), 4)
+        self.assertEqual({"light", "dark"}, {environment["ACE_EXPECTED_EFFECTIVE_INTERFACE_STYLE"] for _, _, environment, _ in matrix})
+        self.assertTrue(all("ACE_UI_TEST_APPEARANCE" not in environment and not any(argument.startswith("ACE_UI_TEST_APPEARANCE=") for argument in command) for _, command, environment, _ in matrix))
+        self.assertTrue(all(runner.LIVE_NORMAL_SETTINGS_METHOD in command[-1] for _, command, _, _ in matrix))
+
+    def test_attachment_export_rejects_incomplete_or_unsafe_metadata_and_pngs(self):
+        name = f"ios-release-{runner.IOS_CORE_DEVICE}-light-testBothAppearances"
+        expected = runner._expected_logical_screenshot_names(name)
+        cases = {
+            "missing": (expected[:1], self.png_fixture(), "attachment-missing"),
+            "duplicate": ((expected[0], expected[0]), self.png_fixture(), "attachment-missing"),
+            "extra": ((*expected, "unapproved attachment"), self.png_fixture(), "attachment-missing"),
+            "corrupt": (expected, b"not-a-png", "attachment-invalid"),
+            "too-many-pixels": (expected, self.png_fixture(b"\x00" * 6), "attachment-invalid"),
+            "escape": (expected, self.png_fixture(), "attachment-invalid"),
+        }
+        for case, (logical_names, image, reason) in cases.items():
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                result = root / "result.xcresult"
+                result.mkdir()
+
+                def export(command_name, command, cwd, environment, log_path):
+                    output = Path(command[-1])
+                    output.mkdir()
+                    attachments = []
+                    for number, logical in enumerate(logical_names):
+                        filename = "../outside.png" if case == "escape" and number == 0 else f"capture-{number}.png"
+                        if filename != "../outside.png":
+                            (output / filename).write_bytes(image)
+                        attachments.append({"suggestedHumanReadableName": logical, "exportedFileName": filename})
+                    (output / "manifest.json").write_text(json.dumps([{"attachments": attachments}]), encoding="utf-8")
+                    return runner.LiveCommandResult(0, "controlled", process_exit=0)
+
+                with mock.patch.object(runner, "_run_live_command", side_effect=export):
+                    paths, failure = runner._retain_live_screenshots(name, ROOT, root, result)
+                self.assertIsNone(paths)
+                self.assertEqual(failure, reason)
+                self.assertFalse((root / runner.LIVE_REVIEW_ARTIFACTS).exists())
+
+    def test_normal_settings_stops_when_simulator_query_fails(self):
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner, "_simctl_ui_value", return_value=(False, None)
+        ):
+            result = runner._normal_settings_result(
+                "ios-normal-settings-test-light", ["xcodebuild", "test"], ROOT,
+                runner.ios_normal_settings_environment("light"), Path(directory),
+                "11111111-1111-1111-1111-111111111111", "light",
+            )
+        self.assertEqual(result["reason"], "simulator-setting-query-failed")
+
+    def test_png_validation_rejects_oversized_or_incomplete_pixel_streams(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            cases = {
+                "valid": self.png_fixture(),
+                "corrupt": self.png_fixture()[:-1] + b"x",
+                "truncated": self.png_fixture()[:-5],
+                "overfull": self.png_fixture(b"\x00" * 6),
+            }
+            for case, content in cases.items():
+                with self.subTest(case=case):
+                    path = root / f"{case}.png"
+                    path.write_bytes(content)
+                    self.assertEqual(runner._valid_png(path), case == "valid")
+            oversized = root / "oversized.png"
+            oversized.write_bytes(self.png_fixture(width=10_000, height=10_000))
+            with mock.patch.object(runner.zlib, "decompressobj") as decoder:
+                self.assertFalse(runner._valid_png(oversized))
+            decoder.assert_not_called()
 
 
 if __name__ == "__main__":
