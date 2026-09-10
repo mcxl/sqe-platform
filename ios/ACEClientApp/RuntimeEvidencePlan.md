@@ -83,8 +83,9 @@ The 31 planned commands, 135 XCTest cases, 200 named fictional review images, an
 retention, provider interruption, retrieval, and denial evidence remain PENDING.
 
 The gate resolves exact simulator device types and the highest available iOS 26.x
-runtime. It accepts canonical unique UUIDs only. It gives simulator creation and
-polling one 180-second monotonic deadline. Each test command has a 600-second limit.
+runtime. It accepts canonical unique UUIDs for existing devices only. It does not
+create a simulator in the normal workflow. It gives inventory and readiness checks
+one 180-second monotonic deadline. Each test command has a 600-second limit.
 It fails on a wrong runtime or type, duplicate or invalid UUID, timeout, unavailable
 device, non-zero result, missing summary, skipped test, failed test, or wrong count.
 

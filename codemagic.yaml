@@ -117,6 +117,8 @@ workflows:
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual
     # No triggering events: an approved operator must start this workflow manually.
+    # The runner fails before its matrix unless this image provides iOS 26 iPhone 17
+    # and iPhone 17 Pro Max simulators. It keeps that provider diagnostic private.
     # It writes raw artifacts only to /private/tmp/mcx-19-live-evidence, outside the Git tree.
     scripts:
       - name: Run the MCX-19 controlled live evidence gate
@@ -127,6 +129,10 @@ workflows:
     # Raw logs, result bundles, and simulator metadata stay private.
     artifacts:
       - /private/tmp/mcx-19-live-evidence/live-evidence-progress.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.log
+      - /private/tmp/mcx-19-live-evidence/*.log
+      - /private/tmp/mcx-19-live-evidence/*-summary.json
       - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png
       - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json
       - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png

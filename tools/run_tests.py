@@ -9,6 +9,7 @@ import importlib.util
 import json
 import math
 import os
+import platform
 import re
 import shutil
 import subprocess
@@ -17,7 +18,7 @@ import tempfile
 import tarfile
 import time
 import zlib
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable
 
@@ -104,6 +105,7 @@ PACKAGE_MAPPING_FIELDS = frozenset({"package", "identifiers"})
 PACKAGE_FIELDS = frozenset({"package", "name", "status", "identifiers"})
 EVIDENCE_RECORD_FIELDS = frozenset({"status", "result"})
 IOS_RUNTIME_MAJOR = 26
+CODEMAGIC_XCODE_VERSION = "26.4.1"
 SIMULATOR_VERIFICATION_SECONDS = 180
 SIMULATOR_POLL_INTERVAL_SECONDS = 1
 LIVE_COMMAND_TIMEOUT_SECONDS = 600
@@ -127,6 +129,7 @@ LIVE_REVIEW_STAGE = ".review-artifact-stage"
 LIVE_REVIEW_ARTIFACTS = "review-artifacts"
 LIVE_SCREENSHOT_DIRECTORY = "screenshots"
 LIVE_DIAGNOSTIC_IMAGE_DIRECTORY = "diagnostic-images"
+SIMULATOR_RESOLUTION_LOG = "simulator-resolution.log"
 LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
 LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
 LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
@@ -146,8 +149,8 @@ LIVE_CONTROLLED_ENVIRONMENT_KEYS = frozenset(
      "ACE_EXPECTED_CONTENT_SIZE_CATEGORY",
      "TEST_RUNNER_ACE_EXPECTED_CONTENT_SIZE_CATEGORY")
 )
-IOS_CORE_DEVICE = "iPhone SE (3rd generation)"
-IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 16 Pro Max")
+IOS_CORE_DEVICE = "iPhone 17"
+IOS_RELEASE_DEVICES = (IOS_CORE_DEVICE, "iPhone 17 Pro Max")
 LIVE_UI_METHODS = (
     "testBothAppearances",
     "testLaunchShowsSafeConfigurationState",
@@ -766,38 +769,217 @@ def ios_normal_settings_matrix(destinations: dict[str, str]) -> list[tuple[str, 
     ]
 
 
+def _simulator_text(value: object) -> str:
+    """Convert captured process data to UTF-8 text for the controlled log."""
+
+    if isinstance(value, bytes):
+        return value.decode("utf-8", errors="replace")
+    return value if isinstance(value, str) else ""
+
+
+_ACTIVE_SIMULATOR_LOG_ROOT: Path | None = None
+
+
+def _write_simulator_resolution_log(root: Path | None, event: dict[str, object]) -> None:
+    """Append one simulator command event to disk and standard output."""
+
+    line = json.dumps(event, sort_keys=True)
+    if root is None:
+        print("simulator-resolution=" + line, flush=True)
+        return
+    try:
+        path = _safe_live_path(root, SIMULATOR_RESOLUTION_LOG)
+        path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(line + "\n")
+    except OSError as error:
+        raise SimulatorResolutionError("simulator resolution log could not be written") from error
+    print("simulator-resolution=" + line, flush=True)
+
+
+def _run_simulator_command(
+    root: Path,
+    phase: str,
+    command: list[str],
+    timeout: float,
+) -> subprocess.CompletedProcess[str]:
+    """Run one simulator preflight command with a full command record."""
+
+    started_at = datetime.now(timezone.utc)
+    started = time.monotonic()
+    deadline_at = started_at + timedelta(seconds=timeout)
+    _write_simulator_resolution_log(root, {
+        "event": "started",
+        "phase": phase,
+        "command": " ".join(command),
+        "argv": command,
+        "exitCode": None,
+        "elapsedSeconds": None,
+        "stdout": "",
+        "stderr": "",
+        "startTimeUTC": started_at.isoformat(),
+        "deadline": datetime.fromtimestamp(
+            started_at.timestamp() + timeout, timezone.utc
+        ).isoformat(),
+        "remainingSeconds": timeout,
+    })
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        elapsed = time.monotonic() - started
+        _write_simulator_resolution_log(root, {
+            "event": "timed-out",
+            "phase": phase,
+            "command": " ".join(command),
+            "argv": command,
+            "exitCode": None,
+            "startTimeUTC": started_at.isoformat(),
+            "deadline": deadline_at.isoformat(),
+            "remainingSeconds": 0,
+            "elapsedSeconds": elapsed,
+            "stdout": _simulator_text(error.stdout),
+            "stderr": _simulator_text(error.stderr),
+        })
+        raise
+    except OSError:
+        elapsed = time.monotonic() - started
+        _write_simulator_resolution_log(root, {
+            "event": "start-failed",
+            "phase": phase,
+            "command": " ".join(command),
+            "argv": command,
+            "exitCode": None,
+            "startTimeUTC": started_at.isoformat(),
+            "deadline": deadline_at.isoformat(),
+            "remainingSeconds": max(timeout - elapsed, 0),
+            "elapsedSeconds": elapsed,
+            "stdout": "",
+            "stderr": "",
+        })
+        raise
+    elapsed = time.monotonic() - started
+    _write_simulator_resolution_log(root, {
+        "event": "completed",
+        "phase": phase,
+        "command": " ".join(command),
+        "argv": command,
+        "exitCode": completed.returncode,
+        "startTimeUTC": started_at.isoformat(),
+        "deadline": deadline_at.isoformat(),
+        "remainingSeconds": max(timeout - elapsed, 0),
+        "elapsedSeconds": elapsed,
+        "stdout": _simulator_text(completed.stdout),
+        "stderr": _simulator_text(completed.stderr),
+    })
+    return completed
+
+
+def _simulator_log_root() -> Path | None:
+    """Return the active external root for simulator diagnostics."""
+
+    return _ACTIVE_SIMULATOR_LOG_ROOT
+
+
+def _write_simulator_environment(destinations: dict[str, str]) -> None:
+    """Export verified simulator UUIDs to Codemagic's step environment file."""
+
+    environment_file = os.environ.get("CM_ENV")
+    if not environment_file:
+        raise SimulatorResolutionError("Codemagic environment file is unavailable")
+    values: dict[str, str] = {}
+    names = (
+        (IOS_CORE_DEVICE, "ACE_IOS_CORE_SIMULATOR_UDID"),
+        ("iPhone 17 Pro Max", "ACE_IOS_PRO_MAX_SIMULATOR_UDID"),
+    )
+    for device, key in names:
+        destination = destinations.get(device)
+        if not isinstance(destination, str):
+            raise SimulatorResolutionError(f"verified simulator destination is missing: {device}")
+        match = re.search(r"(?:^|,)id=([0-9A-Fa-f-]{36})(?:,|$)", destination)
+        if match is None or SIMULATOR_UUID.fullmatch(match.group(1)) is None:
+            raise SimulatorResolutionError(f"verified simulator UUID is invalid: {device}")
+        values[key] = match.group(1)
+    try:
+        with Path(environment_file).open("a", encoding="utf-8") as stream:
+            for key, value in values.items():
+                stream.write(f"{key}={value}\n")
+    except OSError as error:
+        raise SimulatorResolutionError("Codemagic environment file could not be updated") from error
+
+
 def _simctl_list(timeout: float | None = None) -> dict:
     if timeout is not None and timeout <= 0:
         raise SimulatorResolutionError(
             "simctl list has no verification time remaining",
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         )
+    effective_timeout = (
+        SIMULATOR_VERIFICATION_SECONDS if timeout is None else timeout
+    )
     try:
-        completed = subprocess.run(
+        completed = _run_simulator_command(
+            _simulator_log_root(),
+            "simctl-list-json",
             ["xcrun", "simctl", "list", "-j"],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-            timeout=timeout,
+            effective_timeout,
         )
     except subprocess.TimeoutExpired as error:
         raise SimulatorResolutionError(
-            "simctl list exceeded the verification deadline",
+            "simctl list -j timed out: argv=['xcrun', 'simctl', 'list', '-j']",
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         ) from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
-            f"simctl list failed: {(completed.stdout or '').strip()}"
+            f"simctl list -j failed with exit code {completed.returncode}: argv=['xcrun', 'simctl', 'list', '-j']"
         )
     try:
-        data = json.loads(completed.stdout)
+        data = json.loads(completed.stdout or "")
     except json.JSONDecodeError as error:
         raise SimulatorResolutionError("simctl list returned invalid JSON") from error
     if not isinstance(data, dict):
         raise SimulatorResolutionError("simctl list returned an invalid object")
     return data
+
+
+def _xcode_version(timeout: float, root: Path | None = None) -> str:
+    """Return the exact Xcode version selected by the provider image."""
+
+    if timeout <= 0:
+        raise SimulatorResolutionError(
+            "xcode version query has no verification time remaining",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        )
+    try:
+        completed = _run_simulator_command(
+            _simulator_log_root() if root is None else root,
+            "preflight-xcode-version",
+            ["xcodebuild", "-version"],
+            timeout,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError(
+            "xcodebuild -version timed out: argv=['xcodebuild', '-version']",
+            SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+        ) from error
+    except OSError as error:
+        raise SimulatorResolutionError("xcodebuild version query could not start") from error
+    if completed.returncode != 0:
+        raise SimulatorResolutionError(
+            f"xcodebuild -version failed with exit code {completed.returncode}: argv=['xcodebuild', '-version']"
+        )
+    for line in (completed.stdout or "").splitlines():
+        match = re.fullmatch(r"Xcode (\d+(?:\.\d+)+)", line.strip())
+        if match is not None:
+            return match.group(1)
+    raise SimulatorResolutionError("xcodebuild version query returned no Xcode version")
 
 
 def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) -> str:
@@ -807,23 +989,20 @@ def _simctl_create(name: str, device_type: str, runtime: str, timeout: float) ->
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         )
     try:
-        completed = subprocess.run(
+        completed = _run_simulator_command(
+            _simulator_log_root(),
+            "simctl-create",
             ["xcrun", "simctl", "create", name, device_type, runtime],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-            timeout=timeout,
+            timeout,
         )
     except subprocess.TimeoutExpired as error:
         raise SimulatorResolutionError(
-            "simctl create exceeded the verification deadline",
+            f"simctl create timed out: argv=['xcrun', 'simctl', 'create', '{name}', '{device_type}', '{runtime}']",
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         ) from error
     if completed.returncode != 0:
         raise SimulatorResolutionError(
-            f"simctl create failed for {name}: {(completed.stdout or '').strip()}"
+            f"simctl create failed for {name} with exit code {completed.returncode}"
         )
     identifier = (completed.stdout or "").strip()
     if SIMULATOR_UUID.fullmatch(identifier) is None:
@@ -842,22 +1021,24 @@ def _simctl_boot(identifier: str, timeout: float) -> bool:
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         )
     try:
-        completed = subprocess.run(
+        completed = _run_simulator_command(
+            _simulator_log_root(),
+            "simctl-boot",
             ["xcrun", "simctl", "boot", identifier],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-            timeout=timeout,
+            timeout,
         )
     except subprocess.TimeoutExpired as error:
         raise SimulatorResolutionError(
-            "simctl boot exceeded the verification deadline",
+            f"simctl boot timed out: argv=['xcrun', 'simctl', 'boot', '{identifier}']",
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         ) from error
     except OSError as error:
         raise SimulatorResolutionError("simctl boot could not start") from error
+    # simctl returns 149 when the verified device is already booted.
+    if completed.returncode not in (0, 149):
+        raise SimulatorResolutionError(
+            f"simctl boot failed with exit code {completed.returncode}: argv=['xcrun', 'simctl', 'boot', '{identifier}']"
+        )
     return completed.returncode == 0
 
 
@@ -870,24 +1051,23 @@ def _simctl_bootstatus(identifier: str, timeout: float) -> None:
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         )
     try:
-        completed = subprocess.run(
+        completed = _run_simulator_command(
+            _simulator_log_root(),
+            "simctl-bootstatus",
             ["xcrun", "simctl", "bootstatus", identifier, "-b"],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-            timeout=timeout,
+            timeout,
         )
     except subprocess.TimeoutExpired as error:
         raise SimulatorResolutionError(
-            "simctl bootstatus exceeded the verification deadline",
+            f"simctl bootstatus timed out: argv=['xcrun', 'simctl', 'bootstatus', '{identifier}', '-b']",
             SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         ) from error
     except OSError as error:
         raise SimulatorResolutionError("simctl bootstatus could not start") from error
     if completed.returncode != 0:
-        raise SimulatorResolutionError("simctl bootstatus failed")
+        raise SimulatorResolutionError(
+            f"simctl bootstatus failed with exit code {completed.returncode}: argv=['xcrun', 'simctl', 'bootstatus', '{identifier}', '-b']"
+        )
 
 
 def _runtime_version(runtime: dict) -> tuple[int, ...] | None:
@@ -1069,13 +1249,16 @@ def resolve_ios_destinations(
     recorder: Callable[[str, object], None] | None = None,
     verification_seconds: float | None = None,
     require_ready: bool = False,
+    allow_create: bool = False,
 ) -> dict[str, str]:
-    """Resolve or create exact iOS 26 simulator devices before test execution."""
+    """Resolve exact iOS 26 simulator devices before test execution."""
 
     if len(names) != len(set(names)):
         raise SimulatorResolutionError("required simulator names must be unique")
     if type(require_ready) is not bool:
         raise SimulatorResolutionError("simulator readiness option is invalid")
+    if type(allow_create) is not bool:
+        raise SimulatorResolutionError("simulator creation option is invalid")
     if (
         verification_seconds is not None
         and (
@@ -1118,6 +1301,12 @@ def resolve_ios_destinations(
                 raise SimulatorResolutionError(f"simulator UUID is missing for {name}")
             identifiers[name] = identifier
         else:
+            if not allow_create:
+                inventory = _controlled_simulator_snapshot(snapshot, names)
+                _record_simulator_event(recorder, "missing-simulator", inventory)
+                raise SimulatorResolutionError(
+                    f"required simulator is missing and creation is disabled: {name}"
+                )
             remaining = deadline - time.monotonic()
             if remaining <= 0:
                 raise SimulatorResolutionError(
@@ -1175,7 +1364,9 @@ def resolve_ios_destinations(
         for name in names:
             identifier = verified_identifiers[name]
             remaining = deadline - time.monotonic()
-            _simctl_boot(identifier, remaining)
+            boot_started = _simctl_boot(identifier, remaining)
+            if not boot_started:
+                _record_simulator_event(recorder, "already-booted", name)
             remaining = deadline - time.monotonic()
             _simctl_bootstatus(identifier, remaining)
     destinations = {
@@ -1183,6 +1374,161 @@ def resolve_ios_destinations(
         for name in names
     }
     _record_simulator_event(recorder, "resolved-destinations", destinations)
+    return destinations
+
+
+def _simulator_preflight_action(error: SimulatorResolutionError) -> str:
+    """Return a fixed operator action without storing command output."""
+
+    if error.reason == SIMULATOR_RESOLUTION_TIMEOUT_REASON:
+        return "Retry with the Codemagic mac_mini_m4 image and Xcode 26.4.1."
+    if str(error).startswith("required Codemagic iOS tools"):
+        return "Select the Codemagic mac_mini_m4 image with xcodebuild, xcrun, and Xcode 26.4.1."
+    if "Xcode" in str(error) or str(error).startswith("xcodebuild"):
+        return "Select the Codemagic mac_mini_m4 image with the exact Xcode 26.4.1 version."
+    return (
+        "Select the Codemagic Xcode 26.4.1 image with an available iOS 26 runtime "
+        "and exact iPhone 17 and iPhone 17 Pro Max simulator device types."
+    )
+
+
+def _preflight_simctl_json(root: Path, phase: str, command: list[str], timeout: float) -> dict:
+    """Run one JSON simctl inventory command and fail with its exact argv."""
+
+    try:
+        completed = _run_simulator_command(root, phase, command, timeout)
+    except subprocess.TimeoutExpired as error:
+        raise SimulatorResolutionError(
+            f"{phase} timed out: argv={command}", SIMULATOR_RESOLUTION_TIMEOUT_REASON
+        ) from error
+    except OSError as error:
+        raise SimulatorResolutionError(f"{phase} could not start: argv={command}") from error
+    if completed.returncode != 0:
+        raise SimulatorResolutionError(
+            f"{phase} failed with exit code {completed.returncode}: argv={command}"
+        )
+    try:
+        value = json.loads(completed.stdout or "")
+    except json.JSONDecodeError as error:
+        raise SimulatorResolutionError(f"{phase} returned invalid JSON: argv={command}") from error
+    if not isinstance(value, dict):
+        raise SimulatorResolutionError(f"{phase} returned an invalid object: argv={command}")
+    return value
+
+
+def _live_simulator_preflight(root: Path) -> dict[str, str]:
+    """Record provider simulator availability before the live matrix starts."""
+
+    global _ACTIVE_SIMULATOR_LOG_ROOT
+    previous_root = _ACTIVE_SIMULATOR_LOG_ROOT
+    _ACTIVE_SIMULATOR_LOG_ROOT = root
+
+    diagnostic: dict[str, object] = {
+        "status": "failed",
+        "required": {
+            "xcodeVersion": CODEMAGIC_XCODE_VERSION,
+            "iosRuntimeMajor": IOS_RUNTIME_MAJOR,
+            "devices": list(IOS_RELEASE_DEVICES),
+        },
+        "tools": {"xcodebuild": False, "xcrun": False},
+        "xcode": {"available": False},
+        "runtime": {"available": False},
+        "devices": {name: {"available": False, "ready": False} for name in IOS_RELEASE_DEVICES},
+        "events": [],
+    }
+    deadline = time.monotonic() + SIMULATOR_VERIFICATION_SECONDS
+
+    def remaining_seconds() -> float:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise SimulatorResolutionError(
+                "simulator preflight has no verification time remaining",
+                SIMULATOR_RESOLUTION_TIMEOUT_REASON,
+            )
+        return remaining
+
+    def record(name: str, value: object) -> None:
+        events = diagnostic["events"]
+        assert isinstance(events, list)
+        events.append({"event": name, "value": value})
+        if name == "selected-runtime" and isinstance(value, str):
+            diagnostic["runtime"] = {"available": True, "identifier": value}
+        elif name == "device-types" and isinstance(value, dict):
+            devices = diagnostic["devices"]
+            assert isinstance(devices, dict)
+            for device, identifier in value.items():
+                if device in devices and isinstance(identifier, str):
+                    devices[device] = {"available": True, "ready": False, "identifier": identifier}
+        elif name == "resolved-destinations" and isinstance(value, dict):
+            devices = diagnostic["devices"]
+            assert isinstance(devices, dict)
+            for device in IOS_RELEASE_DEVICES:
+                if isinstance(value.get(device), str):
+                    entry = devices[device]
+                    assert isinstance(entry, dict)
+                    entry["ready"] = True
+
+    try:
+        tools = diagnostic["tools"]
+        assert isinstance(tools, dict)
+        tools["xcodebuild"] = shutil.which("xcodebuild") is not None
+        tools["xcrun"] = shutil.which("xcrun") is not None
+        if not tools["xcodebuild"] or not tools["xcrun"]:
+            raise SimulatorResolutionError("required Codemagic iOS tools are unavailable")
+        diagnostic["buildContext"] = {
+            "CM_BUILD_ID": os.environ.get("CM_BUILD_ID", "unavailable"),
+            "CM_BRANCH": os.environ.get("CM_BRANCH", "unavailable"),
+            "macOSVersion": platform.mac_ver()[0] or "unavailable",
+            "simulatorCommandPhase": "preflight",
+        }
+        observed_version = _xcode_version(remaining_seconds(), root=root)
+        diagnostic["xcode"] = {"available": True, "version": observed_version}
+        if observed_version != CODEMAGIC_XCODE_VERSION:
+            raise SimulatorResolutionError("Codemagic Xcode version does not match the workflow")
+        runtimes = _preflight_simctl_json(
+            root, "preflight-simctl-list-runtimes",
+            ["xcrun", "simctl", "list", "runtimes", "-j"],
+            remaining_seconds(),
+        )
+        runtime = _select_ios_runtime(runtimes)
+        diagnostic["runtime"] = {"available": True, "identifier": runtime}
+        device_types = _preflight_simctl_json(
+            root, "preflight-simctl-list-devicetypes",
+            ["xcrun", "simctl", "list", "devicetypes", "-j"],
+            remaining_seconds(),
+        )
+        device_identifiers = {
+            name: _device_type_identifier(device_types, name)
+            for name in IOS_RELEASE_DEVICES
+        }
+        diagnostic["devices"] = {
+            name: {"available": True, "ready": False, "identifier": device_identifiers[name]}
+            for name in IOS_RELEASE_DEVICES
+        }
+        _preflight_simctl_json(
+            root, "preflight-simctl-list-devices-available",
+            ["xcrun", "simctl", "list", "devices", "available", "-j"],
+            remaining_seconds(),
+        )
+        destinations = resolve_ios_destinations(
+            IOS_RELEASE_DEVICES,
+            recorder=record,
+            verification_seconds=remaining_seconds(),
+            require_ready=True,
+            allow_create=False,
+        )
+        _write_simulator_environment(destinations)
+        diagnostic["status"] = "passed"
+    except SimulatorResolutionError as error:
+        diagnostic["failure"] = {
+            "reason": _live_failure_reason(error),
+            "action": _simulator_preflight_action(error),
+        }
+        _write_live_json_atomically(root, "simulator-resolution.json", diagnostic)
+        _ACTIVE_SIMULATOR_LOG_ROOT = previous_root
+        raise
+    _write_live_json_atomically(root, "simulator-resolution.json", diagnostic)
+    _ACTIVE_SIMULATOR_LOG_ROOT = previous_root
     return destinations
 
 
@@ -2131,6 +2477,10 @@ def _retain_completed_review_images(root: Path, checks: list[dict]) -> str | Non
         expected = _expected_logical_screenshot_names(name) if isinstance(name, str) else ()
         if not expected:
             continue
+        if check.get("exit") != 0 and check.get("reason") in {
+            "command-nonzero", "command-timeout", "command-start-failed",
+        }:
+            continue
         if screenshots is None:
             if check.get("exit") != 0:
                 continue
@@ -2341,6 +2691,26 @@ def _run_live_command(
         if name.endswith("-diagnostic-attachments")
         else LIVE_COMMAND_TIMEOUT_SECONDS
     )
+    if command[:3] == ["xcrun", "simctl", "ui"] and _ACTIVE_SIMULATOR_LOG_ROOT is not None:
+        try:
+            completed = _run_simulator_command(
+                _ACTIVE_SIMULATOR_LOG_ROOT, f"live-{name}", command, timeout
+            )
+        except subprocess.TimeoutExpired:
+            return LiveCommandResult(1, f"{name} exceeded its time limit", "command-timeout")
+        except OSError:
+            return LiveCommandResult(1, f"{name} could not start", "command-start-failed")
+        log_path.write_text(
+            (completed.stdout or "") + (completed.stderr or ""), encoding="utf-8", errors="replace"
+        )
+        if completed.returncode != 0:
+            return LiveCommandResult(
+                1, f"{name} returned a non-zero result", "command-nonzero",
+                _published_process_exit(completed.returncode),
+            )
+        return LiveCommandResult(
+            0, f"{name} completed", process_exit=_published_process_exit(completed.returncode)
+        )
     try:
         with log_path.open("w", encoding="utf-8", errors="replace") as log:
             completed = subprocess.run(
@@ -3558,6 +3928,9 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         root = _live_artifact_root(artifact_root)
     except (OSError, ValueError) as error:
         return [_live_setup_failure(error)]
+    global _ACTIVE_SIMULATOR_LOG_ROOT
+    previous_simulator_log_root = _ACTIVE_SIMULATOR_LOG_ROOT
+    _ACTIVE_SIMULATOR_LOG_ROOT = root
     manifest: dict[str, object] = {
         "scope": "MCX-19-manual-live-evidence",
         "releaseEvidence": False,
@@ -3642,20 +4015,9 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         _write_live_manifest(root, manifest)
         if tuple(ui_methods()) != (*LIVE_UI_METHODS, LIVE_NORMAL_SETTINGS_METHOD):
             raise ValueError("approved UI test scope does not match the repository")
-        if shutil.which("xcodebuild") is None or shutil.which("xcrun") is None:
-            raise ValueError("required iOS test tools are unavailable")
-
-        events: list[dict[str, object]] = []
-        destinations = resolve_ios_destinations(
-            IOS_RELEASE_DEVICES,
-            recorder=lambda name, value: events.append({"event": name, "value": value}),
-            require_ready=True,
-        )
-        _safe_live_path(root, "simulator-resolution.json").write_text(
-            json.dumps(events, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-        )
         manifest["simulatorMetadata"] = "simulator-resolution.json"
         _write_live_manifest(root, manifest)
+        destinations = _live_simulator_preflight(root)
         ios = ROOT / "ios" / "ACEClientApp"
         def record(check: dict) -> None:
             nonlocal active
@@ -3758,7 +4120,11 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             manifest["failure"] = detail
             _write_live_manifest(root, manifest)
             return [{"name": "live-evidence", "status": "failed", "exit": 1, "detail": detail}]
-        required_files = {"simulator-resolution.json", "ios-negative-config.log"}
+        required_files = {
+            "simulator-resolution.json",
+            SIMULATOR_RESOLUTION_LOG,
+            "ios-negative-config.log",
+        }
         required_bundles: set[str] = set()
         for check in checks:
             if check["name"] != "ios-negative-config":
@@ -3851,7 +4217,10 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             pass
         return [result]
     finally:
-        finalise_private_collection()
+        try:
+            finalise_private_collection()
+        finally:
+            _ACTIVE_SIMULATOR_LOG_ROOT = previous_simulator_log_root
 
 
 def component_checks(level: str, component: str) -> list[dict]:

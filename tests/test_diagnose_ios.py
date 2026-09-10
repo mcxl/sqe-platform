@@ -244,7 +244,7 @@ def test_diagnostic_runs_one_functional_method_and_retains_failure(tmp_path, mon
     monkeypatch.setattr(diagnostic.rt, "ROOT", root_marker)
     monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
     monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
-    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices: {devices[0]: "platform=iOS Simulator,id=fixture"})
+    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices, **_kwargs: {devices[0]: "platform=iOS Simulator,id=fixture"})
     commands = []
 
     def run(command, environment, log, timeout):
@@ -302,7 +302,7 @@ def test_diagnostic_publishes_test_failure_before_post_test_probe(tmp_path, monk
     monkeypatch.setattr(diagnostic.rt, "ROOT", root_marker)
     monkeypatch.setattr(diagnostic, "context", lambda: "a" * 40)
     monkeypatch.setattr(diagnostic.rt, "_live_artifact_root", lambda path: path)
-    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices: {devices[0]: "platform=iOS Simulator,id=fixture"})
+    monkeypatch.setattr(diagnostic.rt, "resolve_ios_destinations", lambda devices, **_kwargs: {devices[0]: "platform=iOS Simulator,id=fixture"})
     simctl_calls = 0
 
     def run(command, environment, log, timeout):
@@ -1065,7 +1065,7 @@ def test_native_collection_publishes_bounded_result_bundle_path_diagnostic(tmp_p
 def test_destination_resolvers_use_their_bounded_ready_core_limits(monkeypatch):
     calls = []
 
-    def resolve(names, recorder=None, verification_seconds=None, require_ready=False):
+    def resolve(names, recorder=None, verification_seconds=None, require_ready=False, allow_create=False):
         calls.append((names, recorder, verification_seconds, require_ready))
         return {diagnostic.rt.IOS_CORE_DEVICE: "platform=iOS Simulator,id=fixture"}
 

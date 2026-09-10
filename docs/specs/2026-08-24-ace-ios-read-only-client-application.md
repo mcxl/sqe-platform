@@ -799,8 +799,8 @@ The exact private test-server address and certificate must be approved before ne
 
 The required simulator devices are:
 
-- iPhone SE (3rd generation) with iOS 26.
-- iPhone 16 Pro Max with iOS 26.
+- iPhone 17 with iOS 26.
+- iPhone 17 Pro Max with iOS 26.
 
 The approved Xcode 26 host must contain both simulator destinations.
 

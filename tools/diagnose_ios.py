@@ -291,7 +291,7 @@ def _existing_core_destination() -> str:
 
     return rt.resolve_ios_destinations(
         (rt.IOS_CORE_DEVICE,), verification_seconds=UNIT_SETUP_SECONDS,
-        require_ready=True,
+        require_ready=True, allow_create=True,
     )[rt.IOS_CORE_DEVICE]
 
 
@@ -300,7 +300,7 @@ def _native_cycle_destination() -> str:
 
     return rt.resolve_ios_destinations(
         (rt.IOS_CORE_DEVICE,), verification_seconds=NATIVE_CYCLE_SETUP_SECONDS,
-        require_ready=True,
+        require_ready=True, allow_create=True,
     )[rt.IOS_CORE_DEVICE]
 
 
@@ -1786,7 +1786,7 @@ def copy_controls_main() -> int:
         report["buildId"] = build_id
     publish(report)
     try:
-        destination = rt.resolve_ios_destinations((rt.IOS_CORE_DEVICE,))[rt.IOS_CORE_DEVICE]
+        destination = rt.resolve_ios_destinations((rt.IOS_CORE_DEVICE,), allow_create=True)[rt.IOS_CORE_DEVICE]
     except (OSError, ValueError, rt.SimulatorResolutionError):
         report["diagnosticStatus"] = "setup-failed"
         report["results"] = {"ui": {"status": "simulator-resolution-failed"}}
