@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import importlib.util
 import json
 import math
@@ -13,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import tarfile
 import time
 import zlib
 from datetime import datetime, timezone
@@ -110,6 +112,16 @@ LIVE_ARTIFACT_MAX_BYTES = 64 * 1024 * 1024
 LIVE_BASELINE_COMMIT = "7da6228dc87ad970aa8d44365fbc3823c58020da"
 LIVE_REPOSITORY = "mcxl/sqe-platform"
 LIVE_ARTIFACT_ROOT = Path("/private/tmp/mcx-19-live-evidence")
+LIVE_PRIVATE_COLLECTION_ROOT = Path("/private/tmp/mcx-19-full-matrix-private")
+LIVE_PRIVATE_COLLECTION_ARCHIVE = "mcx19-full-matrix-records.tar.gz"
+LIVE_PRIVATE_COLLECTION_MAX_FILES = 4096
+LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES = 64 * 1024 * 1024
+LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
+LIVE_PRIVATE_COLLECTION_STATUSES = frozenset(
+    {"complete", "incomplete", "quarantined-pending-review", "failed"}
+)
+LIVE_PRIVATE_COLLECTION_FAILURE_REASON = "private-collection-failed"
+LIVE_PRIVATE_COLLECTION_QUARANTINE_REASON = "private-collection-quarantined"
 LIVE_REVIEW_MANIFEST = "live-evidence-review-manifest.json"
 LIVE_REVIEW_STAGE = ".review-artifact-stage"
 LIVE_REVIEW_ARTIFACTS = "review-artifacts"
@@ -200,6 +212,8 @@ LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
         SIMULATOR_RESOLUTION_FAILURE_REASON,
         SIMULATOR_RESOLUTION_TIMEOUT_REASON,
         "controlled-failure",
+        LIVE_PRIVATE_COLLECTION_FAILURE_REASON,
+        LIVE_PRIVATE_COLLECTION_QUARANTINE_REASON,
     }
 )
 LIVE_PUBLISHED_DIAGNOSTICS = frozenset(
@@ -1401,6 +1415,395 @@ def _scan_live_artifacts(root: Path) -> None:
             raise ValueError("live artifact secret or redaction check failed")
 
 
+_PRIVATE_COLLECTION_SECRET = re.compile(
+    rb"(?i)(?:[\"']?(?:password|token|authorization|credential|secret)[\"']?\s*[:=]\s*[\"']?)(?!\[redacted\])[^\s,}\]]+"
+)
+_PRIVATE_COLLECTION_CREDENTIAL_PREFIX = re.compile(
+    rb"\b(?:gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]+)\b"
+)
+_PRIVATE_COLLECTION_REAL_CLIENT = re.compile(rb"(?i)real[ _-]?client")
+_PRIVATE_COLLECTION_UNREDACTED_USERNAME = re.compile(
+    rb'(?i)(?:["\']?(?:username|user)["\']?)\s*[:=]\s*(?!["\']?\[redacted\]["\']?(?:\s|,|}|$))\S+'
+)
+
+
+def _private_collection_status(status: object) -> str:
+    """Return one fixed private-collection state for safe progress records."""
+
+    return status if status in LIVE_PRIVATE_COLLECTION_STATUSES else "incomplete"
+
+
+def _private_collection_root() -> Path:
+    """Create or validate the fixed private sibling root outside public artifacts."""
+
+    root = LIVE_PRIVATE_COLLECTION_ROOT
+    if root.is_symlink():
+        raise ValueError("private collection root is unsafe")
+    for parent in (root.parent, *root.parents):
+        if parent.exists() and parent.is_symlink():
+            raise ValueError("private collection root has a symlinked parent")
+    root.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("private collection root is unsafe")
+    return root
+
+
+def _private_collection_relative(root: Path, path: Path) -> str:
+    """Return a bounded archive suffix after link and traversal checks."""
+
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("private collection source is not a regular file")
+    for ancestor in (path.parent, *path.parents):
+        if ancestor.is_symlink():
+            raise ValueError("private collection source has a symlinked ancestor")
+        if ancestor == root:
+            break
+    try:
+        relative = path.resolve().relative_to(root.resolve())
+    except (OSError, ValueError) as error:
+        raise ValueError("private collection source escapes its root") from error
+    if not relative.parts or any(
+        not part or part in {".", ".."} or len(part) > 255
+        or "\x00" in part or "\\" in part
+        or not part.isascii() or any(ord(character) < 32 or ord(character) == 127 for character in part)
+        for part in relative.parts
+    ):
+        raise ValueError("private collection source path is invalid")
+    return relative.as_posix()
+
+
+def _private_collection_regular_files(root: Path) -> list[Path]:
+    """Select only bounded regular files below one already-approved source root."""
+
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("private collection source root is unsafe")
+    selected: list[Path] = []
+    for path in sorted(root.rglob("*")):
+        if path.is_symlink():
+            raise ValueError("private collection source contains a symlink")
+        if path.is_dir():
+            continue
+        _private_collection_relative(root, path)
+        selected.append(path)
+        if len(selected) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
+            raise ValueError("private collection source count exceeds the limit")
+    return selected
+
+
+def _private_collection_credential_shape(content: bytes, match: re.Match[bytes]) -> str:
+    """Classify the fixed match neighbourhood without retaining matched bytes."""
+
+    if match.start() < 64 or len(content) - match.end() < 64:
+        return "boundary-truncated"
+    try:
+        decoded = content[match.start() - 64:match.end() + 64].decode("utf-8")
+    except UnicodeDecodeError:
+        return "non-utf8"
+    return "utf8-with-control" if any(
+        not character.isprintable() and character not in "\t\n\r" for character in decoded
+    ) else "utf8-printable"
+
+
+def _private_collection_quarantine_permitted(
+    archive_path: str, command: str, shape: str
+) -> bool:
+    """Permit only the approved unresolved binary result-data exception."""
+
+    return (
+        command in _live_command_names() - {"ios-negative-config"}
+        and archive_path.startswith(f"records/commands/{command}/result.xcresult/Data/")
+        and shape == "non-utf8"
+    )
+
+
+def _private_collection_archive_path(archive_path: str, command: str) -> None:
+    """Reject non-portable archive paths before they can reach private storage."""
+
+    if (
+        len(archive_path) > 1024
+        or not archive_path.isascii()
+        or "\\" in archive_path
+        or any(ord(character) < 32 or ord(character) == 127 for character in archive_path)
+    ):
+        raise ValueError("private collection archive path is invalid")
+    parts = archive_path.split("/")
+    if (
+        any(not part or part in {".", ".."} or len(part) > 255 for part in parts)
+        or parts[:3] != ["records", "commands", command]
+    ):
+        raise ValueError("private collection archive path is invalid")
+
+
+def _private_collection_file_metadata(
+    source_root: Path, path: Path, archive_path: str, command: str
+) -> tuple[int, str, str]:
+    """Scan every private source byte and return only provenance-safe metadata."""
+
+    _private_collection_relative(source_root, path)
+    _private_collection_archive_path(archive_path, command)
+    try:
+        size = path.stat().st_size
+    except OSError as error:
+        raise ValueError("private collection source cannot be read") from error
+    if size < 0 or size > LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES:
+        raise ValueError("private collection source exceeds the size limit")
+    try:
+        with path.open("rb") as stream:
+            content = stream.read(LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES + 1)
+    except OSError as error:
+        raise ValueError("private collection source cannot be read") from error
+    if len(content) > LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES:
+        raise ValueError("private collection source exceeds the size limit")
+    if len(content) != size or path.stat().st_size != size:
+        raise ValueError("private collection source changed during read")
+    sensitive_key = r'(?:"(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token)"|(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token))'
+    username_key = r'(?:"(?:username|user)"|(?:username|user))'
+    forbidden = re.compile(rf"(?i){sensitive_key}\s*[:=]\s*\S+")
+    unredacted_username = re.compile(
+        rf'(?i){username_key}\s*[:=]\s*(?!"?\[redacted\]"?(?:\s|,|\}}|$))\S+'
+    )
+    if any(
+        forbidden.search(text) or unredacted_username.search(text)
+        for text in (
+            content.decode("utf-8", errors="ignore"),
+            content.decode("utf-16-le", errors="ignore"),
+            content.decode("utf-16-be", errors="ignore"),
+        )
+    ):
+        raise ValueError("private collection content was rejected")
+    quarantined = False
+    for matcher, pattern in (
+        ("key-value", _PRIVATE_COLLECTION_SECRET),
+        ("credential-prefix", _PRIVATE_COLLECTION_CREDENTIAL_PREFIX),
+        ("real-client", _PRIVATE_COLLECTION_REAL_CLIENT),
+        ("unredacted-username", _PRIVATE_COLLECTION_UNREDACTED_USERNAME),
+    ):
+        for match in pattern.finditer(content):
+            if (
+                matcher == "credential-prefix"
+                and _private_collection_quarantine_permitted(
+                    archive_path, command, _private_collection_credential_shape(content, match)
+                )
+            ):
+                quarantined = True
+                continue
+            raise ValueError("private collection content was rejected")
+    return (
+        size,
+        hashlib.sha256(content).hexdigest(),
+        "quarantined-pending-review" if quarantined else "complete",
+    )
+
+
+def _private_collection_sources(
+    root: Path, planned: list[dict[str, object]], checks: list[dict], active: str | None
+) -> tuple[list[tuple[Path, Path, str, str]], bool]:
+    """Derive all collection sources from the exact planned and started commands."""
+
+    planned_names = [item.get("name") for item in planned if isinstance(item, dict)]
+    if (
+        len(planned_names) != len(planned)
+        or set(planned_names) != _live_command_names()
+        or len(set(planned_names)) != len(planned_names)
+    ):
+        raise ValueError("private collection planned scope is invalid")
+    started = [check.get("name") for check in checks if isinstance(check, dict)]
+    if active in _live_command_names() and active not in started:
+        started.append(active)
+    if any(name not in planned_names for name in started) or len(set(started)) != len(started):
+        raise ValueError("private collection started scope is invalid")
+    complete = set(started) == set(planned_names)
+    checks_by_name = {
+        check["name"]: check for check in checks
+        if isinstance(check, dict) and isinstance(check.get("name"), str)
+    }
+    sources: list[tuple[Path, Path, str, str]] = []
+    for command in started:
+        assert isinstance(command, str)
+        prefix = f"records/commands/{command}"
+        if command == "ios-negative-config":
+            path = _safe_live_path(root, "ios-negative-config.log")
+            if not path.exists() and not path.is_symlink():
+                complete = False
+            else:
+                sources.append((root, path, f"{prefix}/log", command))
+            continue
+        for relative, archive_name in (
+            (f"{command}.log", "log"),
+            (f"{command}-summary.json", "summary.json"),
+            (f"{command}-attachment-export.log", "attachment-export.log"),
+            (f"{command}-diagnostic-attachment-export.log", "diagnostic-attachment-export.log"),
+        ):
+            path = _safe_live_path(root, relative)
+            if not path.exists() and not path.is_symlink():
+                if archive_name in {"log", "summary.json"}:
+                    complete = False
+            else:
+                sources.append((root, path, f"{prefix}/{archive_name}", command))
+        setting_logs = checks_by_name.get(command, {}).get("private_setting_logs", [])
+        if setting_logs:
+            if (
+                not command.startswith("ios-normal-settings-")
+                or not isinstance(setting_logs, list)
+                or len(setting_logs) != 4
+                or len(set(setting_logs)) != 4
+            ):
+                raise ValueError("private collection setting-log scope is invalid")
+            for relative in setting_logs:
+                if not isinstance(relative, str) or re.fullmatch(
+                    r"simctl-[0-9A-Fa-f-]{36}-(?:appearance|content_size)-(?:query|set)\.log",
+                    relative,
+                ) is None:
+                    raise ValueError("private collection setting-log path is invalid")
+                path = _safe_live_path(root, relative)
+                if path.exists() or path.is_symlink():
+                    sources.append((root, path, f"{prefix}/simulator-settings/{relative}", command))
+        for relative, archive_name in (
+            (f"{command}.xcresult", "result.xcresult"),
+            (f"{command}-attachment-export", "attachment-export"),
+            (f"{command}-diagnostic-attachment-export", "diagnostic-attachment-export"),
+        ):
+            directory = _safe_live_path(root, relative)
+            if not directory.exists() and not directory.is_symlink():
+                if archive_name == "result.xcresult":
+                    complete = False
+                continue
+            for path in _private_collection_regular_files(directory):
+                suffix = _private_collection_relative(directory, path)
+                sources.append((directory, path, f"{prefix}/{archive_name}/{suffix}", command))
+    if len(sources) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
+        raise ValueError("private collection source count exceeds the limit")
+    return sources, complete
+
+
+def _verify_private_collection_archive(
+    archive: Path, expected: dict[str, tuple[int, str]]
+) -> None:
+    """Verify every archived member has the exact selected original bytes."""
+
+    try:
+        with tarfile.open(archive, "r:gz") as input_archive:
+            members = input_archive.getmembers()
+            names = [member.name for member in members]
+            if len(names) != len(set(names)) or set(names) != set(expected):
+                raise ValueError("private collection archive members are invalid")
+            for member in members:
+                if not member.isreg() or member.size != expected[member.name][0]:
+                    raise ValueError("private collection archive member is invalid")
+                stream = input_archive.extractfile(member)
+                if stream is None:
+                    raise ValueError("private collection archive member is unreadable")
+                digest = hashlib.sha256()
+                for chunk in iter(lambda: stream.read(64 * 1024), b""):
+                    digest.update(chunk)
+                if digest.hexdigest() != expected[member.name][1]:
+                    raise ValueError("private collection archive checksum is invalid")
+    except (OSError, tarfile.TarError) as error:
+        raise ValueError("private collection archive validation failed") from error
+
+
+def _finalise_private_live_collection(
+    root: Path,
+    planned: list[dict[str, object]],
+    checks: list[dict],
+    active: str | None,
+    manifest: dict[str, object],
+) -> str:
+    """Archive exact available original records, without publishing their contents."""
+
+    private_root: Path | None = None
+    temporary: Path | None = None
+    try:
+        private_root = _private_collection_root()
+        archive = private_root / LIVE_PRIVATE_COLLECTION_ARCHIVE
+        if archive.is_symlink() or (archive.exists() and not archive.is_file()):
+            raise ValueError("private collection archive path is unsafe")
+        if archive.exists():
+            archive.unlink()
+        temporary = private_root / f".{LIVE_PRIVATE_COLLECTION_ARCHIVE}.tmp"
+        if temporary.exists() or temporary.is_symlink():
+            if temporary.is_file() and not temporary.is_symlink():
+                temporary.unlink()
+            else:
+                raise ValueError("private collection temporary path is unsafe")
+        if not planned:
+            return "incomplete"
+        sources, complete = _private_collection_sources(root, planned, checks, active)
+        completed_commands = {
+            check.get("name") for check in checks
+            if isinstance(check, dict) and isinstance(check.get("name"), str)
+        }
+        entries: list[dict[str, object]] = []
+        expected: dict[str, tuple[int, str]] = {}
+        for source_root, path, archive_path, command in sources:
+            size, digest, scanner_status = _private_collection_file_metadata(
+                source_root, path, archive_path, command
+            )
+            if archive_path in expected:
+                raise ValueError("private collection archive path is duplicated")
+            expected[archive_path] = (size, digest)
+            entries.append({
+                "relativePath": archive_path,
+                "producingCommand": command,
+                "commandState": "complete" if command in completed_commands else "incomplete",
+                "size": size,
+                "sha256": digest,
+                "scannerStatus": scanner_status,
+            })
+        if not entries:
+            if active is not None or not complete:
+                return "incomplete"
+            raise ValueError("private collection has no bounded source set")
+        if sum(item["size"] for item in entries) > LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES:
+            raise ValueError("private collection source size exceeds the limit")
+        quarantined = any(item["scannerStatus"] == "quarantined-pending-review" for item in entries)
+        status = "quarantined-pending-review" if quarantined else "complete" if complete else "incomplete"
+        inventory = json.dumps({
+            "scope": "MCX-19-full-matrix-private-records",
+            "collectionStatus": status,
+            "candidate": {
+                key: manifest[key] for key in ("workflow", "repository", "commit", "branch", "buildId")
+                if isinstance(manifest.get(key), str)
+            },
+            "plannedCommandCount": len(planned),
+            "startedCommandCount": len({item["producingCommand"] for item in entries}),
+            "records": entries,
+        }, indent=2, sort_keys=True).encode("utf-8") + b"\n"
+        inventory_path = "records/collection-inventory.json"
+        expected[inventory_path] = (len(inventory), hashlib.sha256(inventory).hexdigest())
+        with tarfile.open(temporary, "w:gz", format=tarfile.PAX_FORMAT) as output:
+            for source_root, path, archive_path, command in sources:
+                size, digest, scanner_status = _private_collection_file_metadata(
+                    source_root, path, archive_path, command
+                )
+                if expected[archive_path] != (size, digest):
+                    raise ValueError("private collection source changed during packaging")
+                info = output.gettarinfo(str(path), arcname=archive_path)
+                if not info.isreg():
+                    raise ValueError("private collection archive record is unsafe")
+                info.uid = info.gid = 0
+                info.uname = info.gname = ""
+                info.mtime = 0
+                with path.open("rb") as stream:
+                    output.addfile(info, stream)
+            inventory_info = tarfile.TarInfo(inventory_path)
+            inventory_info.size = len(inventory)
+            inventory_info.mode = 0o600
+            inventory_info.mtime = 0
+            output.addfile(inventory_info, io.BytesIO(inventory))
+        _verify_private_collection_archive(temporary, expected)
+        os.replace(temporary, archive)
+        return status
+    except (OSError, ValueError, tarfile.TarError):
+        if temporary is not None and temporary.is_file() and not temporary.is_symlink():
+            temporary.unlink(missing_ok=True)
+        if private_root is not None:
+            archive = private_root / LIVE_PRIVATE_COLLECTION_ARCHIVE
+            if archive.is_file() and not archive.is_symlink():
+                archive.unlink(missing_ok=True)
+        return "failed"
+
+
 def _expected_logical_screenshot_names(name: str) -> tuple[str, ...]:
     """Return the complete, fixed attachment inventory for one UI command."""
 
@@ -1839,6 +2242,11 @@ def _normal_settings_result(
 ) -> dict:
     """Set and restore simulator settings around one non-forced UI test."""
 
+    private_setting_logs = [
+        f"simctl-{identifier}-{setting}-{suffix}.log"
+        for setting in ("appearance", "content_size")
+        for suffix in ("query", "set")
+    ]
     query_evidence: list[dict[str, object]] = []
     appearance_ok, previous_appearance = _simctl_ui_value(
         root, identifier, "appearance", query_evidence=query_evidence
@@ -1857,7 +2265,7 @@ def _normal_settings_result(
         return {"name": name, "status": "failed", "exit": 1,
                 "detail": "simulator settings could not be queried",
                 "reason": "simulator-setting-query-failed",
-                "simulator_settings": observations}
+                "simulator_settings": observations, "private_setting_logs": private_setting_logs}
     result: dict | None = None
     setting_failed = False
     restore_failed = False
@@ -1894,14 +2302,14 @@ def _normal_settings_result(
                 "reason": "simulator-setting-restore-failed",
                 "check_exit_before_restore": result.get("exit") if result else None,
                 "check_reason_before_restore": result.get("reason") if result else None,
-                "simulator_settings": observations}
+                "simulator_settings": observations, "private_setting_logs": private_setting_logs}
     if setting_failed:
         return {"name": name, "status": "failed", "exit": 1,
                 "detail": "simulator settings could not be set and verified",
                 "reason": "simulator-setting-set-failed",
-                "simulator_settings": observations}
+                "simulator_settings": observations, "private_setting_logs": private_setting_logs}
     assert result is not None
-    return {**result, "simulator_settings": observations}
+    return {**result, "simulator_settings": observations, "private_setting_logs": private_setting_logs}
 
 
 def _live_command_environment(environment: dict[str, str]) -> dict[str, str]:
@@ -2581,6 +2989,7 @@ def _write_live_snapshot(
     verified_identity: dict[str, str] | None = None,
     interrupted: bool = False,
     fault: str | None = None,
+    private_collection_status: str = "incomplete",
 ) -> None:
     """Persist one safe live-run state without inferring unavailable results."""
 
@@ -2630,6 +3039,7 @@ def _write_live_snapshot(
     progress = {
         "releaseEvidence": False,
         "status": "incomplete",
+        "privateCollectionStatus": _private_collection_status(private_collection_status),
         "runState": (
             "interrupted" if interrupted else "failed" if failed or fault else "complete"
             if planned_names and not not_run and active is None else "incomplete"
@@ -2696,6 +3106,7 @@ def _write_live_snapshot(
         "completedCount": len(completed),
         "lastCompleted": completed[-1] if completed else None,
         "releaseEvidence": False,
+        "privateCollectionStatus": _private_collection_status(private_collection_status),
     }, sort_keys=True), flush=True)
 
 
@@ -3151,6 +3562,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         "scope": "MCX-19-manual-live-evidence",
         "releaseEvidence": False,
         "status": "failed",
+        "privateCollectionStatus": "incomplete",
         "results": [],
         "expectedCommit": expected_commit,
     }
@@ -3165,7 +3577,41 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     verified_identity: dict[str, str] | None = None
     planned: list[dict[str, object]] = []
     checks: list[dict] = []
+    private_collection_checks = checks
     active: str | None = "setup"
+    private_collection_status = "incomplete"
+    private_collection_finalised = False
+    interrupted_run = False
+
+    def finalise_private_collection() -> str:
+        """Record a fixed collection status on every normal or failed exit path."""
+
+        nonlocal private_collection_status, private_collection_finalised
+        if private_collection_finalised:
+            return private_collection_status
+        private_collection_status = _finalise_private_live_collection(
+            root, planned, private_collection_checks, active, manifest
+        )
+        private_collection_finalised = True
+        manifest["privateCollectionStatus"] = private_collection_status
+        try:
+            fault = manifest.get("failure")
+            _write_live_snapshot(
+                root,
+                checks,
+                active,
+                planned=planned,
+                expected_identity=expected_identity,
+                verified_identity=verified_identity,
+                fault=fault if fault in LIVE_PUBLISHED_FAILURE_REASONS else None,
+                interrupted=interrupted_run,
+                private_collection_status=private_collection_status,
+            )
+            _write_live_manifest(root, manifest)
+        except (OSError, ValueError):
+            pass
+        return private_collection_status
+
     try:
         _write_live_manifest(root, manifest)
         _write_live_snapshot(
@@ -3334,9 +3780,36 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         _scan_live_artifacts(root)
         os.replace(stage, published)
         active = None
+        private_collection_status = finalise_private_collection()
+        if private_collection_status != "complete":
+            manifest.update({
+                "status": (
+                    "pending-private-quarantine-review"
+                    if private_collection_status == "quarantined-pending-review"
+                    else "failed"
+                ),
+                "privateCollectionStatus": private_collection_status,
+                "results": checks,
+            })
+            _write_live_manifest(root, manifest)
+            reason = (
+                LIVE_PRIVATE_COLLECTION_QUARANTINE_REASON
+                if private_collection_status == "quarantined-pending-review"
+                else LIVE_PRIVATE_COLLECTION_FAILURE_REASON
+            )
+            return [{
+                "name": "live-evidence",
+                "status": "failed",
+                "exit": 1,
+                "detail": "private evidence collection requires review"
+                if private_collection_status == "quarantined-pending-review"
+                else "private evidence collection failed",
+                "reason": reason,
+            }]
         _write_live_snapshot(
             root, raw_checks, active, planned=planned,
             expected_identity=expected_identity, verified_identity=verified_identity,
+            private_collection_status=private_collection_status,
         )
         checksums = _live_artifact_checksums(root)
         _scan_live_artifacts(root)
@@ -3346,6 +3819,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         _verify_live_artifact_checksums(root, checksums)
         return checks
     except KeyboardInterrupt:
+        interrupted_run = True
         try:
             _write_live_snapshot(
                 root,
@@ -3376,6 +3850,8 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         except (OSError, ValueError):
             pass
         return [result]
+    finally:
+        finalise_private_collection()
 
 
 def component_checks(level: str, component: str) -> list[dict]:

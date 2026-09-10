@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tarfile
 import tempfile
 import unittest
 import zlib
@@ -135,7 +136,11 @@ class RunnerContractTests(unittest.TestCase):
             return runner.LiveCommandResult(1, "controlled rejection", "command-nonzero", 1)
 
         return (
-            mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root),
+            mock.patch.multiple(
+                runner,
+                LIVE_ARTIFACT_ROOT=root,
+                LIVE_PRIVATE_COLLECTION_ROOT=root.parent / "private-collection",
+            ),
             mock.patch.object(runner, "_live_execution_context", return_value={"workflow": runner.LIVE_WORKFLOW}),
             mock.patch.object(runner, "_live_repository_metadata", return_value={"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40, "baseline": runner.LIVE_BASELINE_COMMIT}),
             mock.patch.object(runner, "ui_methods", return_value=[*runner.LIVE_UI_METHODS, runner.LIVE_NORMAL_SETTINGS_METHOD]),
@@ -568,6 +573,7 @@ class RunnerContractTests(unittest.TestCase):
             self.assertIsNone(progress["activeCommand"])
             self.assertEqual(progress["runState"], "complete")
             self.assertEqual(progress["status"], "incomplete")
+            self.assertEqual(progress["privateCollectionStatus"], "complete")
             self.assertFalse(progress["releaseEvidence"])
 
     def test_live_evidence_publishes_fixed_simulator_failure_codes(self):
@@ -1988,7 +1994,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
         self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
-                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png")
+                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png\n      - /private/tmp/mcx-19-full-matrix-private/mcx19-full-matrix-records.tar.gz")
         owned_paths = (
             "codemagic.yaml",
             "tools/run_tests.py",
@@ -2489,6 +2495,148 @@ class RunnerContractTests(unittest.TestCase):
             with mock.patch.object(runner.zlib, "decompressobj") as decoder:
                 self.assertFalse(runner._valid_png(oversized))
             decoder.assert_not_called()
+
+    def test_private_full_matrix_collection_preserves_exact_binary_bundle_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "raw"
+            private = Path(directory) / "private"
+            root.mkdir()
+            name = next(
+                command for command in runner._live_command_names()
+                if command.startswith("ios-release-iPhone SE (3rd generation)-light-")
+            )
+            original = b" " * 63 + b"\xffsk-fictional-token!" + b" " * 64
+            data = root / f"{name}.xcresult" / "Data"
+            data.mkdir(parents=True)
+            (data / "opaque").write_bytes(original)
+            (root / f"{name}.log").write_text("controlled", encoding="utf-8")
+            (root / f"{name}-summary.json").write_text("{}", encoding="utf-8")
+            planned = [
+                {"name": command, "expectedTests": None}
+                for command in sorted(runner._live_command_names())
+            ]
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_ROOT", private):
+                status = runner._finalise_private_live_collection(
+                    root, planned, [{"name": name}], None,
+                    {"workflow": runner.LIVE_WORKFLOW, "commit": "a" * 40},
+                )
+            self.assertEqual(status, "quarantined-pending-review")
+            archive = private / runner.LIVE_PRIVATE_COLLECTION_ARCHIVE
+            with tarfile.open(archive, "r:gz") as records:
+                member = f"records/commands/{name}/result.xcresult/Data/opaque"
+                self.assertEqual(records.extractfile(member).read(), original)
+                inventory = json.load(records.extractfile("records/collection-inventory.json"))
+            self.assertEqual(inventory["collectionStatus"], status)
+            entry = next(item for item in inventory["records"] if item["relativePath"] == member)
+            self.assertEqual(entry["sha256"], hashlib.sha256(original).hexdigest())
+            self.assertEqual(entry["scannerStatus"], status)
+            self.assertEqual(entry["commandState"], "complete")
+            self.assertNotIn("sk-fictional-token", json.dumps({"status": status}))
+
+    def test_private_full_matrix_collection_rejects_text_and_near_quarantine_matches(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            record = root / "opaque"
+            cases = (
+                ("text-secret", b"token=confirmed-secret", "records/commands/ios-65-unit/log", "ios-65-unit"),
+                ("utf16-secret", "token=fictional-probe".encode("utf-16-le"), "records/commands/ios-65-unit/log", "ios-65-unit"),
+                ("username", b"username=unredacted", "records/commands/ios-65-unit/log", "ios-65-unit"),
+                ("wrong-path", b" " * 63 + b"\xffsk-fictional-token" + b" " * 64,
+                 "records/commands/ios-65-unit/result.xcresult/DataX/opaque", "ios-65-unit"),
+                ("wrong-command", b" " * 63 + b"\xffsk-fictional-token" + b" " * 64,
+                 "records/commands/ios-65-unit/result.xcresult/Data/opaque", "ios-negative-config"),
+                ("utf8", b" " * 64 + b"sk-fictional-token" + b" " * 64,
+                 "records/commands/ios-65-unit/result.xcresult/Data/opaque", "ios-65-unit"),
+            )
+            for case, content, archive_path, command in cases:
+                with self.subTest(case=case):
+                    record.write_bytes(content)
+                    with self.assertRaisesRegex(ValueError, "private collection (content was rejected|archive path is invalid)"):
+                        runner._private_collection_file_metadata(root, record, archive_path, command)
+
+    def test_private_full_matrix_collection_rejects_symlink_and_stale_archive(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "raw"
+            private = Path(directory) / "private"
+            root.mkdir()
+            target = root / "target"
+            target.write_bytes(b"controlled")
+            with mock.patch.object(Path, "is_symlink", autospec=True, side_effect=lambda path: path == target):
+                with self.assertRaisesRegex(ValueError, "not a regular file"):
+                    runner._private_collection_relative(root, target)
+
+            name = "ios-65-unit"
+            (root / f"{name}.log").write_bytes(b"controlled")
+            planned = [{"name": command, "expectedTests": None} for command in sorted(runner._live_command_names())]
+            private.mkdir()
+            stale = private / runner.LIVE_PRIVATE_COLLECTION_ARCHIVE
+            stale.write_bytes(b"stale")
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_ROOT", private):
+                status = runner._finalise_private_live_collection(
+                    root, planned, [{"name": name}], None, {"workflow": runner.LIVE_WORKFLOW}
+                )
+            self.assertEqual(status, "incomplete")
+            self.assertNotEqual(stale.read_bytes(), b"stale")
+
+    def test_private_full_matrix_collection_uses_only_the_full_planned_source_inventory(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            names = sorted(runner._live_command_names())
+            planned = [{"name": name, "expectedTests": None} for name in names]
+            checks = [{"name": name, "exit": 1 if number == 0 else 0} for number, name in enumerate(names)]
+            for name in names:
+                if name == "ios-negative-config":
+                    (root / f"{name}.log").write_bytes(b"controlled")
+                    continue
+                (root / f"{name}.log").write_bytes(b"controlled")
+                (root / f"{name}-summary.json").write_bytes(b"{}")
+                data = root / f"{name}.xcresult" / "Data"
+                data.mkdir(parents=True)
+                (data / "object").write_bytes(b"controlled")
+            sources, complete = runner._private_collection_sources(root, planned, checks, None)
+            archive_paths = {archive_path for _source_root, _path, archive_path, _command in sources}
+            self.assertTrue(complete)
+            self.assertEqual(len(sources), (len(names) - 1) * 3 + 1)
+            self.assertIn("records/commands/ios-negative-config/log", archive_paths)
+            self.assertFalse(any("simulator-resolution" in path for path in archive_paths))
+            self.assertTrue(all(path.startswith("records/commands/") for path in archive_paths))
+            private = root / "private"
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_ROOT", private):
+                status = runner._finalise_private_live_collection(
+                    root, planned, checks, None, {"workflow": runner.LIVE_WORKFLOW}
+                )
+            self.assertEqual(status, "complete")
+            with tarfile.open(private / runner.LIVE_PRIVATE_COLLECTION_ARCHIVE, "r:gz") as records:
+                inventory = json.load(records.extractfile("records/collection-inventory.json"))
+            failed_entry = next(
+                item for item in inventory["records"]
+                if item["producingCommand"] == names[0]
+            )
+            self.assertEqual(failed_entry["commandState"], "complete")
+
+    def test_private_collection_finaliser_reports_interruption_as_incomplete(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            private = Path(directory) / "private"
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "LIVE_PRIVATE_COLLECTION_ROOT", private
+            ), mock.patch.object(runner, "_live_execution_context", side_effect=KeyboardInterrupt):
+                with self.assertRaises(KeyboardInterrupt):
+                    runner.live_evidence_checks(root, "a" * 40)
+            progress = json.loads((root / "live-evidence-progress.json").read_text(encoding="utf-8"))
+            self.assertTrue(progress["interrupted"])
+            self.assertEqual(progress["privateCollectionStatus"], "incomplete")
+
+    def test_private_collection_marks_missing_started_records_incomplete(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            planned = [{"name": name, "expectedTests": None} for name in runner._live_command_names()]
+            (root / "ios-65-unit.log").write_bytes(b"controlled")
+            sources, complete = runner._private_collection_sources(
+                root, planned, [{"name": name} for name in runner._live_command_names()], None
+            )
+            self.assertFalse(complete)
+            self.assertEqual([item[2] for item in sources], ["records/commands/ios-65-unit/log"])
 
 
 if __name__ == "__main__":

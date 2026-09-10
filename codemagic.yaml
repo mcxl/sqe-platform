@@ -130,3 +130,4 @@ workflows:
       - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png
       - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json
       - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png
+      - /private/tmp/mcx-19-full-matrix-private/mcx19-full-matrix-records.tar.gz
