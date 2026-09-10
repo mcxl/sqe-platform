@@ -785,7 +785,7 @@ def _write_simulator_resolution_log(root: Path | None, event: dict[str, object])
 
     line = json.dumps(event, sort_keys=True)
     if root is None:
-        print("simulator-resolution=" + line, flush=True)
+        print("simulator-resolution=" + line, file=sys.stderr, flush=True)
         return
     try:
         path = _safe_live_path(root, SIMULATOR_RESOLUTION_LOG)
@@ -794,7 +794,7 @@ def _write_simulator_resolution_log(root: Path | None, event: dict[str, object])
             handle.write(line + "\n")
     except OSError as error:
         raise SimulatorResolutionError("simulator resolution log could not be written") from error
-    print("simulator-resolution=" + line, flush=True)
+    print("simulator-resolution=" + line, file=sys.stderr, flush=True)
 
 
 def _run_simulator_command(
