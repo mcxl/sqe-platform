@@ -1919,8 +1919,8 @@ class RunnerContractTests(unittest.TestCase):
             [call.args[0] for call in command.call_args_list],
             [["xcrun", "simctl", "boot", core_uuid], ["xcrun", "simctl", "bootstatus", core_uuid, "-b"]],
         )
-        self.assertEqual(listing.call_args.kwargs["timeout"], 179)
-        self.assertEqual([call.kwargs["timeout"] for call in command.call_args_list], [178, 175])
+        self.assertEqual(listing.call_args.kwargs["timeout"], 359)
+        self.assertEqual([call.kwargs["timeout"] for call in command.call_args_list], [358, 355])
 
     def test_simulator_readiness_accepts_a_fresh_boot_before_bootstatus(self):
         core_uuid = "11111111-1111-1111-1111-111111111111"
@@ -2188,14 +2188,14 @@ class RunnerContractTests(unittest.TestCase):
         ])
         with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]) as listing, mock.patch.object(runner, "_simctl_create", return_value=created_uuid), mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 100, 100]):
             runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,), allow_create=True)
-        self.assertEqual(runner.SIMULATOR_VERIFICATION_SECONDS, 180)
+        self.assertEqual(runner.SIMULATOR_VERIFICATION_SECONDS, 360)
         self.assertEqual(runner.LIVE_COMMAND_TIMEOUT_SECONDS, 600)
         self.assertLess(
             runner.SIMULATOR_VERIFICATION_SECONDS,
             runner.LIVE_COMMAND_TIMEOUT_SECONDS,
         )
-        self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 180)
-        self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 180)
+        self.assertEqual(listing.call_args_list[0].kwargs["timeout"], 360)
+        self.assertEqual(listing.call_args_list[1].kwargs["timeout"], 360)
 
     def test_register_package_mapping_must_match_the_independent_plan_mapping(self):
         plan, register = self.controlled_evidence_fixture()
@@ -2309,9 +2309,9 @@ class RunnerContractTests(unittest.TestCase):
         ])
         with mock.patch.object(runner, "_simctl_list", side_effect=[initial, resolved]), mock.patch.object(runner, "_simctl_create", return_value=created_uuid) as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 105, 105]):
             runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,), allow_create=True)
-        self.assertEqual(create.call_args.kwargs["timeout"], 175)
+        self.assertEqual(create.call_args.kwargs["timeout"], 355)
 
-        with mock.patch.object(runner, "_simctl_list", return_value=initial), mock.patch.object(runner, "_simctl_create") as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 280]):
+        with mock.patch.object(runner, "_simctl_list", return_value=initial), mock.patch.object(runner, "_simctl_create") as create, mock.patch.object(runner.time, "monotonic", side_effect=[100, 100, 460]):
             with self.assertRaisesRegex(runner.SimulatorResolutionError, "create has no verification time remaining"):
                 runner.resolve_ios_destinations((runner.IOS_CORE_DEVICE,), allow_create=True)
         create.assert_not_called()

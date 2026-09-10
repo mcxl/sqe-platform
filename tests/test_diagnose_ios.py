@@ -220,7 +220,7 @@ def test_exact_scope_and_retention_contract():
         diagnostic.INITIAL_AUDIT_SCREENSHOT_ENVIRONMENT_KEY: "1",
     }
     assert "DIAGNOSTIC_TEST_ENVIRONMENT, ui_log, 420" in source
-    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
+    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 360
     native = yaml.split("  ace-ios-native-cycle-manual:", 1)[1].split("  ace-ios-core:", 1)[0]
     assert "max_build_duration: 8" in native
     assert "instance_type: mac_mini_m4" in native
@@ -506,7 +506,7 @@ def test_unit_settings_mode_runs_one_target_and_never_accepts(tmp_path, monkeypa
     assert diagnostic.UNIT_ALLOCATED_SECONDS == 266
     assert diagnostic.UNIT_ALLOCATED_SECONDS < 270
     assert diagnostic.UNIT_WORKFLOW_SECONDS == 300
-    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 180
+    assert diagnostic.rt.SIMULATOR_VERIFICATION_SECONDS == 360
 
 
 def test_native_cycle_runs_one_selector_and_archives_original_failure_records(tmp_path, monkeypatch):
