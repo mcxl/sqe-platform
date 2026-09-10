@@ -24,8 +24,11 @@ def test_ui_checks_measure_action_targets_without_suppressing_audits():
     source = UI_TESTS.read_text(encoding="utf-8")
     assert "private func assertMinimumActionTargets" in source
     assert "button.isHittable" in source
-    assert "XCTAssertGreaterThanOrEqual(button.frame.width, 44" in source
-    assert "XCTAssertGreaterThanOrEqual(button.frame.height, 44" in source
+    assert "isAtLeast44Points(button.frame.width)" in source
+    assert "isAtLeast44Points(button.frame.height)" in source
+    action_target_helper = source.split("private func isAtLeast44Points", 1)[1]
+    assert "let minimum: CGFloat = 44" in action_target_helper
+    assert "measurement >= minimum || minimum - measurement <= minimum.ulp * 8" in action_target_helper
     def method_source(name):
         body = source.split(f"func {name}(", 1)[1]
         return re.split(r"\n    (?:private )?func ", body, maxsplit=1)[0]
