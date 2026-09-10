@@ -1386,7 +1386,7 @@ class RunnerContractTests(unittest.TestCase):
                 runner._run_live_ios_test(name, command, cwd, environment, 1, root),
             ):
                 checks = runner.live_evidence_checks(root, "a" * 40)
-        self.assertTrue(all(check["exit"] == 0 for check in checks))
+        self.assertTrue(all(check["exit"] == 0 for check in checks), checks)
         self.assertEqual(captured["environment"], runner.NEGATIVE_CONFIG_ENVIRONMENT)
         self.assertEqual(captured["command"], runner.ios_negative_configuration_command())
         self.assertEqual(
@@ -1698,6 +1698,122 @@ class RunnerContractTests(unittest.TestCase):
                 "live-evidence", "--component", "ios", "--artifact-root",
                 str(runner.LIVE_ARTIFACT_ROOT), "--expected-commit", "A" * 40,
             ])
+
+    def test_live_repair_check_has_exact_five_command_scope_and_is_not_release_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "repair-artifacts"
+            destinations = {
+                runner.IOS_CORE_DEVICE: "platform=iOS Simulator,id=11111111-1111-1111-1111-111111111111",
+                "iPhone 17 Pro Max": "platform=iOS Simulator,id=22222222-2222-2222-2222-222222222222",
+            }
+            commands = []
+
+            def preflight(artifact_root):
+                (artifact_root / "simulator-resolution.json").write_text("{}", encoding="utf-8")
+                (artifact_root / runner.SIMULATOR_RESOLUTION_LOG).write_text("controlled", encoding="utf-8")
+                return destinations
+
+            def ios_test(name, command, _cwd, environment, expected, artifact_root):
+                commands.append((name, command, environment, expected))
+                (artifact_root / f"{name}.log").write_text("controlled", encoding="utf-8")
+                (artifact_root / f"{name}-summary.json").write_text("{}", encoding="utf-8")
+                return {"name": name, "status": "passed", "exit": 0,
+                        "detail": f"{name} executed {expected} tests", "process_exit": 0}
+
+            context = {"workflow": runner.LIVE_REPAIR_WORKFLOW,
+                       "branch": runner.LIVE_BRANCH, "buildId": "controlled-build"}
+            metadata = {"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40,
+                        "baseline": runner.LIVE_BASELINE_COMMIT}
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_live_execution_context", return_value=context
+            ), mock.patch.object(runner, "_live_repository_metadata", return_value=metadata), mock.patch.object(
+                runner, "_live_simulator_preflight", side_effect=preflight
+            ), mock.patch.object(
+                runner, "ui_methods", return_value=[*runner.LIVE_UI_METHODS, runner.LIVE_NORMAL_SETTINGS_METHOD]
+            ), mock.patch.object(runner, "_run_live_ios_test", side_effect=ios_test):
+                results = runner.live_repair_check(root, "a" * 40)
+            snapshot = json.loads((root / runner.LIVE_REPAIR_SNAPSHOT).read_text(encoding="utf-8"))
+
+        self.assertEqual(len(results), 5)
+        self.assertEqual(len(commands), 5)
+        self.assertEqual({item[0] for item in commands}, runner._live_repair_command_names())
+        self.assertEqual(commands[0][0], "ios-65-unit")
+        self.assertEqual(commands[0][3], 65)
+        ui_commands = commands[1:]
+        self.assertEqual({name.split("-light-", 1)[1] for name, *_ in ui_commands}, set(runner.LIVE_REPAIR_UI_METHODS))
+        self.assertEqual({runner.IOS_CORE_DEVICE, "iPhone 17 Pro Max"}, {next(device for device in runner.IOS_RELEASE_DEVICES if f"-{device}-" in name) for name, *_ in ui_commands})
+        self.assertTrue(all(environment["ACE_UI_TEST_APPEARANCE"] == "light" for _name, _command, environment, _expected in ui_commands))
+        self.assertEqual(snapshot["scope"], runner.LIVE_REPAIR_SCOPE)
+        self.assertEqual(snapshot["status"], "passed")
+        self.assertFalse(snapshot["releaseEvidence"])
+        self.assertEqual(snapshot["verifiedIdentity"]["commit"], "a" * 40)
+
+    def test_live_repair_check_retains_failure_in_its_incremental_snapshot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "repair-artifacts"
+            destinations = {device: f"platform=iOS Simulator,id={index:08d}-1111-1111-1111-111111111111" for index, device in enumerate(runner.IOS_RELEASE_DEVICES, 1)}
+            calls = []
+
+            def preflight(artifact_root):
+                (artifact_root / "simulator-resolution.json").write_text("{}", encoding="utf-8")
+                (artifact_root / runner.SIMULATOR_RESOLUTION_LOG).write_text("controlled", encoding="utf-8")
+                return destinations
+
+            def ios_test(name, _command, _cwd, _environment, _expected, artifact_root):
+                calls.append(name)
+                (artifact_root / f"{name}.log").write_text("controlled failure log", encoding="utf-8")
+                if len(calls) == 2:
+                    return {"name": name, "status": "failed", "exit": 1,
+                            "detail": "controlled", "reason": "command-nonzero", "process_exit": 71}
+                return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
+
+            context = {"workflow": runner.LIVE_REPAIR_WORKFLOW,
+                       "branch": runner.LIVE_BRANCH, "buildId": "controlled-build"}
+            metadata = {"repository": runner.LIVE_REPOSITORY, "commit": "a" * 40,
+                        "baseline": runner.LIVE_BASELINE_COMMIT}
+            with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                runner, "_live_execution_context", return_value=context
+            ), mock.patch.object(runner, "_live_repository_metadata", return_value=metadata), mock.patch.object(
+                runner, "_live_simulator_preflight", side_effect=preflight
+            ), mock.patch.object(
+                runner, "ui_methods", return_value=[*runner.LIVE_UI_METHODS, runner.LIVE_NORMAL_SETTINGS_METHOD]
+            ), mock.patch.object(runner, "_run_live_ios_test", side_effect=ios_test):
+                result = runner.live_repair_check(root, "a" * 40)
+            snapshot = json.loads((root / runner.LIVE_REPAIR_SNAPSHOT).read_text(encoding="utf-8"))
+
+        self.assertEqual(result[0]["name"], "live-repair-check")
+        self.assertEqual(len(calls), 5)
+        self.assertEqual(snapshot["status"], "failed")
+        self.assertEqual(snapshot["failed"][0]["reason"], "command-nonzero")
+        self.assertEqual(snapshot["failed"][0]["processExit"], 71)
+        self.assertFalse(snapshot["releaseEvidence"])
+
+    def test_live_repair_context_rejects_a_different_workflow_or_commit(self):
+        expected_commit = "a" * 40
+        environment = {
+            "CM_BUILD_ID": "controlled-build", "CM_BUILD_DIR": str(ROOT),
+            "CM_COMMIT": expected_commit, "CM_BRANCH": runner.LIVE_BRANCH,
+            "CM_TRIGGER_SOURCE": "api", "CM_BUILD_STARTED_BY": "controlled-operator",
+            runner.LIVE_WORKFLOW_ENVIRONMENT_KEY: runner.LIVE_REPAIR_WORKFLOW,
+        }
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            runner, "LIVE_ARTIFACT_ROOT", Path(directory) / "repair-artifacts"
+        ), mock.patch.dict(os.environ, environment, clear=True):
+            self.assertEqual(
+                runner._live_execution_context(
+                    runner.LIVE_ARTIFACT_ROOT, expected_commit, runner.LIVE_REPAIR_WORKFLOW
+                )["workflow"], runner.LIVE_REPAIR_WORKFLOW
+            )
+            with mock.patch.dict(os.environ, {runner.LIVE_WORKFLOW_ENVIRONMENT_KEY: runner.LIVE_WORKFLOW}):
+                with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                    runner._live_execution_context(
+                        runner.LIVE_ARTIFACT_ROOT, expected_commit, runner.LIVE_REPAIR_WORKFLOW
+                    )
+            with mock.patch.dict(os.environ, {"CM_COMMIT": "b" * 40}):
+                with self.assertRaisesRegex(ValueError, "Codemagic live workflow context"):
+                    runner._live_execution_context(
+                        runner.LIVE_ARTIFACT_ROOT, expected_commit, runner.LIVE_REPAIR_WORKFLOW
+                    )
 
     def test_simulator_resolution_uses_existing_exact_device_ids(self):
         core_uuid = "11111111-1111-1111-1111-111111111111"
@@ -2238,10 +2354,10 @@ class RunnerContractTests(unittest.TestCase):
         config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
         workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
         self.assertNotIn("triggering:", workflow)
-        self.assertIn("max_build_duration: 45", workflow)
+        self.assertIn("max_build_duration: 60", workflow)
         self.assertIn("instance_type: mac_mini_m2", workflow)
         self.assertIn("groups:\n        - mcx19_live_evidence", workflow)
-        self.assertEqual(config.count("mcx19_live_evidence"), 1)
+        self.assertEqual(workflow.count("mcx19_live_evidence"), 1)
         self.assertIn("ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual", workflow)
         self.assertIn("ACE_LIVE_EVIDENCE_APPROVED_COMMIT", workflow)
         self.assertIn(
@@ -2270,6 +2386,26 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIsNone(
             runner.re.search(r"(?<!/private)" + runner.re.escape(obsolete_path), owned_source)
         )
+
+    def test_live_repair_check_codemagic_workflow_is_manual_and_has_fixed_artifacts(self):
+        config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
+        workflow = config.split("  ace-ios-repair-check-manual:\n", 1)[1].split(
+            "  ace-ios-live-evidence-manual:\n", 1
+        )[0]
+        self.assertNotIn("triggering:", workflow)
+        self.assertIn("max_build_duration: 15", workflow)
+        self.assertIn("instance_type: mac_mini_m2", workflow)
+        self.assertEqual(workflow.count("mcx19_live_evidence"), 1)
+        self.assertIn("xcode: 26.4.1", workflow)
+        self.assertIn(
+            "ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-repair-check-manual", workflow
+        )
+        self.assertIn(
+            'python3 tools/run_tests.py live-repair-check --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"',
+            workflow,
+        )
+        self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
+                         "- /private/tmp/mcx-19-live-evidence/repair-check.json\n      - /private/tmp/mcx-19-live-evidence/simulator-resolution.json\n      - /private/tmp/mcx-19-live-evidence/simulator-resolution.log\n      - /private/tmp/mcx-19-live-evidence/*.log\n      - /private/tmp/mcx-19-live-evidence/*-summary.json\n      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png")
 
     def test_public_evidence_schemas_reject_noncanonical_value_types(self):
         cases = (

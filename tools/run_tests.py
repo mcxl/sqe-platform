@@ -131,8 +131,11 @@ LIVE_SCREENSHOT_DIRECTORY = "screenshots"
 LIVE_DIAGNOSTIC_IMAGE_DIRECTORY = "diagnostic-images"
 SIMULATOR_RESOLUTION_LOG = "simulator-resolution.log"
 LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
+LIVE_REPAIR_WORKFLOW = "ace-ios-repair-check-manual"
 LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
 LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
+LIVE_REPAIR_SCOPE = "MCX-19-live-repair-check"
+LIVE_REPAIR_SNAPSHOT = "repair-check.json"
 LIVE_OPERATING_ENVIRONMENT_KEYS = (
     "PATH",
     "HOME",
@@ -158,6 +161,10 @@ LIVE_UI_METHODS = (
     "testFictionalReleaseHasApprovedCopyControls",
     "testAllControlledScenariosShowExpectedStateAndAudit",
     "testReleaseOrientationHooks",
+)
+LIVE_REPAIR_UI_METHODS = (
+    "testFictionalReleaseHasApprovedCopyControls",
+    "testAllControlledScenariosShowExpectedStateAndAudit",
 )
 LIVE_NORMAL_SETTINGS_METHOD = "testNormalDeviceSettings"
 LIVE_NORMAL_SETTINGS_APPEARANCES = ("light", "dark")
@@ -745,6 +752,17 @@ def ios_release_ui_matrix(
         for device in IOS_RELEASE_DEVICES
         for appearance in ("light", "dark")
         for method in methods
+    ]
+
+
+def ios_live_repair_check_matrix(
+    destinations: dict[str, str]
+) -> list[tuple[str, list[str], dict[str, str], int]]:
+    """Build the fixed five-command repair-check native scope."""
+
+    return [
+        item for item in ios_release_ui_matrix(destinations, LIVE_REPAIR_UI_METHODS)
+        if "-light-" in item[0]
     ]
 
 
@@ -3226,7 +3244,9 @@ def _live_repository_metadata(expected_commit: str) -> dict[str, str]:
     return {"repository": LIVE_REPOSITORY, "commit": commit, "baseline": LIVE_BASELINE_COMMIT}
 
 
-def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[str, str]:
+def _live_execution_context(
+    artifact_root: Path, expected_commit: str, expected_workflow: str = LIVE_WORKFLOW
+) -> dict[str, str]:
     """Require the exact manual Codemagic workflow and checked-out build context."""
 
     build_directory = os.environ.get("CM_BUILD_DIR")
@@ -3237,14 +3257,15 @@ def _live_execution_context(artifact_root: Path, expected_commit: str) -> dict[s
         or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", build_id or "") is None
         or not _is_non_empty_string(build_directory)
         or Path(build_directory).resolve() != ROOT.resolve()
-        or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != LIVE_WORKFLOW
+        or expected_workflow not in {LIVE_WORKFLOW, LIVE_REPAIR_WORKFLOW}
+        or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != expected_workflow
         or os.environ.get("CM_COMMIT") != expected_commit
         or os.environ.get("CM_BRANCH") != LIVE_BRANCH
         or os.environ.get("CM_TRIGGER_SOURCE") != "api"
         or not _is_non_empty_string(os.environ.get("CM_BUILD_STARTED_BY"))
     ):
         raise ValueError("verified Codemagic live workflow context is invalid")
-    return {"workflow": LIVE_WORKFLOW, "branch": LIVE_BRANCH, "buildId": build_id}
+    return {"workflow": expected_workflow, "branch": LIVE_BRANCH, "buildId": build_id}
 
 
 def _write_live_manifest(root: Path, manifest: dict) -> None:
@@ -3921,6 +3942,243 @@ def _negative_configuration_result(
     return result
 
 
+def _live_repair_command_names() -> set[str]:
+    """Return the fixed five-command diagnostic repair scope."""
+
+    destinations = {device: "" for device in IOS_RELEASE_DEVICES}
+    return {
+        "ios-65-unit",
+        *(name for name, *_ in ios_live_repair_check_matrix(destinations)),
+    }
+
+
+def _repair_check_identity(
+    identity: object, *, expected: bool
+) -> dict[str, str]:
+    """Validate one repair-check identity before publication."""
+
+    fields = (
+        {
+            "scope": LIVE_REPAIR_SCOPE,
+            "workflow": LIVE_REPAIR_WORKFLOW,
+            "repository": LIVE_REPOSITORY,
+            "expectedCommit": None,
+            "expectedBranch": LIVE_BRANCH,
+            "baseline": LIVE_BASELINE_COMMIT,
+        }
+        if expected
+        else {
+            "scope": LIVE_REPAIR_SCOPE,
+            "workflow": LIVE_REPAIR_WORKFLOW,
+            "repository": LIVE_REPOSITORY,
+            "commit": None,
+            "branch": LIVE_BRANCH,
+            "baseline": LIVE_BASELINE_COMMIT,
+            "buildId": None,
+        }
+    )
+    commit_field = "expectedCommit" if expected else "commit"
+    if (
+        not isinstance(identity, dict)
+        or set(identity) != set(fields)
+        or any(identity[key] != value for key, value in fields.items() if value is not None)
+        or not isinstance(identity.get(commit_field), str)
+        or re.fullmatch(r"[0-9a-f]{40}", identity[commit_field]) is None
+        or (
+            not expected
+            and (
+                not isinstance(identity.get("buildId"), str)
+                or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", identity["buildId"]) is None
+            )
+        )
+    ):
+        raise ValueError("invalid repair-check identity")
+    return dict(sorted(identity.items()))
+
+
+def _write_live_repair_snapshot(
+    root: Path,
+    checks: list[dict],
+    active: str | None,
+    *,
+    planned: list[dict[str, object]],
+    expected_identity: dict[str, str],
+    verified_identity: dict[str, str] | None = None,
+    interrupted: bool = False,
+    fault: str | None = None,
+) -> None:
+    """Publish an incremental, non-release result for the five-command repair scope."""
+
+    names = _live_repair_command_names()
+    if active not in names | {None, "setup"} or len(checks) > len(names):
+        raise ValueError("invalid repair-check progress scope")
+    planned_records: list[dict[str, object]] = []
+    expected_counts = {"ios-65-unit": 65, **{name: 1 for name in names - {"ios-65-unit"}}}
+    for item in planned:
+        if (
+            not isinstance(item, dict)
+            or item.get("name") not in names
+            or item.get("expectedTests") != expected_counts[item.get("name")]
+        ):
+            raise ValueError("invalid repair-check command inventory")
+        planned_records.append({"name": item["name"], "expectedTests": item["expectedTests"]})
+    planned_names = [item["name"] for item in planned_records]
+    if len(set(planned_names)) != len(planned_names) or (planned_names and set(planned_names) != names):
+        raise ValueError("repair-check command inventory is incomplete")
+    completed = [_published_live_result(check) for check in checks]
+    completed_names = [item["name"] for item in completed]
+    if (
+        len(set(completed_names)) != len(completed_names)
+        or not set(completed_names).issubset(names)
+        or (planned_names and not set(completed_names).issubset(planned_names))
+    ):
+        raise ValueError("invalid completed repair-check command")
+    for check in completed:
+        for image in check.get("diagnosticImages", []):
+            path = _safe_live_path(root, image["path"])
+            if (
+                path.is_symlink()
+                or not path.is_file()
+                or not _valid_png(path)
+                or hashlib.sha256(path.read_bytes()).hexdigest() != image["sha256"]
+            ):
+                raise ValueError("retained repair diagnostic image is invalid")
+    failed = [item for item in completed if item["exit"] != 0]
+    not_run = [name for name in planned_names if name not in completed_names and name != active]
+    completed_scope = bool(planned_names) and not not_run and active is None
+    status = "failed" if failed or fault else "passed" if completed_scope else "incomplete"
+    snapshot: dict[str, object] = {
+        "scope": LIVE_REPAIR_SCOPE,
+        "workflow": LIVE_REPAIR_WORKFLOW,
+        "releaseEvidence": False,
+        "status": status,
+        "runState": "interrupted" if interrupted else status,
+        "activeCommand": active,
+        "planned": planned_records,
+        "completed": completed,
+        "failed": failed,
+        "notRun": not_run,
+        "interrupted": interrupted,
+        "expectedIdentity": _repair_check_identity(expected_identity, expected=True),
+    }
+    if verified_identity is not None:
+        snapshot["verifiedIdentity"] = _repair_check_identity(verified_identity, expected=False)
+    if fault is not None:
+        if fault not in LIVE_PUBLISHED_FAILURE_REASONS:
+            raise ValueError("invalid repair-check fault")
+        snapshot["fault"] = fault
+    _write_live_json_atomically(root, LIVE_REPAIR_SNAPSHOT, snapshot)
+    print("live-repair-check=" + json.dumps({
+        "activeCommand": active,
+        "completedCount": len(completed),
+        "releaseEvidence": False,
+        "status": status,
+    }, sort_keys=True), flush=True)
+
+
+def _live_repair_setup_failure(error: Exception) -> dict:
+    """Build one controlled repair-check setup failure."""
+
+    return {
+        "name": "live-repair-check",
+        "status": "failed",
+        "exit": 1,
+        "detail": _live_failure_detail(error),
+        "reason": _live_failure_reason(error),
+    }
+
+
+def live_repair_check(artifact_root: Path, expected_commit: str) -> list[dict]:
+    """Run only the fixed MCX-19 repair diagnostic scope outside release evidence."""
+
+    try:
+        root = _live_artifact_root(artifact_root)
+    except (OSError, ValueError) as error:
+        return [_live_repair_setup_failure(error)]
+    global _ACTIVE_SIMULATOR_LOG_ROOT
+    previous_simulator_log_root = _ACTIVE_SIMULATOR_LOG_ROOT
+    _ACTIVE_SIMULATOR_LOG_ROOT = root
+    expected_identity = {
+        "scope": LIVE_REPAIR_SCOPE,
+        "workflow": LIVE_REPAIR_WORKFLOW,
+        "repository": LIVE_REPOSITORY,
+        "expectedCommit": expected_commit,
+        "expectedBranch": LIVE_BRANCH,
+        "baseline": LIVE_BASELINE_COMMIT,
+    }
+    verified_identity: dict[str, str] | None = None
+    planned: list[dict[str, object]] = []
+    checks: list[dict] = []
+    active: str | None = "setup"
+    interrupted = False
+
+    def snapshot(fault: str | None = None) -> None:
+        _write_live_repair_snapshot(
+            root, checks, active, planned=planned,
+            expected_identity=expected_identity, verified_identity=verified_identity,
+            interrupted=interrupted, fault=fault,
+        )
+
+    try:
+        snapshot()
+        context = _live_execution_context(
+            artifact_root, expected_commit, LIVE_REPAIR_WORKFLOW
+        )
+        metadata = _live_repository_metadata(expected_commit)
+        verified_identity = {
+            "scope": LIVE_REPAIR_SCOPE,
+            "workflow": LIVE_REPAIR_WORKFLOW,
+            "repository": metadata["repository"],
+            "commit": metadata["commit"],
+            "branch": context["branch"],
+            "baseline": metadata["baseline"],
+            "buildId": context["buildId"],
+        }
+        if tuple(ui_methods()) != (*LIVE_UI_METHODS, LIVE_NORMAL_SETTINGS_METHOD):
+            raise ValueError("approved UI test scope does not match the repository")
+        destinations = _live_simulator_preflight(root)
+        ios = ROOT / "ios" / "ACEClientApp"
+        commands = [(
+            "ios-65-unit",
+            ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests"],
+            ios_test_environment(), 65,
+        ), *ios_live_repair_check_matrix(destinations)]
+        planned = [
+            {"name": name, "expectedTests": expected}
+            for name, _command, _environment, expected in commands
+        ]
+        if len(planned) != 5:
+            raise ValueError("repair-check command scope is invalid")
+        active = None
+        snapshot()
+        for name, command, environment, expected in commands:
+            active = name
+            snapshot()
+            checks.append(_run_live_ios_test(name, command, ios, environment, expected, root))
+            active = None
+            snapshot()
+        if any(check["exit"] != 0 for check in checks):
+            detail = _live_command_failure_summary(checks)
+            return [{"name": "live-repair-check", "status": "failed", "exit": 1, "detail": detail}]
+        return checks
+    except KeyboardInterrupt:
+        interrupted = True
+        try:
+            snapshot()
+        except (OSError, ValueError):
+            pass
+        raise
+    except (OSError, ValueError, SimulatorResolutionError) as error:
+        result = _live_repair_setup_failure(error)
+        try:
+            snapshot(result["reason"])
+        except (OSError, ValueError):
+            pass
+        return [result]
+    finally:
+        _ACTIVE_SIMULATOR_LOG_ROOT = previous_simulator_log_root
+
+
 def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict]:
     """Run the approved manual live scope and fail closed on every control error."""
 
@@ -4273,7 +4531,7 @@ def component_checks(level: str, component: str) -> list[dict]:
 
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("level", choices=["focused", "core", "release", "evidence-check", "live-evidence"])
+    parser.add_argument("level", choices=["focused", "core", "release", "evidence-check", "live-evidence", "live-repair-check"])
     parser.add_argument("--component", choices=["python", "web", "ios"])
     parser.add_argument("--artifact-root")
     parser.add_argument("--expected-commit")
@@ -4281,15 +4539,15 @@ def main(argv: list[str]) -> int:
     data, mapping_errors = load_mapping()
     if args.level != "evidence-check" and not args.component:
         parser.error("--component is required except for evidence-check")
-    if args.level == "live-evidence" and args.component != "ios":
-        parser.error("live-evidence requires --component ios")
-    if args.level == "live-evidence" and args.artifact_root is None:
-        parser.error("live-evidence requires --artifact-root")
-    if args.level == "live-evidence" and (
+    if args.level in {"live-evidence", "live-repair-check"} and args.component != "ios":
+        parser.error(f"{args.level} requires --component ios")
+    if args.level in {"live-evidence", "live-repair-check"} and args.artifact_root is None:
+        parser.error(f"{args.level} requires --artifact-root")
+    if args.level in {"live-evidence", "live-repair-check"} and (
         args.expected_commit is None
         or re.fullmatch(r"[0-9a-f]{40}", args.expected_commit) is None
     ):
-        parser.error("live-evidence requires --expected-commit as a lower-case 40-hex SHA")
+        parser.error(f"{args.level} requires --expected-commit as a lower-case 40-hex SHA")
     results = []
     if mapping_errors:
         results.append({"name": "mapping", "status": "failed", "exit": 1, "detail": "; ".join(mapping_errors)})
@@ -4297,12 +4555,16 @@ def main(argv: list[str]) -> int:
         results.append({"name": "public-g0-preflight", "status": "passed", "exit": 0, "detail": f"44 source IDs map once to G1-G6; {data['evidencePreflightState']}; manual evidence was not run"})
     elif args.level == "live-evidence":
         results.extend(live_evidence_checks(Path(args.artifact_root), args.expected_commit))
+    elif args.level == "live-repair-check":
+        results.extend(live_repair_check(Path(args.artifact_root), args.expected_commit))
     else:
         results.extend(component_checks(args.level, args.component))
     exits = {item["exit"] for item in results}
     exit_code = 1 if 1 in exits else 2 if 2 in exits else 0
     if args.level == "live-evidence":
         print("report=external-artifact-root/live-evidence-manifest.json")
+    elif args.level == "live-repair-check":
+        print(f"report=external-artifact-root/{LIVE_REPAIR_SNAPSHOT}")
     else:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
         report = {"timestamp": datetime.now(timezone.utc).isoformat(), "level": args.level, "component": args.component, "mapping": data.get("iosPrimaryGroups", {}), "evidencePreflightState": data.get("evidencePreflightState"), "releaseEvidence": False, "results": results, "exit": exit_code}

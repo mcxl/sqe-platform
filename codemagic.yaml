@@ -106,6 +106,30 @@ workflows:
           echo "G0 records remain pending and are not release evidence."
           exit 1
 
+  ace-ios-repair-check-manual:
+    name: ACE iOS MCX-19 Repair Check (Not Release Evidence)
+    max_build_duration: 15
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - mcx19_live_evidence
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-repair-check-manual
+    # No triggering events: an approved operator starts this fixed diagnostic manually.
+    scripts:
+      - name: Run the MCX-19 fixed repair diagnostic
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py live-repair-check --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    artifacts:
+      - /private/tmp/mcx-19-live-evidence/repair-check.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.log
+      - /private/tmp/mcx-19-live-evidence/*.log
+      - /private/tmp/mcx-19-live-evidence/*-summary.json
+      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png
+
   ace-ios-live-evidence-manual:
     name: ACE iOS MCX-19 Live Evidence (Manual Only)
     max_build_duration: 60

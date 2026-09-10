@@ -24,7 +24,7 @@ struct RuntimePlan: Decodable {
 extension AcceptanceEvidenceContractTests {
 
     private var approvedSanitizedBaseManifest: [String: String] {
-        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "a1874b3ffac78e4f431d5bad31a9c71aca15d732e77b3795cc9db1237a253203"]
+        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "d497b899cb5bae3a205ad9edf64d84ab623ee704801709f6ac1886142bc669d5"]
     }
 
     func testProjectConfiguration() throws {

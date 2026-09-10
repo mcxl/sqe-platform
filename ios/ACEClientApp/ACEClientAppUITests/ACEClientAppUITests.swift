@@ -149,7 +149,11 @@ final class ACEClientAppUITests: XCTestCase {
         for (scenario, expected) in states {
             let app = launch(scenario)
             let expectedState = XCTNSPredicateExpectation(
-                predicate: NSPredicate { _, _ in app.staticTexts[expected].exists || app.buttons[expected].exists },
+                predicate: NSPredicate { _, _ in
+                    app.staticTexts[expected].exists
+                        || app.buttons[expected].exists
+                        || app.progressIndicators[expected].exists
+                },
                 object: nil
             )
             XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
@@ -292,9 +296,30 @@ final class ACEClientAppUITests: XCTestCase {
     private func assertMinimumActionTargets(in app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
         // Off-screen elements need scrolling before their hit area can be measured.
         for button in app.buttons.allElementsBoundByIndex where button.isHittable {
-            XCTAssertGreaterThanOrEqual(button.frame.width, 44, button.label, file: file, line: line)
-            XCTAssertGreaterThanOrEqual(button.frame.height, 44, button.label, file: file, line: line)
+            XCTAssertTrue(
+                isAtLeast44Points(button.frame.width),
+                actionTargetDiagnostic(button.label, dimension: "width", measurement: button.frame.width),
+                file: file,
+                line: line
+            )
+            XCTAssertTrue(
+                isAtLeast44Points(button.frame.height),
+                actionTargetDiagnostic(button.label, dimension: "height", measurement: button.frame.height),
+                file: file,
+                line: line
+            )
         }
+    }
+
+    private func isAtLeast44Points(_ measurement: CGFloat) -> Bool {
+        let minimum: CGFloat = 44
+        // XCTest can report a 44-point SwiftUI target eight ULP below 44.
+        return measurement >= minimum || minimum - measurement <= minimum.ulp * 8
+    }
+
+    private func actionTargetDiagnostic(_ label: String, dimension: String, measurement: CGFloat) -> String {
+        let minimum: CGFloat = 44
+        return "\(label) \(dimension): measured \(measurement), minimum \(minimum), tolerance \(minimum.ulp * 8) (eight ULP)"
     }
 
     private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
