@@ -781,7 +781,7 @@ _ACTIVE_SIMULATOR_LOG_ROOT: Path | None = None
 
 
 def _write_simulator_resolution_log(root: Path | None, event: dict[str, object]) -> None:
-    """Append one simulator command event to disk and standard output."""
+    """Append one simulator command event to disk and standard error."""
 
     line = json.dumps(event, sort_keys=True)
     if root is None:
