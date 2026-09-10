@@ -1699,7 +1699,7 @@ class RunnerContractTests(unittest.TestCase):
                 str(runner.LIVE_ARTIFACT_ROOT), "--expected-commit", "A" * 40,
             ])
 
-    def test_live_repair_check_has_exact_five_command_scope_and_is_not_release_evidence(self):
+    def test_live_repair_check_has_exact_failed_selector_scope_and_is_not_release_evidence(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "repair-artifacts"
             destinations = {
@@ -1734,15 +1734,22 @@ class RunnerContractTests(unittest.TestCase):
                 results = runner.live_repair_check(root, "a" * 40)
             snapshot = json.loads((root / runner.LIVE_REPAIR_SNAPSHOT).read_text(encoding="utf-8"))
 
-        self.assertEqual(len(results), 5)
-        self.assertEqual(len(commands), 5)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(len(commands), 1)
         self.assertEqual({item[0] for item in commands}, runner._live_repair_command_names())
-        self.assertEqual(commands[0][0], "ios-65-unit")
-        self.assertEqual(commands[0][3], 65)
-        ui_commands = commands[1:]
-        self.assertEqual({name.split("-light-", 1)[1] for name, *_ in ui_commands}, set(runner.LIVE_REPAIR_UI_METHODS))
-        self.assertEqual({runner.IOS_CORE_DEVICE, "iPhone 17 Pro Max"}, {next(device for device in runner.IOS_RELEASE_DEVICES if f"-{device}-" in name) for name, *_ in ui_commands})
-        self.assertTrue(all(environment["ACE_UI_TEST_APPEARANCE"] == "light" for _name, _command, environment, _expected in ui_commands))
+        self.assertEqual(commands[0][3], 1)
+        self.assertEqual(
+            commands[0][0],
+            f"ios-release-{runner.LIVE_REPAIR_DEVICE}-light-"
+            "testFictionalReleaseHasApprovedCopyControls",
+        )
+        self.assertIn(f"-destination", commands[0][1])
+        self.assertIn(destinations[runner.LIVE_REPAIR_DEVICE], commands[0][1])
+        self.assertIn(
+            "-only-testing:ACEClientAppUITests/ACEClientAppUITests/"
+            "testFictionalReleaseHasApprovedCopyControls", commands[0][1]
+        )
+        self.assertEqual(commands[0][2]["ACE_UI_TEST_APPEARANCE"], "light")
         self.assertEqual(snapshot["scope"], runner.LIVE_REPAIR_SCOPE)
         self.assertEqual(snapshot["status"], "passed")
         self.assertFalse(snapshot["releaseEvidence"])
@@ -1762,7 +1769,7 @@ class RunnerContractTests(unittest.TestCase):
             def ios_test(name, _command, _cwd, _environment, _expected, artifact_root):
                 calls.append(name)
                 (artifact_root / f"{name}.log").write_text("controlled failure log", encoding="utf-8")
-                if len(calls) == 2:
+                if len(calls) == 1:
                     return {"name": name, "status": "failed", "exit": 1,
                             "detail": "controlled", "reason": "command-nonzero", "process_exit": 71}
                 return {"name": name, "status": "passed", "exit": 0, "detail": "controlled"}
@@ -1782,7 +1789,7 @@ class RunnerContractTests(unittest.TestCase):
             snapshot = json.loads((root / runner.LIVE_REPAIR_SNAPSHOT).read_text(encoding="utf-8"))
 
         self.assertEqual(result[0]["name"], "live-repair-check")
-        self.assertEqual(len(calls), 5)
+        self.assertEqual(len(calls), 1)
         self.assertEqual(snapshot["status"], "failed")
         self.assertEqual(snapshot["failed"][0]["reason"], "command-nonzero")
         self.assertEqual(snapshot["failed"][0]["processExit"], 71)

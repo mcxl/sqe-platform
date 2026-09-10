@@ -164,8 +164,8 @@ LIVE_UI_METHODS = (
 )
 LIVE_REPAIR_UI_METHODS = (
     "testFictionalReleaseHasApprovedCopyControls",
-    "testAllControlledScenariosShowExpectedStateAndAudit",
 )
+LIVE_REPAIR_DEVICE = "iPhone 17 Pro Max"
 LIVE_NORMAL_SETTINGS_METHOD = "testNormalDeviceSettings"
 LIVE_NORMAL_SETTINGS_APPEARANCES = ("light", "dark")
 LIVE_CONTENT_SIZE = "accessibility-extra-extra-extra-large"
@@ -758,11 +758,11 @@ def ios_release_ui_matrix(
 def ios_live_repair_check_matrix(
     destinations: dict[str, str]
 ) -> list[tuple[str, list[str], dict[str, str], int]]:
-    """Build the fixed five-command repair-check native scope."""
+    """Build the fixed one-command repair-check native scope."""
 
     return [
         item for item in ios_release_ui_matrix(destinations, LIVE_REPAIR_UI_METHODS)
-        if "-light-" in item[0]
+        if f"-{LIVE_REPAIR_DEVICE}-light-" in item[0]
     ]
 
 
@@ -3943,13 +3943,10 @@ def _negative_configuration_result(
 
 
 def _live_repair_command_names() -> set[str]:
-    """Return the fixed five-command diagnostic repair scope."""
+    """Return the fixed one-command diagnostic repair scope."""
 
     destinations = {device: "" for device in IOS_RELEASE_DEVICES}
-    return {
-        "ios-65-unit",
-        *(name for name, *_ in ios_live_repair_check_matrix(destinations)),
-    }
+    return {name for name, *_ in ios_live_repair_check_matrix(destinations)}
 
 
 def _repair_check_identity(
@@ -4007,13 +4004,13 @@ def _write_live_repair_snapshot(
     interrupted: bool = False,
     fault: str | None = None,
 ) -> None:
-    """Publish an incremental, non-release result for the five-command repair scope."""
+    """Publish an incremental, non-release result for the fixed repair scope."""
 
     names = _live_repair_command_names()
     if active not in names | {None, "setup"} or len(checks) > len(names):
         raise ValueError("invalid repair-check progress scope")
     planned_records: list[dict[str, object]] = []
-    expected_counts = {"ios-65-unit": 65, **{name: 1 for name in names - {"ios-65-unit"}}}
+    expected_counts = {name: 1 for name in names}
     for item in planned:
         if (
             not isinstance(item, dict)
@@ -4138,16 +4135,12 @@ def live_repair_check(artifact_root: Path, expected_commit: str) -> list[dict]:
             raise ValueError("approved UI test scope does not match the repository")
         destinations = _live_simulator_preflight(root)
         ios = ROOT / "ios" / "ACEClientApp"
-        commands = [(
-            "ios-65-unit",
-            ["xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientApp", "-destination", destinations[IOS_CORE_DEVICE], "-only-testing:ACEClientAppTests"],
-            ios_test_environment(), 65,
-        ), *ios_live_repair_check_matrix(destinations)]
+        commands = ios_live_repair_check_matrix(destinations)
         planned = [
             {"name": name, "expectedTests": expected}
             for name, _command, _environment, expected in commands
         ]
-        if len(planned) != 5:
+        if len(planned) != 1:
             raise ValueError("repair-check command scope is invalid")
         active = None
         snapshot()

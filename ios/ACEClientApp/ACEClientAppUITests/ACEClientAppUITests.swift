@@ -124,6 +124,7 @@ final class ACEClientAppUITests: XCTestCase {
         assertFullReleaseInformation(in: app, appearance: appearance)
         assertMinimumActionTargets(in: app)
         addScreenshot(of: app, named: "Fictional release — approved-controls — \(appearance)")
+        assertReleaseContrastProbeFramesAreStable(in: app)
         try assertAccessibilityAudit(in: app, scenario: "release")
         app.terminate()
 
@@ -320,6 +321,44 @@ final class ACEClientAppUITests: XCTestCase {
     private func actionTargetDiagnostic(_ label: String, dimension: String, measurement: CGFloat) -> String {
         let minimum: CGFloat = 44
         return "\(label) \(dimension): measured \(measurement), minimum \(minimum), tolerance \(minimum.ulp * 8) (eight ULP)"
+    }
+
+    private func assertReleaseContrastProbeFramesAreStable(in app: XCUIApplication) {
+        let before = releaseContrastProbeFrames(in: app)
+        let settleExpectation = XCTestExpectation(description: "Allow the release layout to settle")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { settleExpectation.fulfill() }
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [settleExpectation], timeout: 1),
+            .completed,
+            "Release layout stability wait must complete"
+        )
+        let after = releaseContrastProbeFrames(in: app)
+        print("ACE_MCX19_CONTRAST_PROBE \(Self.releaseContrastProbeJSON(before: before, after: after))")
+        XCTAssertEqual(after.actionHeader, before.actionHeader, "Action 1 frame changed during the release contrast probe")
+        XCTAssertEqual(after.actionStatus, before.actionStatus, "OPEN frame changed during the release contrast probe")
+    }
+
+    private func releaseContrastProbeFrames(in app: XCUIApplication) -> (actionHeader: CGRect, actionStatus: CGRect) {
+        (app.staticTexts["Action 1"].frame, app.staticTexts["OPEN"].frame)
+    }
+
+    private static func releaseContrastProbeJSON(
+        before: (actionHeader: CGRect, actionStatus: CGRect),
+        after: (actionHeader: CGRect, actionStatus: CGRect)
+    ) -> String {
+        let payload: [String: Any] = [
+            "after": ["Action 1": frameJSON(after.actionHeader), "OPEN": frameJSON(after.actionStatus)],
+            "before": ["Action 1": frameJSON(before.actionHeader), "OPEN": frameJSON(before.actionStatus)]
+        ]
+        guard let data = try? JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]),
+              let text = String(data: data, encoding: .utf8) else {
+            return "{\"after\":{},\"before\":{}}"
+        }
+        return text
+    }
+
+    private static func frameJSON(_ frame: CGRect) -> [String: Double] {
+        ["height": Double(frame.height), "width": Double(frame.width), "x": Double(frame.origin.x), "y": Double(frame.origin.y)]
     }
 
     private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
