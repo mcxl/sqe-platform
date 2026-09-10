@@ -2239,7 +2239,7 @@ class RunnerContractTests(unittest.TestCase):
         workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
         self.assertNotIn("triggering:", workflow)
         self.assertIn("max_build_duration: 45", workflow)
-        self.assertIn("instance_type: mac_mini_m4", workflow)
+        self.assertIn("instance_type: mac_mini_m2", workflow)
         self.assertIn("groups:\n        - mcx19_live_evidence", workflow)
         self.assertEqual(config.count("mcx19_live_evidence"), 1)
         self.assertIn("ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual", workflow)
