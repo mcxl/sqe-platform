@@ -2359,6 +2359,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn("groups:\n        - mcx19_live_evidence", workflow)
         self.assertEqual(workflow.count("mcx19_live_evidence"), 1)
         self.assertIn("ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual", workflow)
+        self.assertIn('CM_CLONE_UNSHALLOW: "true"', workflow)
         self.assertIn("ACE_LIVE_EVIDENCE_APPROVED_COMMIT", workflow)
         self.assertIn(
             "python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit \"$ACE_LIVE_EVIDENCE_APPROVED_COMMIT\"",
@@ -2400,6 +2401,7 @@ class RunnerContractTests(unittest.TestCase):
         self.assertIn(
             "ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-repair-check-manual", workflow
         )
+        self.assertIn('CM_CLONE_UNSHALLOW: "true"', workflow)
         self.assertIn(
             'python3 tools/run_tests.py live-repair-check --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"',
             workflow,

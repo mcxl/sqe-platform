@@ -116,6 +116,7 @@ workflows:
       xcode: 26.4.1
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-repair-check-manual
+        CM_CLONE_UNSHALLOW: "true"
     # No triggering events: an approved operator starts this fixed diagnostic manually.
     scripts:
       - name: Run the MCX-19 fixed repair diagnostic
@@ -140,6 +141,7 @@ workflows:
       xcode: 26.4.1
       vars:
         ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual
+        CM_CLONE_UNSHALLOW: "true"
     # No triggering events: an approved operator must start this workflow manually.
     # The runner fails before its matrix unless this image provides iOS 26 iPhone 17
     # and iPhone 17 Pro Max simulators. It keeps that provider diagnostic private.
