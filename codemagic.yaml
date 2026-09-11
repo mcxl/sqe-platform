@@ -447,3 +447,378 @@ workflows:
     artifacts:
       - /private/tmp/mcx-19-retention-pilot/retention-pilot-report.json
       - /private/tmp/mcx-19-retention-pilot-private/mcx19-retention-pilot-records.tar.gz
+
+  ace-landmarks-ui-trial-manual:
+    name: Apple Landmarks UI Trial (Manual Only)
+    max_build_duration: 8
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. The same single XCTest proves failure and then a real pass.
+    scripts:
+      - name: Retain one Apple Landmarks UI assertion trial
+        script: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import shutil
+          import signal
+          import stat
+          import subprocess
+          import sys
+          import time
+          import traceback
+          import urllib.request
+          import zipfile
+
+          repo = pathlib.Path(os.environ.get("CM_BUILD_DIR", os.getcwd())).resolve()
+          harness = repo / "ios" / "LandmarksTrial"
+          root = pathlib.Path("/private/tmp/ace-landmarks-ui-trial")
+          source = root / "source"
+          build = root / "build"
+          evidence = root / "evidence"
+          archive = root / "LandmarksBuildingAnAppWithLiquidGlass.zip"
+          project = source / "Landmarks" / "Landmarks.xcodeproj"
+          source_root = source / "Landmarks"
+          result_bundle = evidence / "LandmarksTrial.xcresult"
+          result_archive = evidence / "LandmarksTrial.xcresult.tar.gz"
+          raw_log = evidence / "xcodebuild-stdout.log"
+          summary_path = evidence / "xcode-result-summary.json"
+          tests_path = evidence / "xcode-test-list.json"
+          details_path = evidence / "xcode-test-details.json"
+          attachments = evidence / "attachments"
+          manifest_path = evidence / "manifest.json"
+          status_path = evidence / "status.json"
+          url = "https://docs-assets.developer.apple.com/published/a88428e6793e/LandmarksBuildingAnAppWithLiquidGlass.zip"
+          expected_sha256 = "F19ED0EFFBE8AF975536034B2B5AF98002F06F5D600854A95EFB62CCC8303F41"
+          expected_size = 336053876
+          started = time.time()
+          work_deadline = time.monotonic() + 360
+          final_deadline = time.monotonic() + 420
+          commands = []
+          attachment_export_attempted = False
+          outcome = {"result": "harness_or_runner_failure", "cm_commit": os.environ.get("CM_COMMIT"),
+                     "cm_build_id": os.environ.get("CM_BUILD_ID"), "started_at_epoch": started}
+
+          def write_text(path, text):
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(text, encoding="utf-8")
+
+          def remaining(limit):
+              left = work_deadline - time.monotonic()
+              if left <= 0:
+                  raise RuntimeError("The 360-second work deadline expired")
+              return min(limit, max(1, int(left)))
+
+          def final_remaining(limit):
+              left = final_deadline - time.monotonic()
+              if left <= 0:
+                  raise RuntimeError("The 420-second finalisation deadline expired")
+              return min(limit, max(1, int(left)))
+
+          def stop_process_group(process):
+              try:
+                  os.killpg(process.pid, signal.SIGTERM)
+              except ProcessLookupError:
+                  pass
+              try:
+                  return process.communicate(timeout=5)[0]
+              except subprocess.TimeoutExpired:
+                  try:
+                      os.killpg(process.pid, signal.SIGKILL)
+                  except ProcessLookupError:
+                      pass
+                  return process.communicate(timeout=5)[0]
+
+          def run(command, limit, allow_failure=False, cwd=None, budget=remaining):
+              event = {"command": command, "started_at_epoch": time.time(), "limit_seconds": budget(limit)}
+              print("Running: " + " ".join(command), flush=True)
+              process = None
+              output = ""
+              try:
+                  process = subprocess.Popen(command, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                             text=True, start_new_session=True)
+                  try:
+                      output, _ = process.communicate(timeout=event["limit_seconds"])
+                  except subprocess.TimeoutExpired:
+                      output = stop_process_group(process)
+                      raise RuntimeError("Timed out after {} seconds: {}".format(event["limit_seconds"], command[0]))
+                  if process.returncode and not allow_failure:
+                      raise RuntimeError("Command failed ({}) {}".format(process.returncode, " ".join(command)))
+                  return output, process.returncode
+              finally:
+                  with raw_log.open("a", encoding="utf-8") as log_file:
+                      log_file.write("$ " + " ".join(command) + "\n" + output)
+                  event["finished_at_epoch"] = time.time()
+                  event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
+                  event["exit_code"] = process.returncode if process else None
+                  commands.append(event)
+
+          def file_sha256(path, budget=remaining):
+              digest = hashlib.sha256()
+              with path.open("rb") as input_file:
+                  for block in iter(lambda: input_file.read(1024 * 1024), b""):
+                      budget(30)
+                      digest.update(block)
+              return digest.hexdigest().upper()
+
+          def tree_hashes(directory, budget=remaining):
+              lines = []
+              for path in sorted(directory.rglob("*")):
+                  relative = path.relative_to(directory)
+                  if ".git" in relative.parts:
+                      continue
+                  if path.is_file():
+                      lines.append("{}  {}".format(file_sha256(path, budget), relative.as_posix()))
+              return "\n".join(lines) + "\n"
+
+          def hash_map(directory, budget=remaining):
+              return {line.split("  ", 1)[1]: line.split("  ", 1)[0]
+                      for line in tree_hashes(directory, budget).splitlines()}
+
+          def diff_hashes(before, after):
+              differences = []
+              for name in sorted(set(before) | set(after)):
+                  if before.get(name) != after.get(name):
+                      differences.append({"path": name, "before_sha256": before.get(name), "after_sha256": after.get(name)})
+              return differences
+
+          def safe_extract(bundle):
+              total = 0
+              with zipfile.ZipFile(bundle) as zipped:
+                  for member in zipped.infolist():
+                      remaining(30)
+                      candidate = pathlib.PurePosixPath(member.filename)
+                      mode = member.external_attr >> 16
+                      if candidate.is_absolute() or ".." in candidate.parts or stat.S_ISLNK(mode):
+                          raise RuntimeError("Unsafe archive member: {}".format(member.filename))
+                      total += member.file_size
+                      if total > 1000000000:
+                          raise RuntimeError("Archive expanded past the one-gigabyte safety limit")
+                      destination = source.joinpath(*candidate.parts)
+                      if member.is_dir():
+                          destination.mkdir(parents=True, exist_ok=True)
+                          continue
+                      destination.parent.mkdir(parents=True, exist_ok=True)
+                      with zipped.open(member) as input_file, destination.open("wb") as output_file:
+                          while True:
+                              remaining(30)
+                              block = input_file.read(1024 * 1024)
+                              if not block:
+                                  break
+                              output_file.write(block)
+
+          def walk_dicts(value):
+              if isinstance(value, dict):
+                  yield value
+                  for child in value.values():
+                      yield from walk_dicts(child)
+              elif isinstance(value, list):
+                  for child in value:
+                      yield from walk_dicts(child)
+
+          def walk_strings(value):
+              if isinstance(value, dict):
+                  for child in value.values():
+                      yield from walk_strings(child)
+              elif isinstance(value, list):
+                  for child in value:
+                      yield from walk_strings(child)
+              elif isinstance(value, str):
+                  yield value
+
+          def validate_expected_failure(summary, details):
+              failed = [node for node in walk_dicts(summary)
+                        if str(node.get("result", "")).lower() == "failed"
+                        and str(node.get("nodeType", "")).lower() in {"test case", "testcase"}]
+              test_names = "\n".join(json.dumps(node, sort_keys=True) for node in failed)
+              if len(failed) != 1 or "testLaunchShowsFeaturedMountFuji" not in test_names:
+                  raise RuntimeError("Xcode result did not contain exactly one failed named XCTest")
+              precise = 'XCTAssertEqual failed: ("true") is not equal to ("false") - Expected Mount Fuji to exist: false; actual: true'
+              if precise not in "\n".join(walk_strings(details)):
+                  raise RuntimeError("Xcode result did not contain the precise expected XCTAssertEqual failure")
+
+          def test_case_nodes(summary):
+              return [node for node in walk_dicts(summary)
+                      if str(node.get("nodeType", "")).lower() in {"test case", "testcase"}]
+
+          root.mkdir(parents=True, exist_ok=True)
+          build.mkdir(parents=True, exist_ok=True)
+          evidence.mkdir(parents=True, exist_ok=True)
+          raw_log.touch()
+          try:
+              for required in (harness / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift",
+                               harness / "LandmarksTrial.xcscheme", harness / "overlay_landmarks_project.py"):
+                  if not required.is_file():
+                      raise RuntimeError("Missing checked-in Landmarks trial harness file: {}".format(required))
+              test_text = (harness / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift").read_text(encoding="utf-8")
+              expected_values = re.findall(r"^\s*let expected = (true|false)\s*$", test_text, flags=re.MULTILINE)
+              if len(expected_values) != 1:
+                  raise RuntimeError("The UI test must contain exactly one expected Boolean constant")
+              expected_assertion_failure = expected_values[0] == "false"
+              outcome["expected_boolean"] = expected_values[0]
+              for name, command, timeout in (
+                      ("xcode-version.txt", ["xcodebuild", "-version"], 15),
+                      ("swift-version.txt", ["swift", "--version"], 15),
+                      ("simulator-list.json", ["xcrun", "simctl", "list", "devices", "available", "-j"], 90)):
+                  output, _ = run(command, timeout)
+                  write_text(evidence / name, output)
+              with urllib.request.urlopen(url, timeout=remaining(30)) as response, archive.open("wb") as output:
+                  download_deadline = time.monotonic() + remaining(90)
+                  while True:
+                      if time.monotonic() > download_deadline:
+                          raise RuntimeError("Approved source download exceeded 90 seconds")
+                      block = response.read(1024 * 1024)
+                      if not block:
+                          break
+                      output.write(block)
+              if archive.stat().st_size != expected_size:
+                  raise RuntimeError("Approved source archive size did not match")
+              archive_sha256 = file_sha256(archive)
+              if archive_sha256 != expected_sha256:
+                  raise RuntimeError("Approved source archive SHA-256 did not match")
+              safe_extract(archive)
+              if not project.is_dir() or not source_root.is_dir():
+                  raise RuntimeError("Approved source archive did not contain Landmarks/Landmarks.xcodeproj")
+              baseline_hashes = hash_map(source)
+              write_text(evidence / "source-hashes-before-overlay.txt", tree_hashes(source))
+              test_source = project.parent / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift"
+              scheme_destination = project / "xcshareddata" / "xcschemes" / "LandmarksTrial.xcscheme"
+              test_source.parent.mkdir(parents=True, exist_ok=True)
+              scheme_destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(harness / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift", test_source)
+              shutil.copy2(harness / "LandmarksTrial.xcscheme", scheme_destination)
+              run([sys.executable, str(harness / "overlay_landmarks_project.py"), str(project)], 20)
+              overlay_hashes = hash_map(source)
+              overlay_differences = diff_hashes(baseline_hashes, overlay_hashes)
+              expected_paths = {
+                  "Landmarks/Landmarks.xcodeproj/project.pbxproj",
+                  "Landmarks/Landmarks.xcodeproj/xcshareddata/xcschemes/LandmarksTrial.xcscheme",
+                  "Landmarks/LandmarksTrialUITests/LandmarksTrialUITests.swift",
+              }
+              if {item["path"] for item in overlay_differences} != expected_paths:
+                  raise RuntimeError("The overlay changed files outside the approved harness metadata")
+              test_hash_before = file_sha256(test_source)
+              write_text(evidence / "source-hashes-before-test.txt", tree_hashes(source))
+              simulator_data = json.loads((evidence / "simulator-list.json").read_text(encoding="utf-8"))
+              candidates = []
+              for runtime, devices in simulator_data.get("devices", {}).items():
+                  if "iOS-26" not in runtime:
+                      continue
+                  for device in devices:
+                      if device.get("isAvailable") and device.get("name") == "iPhone 17":
+                          candidates.append((runtime, device))
+              if not candidates:
+                  raise RuntimeError("No available iPhone 17 simulator with an iOS 26 runtime")
+              runtime, device = sorted(candidates, key=lambda item: (item[0], item[1]["udid"]), reverse=True)[0]
+              udid = device["udid"]
+              write_text(evidence / "simulator-selection.json", json.dumps(
+                  {"runtime": runtime, "name": device["name"], "udid": udid, "state": device.get("state")}, indent=2) + "\n")
+              if device.get("state") == "Shutdown":
+                  run(["xcrun", "simctl", "boot", udid], 45)
+              elif device.get("state") != "Booted":
+                  raise RuntimeError("The selected simulator was not Shutdown or Booted")
+              run(["xcrun", "simctl", "bootstatus", udid, "-b"], 60)
+              output, test_exit = run([
+                  "xcodebuild", "test", "-project", str(project), "-scheme", "LandmarksTrial", "-sdk", "iphonesimulator",
+                  "-configuration", "Debug", "-derivedDataPath", str(build), "-resultBundlePath", str(result_bundle),
+                  "-destination", "platform=iOS Simulator,id={}".format(udid), "CODE_SIGNING_ALLOWED=NO",
+                  "-parallel-testing-enabled", "NO",
+                  "-only-testing:LandmarksTrialUITests/LandmarksTrialUITests/testLaunchShowsFeaturedMountFuji"],
+                  240, allow_failure=True, cwd=str(project.parent))
+              if expected_assertion_failure and test_exit == 0:
+                  raise RuntimeError("The direct XCTest gate unexpectedly passed")
+              if not expected_assertion_failure and test_exit != 0:
+                  raise RuntimeError("The direct XCTest gate did not pass after expected became true")
+              if not result_bundle.is_dir():
+                  raise RuntimeError("Xcode did not retain the original build result bundle")
+              summary_output, _ = run(["xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(result_bundle)], 30)
+              write_text(summary_path, summary_output)
+              summary = json.loads(summary_output)
+              tests_output, _ = run(["xcrun", "xcresulttool", "get", "test-results", "tests", "--path", str(result_bundle)], 30)
+              write_text(tests_path, tests_output)
+              tests = json.loads(tests_output)
+              cases = test_case_nodes(tests)
+              failed_nodes = [node for node in cases if str(node.get("result", "")).lower() == "failed"]
+              passed_nodes = [node for node in cases if str(node.get("result", "")).lower() == "passed"]
+              if len(cases) != 1 or "testLaunchShowsFeaturedMountFuji" not in json.dumps(cases[0], sort_keys=True):
+                  raise RuntimeError("Xcode result summary did not contain exactly the named XCTest")
+              if expected_assertion_failure:
+                  if len(failed_nodes) != 1 or passed_nodes:
+                      raise RuntimeError("Xcode result summary did not contain exactly one failed test")
+                  test_identifier = failed_nodes[0].get("nodeIdentifier")
+                  if not test_identifier:
+                      raise RuntimeError("Xcode result summary did not identify the failed test")
+                  details_output, _ = run(["xcrun", "xcresulttool", "get", "test-results", "test-details", "--path", str(result_bundle), "--test-id", test_identifier], 30)
+                  write_text(details_path, details_output)
+                  validate_expected_failure(tests, json.loads(details_output))
+              elif len(passed_nodes) != 1 or failed_nodes:
+                  raise RuntimeError("Xcode result summary did not contain exactly one passed test")
+              attachments.mkdir(parents=True, exist_ok=True)
+              attachment_export_attempted = True
+              run(["xcrun", "xcresulttool", "export", "attachments", "--path", str(result_bundle), "--output-path", str(attachments)], 45)
+              exported = sorted(attachments.rglob("*.png"))
+              if not exported:
+                  raise RuntimeError("Xcode did not export the retained screenshot attachment")
+              write_text(evidence / "attachment-manifest.json", json.dumps([
+                  {"path": path.relative_to(evidence).as_posix(), "sha256": file_sha256(path), "size_bytes": path.stat().st_size}
+                  for path in exported], indent=2) + "\n")
+              app = next((build / "Build" / "Products" / "Debug-iphonesimulator").glob("Landmarks.app"), None)
+              if app is None:
+                  raise RuntimeError("The direct XCTest build did not create Landmarks.app")
+              write_text(evidence / "app-hashes.txt", tree_hashes(app))
+              write_text(evidence / "source-hashes-after-test.txt", tree_hashes(source))
+              test_hash_after = file_sha256(test_source)
+              if test_hash_before != test_hash_after:
+                  raise RuntimeError("The test source hash changed during the XCTest run")
+              if (evidence / "source-hashes-before-test.txt").read_bytes() != (evidence / "source-hashes-after-test.txt").read_bytes():
+                  raise RuntimeError("The overlay source hash set changed during the XCTest run")
+              write_text(manifest_path, json.dumps({
+                  "source_archive": {"url": url, "expected_size_bytes": expected_size, "observed_size_bytes": archive.stat().st_size,
+                                     "expected_sha256": expected_sha256, "observed_sha256": archive_sha256},
+                  "overlay_differences": overlay_differences,
+                  "test_source_sha256_before": test_hash_before, "test_source_sha256_after": test_hash_after,
+                  "expected_test": "LandmarksTrialUITests/LandmarksTrialUITests/testLaunchShowsFeaturedMountFuji",
+                  "expected_boolean": expected_values[0],
+                  "expected_assertion_when_false": 'XCTAssertEqual failed: ("true") is not equal to ("false") - Expected Mount Fuji to exist: false; actual: true'
+              }, indent=2) + "\n")
+              outcome["result"] = "expected_xctest_assertion_failure" if expected_assertion_failure else "passed"
+          except Exception as error:
+              outcome["error"] = str(error)
+              write_text(evidence / "failure.txt", traceback.format_exc())
+          finally:
+              finalisation = {}
+              if result_bundle.is_dir():
+                  try:
+                      run(["/usr/bin/tar", "-czf", str(result_archive), "-C", str(evidence), result_bundle.name],
+                          60, budget=final_remaining)
+                      finalisation["result_archive"] = {"sha256": file_sha256(result_archive, final_remaining),
+                                                       "size_bytes": result_archive.stat().st_size}
+                  except Exception as error:
+                      finalisation["archive_error"] = str(error)
+                      outcome["result"] = "harness_or_runner_failure"
+                  if not attachment_export_attempted:
+                      try:
+                          attachments.mkdir(parents=True, exist_ok=True)
+                          run(["xcrun", "xcresulttool", "export", "attachments", "--path", str(result_bundle),
+                               "--output-path", str(attachments)], 30, budget=final_remaining)
+                      except Exception as error:
+                          finalisation["attachment_error"] = str(error)
+              outcome["finalisation"] = finalisation
+              outcome["finished_at_epoch"] = time.time()
+              outcome["elapsed_seconds"] = round(outcome["finished_at_epoch"] - started, 2)
+              outcome["commands"] = commands
+              write_text(status_path, json.dumps(outcome, indent=2) + "\n")
+              print(json.dumps(outcome, indent=2))
+          # A false expected value deliberately retains the XCTest failure. A later true value is a real pass.
+          sys.exit(1 if outcome["result"] == "expected_xctest_assertion_failure" else 0 if outcome["result"] == "passed" else 1)
+          PY
+    artifacts:
+      - /private/tmp/ace-landmarks-ui-trial/evidence/LandmarksTrial.xcresult.tar.gz
+      - /private/tmp/ace-landmarks-ui-trial/evidence/*.json
+      - /private/tmp/ace-landmarks-ui-trial/evidence/*.txt
+      - /private/tmp/ace-landmarks-ui-trial/evidence/*.log
+      - /private/tmp/ace-landmarks-ui-trial/evidence/attachments/**/*.png
