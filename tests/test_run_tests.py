@@ -4,6 +4,7 @@ from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from io import BytesIO, StringIO
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -23,6 +24,33 @@ SPEC.loader.exec_module(runner)
 
 
 class RunnerContractTests(unittest.TestCase):
+    def test_approved_sanitized_base_manifest_matches_approved_spec(self):
+        """Keep the native evidence pin aligned with the approved specification."""
+
+        allowed_path = "docs/specs/2026-08-24-ace-ios-read-only-client-application.md"
+        expected_manifest = {
+            allowed_path: hashlib.sha256(
+                (ROOT / allowed_path)
+                .read_text(encoding="utf-8")
+                .replace("\r\n", "\n")
+                .encode("utf-8")
+            ).hexdigest()
+        }
+        source = (
+            ROOT
+            / "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift"
+        ).read_text(encoding="utf-8")
+        match = re.search(
+            r"private var approvedSanitizedBaseManifest: \[String: String\] \{\s*\[(.*?)\]\s*\}",
+            source,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(match, "The native approved manifest must be present")
+        actual_manifest = dict(
+            re.findall(r'"([^"\\]+)":\s*"([0-9a-f]{64})"', match.group(1))
+        )
+        self.assertEqual(actual_manifest, expected_manifest)
+
     @staticmethod
     def png_fixture(
         payload: bytes | None = None, width: int = 1, height: int = 1
