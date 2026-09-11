@@ -116,6 +116,7 @@ LIVE_REPOSITORY = "mcxl/sqe-platform"
 LIVE_ARTIFACT_ROOT = Path("/private/tmp/mcx-19-live-evidence")
 LIVE_PRIVATE_COLLECTION_ROOT = Path("/private/tmp/mcx-19-full-matrix-private")
 LIVE_PRIVATE_COLLECTION_ARCHIVE = "mcx19-full-matrix-records.tar.gz"
+LIVE_PRIVATE_PRESERVED_DIRECTORY = "preserved-records"
 LIVE_PRIVATE_COLLECTION_MAX_FILES = 4096
 LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES = 64 * 1024 * 1024
 LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
@@ -124,6 +125,7 @@ LIVE_PRIVATE_COLLECTION_STATUSES = frozenset(
 )
 LIVE_PRIVATE_COLLECTION_FAILURE_REASON = "private-collection-failed"
 LIVE_PRIVATE_COLLECTION_QUARANTINE_REASON = "private-collection-quarantined"
+LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON = "remote-retention-unavailable"
 LIVE_REVIEW_MANIFEST = "live-evidence-review-manifest.json"
 LIVE_REVIEW_STAGE = ".review-artifact-stage"
 LIVE_REVIEW_ARTIFACTS = "review-artifacts"
@@ -132,10 +134,21 @@ LIVE_DIAGNOSTIC_IMAGE_DIRECTORY = "diagnostic-images"
 SIMULATOR_RESOLUTION_LOG = "simulator-resolution.log"
 LIVE_WORKFLOW = "ace-ios-live-evidence-manual"
 LIVE_REPAIR_WORKFLOW = "ace-ios-repair-check-manual"
+RETENTION_PILOT_WORKFLOW = "ace-ios-retention-pilot-manual"
 LIVE_WORKFLOW_ENVIRONMENT_KEY = "ACE_LIVE_EVIDENCE_WORKFLOW"
 LIVE_BRANCH = "codex/mcx-19-live-evidence-harness"
 LIVE_REPAIR_SCOPE = "MCX-19-live-repair-check"
 LIVE_REPAIR_SNAPSHOT = "repair-check.json"
+RETENTION_PILOT_ARTIFACT_ROOT = Path("/private/tmp/mcx-19-retention-pilot")
+RETENTION_PILOT_PRIVATE_ROOT = Path("/private/tmp/mcx-19-retention-pilot-private")
+RETENTION_PILOT_ARCHIVE = "mcx19-retention-pilot-records.tar.gz"
+RETENTION_PILOT_ACK_TIMEOUT_SECONDS = 600
+RETENTION_PILOT_ACK_POLL_SECONDS = 5
+RETENTION_PILOT_PHASES = (
+    "transport-probe",
+    "ios-release-iPhone 17-light-testLaunchShowsSafeConfigurationState",
+    "ios-release-iPhone 17-light-testSignInPasswordFieldIsSecure",
+)
 LIVE_OPERATING_ENVIRONMENT_KEYS = (
     "PATH",
     "HOME",
@@ -224,6 +237,7 @@ LIVE_PUBLISHED_FAILURE_REASONS = frozenset(
         "controlled-failure",
         LIVE_PRIVATE_COLLECTION_FAILURE_REASON,
         LIVE_PRIVATE_COLLECTION_QUARANTINE_REASON,
+        LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON,
     }
 )
 LIVE_PUBLISHED_DIAGNOSTICS = frozenset(
@@ -285,6 +299,24 @@ class SimulatorResolutionError(ValueError):
 
 class SafeImageRetentionError(ValueError):
     """Stop the run after a checked safe-image collection failure."""
+
+
+class PrivateCollectionError(ValueError):
+    """Stop the run with fixed private-retention diagnostics only."""
+
+    def __init__(self, phase: str, category: str, command: str) -> None:
+        super().__init__("private collection stopped")
+        self.phase = phase
+        self.category = category
+        self.command = command
+
+
+def _require_remote_retention(command: str) -> None:
+    """Stop before a second command until retrieval has direct evidence."""
+
+    raise PrivateCollectionError(
+        "remote-retrievability", LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON, command
+    )
 
 
 class LiveCommandResult(tuple):
@@ -796,6 +828,7 @@ def _simulator_text(value: object) -> str:
 
 
 _ACTIVE_SIMULATOR_LOG_ROOT: Path | None = None
+_SIMULATOR_OPERATION_SEQUENCE = 0
 
 
 def _write_simulator_resolution_log(root: Path | None, event: dict[str, object]) -> None:
@@ -815,18 +848,35 @@ def _write_simulator_resolution_log(root: Path | None, event: dict[str, object])
     print("simulator-resolution=" + line, file=sys.stderr, flush=True)
 
 
+def _write_simulator_operation_record(root: Path | None, relative: str, event: dict[str, object]) -> None:
+    """Write one simulator operation record at its unique controlled path."""
+
+    if root is not None:
+        _safe_live_path(root, relative).parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+        _write_live_json_atomically(root, relative, event)
+
+
 def _run_simulator_command(
-    root: Path,
+    root: Path | None,
     phase: str,
     command: list[str],
     timeout: float,
 ) -> subprocess.CompletedProcess[str]:
     """Run one simulator preflight command with a full command record."""
 
+    global _SIMULATOR_OPERATION_SEQUENCE
+    _SIMULATOR_OPERATION_SEQUENCE += 1
+    operation_relative = f"simulator-operations/{_SIMULATOR_OPERATION_SEQUENCE:08d}.json"
+
+    def record(event: dict[str, object]) -> None:
+        value = {**event, "operationRecord": operation_relative}
+        _write_simulator_resolution_log(root, value)
+        _write_simulator_operation_record(root, operation_relative, value)
+
     started_at = datetime.now(timezone.utc)
     started = time.monotonic()
     deadline_at = started_at + timedelta(seconds=timeout)
-    _write_simulator_resolution_log(root, {
+    record({
         "event": "started",
         "phase": phase,
         "command": " ".join(command),
@@ -853,7 +903,7 @@ def _run_simulator_command(
         )
     except subprocess.TimeoutExpired as error:
         elapsed = time.monotonic() - started
-        _write_simulator_resolution_log(root, {
+        record({
             "event": "timed-out",
             "phase": phase,
             "command": " ".join(command),
@@ -869,7 +919,7 @@ def _run_simulator_command(
         raise
     except OSError:
         elapsed = time.monotonic() - started
-        _write_simulator_resolution_log(root, {
+        record({
             "event": "start-failed",
             "phase": phase,
             "command": " ".join(command),
@@ -884,7 +934,7 @@ def _run_simulator_command(
         })
         raise
     elapsed = time.monotonic() - started
-    _write_simulator_resolution_log(root, {
+    record({
         "event": "completed",
         "phase": phase,
         "command": " ".join(command),
@@ -1785,6 +1835,17 @@ _PRIVATE_COLLECTION_SECRET = re.compile(
 _PRIVATE_COLLECTION_CREDENTIAL_PREFIX = re.compile(
     rb"\b(?:gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]+)\b"
 )
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_COMMAND = (
+    "ios-release-iPhone 17 Pro Max-dark-testAllControlledScenariosShowExpectedStateAndAudit"
+)
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_LOGICAL_NAME = "Controlled state — noActions — dark"
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_SHA256 = (
+    "78747bc1422718c935af0de86487fff9982253528473bfa9dab4b396bbbc08c8"
+)
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_BYTES = 215120
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_OFFSET = 54574
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_LENGTH = 7
+_PRIVATE_COLLECTION_ADJUDICATED_PNG_STATUS = "adjudicated-known-png-false-positive"
 _PRIVATE_COLLECTION_REAL_CLIENT = re.compile(rb"(?i)real[ _-]?client")
 _PRIVATE_COLLECTION_UNREDACTED_USERNAME = re.compile(
     rb'(?i)(?:["\']?(?:username|user)["\']?)\s*[:=]\s*(?!["\']?\[redacted\]["\']?(?:\s|,|}|$))\S+'
@@ -1880,6 +1941,83 @@ def _private_collection_quarantine_permitted(
     )
 
 
+def _private_collection_adjudicated_png_scope(
+    path: Path, archive_path: str, command: str
+) -> bool:
+    """Recognise the one attachment-export record that can need PNG adjudication."""
+
+    prefix = f"records/commands/{_PRIVATE_COLLECTION_ADJUDICATED_PNG_COMMAND}/attachment-export/"
+    return (
+        command == _PRIVATE_COLLECTION_ADJUDICATED_PNG_COMMAND
+        and archive_path == prefix + path.name
+        and Path(archive_path).name == path.name
+    )
+
+
+def _private_collection_adjudicated_png_match_in_idat(
+    content: bytes, match: re.Match[bytes]
+) -> bool:
+    """Confirm that the fixed match lies in PNG image data without retaining it."""
+
+    offset = 8
+    while offset + 12 <= len(content):
+        length = int.from_bytes(content[offset:offset + 4], "big")
+        end = offset + 12 + length
+        if end > len(content):
+            return False
+        if content[offset + 4:offset + 8] == b"IDAT":
+            data_start = offset + 8
+            data_end = data_start + length
+            if data_start <= match.start() and match.end() <= data_end:
+                return True
+        offset = end
+    return False
+
+
+def _private_collection_is_adjudicated_png_false_positive(
+    source_root: Path,
+    path: Path,
+    archive_path: str,
+    command: str,
+    content: bytes,
+    digest: str,
+    raw_matches: list[tuple[str, re.Match[bytes]]],
+) -> bool:
+    """Permit one reviewed binary match only when all immutable evidence agrees."""
+
+    if not _private_collection_adjudicated_png_scope(path, archive_path, command):
+        return False
+    entries = _attachment_export_entries(source_root, path.parent)
+    if entries is None:
+        return False
+    names = [
+        logical for logical, exported in entries
+        if exported == path and (
+            logical == _PRIVATE_COLLECTION_ADJUDICATED_PNG_LOGICAL_NAME
+            or re.fullmatch(
+                rf"{re.escape(_PRIVATE_COLLECTION_ADJUDICATED_PNG_LOGICAL_NAME)}_[0-9]+_[0-9A-Fa-f-]+(?:\.png)?",
+                logical,
+            )
+        )
+    ]
+    if (
+        len(names) != 1
+        or len(content) != _PRIVATE_COLLECTION_ADJUDICATED_PNG_BYTES
+        or digest != _PRIVATE_COLLECTION_ADJUDICATED_PNG_SHA256
+        or len(raw_matches) != 1
+    ):
+        return False
+    matcher, match = raw_matches[0]
+    return (
+        matcher == "credential-prefix"
+        and match.start() == _PRIVATE_COLLECTION_ADJUDICATED_PNG_OFFSET
+        and match.end() - match.start() == _PRIVATE_COLLECTION_ADJUDICATED_PNG_LENGTH
+        and _private_collection_credential_shape(content, match) == "non-utf8"
+        and _valid_png(path)
+        and _private_collection_adjudicated_png_match_in_idat(content, match)
+    )
+
+
 def _private_collection_archive_path(archive_path: str, command: str) -> None:
     """Reject non-portable archive paths before they can reach private storage."""
 
@@ -1891,10 +2029,13 @@ def _private_collection_archive_path(archive_path: str, command: str) -> None:
     ):
         raise ValueError("private collection archive path is invalid")
     parts = archive_path.split("/")
-    if (
-        any(not part or part in {".", ".."} or len(part) > 255 for part in parts)
-        or parts[:3] != ["records", "commands", command]
-    ):
+    if any(not part or part in {".", ".."} or len(part) > 255 for part in parts):
+        raise ValueError("private collection archive path is invalid")
+    expected_prefix = (
+        ["records", "setup", "simulator-operations"]
+        if command == "setup" else ["records", "commands", command]
+    )
+    if parts[:len(expected_prefix)] != expected_prefix:
         raise ValueError("private collection archive path is invalid")
 
 
@@ -1920,6 +2061,7 @@ def _private_collection_file_metadata(
         raise ValueError("private collection source exceeds the size limit")
     if len(content) != size or path.stat().st_size != size:
         raise ValueError("private collection source changed during read")
+    digest = hashlib.sha256(content).hexdigest()
     sensitive_key = r'(?:"(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token)"|(?:password|authorization|authorisation|keychain[ _-]?secret|credential|token))'
     username_key = r'(?:"(?:username|user)"|(?:username|user))'
     forbidden = re.compile(rf"(?i){sensitive_key}\s*[:=]\s*\S+")
@@ -1935,26 +2077,36 @@ def _private_collection_file_metadata(
         )
     ):
         raise ValueError("private collection content was rejected")
-    quarantined = False
-    for matcher, pattern in (
-        ("key-value", _PRIVATE_COLLECTION_SECRET),
-        ("credential-prefix", _PRIVATE_COLLECTION_CREDENTIAL_PREFIX),
-        ("real-client", _PRIVATE_COLLECTION_REAL_CLIENT),
-        ("unredacted-username", _PRIVATE_COLLECTION_UNREDACTED_USERNAME),
+    raw_matches = [
+        (matcher, match)
+        for matcher, pattern in (
+            ("key-value", _PRIVATE_COLLECTION_SECRET),
+            ("credential-prefix", _PRIVATE_COLLECTION_CREDENTIAL_PREFIX),
+            ("real-client", _PRIVATE_COLLECTION_REAL_CLIENT),
+            ("unredacted-username", _PRIVATE_COLLECTION_UNREDACTED_USERNAME),
+        )
+        for match in pattern.finditer(content)
+    ]
+    if _private_collection_is_adjudicated_png_false_positive(
+        source_root, path, archive_path, command, content, digest, raw_matches
     ):
-        for match in pattern.finditer(content):
-            if (
-                matcher == "credential-prefix"
-                and _private_collection_quarantine_permitted(
-                    archive_path, command, _private_collection_credential_shape(content, match)
-                )
-            ):
-                quarantined = True
-                continue
-            raise ValueError("private collection content was rejected")
+        return size, digest, _PRIVATE_COLLECTION_ADJUDICATED_PNG_STATUS
+    if _private_collection_adjudicated_png_scope(path, archive_path, command) and raw_matches:
+        raise ValueError("private collection content was rejected")
+    quarantined = False
+    for matcher, match in raw_matches:
+        if (
+            matcher == "credential-prefix"
+            and _private_collection_quarantine_permitted(
+                archive_path, command, _private_collection_credential_shape(content, match)
+            )
+        ):
+            quarantined = True
+            continue
+        raise ValueError("private collection content was rejected")
     return (
         size,
-        hashlib.sha256(content).hexdigest(),
+        digest,
         "quarantined-pending-review" if quarantined else "complete",
     )
 
@@ -2004,24 +2156,22 @@ def _private_collection_sources(
                     complete = False
             else:
                 sources.append((root, path, f"{prefix}/{archive_name}", command))
-        setting_logs = checks_by_name.get(command, {}).get("private_setting_logs", [])
-        if setting_logs:
-            if (
-                not command.startswith("ios-normal-settings-")
-                or not isinstance(setting_logs, list)
-                or len(setting_logs) != 4
-                or len(set(setting_logs)) != 4
-            ):
-                raise ValueError("private collection setting-log scope is invalid")
-            for relative in setting_logs:
-                if not isinstance(relative, str) or re.fullmatch(
-                    r"simctl-[0-9A-Fa-f-]{36}-(?:appearance|content_size)-(?:query|set)\.log",
-                    relative,
-                ) is None:
-                    raise ValueError("private collection setting-log path is invalid")
-                path = _safe_live_path(root, relative)
-                if path.exists() or path.is_symlink():
-                    sources.append((root, path, f"{prefix}/simulator-settings/{relative}", command))
+        setting_logs = checks_by_name.get(command, {}).get("private_setting_logs")
+        if command.startswith("ios-normal-settings-"):
+            if not isinstance(setting_logs, list):
+                complete = False
+            else:
+                expected_logs = _normal_setting_log_paths_from_records(command, setting_logs)
+                if setting_logs != expected_logs:
+                    raise ValueError("private collection setting-log scope is invalid")
+                for relative in expected_logs:
+                    path = _safe_live_path(root, relative)
+                    if not path.exists() and not path.is_symlink():
+                        complete = False
+                    else:
+                        sources.append((root, path, f"{prefix}/simulator-settings/{relative}", command))
+        elif setting_logs is not None:
+            raise ValueError("private collection setting-log scope is invalid")
         for relative, archive_name in (
             (f"{command}.xcresult", "result.xcresult"),
             (f"{command}-attachment-export", "attachment-export"),
@@ -2032,12 +2182,246 @@ def _private_collection_sources(
                 if archive_name == "result.xcresult":
                     complete = False
                 continue
-            for path in _private_collection_regular_files(directory):
+            files = _private_collection_regular_files(directory)
+            manifest = directory / "manifest.json"
+            if archive_name.endswith("attachment-export") and manifest in files:
+                files = [manifest, *(path for path in files if path != manifest)]
+            for path in files:
                 suffix = _private_collection_relative(directory, path)
                 sources.append((directory, path, f"{prefix}/{archive_name}/{suffix}", command))
     if len(sources) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
         raise ValueError("private collection source count exceeds the limit")
     return sources, complete
+
+
+def _private_collection_command_sources(
+    root: Path, planned: list[dict[str, object]], check: dict
+) -> list[tuple[Path, Path, str, str]]:
+    """Get one completed command's required private records."""
+
+    command = check.get("name")
+    if not isinstance(command, str) or command not in _live_command_names():
+        raise ValueError("private collection command is invalid")
+    sources, _complete = _private_collection_sources(root, planned, [check], None)
+    command_sources = [source for source in sources if source[3] == command]
+    archive_paths = {source[2] for source in command_sources}
+    prefix = f"records/commands/{command}/"
+    required = {f"{prefix}log"}
+    if command != "ios-negative-config":
+        required.add(f"{prefix}summary.json")
+        if not any(path.startswith(f"{prefix}result.xcresult/") for path in archive_paths):
+            raise ValueError("private collection result bundle is empty")
+        if command.startswith("ios-normal-settings-"):
+            setting_logs = check.get("private_setting_logs")
+            if not isinstance(setting_logs, list):
+                raise ValueError("private collection setting logs are missing")
+            required.update(f"{prefix}simulator-settings/{path}" for path in setting_logs)
+    if not required.issubset(archive_paths):
+        raise ValueError("private collection required record is missing")
+    return command_sources
+
+
+def _private_collection_candidate(manifest: dict[str, object]) -> dict[str, str]:
+    """Return the verified candidate identity without environment data."""
+
+    candidate = {
+        key: manifest[key]
+        for key in ("workflow", "repository", "commit", "branch", "buildId")
+        if isinstance(manifest.get(key), str)
+    }
+    if set(candidate) != {"workflow", "repository", "commit", "branch", "buildId"}:
+        raise ValueError("private collection candidate identity is incomplete")
+    if candidate.get("workflow") != LIVE_WORKFLOW:
+        raise ValueError("private collection candidate workflow is invalid")
+    if "repository" in candidate and candidate["repository"] != LIVE_REPOSITORY:
+        raise ValueError("private collection candidate repository is invalid")
+    if "commit" in candidate and re.fullmatch(r"[0-9a-f]{40}", candidate["commit"]) is None:
+        raise ValueError("private collection candidate commit is invalid")
+    if "branch" in candidate and candidate["branch"] != LIVE_BRANCH:
+        raise ValueError("private collection candidate branch is invalid")
+    if "buildId" in candidate and re.fullmatch(r"[A-Za-z0-9_-]{1,128}", candidate["buildId"]) is None:
+        raise ValueError("private collection candidate build is invalid")
+    return candidate
+
+
+def _verify_private_completed_command(
+    root: Path, planned: list[dict[str, object]], check: dict
+) -> None:
+    """Verify passed command records before another command can start."""
+
+    command = check.get("name")
+    expected = next((item.get("expectedTests") for item in planned if item.get("name") == command), None)
+    if check.get("exit") != 0 or not isinstance(expected, int):
+        return
+    summary = _safe_live_path(root, f"{command}-summary.json")
+    try:
+        counts, _over_complex = _bounded_xcresult_counts(json.loads(summary.read_text(encoding="utf-8")))
+    except (OSError, ValueError, json.JSONDecodeError, RecursionError) as error:
+        raise ValueError("private collection summary is invalid") from error
+    if counts != (expected, 0, 0):
+        raise ValueError("private collection test counts are invalid")
+    expected_images = _expected_logical_screenshot_names(command)
+    screenshots = check.get("screenshots")
+    if not isinstance(screenshots, list) or len(screenshots) != len(expected_images):
+        raise ValueError("private collection screenshot inventory is invalid")
+    for relative in screenshots:
+        if not isinstance(relative, str):
+            raise ValueError("private collection screenshot path is invalid")
+        image = _safe_live_path(root, f"{LIVE_REVIEW_STAGE}/{relative}")
+        if image.is_symlink() or not image.is_file() or not _valid_png(image):
+            raise ValueError("private collection screenshot is invalid")
+
+
+def _private_collection_preserved_root(private_root: Path) -> Path:
+    """Create the bounded command-copy directory below fixed private storage."""
+
+    root = private_root / LIVE_PRIVATE_PRESERVED_DIRECTORY
+    if root.is_symlink() or (root.exists() and not root.is_dir()):
+        raise ValueError("private collection preserved root is unsafe")
+    root.mkdir(mode=0o700, exist_ok=True)
+    return root
+
+
+def _private_collection_preserved_sources(
+    private_root: Path, command: str, candidate: dict[str, str]
+) -> list[tuple[Path, Path, str, str]]:
+    """Read and verify one immutable command-copy inventory."""
+
+    command_root = _private_collection_preserved_root(private_root) / command
+    inventory_path = command_root / "inventory.json"
+    if command_root.is_symlink() or inventory_path.is_symlink() or not inventory_path.is_file():
+        raise ValueError("private collection preserved inventory is missing")
+    try:
+        inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        raise ValueError("private collection preserved inventory is unreadable") from error
+    if (
+        not isinstance(inventory, dict)
+        or inventory.get("command") != command
+        or inventory.get("candidate") != candidate
+        or not isinstance(inventory.get("records"), list)
+    ):
+        raise ValueError("private collection preserved inventory is invalid")
+    sources: list[tuple[Path, Path, str, str]] = []
+    for record in inventory["records"]:
+        if (
+            not isinstance(record, dict)
+            or set(record) != {"relativePath", "size", "sha256", "scannerStatus"}
+            or not isinstance(record["relativePath"], str)
+            or not isinstance(record["size"], int)
+            or not isinstance(record["sha256"], str)
+            or record["scannerStatus"] not in {
+                "complete", "quarantined-pending-review",
+                _PRIVATE_COLLECTION_ADJUDICATED_PNG_STATUS,
+            }
+        ):
+            raise ValueError("private collection preserved record is invalid")
+        archive_path = record["relativePath"]
+        suffix = archive_path.removeprefix(f"records/commands/{command}/")
+        source_command = command
+        if suffix == archive_path and command == "ios-65-unit":
+            suffix = archive_path.removeprefix("records/setup/")
+            source_command = "setup"
+            suffix = f"setup/{suffix}"
+        if suffix == archive_path:
+            raise ValueError("private collection preserved path is invalid")
+        path = command_root / suffix
+        size, digest, scanner_status = _private_collection_file_metadata(
+            command_root, path, archive_path, source_command
+        )
+        if (size, digest, scanner_status) != (
+            record["size"], record["sha256"], record["scannerStatus"]
+        ):
+            raise ValueError("private collection preserved record changed")
+        sources.append((command_root, path, archive_path, source_command))
+    if not sources or len({source[2] for source in sources}) != len(sources):
+        raise ValueError("private collection preserved inventory is incomplete")
+    paths = {source[2] for source in sources}
+    prefix = f"records/commands/{command}/"
+    required = {f"{prefix}log"}
+    if command != "ios-negative-config":
+        required.add(f"{prefix}summary.json")
+        if not any(path.startswith(f"{prefix}result.xcresult/") for path in paths):
+            raise ValueError("private collection preserved result bundle is empty")
+        if command.startswith("ios-normal-settings-"):
+            setting_prefix = f"{prefix}simulator-settings/"
+            records = [source[2].removeprefix(setting_prefix) for source in sources if source[2].startswith(setting_prefix)]
+            expected = _normal_setting_log_paths_from_records(command, records)
+            if records != expected:
+                raise ValueError("private collection preserved setting logs are invalid")
+            required.update(setting_prefix + record for record in records)
+    if not required.issubset(paths):
+        raise ValueError("private collection preserved record is missing")
+    if not any(path.startswith(f"{prefix}simulator-operations/") for path in paths):
+        raise ValueError("private collection preserved simulator operations are missing")
+    return sources
+
+
+def _preserve_private_command_records(
+    root: Path,
+    planned: list[dict[str, object]],
+    check: dict,
+    manifest: dict[str, object],
+) -> None:
+    """Copy, scan, and verify one command before another command can start."""
+
+    command = check.get("name")
+    if not isinstance(command, str):
+        raise ValueError("private collection command is invalid")
+    candidate = _private_collection_candidate(manifest)
+    private_root = _private_collection_root()
+    command_root = _private_collection_preserved_root(private_root) / command
+    if command_root.exists() or command_root.is_symlink():
+        _private_collection_preserved_sources(private_root, command, candidate)
+        return
+    sources = _private_collection_command_sources(root, planned, check)
+    operations = _safe_live_path(root, "simulator-operations")
+    operation_files = _private_collection_regular_files(operations)
+    if not operation_files:
+        raise ValueError("private collection simulator operations are missing")
+    sources.extend(
+        (operations, path, f"records/commands/{command}/simulator-operations/{_private_collection_relative(operations, path)}", command)
+        for path in operation_files
+    )
+    if len(sources) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
+        raise ValueError("private collection source count exceeds the limit")
+    stage = _private_collection_preserved_root(private_root) / f".{command}.tmp"
+    if stage.exists() or stage.is_symlink():
+        raise ValueError("private collection preservation stage is unsafe")
+    records: list[dict[str, object]] = []
+    try:
+        stage.mkdir(mode=0o700)
+        for source_root, source, archive_path, source_command in sources:
+            size, digest, scanner_status = _private_collection_file_metadata(
+                source_root, source, archive_path, source_command
+            )
+            suffix = archive_path.removeprefix(f"records/commands/{command}/")
+            if suffix == archive_path and source_command == "setup":
+                suffix = "setup/" + archive_path.removeprefix("records/setup/")
+            if suffix == archive_path:
+                raise ValueError("private collection preserved path is invalid")
+            target = stage / suffix
+            target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+            copied = _private_collection_file_metadata(
+                stage, target, archive_path, source_command
+            )
+            if copied != (size, digest, scanner_status):
+                raise ValueError("private collection preserved copy changed")
+            records.append({
+                "relativePath": archive_path, "size": size, "sha256": digest,
+                "scannerStatus": scanner_status,
+            })
+        inventory = json.dumps({
+            "candidate": candidate, "command": command, "records": records,
+        }, indent=2, sort_keys=True).encode("utf-8") + b"\n"
+        (stage / "inventory.json").write_bytes(inventory)
+        os.replace(stage, command_root)
+        _private_collection_preserved_sources(private_root, command, candidate)
+    except (OSError, ValueError, json.JSONDecodeError):
+        if stage.exists() and stage.is_dir() and not stage.is_symlink():
+            shutil.rmtree(stage)
+        raise
 
 
 def _verify_private_collection_archive(
@@ -2082,8 +2466,6 @@ def _finalise_private_live_collection(
         archive = private_root / LIVE_PRIVATE_COLLECTION_ARCHIVE
         if archive.is_symlink() or (archive.exists() and not archive.is_file()):
             raise ValueError("private collection archive path is unsafe")
-        if archive.exists():
-            archive.unlink()
         temporary = private_root / f".{LIVE_PRIVATE_COLLECTION_ARCHIVE}.tmp"
         if temporary.exists() or temporary.is_symlink():
             if temporary.is_file() and not temporary.is_symlink():
@@ -2092,11 +2474,29 @@ def _finalise_private_live_collection(
                 raise ValueError("private collection temporary path is unsafe")
         if not planned:
             return "incomplete"
-        sources, complete = _private_collection_sources(root, planned, checks, active)
+        planned_names = [item.get("name") for item in planned if isinstance(item, dict)]
+        if len(planned_names) != len(planned) or set(planned_names) != _live_command_names():
+            raise ValueError("private collection planned scope is invalid")
         completed_commands = {
             check.get("name") for check in checks
             if isinstance(check, dict) and isinstance(check.get("name"), str)
         }
+        if any(command not in planned_names for command in completed_commands):
+            raise ValueError("private collection completed scope is invalid")
+        complete = active is None and completed_commands == set(planned_names)
+        candidate = _private_collection_candidate(manifest)
+        checks_by_name = {
+            check["name"] for check in checks
+            if isinstance(check, dict) and isinstance(check.get("name"), str)
+        }
+        for command in sorted(completed_commands):
+            check = next(item for item in checks if item.get("name") == command)
+            _preserve_private_command_records(root, planned, check, manifest)
+        sources = [
+            source
+            for command in sorted(checks_by_name)
+            for source in _private_collection_preserved_sources(private_root, command, candidate)
+        ]
         entries: list[dict[str, object]] = []
         expected: dict[str, tuple[int, str]] = {}
         for source_root, path, archive_path, command in sources:
@@ -2118,6 +2518,8 @@ def _finalise_private_live_collection(
             if active is not None or not complete:
                 return "incomplete"
             raise ValueError("private collection has no bounded source set")
+        if len(entries) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
+            raise ValueError("private collection source count exceeds the limit")
         if sum(item["size"] for item in entries) > LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES:
             raise ValueError("private collection source size exceeds the limit")
         quarantined = any(item["scannerStatus"] == "quarantined-pending-review" for item in entries)
@@ -2130,7 +2532,7 @@ def _finalise_private_live_collection(
                 if isinstance(manifest.get(key), str)
             },
             "plannedCommandCount": len(planned),
-            "startedCommandCount": len({item["producingCommand"] for item in entries}),
+            "startedCommandCount": len(completed_commands | ({active} if active in planned_names else set())),
             "records": entries,
         }, indent=2, sort_keys=True).encode("utf-8") + b"\n"
         inventory_path = "records/collection-inventory.json"
@@ -2159,12 +2561,19 @@ def _finalise_private_live_collection(
         os.replace(temporary, archive)
         return status
     except (OSError, ValueError, tarfile.TarError):
+        if private_root is not None:
+            diagnostic = private_root / "retention-diagnostic.json"
+            command = active if active in _live_command_names() else "collection"
+            try:
+                diagnostic.write_text(json.dumps({
+                    "phase": "final-packaging",
+                    "category": LIVE_PRIVATE_COLLECTION_FAILURE_REASON,
+                    "command": command,
+                }, sort_keys=True) + "\n", encoding="utf-8")
+            except OSError:
+                pass
         if temporary is not None and temporary.is_file() and not temporary.is_symlink():
             temporary.unlink(missing_ok=True)
-        if private_root is not None:
-            archive = private_root / LIVE_PRIVATE_COLLECTION_ARCHIVE
-            if archive.is_file() and not archive.is_symlink():
-                archive.unlink(missing_ok=True)
         return "failed"
 
 
@@ -2546,17 +2955,68 @@ def _retain_completed_review_images(root: Path, checks: list[dict]) -> str | Non
     return None
 
 
+_NORMAL_SETTING_LOG_OPERATIONS = (
+    ("appearance", "before-query"),
+    ("content_size", "before-query"),
+    ("appearance", "requested-set"),
+    ("appearance", "requested-query"),
+    ("content_size", "requested-set"),
+    ("content_size", "requested-query"),
+    ("appearance", "restore-set"),
+    ("appearance", "restore-query"),
+    ("content_size", "restore-set"),
+    ("content_size", "restore-query"),
+)
+
+
+def _normal_setting_log_paths(name: str, identifier: str) -> list[str]:
+    """Return the exact private log paths for one planned setting command."""
+
+    if (
+        name not in _live_command_names()
+        or not name.startswith("ios-normal-settings-")
+        or re.fullmatch(r"[0-9A-Fa-f-]{36}", identifier) is None
+    ):
+        raise ValueError("normal setting log scope is invalid")
+    return [
+        f"simctl-{name}-{identifier}-{setting}-{operation}.log"
+        for setting, operation in _NORMAL_SETTING_LOG_OPERATIONS
+    ]
+
+
+def _normal_setting_log_paths_from_records(name: str, records: list[object]) -> list[str]:
+    """Validate setting-log provenance and return its fixed expected paths."""
+
+    if (
+        len(records) != len(_NORMAL_SETTING_LOG_OPERATIONS)
+        or any(not isinstance(record, str) for record in records)
+        or len(set(records)) != len(records)
+    ):
+        raise ValueError("private collection setting-log scope is invalid")
+    first = records[0]
+    prefix = f"simctl-{name}-"
+    if not isinstance(first, str) or not first.startswith(prefix):
+        raise ValueError("private collection setting-log path is invalid")
+    identifier = first[len(prefix):].split("-appearance-before-query.log", 1)[0]
+    expected = _normal_setting_log_paths(name, identifier)
+    if records != expected:
+        raise ValueError("private collection setting-log path is invalid")
+    return expected
+
+
 def _simctl_ui_value(
     root: Path,
     identifier: str,
     setting: str,
     value: str | None = None,
     query_evidence: list[dict[str, object]] | None = None,
+    *,
+    log_relative: str,
 ) -> tuple[bool, str | None]:
     """Use simctl only through a controlled log and accept fixed setting values."""
 
     suffix = "query" if value is None else "set"
-    log_path = _safe_live_path(root, f"simctl-{identifier}-{setting}-{suffix}.log")
+    log_path = _safe_live_path(root, log_relative)
     command = ["xcrun", "simctl", "ui", identifier, setting]
     if value is not None:
         command.append(value)
@@ -2610,17 +3070,16 @@ def _normal_settings_result(
 ) -> dict:
     """Set and restore simulator settings around one non-forced UI test."""
 
-    private_setting_logs = [
-        f"simctl-{identifier}-{setting}-{suffix}.log"
-        for setting in ("appearance", "content_size")
-        for suffix in ("query", "set")
-    ]
+    private_setting_logs = _normal_setting_log_paths(name, identifier)
+    setting_log_paths = dict(zip(_NORMAL_SETTING_LOG_OPERATIONS, private_setting_logs, strict=True))
     query_evidence: list[dict[str, object]] = []
     appearance_ok, previous_appearance = _simctl_ui_value(
-        root, identifier, "appearance", query_evidence=query_evidence
+        root, identifier, "appearance", query_evidence=query_evidence,
+        log_relative=setting_log_paths[("appearance", "before-query")],
     )
     content_ok, previous_content = _simctl_ui_value(
-        root, identifier, "content_size", query_evidence=query_evidence
+        root, identifier, "content_size", query_evidence=query_evidence,
+        log_relative=setting_log_paths[("content_size", "before-query")],
     )
     observations = {
         "appearanceBefore": previous_appearance,
@@ -2638,26 +3097,46 @@ def _normal_settings_result(
     setting_failed = False
     restore_failed = False
     try:
-        if not _simctl_ui_value(root, identifier, "appearance", appearance)[0]:
+        if not _simctl_ui_value(root, identifier, "appearance", appearance,
+                                log_relative=setting_log_paths[("appearance", "requested-set")])[0]:
             setting_failed = True
         else:
-            observed, value = _simctl_ui_value(root, identifier, "appearance")
+            observed, value = _simctl_ui_value(
+                root, identifier, "appearance",
+                log_relative=setting_log_paths[("appearance", "requested-query")],
+            )
             observations["appearanceObserved"] = value if observed else None
             setting_failed = not observed or value != appearance
         if not setting_failed:
-            if not _simctl_ui_value(root, identifier, "content_size", LIVE_CONTENT_SIZE)[0]:
+            if not _simctl_ui_value(root, identifier, "content_size", LIVE_CONTENT_SIZE,
+                                    log_relative=setting_log_paths[("content_size", "requested-set")])[0]:
                 setting_failed = True
             else:
-                observed, value = _simctl_ui_value(root, identifier, "content_size")
+                observed, value = _simctl_ui_value(
+                    root, identifier, "content_size",
+                    log_relative=setting_log_paths[("content_size", "requested-query")],
+                )
                 observations["contentSizeObserved"] = value if observed else None
                 setting_failed = not observed or value != LIVE_CONTENT_SIZE
         if not setting_failed:
             result = _run_live_ios_test(name, command, cwd, environment, 1, root)
     finally:
-        restored_appearance = _simctl_ui_value(root, identifier, "appearance", previous_appearance)[0]
-        verified_appearance, observed_appearance = _simctl_ui_value(root, identifier, "appearance")
-        restored_content = _simctl_ui_value(root, identifier, "content_size", previous_content)[0]
-        verified_content, observed_content = _simctl_ui_value(root, identifier, "content_size")
+        restored_appearance = _simctl_ui_value(
+            root, identifier, "appearance", previous_appearance,
+            log_relative=setting_log_paths[("appearance", "restore-set")],
+        )[0]
+        verified_appearance, observed_appearance = _simctl_ui_value(
+            root, identifier, "appearance",
+            log_relative=setting_log_paths[("appearance", "restore-query")],
+        )
+        restored_content = _simctl_ui_value(
+            root, identifier, "content_size", previous_content,
+            log_relative=setting_log_paths[("content_size", "restore-set")],
+        )[0]
+        verified_content, observed_content = _simctl_ui_value(
+            root, identifier, "content_size",
+            log_relative=setting_log_paths[("content_size", "restore-query")],
+        )
         observations["appearanceRestored"] = observed_appearance if verified_appearance else None
         observations["contentSizeRestored"] = observed_content if verified_content else None
         restore_failed = not (
@@ -3509,6 +3988,10 @@ def _live_failure_detail(error: Exception) -> str:
         return "simulator resolution timed out"
     if reason == SIMULATOR_RESOLUTION_FAILURE_REASON:
         return "simulator resolution failed"
+    if reason == LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON:
+        return "remote retention is unavailable"
+    if reason == LIVE_PRIVATE_COLLECTION_FAILURE_REASON:
+        return "private evidence collection failed"
     return "live setup failed"
 
 
@@ -3517,6 +4000,10 @@ def _live_failure_reason(error: Exception) -> str:
 
     if isinstance(error, SafeImageRetentionError):
         return "safe-image-retention-failed"
+    if isinstance(error, PrivateCollectionError):
+        if error.category == LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON:
+            return LIVE_REMOTE_RETENTION_UNAVAILABLE_REASON
+        return LIVE_PRIVATE_COLLECTION_FAILURE_REASON
     if isinstance(error, SimulatorResolutionError):
         reason = getattr(error, "reason", SIMULATOR_RESOLUTION_FAILURE_REASON)
         if reason == SIMULATOR_RESOLUTION_TIMEOUT_REASON:
@@ -4292,6 +4779,14 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             _write_live_manifest(root, manifest)
             if retention_failure is not None:
                 raise SafeImageRetentionError("safe image retention failed")
+            try:
+                _verify_private_completed_command(root, planned, check)
+                _preserve_private_command_records(root, planned, check, manifest)
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                raise PrivateCollectionError(
+                    "command-preservation", LIVE_PRIVATE_COLLECTION_FAILURE_REASON, check["name"]
+                ) from error
+            _require_remote_retention(check["name"])
 
         commands = [(
             "ios-65-unit",
@@ -4453,6 +4948,12 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
     except (OSError, ValueError, SimulatorResolutionError) as error:
         result = _live_setup_failure(error)
         manifest["failure"] = result["reason"]
+        if isinstance(error, PrivateCollectionError):
+            manifest["retentionDiagnostic"] = {
+                "phase": error.phase,
+                "category": error.category,
+                "command": error.command,
+            }
         try:
             _write_live_snapshot(
                 root,
@@ -4522,9 +5023,519 @@ def component_checks(level: str, component: str) -> list[dict]:
     return checks
 
 
+def _retention_pilot_private_root() -> Path:
+    """Return the fixed private root for the manual SSH retention pilot."""
+
+    root = RETENTION_PILOT_PRIVATE_ROOT
+    if root.is_symlink():
+        raise ValueError("retention pilot private root is unsafe")
+    for parent in (root.parent, *root.parents):
+        if parent.exists() and parent.is_symlink():
+            raise ValueError("retention pilot private root has a symlinked parent")
+    root.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("retention pilot private root is unsafe")
+    return root
+
+
+def _retention_pilot_context(artifact_root: Path, expected_commit: str) -> dict[str, str]:
+    """Require the exact, allowlisted manual pilot workflow context."""
+
+    build_directory = os.environ.get("CM_BUILD_DIR")
+    build_id = os.environ.get("CM_BUILD_ID")
+    if (
+        artifact_root != RETENTION_PILOT_ARTIFACT_ROOT
+        or not _is_non_empty_string(build_id)
+        or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", build_id or "") is None
+        or not _is_non_empty_string(build_directory)
+        or Path(build_directory).resolve() != ROOT.resolve()
+        or os.environ.get(LIVE_WORKFLOW_ENVIRONMENT_KEY) != RETENTION_PILOT_WORKFLOW
+        or os.environ.get("CM_COMMIT") != expected_commit
+        or os.environ.get("CM_BRANCH") != LIVE_BRANCH
+        or not _is_non_empty_string(os.environ.get("CM_BUILD_STARTED_BY"))
+    ):
+        raise ValueError("verified Codemagic retention pilot context is invalid")
+    return {
+        "workflow": RETENTION_PILOT_WORKFLOW,
+        "repository": LIVE_REPOSITORY,
+        "commit": expected_commit,
+        "branch": LIVE_BRANCH,
+        "buildId": build_id,
+    }
+
+
+def _retention_pilot_phase_path(root: Path, build_id: str, phase: str) -> Path:
+    """Return one fixed, allowlisted checkpoint path without caller path input."""
+
+    if phase not in RETENTION_PILOT_PHASES:
+        raise ValueError("retention pilot phase is invalid")
+    path = root / "checkpoints" / build_id / phase
+    if path.resolve(strict=False).is_relative_to(root.resolve()) is False:
+        raise ValueError("retention pilot checkpoint path is invalid")
+    return path
+
+
+def _retention_pilot_ack_path(root: Path, build_id: str, phase: str) -> Path:
+    """Return the fixed operator ACK path for one allowed pilot phase."""
+
+    if phase not in RETENTION_PILOT_PHASES:
+        raise ValueError("retention pilot phase is invalid")
+    path = root / "acks" / build_id / f"{phase}.ack.json"
+    if path.resolve(strict=False).is_relative_to(root.resolve()) is False:
+        raise ValueError("retention pilot ACK path is invalid")
+    return path
+
+
+def _retention_pilot_copy_records(
+    artifact_root: Path, private_root: Path, phase: str, candidate: dict[str, str],
+    allow_partial: bool = False,
+) -> tuple[Path, str, dict[str, str], dict[str, str]]:
+    """Copy and hash the fixed probe or one successful individual XCTest record."""
+
+    checkpoint = _retention_pilot_phase_path(private_root, candidate["buildId"], phase)
+    if checkpoint.exists() or checkpoint.is_symlink():
+        raise ValueError("retention pilot checkpoint already exists")
+    stage = checkpoint.with_name(f".{phase}.tmp")
+    if stage.exists() or stage.is_symlink():
+        raise ValueError("retention pilot checkpoint stage is unsafe")
+    records: dict[str, str] = {}
+    scanner_status: dict[str, str] = {}
+    try:
+        stage.mkdir(mode=0o700, parents=True)
+        if phase == "transport-probe":
+            source = stage / "records" / "transport-probe.txt"
+            source.parent.mkdir(mode=0o700, parents=True)
+            source.write_text("MCX-19 fictional SSH transport probe\n", encoding="utf-8")
+            records["records/transport-probe.txt"] = hashlib.sha256(source.read_bytes()).hexdigest()
+            scanner_status["records/transport-probe.txt"] = "complete"
+        else:
+            sources = [
+                (f"{phase}.log", "records/log"),
+                (f"{phase}-summary.json", "records/summary.json"),
+                (f"{phase}.xcresult", "records/result.xcresult"),
+                (f"{phase}-attachment-export.log", "records/source-export.log"),
+                (f"{phase}-attachment-export", "records/source-export"),
+                (f"{LIVE_REVIEW_STAGE}/{LIVE_SCREENSHOT_DIRECTORY}/{phase}", "records/screenshots"),
+                ("simulator-operations", "records/simulator-operations"),
+            ]
+            for relative, destination in sources:
+                source = _safe_live_path(artifact_root, relative)
+                if source.is_symlink() or not source.exists():
+                    if allow_partial:
+                        continue
+                    raise ValueError("retention pilot required record is missing")
+                files = [source] if source.is_file() else _private_collection_regular_files(source)
+                if not files:
+                    if allow_partial:
+                        continue
+                    raise ValueError("retention pilot required record is empty")
+                for item in files:
+                    suffix = "" if source.is_file() else _private_collection_relative(source, item)
+                    target = stage / destination / suffix if suffix else stage / destination
+                    target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+                    archive_path = (
+                        f"records/commands/{phase}/"
+                        f"{target.relative_to(stage / 'records').as_posix()}"
+                    )
+                    source_root = artifact_root if source.is_file() else source
+                    original_metadata = _private_collection_file_metadata(
+                        source_root, item, archive_path, phase
+                    )
+                    shutil.copyfile(item, target)
+                    if target.is_symlink() or not target.is_file():
+                        raise ValueError("retention pilot copied record is invalid")
+                    copied_metadata = _private_collection_file_metadata(
+                        stage, target, archive_path, phase
+                    )
+                    if copied_metadata != original_metadata:
+                        raise ValueError("retention pilot copied record changed")
+                    record_path = target.relative_to(stage).as_posix()
+                    records[record_path] = copied_metadata[1]
+                    scanner_status[record_path] = copied_metadata[2]
+            if allow_partial and not records:
+                raise ValueError("retention pilot has no failed-case record")
+        manifest = {
+            "schemaVersion": 1,
+            "candidate": candidate,
+            "phaseId": phase,
+            "records": records,
+            "recordScannerStatus": scanner_status,
+            "collectionStatus": "incomplete" if allow_partial else "complete",
+            "releaseEvidence": False,
+        }
+        manifest_bytes = json.dumps(manifest, indent=2, sort_keys=True).encode("utf-8") + b"\n"
+        (stage / "checkpoint-manifest.json").write_bytes(manifest_bytes)
+        manifest_sha = hashlib.sha256(manifest_bytes).hexdigest()
+        os.replace(stage, checkpoint)
+        return checkpoint, manifest_sha, records, scanner_status
+    except (OSError, ValueError):
+        if stage.exists() and stage.is_dir() and not stage.is_symlink():
+            shutil.rmtree(stage)
+        raise
+
+
+def _retention_pilot_ack_valid(
+    path: Path, candidate: dict[str, str], phase: str, manifest_sha: str, records: dict[str, str]
+) -> bool:
+    """Accept only the exact fixed ACK that binds this stored checkpoint."""
+
+    try:
+        if path.is_symlink() or not path.is_file() or path.stat().st_size > 1024 * 1024:
+            return False
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError, json.JSONDecodeError):
+        return False
+    return (
+        isinstance(value, dict)
+        and set(value) == {
+            "schemaVersion", "commit", "buildId", "phaseId", "checkpointManifestSha256", "recordSha256"
+        }
+        and value.get("schemaVersion") == 1
+        and value.get("commit") == candidate["commit"]
+        and value.get("buildId") == candidate["buildId"]
+        and value.get("phaseId") == phase
+        and value.get("checkpointManifestSha256") == manifest_sha
+        and value.get("recordSha256") == records
+    )
+
+
+def _retention_pilot_records_match(checkpoint: Path, records: dict[str, str]) -> bool:
+    """Rehash every stored record before an ACK can release the next test."""
+
+    if not records:
+        return False
+    try:
+        for relative, expected in records.items():
+            path = checkpoint / relative
+            if (
+                not isinstance(relative, str)
+                or not isinstance(expected, str)
+                or re.fullmatch(r"[0-9a-f]{64}", expected) is None
+                or path.is_symlink()
+                or not path.is_file()
+                or not path.resolve().is_relative_to(checkpoint.resolve())
+                or hashlib.sha256(path.read_bytes()).hexdigest() != expected
+            ):
+                return False
+    except OSError:
+        return False
+    return True
+
+
+def _retention_pilot_wait_for_ack(
+    private_root: Path, candidate: dict[str, str], phase: str, manifest_sha: str,
+    records: dict[str, str], timeout_seconds: int = RETENTION_PILOT_ACK_TIMEOUT_SECONDS,
+) -> bool:
+    """Wait only for an exact operator ACK and record every blocked poll privately."""
+
+    checkpoint = _retention_pilot_phase_path(private_root, candidate["buildId"], phase)
+    ack = _retention_pilot_ack_path(private_root, candidate["buildId"], phase)
+    ack.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    blocked = checkpoint / "blocked-polls.jsonl"
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        if (
+            _retention_pilot_records_match(checkpoint, records)
+            and _retention_pilot_ack_valid(ack, candidate, phase, manifest_sha, records)
+        ):
+            receipt = {
+                "schemaVersion": 1,
+                "phaseId": phase,
+                "checkpointManifestSha256": manifest_sha,
+                "ackSha256": hashlib.sha256(ack.read_bytes()).hexdigest(),
+            }
+            (checkpoint / "ack-receipt.json").write_text(
+                json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            return True
+        with blocked.open("a", encoding="utf-8") as stream:
+            stream.write(json.dumps({"event": "ack-blocked", "phaseId": phase}, sort_keys=True) + "\n")
+        if time.monotonic() >= deadline:
+            (checkpoint / "retention-diagnostic.json").write_text(
+                json.dumps({"phase": phase, "category": "operator-ack-timeout"}, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            return False
+        time.sleep(RETENTION_PILOT_ACK_POLL_SECONDS)
+
+
+def _retention_pilot_report_scanner_status(statuses: dict[str, str]) -> dict[str, object]:
+    """Publish scanner totals only; private manifests retain record paths."""
+
+    counts = {status: list(statuses.values()).count(status) for status in
+              ("complete", "quarantined-pending-review", _PRIVATE_COLLECTION_ADJUDICATED_PNG_STATUS)}
+    return {
+        "recordScannerStatusCounts": counts,
+        "scannerReviewStatus": "pending-review" if counts["quarantined-pending-review"] else "complete",
+    }
+
+
+def _retention_pilot_archive(
+    private_root: Path, candidate: dict[str, str], success: bool = True
+) -> Path:
+    """Archive a complete ACKed pilot or an explicit incomplete diagnostic."""
+
+    checkpoints = private_root / "checkpoints" / candidate["buildId"]
+    if checkpoints.is_symlink() or not checkpoints.is_dir():
+        raise ValueError("retention pilot checkpoints are unavailable")
+    archive = private_root / RETENTION_PILOT_ARCHIVE
+    temporary = private_root / f".{RETENTION_PILOT_ARCHIVE}.tmp"
+    if archive.exists() or archive.is_symlink() or temporary.exists() or temporary.is_symlink():
+        raise ValueError("retention pilot archive path is unsafe")
+    checkpoint_paths = sorted(checkpoints.iterdir())
+    phase_checkpoints = [path for path in checkpoint_paths if path.is_dir() and not path.is_symlink()]
+    if len(phase_checkpoints) != len(checkpoint_paths) or any(
+        path.name not in RETENTION_PILOT_PHASES for path in phase_checkpoints
+    ):
+        raise ValueError("retention pilot checkpoint path is invalid")
+    if success and {path.name for path in phase_checkpoints} != set(RETENTION_PILOT_PHASES):
+        raise ValueError("retention pilot success archive requires all pilot phases")
+    available_files = _private_collection_regular_files(checkpoints)
+    if not available_files:
+        raise ValueError("retention pilot archive has no records")
+    expected_record_hashes: dict[Path, str] = {}
+    expected_manifest_hashes: dict[Path, str] = {}
+    expected_receipt_hashes: dict[Path, str] = {}
+    expected_control_hashes: dict[Path, str] = {}
+    expected_acks: dict[Path, tuple[Path, str, str, str, dict[str, str]]] = {}
+    validated_files: set[Path] = set()
+    archive_members: list[tuple[Path, str]] = []
+    for checkpoint in phase_checkpoints:
+        manifest_path = checkpoint / "checkpoint-manifest.json"
+        try:
+            manifest_bytes = manifest_path.read_bytes()
+            manifest = json.loads(manifest_bytes)
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            raise ValueError("retention pilot checkpoint manifest is invalid") from error
+        if (
+            not isinstance(manifest, dict)
+            or set(manifest) != {
+                "schemaVersion", "candidate", "phaseId", "records", "recordScannerStatus",
+                "collectionStatus", "releaseEvidence",
+            }
+            or manifest.get("schemaVersion") != 1
+            or manifest.get("candidate") != candidate
+            or manifest.get("phaseId") != checkpoint.name
+            or manifest.get("releaseEvidence") is not False
+            or manifest.get("collectionStatus") not in {"complete", "incomplete"}
+            or (success and manifest.get("collectionStatus") != "complete")
+            or not isinstance(manifest.get("records"), dict)
+            or not isinstance(manifest.get("recordScannerStatus"), dict)
+            or set(manifest["records"]) != set(manifest["recordScannerStatus"])
+            or any(not isinstance(path, str) or not isinstance(digest, str)
+                   for path, digest in manifest["records"].items())
+            or any(status not in {
+                "complete", "quarantined-pending-review", _PRIVATE_COLLECTION_ADJUDICATED_PNG_STATUS,
+            }
+                   for status in manifest["recordScannerStatus"].values())
+            or not _retention_pilot_records_match(checkpoint, manifest["records"])
+        ):
+            raise ValueError("retention pilot checkpoint verification failed")
+        manifest_sha = hashlib.sha256(manifest_bytes).hexdigest()
+        expected_manifest_hashes[manifest_path] = manifest_sha
+        validated_files.add(manifest_path)
+        expected_record_hashes.update({
+            checkpoint / relative: digest
+            for relative, digest in manifest["records"].items()
+        })
+        validated_files.update(expected_record_hashes)
+        blocked = checkpoint / "blocked-polls.jsonl"
+        if blocked.exists():
+            try:
+                if blocked.is_symlink() or not blocked.is_file() or blocked.stat().st_size > 1024 * 1024:
+                    raise ValueError("retention pilot blocked-poll control is invalid")
+                blocked_values = [json.loads(line) for line in blocked.read_text(encoding="utf-8").splitlines()]
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                raise ValueError("retention pilot blocked-poll control is invalid") from error
+            if not blocked_values or any(
+                not isinstance(value, dict) or value != {"event": "ack-blocked", "phaseId": checkpoint.name}
+                for value in blocked_values
+            ):
+                raise ValueError("retention pilot blocked-poll control is invalid")
+            expected_control_hashes[blocked] = hashlib.sha256(blocked.read_bytes()).hexdigest()
+            validated_files.add(blocked)
+        diagnostic = checkpoint / "retention-diagnostic.json"
+        if diagnostic.exists():
+            try:
+                if diagnostic.is_symlink() or not diagnostic.is_file() or diagnostic.stat().st_size > 1024 * 1024:
+                    raise ValueError("retention pilot diagnostic control is invalid")
+                diagnostic_value = json.loads(diagnostic.read_text(encoding="utf-8"))
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                raise ValueError("retention pilot diagnostic control is invalid") from error
+            if diagnostic_value not in (
+                {"phase": checkpoint.name, "category": "operator-ack-timeout"},
+                {"phase": checkpoint.name, "category": "native-test-failed"},
+                {"phase": checkpoint.name, "category": "safe-image-retention-failed"},
+            ):
+                raise ValueError("retention pilot diagnostic control is invalid")
+            expected_control_hashes[diagnostic] = hashlib.sha256(diagnostic.read_bytes()).hexdigest()
+            validated_files.add(diagnostic)
+        receipt = checkpoint / "ack-receipt.json"
+        if receipt.exists():
+            try:
+                receipt_bytes = receipt.read_bytes()
+                ack_receipt = json.loads(receipt_bytes)
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                raise ValueError("retention pilot ACK receipt is invalid") from error
+            ack = _retention_pilot_ack_path(private_root, candidate["buildId"], checkpoint.name)
+            if (
+                not isinstance(ack_receipt, dict)
+                or set(ack_receipt) != {
+                    "schemaVersion", "phaseId", "checkpointManifestSha256", "ackSha256"
+                }
+                or ack_receipt.get("schemaVersion") != 1
+                or ack_receipt.get("phaseId") != checkpoint.name
+                or ack_receipt.get("checkpointManifestSha256") != manifest_sha
+                or not _retention_pilot_ack_valid(
+                    ack, candidate, checkpoint.name, manifest_sha, manifest["records"]
+                )
+                or ack_receipt.get("ackSha256") != hashlib.sha256(ack.read_bytes()).hexdigest()
+            ):
+                raise ValueError("retention pilot ACK receipt is invalid")
+            expected_receipt_hashes[receipt] = hashlib.sha256(receipt_bytes).hexdigest()
+            expected_acks[receipt] = (
+                ack, ack_receipt["ackSha256"], checkpoint.name, manifest_sha, manifest["records"]
+            )
+            expected_acks[ack] = expected_acks[receipt]
+            validated_files.add(receipt)
+            archive_members.append((ack, f"acks/{candidate['buildId']}/{checkpoint.name}.ack.json"))
+        elif success:
+            raise ValueError("retention pilot success archive requires an ACK receipt")
+    if set(available_files) != validated_files:
+        raise ValueError("retention pilot has an unexpected checkpoint entry")
+    archive_members.extend(
+        (path, path.relative_to(private_root).as_posix()) for path in sorted(validated_files)
+    )
+    with tarfile.open(temporary, "w:gz", format=tarfile.PAX_FORMAT) as output:
+        expected_archive: dict[str, tuple[int, str]] = {}
+        for path, relative in archive_members:
+            data = path.read_bytes()
+            if len(data) > LIVE_PRIVATE_COLLECTION_MAX_FILE_BYTES:
+                raise ValueError("retention pilot archive record exceeds the size limit")
+            digest = hashlib.sha256(data).hexdigest()
+            if path in expected_record_hashes and digest != expected_record_hashes[path]:
+                raise ValueError("retention pilot record changed during packaging")
+            if path in expected_manifest_hashes and digest != expected_manifest_hashes[path]:
+                raise ValueError("retention pilot manifest changed during packaging")
+            if path in expected_receipt_hashes and digest != expected_receipt_hashes[path]:
+                raise ValueError("retention pilot ACK receipt changed during packaging")
+            if path in expected_control_hashes and digest != expected_control_hashes[path]:
+                raise ValueError("retention pilot control changed during packaging")
+            if path in expected_acks:
+                ack, ack_sha, phase, manifest_sha, records = expected_acks[path]
+                if (
+                    not _retention_pilot_ack_valid(ack, candidate, phase, manifest_sha, records)
+                    or hashlib.sha256(ack.read_bytes()).hexdigest() != ack_sha
+                ):
+                    raise ValueError("retention pilot ACK changed during packaging")
+            expected_archive[relative] = (len(data), digest)
+            info = output.gettarinfo(str(path), arcname=relative)
+            if not info.isreg():
+                raise ValueError("retention pilot archive record is unsafe")
+            info.uid = info.gid = 0
+            info.uname = info.gname = ""
+            info.mtime = 0
+            output.addfile(info, io.BytesIO(data))
+    _verify_private_collection_archive(temporary, expected_archive)
+    os.replace(temporary, archive)
+    return archive
+
+
+def retention_pilot_checks(artifact_root: Path, expected_commit: str) -> list[dict]:
+    """Run two individual fictional UI tests through the attended SSH ACK protocol."""
+
+    root: Path | None = None
+    private_root: Path | None = None
+    candidate: dict[str, str] | None = None
+    report: dict[str, object] | None = None
+    checks: list[dict] = []
+    try:
+        root = _live_artifact_root(artifact_root)
+        candidate = _retention_pilot_context(artifact_root, expected_commit)
+        metadata = _live_repository_metadata(expected_commit)
+        if metadata["commit"] != candidate["commit"]:
+            raise ValueError("retention pilot repository binding is invalid")
+        private_root = _retention_pilot_private_root()
+        report = {
+            "scope": "MCX-19-manual-retention-pilot",
+            "releaseEvidence": False,
+            "candidate": candidate,
+            "status": "awaiting-operator-ack",
+            "phases": [],
+        }
+        _write_live_json_atomically(root, "retention-pilot-report.json", report)
+        probe, probe_sha, probe_records, probe_status = _retention_pilot_copy_records(root, private_root, "transport-probe", candidate)
+        report["phases"].append({"phaseId": "transport-probe", "checkpoint": str(probe), "manifestSha256": probe_sha, **_retention_pilot_report_scanner_status(probe_status)})
+        _write_live_json_atomically(root, "retention-pilot-report.json", report)
+        if not _retention_pilot_wait_for_ack(private_root, candidate, "transport-probe", probe_sha, probe_records):
+            report["status"] = "blocked"
+            report["archive"] = str(_retention_pilot_archive(private_root, candidate, success=False))
+            _write_live_json_atomically(root, "retention-pilot-report.json", report)
+            return [{"name": "retention-pilot", "status": "blocked", "exit": 1, "detail": "operator ACK was not accepted"}]
+        destinations = _live_simulator_preflight(root)
+        ios = ROOT / "ios" / "ACEClientApp"
+        for phase in RETENTION_PILOT_PHASES[1:]:
+            method = phase.rsplit("-", 1)[1]
+            command = [
+                "xcodebuild", "test", "-project", "ACEClientApp.xcodeproj", "-scheme", "ACEClientAppUITests",
+                "-configuration", "Debug", "-destination", destinations[IOS_CORE_DEVICE],
+                f"-only-testing:ACEClientAppUITests/ACEClientAppUITests/{method}", "ACE_UI_TEST_APPEARANCE=light",
+            ]
+            check = _run_live_ios_test(phase, command, ios, ios_test_environment("light"), 1, root)
+            checks.append(check)
+            image_failure = _retain_completed_review_images(root, checks)
+            if check.get("exit") != 0 or image_failure is not None:
+                category = "native-test-failed" if check.get("exit") != 0 else "safe-image-retention-failed"
+                checkpoint, manifest_sha, _records, scanner_status = _retention_pilot_copy_records(
+                    root, private_root, phase, candidate, allow_partial=True
+                )
+                (checkpoint / "retention-diagnostic.json").write_text(
+                    json.dumps({"phase": phase, "category": category}, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                report["phases"].append({
+                    "phaseId": phase, "checkpoint": str(checkpoint), "manifestSha256": manifest_sha,
+                    "collectionStatus": "incomplete", **_retention_pilot_report_scanner_status(scanner_status),
+                })
+                report["status"] = "failed"
+                report["failure"] = category
+                report["results"] = [{"name": item["name"], "exit": item["exit"]} for item in checks]
+                report["archive"] = str(_retention_pilot_archive(private_root, candidate, success=False))
+                _write_live_json_atomically(root, "retention-pilot-report.json", report)
+                return [{"name": "retention-pilot", "status": "failed", "exit": 1, "detail": category}]
+            checkpoint, manifest_sha, records, scanner_status = _retention_pilot_copy_records(root, private_root, phase, candidate)
+            report["phases"].append({"phaseId": phase, "checkpoint": str(checkpoint), "manifestSha256": manifest_sha, **_retention_pilot_report_scanner_status(scanner_status)})
+            _write_live_json_atomically(root, "retention-pilot-report.json", report)
+            if not _retention_pilot_wait_for_ack(private_root, candidate, phase, manifest_sha, records):
+                report["status"] = "blocked"
+                report["archive"] = str(_retention_pilot_archive(private_root, candidate, success=False))
+                _write_live_json_atomically(root, "retention-pilot-report.json", report)
+                return [{"name": "retention-pilot", "status": "blocked", "exit": 1, "detail": "operator ACK was not accepted"}]
+        archive = _retention_pilot_archive(private_root, candidate)
+        report["status"] = "complete"
+        report["archive"] = str(archive)
+        report["results"] = [{"name": check["name"], "exit": check["exit"]} for check in checks]
+        _write_live_json_atomically(root, "retention-pilot-report.json", report)
+        return [{"name": "retention-pilot", "status": "passed", "exit": 0, "detail": "two individual fictional UI tests retained after exact ACKs"}]
+    except (OSError, ValueError, SimulatorResolutionError) as error:
+        if root is not None and private_root is not None and candidate is not None and report is not None:
+            report["status"] = "failed"
+            report["failure"] = "retention-pilot-failed"
+            report["results"] = [{"name": item["name"], "exit": item["exit"]} for item in checks]
+            try:
+                report["archive"] = str(_retention_pilot_archive(private_root, candidate, success=False))
+            except (OSError, ValueError):
+                report["archive"] = "unavailable"
+            try:
+                _write_live_json_atomically(root, "retention-pilot-report.json", report)
+            except (OSError, ValueError):
+                pass
+        return [{"name": "retention-pilot", "status": "failed", "exit": 1, "detail": str(error)}]
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("level", choices=["focused", "core", "release", "evidence-check", "live-evidence", "live-repair-check"])
+    parser.add_argument("level", choices=["focused", "core", "release", "evidence-check", "live-evidence", "live-repair-check", "retention-pilot"])
     parser.add_argument("--component", choices=["python", "web", "ios"])
     parser.add_argument("--artifact-root")
     parser.add_argument("--expected-commit")
@@ -4532,11 +5543,11 @@ def main(argv: list[str]) -> int:
     data, mapping_errors = load_mapping()
     if args.level != "evidence-check" and not args.component:
         parser.error("--component is required except for evidence-check")
-    if args.level in {"live-evidence", "live-repair-check"} and args.component != "ios":
+    if args.level in {"live-evidence", "live-repair-check", "retention-pilot"} and args.component != "ios":
         parser.error(f"{args.level} requires --component ios")
-    if args.level in {"live-evidence", "live-repair-check"} and args.artifact_root is None:
+    if args.level in {"live-evidence", "live-repair-check", "retention-pilot"} and args.artifact_root is None:
         parser.error(f"{args.level} requires --artifact-root")
-    if args.level in {"live-evidence", "live-repair-check"} and (
+    if args.level in {"live-evidence", "live-repair-check", "retention-pilot"} and (
         args.expected_commit is None
         or re.fullmatch(r"[0-9a-f]{40}", args.expected_commit) is None
     ):
@@ -4550,6 +5561,8 @@ def main(argv: list[str]) -> int:
         results.extend(live_evidence_checks(Path(args.artifact_root), args.expected_commit))
     elif args.level == "live-repair-check":
         results.extend(live_repair_check(Path(args.artifact_root), args.expected_commit))
+    elif args.level == "retention-pilot":
+        results.extend(retention_pilot_checks(Path(args.artifact_root), args.expected_commit))
     else:
         results.extend(component_checks(args.level, args.component))
     exits = {item["exit"] for item in results}
@@ -4558,6 +5571,8 @@ def main(argv: list[str]) -> int:
         print("report=external-artifact-root/live-evidence-manifest.json")
     elif args.level == "live-repair-check":
         print(f"report=external-artifact-root/{LIVE_REPAIR_SNAPSHOT}")
+    elif args.level == "retention-pilot":
+        print("report=external-artifact-root/retention-pilot-report.json")
     else:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
         report = {"timestamp": datetime.now(timezone.utc).isoformat(), "level": args.level, "component": args.component, "mapping": data.get("iosPrimaryGroups", {}), "evidencePreflightState": data.get("evidencePreflightState"), "releaseEvidence": False, "results": results, "exit": exit_code}
