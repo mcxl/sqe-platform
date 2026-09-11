@@ -37,28 +37,6 @@ workflows:
       - /private/tmp/mcx-19-diagnostic-safe/diagnostic.json
       - /private/tmp/mcx-19-native-cycle-private/mcx19-native-cycle-records.tar.gz
 
-  ace-ios-retention-pilot-manual:
-    name: ACE iOS MCX-19 Retention Pilot (Not Release Evidence)
-    max_build_duration: 30
-    instance_type: mac_mini_m4
-    environment:
-      groups:
-        - mcx19_live_evidence
-      xcode: 26.4.1
-      vars:
-        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-retention-pilot-manual
-        CM_CLONE_UNSHALLOW: "true"
-    # No triggering events. Start manually with SSH access enabled in Codemagic.
-    # The runner uses fictional app values and waits for an exact operator ACK before each phase.
-    scripts:
-      - name: Run the MCX-19 attended SSH retention pilot
-        script: |
-          set -euo pipefail
-          python3 tools/run_tests.py retention-pilot --component ios --artifact-root /private/tmp/mcx-19-retention-pilot --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
-    artifacts:
-      - /private/tmp/mcx-19-retention-pilot/retention-pilot-report.json
-      - /private/tmp/mcx-19-retention-pilot-private/mcx19-retention-pilot-records.tar.gz
-
   ace-ios-core:
     name: ACE iOS Core Quality
     max_build_duration: 45
@@ -185,3 +163,25 @@ workflows:
       - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json
       - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png
       - /private/tmp/mcx-19-full-matrix-private/mcx19-full-matrix-records.tar.gz
+
+  ace-ios-retention-pilot-manual:
+    name: ACE iOS MCX-19 Retention Pilot (Not Release Evidence)
+    max_build_duration: 30
+    instance_type: mac_mini_m4
+    environment:
+      groups:
+        - mcx19_live_evidence
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-retention-pilot-manual
+        CM_CLONE_UNSHALLOW: "true"
+    # No triggering events. Start manually with SSH access enabled in Codemagic.
+    # The runner uses fictional app values and waits for an exact operator ACK before each phase.
+    scripts:
+      - name: Run the MCX-19 attended SSH retention pilot
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py retention-pilot --component ios --artifact-root /private/tmp/mcx-19-retention-pilot --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    artifacts:
+      - /private/tmp/mcx-19-retention-pilot/retention-pilot-report.json
+      - /private/tmp/mcx-19-retention-pilot-private/mcx19-retention-pilot-records.tar.gz
