@@ -228,7 +228,7 @@ class Trial:
             self.run(["xcrun", "simctl", "boot", udid], 45)
         elif state != "Booted":
             raise RuntimeError(f"Selected {name} simulator was not Shutdown or Booted")
-        self.run(["xcrun", "simctl", "bootstatus", udid, "-b"], 60)
+        self.run(["xcrun", "simctl", "bootstatus", udid, "-b"], 90)
         return runtime, udid
     def simctl_ui(self, udid: str, setting: str, value: str | None = None, *, final: bool = False) -> str:
         command = ["xcrun", "simctl", "ui", udid, setting]
