@@ -153,7 +153,7 @@ workflows:
                       ("tar.txt", ["/usr/bin/tar", "--version"], 10),
                       ("xcode.txt", ["xcodebuild", "-version"], 15),
                       ("simulator-sdk.txt", ["xcrun", "--sdk", "iphonesimulator", "--show-sdk-version"], 15),
-                      ("simulator-list.json", ["xcrun", "simctl", "list", "devices", "available", "-j"], 15)):
+                      ("simulator-list.json", ["xcrun", "simctl", "list", "devices", "available", "-j"], 90)):
                   write_text(evidence / record_name, run(command, timeout))
               download_deadline = time.monotonic() + remaining(90)
               with urllib.request.urlopen(url, timeout=min(30, remaining(30))) as response, archive.open("wb") as output:
