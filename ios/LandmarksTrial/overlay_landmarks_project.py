@@ -3,7 +3,11 @@
 
 from __future__ import annotations
 
+import argparse
+import hashlib
+import json
 import pathlib
+import shutil
 import sys
 
 
@@ -31,10 +35,54 @@ def replace_once(contents: str, old: str, new: str) -> str:
     return contents.replace(old, new, 1)
 
 
+def file_sha256(path: pathlib.Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest().upper()
+
+
+def apply_ace_overlay(project: pathlib.Path) -> None:
+    repository = pathlib.Path(__file__).resolve().parents[2]
+    harness = repository / "ios" / "LandmarksTrial"
+    app_source = project.parent / "Landmarks"
+    test_source = project.parent / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift"
+    source_release_models = repository / "ios" / "ACEClientApp" / "ACEClientApp" / "ReleaseModels.swift"
+    copies = {
+        harness / "ReleaseDetailData.swift": app_source / "ReleaseDetailData.swift",
+        harness / "ReleaseDetailView.swift": app_source / "ReleaseDetailView.swift",
+        source_release_models: app_source / "ReleaseModels.swift",
+        harness / "ACEReleaseUITests.swift": test_source,
+    }
+    root_source = harness / "ACEReleaseApp.swift"
+    if not app_source.is_dir() or not root_source.is_file():
+        raise RuntimeError("The checked-in ACE release overlay source was not available")
+    for source, destination in copies.items():
+        if not source.is_file():
+            raise RuntimeError("Missing ACE release overlay input: {}".format(source))
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
+    shutil.copyfile(root_source, app_source / "LandmarksApp.swift")
+    derived_release_models = app_source / "ReleaseModels.swift"
+    source_hash = file_sha256(source_release_models)
+    derived_hash = file_sha256(derived_release_models)
+    if source_hash != derived_hash:
+        raise RuntimeError("Derived ReleaseModels.swift did not match the checked-in source")
+    print("ACE_RELEASE_OVERLAY_MANIFEST=" + json.dumps({
+        "derived_release_models_path": str(derived_release_models),
+        "derived_release_models_sha256": derived_hash,
+        "source_release_models_path": str(source_release_models),
+        "source_release_models_sha256": source_hash,
+    }, sort_keys=True))
+
+
 def main() -> int:
-    if len(sys.argv) != 2:
-        raise SystemExit("usage: overlay_landmarks_project.py /path/to/Landmarks.xcodeproj")
-    project = pathlib.Path(sys.argv[1]).resolve()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("project")
+    parser.add_argument("--ace", action="store_true")
+    arguments = parser.parse_args()
+    project = pathlib.Path(arguments.project).resolve()
     path = project / "project.pbxproj"
     contents = path.read_text(encoding="utf-8")
     if TEST_TARGET in contents:
@@ -129,6 +177,8 @@ def main() -> int:
         "/* End XCConfigurationList section */",
     )
     path.write_text(contents, encoding="utf-8")
+    if arguments.ace:
+        apply_ace_overlay(project)
     return 0
 
 

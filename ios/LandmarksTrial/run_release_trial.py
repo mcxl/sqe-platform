@@ -1,0 +1,505 @@
+#!/usr/bin/env python3
+"""Run the bounded manual ACE Apple Landmarks release trial."""
+from __future__ import annotations
+import argparse
+import hashlib
+import json
+import os
+import pathlib
+import shutil
+import signal
+import stat
+import subprocess
+import sys
+import time
+import traceback
+import urllib.request
+import zipfile
+ARCHIVE_URL = "https://docs-assets.developer.apple.com/published/a88428e6793e/LandmarksBuildingAnAppWithLiquidGlass.zip"
+ARCHIVE_SHA256 = "F19ED0EFFBE8AF975536034B2B5AF98002F06F5D600854A95EFB62CCC8303F41"
+ARCHIVE_SIZE = 336053876
+ROOT = pathlib.Path("/private/tmp/ace-landmarks-release-trial")
+APP_RELATIVE = pathlib.Path("Build/Products/Debug-iphonesimulator/Landmarks.app")
+TEST_TARGET = "LandmarksTrialUITests"
+FOCUSED_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseInformationAndCopyControls"
+MATRIX_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseLayoutAndAccessibility"
+ALLOWED_OVERLAY_PATHS = frozenset(("Landmarks/Landmarks.xcodeproj/project.pbxproj", "Landmarks/Landmarks.xcodeproj/xcshareddata/xcschemes/LandmarksTrial.xcscheme", "Landmarks/LandmarksTrialUITests/LandmarksTrialUITests.swift", "Landmarks/Landmarks/LandmarksApp.swift", "Landmarks/Landmarks/ReleaseDetailData.swift", "Landmarks/Landmarks/ReleaseDetailView.swift", "Landmarks/Landmarks/ReleaseModels.swift"))
+MODE = {
+    "focused": {"work_seconds": 270, "final_seconds": 330, "test": FOCUSED_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
+    "matrix": {"work_seconds": 510, "final_seconds": 570, "test": MATRIX_TEST, "devices": ("iPhone 17", "iPhone 17 Pro Max"), "contexts": (("light", "large"), ("light", "extra-large"), ("light", "accessibility-extra-extra-extra-large"), ("dark", "large"), ("dark", "extra-large"), ("dark", "accessibility-extra-extra-extra-large"))},
+}
+class Trial:
+    def __init__(self, mode: str) -> None:
+        self.mode = mode
+        self.settings = MODE[mode]
+        self.started = time.time()
+        self.started_monotonic = time.monotonic()
+        self.work_deadline = self.started_monotonic + self.settings["work_seconds"]
+        self.final_deadline = self.started_monotonic + self.settings["final_seconds"]
+        self.root = ROOT / mode
+        self.source = self.root / "source"
+        self.build = self.root / "build"
+        self.evidence = self.root / "evidence"
+        self.archive = self.root / "LandmarksBuildingAnAppWithLiquidGlass.zip"
+        self.raw_log = self.evidence / "raw.log"
+        self.commands: list[dict[str, object]] = []
+        self.outcome: dict[str, object] = {"mode": mode, "result": "runner_failure", "cm_commit": os.environ.get("CM_COMMIT"), "cm_build_id": os.environ.get("CM_BUILD_ID"), "started_at_epoch": self.started}
+    def write_text(self, path: pathlib.Path, text: str) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+    def remaining(self, limit: int) -> int:
+        left = self.work_deadline - time.monotonic()
+        if left <= 0:
+            raise RuntimeError(f"The {self.settings['work_seconds']}-second work budget expired")
+        return min(limit, max(1, int(left)))
+    def final_remaining(self, limit: int) -> int:
+        left = self.final_deadline - time.monotonic()
+        if left <= 0:
+            raise RuntimeError(f"The {self.settings['final_seconds']}-second finalisation budget expired")
+        return min(limit, max(1, int(left)))
+    @staticmethod
+    def stop_process_group(process: subprocess.Popen[str]) -> str:
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            return process.communicate(timeout=5)[0]
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            return process.communicate(timeout=5)[0]
+    def run(self, command: list[str], limit: int, *, allow_failure: bool = False, cwd: pathlib.Path | None = None, final: bool = False) -> tuple[str, int]:
+        budget = self.final_remaining if final else self.remaining
+        event: dict[str, object] = {"command": command, "started_at_epoch": time.time(), "limit_seconds": budget(limit)}
+        output = ""
+        process: subprocess.Popen[str] | None = None
+        try:
+            process = subprocess.Popen(
+                command,
+                cwd=cwd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                start_new_session=True,
+            )
+            try:
+                output, _ = process.communicate(timeout=event["limit_seconds"])
+            except subprocess.TimeoutExpired:
+                output = self.stop_process_group(process)
+                raise RuntimeError(f"Timed out after {event['limit_seconds']} seconds: {command[0]}")
+            if process.returncode and not allow_failure:
+                raise RuntimeError(f"Command failed ({process.returncode}) {' '.join(command)}")
+            return output, process.returncode
+        finally:
+            self.raw_log.parent.mkdir(parents=True, exist_ok=True)
+            with self.raw_log.open("a", encoding="utf-8") as log:
+                log.write("$ " + " ".join(command) + "\n" + output)
+            event["finished_at_epoch"] = time.time()
+            event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
+            event["exit_code"] = process.returncode if process else None
+            self.commands.append(event)
+    def sha256(self, path: pathlib.Path, *, final: bool = False) -> str:
+        budget = self.final_remaining if final else self.remaining
+        digest = hashlib.sha256()
+        with path.open("rb") as source:
+            for block in iter(lambda: source.read(1024 * 1024), b""):
+                budget(30)
+                digest.update(block)
+        return digest.hexdigest().upper()
+    def tree_hashes(self, directory: pathlib.Path, *, final: bool = False) -> str:
+        lines: list[str] = []
+        for path in sorted(directory.rglob("*")):
+            relative = path.relative_to(directory)
+            if ".git" in relative.parts or not path.is_file():
+                continue
+            lines.append(f"{self.sha256(path, final=final)}  {relative.as_posix()}")
+        return "\n".join(lines) + "\n"
+    @staticmethod
+    def hash_map(contents: str) -> dict[str, str]:
+        return {line.split("  ", 1)[1]: line.split("  ", 1)[0] for line in contents.splitlines()}
+    @staticmethod
+    def difference(before: dict[str, str], after: dict[str, str]) -> list[dict[str, str | None]]:
+        return [{"path": name, "before_sha256": before.get(name), "after_sha256": after.get(name)} for name in sorted(set(before) | set(after)) if before.get(name) != after.get(name)]
+    def safe_extract(self) -> None:
+        total = 0
+        with zipfile.ZipFile(self.archive) as zipped:
+            for member in zipped.infolist():
+                self.remaining(30)
+                candidate = pathlib.PurePosixPath(member.filename)
+                mode = member.external_attr >> 16
+                if candidate.is_absolute() or ".." in candidate.parts or stat.S_ISLNK(mode):
+                    raise RuntimeError(f"Unsafe archive member: {member.filename}")
+                total += member.file_size
+                if total > 1_000_000_000:
+                    raise RuntimeError("Archive expanded past the one-gigabyte safety limit")
+                destination = self.source.joinpath(*candidate.parts)
+                if member.is_dir():
+                    destination.mkdir(parents=True, exist_ok=True)
+                    continue
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                with zipped.open(member) as input_file, destination.open("wb") as output_file:
+                    while block := input_file.read(1024 * 1024):
+                        self.remaining(30)
+                        output_file.write(block)
+    @staticmethod
+    def dictionaries(value: object):
+        if isinstance(value, dict):
+            yield value
+            for child in value.values():
+                yield from Trial.dictionaries(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from Trial.dictionaries(child)
+    def download_and_overlay(self, repo: pathlib.Path) -> tuple[pathlib.Path, pathlib.Path]:
+        harness = repo / "ios" / "LandmarksTrial"
+        scheme = harness / "LandmarksTrial.xcscheme"
+        test = harness / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift"
+        overlay = harness / "overlay_landmarks_project.py"
+        ace_test = harness / "ACEReleaseUITests.swift"
+        for required in (scheme, test, ace_test, overlay):
+            if not required.is_file():
+                raise RuntimeError(f"Missing release trial harness input: {required}")
+        with urllib.request.urlopen(ARCHIVE_URL, timeout=self.remaining(30)) as response, self.archive.open("wb") as output:
+            download_deadline = time.monotonic() + self.remaining(90)
+            while block := response.read(1024 * 1024):
+                if time.monotonic() > download_deadline:
+                    raise RuntimeError("Approved source download exceeded 90 seconds")
+                output.write(block)
+        if self.archive.stat().st_size != ARCHIVE_SIZE:
+            raise RuntimeError("Approved source archive size did not match")
+        observed_archive_hash = self.sha256(self.archive)
+        if observed_archive_hash != ARCHIVE_SHA256:
+            raise RuntimeError("Approved source archive SHA-256 did not match")
+        self.safe_extract()
+        project = self.source / "Landmarks" / "Landmarks.xcodeproj"
+        derived_root = self.source / "Landmarks"
+        if not project.is_dir() or not derived_root.is_dir():
+            raise RuntimeError("Approved archive did not contain Landmarks/Landmarks.xcodeproj")
+        baseline = self.tree_hashes(self.source)
+        self.write_text(self.evidence / "source-hashes-before-overlay.txt", baseline)
+        test_destination = derived_root / "LandmarksTrialUITests" / "LandmarksTrialUITests.swift"
+        scheme_destination = project / "xcshareddata" / "xcschemes" / "LandmarksTrial.xcscheme"
+        test_destination.parent.mkdir(parents=True, exist_ok=True)
+        scheme_destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(test, test_destination)
+        shutil.copy2(scheme, scheme_destination)
+        overlay_output, _ = self.run([sys.executable, str(overlay), str(project), "--ace"], 30, cwd=repo)
+        self.write_text(self.evidence / "overlay.log", overlay_output)
+        manifest_lines = [line for line in overlay_output.splitlines() if line.startswith("ACE_RELEASE_OVERLAY_MANIFEST=")]
+        if len(manifest_lines) != 1:
+            raise RuntimeError("ACE overlay did not return exactly one manifest line")
+        try:
+            overlay_manifest = json.loads(manifest_lines[0].split("=", 1)[1])
+        except json.JSONDecodeError as error:
+            raise RuntimeError("ACE overlay returned an invalid manifest") from error
+        self.write_text(self.evidence / "overlay-manifest.json", json.dumps(overlay_manifest, indent=2) + "\n")
+        changed = self.difference(self.hash_map(baseline), self.hash_map(self.tree_hashes(self.source)))
+        changed_paths = {item["path"] for item in changed}
+        if changed_paths != ALLOWED_OVERLAY_PATHS:
+            raise RuntimeError("The ACE overlay did not make exactly the approved release trial changes")
+        self.write_text(self.evidence / "overlay-diff.json", json.dumps(changed, indent=2) + "\n")
+        self.write_text(self.evidence / "source-hashes-before-test.txt", self.tree_hashes(self.source))
+        self.outcome["source_archive"] = {
+            "url": ARCHIVE_URL,
+            "expected_size_bytes": ARCHIVE_SIZE,
+            "observed_size_bytes": self.archive.stat().st_size,
+            "expected_sha256": ARCHIVE_SHA256,
+            "observed_sha256": observed_archive_hash,
+        }
+        self.outcome["overlay_differences"] = changed
+        return project, derived_root
+    def simulator(self, name: str, devices: dict[str, list[dict[str, object]]]) -> tuple[str, str]:
+        candidates: list[tuple[str, dict[str, object]]] = []
+        for runtime, entries in devices.items():
+            if "iOS-26-4" not in runtime:
+                continue
+            for device in entries:
+                if device.get("isAvailable") and device.get("name") == name:
+                    candidates.append((runtime, device))
+        if not candidates:
+            raise RuntimeError(f"No available {name} simulator with the approved iOS 26.4 runtime")
+        runtime, device = sorted(candidates, key=lambda entry: (entry[0], str(entry[1].get("udid"))), reverse=True)[0]
+        udid = str(device["udid"])
+        state = device.get("state")
+        if state == "Shutdown":
+            self.run(["xcrun", "simctl", "boot", udid], 45)
+        elif state != "Booted":
+            raise RuntimeError(f"Selected {name} simulator was not Shutdown or Booted")
+        self.run(["xcrun", "simctl", "bootstatus", udid, "-b"], 60)
+        return runtime, udid
+    def simctl_ui(self, udid: str, setting: str, value: str | None = None, *, final: bool = False) -> str:
+        command = ["xcrun", "simctl", "ui", udid, setting]
+        if value is not None:
+            command.append(value)
+        output, _ = self.run(command, 15, final=final)
+        observed = output.strip().lower()
+        if value is None:
+            if setting == "appearance" and observed not in {"light", "dark"}:
+                raise RuntimeError(f"Simulator returned an invalid appearance: {observed!r}")
+            if setting == "content_size" and observed not in {
+                "large", "extra-large", "accessibility-extra-extra-extra-large"
+            }:
+                raise RuntimeError(f"Simulator returned an invalid content size: {observed!r}")
+        return observed
+    def result_evidence(self, result: pathlib.Path, label: str, *, final: bool = False) -> dict[str, object]:
+        record: dict[str, object] = {"label": label, "result_bundle": str(result)}
+        if not result.is_dir():
+            record["result_bundle_status"] = "missing"
+            return record
+        budget = self.final_remaining if final else self.remaining
+        archive = self.evidence / "results" / f"{label}.xcresult.tar.gz"
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        self.run(["/usr/bin/tar", "-czf", str(archive), "-C", str(result.parent), result.name], budget(60), final=final)
+        summary, _ = self.run(
+            ["xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(result)],
+            budget(30), final=final,
+        )
+        tests, _ = self.run(
+            ["xcrun", "xcresulttool", "get", "test-results", "tests", "--path", str(result)],
+            budget(30), final=final,
+        )
+        self.write_text(self.evidence / "results" / f"{label}-summary.json", summary)
+        self.write_text(self.evidence / "results" / f"{label}-tests.json", tests)
+        parsed = json.loads(tests)
+        cases = [node for node in self.dictionaries(parsed) if str(node.get("nodeType", "")).lower() in {"test case", "testcase"}]
+        failed = [node for node in cases if str(node.get("result", "")).lower() == "failed"]
+        detail_paths: list[str] = []
+        for index, node in enumerate(failed):
+            identifier = node.get("nodeIdentifier")
+            if not isinstance(identifier, str):
+                continue
+            details, _ = self.run(
+                ["xcrun", "xcresulttool", "get", "test-results", "test-details", "--path", str(result), "--test-id", identifier],
+                budget(30), final=final,
+            )
+            detail = self.evidence / "results" / f"{label}-failure-{index}-details.json"
+            self.write_text(detail, details)
+            detail_paths.append(str(detail.relative_to(self.evidence)))
+        attachments = self.evidence / "attachments" / label
+        attachments.mkdir(parents=True, exist_ok=True)
+        attachment_output, attachment_exit = self.run(
+            ["xcrun", "xcresulttool", "export", "attachments", "--path", str(result), "--output-path", str(attachments)],
+            budget(45), allow_failure=True, final=final,
+        )
+        pngs = sorted(attachments.rglob("*.png"))
+        record.update({
+            "failed_nodes": len(failed),
+            "test_cases": [
+                {"name": node.get("name"), "identifier": node.get("nodeIdentifier"), "result": node.get("result")}
+                for node in cases
+            ],
+            "failure_details": detail_paths,
+            "attachments_png": [str(path.relative_to(self.evidence)) for path in pngs],
+            "attachment_export_exit": attachment_exit,
+            "attachment_export_output": attachment_output[-1000:],
+            "result_archive": str(archive.relative_to(self.evidence)),
+            "result_archive_sha256": self.sha256(archive, final=final),
+        })
+        return record
+    def build_for_testing(self, project: pathlib.Path, udid: str) -> pathlib.Path:
+        result = self.evidence / "build-for-testing.xcresult"
+        self.run([
+            "xcodebuild", "build-for-testing", "-project", str(project), "-scheme", "LandmarksTrial",
+            "-sdk", "iphonesimulator", "-configuration", "Debug", "-derivedDataPath", str(self.build),
+            "-resultBundlePath", str(result), "-destination", f"platform=iOS Simulator,id={udid}",
+            "CODE_SIGNING_ALLOWED=NO", "-parallel-testing-enabled", "NO",
+        ], 210, cwd=project.parent)
+        app = self.build / APP_RELATIVE
+        if not app.is_dir():
+            raise RuntimeError("Build-for-testing did not create Landmarks.app")
+        self.write_text(self.evidence / "app-hash-before-test.txt", self.tree_hashes(app))
+        return app
+
+    def one_test(
+        self,
+        project: pathlib.Path,
+        udid: str,
+        test_name: str,
+        label: str,
+        *,
+        traits: dict[str, str] | None = None,
+    ) -> dict[str, object]:
+        result = self.evidence / "results" / f"{label}.xcresult"
+        observations: dict[str, object] = {"requested_traits": traits, "label": label, "test": test_name, "udid": udid}
+        previous: dict[str, str] = {}
+        test_exit: int | None = None
+        failure: Exception | None = None
+        try:
+            if traits:
+                for setting in ("appearance", "content_size"):
+                    previous[setting] = self.simctl_ui(udid, setting)
+                    self.simctl_ui(udid, setting, traits[setting])
+                    observed = self.simctl_ui(udid, setting)
+                    observations[f"{setting}_observed"] = observed
+                    if observed != traits[setting]:
+                        raise RuntimeError(f"Simulator {setting} did not match the requested value")
+            _, test_exit = self.run([
+                "xcodebuild", "test-without-building", "-project", str(project), "-scheme", "LandmarksTrial",
+                "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
+                "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
+                "-parallel-testing-enabled", "NO", f"-only-testing:{test_name}",
+            ], 150, allow_failure=True, cwd=project.parent)
+            evidence = self.result_evidence(result, label)
+            observations["result_evidence"] = evidence
+            if test_exit != 0:
+                raise RuntimeError(f"Focused XCTest returned {test_exit}: {test_name}")
+            if evidence.get("failed_nodes"):
+                raise RuntimeError(f"Xcode recorded a failed node: {test_name}")
+            cases = evidence.get("test_cases", [])
+            if len(cases) != 1 or test_name.rsplit("/", 1)[-1] not in json.dumps(cases[0], sort_keys=True):
+                raise RuntimeError(f"Xcode did not retain exactly the selected XCTest: {test_name}")
+            if cases[0].get("result", "").lower() != "passed":
+                raise RuntimeError(f"The selected XCTest did not pass: {test_name}")
+            if not evidence.get("attachments_png"):
+                raise RuntimeError(f"Xcode did not export a PNG attachment: {test_name}")
+        except Exception as error:
+            failure = error
+            observations["error"] = str(error)
+        finally:
+            if result.is_dir() and "result_evidence" not in observations:
+                try:
+                    observations["result_evidence"] = self.result_evidence(result, label, final=True)
+                except Exception as error:
+                    observations["retention_error"] = str(error)
+            if test_name == FOCUSED_TEST:
+                try:
+                    clipboard, clipboard_exit = self.run(["xcrun", "simctl", "pbpaste", udid], 15,
+                                                         allow_failure=True, final=failure is not None)
+                    observations["clipboard_after_copy"] = {"exit": clipboard_exit, "payload": clipboard.strip(),
+                                                              "reason": "failure-diagnostic" if failure else "pass-assertion"}
+                    if failure is None and (clipboard_exit != 0 or clipboard.strip() != "OPEN"):
+                        observations["clipboard_error"] = "The focused copy control did not leave OPEN in the simulator pasteboard"
+                except Exception as error:
+                    observations["clipboard_after_copy"] = {"exit": None, "payload": None, "reason": str(error)}
+                    if failure is None:
+                        observations["clipboard_error"] = str(error)
+            if traits:
+                restored: dict[str, str] = {}
+                try:
+                    for setting in ("appearance", "content_size"):
+                        if setting in previous:
+                            self.simctl_ui(udid, setting, previous[setting], final=True)
+                            restored[setting] = self.simctl_ui(udid, setting, final=True)
+                            if restored[setting] != previous[setting]:
+                                raise RuntimeError(f"Simulator {setting} did not restore")
+                except Exception as error:
+                    observations["restore_error"] = str(error)
+                observations["restored_traits"] = restored
+            observations["test_exit"] = test_exit
+            observations["passed"] = not any(name in observations for name in ("error", "restore_error", "clipboard_error")) and test_exit == 0
+            self.write_text(self.evidence / "cases" / f"{label}.json", json.dumps(observations, indent=2) + "\n")
+        if failure is not None:
+            raise failure
+        if observations.get("restore_error"):
+            raise RuntimeError(str(observations["restore_error"]))
+        if observations.get("clipboard_error"):
+            raise RuntimeError(str(observations["clipboard_error"]))
+        return observations
+
+    def run_trial(self, repo: pathlib.Path) -> None:
+        self.root.mkdir(parents=True, exist_ok=True)
+        self.build.mkdir(parents=True, exist_ok=True)
+        self.evidence.mkdir(parents=True, exist_ok=True)
+        self.raw_log.touch()
+        project, derived_root = self.download_and_overlay(repo)
+        for name, command, limit in (
+            ("xcode-version.txt", ["xcodebuild", "-version"], 15),
+            ("swift-version.txt", ["swift", "--version"], 15),
+            ("simulator-list.json", ["xcrun", "simctl", "list", "devices", "available", "-j"], 90),
+        ):
+            output, _ = self.run(command, limit)
+            self.write_text(self.evidence / name, output)
+        devices = json.loads((self.evidence / "simulator-list.json").read_text(encoding="utf-8")).get("devices", {})
+        selections: list[dict[str, str]] = []
+        for name in self.settings["devices"]:
+            runtime, udid = self.simulator(name, devices)
+            selections.append({"name": name, "runtime": runtime, "udid": udid})
+        self.write_text(self.evidence / "simulator-selections.json", json.dumps(selections, indent=2) + "\n")
+        first_udid = selections[0]["udid"]
+        app = self.build_for_testing(project, first_udid)
+        records: list[dict[str, object]] = []
+        for selection in selections:
+            for appearance, content_size in self.settings["contexts"]:
+                label = f"{selection['name'].replace(' ', '-').lower()}-{appearance}-{content_size}"
+                traits = {"appearance": appearance, "content_size": content_size}
+                try:
+                    trial = self.one_test(project, selection["udid"], self.settings["test"], label, traits=traits)
+                except Exception:
+                    case_path = self.evidence / "cases" / f"{label}.json"
+                    trial = json.loads(case_path.read_text(encoding="utf-8")) if case_path.is_file() else {"error": "case record missing"}
+                    records.append({"device": selection, "test": self.settings["test"], "trial": trial})
+                    self.write_text(self.evidence / "matrix-records.json", json.dumps(records, indent=2) + "\n")
+                    raise
+                records.append({"device": selection, "test": self.settings["test"], "trial": trial})
+                self.write_text(self.evidence / "matrix-records.json", json.dumps(records, indent=2) + "\n")
+                print(json.dumps({"progress": "case-passed", "mode": self.mode, "completed": len(records),
+                                  "required": len(selections) * len(self.settings["contexts"]), "label": label}), flush=True)
+        self.write_text(self.evidence / "app-hash-after-test.txt", self.tree_hashes(app))
+        if (self.evidence / "app-hash-before-test.txt").read_bytes() != (self.evidence / "app-hash-after-test.txt").read_bytes():
+            raise RuntimeError("Landmarks.app changed during native tests")
+        candidate = self.root / "candidate" / "Landmarks.app"
+        candidate.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(app, candidate, dirs_exist_ok=True)
+        candidate_hashes = self.tree_hashes(candidate)
+        self.write_text(self.evidence / "candidate-app-hash.txt", candidate_hashes)
+        if candidate_hashes != (self.evidence / "app-hash-after-test.txt").read_text(encoding="utf-8"):
+            raise RuntimeError("The published preview app hash did not match the tested candidate")
+        before_test = (self.evidence / "source-hashes-before-test.txt").read_bytes()
+        after_test = self.tree_hashes(self.source)
+        self.write_text(self.evidence / "source-hashes-after-test.txt", after_test)
+        if before_test != after_test.encode("utf-8"):
+            raise RuntimeError("The derived source changed during the native tests")
+        self.outcome["records"] = records
+        self.outcome["result"] = "passed"
+
+    def finalise(self) -> None:
+        finalisation: dict[str, object] = {}
+        if self.source.is_dir():
+            try:
+                final_source_hashes = self.tree_hashes(self.source, final=True)
+                self.write_text(self.evidence / "source-hashes-after-finalisation.txt", final_source_hashes)
+                before_test = self.evidence / "source-hashes-before-test.txt"
+                if before_test.exists() and before_test.read_text(encoding="utf-8") != final_source_hashes:
+                    finalisation["source_integrity_error"] = "Derived source changed after the overlay"
+                    self.outcome["result"] = "runner_failure"
+            except Exception as error:
+                finalisation["source_hash_error"] = str(error)
+                self.outcome["result"] = "runner_failure"
+        self.outcome["finished_at_epoch"] = time.time()
+        self.outcome["elapsed_seconds"] = round(self.outcome["finished_at_epoch"] - self.started, 2)
+        self.outcome["commands"] = self.commands
+        finalisation["archive_status_payload"] = "The evidence archive contains status.json before its evidence_archive digest."
+        self.outcome["finalisation"] = finalisation
+        self.write_text(self.evidence / "status.json", json.dumps(self.outcome, indent=2) + "\n")
+        try:
+            if self.evidence.exists():
+                archive = self.root / "evidence.tar.gz"
+                self.run(["/usr/bin/tar", "-czf", str(archive), "-C", str(self.root), "evidence"], 60, final=True)
+                finalisation["evidence_archive"] = {"path": str(archive), "sha256": self.sha256(archive, final=True)}
+        except Exception as error:
+            finalisation["archive_error"] = str(error)
+        self.outcome["finalisation"] = finalisation
+        self.write_text(self.evidence / "status.json", json.dumps(self.outcome, indent=2) + "\n")
+        print(json.dumps(self.outcome, indent=2))
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=sorted(MODE), required=True)
+    arguments = parser.parse_args()
+    trial = Trial(arguments.mode)
+    try:
+        trial.run_trial(pathlib.Path(os.environ.get("CM_BUILD_DIR", os.getcwd())).resolve())
+    except Exception as error:
+        trial.outcome["error"] = str(error)
+        trial.write_text(trial.evidence / "failure.txt", traceback.format_exc())
+    finally:
+        trial.finalise()
+    return 0 if trial.outcome["result"] == "passed" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

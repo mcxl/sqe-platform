@@ -822,3 +822,47 @@ workflows:
       - /private/tmp/ace-landmarks-ui-trial/evidence/*.txt
       - /private/tmp/ace-landmarks-ui-trial/evidence/*.log
       - /private/tmp/ace-landmarks-ui-trial/evidence/attachments/**/*.png
+
+  ace-landmarks-release-focused-manual:
+    name: ACE Apple Landmarks Release Focused Trial (Manual Only)
+    max_build_duration: 6
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. This is the first, bounded release-screen trial.
+    scripts:
+      - name: Build once and run the focused release information XCTest
+        script: python3 ios/LandmarksTrial/run_release_trial.py --mode focused
+    artifacts:
+      - /private/tmp/ace-landmarks-release-trial/focused/candidate/Landmarks.app
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence.tar.gz
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/status.json
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/failure.txt
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/*.json
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/*.txt
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/*.log
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/**/*.xcresult
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/results/**/*
+      - /private/tmp/ace-landmarks-release-trial/focused/evidence/attachments/**/*.png
+
+  ace-landmarks-release-matrix-manual:
+    name: ACE Apple Landmarks Release Matrix Trial (Manual Only)
+    max_build_duration: 10
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. Start this only after focused timing evidence permits the matrix.
+    scripts:
+      - name: Build once and run the bounded release layout XCTest matrix
+        script: python3 ios/LandmarksTrial/run_release_trial.py --mode matrix
+    artifacts:
+      - /private/tmp/ace-landmarks-release-trial/matrix/candidate/Landmarks.app
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence.tar.gz
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/status.json
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/failure.txt
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/*.json
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/*.txt
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/*.log
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/**/*.xcresult
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/results/**/*
+      - /private/tmp/ace-landmarks-release-trial/matrix/evidence/attachments/**/*.png
