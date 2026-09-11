@@ -11,6 +11,7 @@ import signal
 import stat
 import subprocess
 import sys
+import threading
 import time
 import traceback
 import urllib.request
@@ -23,11 +24,44 @@ APP_RELATIVE = pathlib.Path("Build/Products/Debug-iphonesimulator/Landmarks.app"
 TEST_TARGET = "LandmarksTrialUITests"
 FOCUSED_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseInformationAndCopyControls"
 MATRIX_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseLayoutAndAccessibility"
+FOCUSED_COPY_VALUES = (
+    "Fictional Engagement", "RELEASED", "1", "2026-08-24T10:15:30Z",
+    "Fictional conclusion", "Fictional summary", "FICTIONAL-REF-001",
+    "Fictional action", "Fictional owner", "2026-08-25", "OPEN",
+)
+CLIPBOARD_SENTINEL = "ACE-CLIPBOARD-SENTINEL-20260912"
 ALLOWED_OVERLAY_PATHS = frozenset(("Landmarks/Landmarks.xcodeproj/project.pbxproj", "Landmarks/Landmarks.xcodeproj/xcshareddata/xcschemes/LandmarksTrial.xcscheme", "Landmarks/LandmarksTrialUITests/LandmarksTrialUITests.swift", "Landmarks/Landmarks/LandmarksApp.swift", "Landmarks/Landmarks/ReleaseDetailData.swift", "Landmarks/Landmarks/ReleaseDetailView.swift", "Landmarks/Landmarks/ReleaseModels.swift"))
 MODE = {
     "focused": {"work_seconds": 270, "final_seconds": 330, "test": FOCUSED_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
     "matrix": {"work_seconds": 510, "final_seconds": 570, "test": MATRIX_TEST, "devices": ("iPhone 17", "iPhone 17 Pro Max"), "contexts": (("light", "large"), ("light", "extra-large"), ("light", "accessibility-extra-extra-extra-large"), ("dark", "large"), ("dark", "extra-large"), ("dark", "accessibility-extra-extra-extra-large"))},
 }
+
+
+def validate_clipboard_transitions(samples: list[dict[str, object]]) -> dict[str, object]:
+    transitions: list[str] = []
+    last = CLIPBOARD_SENTINEL
+    for sample in samples:
+        payload = sample.get("payload")
+        if sample.get("exit") != 0 or not isinstance(payload, str):
+            return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": transitions,
+                    "error": "Clipboard collector command did not return a payload"}
+        if payload == last:
+            continue
+        if payload == CLIPBOARD_SENTINEL or payload in transitions:
+            expected = FOCUSED_COPY_VALUES[len(transitions)] if len(transitions) < len(FOCUSED_COPY_VALUES) else None
+            return {"passed": False, "expected": expected, "actual": payload, "observed_transitions": transitions,
+                    "error": f"Clipboard returned an earlier value: {payload}"}
+        expected = FOCUSED_COPY_VALUES[len(transitions)] if len(transitions) < len(FOCUSED_COPY_VALUES) else None
+        if payload != expected:
+            return {"passed": False, "expected": expected, "actual": payload,
+                    "error": "Clipboard transition did not match the expected order"}
+        transitions.append(payload)
+        last = payload
+    if tuple(transitions) != FOCUSED_COPY_VALUES:
+        expected = FOCUSED_COPY_VALUES[len(transitions)] if len(transitions) < len(FOCUSED_COPY_VALUES) else None
+        return {"passed": False, "expected": expected, "actual": transitions,
+                "error": "Clipboard collector did not observe all expected values"}
+    return {"passed": True, "expected": list(FOCUSED_COPY_VALUES), "actual": transitions}
 class Trial:
     def __init__(self, mode: str) -> None:
         self.mode = mode
@@ -43,6 +77,7 @@ class Trial:
         self.archive = self.root / "LandmarksBuildingAnAppWithLiquidGlass.zip"
         self.raw_log = self.evidence / "raw.log"
         self.commands: list[dict[str, object]] = []
+        self.command_lock = threading.Lock()
         self.outcome: dict[str, object] = {"mode": mode, "result": "runner_failure", "cm_commit": os.environ.get("CM_COMMIT"), "cm_build_id": os.environ.get("CM_BUILD_ID"), "started_at_epoch": self.started}
     def write_text(self, path: pathlib.Path, text: str) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -71,7 +106,7 @@ class Trial:
             except ProcessLookupError:
                 pass
             return process.communicate(timeout=5)[0]
-    def run(self, command: list[str], limit: int, *, allow_failure: bool = False, cwd: pathlib.Path | None = None, final: bool = False) -> tuple[str, int]:
+    def run(self, command: list[str], limit: int, *, allow_failure: bool = False, cwd: pathlib.Path | None = None, final: bool = False, input_text: str | None = None) -> tuple[str, int]:
         budget = self.final_remaining if final else self.remaining
         event: dict[str, object] = {"command": command, "started_at_epoch": time.time(), "limit_seconds": budget(limit)}
         output = ""
@@ -82,11 +117,12 @@ class Trial:
                 cwd=cwd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                stdin=subprocess.PIPE if input_text is not None else None,
                 text=True,
                 start_new_session=True,
             )
             try:
-                output, _ = process.communicate(timeout=event["limit_seconds"])
+                output, _ = process.communicate(input=input_text, timeout=event["limit_seconds"])
             except subprocess.TimeoutExpired:
                 output = self.stop_process_group(process)
                 raise RuntimeError(f"Timed out after {event['limit_seconds']} seconds: {command[0]}")
@@ -94,13 +130,14 @@ class Trial:
                 raise RuntimeError(f"Command failed ({process.returncode}) {' '.join(command)}")
             return output, process.returncode
         finally:
-            self.raw_log.parent.mkdir(parents=True, exist_ok=True)
-            with self.raw_log.open("a", encoding="utf-8") as log:
-                log.write("$ " + " ".join(command) + "\n" + output)
-            event["finished_at_epoch"] = time.time()
-            event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
-            event["exit_code"] = process.returncode if process else None
-            self.commands.append(event)
+            with self.command_lock:
+                self.raw_log.parent.mkdir(parents=True, exist_ok=True)
+                with self.raw_log.open("a", encoding="utf-8") as log:
+                    log.write("$ " + " ".join(command) + "\n" + output)
+                event["finished_at_epoch"] = time.time()
+                event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
+                event["exit_code"] = process.returncode if process else None
+                self.commands.append(event)
     def sha256(self, path: pathlib.Path, *, final: bool = False) -> str:
         budget = self.final_remaining if final else self.remaining
         digest = hashlib.sha256()
@@ -244,6 +281,52 @@ class Trial:
             }:
                 raise RuntimeError(f"Simulator returned an invalid content size: {observed!r}")
         return observed
+
+    def reset_focused_clipboard(self, udid: str) -> dict[str, object]:
+        _, copy_exit = self.run(["xcrun", "simctl", "pbcopy", udid], 10, allow_failure=True,
+                                input_text=CLIPBOARD_SENTINEL)
+        payload, paste_exit = self.run(["xcrun", "simctl", "pbpaste", udid], 10, allow_failure=True)
+        record = {"requested": CLIPBOARD_SENTINEL, "pbcopy_exit": copy_exit,
+                  "pbpaste_exit": paste_exit, "observed": payload}
+        if copy_exit != 0 or paste_exit != 0 or record["observed"] != CLIPBOARD_SENTINEL:
+            raise RuntimeError("Could not reset and verify the focused simulator pasteboard")
+        return record
+
+    def start_clipboard_collector(self, udid: str) -> tuple[threading.Event, threading.Thread, list[dict[str, object]]]:
+        stop = threading.Event()
+        samples: list[dict[str, object]] = []
+
+        def collect() -> None:
+            while not stop.is_set():
+                sample: dict[str, object] = {"started_at_epoch": time.time()}
+                try:
+                    payload, exit_code = self.run(["xcrun", "simctl", "pbpaste", udid], 5, allow_failure=True)
+                    sample.update({"exit": exit_code, "payload": payload})
+                except Exception as error:
+                    sample.update({"exit": None, "payload": None, "error": str(error)})
+                    samples.append(sample)
+                    return
+                finally:
+                    sample["finished_at_epoch"] = time.time()
+                    sample["duration_seconds"] = round(sample["finished_at_epoch"] - sample["started_at_epoch"], 3)
+                samples.append(sample)
+                stop.wait(0.1)
+
+        thread = threading.Thread(target=collect, name="focused-clipboard-collector", daemon=True)
+        thread.start()
+        return stop, thread, samples
+
+    def failure_screenshot(self, udid: str, label: str) -> dict[str, object]:
+        path = self.evidence / "results" / f"{label}-simulator-failure.png"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            _, exit_code = self.run(["xcrun", "simctl", "io", udid, "screenshot", str(path)], 20,
+                                    allow_failure=True, final=True)
+            return {"path": str(path.relative_to(self.evidence)), "exit": exit_code,
+                    "exists": path.is_file()}
+        except Exception as error:
+            return {"path": str(path.relative_to(self.evidence)), "exit": None, "exists": path.is_file(),
+                    "error": str(error)}
     def result_evidence(self, result: pathlib.Path, label: str, *, final: bool = False) -> dict[str, object]:
         record: dict[str, object] = {"label": label, "result_bundle": str(result)}
         if not result.is_dir():
@@ -327,6 +410,9 @@ class Trial:
         previous: dict[str, str] = {}
         test_exit: int | None = None
         failure: Exception | None = None
+        collector_stop: threading.Event | None = None
+        collector_thread: threading.Thread | None = None
+        collector_samples: list[dict[str, object]] = []
         try:
             if traits:
                 for setting in ("appearance", "content_size"):
@@ -336,46 +422,61 @@ class Trial:
                     observations[f"{setting}_observed"] = observed
                     if observed != traits[setting]:
                         raise RuntimeError(f"Simulator {setting} did not match the requested value")
+            if test_name == FOCUSED_TEST:
+                observations["clipboard_reset"] = self.reset_focused_clipboard(udid)
+                collector_stop, collector_thread, collector_samples = self.start_clipboard_collector(udid)
             _, test_exit = self.run([
                 "xcodebuild", "test-without-building", "-project", str(project), "-scheme", "LandmarksTrial",
                 "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
                 "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
                 "-parallel-testing-enabled", "NO", f"-only-testing:{test_name}",
             ], 150, allow_failure=True, cwd=project.parent)
-            evidence = self.result_evidence(result, label)
-            observations["result_evidence"] = evidence
             if test_exit != 0:
-                raise RuntimeError(f"Focused XCTest returned {test_exit}: {test_name}")
-            if evidence.get("failed_nodes"):
-                raise RuntimeError(f"Xcode recorded a failed node: {test_name}")
-            cases = evidence.get("test_cases", [])
-            if len(cases) != 1 or test_name.rsplit("/", 1)[-1] not in json.dumps(cases[0], sort_keys=True):
-                raise RuntimeError(f"Xcode did not retain exactly the selected XCTest: {test_name}")
-            if cases[0].get("result", "").lower() != "passed":
-                raise RuntimeError(f"The selected XCTest did not pass: {test_name}")
-            if not evidence.get("attachments_png"):
-                raise RuntimeError(f"Xcode did not export a PNG attachment: {test_name}")
+                raise RuntimeError(f"XCTest returned {test_exit}: {test_name}")
         except Exception as error:
             failure = error
             observations["error"] = str(error)
         finally:
-            if result.is_dir() and "result_evidence" not in observations:
+            if collector_stop is not None and collector_thread is not None:
+                collector_stop.set()
                 try:
-                    observations["result_evidence"] = self.result_evidence(result, label, final=True)
+                    collector_thread.join(timeout=self.final_remaining(15))
                 except Exception as error:
-                    observations["retention_error"] = str(error)
+                    observations["clipboard_collector_join_error"] = str(error)
+                collector_record: dict[str, object] = {"samples": collector_samples,
+                                                        "joined": not collector_thread.is_alive()}
+                if collector_thread.is_alive():
+                    collector_record["validation"] = {"passed": False, "error": "Clipboard collector did not stop"}
+                else:
+                    collector_record["validation"] = validate_clipboard_transitions(collector_samples)
+                self.write_text(self.evidence / "focused-clipboard-collector.json", json.dumps(collector_record, indent=2) + "\n")
+                observations["clipboard_collector"] = collector_record
+                if failure is None and not collector_record["validation"].get("passed"):
+                    failure = RuntimeError(str(collector_record["validation"].get("error")))
+                    observations["error"] = str(failure)
             if test_name == FOCUSED_TEST:
                 try:
                     clipboard, clipboard_exit = self.run(["xcrun", "simctl", "pbpaste", udid], 15,
-                                                         allow_failure=True, final=failure is not None)
-                    observations["clipboard_after_copy"] = {"exit": clipboard_exit, "payload": clipboard.strip(),
+                                                         allow_failure=True, final=True)
+                    observations["clipboard_after_copy"] = {"exit": clipboard_exit, "payload": clipboard,
                                                               "reason": "failure-diagnostic" if failure else "pass-assertion"}
-                    if failure is None and (clipboard_exit != 0 or clipboard.strip() != "OPEN"):
+                    if failure is None and (clipboard_exit != 0 or clipboard != "OPEN"):
                         observations["clipboard_error"] = "The focused copy control did not leave OPEN in the simulator pasteboard"
+                        failure = RuntimeError(str(observations["clipboard_error"]))
+                        observations["error"] = str(failure)
                 except Exception as error:
                     observations["clipboard_after_copy"] = {"exit": None, "payload": None, "reason": str(error)}
                     if failure is None:
                         observations["clipboard_error"] = str(error)
+                        failure = error
+                        observations["error"] = str(error)
+            if failure is not None:
+                observations["failure_screenshot"] = self.failure_screenshot(udid, label)
+            if result.is_dir():
+                try:
+                    observations["result_evidence"] = self.result_evidence(result, label, final=failure is not None)
+                except Exception as error:
+                    observations["retention_error"] = str(error)
             if traits:
                 restored: dict[str, str] = {}
                 try:
@@ -397,6 +498,25 @@ class Trial:
             raise RuntimeError(str(observations["restore_error"]))
         if observations.get("clipboard_error"):
             raise RuntimeError(str(observations["clipboard_error"]))
+        try:
+            evidence = observations.get("result_evidence")
+            if not isinstance(evidence, dict):
+                raise RuntimeError("Xcode did not retain result evidence")
+            if evidence.get("failed_nodes"):
+                raise RuntimeError(f"Xcode recorded a failed node: {test_name}")
+            cases = evidence.get("test_cases", [])
+            if len(cases) != 1 or test_name.rsplit("/", 1)[-1] not in json.dumps(cases[0], sort_keys=True):
+                raise RuntimeError(f"Xcode did not retain exactly the selected XCTest: {test_name}")
+            if cases[0].get("result", "").lower() != "passed" or not evidence.get("attachments_png"):
+                raise RuntimeError(f"Xcode did not retain a passing XCTest with a PNG attachment: {test_name}")
+        except Exception as error:
+            observations["error"] = str(error)
+            observations["failure_screenshot"] = self.failure_screenshot(udid, label)
+            observations["passed"] = False
+            self.write_text(self.evidence / "cases" / f"{label}.json", json.dumps(observations, indent=2) + "\n")
+            raise
+        observations["passed"] = True
+        self.write_text(self.evidence / "cases" / f"{label}.json", json.dumps(observations, indent=2) + "\n")
         return observations
 
     def run_trial(self, repo: pathlib.Path) -> None:
