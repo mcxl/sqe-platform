@@ -6,7 +6,7 @@ final class LandmarksTrialUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let expected = false
+        let expected = true
         let actual = app.staticTexts["Mount Fuji"].firstMatch.waitForExistence(timeout: 10)
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "landmarks-launch"
