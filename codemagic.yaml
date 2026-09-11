@@ -1,4 +1,265 @@
 workflows:
+  ace-landmarks-baseline-manual:
+    name: ACE Apple Landmarks Baseline (Manual Only)
+    max_build_duration: 10
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. This preserves the official sample outside the ACE source tree.
+    scripts:
+      - name: Build and launch the unchanged Apple Landmarks sample
+        script: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import shutil
+          import signal
+          import subprocess
+          import sys
+          import time
+          import traceback
+          import urllib.request
+          import zipfile
+
+          root = pathlib.Path("/private/tmp/ace-landmarks-baseline")
+          source = root / "source"
+          evidence = root / "evidence"
+          build = root / "build"
+          archive = root / "LandmarksBuildingAnAppWithLiquidGlass.zip"
+          log_path = evidence / "raw-build.log"
+          result_bundle = evidence / "Landmarks.xcresult"
+          status_path = evidence / "status.json"
+          source_hashes_before = evidence / "source-hashes-before.txt"
+          source_hashes_after = evidence / "source-hashes-after.txt"
+          evidence_archive = root / "ace-landmarks-baseline-evidence.tar.gz"
+          url = "https://docs-assets.developer.apple.com/published/a88428e6793e/LandmarksBuildingAnAppWithLiquidGlass.zip"
+          expected_sha256 = "F19ED0EFFBE8AF975536034B2B5AF98002F06F5D600854A95EFB62CCC8303F41"
+          expected_size = 336053876
+          started = time.time()
+          monotonic_started = time.monotonic()
+          deadline = monotonic_started + 480
+          final_deadline = monotonic_started + 540
+          command_events = []
+
+          def write_text(path, text):
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(text, encoding="utf-8")
+
+          def remaining(limit):
+              left = deadline - time.monotonic()
+              if left <= 0:
+                  raise RuntimeError("The 480-second work budget expired; two minutes remain for provider cleanup")
+              return min(limit, max(1, int(left)))
+
+          def final_remaining(limit):
+              left = final_deadline - time.monotonic()
+              if left <= 0:
+                  raise RuntimeError("The 540-second finalisation budget expired")
+              return min(limit, max(1, int(left)))
+
+          def stop_process_group(process):
+              try:
+                  os.killpg(process.pid, signal.SIGTERM)
+              except ProcessLookupError:
+                  pass
+              try:
+                  return process.communicate(timeout=5)[0]
+              except subprocess.TimeoutExpired:
+                  try:
+                      os.killpg(process.pid, signal.SIGKILL)
+                  except ProcessLookupError:
+                      pass
+                  return process.communicate(timeout=5)[0]
+
+          def run(command, limit, log=True, cwd=None, budget=remaining):
+              event = {"command": command, "started_at_epoch": time.time(), "limit_seconds": budget(limit)}
+              process = None
+              output = ""
+              try:
+                  process = subprocess.Popen(command, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                             text=True, start_new_session=True)
+                  try:
+                      output, _ = process.communicate(timeout=event["limit_seconds"])
+                  except subprocess.TimeoutExpired:
+                      output = stop_process_group(process)
+                      raise RuntimeError("Timed out after {} seconds: {}".format(event["limit_seconds"], command[0]))
+                  if process.returncode != 0:
+                      raise RuntimeError("Command failed ({}) {}".format(process.returncode, " ".join(command)))
+                  return output
+              finally:
+                  if log:
+                      with log_path.open("a", encoding="utf-8") as log_file:
+                          log_file.write("$ " + " ".join(command) + "\n" + output)
+                  event["finished_at_epoch"] = time.time()
+                  event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
+                  event["exit_code"] = process.returncode if process else None
+                  command_events.append(event)
+
+          def tree_hashes(directory, budget=remaining):
+              lines = []
+              for path in sorted(directory.rglob("*")):
+                  relative = path.relative_to(directory)
+                  if ".git" in relative.parts:
+                      continue
+                  if path.is_file():
+                      digest = file_sha256(path, budget).lower()
+                      lines.append("{}  {}".format(digest, relative.as_posix()))
+              return "\n".join(lines) + "\n"
+
+          def validate_archive(path):
+              with zipfile.ZipFile(path) as bundle:
+                  for member in bundle.infolist():
+                      remaining(30)
+                      candidate = pathlib.PurePosixPath(member.filename)
+                      if candidate.is_absolute() or ".." in candidate.parts:
+                          raise RuntimeError("Archive path traversal: {}".format(member.filename))
+                      destination = source.joinpath(*candidate.parts)
+                      if member.is_dir():
+                          destination.mkdir(parents=True, exist_ok=True)
+                          continue
+                      destination.parent.mkdir(parents=True, exist_ok=True)
+                      with bundle.open(member) as input_file, destination.open("wb") as output_file:
+                          while True:
+                              remaining(30)
+                              block = input_file.read(1024 * 1024)
+                              if not block:
+                                  break
+                              output_file.write(block)
+
+          def file_sha256(path, budget=remaining):
+              digest = hashlib.sha256()
+              with path.open("rb") as input_file:
+                  for block in iter(lambda: input_file.read(1024 * 1024), b""):
+                      budget(30)
+                      digest.update(block)
+              return digest.hexdigest().upper()
+
+          def add_evidence_archive(budget=remaining):
+              run(["/usr/bin/tar", "-czf", str(evidence_archive), "-C", str(root), "evidence"],
+                  60, budget=budget)
+
+          outcome = {"started_at_epoch": started, "cm_commit": os.environ.get("CM_COMMIT"),
+                     "cm_build_id": os.environ.get("CM_BUILD_ID"), "result": "failed"}
+          root.mkdir(parents=True, exist_ok=True)
+          evidence.mkdir(parents=True, exist_ok=True)
+          build.mkdir(parents=True, exist_ok=True)
+          log_path.touch()
+          try:
+              for record_name, command, timeout in (
+                      ("macos.txt", ["sw_vers"], 10),
+                      ("tar.txt", ["/usr/bin/tar", "--version"], 10),
+                      ("xcode.txt", ["xcodebuild", "-version"], 15),
+                      ("simulator-sdk.txt", ["xcrun", "--sdk", "iphonesimulator", "--show-sdk-version"], 15),
+                      ("simulator-list.json", ["xcrun", "simctl", "list", "devices", "available", "-j"], 15)):
+                  write_text(evidence / record_name, run(command, timeout))
+              download_deadline = time.monotonic() + remaining(90)
+              with urllib.request.urlopen(url, timeout=min(30, remaining(30))) as response, archive.open("wb") as output:
+                  while True:
+                      if time.monotonic() > download_deadline:
+                          raise RuntimeError("Sample download exceeded its 90-second time limit")
+                      block = response.read(1024 * 1024)
+                      if not block:
+                          break
+                      output.write(block)
+              outcome["source_archive"] = {"url": url, "expected_size_bytes": expected_size,
+                                           "expected_sha256": expected_sha256,
+                                           "observed_size_bytes": archive.stat().st_size}
+              if archive.stat().st_size != expected_size:
+                  raise RuntimeError("Archive size did not match the approved value")
+              outcome["source_archive"]["observed_sha256"] = file_sha256(archive)
+              if outcome["source_archive"]["observed_sha256"] != expected_sha256:
+                  raise RuntimeError("Archive SHA-256 did not match the approved value")
+              validate_archive(archive)
+              project = next(source.rglob("Landmarks.xcodeproj"), None)
+              if project is None:
+                  raise RuntimeError("Landmarks.xcodeproj was not in the approved archive")
+              write_text(source_hashes_before, tree_hashes(source))
+              for original_name in ("LICENSE.txt", "README.md"):
+                  original = next(source.rglob(original_name), None)
+                  if original is None:
+                      raise RuntimeError("Approved archive did not contain {}".format(original_name))
+                  shutil.copy2(original, evidence / ("original-" + original_name))
+              simulator_data = json.loads((evidence / "simulator-list.json").read_text(encoding="utf-8"))
+              candidates = []
+              for runtime, devices in simulator_data.get("devices", {}).items():
+                  if "iOS-26" not in runtime:
+                      continue
+                  for device in devices:
+                      if device.get("isAvailable") and device.get("name") == "iPhone 17":
+                          version = re.search(r"iOS-(26)-(\d+)", runtime)
+                          if version:
+                              candidates.append(((int(version.group(1)), int(version.group(2))), runtime, device))
+              if not candidates:
+                  raise RuntimeError("No available iPhone 17 simulator with an iOS 26 runtime")
+              _, runtime, device = sorted(candidates, key=lambda item: (item[0], item[1], item[2]["udid"]), reverse=True)[0]
+              udid = device["udid"]
+              write_text(evidence / "simulator-selection.json", json.dumps(
+                  {"runtime": runtime, "name": device["name"], "udid": udid, "state": device.get("state")},
+                  indent=2) + "\n")
+              if device.get("state") == "Shutdown":
+                  run(["xcrun", "simctl", "boot", udid], 45)
+              elif device.get("state") != "Booted":
+                  raise RuntimeError("Selected simulator was not Shutdown or Booted")
+              run(["xcrun", "simctl", "bootstatus", udid, "-b"], 60)
+              run(["xcodebuild", "-project", str(project), "-scheme", "Landmarks", "-sdk", "iphonesimulator",
+                   "-configuration", "Debug", "-derivedDataPath", str(build), "-resultBundlePath", str(result_bundle),
+                   "-destination", "platform=iOS Simulator,id={}".format(udid), "CODE_SIGNING_ALLOWED=NO", "build"],
+                  240, cwd=str(project.parent))
+              app = next((build / "Build" / "Products" / "Debug-iphonesimulator").glob("Landmarks.app"), None)
+              if app is None:
+                  raise RuntimeError("The baseline build did not create Landmarks.app")
+              bundle_id = run(["plutil", "-extract", "CFBundleIdentifier", "raw", "-o", "-", str(app / "Info.plist")], 10)
+              executable = run(["plutil", "-extract", "CFBundleExecutable", "raw", "-o", "-", str(app / "Info.plist")], 10).strip()
+              write_text(evidence / "app-hashes.txt", "EXECUTABLE_SHA256  {}  {}\n{}".format(
+                  file_sha256(app / executable), executable, tree_hashes(app)))
+              run(["xcrun", "simctl", "install", udid, str(app)], 30)
+              run(["xcrun", "simctl", "launch", udid, bundle_id.strip()], 20)
+              time.sleep(5)
+              run(["xcrun", "simctl", "io", udid, "screenshot", str(evidence / "landmarks-launch.png")], 20)
+              write_text(source_hashes_after, tree_hashes(source))
+              if source_hashes_before.read_bytes() != source_hashes_after.read_bytes():
+                  raise RuntimeError("The unchanged sample source hashes changed during the baseline build")
+              outcome["result"] = "passed"
+          except Exception as error:
+              outcome["error"] = str(error)
+              write_text(evidence / "failure.txt", traceback.format_exc())
+          finally:
+              finalisation = {}
+              if source.exists() and source_hashes_before.exists():
+                  try:
+                      write_text(source_hashes_after, tree_hashes(source, final_remaining))
+                  except Exception as error:
+                      finalisation["after_hash_error"] = str(error)
+                      outcome["result"] = "failed"
+                      outcome["error"] = "Could not retain the final source hashes: {}".format(error)
+              outcome["finished_at_epoch"] = time.time()
+              outcome["elapsed_seconds"] = round(outcome["finished_at_epoch"] - started, 2)
+              outcome["commands"] = command_events
+              outcome["finalisation"] = finalisation
+              write_text(status_path, json.dumps(outcome, indent=2) + "\n")
+              try:
+                  add_evidence_archive(final_remaining)
+                  finalisation["archive"] = {"path": str(evidence_archive),
+                                               "size_bytes": evidence_archive.stat().st_size,
+                                               "sha256": file_sha256(evidence_archive, final_remaining)}
+              except Exception as error:
+                  finalisation["archive_error"] = str(error)
+              outcome["finalisation"] = finalisation
+              write_text(status_path, json.dumps(outcome, indent=2) + "\n")
+              write_text(root / "evidence-archive.json", json.dumps(finalisation, indent=2) + "\n")
+              print(json.dumps(outcome, indent=2))
+          if outcome["result"] != "passed":
+              sys.exit(1)
+          PY
+    artifacts:
+      - /private/tmp/ace-landmarks-baseline/build/Build/Products/Debug-iphonesimulator/Landmarks.app
+      - /private/tmp/ace-landmarks-baseline/ace-landmarks-baseline-evidence.tar.gz
+      - /private/tmp/ace-landmarks-baseline/evidence-archive.json
+      - /private/tmp/ace-landmarks-baseline/evidence/**/*
+
   ace-ios-diagnostic-manual:
     name: ACE iOS MCX-19 Focused Diagnostic (Not Release Evidence)
     max_build_duration: 5
