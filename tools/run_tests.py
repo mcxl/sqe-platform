@@ -126,7 +126,8 @@ LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
 # blocked-poll record. The full protocol has one transport probe plus every
 # planned command.
 LIVE_RETENTION_MAX_CONTROL_FILES = 4 * 137
-LIVE_RETENTION_MAX_CONTROL_BYTES = 4 * 1024 * 1024
+# Keep one fixed ceiling for retained controls and the serialized collection inventory.
+LIVE_RETENTION_MAX_CONTROL_BYTES = 8 * 1024 * 1024
 LIVE_SETUP_SIMULATOR_OPERATION_PHASES = frozenset({
     "preflight-xcode-version",
     "preflight-simctl-list-runtimes",
