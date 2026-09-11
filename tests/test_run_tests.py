@@ -166,7 +166,9 @@ class RunnerContractTests(unittest.TestCase):
         def live_preflight(root_path):
             operations = root_path / "simulator-operations"
             operations.mkdir()
-            (operations / "00000001.json").write_text('{"event":"completed","phase":"fixture"}', encoding="utf-8")
+            (operations / "00000001.json").write_text(
+                '{"event":"completed","phase":"preflight-xcode-version"}', encoding="utf-8"
+            )
             (root_path / "simulator-resolution.json").write_text(
                 json.dumps({"status": "passed", "devices": destinations}),
                 encoding="utf-8",
@@ -225,6 +227,11 @@ class RunnerContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)
             contexts = self.run_live_success_fixture(root)
+            unit_commands = runner._live_unit_selector_matrix("controlled-unit")[:1]
+            ui_commands = runner.ios_release_ui_matrix(
+                {device: "controlled-ui" for device in runner.IOS_RELEASE_DEVICES},
+                runner.LIVE_UI_METHODS,
+            )[:1]
             failed_name = (
                 f"ios-release-{runner.IOS_CORE_DEVICE}-light-"
                 f"{runner.LIVE_UI_METHODS[0]}"
@@ -290,6 +297,12 @@ class RunnerContractTests(unittest.TestCase):
                     stack.enter_context(context)
                 stack.enter_context(mock.patch.object(
                     runner, "_run_live_command", side_effect=controlled_command
+                ))
+                stack.enter_context(mock.patch.object(
+                    runner, "_live_unit_selector_matrix", return_value=unit_commands
+                ))
+                stack.enter_context(mock.patch.object(
+                    runner, "ios_release_ui_matrix", return_value=ui_commands
                 ))
                 if phase == "copy":
                     real_copyfile = runner.shutil.copyfile
@@ -399,6 +412,164 @@ class RunnerContractTests(unittest.TestCase):
             )
             self.assertEqual(manifest["results"], progress["completed"])
             self.assertIn('"processExit": 0', output.getvalue())
+
+    def test_retention_interruption_after_copy_keeps_valid_original_ack(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.live_artifact_root(directory)
+            contexts = self.run_live_success_fixture(root)
+            first = self.first_live_unit_name()
+
+            retained_ack = None
+
+            def interrupt_after_copy(private_root, candidate, phase, manifest_sha, records, **_kwargs):
+                nonlocal retained_ack
+                if phase == "transport-probe":
+                    return True
+                ack = runner._live_retention_ack_path(private_root, candidate["buildId"], phase)
+                ack.parent.mkdir(parents=True, exist_ok=True)
+                retained_ack = json.dumps({
+                    "schemaVersion": 1,
+                    "commit": candidate["commit"],
+                    "buildId": candidate["buildId"],
+                    "phaseId": phase,
+                    "checkpointManifestSha256": manifest_sha,
+                    "recordSha256": records,
+                }, sort_keys=True).encode("utf-8")
+                ack.write_bytes(retained_ack)
+                raise KeyboardInterrupt
+
+            with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4], contexts[5], contexts[6], contexts[7], mock.patch.object(
+                runner, "_live_retention_wait_for_ack", side_effect=interrupt_after_copy
+            ):
+                with self.assertRaises(KeyboardInterrupt):
+                    runner.live_evidence_checks(root, "a" * 40)
+            checkpoint = runner._live_retention_checkpoint_path(
+                root.parent / "private-collection", "fixture-build", first
+            )
+            manifest = json.loads((checkpoint / "checkpoint-manifest.json").read_text(encoding="utf-8"))
+            self.assertIn("records/log", manifest["records"])
+            self.assertIsNotNone(retained_ack)
+            ack = runner._live_retention_ack_path(
+                root.parent / "private-collection", "fixture-build", first
+            )
+            self.assertEqual(ack.read_bytes(), retained_ack)
+            self.assertTrue((checkpoint / "ack-receipt.json").is_file())
+            self.assertFalse((checkpoint / "retention-diagnostic.json").exists())
+            archive = root.parent / "private-collection" / runner.LIVE_PRIVATE_COLLECTION_ARCHIVE
+            with tarfile.open(archive, "r:gz") as contents:
+                member = contents.extractfile(
+                    f"records/retention/acks/fixture-build/{first}.ack.json"
+                )
+                self.assertIsNotNone(member)
+                assert member is not None
+                self.assertEqual(member.read(), retained_ack)
+
+    def test_retention_operation_sources_use_setup_once_and_exact_live_owner(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            operations = root / "simulator-operations"
+            operations.mkdir()
+            first = self.first_live_unit_name()
+            phases = (first, *(name for name in sorted(runner._live_command_names()) if name != first))
+            planned = [{"name": name, "expectedTests": None} for name in phases]
+            setup_phase = runner._live_retention_phases(planned)[1]
+            normal = next(name for name in phases if name.startswith("ios-normal-settings-"))
+            other = next(name for name in phases if name not in {setup_phase, normal})
+            (operations / "00000001.json").write_text(
+                json.dumps({"phase": "preflight-xcode-version"}), encoding="utf-8"
+            )
+            (operations / "00000002.json").write_text(
+                json.dumps({"phase": f"live-{normal}"}), encoding="utf-8"
+            )
+            (operations / "00000003.json").write_text(
+                json.dumps({"phase": f"live-{other}"}), encoding="utf-8"
+            )
+            setup = runner._live_retention_operation_sources(root, planned, setup_phase)
+            normal_sources = runner._live_retention_operation_sources(root, planned, normal)
+            self.assertEqual([source[2] for source in setup], [
+                "records/setup/simulator-operations/00000001.json"
+            ])
+            self.assertEqual([source[2] for source in normal_sources], [
+                f"records/commands/{normal}/simulator-operations/00000002.json"
+            ])
+            (operations / "00000004.json").write_text(
+                json.dumps({"phase": "uncontrolled"}), encoding="utf-8"
+            )
+            with self.assertRaisesRegex(ValueError, "operation owner is invalid"):
+                runner._live_retention_operation_sources(root, planned, setup_phase)
+
+    def test_retention_copy_rejects_aggregate_records_and_combined_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "artifacts"
+            root.mkdir()
+            source = root / "record.log"
+            source.write_bytes(b"123")
+            private = Path(directory) / "private"
+            candidate = {
+                "workflow": runner.LIVE_WORKFLOW,
+                "repository": runner.LIVE_REPOSITORY,
+                "commit": "a" * 40,
+                "branch": runner.LIVE_BRANCH,
+                "buildId": "aggregate-fixture",
+            }
+            first = self.first_live_unit_name()
+            phases = (first, *(name for name in sorted(runner._live_command_names()) if name != first))
+            planned = [{"name": name, "expectedTests": None} for name in phases]
+            first, second = runner._live_retention_phases(planned)[1:3]
+            checkpoint = runner._live_retention_checkpoint_path(private, candidate["buildId"], first)
+            record = checkpoint / "records" / "prior.log"
+            record.parent.mkdir(parents=True)
+            record.write_bytes(b"123")
+            digest = hashlib.sha256(record.read_bytes()).hexdigest()
+            (checkpoint / "checkpoint-manifest.json").write_text(json.dumps({
+                "schemaVersion": 1,
+                "candidate": candidate,
+                "phaseId": first,
+                "records": {"records/prior.log": digest},
+                "recordScannerStatus": {"records/prior.log": "complete"},
+                "collectionStatus": "complete",
+                "releaseEvidence": False,
+            }), encoding="utf-8")
+
+            def one_source(_root, _planned, check, *, allow_partial=False):
+                return [(root, source, f"records/commands/{check['name']}/log", check["name"])]
+
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES", 5), mock.patch.object(
+                runner, "_private_collection_command_sources", side_effect=one_source
+            ), mock.patch.object(runner, "_live_retention_operation_sources", return_value=[]):
+                with self.assertRaisesRegex(ValueError, "record size exceeds"):
+                    runner._live_retention_copy_records(
+                        private, candidate, second, root, planned, {"name": second}
+                    )
+
+            sources = [
+                (root, source, f"records/commands/{second}/{number}", second)
+                for number in range(2)
+            ]
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES", 64), mock.patch.object(
+                runner, "LIVE_PRIVATE_COLLECTION_MAX_FILES", 2
+            ), mock.patch.object(runner, "_private_collection_command_sources", return_value=sources), mock.patch.object(
+                runner, "_live_retention_operation_sources", return_value=[
+                    (root, source, f"records/commands/{second}/simulator-operations/one.json", second)
+                ]
+            ):
+                with self.assertRaisesRegex(ValueError, "source count exceeds"):
+                    runner._live_retention_copy_records(
+                        Path(directory) / "count-private", candidate, second, root, planned, {"name": second}
+                    )
+
+            interrupted_private = Path(directory) / "interrupted-private"
+            with mock.patch.object(runner, "_private_collection_command_sources", side_effect=one_source), mock.patch.object(
+                runner, "_live_retention_operation_sources", return_value=[]
+            ), mock.patch.object(runner.shutil, "copyfile", side_effect=KeyboardInterrupt):
+                with self.assertRaises(KeyboardInterrupt):
+                    runner._live_retention_copy_records(
+                        interrupted_private, candidate, second, root, planned, {"name": second}
+                    )
+            stage = runner._live_retention_checkpoint_path(
+                interrupted_private, candidate["buildId"], second
+            ).with_name(f".{second}.tmp")
+            self.assertFalse(stage.exists())
 
     def test_live_progress_filters_data_flushes_and_preserves_previous_file_on_write_failure(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -791,6 +962,34 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(manifest_failure[0]["detail"], "live setup failed")
         self.assertNotIn(injected, json.dumps(manifest_failure))
 
+        previous_root = runner._ACTIVE_SIMULATOR_LOG_ROOT
+        previous_names = runner._LIVE_RUN_COMMAND_NAMES
+        retained_root = Path("retained-simulator-root")
+        retained_names = frozenset({"retained-command"})
+        try:
+            runner._ACTIVE_SIMULATOR_LOG_ROOT = retained_root
+            runner._LIVE_RUN_COMMAND_NAMES = retained_names
+            with tempfile.TemporaryDirectory() as directory:
+                root = self.live_artifact_root(directory)
+                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                    runner, "_write_live_manifest", side_effect=OSError(injected)
+                ):
+                    runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(runner._ACTIVE_SIMULATOR_LOG_ROOT, retained_root)
+            self.assertEqual(runner._LIVE_RUN_COMMAND_NAMES, retained_names)
+            with tempfile.TemporaryDirectory() as directory:
+                root = self.live_artifact_root(directory)
+                with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
+                    runner, "_write_live_manifest", side_effect=KeyboardInterrupt
+                ):
+                    with self.assertRaises(KeyboardInterrupt):
+                        runner.live_evidence_checks(root, "a" * 40)
+            self.assertEqual(runner._ACTIVE_SIMULATOR_LOG_ROOT, retained_root)
+            self.assertEqual(runner._LIVE_RUN_COMMAND_NAMES, retained_names)
+        finally:
+            runner._ACTIVE_SIMULATOR_LOG_ROOT = previous_root
+            runner._LIVE_RUN_COMMAND_NAMES = previous_names
+
         with tempfile.TemporaryDirectory() as directory:
             root = self.live_artifact_root(directory)
             with mock.patch.object(runner, "LIVE_ARTIFACT_ROOT", root), mock.patch.object(
@@ -974,7 +1173,7 @@ class RunnerContractTests(unittest.TestCase):
         ])
         self.assertEqual(
             summary,
-            f"failed live commands: {failure_name}, ios-negative-config; reasons: {failure_name}=controlled-failure, ios-negative-config=negative-configuration-not-rejected",
+            f"failed live commands: ios-negative-config, {failure_name}; reasons: ios-negative-config=negative-configuration-not-rejected, {failure_name}=controlled-failure",
         )
         for unsafe_value in ("raw output", "secret-like=value", "unrelated-value", "unexpected-command", "untrusted-value"):
             self.assertNotIn(unsafe_value, summary)
@@ -1264,9 +1463,10 @@ class RunnerContractTests(unittest.TestCase):
             ("timeout", runner.LiveCommandResult(1, "raw", "command-timeout"), "command-timeout", None),
             ("start", runner.LiveCommandResult(1, "raw", "command-start-failed"), "command-start-failed", None),
         )
+        command_name = self.first_live_unit_name()
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / "ios-65-unit.xcresult").mkdir()
+            (root / f"{command_name}.xcresult").mkdir()
             primary_result = runner.LiveCommandResult(0, "controlled", process_exit=0)
             for case_name, summary_result, reason, process_exit in cases:
                 with self.subTest(case=case_name), mock.patch.object(
@@ -1279,7 +1479,7 @@ class RunnerContractTests(unittest.TestCase):
                     ),
                 ):
                     result = runner._run_live_ios_test(
-                        "ios-65-unit", ["xcodebuild", "test"], ROOT, {}, 2, root
+                        command_name, ["xcodebuild", "test"], ROOT, {}, 2, root
                     )
                 manifest_result = runner._published_live_result(result)
                 aggregate = runner._live_command_failure_summary([manifest_result])
@@ -1289,7 +1489,7 @@ class RunnerContractTests(unittest.TestCase):
                     manifest_result["diagnostic"], "result-summary-command-failed"
                 )
                 self.assertEqual(manifest_result["processExit"], 0)
-                self.assertIn("process exits: ios-65-unit=0", aggregate)
+                self.assertIn(f"process exits: {command_name}=0", aggregate)
                 if process_exit is None:
                     self.assertNotIn("collectionProcessExits", manifest_result)
                     self.assertEqual(
@@ -1342,9 +1542,10 @@ class RunnerContractTests(unittest.TestCase):
         self.assertEqual(unreadable["reason"], "negative-configuration-log-unreadable")
 
     def test_live_publication_rejects_untrusted_diagnostics_and_exit_metadata(self):
+        unit_name = self.first_live_unit_name()
         published = runner._published_live_result(
             {
-                "name": "ios-65-unit",
+                "name": unit_name,
                 "status": "failed",
                 "exit": 1,
                 "detail": "raw command output secret-like=value",
@@ -1358,22 +1559,21 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("processExit", published)
         self.assertNotIn("secret-like=value", json.dumps(published))
         oversized_exit = runner._published_live_result(
-            {"name": "ios-65-unit", "exit": 1, "process_exit": 2**40}
+            {"name": unit_name, "exit": 1, "process_exit": 2**40}
         )
         self.assertNotIn("processExit", oversized_exit)
         successful = runner._published_live_result(
-            {"name": "ios-65-unit", "status": "passed", "exit": 0, "detail": "raw", "process_exit": 0}
+            {"name": unit_name, "status": "passed", "exit": 0, "detail": "raw", "process_exit": 0}
         )
         self.assertEqual(successful["status"], "passed")
         self.assertEqual(successful["exit"], 0)
         self.assertEqual(successful["processExit"], 0)
         self.assertEqual(
             runner._published_live_success_detail(
-                "ios-65-unit", "ios-65-unit executed " + "9" * 5_000 + " tests"
+                unit_name, unit_name + " executed " + "9" * 5_000 + " tests"
             ),
             "controlled live command completed",
         )
-        unit_name = self.first_live_unit_name()
         _unit, contract = runner._live_xctest_selector_inventory()
         contract_name = runner._live_selector_command_name("ios-evidence-contract", contract[0])
         summary = runner._live_command_failure_summary([
@@ -1381,10 +1581,13 @@ class RunnerContractTests(unittest.TestCase):
             {"name": contract_name, "exit": 1, "reason": "raw=secret", "diagnostic": "raw=secret", "process_exit": "secret-like=17"},
             {"name": "unexpected-command", "exit": 1, "reason": "command-nonzero", "process_exit": 71},
         ])
-        self.assertEqual(
-            summary,
-            f"failed live commands: {unit_name}, {contract_name}; reasons: {unit_name}=command-nonzero, {contract_name}=controlled-failure; diagnostics: {unit_name}=test-failures-recorded",
-        )
+        ordered_names = sorted((unit_name, contract_name))
+        self.assertEqual(summary, (
+            f"failed live commands: {', '.join(ordered_names)}; reasons: "
+            f"{ordered_names[0]}={'command-nonzero' if ordered_names[0] == unit_name else 'controlled-failure'}, "
+            f"{ordered_names[1]}={'command-nonzero' if ordered_names[1] == unit_name else 'controlled-failure'}; "
+            f"diagnostics: {unit_name}=test-failures-recorded"
+        ))
         self.assertNotIn("raw=secret", summary)
 
     def test_simctl_timeouts_publish_the_simulator_timeout_code(self):
@@ -3308,6 +3511,7 @@ class RunnerContractTests(unittest.TestCase):
                 {
                     "name": name,
                     "exit": 1 if number == 0 else 0,
+                    "screenshots": [],
                     **(
                         {"private_setting_logs": runner._normal_setting_log_paths(name, identifier)}
                         if name.startswith("ios-normal-settings-") else {}
@@ -3324,6 +3528,21 @@ class RunnerContractTests(unittest.TestCase):
                 data = root / f"{name}.xcresult" / "Data"
                 data.mkdir(parents=True)
                 (data / "object").write_bytes(b"controlled")
+                check = next(check for check in checks if check["name"] == name)
+                logical_names = runner._expected_logical_screenshot_names(name)
+                if logical_names:
+                    screenshots = (
+                        root / runner.LIVE_REVIEW_STAGE
+                        / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                    )
+                    screenshots.mkdir(parents=True)
+                    check["screenshots"] = []
+                    for number, _logical in enumerate(logical_names, 1):
+                        image = screenshots / f"{number:02d}.png"
+                        image.write_bytes(self.png_fixture())
+                        check["screenshots"].append(
+                            image.relative_to(root / runner.LIVE_REVIEW_STAGE).as_posix()
+                        )
                 for relative in next(
                     (check.get("private_setting_logs", []) for check in checks if check["name"] == name), []
                 ):
@@ -3332,9 +3551,13 @@ class RunnerContractTests(unittest.TestCase):
             archive_paths = {archive_path for _source_root, _path, archive_path, _command in sources}
             self.assertTrue(complete)
             normal_names = [name for name in names if name.startswith("ios-normal-settings-")]
+            expected_screenshot_count = sum(
+                len(runner._expected_logical_screenshot_names(name)) for name in names
+            )
             self.assertEqual(
                 len(sources), (len(names) - 1) * 3 + 1
-                + len(normal_names) * len(runner._NORMAL_SETTING_LOG_OPERATIONS),
+                + len(normal_names) * len(runner._NORMAL_SETTING_LOG_OPERATIONS)
+                + expected_screenshot_count,
             )
             self.assertIn("records/commands/ios-negative-config/log", archive_paths)
             for name in normal_names:
@@ -3395,6 +3618,7 @@ class RunnerContractTests(unittest.TestCase):
             checks = [
                 {
                     "name": name,
+                    "screenshots": [],
                     **(
                         {"private_setting_logs": runner._normal_setting_log_paths(name, identifier)}
                         if name.startswith("ios-normal-settings-") else {}
@@ -3410,6 +3634,20 @@ class RunnerContractTests(unittest.TestCase):
                 data = root / f"{name}.xcresult" / "Data"
                 data.mkdir(parents=True)
                 (data / "object").write_bytes(b"controlled")
+                check = next(check for check in checks if check["name"] == name)
+                logical_names = runner._expected_logical_screenshot_names(name)
+                if logical_names:
+                    screenshots = (
+                        root / runner.LIVE_REVIEW_STAGE
+                        / runner.LIVE_SCREENSHOT_DIRECTORY / name
+                    )
+                    screenshots.mkdir(parents=True)
+                    for number, _logical in enumerate(logical_names, 1):
+                        image = screenshots / f"{number:02d}.png"
+                        image.write_bytes(self.png_fixture())
+                        check["screenshots"].append(
+                            image.relative_to(root / runner.LIVE_REVIEW_STAGE).as_posix()
+                        )
             for check in checks:
                 for relative in check.get("private_setting_logs", []):
                     (root / relative).write_bytes(check["name"].encode("utf-8"))
@@ -3620,8 +3858,11 @@ class RunnerContractTests(unittest.TestCase):
             private = Path(directory) / "private"
             command = runner._live_selector_command_name("ios-unit", unit[0])
             planned = [
-                {"name": name, "expectedTests": 1 if name != "ios-negative-config" else None}
-                for name in sorted(runner._live_command_names())
+                {"name": command, "expectedTests": 1},
+                *[
+                    {"name": name, "expectedTests": 1 if name != "ios-negative-config" else None}
+                    for name in sorted(runner._live_command_names()) if name != command
+                ],
             ]
             check = {"name": command, "exit": 0, "screenshots": []}
             (root / f"{command}.log").write_text("controlled", encoding="utf-8")
@@ -3633,7 +3874,9 @@ class RunnerContractTests(unittest.TestCase):
             (result / "record").write_text("controlled", encoding="utf-8")
             operations = root / "simulator-operations"
             operations.mkdir()
-            (operations / "00000001.json").write_text('{"event":"completed"}', encoding="utf-8")
+            (operations / "00000001.json").write_text(
+                '{"event":"completed","phase":"preflight-xcode-version"}', encoding="utf-8"
+            )
             candidate = {
                 "workflow": runner.LIVE_WORKFLOW,
                 "repository": runner.LIVE_REPOSITORY,
@@ -3668,6 +3911,24 @@ class RunnerContractTests(unittest.TestCase):
                 private, candidate, command, manifest_sha, records, timeout_seconds=0
             ))
             self.assertTrue((checkpoint / "ack-receipt.json").is_file())
+            sources = runner._live_retention_archive_sources(
+                private, candidate, planned, require_complete=False
+            )
+            setup_source = next(source for source in sources if source[2].startswith("records/setup/"))
+            self.assertEqual(setup_source[2], "records/setup/simulator-operations/00000001.json")
+            self.assertEqual(setup_source[3], "setup")
+            with mock.patch.object(runner, "LIVE_PRIVATE_COLLECTION_ROOT", private):
+                self.assertEqual(
+                    runner._finalise_private_live_collection(root, planned, [check], command, candidate),
+                    "incomplete",
+                )
+            with tarfile.open(private / runner.LIVE_PRIVATE_COLLECTION_ARCHIVE, "r:gz") as archive:
+                inventory = json.load(archive.extractfile("records/collection-inventory.json"))
+                setup_entry = next(
+                    entry for entry in inventory["records"]
+                    if entry["relativePath"] == "records/setup/simulator-operations/00000001.json"
+                )
+            self.assertEqual(setup_entry["producingCommand"], "setup")
             escaped_records = {"../outside.txt": "a" * 64}
             self.assertFalse(runner._live_retention_records_match(
                 private, candidate, command, escaped_records

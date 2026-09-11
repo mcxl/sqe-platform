@@ -127,6 +127,16 @@ LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
 # planned command.
 LIVE_RETENTION_MAX_CONTROL_FILES = 4 * 137
 LIVE_RETENTION_MAX_CONTROL_BYTES = 4 * 1024 * 1024
+LIVE_SETUP_SIMULATOR_OPERATION_PHASES = frozenset({
+    "preflight-xcode-version",
+    "preflight-simctl-list-runtimes",
+    "preflight-simctl-list-devicetypes",
+    "preflight-simctl-list-devices-available",
+    "simctl-list-json",
+    "simctl-create",
+    "simctl-boot",
+    "simctl-bootstatus",
+})
 LIVE_PRIVATE_COLLECTION_STATUSES = frozenset(
     {"complete", "incomplete", "quarantined-pending-review", "failed"}
 )
@@ -2625,6 +2635,8 @@ def _live_retention_ack_path(private_root: Path, build_id: str, phase: str) -> P
 def _live_retention_record_path(phase: str, archive_path: str) -> str:
     """Map one command archive path to its fixed checkpoint record location."""
 
+    if archive_path.startswith("records/setup/"):
+        return archive_path
     suffix = archive_path.removeprefix(f"records/commands/{phase}/")
     if suffix == archive_path:
         raise ValueError("live retention record path is invalid")
@@ -2633,6 +2645,83 @@ def _live_retention_record_path(phase: str, archive_path: str) -> str:
     if suffix.startswith("attachment-export/"):
         return "records/source-export/" + suffix.removeprefix("attachment-export/")
     return "records/" + suffix
+
+
+def _live_retention_existing_record_bytes(
+    private_root: Path, candidate: dict[str, str], stage: Path | None = None
+) -> int:
+    """Return the bounded total of records in earlier retained checkpoints."""
+
+    checkpoint_root = private_root / LIVE_RETENTION_CHECKPOINT_DIRECTORY / candidate["buildId"]
+    if not checkpoint_root.exists():
+        return 0
+    if checkpoint_root.is_symlink() or not checkpoint_root.is_dir():
+        raise ValueError("live retention checkpoint root is unsafe")
+    total = 0
+    for checkpoint in sorted(checkpoint_root.iterdir()):
+        if checkpoint == stage:
+            continue
+        if checkpoint.is_symlink() or not checkpoint.is_dir():
+            raise ValueError("live retention checkpoint is unsafe")
+        manifest_path = checkpoint / "checkpoint-manifest.json"
+        try:
+            manifest = json.loads(manifest_path.read_bytes())
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            raise ValueError("live retention checkpoint manifest is invalid") from error
+        if (
+            not isinstance(manifest, dict)
+            or manifest.get("candidate") != candidate
+            or manifest.get("phaseId") != checkpoint.name
+        ):
+            raise ValueError("live retention checkpoint manifest is invalid")
+        for path in _live_retention_record_paths(checkpoint, manifest.get("records")).values():
+            if path.is_symlink() or not path.is_file():
+                raise ValueError("live retention record is invalid")
+            total += path.stat().st_size
+            if total > LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES:
+                raise ValueError("private collection record size exceeds the limit")
+    return total
+
+
+def _live_retention_operation_sources(
+    artifact_root: Path, planned: list[dict[str, object]], phase: str
+) -> list[tuple[Path, Path, str, str]]:
+    """Select only simulator operations that have the exact retained producer."""
+
+    phases = _live_retention_phases(planned)
+    setup_phase = phases[1]
+    operations = _safe_live_path(artifact_root, "simulator-operations")
+    selected: list[tuple[Path, Path, str, str]] = []
+    for path in _private_collection_regular_files(operations):
+        try:
+            operation = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            raise ValueError("live retention simulator operation is invalid") from error
+        operation_phase = operation.get("phase") if isinstance(operation, dict) else None
+        if not isinstance(operation_phase, str):
+            raise ValueError("live retention simulator operation is invalid")
+        if operation_phase.startswith("live-"):
+            owner = operation_phase.removeprefix("live-")
+            if owner not in phases:
+                raise ValueError("live retention simulator operation owner is invalid")
+            if owner != phase:
+                continue
+            archive_path = (
+                f"records/commands/{phase}/simulator-operations/"
+                f"{_private_collection_relative(operations, path)}"
+            )
+            selected.append((operations, path, archive_path, phase))
+        elif operation_phase in LIVE_SETUP_SIMULATOR_OPERATION_PHASES and phase == setup_phase:
+            archive_path = (
+                "records/setup/simulator-operations/"
+                f"{_private_collection_relative(operations, path)}"
+            )
+            selected.append((operations, path, archive_path, "setup"))
+        elif operation_phase not in LIVE_SETUP_SIMULATOR_OPERATION_PHASES:
+            raise ValueError("live retention simulator operation owner is invalid")
+    if not selected and phase == setup_phase:
+        raise ValueError("live retention simulator operations are missing")
+    return selected
 
 
 def _live_retention_copy_records(
@@ -2667,23 +2756,22 @@ def _live_retention_copy_records(
             sources = _private_collection_command_sources(
                 artifact_root, planned, check, allow_partial=allow_partial
             )
-            operations = _safe_live_path(artifact_root, "simulator-operations")
-            operation_files = _private_collection_regular_files(operations)
-            if not operation_files:
-                raise ValueError("live retention simulator operations are missing")
-            sources.extend((
-                operations,
-                path,
-                f"records/commands/{phase}/simulator-operations/"
-                f"{_private_collection_relative(operations, path)}",
-                phase,
-            ) for path in operation_files)
-            records = {}
-            statuses = {}
+            sources.extend(_live_retention_operation_sources(artifact_root, planned, phase))
+            if len(sources) > LIVE_PRIVATE_COLLECTION_MAX_FILES:
+                raise ValueError("private collection source count exceeds the limit")
+            record_bytes = _live_retention_existing_record_bytes(private_root, candidate, stage)
+            source_metadata: list[tuple[Path, Path, str, str, tuple[int, str, str]]] = []
             for source_root, source, archive_path, command in sources:
-                size, digest, status = _private_collection_file_metadata(
+                metadata = _private_collection_file_metadata(
                     source_root, source, archive_path, command
                 )
+                record_bytes += metadata[0]
+                if record_bytes > LIVE_PRIVATE_COLLECTION_MAX_ARCHIVE_BYTES:
+                    raise ValueError("private collection record size exceeds the limit")
+                source_metadata.append((source_root, source, archive_path, command, metadata))
+            records = {}
+            statuses = {}
+            for source_root, source, archive_path, command, (size, digest, status) in source_metadata:
                 record_path = _live_retention_record_path(phase, archive_path)
                 target = stage / record_path
                 target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
@@ -2710,7 +2798,7 @@ def _live_retention_copy_records(
         (stage / "checkpoint-manifest.json").write_bytes(data)
         os.replace(stage, checkpoint)
         return checkpoint, hashlib.sha256(data).hexdigest(), records, statuses
-    except (OSError, ValueError):
+    except (OSError, ValueError, KeyboardInterrupt):
         if stage.exists() and stage.is_dir() and not stage.is_symlink():
             shutil.rmtree(stage)
         raise
@@ -2823,21 +2911,74 @@ def _live_retention_preserve_interrupted_command(
 ) -> None:
     """Copy available active-command records before interruption finalisation."""
 
-    checkpoint, _manifest_sha, _records, _statuses = _live_retention_copy_records(
-        private_root,
-        candidate,
-        phase,
-        artifact_root,
-        planned,
-        {"name": phase, "exit": 1, "screenshots": []},
-        allow_partial=True,
-    )
+    checkpoint = _live_retention_checkpoint_path(private_root, candidate["buildId"], phase)
+    if checkpoint.exists():
+        if checkpoint.is_symlink() or not checkpoint.is_dir():
+            raise ValueError("live retention checkpoint is unsafe")
+        if _live_retention_complete_existing_ack(private_root, candidate, phase, checkpoint):
+            return
+    else:
+        checkpoint, _manifest_sha, _records, _statuses = _live_retention_copy_records(
+            private_root,
+            candidate,
+            phase,
+            artifact_root,
+            planned,
+            {"name": phase, "exit": 1, "screenshots": []},
+            allow_partial=True,
+        )
     _live_retention_write_failure_diagnostic(checkpoint, phase, "interrupted")
 
 
-def _live_retention_archive_path(phase: str, record_path: str) -> str:
+def _live_retention_complete_existing_ack(
+    private_root: Path, candidate: dict[str, str], phase: str, checkpoint: Path
+) -> bool:
+    """Write an ACK receipt only after validation of an original interrupted ACK."""
+
+    manifest_path = checkpoint / "checkpoint-manifest.json"
+    try:
+        manifest_bytes = manifest_path.read_bytes()
+        manifest = json.loads(manifest_bytes)
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        raise ValueError("live retention checkpoint manifest is invalid") from error
+    records = manifest.get("records") if isinstance(manifest, dict) else None
+    if (
+        not isinstance(manifest, dict)
+        or manifest.get("candidate") != candidate
+        or manifest.get("phaseId") != phase
+        or not isinstance(records, dict)
+        or not _live_retention_records_match(private_root, candidate, phase, records)
+    ):
+        raise ValueError("live retention checkpoint manifest is invalid")
+    manifest_sha = hashlib.sha256(manifest_bytes).hexdigest()
+    ack = _live_retention_ack_path(private_root, candidate["buildId"], phase)
+    if not _live_retention_ack_valid(ack, candidate, phase, manifest_sha, records):
+        return False
+    receipt = {
+        "schemaVersion": 1,
+        "phaseId": phase,
+        "checkpointManifestSha256": manifest_sha,
+        "ackSha256": hashlib.sha256(ack.read_bytes()).hexdigest(),
+    }
+    receipt_path = checkpoint / "ack-receipt.json"
+    if receipt_path.exists():
+        try:
+            if json.loads(receipt_path.read_text(encoding="utf-8")) != receipt:
+                raise ValueError("live retention ACK receipt is invalid")
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            raise ValueError("live retention ACK receipt is invalid") from error
+    else:
+        receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    _LIVE_ACKED_RETENTION_PHASES.add(phase)
+    return True
+
+
+def _live_retention_archive_path(phase: str, record_path: str) -> tuple[str, str]:
     """Map one checkpoint record back to its private full-archive location."""
 
+    if record_path.startswith("records/setup/simulator-operations/"):
+        _private_collection_archive_path(record_path, "setup")
+        return record_path, "setup"
     if record_path == "records/source-export.log":
         suffix = "attachment-export.log"
     elif record_path.startswith("records/source-export/"):
@@ -2848,7 +2989,7 @@ def _live_retention_archive_path(phase: str, record_path: str) -> str:
         raise ValueError("live retention archive record path is invalid")
     archive_path = f"records/commands/{phase}/{suffix}"
     _private_collection_archive_path(archive_path, phase)
-    return archive_path
+    return archive_path, phase
 
 
 def _require_remote_retention(command: str) -> None:
@@ -2998,15 +3139,9 @@ def _live_retention_archive_sources(
             for path in sorted(control_files)
         )
         if phase != "transport-probe":
-            sources.extend(
-                (
-                    checkpoint,
-                    record_paths[record_path],
-                    _live_retention_archive_path(phase, record_path),
-                    phase,
-                )
-                for record_path in sorted(record_paths)
-            )
+            for record_path in sorted(record_paths):
+                archive_path, producer = _live_retention_archive_path(phase, record_path)
+                sources.append((checkpoint, record_paths[record_path], archive_path, producer))
         else:
             sources.extend(
                 (checkpoint, record_paths[record_path], record_path, "transport-probe")
@@ -3156,6 +3291,8 @@ def _finalise_private_live_collection(
             "startedCommandCount": len(completed_commands | ({active} if active in planned_names else set())),
             "records": entries,
         }, indent=2, sort_keys=True).encode("utf-8") + b"\n"
+        if control_bytes + len(inventory) > LIVE_RETENTION_MAX_CONTROL_BYTES:
+            raise ValueError("live retention control size exceeds the limit")
         inventory_path = "records/collection-inventory.json"
         expected[inventory_path] = (len(inventory), hashlib.sha256(inventory).hexdigest())
         with tarfile.open(temporary, "w:gz", format=tarfile.PAX_FORMAT) as output:
@@ -3811,8 +3948,16 @@ def _run_live_command(
     )
     if command[:3] == ["xcrun", "simctl", "ui"] and _ACTIVE_SIMULATOR_LOG_ROOT is not None:
         try:
+            phase = f"live-{name}"
+            if _LIVE_RUN_COMMAND_NAMES is not None:
+                owner = next((
+                    command_name for command_name in _LIVE_RUN_COMMAND_NAMES
+                    if log_path.stem.startswith(f"simctl-{command_name}-")
+                ), None)
+                if owner is not None:
+                    phase = f"live-{owner}"
             completed = _run_simulator_command(
-                _ACTIVE_SIMULATOR_LOG_ROOT, f"live-{name}", command, timeout
+                _ACTIVE_SIMULATOR_LOG_ROOT, phase, command, timeout
             )
         except subprocess.TimeoutExpired:
             return LiveCommandResult(1, f"{name} exceeded its time limit", "command-timeout")
@@ -5355,7 +5500,13 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
             root, checks, active, planned=planned, expected_identity=expected_identity
         )
     except (OSError, ValueError) as error:
+        _ACTIVE_SIMULATOR_LOG_ROOT = previous_simulator_log_root
+        _LIVE_RUN_COMMAND_NAMES = previous_live_run_command_names
         return [_live_setup_failure(error)]
+    except BaseException:
+        _ACTIVE_SIMULATOR_LOG_ROOT = previous_simulator_log_root
+        _LIVE_RUN_COMMAND_NAMES = previous_live_run_command_names
+        raise
     try:
         manifest.update(_live_execution_context(artifact_root, expected_commit))
         _write_live_manifest(root, manifest)
@@ -5386,7 +5537,6 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
         def record(check: dict) -> bool:
             nonlocal active
             checks.append(check)
-            active = None
             retention_failure = (
                 "safe-image-retention-failed"
                 if check.get("safe_image_retention_failure")
@@ -5436,6 +5586,7 @@ def live_evidence_checks(artifact_root: Path, expected_commit: str) -> list[dict
                 raise PrivateCollectionError(
                     "command-preservation", LIVE_PRIVATE_COLLECTION_FAILURE_REASON, check["name"]
                 ) from error
+            active = None
             if category == "safe-image-retention-failed":
                 raise SafeImageRetentionError("safe image retention failed")
             return category is None
