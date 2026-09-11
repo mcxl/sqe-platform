@@ -1073,7 +1073,9 @@ class RunnerContractTests(unittest.TestCase):
 
             def missing_log(root_path):
                 (root_path / "simulator-operations").mkdir()
-                (root_path / "simulator-operations" / "00000001.json").write_text('{"event":"completed"}', encoding="utf-8")
+                (root_path / "simulator-operations" / "00000001.json").write_text(
+                    '{"event":"completed","phase":"preflight-xcode-version"}', encoding="utf-8"
+                )
                 (root_path / "simulator-resolution.json").write_text(
                     json.dumps({"status": "passed", "devices": destinations}),
                     encoding="utf-8",
