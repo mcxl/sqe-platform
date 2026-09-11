@@ -2423,7 +2423,11 @@ class RunnerContractTests(unittest.TestCase):
 
     def test_live_codemagic_workflow_is_manual_only_and_uses_one_exact_command(self):
         config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
-        workflow = config.split("  ace-ios-live-evidence-manual:\n", 1)[1]
+        workflow = runner.re.split(
+            r"(?m)^  [A-Za-z0-9_-]+:\s*$",
+            config.split("  ace-ios-live-evidence-manual:\n", 1)[1],
+            maxsplit=1,
+        )[0]
         self.assertNotIn("triggering:", workflow)
         self.assertIn("max_build_duration: 60", workflow)
         self.assertIn("instance_type: mac_mini_m2", workflow)
