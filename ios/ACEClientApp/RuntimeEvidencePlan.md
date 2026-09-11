@@ -78,8 +78,8 @@ artifact, unauthorised denial and effective 30-day retention. The first focused 
 then prove original-bundle retrieval before the corrected case or complete suite. Do not
 bypass a blocked download. Keep the candidate unverified while any record is unresolved.
 
-The 31 planned commands, 135 XCTest cases, 200 named fictional review images, and
-`releaseEvidence: false` remain unchanged. Original bundle, approved Mac, provider
+The 136 planned commands retain 135 XCTest cases, 200 named fictional review images,
+and `releaseEvidence: false`. Original bundle, approved Mac, provider
 retention, provider interruption, retrieval, and denial evidence remain PENDING.
 
 The gate resolves exact simulator device types and the highest available iOS 26.x
@@ -89,12 +89,22 @@ one 360-second monotonic deadline. Each test command has a 600-second limit.
 It fails on a wrong runtime or type, duplicate or invalid UUID, timeout, unavailable
 device, non-zero result, missing summary, skipped test, failed test, or wrong count.
 
-The runner checks 65 unit tests, 24 one-test UI commands across two named simulators
-and two forced appearances, 42 acceptance-contract tests, four normal-setting UI
-commands, and one negative configuration rejection. These 31 commands require 135
-executed XCTest cases. Normal-setting commands verify system appearance and content
+The runner checks 65 individual unit tests, 24 one-test UI commands across two named
+simulators and two forced appearances, 42 individual acceptance-contract tests, four
+normal-setting UI commands, and one negative configuration rejection. These 136
+commands require 135 executed XCTest cases. The unit group includes the 42 contract
+tests. The separate contract group repeats those tests and preserves the approved
+execution count. Normal-setting commands verify system appearance and content
 size without the app appearance override and record setting restoration. The runner
 uses the existing schemes and selectors with controlled fictional inputs.
+
+Start the workflow with temporary SSH access. First retrieve and verify its transport
+probe in approved private storage. Then retrieve each completed command checkpoint.
+Verify its candidate, manifest hash, complete record set, and every record hash locally.
+Send the exact ACK only after verification succeeds. The next command remains blocked
+until that ACK matches. Retain each original result bundle and ACK with the final archive.
+Failed or interrupted commands retain incomplete diagnostic records and cannot receive
+a success ACK. Close temporary SSH access after all required records are retrieved.
 
 These collection counts do not establish a complete visual or manual acceptance pass.
 The candidate must also satisfy the MCX19-B Acceptance Matrix in the iOS specification.

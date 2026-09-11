@@ -1369,8 +1369,9 @@ artifact, unauthorised denial and effective 30-day retention. The first focused 
 then prove original-bundle retrieval before the corrected case or complete suite. Do not
 bypass a blocked download. Keep the candidate unverified while any record is unresolved.
 
-The 31 planned commands, 135 XCTest cases, and 200 named fictional review images remain
-unchanged. This requirement records no result. Original bundle access, approved Mac access,
+The 136 planned commands retain the same 135 XCTest cases and 200 named fictional review
+images. Unit and contract commands execute one test each, with verified private retention
+before the next command. This requirement records no result. Original bundle access, approved Mac access,
 provider retention, provider interruption, authorised retrieval, and unauthorised denial
 remain PENDING.
 
