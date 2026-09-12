@@ -42,10 +42,25 @@ final class LandmarksTrialUITests: XCTestCase {
         setOrientation(.portrait, in: app, name: "audit-diagnostic-portrait")
         attachScreenshot(app, name: "audit-diagnostic-launch")
         let copyButton = app.buttons["Copy Action status"]
-        scrollToElement(copyButton, in: app)
-        require(copyButton.exists && copyButton.isHittable, in: app, name: "audit-diagnostic-copy", "Copy Action status was unavailable")
+        scrollToFullyVisible(copyButton, in: app)
+        guard requireFullyVisible(copyButton, in: app, name: "audit-diagnostic-copy", "Copy Action status was not fully visible") else {
+            return
+        }
         copyButton.tap()
-        require(app.staticTexts["Copied Action status."].waitForExistence(timeout: 2), in: app, name: "audit-diagnostic-confirmation", "Copied Action status confirmation was unavailable")
+        let confirmation = app.staticTexts["Copied Action status."]
+        guard confirmation.waitForExistence(timeout: 2) else {
+            attachFailureEvidence(app, name: "audit-diagnostic-confirmation")
+            XCTFail("Copied Action status confirmation was unavailable")
+            return
+        }
+        scrollToFullyVisible(confirmation, in: app)
+        guard requireFullyVisible(confirmation, in: app, name: "audit-diagnostic-confirmation", "Copied Action status confirmation was not fully visible") else {
+            return
+        }
+        guard requireFullyVisible(copyButton, in: app, name: "audit-diagnostic-copy-recheck", "Copy Action status was not fully visible after confirmation") else {
+            return
+        }
+        attachAuditDiagnosticViewportEvidence(app, copyButton: copyButton, confirmation: confirmation)
         try audit(app, name: "audit-diagnostic-bottom")
     }
 
@@ -131,6 +146,85 @@ final class LandmarksTrialUITests: XCTestCase {
         for _ in 0..<12 where !element.exists || !element.isHittable {
             app.swipeUp()
         }
+    }
+
+    @MainActor
+    private func scrollToFullyVisible(_ element: XCUIElement, in app: XCUIApplication) {
+        for _ in 0..<8 {
+            let viewport = auditDiagnosticViewport(in: app)
+            if isFullyVisible(element, in: viewport) {
+                return
+            }
+            let frame = element.exists ? element.frame : .null
+            if hasUsableFrame(frame) && hasUsableFrame(viewport.visible) && frame.minY < viewport.visible.minY {
+                app.swipeDown()
+            } else {
+                app.swipeUp()
+            }
+        }
+    }
+
+    @MainActor
+    private func requireFullyVisible(_ element: XCUIElement, in app: XCUIApplication, name: String, _ message: String) -> Bool {
+        let viewport = auditDiagnosticViewport(in: app)
+        guard isFullyVisible(element, in: viewport) else {
+            attachFailureEvidence(app, name: name)
+            XCTFail("\(message). \(auditDiagnosticFrameRecord(viewport, element: element))")
+            return false
+        }
+        return true
+    }
+
+    @MainActor
+    private func attachAuditDiagnosticViewportEvidence(_ app: XCUIApplication, copyButton: XCUIElement, confirmation: XCUIElement) {
+        let viewport = auditDiagnosticViewport(in: app)
+        let record = auditDiagnosticFrameRecord(viewport, element: copyButton) + "\nconfirmation=\(confirmation.frame)"
+        let diagnostic = XCTAttachment(string: record)
+        diagnostic.name = "audit-diagnostic-viewport-frames"
+        diagnostic.lifetime = .keepAlways
+        add(diagnostic)
+        attachScreenshot(app, name: "audit-diagnostic-viewport")
+        let hierarchy = XCTAttachment(string: app.debugDescription)
+        hierarchy.name = "audit-diagnostic-viewport-hierarchy"
+        hierarchy.lifetime = .keepAlways
+        add(hierarchy)
+    }
+
+    @MainActor
+    private func auditDiagnosticViewport(in app: XCUIApplication) -> (window: CGRect, navigationBar: CGRect, list: CGRect, visible: CGRect) {
+        let window = app.windows.firstMatch.frame
+        let navigationBar = app.navigationBars["Release Details"].frame
+        let list = app.collectionViews.firstMatch.frame
+        let intersection = window.intersection(list)
+        let top = max(intersection.minY, navigationBar.maxY)
+        let visible = top < intersection.maxY
+            ? CGRect(x: intersection.minX, y: top, width: intersection.width, height: intersection.maxY - top)
+            : .null
+        return (window, navigationBar, list, visible)
+    }
+
+    @MainActor
+    private func isFullyVisible(_ element: XCUIElement, in viewport: (window: CGRect, navigationBar: CGRect, list: CGRect, visible: CGRect)) -> Bool {
+        guard element.exists else { return false }
+        let frame = element.frame
+        return element.isHittable
+            && hasUsableFrame(viewport.window)
+            && hasUsableFrame(viewport.navigationBar)
+            && hasUsableFrame(viewport.list)
+            && hasUsableFrame(viewport.visible)
+            && hasUsableFrame(frame)
+            && viewport.visible.contains(frame)
+            && !frame.intersects(viewport.navigationBar)
+    }
+
+    private func hasUsableFrame(_ frame: CGRect) -> Bool {
+        !frame.isNull && !frame.isInfinite && !frame.isEmpty && frame.width > 0 && frame.height > 0
+    }
+
+    @MainActor
+    private func auditDiagnosticFrameRecord(_ viewport: (window: CGRect, navigationBar: CGRect, list: CGRect, visible: CGRect), element: XCUIElement) -> String {
+        let frame = element.exists ? element.frame : .null
+        return "window=\(viewport.window)\nnavigationBar=\(viewport.navigationBar)\nlist=\(viewport.list)\nvisible=\(viewport.visible)\nelementExists=\(element.exists)\nelement=\(frame)"
     }
 
     @MainActor
