@@ -125,7 +125,15 @@ final class ACEClientAppUITests: XCTestCase {
         assertMinimumActionTargets(in: app)
         addScreenshot(of: app, named: "Fictional release — approved-controls — \(appearance)")
         assertReleaseContrastProbeFramesAreStable(in: app)
-        try assertAccessibilityAudit(in: app, scenario: "release")
+        do {
+            let preAuditFrames = releaseContrastProbeFrames(in: app)
+            print("ACE_MCX19_ALL_AUDIT_PRE \(Self.releaseContrastProbeJSON(before: preAuditFrames, after: preAuditFrames))")
+            defer {
+                let postAuditFrames = releaseContrastProbeFrames(in: app)
+                print("ACE_MCX19_ALL_AUDIT_POST \(Self.releaseContrastProbeJSON(before: postAuditFrames, after: postAuditFrames))")
+            }
+            try assertAccessibilityAudit(in: app, scenario: "release")
+        }
         app.terminate()
 
         let confirmationApp = launch("copyConfirmation")
@@ -245,7 +253,7 @@ final class ACEClientAppUITests: XCTestCase {
                 .firstMatch
             scrollUntilVisible(row, in: app, field: field)
             assertMinimumActionTargets(in: app)
-            addScreenshot(of: app, named: "Release detail — \(field) — \(appearance)")
+            addScreenshot(of: app, named: "Release detail — \(field) — \(appearance)", snapshot: XCUIScreen.main.screenshot())
         }
     }
 
@@ -287,8 +295,12 @@ final class ACEClientAppUITests: XCTestCase {
         start.press(forDuration: 0.05, thenDragTo: end)
     }
 
-    private func addScreenshot(of app: XCUIApplication, named name: String) {
-        let screenshot = XCTAttachment(screenshot: app.screenshot())
+    private func addScreenshot(
+        of app: XCUIApplication,
+        named name: String,
+        snapshot: XCUIScreenshot? = nil
+    ) {
+        let screenshot = XCTAttachment(screenshot: snapshot ?? app.screenshot())
         screenshot.name = name
         screenshot.lifetime = .keepAlways
         add(screenshot)

@@ -2762,7 +2762,16 @@ class RunnerContractTests(unittest.TestCase):
         self.assertNotIn("push", workflow)
         self.assertNotIn("pull_request", workflow)
         self.assertEqual(workflow.split("    artifacts:\n", 1)[1].strip(),
-                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/simulator-resolution.json\n      - /private/tmp/mcx-19-live-evidence/simulator-resolution.log\n      - /private/tmp/mcx-19-live-evidence/*.log\n      - /private/tmp/mcx-19-live-evidence/*-summary.json\n      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png\n      - /private/tmp/mcx-19-full-matrix-private/mcx19-full-matrix-records.tar.gz")
+                         "- /private/tmp/mcx-19-live-evidence/live-evidence-progress.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json\n      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png")
+        retention_workflow = runner.re.split(
+            r"(?m)^  [A-Za-z0-9_-]+:\s*$",
+            config.split("  ace-ios-retention-pilot-manual:\n", 1)[1],
+            maxsplit=1,
+        )[0]
+        self.assertEqual(
+            retention_workflow.split("    artifacts:\n", 1)[1].strip(),
+            "- /private/tmp/mcx-19-retention-pilot/retention-pilot-report.json",
+        )
         owned_paths = (
             "codemagic.yaml",
             "tools/run_tests.py",
