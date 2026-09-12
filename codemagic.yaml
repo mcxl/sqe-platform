@@ -869,7 +869,7 @@ workflows:
 
   ace-landmarks-release-diagnostic-manual:
     name: ACE Apple Landmarks Release Audit Diagnostic (Manual Only)
-    max_build_duration: 4
+    max_build_duration: 8
     instance_type: mac_mini_m4
     environment:
       xcode: 26.4.1

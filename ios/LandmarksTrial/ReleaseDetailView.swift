@@ -32,20 +32,26 @@ struct ACEReleaseSplitView: View {
 struct ReleaseDetailView: View {
     var body: some View {
         List {
-            Section("Release") {
+            Section {
                 ForEach(ReleaseDetailData.releaseFields, id: \.label) { field in
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
+            } header: {
+                Text("Release").foregroundStyle(.primary)
             }
-            Section("Conclusion") {
+            Section {
                 ForEach(ReleaseDetailData.conclusionFields, id: \.label) { field in
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
+            } header: {
+                Text("Conclusion").foregroundStyle(.primary)
             }
-            Section("Action") {
+            Section {
                 ForEach(ReleaseDetailData.actionFields, id: \.label) { field in
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
+            } header: {
+                Text("Action").foregroundStyle(.primary)
             }
         }
         .navigationTitle("Release Details")

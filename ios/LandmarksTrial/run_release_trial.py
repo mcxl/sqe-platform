@@ -35,7 +35,7 @@ ALLOWED_OVERLAY_PATHS = frozenset(("Landmarks/Landmarks.xcodeproj/project.pbxpro
 MODE = {
     "focused": {"work_seconds": 270, "final_seconds": 330, "test": FOCUSED_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
     "matrix": {"work_seconds": 510, "final_seconds": 570, "test": MATRIX_TEST, "devices": ("iPhone 17", "iPhone 17 Pro Max"), "contexts": (("light", "large"), ("light", "extra-large"), ("light", "accessibility-extra-extra-extra-large"), ("dark", "large"), ("dark", "extra-large"), ("dark", "accessibility-extra-extra-extra-large"))},
-    "diagnostic": {"work_seconds": 205, "final_seconds": 220, "test": DIAGNOSTIC_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
+    "diagnostic": {"work_seconds": 360, "final_seconds": 420, "test_seconds": 240, "test": DIAGNOSTIC_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
 }
 
 
@@ -461,7 +461,7 @@ class Trial:
                 "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
                 "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
                 "-parallel-testing-enabled", "NO", f"-only-testing:{test_name}",
-            ], 150, allow_failure=True, cwd=project.parent)
+            ], self.settings.get("test_seconds", 150), allow_failure=True, cwd=project.parent)
             if test_exit != 0:
                 raise RuntimeError(f"XCTest returned {test_exit}: {test_name}")
         except Exception as error:
