@@ -6,6 +6,8 @@ import hashlib
 import json
 import os
 import pathlib
+import queue
+import re
 import shutil
 import signal
 import stat
@@ -25,6 +27,7 @@ TEST_TARGET = "LandmarksTrialUITests"
 FOCUSED_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseInformationAndCopyControls"
 MATRIX_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseLayoutAndAccessibility"
 DIAGNOSTIC_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseAuditDiagnostic"
+CLIPBOARD_BRIDGE_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseClipboardBridge"
 FOCUSED_COPY_VALUES = (
     "Fictional Engagement", "RELEASED", "1", "2026-08-24T10:15:30Z",
     "Fictional conclusion", "Fictional summary", "FICTIONAL-REF-001",
@@ -36,6 +39,7 @@ MODE = {
     "focused": {"work_seconds": 270, "final_seconds": 330, "test": FOCUSED_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
     "matrix": {"work_seconds": 510, "final_seconds": 570, "test": MATRIX_TEST, "devices": ("iPhone 17", "iPhone 17 Pro Max"), "contexts": (("light", "large"), ("light", "extra-large"), ("light", "accessibility-extra-extra-extra-large"), ("dark", "large"), ("dark", "extra-large"), ("dark", "accessibility-extra-extra-extra-large"))},
     "diagnostic": {"work_seconds": 360, "final_seconds": 420, "test_seconds": 240, "test": DIAGNOSTIC_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
+    "clipboard": {"work_seconds": 480, "final_seconds": 540, "test_seconds": 390, "test": CLIPBOARD_BRIDGE_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
 }
 
 
@@ -64,6 +68,96 @@ def validate_clipboard_transitions(samples: list[dict[str, object]]) -> dict[str
         return {"passed": False, "expected": expected, "actual": transitions,
                 "error": "Clipboard collector did not observe all expected values"}
     return {"passed": True, "expected": list(FOCUSED_COPY_VALUES), "actual": transitions}
+
+
+class ClipboardBridgeRecorder:
+    """Record one host pasteboard read for each XCTest bridge marker."""
+
+    def __init__(self, reader) -> None:
+        self.reader = reader
+        self.records: list[dict[str, object]] = []
+        self.reads_stopped = False
+
+    def record_marker(self, index: int, seen_at_epoch: float) -> None:
+        record: dict[str, object] = {
+            "marker_index": index,
+            "marker_seen_at_epoch": seen_at_epoch,
+        }
+        expected_index = len(self.records)
+        if self.reads_stopped:
+            record["read_status"] = "skipped_after_failure"
+        elif index < 0 or index >= len(FOCUSED_COPY_VALUES):
+            record["error"] = f"Clipboard bridge marker index {index} is out of range"
+            self.reads_stopped = True
+        elif index != expected_index:
+            record["error"] = f"Unexpected clipboard bridge marker {index}; expected {expected_index}"
+            self.reads_stopped = True
+        else:
+            expected = FOCUSED_COPY_VALUES[index]
+            record["expected_payload"] = expected
+            try:
+                observation = self.reader(index)
+            except Exception as error:
+                observation = {"exit": None, "payload": None, "runner_error": str(error)}
+            record["observation"] = observation
+            if observation.get("timed_out"):
+                record["error"] = "Host clipboard read timed out"
+                self.reads_stopped = True
+            elif observation.get("exit") != 0:
+                record["error"] = "Host clipboard read returned a non-zero exit code"
+                self.reads_stopped = True
+            elif observation.get("payload") != expected:
+                record["error"] = "Host clipboard payload did not match the approved value"
+                self.reads_stopped = True
+        self.records.append(record)
+
+    def validation(self) -> dict[str, object]:
+        marker_indexes = [record.get("marker_index") for record in self.records]
+        expected_indexes = list(range(len(FOCUSED_COPY_VALUES)))
+        payloads = [
+            record.get("observation", {}).get("payload") if isinstance(record.get("observation"), dict) else None
+            for record in self.records
+        ]
+        if marker_indexes != expected_indexes:
+            return {
+                "passed": False,
+                "expected_marker_indexes": expected_indexes,
+                "actual_marker_indexes": marker_indexes,
+                "actual_payloads": payloads,
+                "error": "Clipboard bridge markers were incomplete or out of order",
+            }
+        for position, record in enumerate(self.records):
+            if record.get("error"):
+                return {
+                    "passed": False,
+                    "expected": list(FOCUSED_COPY_VALUES),
+                    "actual": payloads,
+                    "error": record["error"],
+                }
+            observation = record.get("observation")
+            if not isinstance(observation, dict):
+                return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads,
+                        "error": "Clipboard bridge marker had no host observation"}
+            started = observation.get("started_at_epoch")
+            finished = observation.get("finished_at_epoch")
+            marker = record.get("marker_seen_at_epoch")
+            if not isinstance(marker, (int, float)) or not isinstance(started, (int, float)) or not isinstance(finished, (int, float)):
+                return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads,
+                        "error": "Clipboard bridge observation did not retain timing evidence"}
+            if started < marker:
+                return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads,
+                        "error": "Host clipboard read started before its bridge marker"}
+            if finished < started:
+                return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads,
+                        "error": "Host clipboard read finished before it started"}
+            if position + 1 < len(self.records):
+                next_marker = self.records[position + 1].get("marker_seen_at_epoch")
+                if not isinstance(next_marker, (int, float)) or finished >= next_marker:
+                    return {"passed": False, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads,
+                            "error": "Host clipboard read did not finish before the next bridge marker"}
+        return {"passed": True, "expected": list(FOCUSED_COPY_VALUES), "actual": payloads}
+
+
 class Trial:
     def __init__(self, mode: str) -> None:
         self.mode = mode
@@ -95,19 +189,46 @@ class Trial:
             raise RuntimeError(f"The {self.settings['final_seconds']}-second finalisation budget expired")
         return min(limit, max(1, int(left)))
     @staticmethod
-    def stop_process_group(process: subprocess.Popen[str]) -> str:
+    def stop_process_group(process: subprocess.Popen[str]) -> tuple[str, dict[str, str]]:
+        cleanup: dict[str, str] = {}
         try:
-            os.killpg(process.pid, signal.SIGTERM)
+            killpg = getattr(os, "killpg", None)
+            if killpg is None:
+                raise PermissionError("os.killpg is unavailable")
+            killpg(process.pid, signal.SIGTERM)
         except ProcessLookupError:
             pass
-        try:
-            return process.communicate(timeout=5)[0]
-        except subprocess.TimeoutExpired:
+        except PermissionError as error:
+            cleanup["process_group_terminate_error"] = str(error)
             try:
-                os.killpg(process.pid, signal.SIGKILL)
+                process.terminate()
             except ProcessLookupError:
                 pass
-            return process.communicate(timeout=5)[0]
+            except OSError as direct_error:
+                cleanup["direct_terminate_error"] = str(direct_error)
+        try:
+            return process.communicate(timeout=5)[0], cleanup
+        except subprocess.TimeoutExpired:
+            try:
+                killpg = getattr(os, "killpg", None)
+                if killpg is None:
+                    raise PermissionError("os.killpg is unavailable")
+                killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            except PermissionError as error:
+                cleanup["process_group_kill_error"] = str(error)
+                try:
+                    process.kill()
+                except ProcessLookupError:
+                    pass
+                except OSError as direct_error:
+                    cleanup["direct_kill_error"] = str(direct_error)
+            try:
+                return process.communicate(timeout=5)[0], cleanup
+            except subprocess.TimeoutExpired:
+                cleanup["cleanup_error"] = "Process did not exit after direct cleanup"
+                return "", cleanup
     def run(self, command: list[str], limit: int, *, allow_failure: bool = False, cwd: pathlib.Path | None = None, final: bool = False, input_text: str | None = None) -> tuple[str, int]:
         budget = self.final_remaining if final else self.remaining
         event: dict[str, object] = {"command": command, "started_at_epoch": time.time(), "limit_seconds": budget(limit)}
@@ -126,7 +247,10 @@ class Trial:
             try:
                 output, _ = process.communicate(input=input_text, timeout=event["limit_seconds"])
             except subprocess.TimeoutExpired:
-                output = self.stop_process_group(process)
+                output, cleanup = self.stop_process_group(process)
+                event["timed_out"] = True
+                if cleanup:
+                    event["cleanup"] = cleanup
                 raise RuntimeError(f"Timed out after {event['limit_seconds']} seconds: {command[0]}")
             if process.returncode and not allow_failure:
                 raise RuntimeError(f"Command failed ({process.returncode}) {' '.join(command)}")
@@ -318,6 +442,229 @@ class Trial:
         thread.start()
         return stop, thread, samples
 
+    def append_raw_log(self, text: str) -> None:
+        with self.command_lock:
+            self.raw_log.parent.mkdir(parents=True, exist_ok=True)
+            with self.raw_log.open("a", encoding="utf-8") as log:
+                log.write(text)
+
+    @staticmethod
+    def stop_streamed_process(process: subprocess.Popen[str]) -> dict[str, str]:
+        cleanup: dict[str, str] = {}
+        try:
+            killpg = getattr(os, "killpg", None)
+            if killpg is None:
+                raise PermissionError("os.killpg is unavailable")
+            killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        except PermissionError as error:
+            cleanup["process_group_terminate_error"] = str(error)
+            try:
+                process.terminate()
+            except ProcessLookupError:
+                pass
+            except OSError as direct_error:
+                cleanup["direct_terminate_error"] = str(direct_error)
+        try:
+            process.wait(timeout=5)
+            return cleanup
+        except subprocess.TimeoutExpired:
+            try:
+                killpg = getattr(os, "killpg", None)
+                if killpg is None:
+                    raise PermissionError("os.killpg is unavailable")
+                killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            except PermissionError as error:
+                cleanup["process_group_kill_error"] = str(error)
+                try:
+                    process.kill()
+                except ProcessLookupError:
+                    pass
+                except OSError as direct_error:
+                    cleanup["direct_kill_error"] = str(direct_error)
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                cleanup["cleanup_error"] = "Process did not exit after direct cleanup"
+            return cleanup
+
+    def run_bridge_paste(self, udid: str) -> dict[str, object]:
+        command = ["xcrun", "simctl", "pbpaste", udid]
+        event: dict[str, object] = {
+            "command": command,
+            "started_at_epoch": time.time(),
+            "limit_seconds": self.remaining(5),
+        }
+        observation: dict[str, object] = {
+            "started_at_epoch": event["started_at_epoch"],
+            "timed_out": False,
+        }
+        output = ""
+        process: subprocess.Popen[str] | None = None
+        try:
+            process = subprocess.Popen(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                start_new_session=True,
+            )
+            try:
+                output, _ = process.communicate(timeout=event["limit_seconds"])
+            except subprocess.TimeoutExpired:
+                output, cleanup = self.stop_process_group(process)
+                observation["timed_out"] = True
+                event["timed_out"] = True
+                if cleanup:
+                    observation["cleanup"] = cleanup
+                    event["cleanup"] = cleanup
+            observation["exit"] = process.returncode
+            observation["payload"] = output
+        except Exception as error:
+            observation["exit"] = None
+            observation["payload"] = None
+            observation["runner_error"] = str(error)
+        finally:
+            observation["finished_at_epoch"] = time.time()
+            observation["duration_seconds"] = round(
+                observation["finished_at_epoch"] - observation["started_at_epoch"], 3
+            )
+            event["finished_at_epoch"] = observation["finished_at_epoch"]
+            event["duration_seconds"] = observation["duration_seconds"]
+            event["exit_code"] = process.returncode if process else None
+            with self.command_lock:
+                self.raw_log.parent.mkdir(parents=True, exist_ok=True)
+                with self.raw_log.open("a", encoding="utf-8") as log:
+                    log.write("$ " + " ".join(command) + "\n" + output)
+                self.commands.append(event)
+        return observation
+
+    def run_streamed(self, command: list[str], limit: int, on_line, *, cwd: pathlib.Path | None = None) -> dict[str, object]:
+        event: dict[str, object] = {
+            "command": command,
+            "started_at_epoch": time.time(),
+            "limit_seconds": self.remaining(limit),
+        }
+        output: list[str] = []
+        callback_errors: list[str] = []
+        stream_queue: queue.Queue[tuple[str, float] | None] = queue.Queue()
+        process: subprocess.Popen[str] | None = None
+        reader: threading.Thread | None = None
+        timed_out = False
+        drain_deadline: float | None = None
+
+        def drain(stdout) -> None:
+            try:
+                for line in stdout:
+                    received_at_epoch = time.time()
+                    self.append_raw_log(line)
+                    stream_queue.put((line, received_at_epoch))
+            finally:
+                stream_queue.put(None)
+
+        try:
+            process = subprocess.Popen(
+                command,
+                cwd=cwd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                start_new_session=True,
+            )
+            if process.stdout is None:
+                raise RuntimeError("Could not read streamed command output")
+            self.append_raw_log("$ " + " ".join(command) + "\n")
+            reader = threading.Thread(target=drain, args=(process.stdout,), name="clipboard-bridge-stream", daemon=True)
+            reader.start()
+            deadline = time.monotonic() + event["limit_seconds"]
+            stream_closed = False
+            while not stream_closed:
+                if not timed_out and time.monotonic() >= deadline:
+                    timed_out = True
+                    drain_deadline = time.monotonic() + 10
+                    event["timed_out"] = True
+                    cleanup = self.stop_streamed_process(process)
+                    if cleanup:
+                        event["cleanup"] = cleanup
+                if timed_out and drain_deadline is not None and time.monotonic() >= drain_deadline:
+                    event["cleanup_error"] = "Stream output did not close after cleanup"
+                    break
+                try:
+                    line = stream_queue.get(timeout=0.1)
+                except queue.Empty:
+                    continue
+                if line is None:
+                    stream_closed = True
+                    continue
+                line_text, received_at_epoch = line
+                output.append(line_text)
+                try:
+                    on_line(line_text, received_at_epoch)
+                except Exception as error:
+                    callback_errors.append(str(error))
+            if reader.is_alive():
+                reader.join(timeout=5)
+            if process.poll() is None:
+                if not timed_out:
+                    try:
+                        process.wait(timeout=max(1, deadline - time.monotonic()))
+                    except subprocess.TimeoutExpired:
+                        timed_out = True
+                        event["timed_out"] = True
+                        cleanup = self.stop_streamed_process(process)
+                        if cleanup:
+                            event["cleanup"] = {**event.get("cleanup", {}), **cleanup}
+                if process.poll() is None and not timed_out:
+                    timed_out = True
+                    event["timed_out"] = True
+                    cleanup = self.stop_streamed_process(process)
+                    if cleanup:
+                        event["cleanup"] = {**event.get("cleanup", {}), **cleanup}
+            if process.poll() is None:
+                event["cleanup_error"] = "Streamed command did not exit"
+        finally:
+            event["finished_at_epoch"] = time.time()
+            event["duration_seconds"] = round(event["finished_at_epoch"] - event["started_at_epoch"], 2)
+            event["exit_code"] = process.returncode if process else None
+            if callback_errors:
+                event["callback_errors"] = callback_errors
+            with self.command_lock:
+                self.commands.append(event)
+        return {
+            "exit": process.returncode if process else None,
+            "timed_out": timed_out,
+            "callback_errors": callback_errors,
+            "command_event": event,
+            "output": "".join(output),
+        }
+
+    def run_clipboard_bridge(self, project: pathlib.Path, udid: str, result: pathlib.Path) -> tuple[dict[str, object], dict[str, object]]:
+        recorder = ClipboardBridgeRecorder(lambda _index: self.run_bridge_paste(udid))
+
+        def on_line(line: str, received_at_epoch: float) -> None:
+            match = re.search(r"ACE_CLIPBOARD_BRIDGE_MARKER index=(\d+)", line)
+            if match:
+                recorder.record_marker(int(match.group(1)), received_at_epoch)
+
+        command = [
+            "xcodebuild", "test-without-building", "-project", str(project), "-scheme", "LandmarksTrial",
+            "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
+            "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
+            "-parallel-testing-enabled", "NO", f"-only-testing:{CLIPBOARD_BRIDGE_TEST}",
+        ]
+        stream = self.run_streamed(command, self.settings["test_seconds"], on_line, cwd=project.parent)
+        bridge = {
+            "markers": recorder.records,
+            "reads_stopped": recorder.reads_stopped,
+            "validation": recorder.validation(),
+            "xcode_stream": {key: value for key, value in stream.items() if key != "output"},
+        }
+        self.write_text(self.evidence / "clipboard-bridge.json", json.dumps(bridge, indent=2) + "\n")
+        return stream, bridge
+
     def failure_screenshot(self, udid: str, label: str) -> dict[str, object]:
         path = self.evidence / "results" / f"{label}-simulator-failure.png"
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -456,12 +803,24 @@ class Trial:
             if test_name == FOCUSED_TEST:
                 observations["clipboard_reset"] = self.reset_focused_clipboard(udid)
                 collector_stop, collector_thread, collector_samples = self.start_clipboard_collector(udid)
-            _, test_exit = self.run([
-                "xcodebuild", "test-without-building", "-project", str(project), "-scheme", "LandmarksTrial",
-                "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
-                "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
-                "-parallel-testing-enabled", "NO", f"-only-testing:{test_name}",
-            ], self.settings.get("test_seconds", 150), allow_failure=True, cwd=project.parent)
+            if test_name == CLIPBOARD_BRIDGE_TEST:
+                observations["clipboard_reset"] = self.reset_focused_clipboard(udid)
+                stream, bridge = self.run_clipboard_bridge(project, udid, result)
+                observations["clipboard_bridge"] = bridge
+                test_exit = stream["exit"] if isinstance(stream.get("exit"), int) else None
+                if stream.get("timed_out"):
+                    raise RuntimeError("XCTest stream timed out before the clipboard bridge completed")
+                if stream.get("callback_errors"):
+                    raise RuntimeError("Clipboard bridge stream callback failed")
+                if not bridge["validation"].get("passed"):
+                    raise RuntimeError(str(bridge["validation"].get("error")))
+            else:
+                _, test_exit = self.run([
+                    "xcodebuild", "test-without-building", "-project", str(project), "-scheme", "LandmarksTrial",
+                    "-sdk", "iphonesimulator", "-derivedDataPath", str(self.build), "-resultBundlePath", str(result),
+                    "-destination", f"platform=iOS Simulator,id={udid}", "CODE_SIGNING_ALLOWED=NO",
+                    "-parallel-testing-enabled", "NO", f"-only-testing:{test_name}",
+                ], self.settings.get("test_seconds", 150), allow_failure=True, cwd=project.parent)
             if test_exit != 0:
                 raise RuntimeError(f"XCTest returned {test_exit}: {test_name}")
         except Exception as error:

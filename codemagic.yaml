@@ -889,3 +889,26 @@ workflows:
       - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/results/*.png
       - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/attachments/**/*.png
       - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/attachments/**/*.txt
+
+  ace-landmarks-release-clipboard-manual:
+    name: ACE Apple Landmarks Clipboard Bridge Diagnostic (Manual Only)
+    max_build_duration: 10
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. This checks the eleven exact clipboard payloads.
+    scripts:
+      - name: Build once and read each confirmed copy through the simulator bridge
+        script: python3 ios/LandmarksTrial/run_release_trial.py --mode clipboard
+    artifacts:
+      - /private/tmp/ace-landmarks-release-trial/clipboard/candidate/Landmarks.app
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/status.json
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/failure.txt
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/*.json
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/*.txt
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/*.log
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/results/*.xcresult.tar.gz
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/results/*.json
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/results/*.png
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/attachments/**/*.png
+      - /private/tmp/ace-landmarks-release-trial/clipboard/evidence/attachments/**/*.txt

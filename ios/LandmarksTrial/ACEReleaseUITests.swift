@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 import UIKit
 
@@ -46,6 +47,29 @@ final class LandmarksTrialUITests: XCTestCase {
         copyButton.tap()
         require(app.staticTexts["Copied Action status."].waitForExistence(timeout: 2), in: app, name: "audit-diagnostic-confirmation", "Copied Action status confirmation was unavailable")
         try audit(app, name: "audit-diagnostic-bottom")
+    }
+
+    @MainActor
+    func testReleaseClipboardBridge() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        setOrientation(.portrait, in: app, name: "clipboard-bridge-portrait")
+        roundTripToCurrentRelease(in: app)
+        for (index, (label, value)) in releaseFields.enumerated() {
+            let valueElement = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label == %@", "\(label): \(value)")).firstMatch
+            scrollToElement(valueElement, in: app)
+            require(valueElement.exists && valueElement.isHittable, in: app, name: "clipboard-bridge-\(label)-value", "Missing \(label): \(value)")
+            let copyButton = app.buttons["Copy \(label)"]
+            scrollToElement(copyButton, in: app)
+            require(copyButton.exists && copyButton.isHittable, in: app, name: "clipboard-bridge-\(label)-control", "Missing copy control for \(label)")
+            copyButton.tap()
+            require(app.staticTexts["Copied \(label)."].waitForExistence(timeout: 2), in: app, name: "clipboard-bridge-\(label)-confirmation", "Missing copied confirmation for \(label)")
+            emitClipboardBridgeMarker(index)
+            Thread.sleep(forTimeInterval: 7)
+        }
+        attachScreenshot(app, name: "clipboard-bridge-success")
     }
 
     @MainActor
@@ -158,6 +182,12 @@ final class LandmarksTrialUITests: XCTestCase {
         screenshot.name = name
         screenshot.lifetime = .keepAlways
         add(screenshot)
+    }
+
+    @MainActor
+    private func emitClipboardBridgeMarker(_ index: Int) {
+        let marker = "ACE_CLIPBOARD_BRIDGE_MARKER index=\(index)\n"
+        FileHandle.standardOutput.write(Data(marker.utf8))
     }
 
     @MainActor
