@@ -239,13 +239,111 @@ final class LandmarksTrialUITests: XCTestCase {
 
     @MainActor
     private func auditVisiblePages(_ fields: [(String, String)], in app: XCUIApplication, scenario: String) throws {
+        let matrixStarted = Date()
+        var auditedSignatures = Set<String>()
+        var auditCount = 0
         for (label, value) in fields {
             let valueElement = app.descendants(matching: .any)
                 .matching(NSPredicate(format: "label == %@", "\(label): \(value)")).firstMatch
-            scrollToElement(valueElement, in: app)
-            require(valueElement.exists && valueElement.isHittable, in: app, name: "\(scenario)-\(label)", "Missing \(label): \(value)")
-            try audit(app, name: "\(scenario)-\(label)")
+            scrollToFullyVisible(valueElement, in: app)
+            guard requireFullyVisible(valueElement, in: app, name: "\(scenario)-\(label)", "\(label): \(value) was not fully visible") else {
+                return
+            }
+            let signature = matrixViewportSignature(fields, in: app)
+            let isNewViewport = auditedSignatures.insert(signature).inserted
+            attachMatrixRowEvidence(
+                app,
+                label: label,
+                value: value,
+                element: valueElement,
+                scenario: scenario,
+                signature: signature,
+                auditState: isNewViewport ? "scheduled" : "already-covered"
+            )
+            guard isNewViewport else {
+                continue
+            }
+            auditCount += 1
+            let auditName = "\(scenario)-viewport-\(auditCount)"
+            attachMatrixAuditEvidence(
+                app,
+                fields: fields,
+                scenario: scenario,
+                signature: signature,
+                auditName: auditName,
+                auditCount: auditCount
+            )
+            do {
+                let auditStarted = Date()
+                defer {
+                    attachMatrixAuditDuration(
+                        scenario: scenario,
+                        auditName: auditName,
+                        seconds: Date().timeIntervalSince(auditStarted)
+                    )
+                }
+                try audit(app, name: auditName)
+            }
         }
+        attachMatrixAuditDuration(
+            scenario: scenario,
+            auditName: "\(scenario)-summary",
+            seconds: Date().timeIntervalSince(matrixStarted),
+            auditCount: auditCount
+        )
+    }
+
+    @MainActor
+    private func matrixViewportSignature(_ fields: [(String, String)], in app: XCUIApplication) -> String {
+        let viewport = auditDiagnosticViewport(in: app)
+        let rows = fields.enumerated().map { index, field in
+            let element = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label == %@", "\(field.0): \(field.1)")).firstMatch
+            let exists = element.exists
+            let frame = exists ? element.frame : .null
+            return "\(index):exists=\(exists);frame=\(frame)"
+        }
+        return "window=\(viewport.window);navigationBar=\(viewport.navigationBar);list=\(viewport.list);visible=\(viewport.visible);rows=\(rows.joined(separator: "|"))"
+    }
+
+    @MainActor
+    private func attachMatrixRowEvidence(_ app: XCUIApplication, label: String, value: String, element: XCUIElement, scenario: String, signature: String, auditState: String) {
+        let viewport = auditDiagnosticViewport(in: app)
+        let exists = element.exists
+        let frame = exists ? element.frame : .null
+        let record = "scenario=\(scenario)\norientation=\(XCUIDevice.shared.orientation.rawValue)\nlabel=\(label)\nvalue=\(value)\nelementExists=\(exists)\nelementFrame=\(frame)\nwindow=\(viewport.window)\nnavigationBar=\(viewport.navigationBar)\nlist=\(viewport.list)\nvisible=\(viewport.visible)\nauditState=\(auditState)\nviewportSignature=\(signature)"
+        let attachment = XCTAttachment(string: record)
+        attachment.name = "\(scenario)-\(label)-row"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
+    @MainActor
+    private func attachMatrixAuditEvidence(_ app: XCUIApplication, fields: [(String, String)], scenario: String, signature: String, auditName: String, auditCount: Int) {
+        let viewport = auditDiagnosticViewport(in: app)
+        let coveredRows = fields.compactMap { label, value -> String? in
+            let element = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label == %@", "\(label): \(value)")).firstMatch
+            return isFullyVisible(element, in: viewport) ? "\(label): \(value)" : nil
+        }
+        let record = "scenario=\(scenario)\nauditName=\(auditName)\nauditCount=\(auditCount)\norientation=\(XCUIDevice.shared.orientation.rawValue)\ncoveredRows=\(coveredRows.joined(separator: " | "))\nwindow=\(viewport.window)\nnavigationBar=\(viewport.navigationBar)\nlist=\(viewport.list)\nvisible=\(viewport.visible)\nviewportSignature=\(signature)"
+        let attachment = XCTAttachment(string: record)
+        attachment.name = "\(auditName)-coverage"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
+    @MainActor
+    private func attachMatrixAuditDuration(scenario: String, auditName: String, seconds: TimeInterval, auditCount: Int? = nil) {
+        let formattedSeconds = String(format: "%.3f", seconds)
+        var record = "scenario=\(scenario)\nauditName=\(auditName)\ndurationSeconds=\(formattedSeconds)"
+        if let auditCount {
+            record += "\nauditCount=\(auditCount)"
+        }
+        let attachment = XCTAttachment(string: record)
+        attachment.name = "\(auditName)-duration"
+        attachment.lifetime = .keepAlways
+        add(attachment)
     }
 
     @MainActor

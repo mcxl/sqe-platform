@@ -867,6 +867,28 @@ workflows:
       - /private/tmp/ace-landmarks-release-trial/matrix/evidence/results/**/*
       - /private/tmp/ace-landmarks-release-trial/matrix/evidence/attachments/**/*.png
 
+  ace-landmarks-release-matrix-pilot-manual:
+    name: ACE Apple Landmarks Release Matrix Pilot (Manual Only)
+    max_build_duration: 12
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. This runs one high-risk device, appearance, and type-size case.
+    scripts:
+      - name: Build once and run the bounded release matrix pilot
+        script: python3 ios/LandmarksTrial/run_release_trial.py --mode pilot
+    artifacts:
+      - /private/tmp/ace-landmarks-release-trial/pilot/candidate/Landmarks.app
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence.tar.gz
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/status.json
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/failure.txt
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/*.json
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/*.txt
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/*.log
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/**/*.xcresult
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/results/**/*
+      - /private/tmp/ace-landmarks-release-trial/pilot/evidence/attachments/**/*.png
+
   ace-landmarks-release-diagnostic-manual:
     name: ACE Apple Landmarks Release Audit Diagnostic (Manual Only)
     max_build_duration: 8
