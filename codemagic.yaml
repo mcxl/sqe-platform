@@ -866,3 +866,26 @@ workflows:
       - /private/tmp/ace-landmarks-release-trial/matrix/evidence/**/*.xcresult
       - /private/tmp/ace-landmarks-release-trial/matrix/evidence/results/**/*
       - /private/tmp/ace-landmarks-release-trial/matrix/evidence/attachments/**/*.png
+
+  ace-landmarks-release-diagnostic-manual:
+    name: ACE Apple Landmarks Release Audit Diagnostic (Manual Only)
+    max_build_duration: 4
+    instance_type: mac_mini_m4
+    environment:
+      xcode: 26.4.1
+    # No triggering events. This retains audit evidence and a provisional Preview app only.
+    scripts:
+      - name: Build once and run the focused release audit diagnostic
+        script: python3 ios/LandmarksTrial/run_release_trial.py --mode diagnostic
+    artifacts:
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/candidate/Landmarks.app
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/status.json
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/failure.txt
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/*.json
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/*.txt
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/*.log
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/results/*.xcresult.tar.gz
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/results/*.json
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/results/*.png
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/attachments/**/*.png
+      - /private/tmp/ace-landmarks-release-trial/diagnostic/evidence/attachments/**/*.txt

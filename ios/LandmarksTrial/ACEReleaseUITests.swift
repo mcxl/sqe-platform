@@ -35,6 +35,20 @@ final class LandmarksTrialUITests: XCTestCase {
     }
 
     @MainActor
+    func testReleaseAuditDiagnostic() throws {
+        let app = XCUIApplication()
+        app.launch()
+        setOrientation(.portrait, in: app, name: "audit-diagnostic-portrait")
+        attachScreenshot(app, name: "audit-diagnostic-launch")
+        let copyButton = app.buttons["Copy Action status"]
+        scrollToElement(copyButton, in: app)
+        require(copyButton.exists && copyButton.isHittable, in: app, name: "audit-diagnostic-copy", "Copy Action status was unavailable")
+        copyButton.tap()
+        require(app.staticTexts["Copied Action status."].waitForExistence(timeout: 2), in: app, name: "audit-diagnostic-confirmation", "Copied Action status confirmation was unavailable")
+        try audit(app, name: "audit-diagnostic-bottom")
+    }
+
+    @MainActor
     func testReleaseLayoutAndAccessibility() throws {
         let app = XCUIApplication()
         app.launch()
@@ -72,7 +86,16 @@ final class LandmarksTrialUITests: XCTestCase {
         diagnostic.lifetime = .keepAlways
         add(diagnostic)
         do {
-            try app.performAccessibilityAudit(for: .all)
+            try app.performAccessibilityAudit(for: .all) { issue in
+                let issueText = "type=\(issue.auditType.rawValue)\nsummary=\(issue.compactDescription)\ndetails=\(issue.detailedDescription)\nelement=\(issue.element?.debugDescription ?? "unavailable")"
+                print("ACE_AUDIT_ISSUE \(issueText)")
+                let details = XCTAttachment(string: issueText)
+                details.name = "\(name)-audit-issue"
+                details.lifetime = .keepAlways
+                self.add(details)
+                self.attachFailureEvidence(app, name: "\(name)-audit-issue")
+                return false
+            }
         } catch {
             attachFailureEvidence(app, name: "\(name)-audit-failure")
             throw error

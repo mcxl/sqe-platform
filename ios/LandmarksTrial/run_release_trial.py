@@ -24,6 +24,7 @@ APP_RELATIVE = pathlib.Path("Build/Products/Debug-iphonesimulator/Landmarks.app"
 TEST_TARGET = "LandmarksTrialUITests"
 FOCUSED_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseInformationAndCopyControls"
 MATRIX_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseLayoutAndAccessibility"
+DIAGNOSTIC_TEST = f"{TEST_TARGET}/{TEST_TARGET}/testReleaseAuditDiagnostic"
 FOCUSED_COPY_VALUES = (
     "Fictional Engagement", "RELEASED", "1", "2026-08-24T10:15:30Z",
     "Fictional conclusion", "Fictional summary", "FICTIONAL-REF-001",
@@ -34,6 +35,7 @@ ALLOWED_OVERLAY_PATHS = frozenset(("Landmarks/Landmarks.xcodeproj/project.pbxpro
 MODE = {
     "focused": {"work_seconds": 270, "final_seconds": 330, "test": FOCUSED_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
     "matrix": {"work_seconds": 510, "final_seconds": 570, "test": MATRIX_TEST, "devices": ("iPhone 17", "iPhone 17 Pro Max"), "contexts": (("light", "large"), ("light", "extra-large"), ("light", "accessibility-extra-extra-extra-large"), ("dark", "large"), ("dark", "extra-large"), ("dark", "accessibility-extra-extra-extra-large"))},
+    "diagnostic": {"work_seconds": 205, "final_seconds": 220, "test": DIAGNOSTIC_TEST, "devices": ("iPhone 17",), "contexts": (("light", "large"),)},
 }
 
 
@@ -396,6 +398,35 @@ class Trial:
         self.write_text(self.evidence / "app-hash-before-test.txt", self.tree_hashes(app))
         return app
 
+    def retain_diagnostic_candidate(self, app: pathlib.Path, native_status: str, native_exit: object) -> None:
+        before_app = (self.evidence / "app-hash-before-test.txt").read_text(encoding="utf-8")
+        after_app = self.tree_hashes(app, final=True)
+        self.write_text(self.evidence / "app-hash-after-test.txt", after_app)
+        if before_app != after_app:
+            raise RuntimeError("Landmarks.app changed during the audit diagnostic")
+        before_source = (self.evidence / "source-hashes-before-test.txt").read_text(encoding="utf-8")
+        after_source = self.tree_hashes(self.source, final=True)
+        self.write_text(self.evidence / "source-hashes-after-test.txt", after_source)
+        if before_source != after_source:
+            raise RuntimeError("The derived source changed during the audit diagnostic")
+        candidate = self.root / "candidate" / "Landmarks.app"
+        candidate.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(app, candidate, dirs_exist_ok=True)
+        candidate_hashes = self.tree_hashes(candidate, final=True)
+        self.write_text(self.evidence / "candidate-app-hash.txt", candidate_hashes)
+        if candidate_hashes != after_app:
+            raise RuntimeError("The provisional preview app did not match the tested diagnostic candidate")
+        self.outcome["provisional_preview"] = {
+            "status": "provisional_audit_diagnostic",
+            "app_hash_before_test": "app-hash-before-test.txt",
+            "app_hash_after_test": "app-hash-after-test.txt",
+            "candidate_hash": "candidate-app-hash.txt",
+            "source_hash_before_test": "source-hashes-before-test.txt",
+            "source_hash_after_test": "source-hashes-after-test.txt",
+            "native_test_status": native_status,
+            "native_test_exit": native_exit,
+        }
+
     def one_test(
         self,
         project: pathlib.Path,
@@ -454,14 +485,14 @@ class Trial:
                 if failure is None and not collector_record["validation"].get("passed"):
                     failure = RuntimeError(str(collector_record["validation"].get("error")))
                     observations["error"] = str(failure)
-            if test_name == FOCUSED_TEST:
+            if test_name in (FOCUSED_TEST, DIAGNOSTIC_TEST):
                 try:
                     clipboard, clipboard_exit = self.run(["xcrun", "simctl", "pbpaste", udid], 15,
                                                          allow_failure=True, final=True)
                     observations["clipboard_after_copy"] = {"exit": clipboard_exit, "payload": clipboard,
                                                               "reason": "failure-diagnostic" if failure else "pass-assertion"}
                     if failure is None and (clipboard_exit != 0 or clipboard != "OPEN"):
-                        observations["clipboard_error"] = "The focused copy control did not leave OPEN in the simulator pasteboard"
+                        observations["clipboard_error"] = "The copy control did not leave OPEN in the simulator pasteboard"
                         failure = RuntimeError(str(observations["clipboard_error"]))
                         observations["error"] = str(failure)
                 except Exception as error:
@@ -474,7 +505,7 @@ class Trial:
                 observations["failure_screenshot"] = self.failure_screenshot(udid, label)
             if result.is_dir():
                 try:
-                    observations["result_evidence"] = self.result_evidence(result, label, final=failure is not None)
+                    observations["result_evidence"] = self.result_evidence(result, label, final=failure is not None or self.mode == "diagnostic")
                 except Exception as error:
                     observations["retention_error"] = str(error)
             if traits:
@@ -547,16 +578,25 @@ class Trial:
                 traits = {"appearance": appearance, "content_size": content_size}
                 try:
                     trial = self.one_test(project, selection["udid"], self.settings["test"], label, traits=traits)
-                except Exception:
+                except Exception as error:
                     case_path = self.evidence / "cases" / f"{label}.json"
                     trial = json.loads(case_path.read_text(encoding="utf-8")) if case_path.is_file() else {"error": "case record missing"}
                     records.append({"device": selection, "test": self.settings["test"], "trial": trial})
                     self.write_text(self.evidence / "matrix-records.json", json.dumps(records, indent=2) + "\n")
+                    if self.mode == "diagnostic":
+                        self.retain_diagnostic_candidate(app, "failed", trial.get("test_exit"))
+                        self.outcome["records"] = records
+                        self.outcome["result"] = "diagnostic_failed"
                     raise
                 records.append({"device": selection, "test": self.settings["test"], "trial": trial})
                 self.write_text(self.evidence / "matrix-records.json", json.dumps(records, indent=2) + "\n")
                 print(json.dumps({"progress": "case-passed", "mode": self.mode, "completed": len(records),
                                   "required": len(selections) * len(self.settings["contexts"]), "label": label}), flush=True)
+        if self.mode == "diagnostic":
+            self.retain_diagnostic_candidate(app, "passed", 0)
+            self.outcome["records"] = records
+            self.outcome["result"] = "diagnostic_passed"
+            return
         self.write_text(self.evidence / "app-hash-after-test.txt", self.tree_hashes(app))
         if (self.evidence / "app-hash-before-test.txt").read_bytes() != (self.evidence / "app-hash-after-test.txt").read_bytes():
             raise RuntimeError("Landmarks.app changed during native tests")
@@ -595,7 +635,9 @@ class Trial:
         self.outcome["finalisation"] = finalisation
         self.write_text(self.evidence / "status.json", json.dumps(self.outcome, indent=2) + "\n")
         try:
-            if self.evidence.exists():
+            if self.mode == "diagnostic":
+                finalisation["evidence_archive_status"] = "not-created-for-diagnostic"
+            elif self.evidence.exists():
                 archive = self.root / "evidence.tar.gz"
                 self.run(["/usr/bin/tar", "-czf", str(archive), "-C", str(self.root), "evidence"], 60, final=True)
                 finalisation["evidence_archive"] = {"path": str(archive), "sha256": self.sha256(archive, final=True)}
@@ -618,7 +660,7 @@ def main() -> int:
         trial.write_text(trial.evidence / "failure.txt", traceback.format_exc())
     finally:
         trial.finalise()
-    return 0 if trial.outcome["result"] == "passed" else 1
+    return 0 if trial.outcome["result"] in {"passed", "diagnostic_passed"} else 1
 
 
 if __name__ == "__main__":
