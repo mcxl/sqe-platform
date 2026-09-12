@@ -2740,7 +2740,7 @@ class RunnerContractTests(unittest.TestCase):
                 self.assertEqual(state, "invalid")
                 self.assertTrue(any("invalid" in error or "status" in error for error in errors))
 
-    def test_live_codemagic_workflow_is_manual_only_and_uses_one_exact_command(self):
+    def test_live_codemagic_command_is_manual_and_evidence_publication_is_allowlisted(self):
         config = (ROOT / "codemagic.yaml").read_text(encoding="utf-8")
         workflow = runner.re.split(
             r"(?m)^  [A-Za-z0-9_-]+:\s*$",
