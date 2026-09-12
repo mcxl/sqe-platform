@@ -66,7 +66,7 @@ private struct ReleaseCopyField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(field.label).font(.headline)
+                Text(field.label).font(.headline).fixedSize(horizontal: false, vertical: true)
                 Text(value)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
