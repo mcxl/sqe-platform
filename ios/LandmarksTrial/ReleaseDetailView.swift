@@ -37,21 +37,21 @@ struct ReleaseDetailView: View {
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
             } header: {
-                Text("Release").foregroundStyle(.primary)
+                Text("Release").foregroundStyle(Color.primary)
             }
             Section {
                 ForEach(ReleaseDetailData.conclusionFields, id: \.label) { field in
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
             } header: {
-                Text("Conclusion").foregroundStyle(.primary)
+                Text("Conclusion").foregroundStyle(Color.primary)
             }
             Section {
                 ForEach(ReleaseDetailData.actionFields, id: \.label) { field in
                     ReleaseCopyField(field: field, value: ReleaseDetailData.value(for: field))
                 }
             } header: {
-                Text("Action").foregroundStyle(.primary)
+                Text("Action").foregroundStyle(Color.primary)
             }
         }
         .navigationTitle("Release Details")
