@@ -1,4 +1,42 @@
 workflows:
+  ace-ios-diagnostic-manual:
+    name: ACE iOS MCX-19 Focused Diagnostic (Not Release Evidence)
+    max_build_duration: 5
+    instance_type: mac_mini_m4
+    environment:
+      groups:
+        - mcx19_diagnostic
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-diagnostic-manual
+        ACE_IOS_DIAGNOSTIC_MODE: unit-settings
+    # No automatic trigger. One 65-test unit diagnostic runs without settings changes.
+    scripts:
+      - name: Capture unit failure and read-only simulator query diagnostics
+        script: python3 tools/diagnose_ios.py
+    artifacts:
+      - /private/tmp/mcx-19-diagnostic-safe/diagnostic.json
+      - /private/tmp/mcx-19-diagnostic-safe/screenshots/**/*.png
+
+  ace-ios-native-cycle-manual:
+    name: ACE iOS MCX-19 Native Cycle (Not Release Evidence)
+    max_build_duration: 8
+    instance_type: mac_mini_m4
+    environment:
+      groups:
+        - mcx19_diagnostic
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-native-cycle-manual
+        ACE_IOS_DIAGNOSTIC_MODE: native-cycle
+    # No automatic trigger. The diagnostic accepts only its verified build context.
+    scripts:
+      - name: Retain one native XCTest cycle in private authenticated storage
+        script: python3 tools/diagnose_ios.py
+    artifacts:
+      - /private/tmp/mcx-19-diagnostic-safe/diagnostic.json
+      - /private/tmp/mcx-19-native-cycle-private/mcx19-native-cycle-records.tar.gz
+
   ace-ios-core:
     name: ACE iOS Core Quality
     max_build_duration: 45
@@ -67,3 +105,77 @@ workflows:
           python3 tools/run_tests.py evidence-check
           echo "G0 records remain pending and are not release evidence."
           exit 1
+
+  ace-ios-repair-check-manual:
+    name: ACE iOS MCX-19 Repair Check (Not Release Evidence)
+    max_build_duration: 15
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - mcx19_live_evidence
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-repair-check-manual
+        CM_CLONE_UNSHALLOW: "true"
+    # No triggering events: an approved operator starts this fixed diagnostic manually.
+    scripts:
+      - name: Run the MCX-19 fixed repair diagnostic
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py live-repair-check --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    artifacts:
+      - /private/tmp/mcx-19-live-evidence/repair-check.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.json
+      - /private/tmp/mcx-19-live-evidence/simulator-resolution.log
+      - /private/tmp/mcx-19-live-evidence/*.log
+      - /private/tmp/mcx-19-live-evidence/*-summary.json
+      - /private/tmp/mcx-19-live-evidence/diagnostic-images/**/*.png
+
+  ace-ios-live-evidence-manual:
+    name: ACE iOS MCX-19 Live Evidence (Manual Only)
+    max_build_duration: 120
+    instance_type: mac_mini_m4
+    environment:
+      groups:
+        - mcx19_live_evidence
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-live-evidence-manual
+        CM_CLONE_UNSHALLOW: "true"
+    # No triggering events. Start manually with SSH access enabled in Codemagic.
+    # Verify each private checkpoint locally, then send its exact ACK before the next test.
+    # The runner fails before its matrix unless this image provides iOS 26 iPhone 17
+    # and iPhone 17 Pro Max simulators. It keeps that provider diagnostic private.
+    # It writes raw artifacts only to /private/tmp/mcx-19-live-evidence, outside the Git tree.
+    scripts:
+      - name: Run the MCX-19 controlled live evidence gate
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py live-evidence --component ios --artifact-root /private/tmp/mcx-19-live-evidence --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    # Publish safe progress on failure. Publish screenshots only after atomic promotion.
+    # Raw logs, result bundles, and simulator metadata stay private.
+    artifacts:
+      - /private/tmp/mcx-19-live-evidence/live-evidence-progress.json
+      - /private/tmp/mcx-19-live-evidence/review-artifacts/live-evidence-review-manifest.json
+      - /private/tmp/mcx-19-live-evidence/review-artifacts/screenshots/**/*.png
+
+  ace-ios-retention-pilot-manual:
+    name: ACE iOS MCX-19 Retention Pilot (Not Release Evidence)
+    max_build_duration: 30
+    instance_type: mac_mini_m4
+    environment:
+      groups:
+        - mcx19_live_evidence
+      xcode: 26.4.1
+      vars:
+        ACE_LIVE_EVIDENCE_WORKFLOW: ace-ios-retention-pilot-manual
+        CM_CLONE_UNSHALLOW: "true"
+    # No triggering events. Start manually with SSH access enabled in Codemagic.
+    # The runner uses fictional app values and waits for an exact operator ACK before each phase.
+    scripts:
+      - name: Run the MCX-19 attended SSH retention pilot
+        script: |
+          set -euo pipefail
+          python3 tools/run_tests.py retention-pilot --component ios --artifact-root /private/tmp/mcx-19-retention-pilot --expected-commit "$ACE_LIVE_EVIDENCE_APPROVED_COMMIT"
+    artifacts:
+      - /private/tmp/mcx-19-retention-pilot/retention-pilot-report.json

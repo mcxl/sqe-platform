@@ -5,18 +5,29 @@ import UIKit
 struct ACEClientApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var state = SessionState()
-    @Environment(\.colorScheme) private var colorScheme
+
+    #if DEBUG
+    private var uiTestColorScheme: ColorScheme? {
+        guard UITestScenario.current != nil else { return nil }
+        switch ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] {
+        case "light": return .light
+        case "dark": return .dark
+        default: return nil
+        }
+    }
+    #endif
 
     var body: some Scene {
         WindowGroup {
-            ZStack(alignment: .topLeading) {
-                RootView(state: state)
-                #if DEBUG
-                Text(colorScheme == .dark ? "dark" : "light")
-                    .accessibilityIdentifier("Effective interface style")
-                    .opacity(0.01)
-                #endif
-            }
+            RootView(state: state)
+            #if DEBUG
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    if UITestScenario.current != nil {
+                        EffectiveInterfaceStyleIndicator()
+                    }
+                }
+                .preferredColorScheme(uiTestColorScheme)
+            #endif
                 .task {
                 #if DEBUG
                 guard UITestScenario.current == nil else { return }
@@ -26,6 +37,44 @@ struct ACEClientApp: App {
         }
     }
 }
+
+#if DEBUG
+private struct EffectiveInterfaceStyleIndicator: View {
+    // Read the window's environment, not the App's scene-level environment.
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    private var contentSizeCategory: String {
+        switch dynamicTypeSize {
+        case .xSmall: return "extra-small"
+        case .small: return "small"
+        case .medium: return "medium"
+        case .large: return "large"
+        case .xLarge: return "extra-large"
+        case .xxLarge: return "extra-extra-large"
+        case .xxxLarge: return "extra-extra-extra-large"
+        case .accessibility1: return "accessibility-medium"
+        case .accessibility2: return "accessibility-large"
+        case .accessibility3: return "accessibility-extra-large"
+        case .accessibility4: return "accessibility-extra-extra-large"
+        case .accessibility5: return "accessibility-extra-extra-extra-large"
+        @unknown default: return "unknown"
+        }
+    }
+
+    var body: some View {
+        Text(colorScheme == .dark ? "dark" : "light")
+            .font(.body)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .background(.background)
+            .accessibilityIdentifier("Effective interface style")
+            .accessibilityValue(contentSizeCategory)
+    }
+}
+#endif
 
 @MainActor
 final class AppDelegate: NSObject, UIApplicationDelegate {

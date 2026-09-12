@@ -20,6 +20,25 @@ a fresh Codex task and invoke `$sol-advisor:orchestration`.
 - The primary session must inspect the complete diff and rerun the relevant verification
   before accepting the Sol verdict.
 
+## Mandatory Native UI Verification
+
+Apply this gate to every native UI change, including small text and layout changes.
+Source tests and code review cannot prove the rendered result.
+
+- Define the native visual and accessibility checks before changing the UI.
+- For a reported defect, reproduce it on a supported simulator or device and retain the failure evidence.
+- Run the changed app on a supported simulator or device before accepting the change.
+- Inspect actual screenshots of affected screens and states, including light mode, dark mode, and large Dynamic Type where supported.
+- Run the affected native interaction tests and full accessibility audits for those screens.
+- Do not hide elements, filter audit failures, or weaken assertions to obtain a pass.
+- Record the tested code revision or file hashes, platform, test results, and inspected screenshots.
+- After a correction, repeat the affected native checks on the changed code.
+- Use focused native checks during repair; run the required broader checks at final validation.
+- Never call a UI defect fixed, or a UI change complete, accepted, or ready, without passing native evidence.
+- If native access, authority, or evidence is missing, report `UNVERIFIED — UI QA INCOMPLETE` and name the missing check.
+- Local tests, source checks, snapshots alone, and agent review cannot replace this gate.
+- This rule does not authorise paid builds, new dependencies, wider access, or changes to approved time limits.
+
 ## Bounded Work Policy
 
 Apply this policy to all Codex work in this repository.

@@ -799,8 +799,8 @@ The exact private test-server address and certificate must be approved before ne
 
 The required simulator devices are:
 
-- iPhone SE (3rd generation) with iOS 26.
-- iPhone 16 Pro Max with iOS 26.
+- iPhone 17 with iOS 26.
+- iPhone 17 Pro Max with iOS 26.
 
 The approved Xcode 26 host must contain both simulator destinations.
 
@@ -1289,6 +1289,99 @@ High-cost operations include:
 - Controlled Greptile record.
 - Fresh Sol record.
 - Exact-head human merge approval.
+
+## MCX19-B Candidate Verification
+
+MCX19-A records a focused diagnostic at `3259048186916941bf3557d55503e7375e432c57`.
+It does not establish complete candidate evidence.
+Bind each new run and its retained artifacts to the exact tested commit.
+A change to a test, runner, workflow, or application creates a new verification candidate.
+
+### Acceptance Matrix
+
+| Check | Required Evidence | Acceptance Condition |
+| --- | --- | --- |
+| Candidate identity | Repository, branch, baseline, exact commit, changed files, and platform | The approved candidate matches the clean native checkout. |
+| Automated checks | Separate unit, UI, evidence-contract, and negative-configuration results | Every required check completes with the expected result and test count. |
+| Native result integrity | Process exit, passed tests, failed tests, and skipped tests | Process success alone cannot establish a test pass. Required tests cannot be skipped. |
+| Forced appearance | Named screenshots and native assertions for both appearances on both specified devices | The displayed appearance matches the test setting. |
+| Normal device settings | Simulator setting values, separate results, and screenshots without the app appearance override | The app follows the verified system setting. Record restoration of changed simulator settings. |
+| Screens and states | Named screenshots for every screen and state in the Accessibility Test Matrix | Inspect the actual images. Reject missing or unmatched images. |
+| Orientation | Portrait and landscape evidence for every required screen and state | Information remains readable and required controls remain reachable. |
+| Dynamic Type | Default, extra large, and accessibility extra-extra-extra large evidence; automated coverage of every iOS 26 size | Complete information remains available at every required size. Record the tested setting with each result. |
+| Additional accessibility settings | Bold Text, Reduce Motion, and Increase Contrast checks in the required combinations | Each setting meets the Accessibility Decisions and Accessibility Test Matrix. |
+| Accessibility audits | Full native audit results and the manual checklist | Do not hide elements, filter failures, or weaken assertions to obtain a pass. |
+| Retained artifacts | Sanitised result manifest, named fictional screenshots, and hashes | Validate the required artifact set before publication. Keep raw logs and result bundles private. |
+| Manual inspection | An inspection record linked to the exact commit and image hashes | A screenshot file alone does not establish a visual pass. |
+| Other delivery gates | The Required Delivery Evidence listed above | Simulator fixtures do not prove a live server connection or replace physical-device evidence. |
+
+### Evidence Collection Limits
+
+The manual workflow may publish only the explicitly allowed, checked review artifacts.
+Do not publish raw Xcode logs, raw result bundles, credentials, or real client information.
+Controlled screenshots must use fictional scenarios and contain no entered credentials.
+An artifact export failure or a missing required image must fail its collection check.
+Keep collection results separate from visual inspection and release acceptance.
+
+### MCX19-B Private Diagnostic Records Exception
+
+For approved fictional MCX19-B tests only, retain original diagnostic records in verified
+authenticated storage. Restrict retrieval to authorised project operators. Retain records
+for 30 days, then expire them. Verify authorised retrieval and unauthorised denial before
+a paid test suite.
+
+Do not publish raw Xcode logs or raw result bundles in public artifacts. Do not collect
+confirmed credentials or real client information. Unresolved matches follow the narrow
+quarantine rule below. Keep raw records out of Git, PR comments, public
+links, and public artifact downloads. Do not put temporary authenticated download URLs in
+reports, logs, commits, or messages. Do not use a public bearer link that bypasses the
+approved access boundary.
+
+Generate the private inventory exactly from the planned command set. Do not publish an
+unrestricted directory glob. For each started XCTest command, retain one generated
+`.xcresult` and record its complete or incomplete state. Retain exported summaries,
+individual failures, and attachment inventories from those bundles. Retain compiler, test,
+simulator-setting, export, and packaging output only from the approved commands. Retain a
+collection inventory with candidate and build identity, relative path, producing command,
+size, SHA-256, and collection state. Retain existing checked JSON and allowed fictional PNG
+images as controlled review records, separately.
+
+Exclude environment dumps, credential files, Keychain contents, signing material, caches,
+source exports, and unrelated machine files. Check paths, links, file types, size limits,
+and the exact producing command before upload. Reject unexpected files. Stop collection if
+a confirmed secret or real client information is detected. Apply only the narrow unresolved
+match exception below. Do not silently remove evidence or report
+collection success.
+
+For planned `.xcresult/Data/*` members from approved fictional XCTest commands only,
+permit unresolved `credential-prefix` byte matches with `neighbourhoodShape=non-utf8`
+in the existing authenticated private storage. Preserve exact bytes, provenance and
+hashes. Record `quarantined-pending-review`. The match can be a real credential. This
+status does not establish scanner clearance, collection acceptance or release acceptance.
+Keep all other matchers and all text, decoded-data, metadata and path checks unchanged.
+Resolve a record only after mapping the match to its object and reading and classifying
+all required children. Missing mapping, read errors or partial coverage remain pending.
+Keep raw matched bytes, object identifiers and command errors private. Stop collection
+if a genuine credential or real client information is confirmed.
+
+Before the next paid run, verify authenticated retrieval of an existing approved fictional
+artifact, unauthorised denial and effective 30-day retention. The first focused run must
+then prove original-bundle retrieval before the corrected case or complete suite. Do not
+bypass a blocked download. Keep the candidate unverified while any record is unresolved.
+
+The 136 planned commands retain the same 135 XCTest cases and 200 named fictional review
+images. Unit and contract commands execute one test each, with verified private retention
+before the next command. This requirement records no result. Original bundle access, approved Mac access,
+provider retention, provider interruption, authorised retrieval, and unauthorised denial
+remain PENDING.
+
+Record unavailable or untested settings as pending.
+Do not infer Dynamic Type support from appearance evidence.
+Do not infer normal device-setting behaviour from an app launch override.
+Do not infer normal screenshot behaviour from an XCTest attachment alone.
+Retain `releaseEvidence: false` for collection output.
+An incomplete progress record cannot satisfy this matrix.
+Keep `UNVERIFIED — UI QA INCOMPLETE` until all required native and manual checks pass.
 
 ## Further Notes
 
