@@ -1,0 +1,18 @@
+{
+  "authority": "User Yes on 15 September authorises resumed investigation limited to Copy and confirmation. Unbounded overall time; retain two-attempt rule for resumed corrective work.",
+  "scope": "First only testFictionalReleaseHasApprovedCopyControls default/light iPhone17ProMax; expected1test3unrestricted audits, all11fields andCopyconfirmation.",
+  "candidate": "Use isolated field-text trial as baseline; main remains clean1b38.",
+  "acceptance": "Required focused native audits pass with visible Copy/confirmation and exact fields, no filtering. Passing retry alone does not prove cause. Retain failed control and colour measurements; relevant follow-up tests and fresh review before adoption.",
+  "initialQuestion": "Can lower-contrast neighbouring Refresh/Signout controls explain contrast findings attributed to black Copy/confirmation?",
+  "status": "First focused diagnostic running after parent complete diff inspection.",
+  "runnerGate": "Reuse retained selected failure/pass gate if runner hash unchanged. No broad or paid test.",
+  "trial": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial",
+  "historicalProbe": "Only Copy bordered-to-plain was tested and failed; no retained global release tint trial.",
+  "variable": "One .tint(.primary) modifier on ReleaseView ScrollView; existing Copy already has this tint. Changes neighbouring Refresh/Sign out colours without layout changes.",
+  "attempt": 1,
+  "candidatePatchSHA256": "c7691eca25ac7402b00a4b6e64f94b62ea67ca58b5c076a71ea8899f3a290fe2",
+  "sourceHashes": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3  ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425  ios/ACEClientApp/ACEClientApp/Views.swift\nc462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303  ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+  "selectedEvidenceGate": "Prior deliberate failure and restored pass summaries/logs/native bundles retrieved. Runnerhashunchanged941849... .",
+  "historyResult": "Terra read-only history found no retained controlled Refresh/Signout primary tint trial. Prior Copy border-to-plain failed and was reversed.",
+  "scopeOfClaim": "A pass alone cannot establish audit internal cause. Confirm actual changed colours and affected UI before adoption."
+}

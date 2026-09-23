@@ -1,0 +1,12 @@
+{
+  "timeUTC": "2026-09-15T08:29:13.569131+00:00",
+  "baseCommit": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "changedRunnerFunctions": [
+    "restore_boot_state"
+  ],
+  "appAndNativeTestsUnchanged": true,
+  "nativeCollectorBuildAndCoverageFunctionsUnchanged": true,
+  "functionalReuse": "68 unit/contract passes including43contracts at actuala84commit remain relevant; new runner tests passed37",
+  "nativeGate": "Repeat on clean final candidate because shutdown restoration changed",
+  "diffSha256": "30d01d470b7e7d4b646d7336543a847ba9acce1e677e214f2288db7e6ffd89c1"
+}

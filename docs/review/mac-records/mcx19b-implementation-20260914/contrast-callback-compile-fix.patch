@@ -1,0 +1,15 @@
+--- LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -173,10 +173,11 @@
+         scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
+         addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
+         if scenario == "noConclusion" {
+-            try app.performAccessibilityAudit(for: .contrast) { issue in
++            let contrastIssueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
+                 print("ACE_A11Y_ISSUE \(Self.accessibilityIssueJSON(issue, scenario: "noConclusion-contrast-only"))")
+                 return false
+             }
++            try app.performAccessibilityAudit(for: .contrast, contrastIssueHandler)
+         }
+         try assertAccessibilityAudit(in: app, scenario: scenario)
+     }

@@ -1,0 +1,10 @@
+{
+  "baseCommit": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "root": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree",
+  "purpose": "Deliberately reject a measured portrait coverage viewport as landscape. Verify native failure collection and restoration. This isolated source is not an acceptance candidate.",
+  "changedFiles": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "sourceSha256": "56cfea56f54fd5458412d5376d58b01ca97ed6f53c0204b4b9e6e8ccb4a284ad",
+  "patch": "--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n+++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n@@ -115,7 +115,7 @@\n         let app = launchForCoverageObservation(scenario: coverageCase.scenario)\n         defer { app.terminate() }\n         guard waitForCoverageState(in: app, scenario: coverageCase.scenario),\n-              assertRequestedOrientation(in: app, requested: coverageCase.settings.orientation),\n+              assertRequestedOrientation(in: app, requested: coverageCase.settings.orientation == \"portrait\" ? \"landscape\" : \"portrait\"),\n               let observed = observedSettings(in: app),\n               requireCoverage(observed == coverageCase.settings,\n                               \"Observed settings differ from requested settings for \\(coverageCase.id): \\(observed.payload)\") else { return false }\n"
+}

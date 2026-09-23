@@ -1,0 +1,14 @@
+{
+  "lastUsageOnlyEqual": true,
+  "protectedChangesStillDiffer": {
+    "device": true,
+    "python": true,
+    "runtimeAvailability": true,
+    "runtimeBuild": true,
+    "runtimeIdentifier": true,
+    "tool": true
+  },
+  "rawInputsUnchanged": true,
+  "rawRuntimeStillHasLastUsage": true,
+  "test": "environment identity regression after correction"
+}

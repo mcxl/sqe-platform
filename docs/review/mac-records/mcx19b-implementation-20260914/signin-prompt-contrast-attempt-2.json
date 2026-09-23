@@ -1,0 +1,12 @@
+{
+  "check": "manualSigninPromptContrast",
+  "correctiveAttempt": 2,
+  "attempt1Outcome": "Native audits passed, but native pixels retained the original low-contrast colours. The prompt foregroundStyle did not change the captured appearance.",
+  "attempt1LightContrast": 1.7233924684533595,
+  "attempt1DarkContrast": 2.4783404238390894,
+  "evidence": "signin-prompt-colours-attempt-1.json",
+  "change": "Use Text.foregroundColor with the explicit adaptive UIColor.label for field prompts. Retain this narrow compatibility choice only if the rendered evidence passes.",
+  "sourceSha256Before": "3b955aa082a4090f175f73a98371fbb13444265a12ccf28071a1cdbb864250d1",
+  "sourceSha256After": "fd198b1845d32ec20cc00e9c550a16e0b1b436de640f5252c54bd061b9fec662",
+  "remainingCorrectiveAttemptsIfThisFails": 0
+}

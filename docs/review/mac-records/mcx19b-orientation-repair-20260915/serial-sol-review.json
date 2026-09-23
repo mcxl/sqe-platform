@@ -1,0 +1,26 @@
+{
+  "reviewedUTC": "2026-09-15T07:52:29.886073+00:00",
+  "candidateCommit": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "baseCommit": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "patchSha256": "8c8bd502cf4899b9f0b00cc3f0a0afb652e0763699086175081f3dbbab340e74",
+  "reviewer": "/root/orientation_fix_design/serial_runner_v5_review",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedReasoning": "high",
+  "actualRuntime": "unobservable",
+  "verdict": "ship",
+  "scope": "Source readiness for serial simulator coverage and focused native evidence gate. Not native or pilot acceptance.",
+  "findings": [],
+  "verified": [
+    "All batches group by required device",
+    "Original boot states and native flags captured before parking",
+    "Post-boot native flags and orientation restored",
+    "Native and simctl evidence filenames include phase",
+    "First fault stops later coverage batches",
+    "No retry loops",
+    "22 pilot cases and36 audit invocations preserved",
+    "35 Python tests and diff check passed"
+  ],
+  "residualRisk": "Mocks do not establish CoreSimulator timing or native settings persistence.",
+  "primaryAcceptance": "Primary inspected the complete final diff and independently reran35Python tests and diff check on exactpatch.",
+  "primaryEvidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-primary-verification.json"
+}

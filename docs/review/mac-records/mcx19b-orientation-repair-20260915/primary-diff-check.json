@@ -1,0 +1,12 @@
+{
+  "checkedUTC": "2026-09-15T06:05:52.346659+00:00",
+  "diffCheckExit": 0,
+  "diffCheckOutput": "",
+  "files": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "sourceSha256": "290ae78003a6e06057756e89097771796ca3a6bbc4d0b5eeb64af78198717341",
+  "diffSha256": "04c391abc980bacece3273afc723788ad1b02a533b72c133c4dfcba98bf9d269",
+  "scope": "Only assertRequestedOrientation changes. Native API errors remain failures; invalid/nonfinite/nonpositive dimensions fail; landscape requires width>height and portrait requires height>width. Independent observed settings and audits remain untouched.",
+  "nativeProof": "running; no acceptance claim"
+}

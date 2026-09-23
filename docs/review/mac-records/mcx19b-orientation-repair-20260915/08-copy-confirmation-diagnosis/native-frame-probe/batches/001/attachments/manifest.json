@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "D6B9DA46-5632-4F1A-B149-7506A07FE6D9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_C393C5CE-8F10-49BC-B329-235D00BAF9A5.png",
+        "timestamp" : 1789468369.153
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "D5AE0C71-9131-46A6-AA74-5ED8A056A90B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_0C15A8B7-ACEB-462F-A15D-C57E4E597340.png",
+        "timestamp" : 1789468355.045
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testCoverageBatch()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch"
+  }
+]

@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Sqe Developer Roadmap</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled="true"]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type="file"]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type="color"] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="time"],
+    [type="week"]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html>body{padding:0}</style>
+</head>
+<body>
+<div id="sqe-hub-v2" data-default-view="roadmap">
+  <style>
+    #sqe-hub-v2 .hub-meta {display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 14px}
+    #sqe-hub-v2 .hub-tabs {margin:16px 0}
+    #sqe-hub-v2 .hub-section {margin:20px 0}
+    #sqe-hub-v2 .hub-flow {display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}
+    #sqe-hub-v2 .hub-phases {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:16px 0}
+    #sqe-hub-v2 .hub-phase {border-top:2px solid var(--border);padding-top:8px}
+    #sqe-hub-v2 .hub-row {display:grid;grid-template-columns:125px minmax(0,1fr);gap:14px;padding:9px 0}
+    #sqe-hub-v2 .hub-row + .hub-row {border-top:1px solid var(--border)}
+    #sqe-hub-v2 .hub-links {display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0}
+    #sqe-hub-v2 .hub-selection {margin:16px 0}
+    #sqe-hub-v2 .hub-list {padding-left:20px}
+    #sqe-hub-v2 .hub-list li {margin:7px 0}
+    #sqe-hub-v2 .hub-status {display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+    #sqe-hub-v2 .hub-source {overflow-wrap:anywhere}
+    #sqe-hub-v2 .hub-issues td {vertical-align:top}
+    #sqe-hub-v2 a,#sqe-hub-v2 code {overflow-wrap:anywhere}
+    @media(max-width:460px) {#sqe-hub-v2 .hub-phases {grid-template-columns:1fr}#sqe-hub-v2 .hub-row {grid-template-columns:1fr;gap:4px}}
+  </style>
+  <h2>SQE Development Hub</h2>
+  <div>Controlled auditor review · Traceable evidence · Human decisions</div>
+  <div class="hub-meta text-small text-muted"><span id="hub-updated"></span><span>Manual Snapshot</span><span>Not A Release Approval</span></div>
+  <div class="hub-status"><span class="viz-badge">G0 Remains In Force</span><span class="viz-badge">MCX19-A Done · Visual QA Incomplete</span></div>
+  <div class="text-small text-muted">M4 evidence: 3259048 · Run: 7m 54s · Source map links retain 838ae6a</div>
+  <div class="card">
+    <h3>Next Action</h3>
+    <div id="hub-next-action">MCX19-B: define the remaining full candidate visual checks and obtain required run approval.</div>
+    <div class="hub-row"><strong>Owner / Due</strong><span id="hub-next-owner"></span></div>
+    <div class="hub-row"><strong>Blocker</strong><span>UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate.</span></div>
+    <div class="hub-row"><strong>Approval</strong><span>Check the active task’s authority. A new paid run or merge needs its applicable approval.</span></div>
+    <div class="hub-links" id="hub-next-links"></div>
+  </div>
+  <div class="nav nav-pills hub-tabs" role="tablist" aria-label="SQE views">
+    <button class="nav-link active" id="hub-whole-tab" role="tab" aria-controls="hub-whole-panel" aria-selected="true" type="button">Whole Picture</button>
+    <button class="nav-link" id="hub-state-tab" role="tab" aria-controls="hub-state-panel" aria-selected="false" type="button">Development State</button>
+    <button class="nav-link" id="hub-roadmap-tab" role="tab" aria-controls="hub-roadmap-panel" aria-selected="false" type="button">Milestones</button>
+    <button class="nav-link" id="hub-evidence-tab" role="tab" aria-controls="hub-evidence-panel" aria-selected="false" type="button">Evidence And Updates</button>
+  </div>
+  <section id="hub-whole-panel" role="tabpanel" aria-labelledby="hub-whole-tab">
+    <h3>Product Workflow</h3>
+    <div class="hub-flow" aria-label="Domain workflow order">
+      <span>Engagement</span><span aria-hidden="true">→</span><span>Evidence</span><span aria-hidden="true">→</span><span>Relationships</span><span aria-hidden="true">→</span><span>MATE</span><span aria-hidden="true">→</span><span>Conclusions</span>
+    </div>
+    <div class="text-small text-muted">Separate human decisions at each stage · Client release follows its own specification</div>
+    <div class="hub-phases">
+      <div class="hub-phase"><h3>Delivered Foundations</h3><div>Platform extraction, client release view, approved actions, and relationship pilot slices.</div><div class="text-small text-muted">Done / merged in Linear; not a new full-system test.</div></div>
+      <div class="hub-phase"><h3>Now</h3><div>MCX19-A is Done. MCX19-B full visual QA is next; MCX-19 remains In Progress.</div><div class="text-small text-muted">Owner: Alan Richardson · No due date in Linear.</div></div>
+      <div class="hub-phase"><h3>Next</h3><div>Focused outcomes passed → complete visual QA → human readiness decision.</div><div class="text-small text-muted">Proposed order within MCX-19; dates depend on evidence and approval.</div></div>
+      <div class="hub-phase"><h3>Later / Separate Work</h3><div>Reconcile the relationship pilot decision. Specify future retrieval capabilities before implementation.</div><div class="text-small text-muted">No implied dependency on iOS; no new scope approved here.</div></div>
+    </div>
+    <h3>Capability Map</h3>
+    <div class="viz-grid" role="group" aria-label="Select a capability">
+      <button class="btn" type="button" data-capability="platform" aria-pressed="false">Platform And Controls</button>
+      <button class="btn" type="button" data-capability="workbench" aria-pressed="false">Auditor Workbench</button>
+      <button class="btn" type="button" data-capability="release" aria-pressed="false">Client Release</button>
+      <button class="btn" type="button" data-capability="ios" aria-pressed="true">iOS Client</button>
+      <button class="btn" type="button" data-capability="relationship" aria-pressed="false">Relationship Pilot</button>
+      <button class="btn" type="button" data-capability="future" aria-pressed="false">Future Capabilities</button>
+    </div>
+    <div class="card hub-selection" aria-live="polite">
+      <h3 id="hub-capability-title">iOS Client</h3>
+      <div id="hub-capability-rows"></div>
+      <div class="hub-links" id="hub-capability-links"></div>
+      <button class="btn" type="button" id="hub-capability-open">Open Related Milestone</button>
+    </div>
+    <details class="hub-section"><summary>Dependencies And Decision Gates</summary>
+      <ul class="hub-list">
+        <li><strong>Recorded in Linear:</strong> MCX-17 → MCX-19. MCX-17 is Done, so this prerequisite is satisfied in the tracker.</li>
+        <li><strong>Proposed milestone order:</strong> MCX19-A → MCX19-B → MCX19-C. These are parts of MCX-19.</li>
+        <li><strong>Separate workstream:</strong> No iOS dependency was found for the inspected relationship pilot decision.</li>
+        <li><strong>Across all work:</strong> Keep G0, human decisions, and exact-candidate evidence controls active.</li>
+        <li><strong>Before expansion:</strong> Obtain approval for new data boundaries, providers, schemas, security changes, or Production use.</li>
+        <li><strong>Before merge:</strong> Obtain the required decision for the exact head. Completing MCX-19 does not grant this decision.</li>
+      </ul>
+    </details>
+  </section>
+  <section id="hub-state-panel" role="tabpanel" aria-labelledby="hub-state-tab" hidden>
+    <h3>Implementation And Verification Are Separate</h3>
+    <div class="hub-row"><strong>Task Status</strong><span>MCX-15 and MCX-19: In Progress in Linear. The Hub does not change those states.</span></div>
+    <div class="hub-row"><strong>Code Status</strong><span>M4 diagnostic commit: 3259048186916941bf3557d55503e7375e432c57. Results apply to this commit only.</span></div>
+    <div class="hub-row"><strong>Verified In Record</strong><span>MCX19-A is Done at 3259048186916941bf3557d55503e7375e432c57. The M4 run finished in 7m 54s: three native tests passed, none failed or skipped, and no accessibility issues were reported.</span></div>
+    <div class="hub-row"><strong>Local Checks</strong><span>At 3259048: 12 focused checks passed; full local suite 901 passed, one platform skip, one existing warning. GitHub Quality Gates 34220925126 passed.</span></div>
+    <div class="hub-row"><strong>Still Unestablished</strong><span>UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate.</span></div>
+    <div class="hub-row"><strong>Release State</strong><span>Incomplete in the state record. PR 6 is recorded as draft. Live PR and build states were not refreshed.</span></div>
+    <p>Estimated cost: US$0.9006 (about US$0.90) before tax and billing rounding. Actual charge is unconfirmed. David was updated; support follow-up is paused. The separate M2 queue is not confirmed resolved.</p>
+    <div class="hub-links" id="hub-state-links"></div>
+    <details class="hub-section"><summary>Historical Full Run · 3a52b52</summary>
+      <div class="hub-row"><strong>Mac Checks</strong><span>65 unit tests passed; 42 evidence-contract tests passed; negative check passed.</span></div>
+      <div class="hub-row"><strong>UI Commands</strong><span>4 passed, 16 failed, 20 completed on 7 September 2026.</span></div>
+      <div class="hub-row"><strong>Evidence Limit</strong><span>Later focused appearance success does not establish a full UI pass or validate later source changes.</span></div>
+      <div class="hub-links" id="hub-history-links"></div>
+    </details>
+  </section>
+  <section id="hub-roadmap-panel" role="tabpanel" aria-labelledby="hub-roadmap-tab" hidden>
+    <label class="form-label" for="hub-milestone-select">Milestone Or Workstream</label>
+    <select class="form-select" id="hub-milestone-select" aria-label="Milestone or workstream"></select>
+    <div class="hub-flow" aria-label="Proposed current delivery sequence"><span>MCX19-A · Done</span><span aria-hidden="true">→</span><span>MCX19-B · Full Candidate</span><span aria-hidden="true">→</span><span>MCX19-C · Readiness Decision</span></div>
+    <div class="card hub-selection" aria-live="polite">
+      <h3 id="hub-milestone-title"></h3>
+      <div id="hub-milestone-rows"></div>
+      <div class="hub-links" id="hub-milestone-links"></div>
+    </div>
+    <div class="text-small text-muted">Scope and acceptance: developer roadmap · Owners, issue states, and dates: Linear snapshot · No automatic assignment or execution</div>
+  </section>
+  <section id="hub-evidence-panel" role="tabpanel" aria-labelledby="hub-evidence-tab" hidden>
+    <h3>Freshness And Coverage</h3>
+    <div id="hub-freshness-rows"></div>
+    <h3>Since The Previous Hub</h3>
+    <p>MCX19-A is Done at 3259048186916941bf3557d55503e7375e432c57. The M4 run finished in 7m 54s: three native tests passed, none failed or skipped, and no accessibility issues were reported.</p>
+    <p>Estimated cost: US$0.9006 (about US$0.90) before tax and billing rounding. Actual charge is unconfirmed. David was updated; support follow-up is paused. The separate M2 queue is not confirmed resolved.</p>
+    <p>Codemagic displays failed because the diagnostic deliberately exits 1 after publishing its result. Native process exit: 0.</p>
+    <h3>Earlier Hub Changes</h3>
+    <ul class="hub-list">
+      <li>Added the whole product view, six capabilities, and separate dependency types.</li>
+      <li>Read Linear issue owners, status, and due dates. MCX-19 owner is now shown as Alan Richardson.</li>
+      <li>Added one next action and separate implementation / verification fields.</li>
+      <li>Added capability-to-milestone navigation and specific task, code, and evidence links.</li>
+      <li>Recorded conflicting and older source records. No new application test pass is claimed.</li>
+    </ul>
+    <details class="hub-section"><summary>Record Conflicts And Missing Evidence</summary>
+      <ul class="hub-list">
+        <li>Both Linear projects report Backlog while their issues include completed and active work.</li>
+        <li>MCX-15 description says Planning only; its structured status is In Progress.</li>
+        <li>MCX-10 contains approved decisions but remains Todo. Related completed work does not close it automatically.</li>
+        <li>The M4 run report supplies the latest focused result. MCX-19 was rechecked on 9 September: In Progress.</li>
+        <li>UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate.</li>
+      </ul>
+    </details>
+    <details class="hub-section"><summary>All 17 Returned SQE Issues · Linear Snapshot</summary>
+      <div class="table-responsive"><table class="table table-sm hub-issues"><thead><tr><th>Issue</th><th>Status</th><th>Owner</th><th>Due</th></tr></thead><tbody id="hub-issues-body"></tbody></table></div>
+      <div class="text-small text-muted">Team Mcxi_co · Search “SQE” · No next page · Cancelled work is not completion</div>
+    </details>
+    <div class="hub-links" id="hub-source-links"></div>
+  </section>
+  <hr>
+  <div class="text-small text-muted">Whole Picture → Milestone → Task And Evidence · Manual refresh · Linear remains the issue tracker</div>
+  <script id="hub-snapshot-data" type="application/json">{"updatedLabel": "09 September 2026 · 06:13 AEST", "snapshotUTC": "2026-09-08T04:10:24Z", "head": "838ae6af5933495c49f74d3e47109e6159bb951b", "planSource": "DEVELOPER_ROADMAP.md", "issues": [{"id": "MCX-17", "title": "[SQE] Extract SQE Platform And Introduce Tiered Quality Gates", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-17/sqe-extract-sqe-platform-and-introduce-tiered-quality-gates", "project": "SQE Platform", "labels": ["sqe", "approved", "merged"]}, {"id": "MCX-19", "title": "[SQE] Run Live iOS Evidence Before Leaving G0", "status": "In Progress", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-19/sqe-run-live-ios-evidence-before-leaving-g0", "project": "SQE Platform", "labels": ["sqe", "ready-for-human", "needs-triage"]}, {"id": "MCX-10", "title": "[SQE] Decide Relationship Review Pilot Next Phase", "status": "Todo", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-10/sqe-decide-relationship-review-pilot-next-phase", "labels": ["sqe"]}, {"id": "MCX-9", "title": "[SQE] Verify Physical iPhone Safari Capture", "status": "Canceled", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-9/sqe-verify-physical-iphone-safari-capture", "labels": ["sqe"]}, {"id": "MCX-15", "title": "[SQE] Implement ACE iOS Read-Only Client Application", "status": "In Progress", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application", "labels": ["sqe", "ready-for-human", "needs-info"]}, {"id": "MCX-20", "title": "[SQE] Remove Dead MATE Origin Records", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-20/sqe-remove-dead-mate-origin-records", "project": "SQE Platform", "labels": ["sqe", "approved", "merged"]}, {"id": "MCX-21", "title": "[SQE] Align Reviewed Evidence Field Description", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-21/sqe-align-reviewed-evidence-field-description", "project": "SQE Platform", "labels": ["sqe", "approved", "merged"]}, {"id": "MCX-22", "title": "[SQE] Add Wrong UUID Simulator Regression Test", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-22/sqe-add-wrong-uuid-simulator-regression-test", "project": "SQE Platform", "labels": ["sqe", "approved", "merged"]}, {"id": "MCX-14", "title": "[SQE] Phase 6B1 — Approved Actions", "status": "Done", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-14/sqe-phase-6b1-approved-actions", "labels": ["ready-to-merge", "approved", "merged"]}, {"id": "MCX-12", "title": "[SQE] Phase 6A — Minimal Client Release View", "status": "Done", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-12/sqe-phase-6a-minimal-client-release-view", "labels": ["merged"]}, {"id": "MCX-13", "title": "[SQE] Reconcile Phase 6A With The Controlled ACE Baseline", "status": "Done", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-13/sqe-reconcile-phase-6a-with-the-controlled-ace-baseline", "labels": ["merged"]}, {"id": "MCX-8", "title": "[SQE] Plan Convex And Vercel Relationship Review Pilot", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-8/sqe-plan-convex-and-vercel-relationship-review-pilot", "project": "SQE Phase 2 - Relationship View", "labels": ["sqe", "merged"]}, {"id": "MCX-18", "title": "[SQE] Use Strict Simulator Resolution For Make UI Test", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-18/sqe-use-strict-simulator-resolution-for-make-ui-test", "project": "SQE Platform", "labels": ["sqe", "needs-triage", "ready-to-merge", "approved", "merged"]}, {"id": "MCX-7", "title": "[SQE] Repair Autonomous Delivery Workflow", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-7/sqe-repair-autonomous-delivery-workflow", "project": "SQE Phase 2 - Relationship View", "labels": ["ready-to-merge", "sqe", "ready-for-human", "approved", "merged"]}, {"id": "MCX-5", "title": "[SQE] Reconcile Relationship Review With Current Baseline", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-5/sqe-reconcile-relationship-review-with-current-baseline", "project": "SQE Phase 2 - Relationship View", "labels": ["sqe", "ready-for-human", "approved", "merged"]}, {"id": "MCX-6", "title": "[SQE] Implement Next Relationship View Slice", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-6/sqe-implement-next-relationship-view-slice", "project": "SQE Phase 2 - Relationship View", "labels": ["ready-to-merge", "sqe", "ready-for-human", "approved", "merged"]}, {"id": "MCX-11", "title": "[SQE] Reconcile Relationship Details Pilot Source", "status": "Done", "assignee": "Alan Richardson", "dueDate": null, "url": "https://linear.app/mcxi-co/issue/MCX-11/sqe-reconcile-relationship-details-pilot-source", "labels": ["sqe", "approved", "ready-to-merge", "merged"]}], "projects": [{"name": "SQE Platform", "url": "https://linear.app/mcxi-co/project/sqe-platform-12db1e82aeb0"}, {"name": "SQE Phase 2 - Relationship View", "url": "https://linear.app/mcxi-co/project/sqe-phase-2-relationship-view-7e11c30cd4fb"}], "links": {"pr": {"label": "GitHub · PR 6", "url": "https://github.com/mcxl/sqe-platform/pull/6"}, "state": {"label": "Local Development State", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/DEV_STATE.md"}, "roadmap": {"label": "Local Roadmap Source", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/DEVELOPER_ROADMAP.md"}, "vision": {"label": "Local Product Vision", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/ACE_VISION_AND_ROADMAP.md"}, "appearance": {"label": "Mac Appearance Evidence · b6eabcd", "url": "https://codemagic.io/app/6a9ab144bb26ca57986419f0/build/6a9f43549bb9204b8f700da2"}, "appearanceChecks": {"label": "GitHub Checks · b6eabcd", "url": "https://github.com/mcxl/sqe-platform/actions/runs/34168789531"}, "history": {"label": "Historical Full-Run Result · 3a52b52", "url": "https://github.com/mcxl/sqe-platform/pull/6#issuecomment-5570031930"}, "archify": {"label": "Local Archify Map · Earlier Snapshot", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/ace-build-visuals/ace-build-archify.html"}, "uaGuide": {"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, "uaReceipt": {"label": "Local Code Map And Restart Instructions", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/COMPLETION.md"}, "m4": {"label": "M4 Native Run Report · 3259048", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/mcx19-functional-accessibility/M4-NATIVE-RUN.md"}}, "capabilities": [{"id": "platform", "name": "Platform And Delivery Controls", "implementation": "MCX-17, MCX-18, and MCX-20–22 are Done and merged in Linear.", "verification": "Historical gate and merge evidence is recorded. The whole current product was not retested.", "when": "Delivered foundation; maintain controls throughout later work.", "issueIds": ["MCX-17"], "where": ".github/workflows/quality-gates.yml; workflows/codex-autonomous-delivery.md.", "map": "CodeGraph for code locations. This capability is outside the three-path reading tour.", "milestone": "PLATFORM", "links": [{"label": "Recorded Foundation Checks", "url": "https://github.com/mcxl/sqe-platform/actions/runs/33937548422"}, {"label": "Quality Gate Source", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/.github/workflows/quality-gates.yml"}]}, {"id": "workbench", "name": "Auditor Workbench", "implementation": "Domain workflow documents and workbench source are present. No dedicated active issue was identified.", "verification": "Complete workbench acceptance was not assessed for this update.", "when": "Existing capability; preserve it while iOS work proceeds.", "issueIds": [], "where": "src/ace/workbench/routes.py; storage.py; src/ace/domain/; workflows/.", "map": "Follow Engagement → Evidence → Relationships → MATE → Conclusions. Use CodeGraph for exact symbols; the small tour is incomplete here.", "milestone": "WORKBENCH", "links": [{"label": "Local Workflow Order", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/WORKFLOW-NOTES.md"}, {"label": "Workbench Routes", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/src/ace/workbench/routes.py"}, {"label": "Domain Context", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/CONTEXT.md"}]}, {"id": "release", "name": "Client Release Service", "implementation": "MCX-12, MCX-13, and MCX-14 are Done and merged in Linear.", "verification": "MCX-12 records historical release-view tests. Current-head compatibility was not rerun.", "when": "Delivered foundation for web and iOS clients.", "issueIds": ["MCX-12", "MCX-14"], "where": "client_routes.py; client_release_service.py; client_release_projection.py.", "map": "Understand Anything steps 2–3 explain the Python response and route-to-storage path.", "milestone": "RELEASE", "links": [{"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "Release Service", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/src/ace/workbench/client_release_service.py"}, {"label": "Historical Release PR", "url": "https://github.com/mcxl/agentic-os-workspace/pull/45"}]}, {"id": "ios", "name": "iOS Read-Only Client", "implementation": "MCX19-A is Done at 3259048. MCX-19 remains In Progress; checked 9 September 2026.", "verification": "MCX19-A is Done at 3259048186916941bf3557d55503e7375e432c57. The M4 run finished in 7m 54s: three native tests passed, none failed or skipped, and no accessibility issues were reported. UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate.", "when": "Now: reconcile evidence. Then focused outcomes → full candidate → readiness decision.", "issueIds": ["MCX-15", "MCX-19"], "where": "ios/ACEClientApp/; tools/diagnose_ios.py; tools/run_tests.py.", "map": "Understand Anything steps 7–9 explain session and transport. Views and tests are outside that pilot.", "milestone": "MCX19-B", "links": [{"label": "M4 Native Run Report · 3259048", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/mcx19-functional-accessibility/M4-NATIVE-RUN.md"}, {"label": "GitHub · PR 6", "url": "https://github.com/mcxl/sqe-platform/pull/6"}, {"label": "Mac Appearance Evidence · b6eabcd", "url": "https://codemagic.io/app/6a9ab144bb26ca57986419f0/build/6a9f43549bb9204b8f700da2"}, {"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "iOS Source At Inspected Commit", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/ios/ACEClientApp/ACEClientApp/Views.swift"}]}, {"id": "relationship", "name": "Relationship Review Pilot", "implementation": "MCX-5, MCX-6, MCX-8, and MCX-11 are Done and merged. MCX-10 remains Todo.", "verification": "Historical pilot delivery is recorded. The live Preview was not checked.", "when": "Separate workstream: reconcile the open decision before planning further work.", "issueIds": ["MCX-10", "MCX-11"], "where": "apps/relationship-review-pilot/components/; convex/relationships.ts.", "map": "Understand Anything steps 4–6 explain React and Convex. No React-to-Python link is claimed.", "milestone": "RELATIONSHIP", "links": [{"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "Relationship Workbench", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/apps/relationship-review-pilot/components/relationship-review-workbench.tsx"}, {"label": "Recorded Pilot PR", "url": "https://github.com/mcxl/agentic-os-workspace/pull/37"}]}, {"id": "future", "name": "Future Retrieval And Capabilities", "implementation": "Planned direction only; no implementation or active issue established for this scope.", "verification": "Not assessed.", "when": "Later, after a separate specification and approved fictional-data scope.", "issueIds": [], "where": "ACE_VISION_AND_ROADMAP.md; no implementation location established.", "map": "No current source-map coverage. Add only after scope is defined.", "milestone": "FUTURE", "links": [{"label": "Local Product Vision", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/ACE_VISION_AND_ROADMAP.md"}]}], "milestones": [{"id": "MCX19-A", "title": "Resolve Functional Evidence", "issueIds": ["MCX-19"], "what": "Establish functional and accessibility outcomes; resolve only supported faults within approved scope.", "implementation": "Done — focused functional and accessibility evidence recorded.", "verification": "MCX19-A is Done at 3259048186916941bf3557d55503e7375e432c57. The M4 run finished in 7m 54s: three native tests passed, none failed or skipped, and no accessibility issues were reported.", "where": "Views.swift; ACEClientAppUITests.swift; tools/diagnose_ios.py.", "when": "Completed 8 September 2026 UTC; recorded 9 September AEST.", "how": "At 3259048: 12 focused checks passed; full local suite 901 passed, one platform skip, one existing warning. GitHub Quality Gates 34220925126 passed.", "acceptance": "Passed for the three light-mode native tests at 3259048. Estimated cost: US$0.9006 (about US$0.90) before tax and billing rounding. Actual charge is unconfirmed. David was updated; support follow-up is paused. The separate M2 queue is not confirmed resolved.", "dependency": "Complete. The one M4 run authority is spent; no second run is authorised.", "map": "Tour steps 7–8 cover session and transport only. Use current source and CodeGraph for Views and tests.", "links": [{"label": "M4 Native Run Report · 3259048", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/mcx19-functional-accessibility/M4-NATIVE-RUN.md"}, {"label": "GitHub · PR 6", "url": "https://github.com/mcxl/sqe-platform/pull/6"}, {"label": "Historical Full-Run Result · 3a52b52", "url": "https://github.com/mcxl/sqe-platform/pull/6#issuecomment-5570031930"}, {"label": "Mac Appearance Evidence · b6eabcd", "url": "https://codemagic.io/app/6a9ab144bb26ca57986419f0/build/6a9f43549bb9204b8f700da2"}, {"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "UI Test Source", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"}, {"label": "Diagnostic Source", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/tools/diagnose_ios.py"}]}, {"id": "MCX19-B", "title": "Verify The Full Candidate", "issueIds": ["MCX-19"], "what": "Obtain required complete iOS evidence after focused faults are resolved.", "implementation": "Next — MCX19-A is complete.", "verification": "UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate.", "where": "tools/run_tests.py; tests/test_run_tests.py; codemagic.yaml; iOS specification.", "when": "Next, after approval for the remaining validation. No due date in Linear.", "how": "Confirm exact head, gates, test inventory, run scope, and capacity. Retain separate outcomes and required artifact checks.", "acceptance": "Required candidate checks pass with retained evidence. Record normal device-setting behaviour separately. An incomplete progress report is insufficient.", "dependency": "MCX19-A, current acceptance requirements, and applicable run approval.", "map": "Tour steps 2–3 and 7–9 explain Python release and Swift requests. Matching HTTP paths do not prove a live connection.", "links": [{"label": "M4 Native Run Report · 3259048", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/mcx19-functional-accessibility/M4-NATIVE-RUN.md"}, {"label": "GitHub · PR 6", "url": "https://github.com/mcxl/sqe-platform/pull/6"}, {"label": "Historical Full-Run Result · 3a52b52", "url": "https://github.com/mcxl/sqe-platform/pull/6#issuecomment-5570031930"}, {"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "Controlled Test Runner", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/tools/run_tests.py"}, {"label": "iOS Specification · Check Approval Record", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md"}]}, {"id": "MCX19-C", "title": "Review Release Readiness", "issueIds": ["MCX-19"], "what": "Present the exact candidate evidence for a human readiness decision.", "implementation": "Dependent milestone. No merge approval is supplied by this Hub.", "verification": "Blocked until the required candidate evidence and reviews are complete.", "where": "PR 6; DEV_STATE.md; delivery workflow; decision-authority record.", "when": "After B and required reviews. No due date in Linear.", "how": "Reconcile the head, tests, reviews, limits, and approvals. Keep installable-build and Production decisions separate.", "acceptance": "A recorded decision identifies the exact head and allowed next action. A changed head needs a new decision.", "dependency": "MCX19-B and required reviews. G0 and other decision gates remain active.", "map": "Use the maps to explain scope; they do not establish release readiness.", "links": [{"label": "GitHub · PR 6", "url": "https://github.com/mcxl/sqe-platform/pull/6"}, {"label": "Local Development State", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/DEV_STATE.md"}, {"label": "Delivery Workflow", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/workflows/codex-autonomous-delivery.md"}, {"label": "Human Decision Authority", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/docs/adr/0001-human-auditor-controls-final-decisions.md"}]}, {"id": "PLATFORM", "title": "Maintain Delivered Foundation", "issueIds": ["MCX-17"], "what": "Preserve the platform extraction and tiered delivery gates.", "implementation": "Done and merged in Linear; MCX-18 and MCX-20–22 are also Done and merged.", "verification": "MCX-17 records passed gates and the merge at 92cd419. Not a new full-product test.", "where": ".github/workflows/quality-gates.yml; delivery workflow.", "when": "Delivered foundation; preserve during active work.", "how": "Read the delivered issue and gate rules before an implementation task changes related code.", "acceptance": "Historical task completion is recorded in Linear. Any new change needs its own scope and relevant verification.", "dependency": "MCX-17 precedes MCX-19 in Linear; the prerequisite is satisfied in the tracker.", "map": "Use CodeGraph for affected symbols; no whole-platform tour coverage is claimed.", "links": [{"label": "Recorded Foundation Checks", "url": "https://github.com/mcxl/sqe-platform/actions/runs/33937548422"}, {"label": "Quality Gate Source", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/.github/workflows/quality-gates.yml"}]}, {"id": "WORKBENCH", "title": "Preserve Auditor Workflow", "issueIds": [], "what": "Support engagement, evidence, relationship, MATE, and conclusion review with human decisions.", "implementation": "Workflow documents and source are present. No dedicated active issue identified.", "verification": "Full current workbench acceptance was not assessed.", "where": "src/ace/workbench/; src/ace/domain/; workflows/.", "when": "Existing capability. Schedule any new work only after an issue and scope are agreed.", "how": "Follow each separate workflow specification. Identify affected code and tests before changes.", "acceptance": "For a future work chunk, agree scoped acceptance first; do not use source presence as proof of completed validation.", "dependency": "G0, human decisions, versioned approvals, and evidence limits apply throughout.", "map": "CodeGraph for exact symbols. Understand Anything covers only the selected release path, not the full workbench.", "links": [{"label": "Local Workflow Order", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/WORKFLOW-NOTES.md"}, {"label": "Workbench Routes", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/src/ace/workbench/routes.py"}, {"label": "Domain Context", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/CONTEXT.md"}]}, {"id": "RELEASE", "title": "Maintain Client Release Boundary", "issueIds": ["MCX-12", "MCX-14"], "what": "Preserve the read-only release view and approved action display.", "implementation": "Done and merged in Linear; MCX-13 reconciliation is also Done.", "verification": "MCX-12 records 26 focused and 500 full-suite tests at its historical head. Current compatibility not rerun.", "where": "client_routes.py; client_release_service.py; client_release_projection.py.", "when": "Delivered foundation; verify affected behaviour when dependent client changes require it.", "how": "Keep the approved release and projection boundaries. Match any new compatibility result to its tested head.", "acceptance": "Historical delivery remains recorded. New changes need scoped acceptance and exact-head evidence.", "dependency": "Supports client consumption. This is a product relationship, not a new Linear dependency.", "map": "Understand Anything steps 2–3.", "links": [{"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "Release Service", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/src/ace/workbench/client_release_service.py"}, {"label": "Historical Release PR", "url": "https://github.com/mcxl/agentic-os-workspace/pull/45"}]}, {"id": "RELATIONSHIP", "title": "Reconcile Pilot Next-Phase Decision", "issueIds": ["MCX-10"], "what": "Reconcile the open decision with the delivered read-only pilot slices.", "implementation": "MCX-10 is Todo. MCX-11 is Done and merged.", "verification": "Live Preview and new candidate behaviour were not checked in this update.", "where": "apps/relationship-review-pilot/; MCX-10 and MCX-11.", "when": "Separate workstream; no due date or assignee set in MCX-10.", "how": "Review existing decisions and delivered source. Agree the next bounded issue without repeating completed work.", "acceptance": "The decision record identifies the next allowed scope or confirms no new work. Human review controls the result.", "dependency": "No iOS dependency found in the inspected issue relations. Existing fictional and Preview restrictions remain.", "map": "Understand Anything steps 4–6; React and Convex are separate from Python release.", "links": [{"label": "Delivered Pilot · MCX-11", "url": "https://linear.app/mcxi-co/issue/MCX-11/sqe-reconcile-relationship-details-pilot-source"}, {"label": "Local Understand Anything Guide", "url": "file:///LOCAL_HOME/Documents/Codex/2026-09-08/sqe-understand-pilot/README.md"}, {"label": "Relationship Workbench", "url": "https://github.com/mcxl/sqe-platform/blob/838ae6af5933495c49f74d3e47109e6159bb951b/apps/relationship-review-pilot/components/relationship-review-workbench.tsx"}, {"label": "Recorded Pilot PR", "url": "https://github.com/mcxl/agentic-os-workspace/pull/37"}]}, {"id": "FUTURE", "title": "Specify Future Capabilities", "issueIds": [], "what": "Define future retrieval or other capabilities before adding them.", "implementation": "Planned direction only.", "verification": "Not assessed; no implementation claim.", "where": "Platform vision; no source location established.", "when": "Later. No date, issue, or assignee established.", "how": "Define a small fictional-data pilot and a separate specification. Resolve applicable approval gates before implementation.", "acceptance": "Approved scope, acceptance criteria, data boundary, owner, and issue exist before work begins.", "dependency": "Separate specification and applicable approvals; no automatic advancement from MCX-19.", "map": "No current code-map coverage.", "links": [{"label": "Local Product Vision", "url": "file:///LOCAL_HOME/Documents/sqe-platform-public-clean/ACE_VISION_AND_ROADMAP.md"}]}], "freshness": [["Hub And Linear", "Evidence updated 9 September 2026. Full Linear snapshot: 8 September. MCX-19 rechecked 9 September: In Progress."], ["Checkout", "Source links retain 838ae6a. M4 evidence applies to 3259048 only; later checkout results are not inferred."], ["Test Evidence", "MCX19-A is Done at 3259048186916941bf3557d55503e7375e432c57. The M4 run finished in 7m 54s: three native tests passed, none failed or skipped, and no accessibility issues were reported. UNVERIFIED — UI QA INCOMPLETE: screenshots, dark mode, large Dynamic Type, and normal device-setting behaviour remain unverified for this candidate."], ["Linear Comments", "M4 run report supplies the latest result for this update. Older diagnostic comments do not establish current completion."], ["Understand Anything", "19-file snapshot at b6eabcd; nine tour steps. Views and tests omitted; manual refresh required."], ["Archify", "Retained build-progress map at b6eabcd. Historical sequence, not current release evidence."], ["CodeGraph", "Existing 95-file index is available. Re-check freshness and inspect source before relying on caller links."], ["Evidence Links", "Taken from inspected records. GitHub and Codemagic live status was not refreshed. Local guide links require this computer."], ["Scope Of This Update", "Documentation and manual views only. No application test, task assignment, paid run, merge, or Production action."], ["Cost And Support", "Estimated cost: US$0.9006 (about US$0.90) before tax and billing rounding. Actual charge is unconfirmed. David was updated; support follow-up is paused. The separate M2 queue is not confirmed resolved."]], "generatedUTC": "2026-09-08T20:13:31.788364+00:00", "laterObservedHead": "3105a63b95aec0b04b36b0181abfc4b94539aa7e"}</script>
+  <script>
+    (() => {
+      const root = document.getElementById('sqe-hub-v2');
+      const data = JSON.parse(root.querySelector('#hub-snapshot-data').textContent);
+      const find = id => root.querySelector('#'+id);
+      const issue = id => data.issues.find(item => item.id === id);
+      const appendLink = (parent, item) => {
+        const link = document.createElement('a');
+        link.textContent = item.label;
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        parent.appendChild(link);
+      };
+      const links = (id, items) => {const parent=find(id);parent.replaceChildren();items.forEach(item=>appendLink(parent,item));};
+      const rows = (id, values) => {
+        const parent=find(id);parent.replaceChildren();
+        values.forEach(([label,text])=>{
+          const row=document.createElement('div');row.className='hub-row';
+          const term=document.createElement('strong');term.textContent=label;
+          const value=document.createElement('span');value.textContent=text;
+          row.append(term,value);parent.appendChild(row);
+        });
+      };
+      const issueLink = id => ({label:'Linear · '+id,url:issue(id).url});
+      const ownership = ids => ids.length ? ids.map(id=>{const item=issue(id);return id+': '+(item.assignee||'Unassigned')+' · '+(item.dueDate||'No due date');}).join('; ') : 'No mapped issue; owner and date unassigned.';
+      find('hub-updated').textContent='Updated '+data.updatedLabel;
+      find('hub-next-owner').textContent=ownership(['MCX-19']);
+      links('hub-next-links',[issueLink('MCX-19'),data.links.m4,data.links.pr]);
+      links('hub-state-links',[data.links.m4,data.links.appearance,data.links.appearanceChecks,data.links.state]);
+      links('hub-history-links',[data.links.history]);
+      links('hub-source-links',[data.links.roadmap,data.links.vision,data.links.archify,data.links.uaGuide,...data.projects.map(p=>({label:'Linear Project · '+p.name,url:p.url}))]);
+      rows('hub-freshness-rows',data.freshness);
+      let activeCapability='ios';
+      const showCapability = id => {
+        activeCapability=id;
+        const cap=data.capabilities.find(item=>item.id===id);
+        find('hub-capability-title').textContent=cap.name;
+        root.querySelectorAll('[data-capability]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.capability===id)));
+        rows('hub-capability-rows',[
+          ['Implementation',cap.implementation],['Verification',cap.verification],['When',cap.when],
+          ['Owner / Due',ownership(cap.issueIds)],['Where',cap.where],['Reading Map',cap.map]
+        ]);
+        links('hub-capability-links',[...cap.issueIds.map(issueLink),...cap.links]);
+      };
+      const select=find('hub-milestone-select');
+      data.milestones.forEach(item=>{const option=document.createElement('option');option.value=item.id;option.textContent=item.id+' · '+item.title;select.appendChild(option);});
+      const showMilestone = id => {
+        const item=data.milestones.find(m=>m.id===id);
+        select.value=id;
+        find('hub-milestone-title').textContent=item.id+' · '+item.title;
+        rows('hub-milestone-rows',[
+          ['What',item.what],['Implementation',item.implementation],['Verification',item.verification],
+          ['Where',item.where],['When',item.when],['Owner / Due',ownership(item.issueIds)],
+          ['How',item.how],['Done When',item.acceptance],['Dependency',item.dependency],['Reading Map',item.map]
+        ]);
+        links('hub-milestone-links',[...item.issueIds.map(issueLink),...item.links]);
+      };
+      root.querySelectorAll('[data-capability]').forEach(button=>button.addEventListener('click',()=>showCapability(button.dataset.capability)));
+      find('hub-capability-open').addEventListener('click',()=>{
+        showMilestone(data.capabilities.find(c=>c.id===activeCapability).milestone);
+        find('hub-roadmap-tab').click();
+      });
+      select.addEventListener('change',()=>showMilestone(select.value));
+      data.issues.forEach(item=>{
+        const row=document.createElement('tr');
+        const first=document.createElement('td');appendLink(first,{label:item.id+' · '+item.title.replace(/^\[SQE\]\s*/,''),url:item.url});row.appendChild(first);
+        [item.status,item.assignee||'Unassigned',item.dueDate||'Not set'].forEach(text=>{const cell=document.createElement('td');cell.textContent=text;row.appendChild(cell);});
+        find('hub-issues-body').appendChild(row);
+      });
+      showCapability('ios');showMilestone('MCX19-B');
+      if(root.dataset.defaultView!=='whole') {
+        const openDefault=()=>find('hub-'+root.dataset.defaultView+'-tab').click();
+        if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',openDefault,{once:true});
+        else openDefault();
+      }
+    })();
+  </script>
+</div>
+
+<script src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
+<script src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
+<script>
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =>
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest("[data-tooltip]")
+      : null;
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) => {
+    lastPointerWasTouch =
+      event.type === "pointerdown" && event.pointerType === "touch";
+  };
+  const handleTouchClick = (event) => {
+    const isTouch = event.pointerType === "touch" || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch && activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() => {
+      if (activeTrigger === trigger && !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) => {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener("pointerover", handlePointerOpen);
+    document.removeEventListener("pointerdown", handlePointer);
+    document.removeEventListener("pointercancel", handlePointer);
+    document.removeEventListener("click", handleTouchClick);
+    document.removeEventListener("pointerout", handleLeave);
+    document.removeEventListener("focusin", handleFocusIn);
+    document.removeEventListener("focusout", handleLeave);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("contextmenu", handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener("pointerover", handlePointerOpen);
+  document.addEventListener("pointerdown", handlePointer);
+  document.addEventListener("pointercancel", handlePointer);
+  document.addEventListener("click", handleTouchClick);
+  document.addEventListener("pointerout", handleLeave);
+  document.addEventListener("focusin", handleFocusIn);
+  document.addEventListener("focusout", handleLeave);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("contextmenu", handleContextMenu);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-tabs">
+(() => {
+  const selector = '.nav[role="tablist"] [role="tab"]';
+  const disabled = ':disabled,[aria-disabled="true"]';
+  const selectTab = (selected) => {
+    const panelId = selected.getAttribute("aria-controls");
+    for (const tab of selected.closest('[role="tablist"]').querySelectorAll('[role="tab"]')) {
+      const active = tab === selected;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", String(active));
+      const id = tab.getAttribute("aria-controls");
+      const panel = id && document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden && selected.id) {
+          panel.setAttribute("aria-labelledby", selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) => {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === "click") {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]'),
+    ).filter((candidate) => !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll('.nav[role="tablist"]')) {
+    const selected =
+      list.querySelector('[role="tab"][aria-selected="true"]') ??
+      list.querySelector('[role="tab"].active') ??
+      list.querySelector('[role="tab"]');
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener("click", interact);
+  document.addEventListener("keydown", interact);
+  window.addEventListener("pagehide", () => {
+    document.removeEventListener("click", interact);
+    document.removeEventListener("keydown", interact);
+  }, { once: true });
+})();
+</script>
+<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
+<script>
+(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+
+</body>
+</html>

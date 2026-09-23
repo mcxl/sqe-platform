@@ -1,0 +1,24 @@
+{
+  "scope": "Maximum system text, portrait, light and dark; all three accessibility settings off; iPhone 17 Pro Max",
+  "reviewMethod": "Primary agent inspected one original-resolution native image for each distinct SHA-256.",
+  "groups": [
+    {
+      "sha256": "23a402bbb4984d044053c8b49e66dadf681d26a5a4df12125e6a8169d8aedb90",
+      "images": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-maximum-integration/batches/000/attachments/10A6E3E7-FFB0-4C44-8DFB-485C3DEAD0F3.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-maximum-integration/batches/000/attachments/E7A23E06-BB9C-40F1-A1E5-32FFF0058222.png"
+      ],
+      "result": "Sign In heading, Username and Password prompts, and Sign in control are visible without clipping."
+    },
+    {
+      "sha256": "bd3e5fcef404fe9123d92f954bebd1e8ff608647a6f42c223cb3371b9ba9f80e",
+      "images": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-maximum-integration/batches/001/attachments/8039BD38-F76B-49F1-AC56-FB866010EA66.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-maximum-integration/batches/001/attachments/899049C4-7523-4989-AD6B-1E7126EDF24D.png"
+      ],
+      "result": "Sign In heading, Username and Password prompts, and Sign in control are visible without clipping."
+    }
+  ],
+  "nativeResult": "Both one-case unrestricted audit tests passed; final setting restoration is recorded separately.",
+  "acceptedCoverageCases": 0
+}

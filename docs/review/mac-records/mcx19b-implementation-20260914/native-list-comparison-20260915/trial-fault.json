@@ -1,0 +1,802 @@
+{
+  "variant": "trial",
+  "test": "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+  "expected": "All eleven field checks, approved Copy checks, and unrestricted initial/post-scroll/post-Copy audits pass.",
+  "actual": "One test failed with 43 native accessibility findings at lines 675, 692 and 703. All three audits ran. No non-audit assertion failed.",
+  "classification": "Unresolved native contrast, Dynamic Type and clipping findings. List trial does not meet the correction goal; cause of each finding not established.",
+  "nativeExit": 65,
+  "runnerExit": 2,
+  "candidate": {
+    "commit": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "sourceHashes": {
+      "docs/plans/2026-09-14-ace-ios-local-verification.md": "7d772483227b1a166864bff7190171db681b04cff1e93ced356fb1ab1976cbef",
+      "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0",
+      "docs/specs/autonomous-delivery-workflow-repair.md": "c45ba49f914f3842d5fd19a6577b542fee240a6850f570a6ccbb957d6949c8d4",
+      "docs/specs/documentation-control.md": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+      "docs/specs/phase6-stage1-release-service-boundary.md": "ab25e6321d7fdfacfeec2a256f9b1c3a1b637840da4e548ee0f7e969a202dfa6",
+      "docs/specs/phase6-stage2-release-workflow.md": "0afaad9be9771951c116aa90b1de6315aef1f63964aba8528c0f75edca3ca68c",
+      "docs/specs/phase6-stage3-release-trigger-decisions.md": "f8b7952280e1e5edb3709c1a104e780342f447ebc4479774c8ec669673d0aabd",
+      "docs/specs/phase6b2-read-only-client-release-projection.md": "18a69b1b0608460dd4aface9ec32b5b9421f961726392bbf8e7a7373165f8a10",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+      "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "af600b46ea52b3702cbd322b92108d90f55a75830ca6b6f47eb6c4e766876f28",
+      "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+      "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "4fb5f44d88a34db25879ba2aeea6ab3b3f7edb4f6ffa0a2ca079e6320d541915",
+      "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+      "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+      "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+      "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+      "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+      "ios/ACEClientApp/ACEClientApp/Views.swift": "3a23812a4abe08458ee6a10fb9de6a86608a4468e7e019775bc312989f981f1a",
+      "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+      "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+      "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "335687d59070fdd1499de490b2d35f13639bbbd4c931451a4d957beba0cde604",
+      "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8",
+      "ios/ACEClientApp/Makefile": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+      "ios/ACEClientApp/Phase6_1EvidenceRegister.json": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+      "ios/ACEClientApp/Phase6_1EvidenceRegister.md": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+      "ios/ACEClientApp/RuntimeEvidencePlan.json": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+      "ios/ACEClientApp/RuntimeEvidencePlan.md": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+      "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+      "ios/ACEClientApp/evidence-matrix-audit.md": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+      "quality/test-groups.json": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+      "tools/ace_ios_local.py": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+      "tools/diagnose_ios.py": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+      "tools/run_tests.py": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+      "tools/tests/test_ace_ios_local.py": "32fa082804578796995421e5520275e723bdd8dad8d2d672103712a1cac3bebe"
+    },
+    "status": "dirty",
+    "statusDetail": "M ios/ACEClientApp/ACEClientApp/Views.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "workingTreeSha256": "09d8fe899dd76b16ab5e8f35730e059f843b33c56b6da5a8036f153ada18cf86"
+  },
+  "issueCounts": {
+    "Contrast nearly passed": 2,
+    "Dynamic Type font sizes are partially unsupported": 34,
+    "Contrast failed": 3,
+    "Dynamic Type font sizes are unsupported": 2,
+    "Text clipped": 2
+  },
+  "scenarioCounts": {
+    "release-initial": 13,
+    "release": 15,
+    "copyConfirmation-after-copy": 15
+  },
+  "issues": [
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "identifier": "",
+        "label": "",
+        "type": "unavailable"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 132,
+          "x": 56,
+          "y": 790.6666666666666
+        },
+        "identifier": "",
+        "label": "Evidence reference",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333314,
+          "width": 7.666666666666664,
+          "x": 56,
+          "y": 456
+        },
+        "identifier": "",
+        "label": "1",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333485,
+          "width": 156,
+          "x": 56,
+          "y": 814.6666666666666
+        },
+        "identifier": "",
+        "label": "FICTIONAL-REF-001",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 143.66666666666666,
+          "x": 56,
+          "y": 716.3333333333334
+        },
+        "identifier": "",
+        "label": "Conclusion summary",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 150.33333333333334,
+          "x": 56,
+          "y": 666
+        },
+        "identifier": "",
+        "label": "Fictional conclusion",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 107.33333333333331,
+          "x": 56,
+          "y": 432
+        },
+        "identifier": "",
+        "label": "Release version",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 182,
+          "x": 56,
+          "y": 530.3333333333333
+        },
+        "identifier": "",
+        "label": "2026-08-24T10:15:30Z",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 17.999999999999943,
+          "width": 165.33333333333334,
+          "x": 56,
+          "y": 506.3333333333333
+        },
+        "identifier": "",
+        "label": "Published date and time",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 106,
+          "x": 56,
+          "y": 642
+        },
+        "identifier": "",
+        "label": "Conclusion title",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333258,
+          "width": 138.66666666666666,
+          "x": 56,
+          "y": 740.3333333333334
+        },
+        "identifier": "",
+        "label": "Fictional summary",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 95,
+          "x": 56,
+          "y": 357.6666666666667
+        },
+        "identifier": "",
+        "label": "Review status",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333314,
+          "width": 82.33333333333331,
+          "x": 56,
+          "y": 381.6666666666667
+        },
+        "identifier": "",
+        "label": "RELEASED",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-initial"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 132,
+          "x": 56,
+          "y": 205.99999999999991
+        },
+        "identifier": "",
+        "label": "Evidence reference",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 54,
+          "width": 368,
+          "x": 36,
+          "y": 300.3333333333333
+        },
+        "identifier": "",
+        "label": "Actions",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 115,
+          "x": 56,
+          "y": 451.3333333333333
+        },
+        "identifier": "",
+        "label": "Fictional action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 124.66666666666666,
+          "x": 56,
+          "y": 427.3333333333333
+        },
+        "identifier": "",
+        "label": "Action description",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 96.33333333333331,
+          "x": 56,
+          "y": 600
+        },
+        "identifier": "",
+        "label": "2026-08-25",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 123,
+          "x": 56,
+          "y": 576
+        },
+        "identifier": "",
+        "label": "Action target date",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333343,
+          "width": 156,
+          "x": 56,
+          "y": 229.99999999999991
+        },
+        "identifier": "",
+        "label": "FICTIONAL-REF-001",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 58,
+          "width": 155,
+          "x": 56,
+          "y": 724.6666666666665
+        },
+        "identifier": "",
+        "label": "Copy action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333258,
+          "width": 115,
+          "x": 56,
+          "y": 525.6666666666667
+        },
+        "identifier": "",
+        "label": "Fictional owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18.000000000000057,
+          "width": 89.66666666666666,
+          "x": 56,
+          "y": 501.6666666666667
+        },
+        "identifier": "",
+        "label": "Action owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 45,
+          "x": 56,
+          "y": 674.3333333333335
+        },
+        "identifier": "",
+        "label": "OPEN",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 90,
+          "x": 56,
+          "y": 650.3333333333335
+        },
+        "identifier": "",
+        "label": "Action status",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast failed",
+      "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 40.333333333333314,
+          "width": 368,
+          "x": 36,
+          "y": 371.99999999999994
+        },
+        "identifier": "",
+        "label": "Action 1",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast failed",
+      "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 143.66666666666666,
+          "x": 56,
+          "y": 131.66666666666663
+        },
+        "identifier": "",
+        "label": "Conclusion summary",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast failed",
+      "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18.000000000000057,
+          "width": 89.66666666666666,
+          "x": 56,
+          "y": 501.6666666666667
+        },
+        "identifier": "",
+        "label": "Action owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333314,
+          "width": 115,
+          "x": 56,
+          "y": 402.6666666666667
+        },
+        "identifier": "",
+        "label": "Fictional owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 123,
+          "x": 56,
+          "y": 452.99999999999994
+        },
+        "identifier": "",
+        "label": "Action target date",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 123.33333333333334,
+          "x": 56,
+          "y": 667.6666666666665
+        },
+        "identifier": "",
+        "label": "Copied Action 1.",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 58,
+          "width": 155,
+          "x": 56,
+          "y": 601.6666666666665
+        },
+        "identifier": "",
+        "label": "Copy action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 89.66666666666666,
+          "x": 56,
+          "y": 378.6666666666667
+        },
+        "identifier": "",
+        "label": "Action owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 90,
+          "x": 56,
+          "y": 527.3333333333335
+        },
+        "identifier": "",
+        "label": "Action status",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 45,
+          "x": 56,
+          "y": 551.3333333333335
+        },
+        "identifier": "",
+        "label": "OPEN",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 18,
+          "width": 124.66666666666666,
+          "x": 56,
+          "y": 304.3333333333333
+        },
+        "identifier": "",
+        "label": "Action description",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 115,
+          "x": 56,
+          "y": 328.3333333333333
+        },
+        "identifier": "",
+        "label": "Fictional action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.333333333333314,
+          "width": 96.33333333333331,
+          "x": 56,
+          "y": 476.99999999999994
+        },
+        "identifier": "",
+        "label": "2026-08-25",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 20.33333333333333,
+          "width": 156,
+          "x": 56,
+          "y": 106.99999999999994
+        },
+        "identifier": "",
+        "label": "FICTIONAL-REF-001",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 65536)",
+      "compactDescription": "Dynamic Type font sizes are partially unsupported",
+      "detailedDescription": "User will not be able to change the font size of this SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 54,
+          "width": 368,
+          "x": 36,
+          "y": 177.33333333333334
+        },
+        "identifier": "",
+        "label": "Actions",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 131072)",
+      "compactDescription": "Text clipped",
+      "detailedDescription": "Text of this SwiftUI.AccessibilityNode may be clipped at larger Dynamic Type sizes.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 123.33333333333334,
+          "x": 56,
+          "y": 667.6666666666665
+        },
+        "identifier": "",
+        "label": "Copied Action 1.",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 131072)",
+      "compactDescription": "Text clipped",
+      "detailedDescription": "Text of this SwiftUI.AccessibilityNode may be clipped at larger Dynamic Type sizes.",
+      "element": {
+        "frame": {
+          "height": 58,
+          "width": 155,
+          "x": 56,
+          "y": 601.6666666666665
+        },
+        "identifier": "",
+        "label": "Copy action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 40.33333333333334,
+          "width": 368,
+          "x": 36,
+          "y": 248.99999999999991
+        },
+        "identifier": "",
+        "label": "Action 1",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    }
+  ],
+  "run": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-list-comparison-20260915/trial-runs/20260914T210910Z-selected-7df45149c79d",
+  "imageReview": "trial-image-review.json",
+  "build": "passed",
+  "testCounts": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "expectedFailures": 0
+  },
+  "decision": "Do not promote trial to main. Keep the original layout. Retain both detached worktrees and evidence. Do not expand this trial to pilot or full coverage."
+}

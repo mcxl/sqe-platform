@@ -1,0 +1,35 @@
+{
+  "check": "manualSigninPromptContrast",
+  "classification": "application defect",
+  "source": "ios/ACEClientApp/ACEClientApp/Views.swift",
+  "sourceLinesBefore": [
+    77,
+    80
+  ],
+  "expectedMinimumAcrossAllTextRules": 3.0,
+  "regularTextRule": 4.5,
+  "actualColourPairContrast": 1.7233924684533595,
+  "foregroundRGB": [
+    197,
+    197,
+    199
+  ],
+  "backgroundRGB": [
+    255,
+    255,
+    255
+  ],
+  "sizeAndWeight": "Not independently measured; observed contrast is below both permitted thresholds.",
+  "nativeAuditResult": "The preceding native sign-in audit passed; manual image review found this separate failure.",
+  "retainedImage": "coverage-signin-integration/batches/000/attachments/20BFAD1A-6E0C-42D2-986D-0DE454D44CA6.png",
+  "pixelEvidence": "signin-prompt-colours-before.json",
+  "specificationLines": [
+    882,
+    884,
+    886
+  ],
+  "change": "Use explicit adaptive primary text for the two field prompts. Layout, secure entry and field labels stay the same.",
+  "correctiveAttempt": 1,
+  "sourceSha256Before": "656af6f4d152dcb4a8ea6cd88fae829907255c9237f3f51df7cafc3c1a78e84e",
+  "sourceSha256After": "3b955aa082a4090f175f73a98371fbb13444265a12ccf28071a1cdbb864250d1"
+}

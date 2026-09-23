@@ -1,0 +1,14 @@
+{
+  "records": 3593,
+  "categories": {
+    "generated_or_retained_evidence": 924,
+    "private_or_binary_preserve_only": 134,
+    "source_or_document_candidate": 2112,
+    "unclassified_preserve": 423
+  },
+  "tracked_changed": 15,
+  "explicit_errors": 0,
+  "excluded_subtrees": 893,
+  "command_failures": 0,
+  "command_warnings": 1
+}

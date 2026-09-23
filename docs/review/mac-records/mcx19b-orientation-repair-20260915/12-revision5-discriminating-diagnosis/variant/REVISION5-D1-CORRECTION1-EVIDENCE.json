@@ -1,0 +1,66 @@
+{
+  "recordedUTC": "2026-09-16T12:38:07.441568+00:00",
+  "fault": "Diagnostic Swift callback actor transfer compiler error",
+  "correctionAttempt": 1,
+  "baseline": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "failedAssertion": {
+    "file": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "line": 570,
+    "expected": "Diagnostic UI-test target compiles under existing Swift 6 build settings.",
+    "actual": "error: sending 'issueHandler.some' risks causing data races",
+    "note": "sending task-isolated 'issueHandler.some' to main actor-isolated instance method 'performAccessibilityAudit(for:_:)' risks causing data races between main actor-isolated and task-isolated uses",
+    "log": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build/build.log",
+    "logLines": [
+      3815,
+      3818
+    ],
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build/build.xcresult"
+  },
+  "cause": "The non-Sendable callback captured mutable D1AuditSession and XCTestCase instance while being passed to a MainActor-isolated SDK audit method.",
+  "correction": "Explicit @Sendable callback captures only immutable strings/time and a checked-Sendable counter using Synchronization.Mutex. Session bookkeeping stays outside the callback. Static JSON helpers and XCTContext activity attachment remove test-instance capture.",
+  "sdkEvidence": {
+    "mutex": "iPhoneSimulator26.4.sdk/usr/lib/swift/Synchronization.swiftmodule/arm64-apple-ios-simulator.swiftinterface lines7838-7863: Mutex, Sendable and withLock; iOS18+.",
+    "audit": "XCUIAutomation.framework/Modules/XCUIAutomation.swiftmodule/arm64-apple-ios-simulator.swiftinterface line14: @MainActor @preconcurrency performAccessibilityAudit.",
+    "attachment": "XCTest.framework/Headers/XCTAttachment.h lines14-47 documents XCTContext activity attachments; XCTContext.h requires main-thread execution; XCUIScreen.h documents screenshot providing.",
+    "threadContext": "The synchronous callback runs during the main-actor-isolated audit. No dispatch or delayed screenshot is introduced. Native callback execution remains unverified until the diagnostic run."
+  },
+  "checks": {
+    "gitDiffCheck": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "fullPatchReverseApplyCheck": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "isolatedStatus": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+    "callbackCapturesNoSelfOrSession": true,
+    "callbackAlwaysReturnsFalse": true,
+    "callbackScreenshotAndRetention": true,
+    "noUncheckedSendableInSource": true,
+    "checkedCounterUsesMutex": true,
+    "noNativeBuildOrTestBySpecialist": true
+  },
+  "sha256": {
+    "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "80e11068c96843d3bd243d8bcb0d59459604052a57352f85b3a8637175c084bd",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant/ACEClientAppUITests.r5-d1.patch": "62f87d10820c5cbffdc06f4d663d4ed5e2f23486ae9a5b9c2a833569283b3e3e",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant/ACEClientAppUITests.r5-d1.correction1.patch": "6d0df6f404b32cc8dd8af9fa83effeda6e94977e238be7998d53accc40d3d053",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant/ACEClientAppUITests.r5-d1.correction1.delta.patch": "7ad1f06c496ac9ddeba9e38a8c40edb0b8f048a16388b9a6dd263254cc22274f",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build/build.log": "6fc947f20013cd2ff51b0ab4e465d5e550385023b27ab53ba9968509a61ca9da"
+  },
+  "changedLines": [
+    "@@ -1,5 +1,6 @@",
+    "@@ -42,21 +43,27 @@",
+    "@@ -70,8 +77,8 @@",
+    "@@ -90,7 +97,7 @@",
+    "@@ -545,21 +552,26 @@",
+    "@@ -628,7 +640,7 @@",
+    "@@ -652,6 +664,15 @@"
+  ],
+  "preserved": "B seven fixed sequential types for both viewports; C .all and upper viewport/two equal frames 0.5s apart; false handler; callback-time screenshot names and JSON schema; failure markers; function-scope cleanup.",
+  "buildStatus": "PENDING: specialist ran no compiler, build, test or simulator command.",
+  "remaining": "Primary inspects complete revised diff and updates pins; Luna runs approved build. Do not call static checks a successful compile.",
+  "transportNote": "First edit transport had Python command quoting SyntaxError before mutation. Corrected stdin transport passed original source hash guard. One notes tool submission had a JavaScript quoting error before command execution. Neither is a compiler correction rerun."
+}

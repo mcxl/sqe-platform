@@ -1,0 +1,26 @@
+{
+  "checkedUTC": "2026-09-15T04:29:09.813148+00:00",
+  "bootStates": [
+    {
+      "udid": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+      "name": "iPhone 17 Pro Max",
+      "state": "Booted"
+    },
+    {
+      "udid": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "name": "iPhone 17",
+      "state": "Shutdown"
+    },
+    {
+      "udid": "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F",
+      "name": "iPhone 16 Pro Max",
+      "state": "Booted"
+    }
+  ],
+  "allOriginalStatesRestored": true,
+  "unrelatedSimulatorChanged": false,
+  "nativeFlagsAndSimctlEvidence": [
+    "01-unchanged-prefix/result.json",
+    "02-pro-max-prefix/result.json"
+  ]
+}

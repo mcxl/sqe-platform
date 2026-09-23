@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "recordedUTC": "2026-09-15T12:04:49.992617+00:00",
+  "uniqueImages": 2,
+  "captures": 2,
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/attachments/44D78823-31B2-4F47-BC73-6C7E486541ED.png",
+      "bytes": 105458,
+      "sha256": "7351f922706e79390e6e05938c49aea13b1956c0d3e2a84ed8405ee7257cfb20",
+      "rawDimensions": [
+        1206,
+        2622
+      ],
+      "inspection": "Original resolution inspected; full landscape screen, readable complete horizontal fields; expected vertical scrolling exposes the remaining content.",
+      "status": "passed"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/attachments/AA6BBE8D-BD66-4C3F-86C0-DE816CDDDE1B.png",
+      "bytes": 103922,
+      "sha256": "dbe633101fe9167294012d550ca163646fc41b176c01d8527e188f2f52f679a6",
+      "rawDimensions": [
+        1206,
+        2622
+      ],
+      "inspection": "Original resolution inspected; full landscape screen, readable complete horizontal fields; expected vertical scrolling exposes the remaining content.",
+      "status": "passed"
+    }
+  ],
+  "comparison": "Prior app-scoped capture cropped and shifted the landscape scene. Full-screen capture preserves the complete screen. Initial view covers Sign In heading; scrolled view covers complete Username, Password and Sign in button. Normal scroll-edge card fragments are covered by the other viewport.",
+  "nativeCaseCount": 1,
+  "nativeAuditInvocations": 1,
+  "pilotCredit": 0
+}

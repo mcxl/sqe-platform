@@ -1,0 +1,16 @@
+{
+  "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+  "primaryReview": "Complete additive Swift diff inspected; original helpers unchanged; only temporary UI test source edited; git diff --check passed; all nine app-source files equal failed candidate",
+  "reviewer": "Fresh Sol, requested gpt-5.6-sol/high; actual model/effort not independently observed",
+  "verdict": "SHIP TO ONE COMPILE",
+  "repairBeforeCompile": "XCTAttachment.name is nullable; replaced named: attachment.name with nonoptional attachmentName constant, supported by local SDK header",
+  "launcherVerdict": "Fix continuation gates and restoration failure checks before execution",
+  "call0Limitation": "Uses unchanged committed helper; raw issue records retained and joined externally; wrapper frame reads/logging are added diagnostic instrumentation",
+  "frameLimitation": "Before/after frames cannot show positions during sampling",
+  "reviewSources": [
+    "D2-test.patch",
+    "approved-instruction.md",
+    "candidate-source.json",
+    "installed Xcode SDK headers"
+  ]
+}

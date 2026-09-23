@@ -1,0 +1,12 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -292,7 +292,7 @@ struct ValueRow: View {
+                 .frame(minWidth: 44, minHeight: 44)
+                 .contentShape(Rectangle())
+         }
+-        .buttonStyle(.bordered)
++        .buttonStyle(.plain)
+         .tint(.primary)
+         .accessibilityLabel("Copy \(field.label)")
+     }

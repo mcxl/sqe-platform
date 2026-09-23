@@ -1,0 +1,13 @@
+{
+  "base": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "patchSha256": "fba8bc6d60a4fa1930010bc67ff605f87f3d2ff9a1bf23944ff62a7e8d699d0f",
+  "fixedSourceSha256": "290ae78003a6e06057756e89097771796ca3a6bbc4d0b5eeb64af78198717341",
+  "negativeSourceSha256": "518c26b08e0b1382c08343247404b8e1aa139cd193f9b46facf9d691bfdde12c",
+  "changedFiles": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "negativeWorktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/negative-probe-worktree",
+  "negativeChange": "Deliberately call the repaired helper with the opposite orientation only in testConfigureAccessibilitySettings; never part of final candidate.",
+  "primaryDiffInspection": "Complete one-helper diff inspected before application. All callers, app code, settings equality and native audits remain unchanged.",
+  "correctiveAttempt": 1
+}

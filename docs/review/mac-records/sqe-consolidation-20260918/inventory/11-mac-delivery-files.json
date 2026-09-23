@@ -1,0 +1,1207 @@
+{
+  "tracked": [
+    {
+      "path": ".github/workflows/quality-gates.yml",
+      "index_blob": "c1f1d23f1e40634afc41d884cc0a809b1a47722b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6984
+    },
+    {
+      "path": ".github/workflows/release-quality.yml",
+      "index_blob": "f65423462344828c38a1688836143c0f2b13d594",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1381
+    },
+    {
+      "path": ".gitignore",
+      "index_blob": "988fb818746db74a2896a5df60efe62dd07616ed",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 88
+    },
+    {
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "index_blob": "3e756556e4f6248897535fe1aaca834d6596b390",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 27950
+    },
+    {
+      "path": "ACE_VISION_AND_ROADMAP.md",
+      "index_blob": "855d07fa1145e30afd2cb6c178aab3b493dd6b45",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 912
+    },
+    {
+      "path": "AGENTS.md",
+      "index_blob": "30f5ade7d676bb097d555de40282907380b5c163",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6661
+    },
+    {
+      "path": "CONTEXT.md",
+      "index_blob": "c3226c28c5b1935870c645d8a35b5d1266f028bc",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1469
+    },
+    {
+      "path": "DEV_STATE.md",
+      "index_blob": "3d1b4cfd6d3ed152d2f489f76ddd566f7f1b43a5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2039
+    },
+    {
+      "path": "README.md",
+      "index_blob": "e67ca1bdafc81b03a8e17385e0565b864c1871ea",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1457
+    },
+    {
+      "path": "WORKFLOW-NOTES.md",
+      "index_blob": "637edd14d2901e3de8f8ec361643cc4976ba03be",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 887
+    },
+    {
+      "path": "apps/relationship-review-pilot/.env.example",
+      "index_blob": "1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 90
+    },
+    {
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "index_blob": "830932714370a9751e228be3aa1d9ea1177177df",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 42
+    },
+    {
+      "path": "apps/relationship-review-pilot/README.md",
+      "index_blob": "9ce958e3e4c536fa65ab53cd9424dbe462b2b208",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 469
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "index_blob": "661243a5c37be5f34414e17c5b764f1d84072869",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 458
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "index_blob": "08d5ca0c046f8832984e609959bb13999b054275",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 171
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "index_blob": "8ad36db97cfc844408ceca643c58de4181bdb4c2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 382
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "index_blob": "b7fe1709c171c5122d71476fc3b8913e33b92842",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1128
+    },
+    {
+      "path": "apps/relationship-review-pilot/components.json",
+      "index_blob": "d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 408
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "index_blob": "17e0fddebdf56b3fe2b26dc9c78276b52300b5bc",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 374
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "index_blob": "04fc774ed5e59f587636417a528bbd5234bcd045",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 7961
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "index_blob": "f4c0ff7be212c0a96e925282a75f13798359059d",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 662
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "index_blob": "302196895e4b92ca76ea4ab7a8a899ecc0760c30",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 813
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "index_blob": "8b52a14188fcbf7c18a5393aac47453894365699",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 311
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "index_blob": "df98f6b72a7967e91b95939590c877ce72f798d8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1166
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "index_blob": "a5ef193506d07d0459fec4f187af08283094d7c8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 169
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "index_blob": "c049816b49eb290630ffeed9abb27776c05dc1f5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1022
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "index_blob": "44bf98583204c1f9474b38f84b48659b192eea8b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 480
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "index_blob": "f97fd1942151eef5b818c0679f7a12f2c22557b5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1736
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "index_blob": "f235db4a112ece75f7698b191532048a98270c21",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6008
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "index_blob": "2dbe0dbd475de29f550f222942597ef9f5dc8654",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3872
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "index_blob": "ef4cf74f8dcc9f7413c1516e81368048a1234cf1",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 5278
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "index_blob": "8351fca4541f2ca58c8851c79c64fe93407eb6a2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1871
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "index_blob": "fa69fa296c815263b1a7bd9f761c992e74860e4c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6374
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "index_blob": "73649cf0b74e85f4b015115564c41397fb5bd92a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 228
+    },
+    {
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "index_blob": "fe04c1f8ad833e39504ba140c495f3c5246ca44f",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 239
+    },
+    {
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "index_blob": "428f5ce1e15d8f5364679a301a1bbbed7ebdd86a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 152
+    },
+    {
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "index_blob": "cb651cdc007c4c5087ea7b4e61981bb2733f7d92",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 104
+    },
+    {
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "index_blob": "134c3e8e9d9e27b17c850cab9285e72bcea99f4a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 320120
+    },
+    {
+      "path": "apps/relationship-review-pilot/package.json",
+      "index_blob": "ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 918
+    },
+    {
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "index_blob": "999cd7b9d2cd26ba7b02c69c272868b39bea0674",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 108
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "index_blob": "6d61af4e7cd5de8a51826f5246c7eb346e2de888",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 8223
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "index_blob": "85ff3f3796415d3470f7fccb52b9e3bfb10df425",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 4513
+    },
+    {
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "index_blob": "b456a6eb10ddb1e591185f66b20379c7a022f55b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 574
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "index_blob": "d9481977b149f5238f1810595402583135c18f1c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 515
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "index_blob": "f149f27ae4bbd7cc4f6253570176a4fce144ef95",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 43
+    },
+    {
+      "path": "codemagic.yaml",
+      "index_blob": "e9563d00b4d0630a5b556ad66ad933fd64f85945",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6972
+    },
+    {
+      "path": "docs/DOCUMENTATION-INVENTORY.md",
+      "index_blob": "0ae4ecf1fcddf1fdd0b08f23782b4d64fb52e1a6",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1183
+    },
+    {
+      "path": "docs/adr/0001-human-auditor-controls-final-decisions.md",
+      "index_blob": "50a087af26e859eaa72b6738e8adb0bc628f6fee",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 426
+    },
+    {
+      "path": "docs/adr/0002-g0-protects-the-data-boundary.md",
+      "index_blob": "b2650e3448688a5fdf196dcef518342a8cef4c18",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 381
+    },
+    {
+      "path": "docs/adr/0003-approved-records-use-versioned-history.md",
+      "index_blob": "b32de4ad02ad12d94aae50fa8e3165ac05f34c33",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 368
+    },
+    {
+      "path": "docs/adr/0004-release-projection-is-read-only.md",
+      "index_blob": "0ed9469bc18bafa404ce120bffba0d2fecfbdb67",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 374
+    },
+    {
+      "path": "docs/agents/agent-permissions.md",
+      "index_blob": "a2ae1946089598f970d8929dec6e2ff912ed0db0",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 611
+    },
+    {
+      "path": "docs/agents/domain.md",
+      "index_blob": "e29624de32681197b8ebe5ac74ca4b23671feffd",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 226
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "index_blob": "908b1896120f4280ab1e73f661dbe6801c1a5ca2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 943
+    },
+    {
+      "path": "docs/agents/triage-labels.md",
+      "index_blob": "829c6967660988d60e4ebd7ce5baf73da06a7daf",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 215
+    },
+    {
+      "path": "docs/diagrams/README.md",
+      "index_blob": "ba73f6803620381f8b773b77a8dafc07561024c8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 225
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+      "index_blob": "4d96b623f240ae8e79e2cc4749a69a6807eb061e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 288
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+      "index_blob": "9f4e5c2aafef9e94f84ca9aa0ba3b69455565f1e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 183
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+      "index_blob": "2d9095b8a19f7b64baa5385b07733d89abee81cb",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 202
+    },
+    {
+      "path": "docs/diagrams/diagram-manifest.json",
+      "index_blob": "ea0d6b009d24d42a239e2434ff089c9771c121d3",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 223
+    },
+    {
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "index_blob": "20f2b0ad7569f377dfb0376b94c3e4dacfbc27b8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 9731
+    },
+    {
+      "path": "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+      "index_blob": "3b5a2da7fdd6c3f19a4ed322c01ab6576c72a4ee",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 4633
+    },
+    {
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "index_blob": "ce352bd2f44526422ffce398f3f49eb84da24539",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 86223
+    },
+    {
+      "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+      "index_blob": "d8ca7db85bbb8f8bda10295369fc2a8efb2098a0",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1224
+    },
+    {
+      "path": "docs/specs/documentation-control.md",
+      "index_blob": "f4e122c27a4a6bf1419fe107c40db6922cd1989c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 670
+    },
+    {
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "index_blob": "15d38ed62aa565365f9be1419804152b8eff4a2b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 16508
+    },
+    {
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "index_blob": "43f3a2141f1836d7d281e84e99dfc8c5d2eab56a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6271
+    },
+    {
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "index_blob": "1be8f9466a3891af465a387d555c8b55b0708a35",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 11276
+    },
+    {
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "index_blob": "96d281352a47b8cc976d709d6cea4d5b09700c26",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 10972
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+      "index_blob": "e3bcef77922f4885bb0385b816e93bf2442b7153",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 32718
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+      "index_blob": "346121bc97971423554ed9b833902bcc901269c4",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 56812
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "index_blob": "027237e08feeec1b8213e2e5ca30dbc7f627da9f",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 63684
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+      "index_blob": "b5b37978b25914f1abdfe07f82569f0ed800ccab",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 86584
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "index_blob": "f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 10820
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+      "index_blob": "70fbf6cd959aa03867c89d33ec5c1c2acb0573dc",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 21139
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "index_blob": "c887e61e1bb3f53649c84b9fc2e26d5a2789460b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 25784
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+      "index_blob": "cd729d22a55808e3d07d1257bbc31af7a90e486b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 32848
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "index_blob": "8fb6ba4b4a23167c25376caf50fa8121f4e191f9",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 13664
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+      "index_blob": "d8c921d3de4849ab73de58a3925761789efcefcc",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 14409
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+      "index_blob": "aa82130565c15085d1e2bebfbea31a2644b2a543",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1580
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "index_blob": "697df2c6d8653ab95d8465f52c4d95530a814d59",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1964
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "index_blob": "f8a9bcee7039cf97bb3270ba890753d13e7e8d11",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 5242
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+      "index_blob": "f51d2b28d7dc79352a216a6949104d9a853a9f5f",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2500
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "index_blob": "c93b91867bab745c22646ed0c2bed6c0b3edc90e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6761
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+      "index_blob": "b26fe330361b313f651f34adb2391eaf4e8f7c49",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 917
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "index_blob": "333506cfd67e186439ca1bf4d5f8be86ea3b4734",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 8714
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+      "index_blob": "fbba5660ace68df9fb25228b9fa325266cf82224",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 4415
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+      "index_blob": "17c5efa9886867531294a2a0a72adb448960b4a5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3137
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+      "index_blob": "21d5d70a35651836807c9e19da6c62487b754cf6",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 10382
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "index_blob": "aca017f06d6b29f81b894dc5fb85079f694e316b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 13305
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "index_blob": "97ae5cecdcdad318d18ac7ef5ee5dfd942498523",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 28636
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+      "index_blob": "30afc85efe57e82f9fd6bcda454b64dbeaeb53a5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 17495
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "index_blob": "70c20446002bb7c1619a80ba3ad96558936bac41",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 124519
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "index_blob": "54db2a6c0dc7abdd218215f9596531ec3bcff39a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 61477
+    },
+    {
+      "path": "ios/ACEClientApp/Makefile",
+      "index_blob": "da381ce3b8c8cc390ea7db513370ccc8aeb1054e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2080
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "index_blob": "91d770692558e913629b359ced00fae0c5de91d8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 22358
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "index_blob": "bf076600ad7516d5f12bad6f5cebf02af19a8117",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 5342
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "index_blob": "c75b14a5873f4c1f22df9923cc7a375c542493cf",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 14690
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "index_blob": "a1b7101ec8d75c6412052243cf37d1ffc6510d9d",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 7541
+    },
+    {
+      "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+      "index_blob": "d928fbf82ab9fc92cf80ab7f9c95a01f9677590f",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 447
+    },
+    {
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "index_blob": "0764f192cd9c0945585fd27cf6c98c7a5b495c65",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 28593
+    },
+    {
+      "path": "pyproject.toml",
+      "index_blob": "f78980429b5792417de0217fcd65226aa2fdbfd3",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 696
+    },
+    {
+      "path": "quality/test-groups.json",
+      "index_blob": "b10d83c649b488b48649f53312e1a85c74417ab4",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1424
+    },
+    {
+      "path": "security/deepsec/deepsec-residual-risk.yaml",
+      "index_blob": "81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 728
+    },
+    {
+      "path": "src/__init__.py",
+      "index_blob": "1e81120586fb5e0e92fbd1ca4a8c6789470d32eb",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 82
+    },
+    {
+      "path": "src/ace/__init__.py",
+      "index_blob": "af245d52ea1b3f9a9728cc3198e42f6f09f23c19",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 55
+    },
+    {
+      "path": "src/ace/app.py",
+      "index_blob": "a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3139
+    },
+    {
+      "path": "src/ace/domain/__init__.py",
+      "index_blob": "0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1518
+    },
+    {
+      "path": "src/ace/domain/assessment.py",
+      "index_blob": "b2bc4a09af434c7f31bfde8c02178afd7c64016c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 11079
+    },
+    {
+      "path": "src/ace/domain/enums.py",
+      "index_blob": "5e4c7a3b8aaaedde1e7034b3f614a3298935c741",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 666
+    },
+    {
+      "path": "src/ace/domain/models.py",
+      "index_blob": "9b7332ae80cea46c4e0c2e13408a879194639958",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3865
+    },
+    {
+      "path": "src/ace/domain/release.py",
+      "index_blob": "d3052b39d92d500bcea16a1938822162f9c6e784",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 4136
+    },
+    {
+      "path": "src/ace/domain/trace.py",
+      "index_blob": "24c035f305bd307a12e3a012f8e67693f01931b2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6814
+    },
+    {
+      "path": "src/ace/engine/__init__.py",
+      "index_blob": "a6a85eba2c2881370e265f55374ed5fd029ba40c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 608
+    },
+    {
+      "path": "src/ace/engine/approval.py",
+      "index_blob": "3fb703a3c7bfe15b9f87e919c236f99eea92011f",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 13252
+    },
+    {
+      "path": "src/ace/engine/evaluator.py",
+      "index_blob": "6f734719daf96ce5620a52de31d5ee6a8c82ebc9",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2493
+    },
+    {
+      "path": "src/ace/engine/tracing.py",
+      "index_blob": "b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 13396
+    },
+    {
+      "path": "src/ace/workbench/__init__.py",
+      "index_blob": "c2421621a45852c1edd4e893d8f31c542df829e4",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 353
+    },
+    {
+      "path": "src/ace/workbench/action_result.py",
+      "index_blob": "009b7ce18c8073cdbf68d0641ede1837f68167f5",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2106
+    },
+    {
+      "path": "src/ace/workbench/change_record.py",
+      "index_blob": "3a46f45a5f21d53ea229e0476148d751e21d15bf",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2459
+    },
+    {
+      "path": "src/ace/workbench/client_auth.py",
+      "index_blob": "fc15024e81ebe5d8311b1700216856c62deaf24b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1896
+    },
+    {
+      "path": "src/ace/workbench/client_release_projection.py",
+      "index_blob": "50c3e8ea5a72d622a314ff4c234182fffe5661bc",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3016
+    },
+    {
+      "path": "src/ace/workbench/client_release_service.py",
+      "index_blob": "152da398adbed0554046cbef1ca5d1bd620a25ef",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 12258
+    },
+    {
+      "path": "src/ace/workbench/client_routes.py",
+      "index_blob": "fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 7353
+    },
+    {
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "index_blob": "a157b2260adf3d7d05d10f3ccb95fae7a7e68b5b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3458
+    },
+    {
+      "path": "src/ace/workbench/engagement.py",
+      "index_blob": "1efc7f447dc242e84db7496dc43261e7a3d5f244",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 9010
+    },
+    {
+      "path": "src/ace/workbench/evidence_review.py",
+      "index_blob": "7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3913
+    },
+    {
+      "path": "src/ace/workbench/export_builder.py",
+      "index_blob": "88f482a8c81cf33bdbe6c58f8a525e5e6f2a88ae",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 23844
+    },
+    {
+      "path": "src/ace/workbench/extraction.py",
+      "index_blob": "a3ddfe4931417f5d942b26c148ddf1ef5b3d9058",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6668
+    },
+    {
+      "path": "src/ace/workbench/notion_publisher.py",
+      "index_blob": "c281f9ed242707201c160379b741cc1559120833",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 3404
+    },
+    {
+      "path": "src/ace/workbench/relationship_review.py",
+      "index_blob": "a054b5838083ca6c5290786a3d8ee65f422c55e3",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 19216
+    },
+    {
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "index_blob": "662f239a839f67d88440b7ff2dbb8592418b76fd",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 51376
+    },
+    {
+      "path": "src/ace/workbench/release_storage.py",
+      "index_blob": "44632c998c369086d7886668e67086b48ba33c39",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 6443
+    },
+    {
+      "path": "src/ace/workbench/routes.py",
+      "index_blob": "4e69f1d29d95914ecfac3b29511aa66063707ce2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 97944
+    },
+    {
+      "path": "src/ace/workbench/storage.py",
+      "index_blob": "9f310dfbeeeb128ce4c30fb152027ac9cf15df4a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 211912
+    },
+    {
+      "path": "tests/test_action_result.py",
+      "index_blob": "f102e61d370776570f1c6a6d02237463cec87a0e",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 1998
+    },
+    {
+      "path": "tests/test_app.py",
+      "index_blob": "8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 9672
+    },
+    {
+      "path": "tests/test_approval_gate.py",
+      "index_blob": "0e2b0bc40b49101fdecf9248bef4d60e7a016714",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 36577
+    },
+    {
+      "path": "tests/test_capture.py",
+      "index_blob": "41f3ba179143ba75ecb3151341527a2c11e11653",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 9943
+    },
+    {
+      "path": "tests/test_change_export.py",
+      "index_blob": "f26b200d4802e65c3c75b9ca741103f35a4bf8a8",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 29072
+    },
+    {
+      "path": "tests/test_client_release.py",
+      "index_blob": "b79457826591c81352c0eeeb1888240bf30856bd",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 386057
+    },
+    {
+      "path": "tests/test_client_release_projection.py",
+      "index_blob": "16d8e3b5cc936a501f31980d36004aef86f70c07",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 7081
+    },
+    {
+      "path": "tests/test_diagnose_ios.py",
+      "index_blob": "d08f9db8a19889176411e6c35d8edafffb8752b3",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 81389
+    },
+    {
+      "path": "tests/test_engagement_setup.py",
+      "index_blob": "c5b215a4274be1856365f5f3835fdd0a88f7c4e4",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 30318
+    },
+    {
+      "path": "tests/test_engagement_summary.py",
+      "index_blob": "b6c8b0cf9fe636ced590ba82c19908bc93f2d328",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 12378
+    },
+    {
+      "path": "tests/test_evidence_review.py",
+      "index_blob": "16e51f95bdb3f7a89c7c27aa02f38e09bc08c925",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 51803
+    },
+    {
+      "path": "tests/test_extraction.py",
+      "index_blob": "47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 10846
+    },
+    {
+      "path": "tests/test_graph_projection.py",
+      "index_blob": "920fe93267ae8072a95d2d847967959c75ccbe3c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 19136
+    },
+    {
+      "path": "tests/test_ios_accessibility_layout.py",
+      "index_blob": "39b1ac861f4a1440aaff46fb3d2fe74902d16c4c",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 2476
+    },
+    {
+      "path": "tests/test_ios_action_targets.py",
+      "index_blob": "74fc1ef263a00f3148c924f483cdb4c832062eab",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 4081
+    },
+    {
+      "path": "tests/test_offline_drafts.py",
+      "index_blob": "aedfe16bbd3c28d1e8cf790eaed715205f9c232d",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 5481
+    },
+    {
+      "path": "tests/test_planning_trace.py",
+      "index_blob": "b2c207300da093dd24b25000a1d3d2b136d67f7b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 38436
+    },
+    {
+      "path": "tests/test_quality_gates_workflow.py",
+      "index_blob": "816b77c170a3a46030769ec6f08f31ca5d281940",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 735
+    },
+    {
+      "path": "tests/test_rating_engine.py",
+      "index_blob": "58fba2594c184ad4adcad05ec22677168115da08",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 10190
+    },
+    {
+      "path": "tests/test_relationship_review.py",
+      "index_blob": "b8b43d3fed573ffe0aa4becd1bb9fc672a3f96e3",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 54425
+    },
+    {
+      "path": "tests/test_run_tests.py",
+      "index_blob": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 240294
+    },
+    {
+      "path": "tests/test_workbench.py",
+      "index_blob": "6ef5893612f58493ee1b2069304e232d96639932",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 23581
+    },
+    {
+      "path": "tools/ace_ios_local.py",
+      "index_blob": "a31950b5d56c4b8421a05609c904bba714e92ade",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 88874
+    },
+    {
+      "path": "tools/diagnose_ios.py",
+      "index_blob": "f2ea1ccb696db88a8d69ae0e992850b0718d5fa1",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 76422
+    },
+    {
+      "path": "tools/run_tests.py",
+      "index_blob": "2d88789c53013971b156a4cd088a28b720cc066b",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 282873
+    },
+    {
+      "path": "tools/tests/test_ace_ios_local.py",
+      "index_blob": "fbddcf603d392fd86097624b921c1e1e286e02f2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 64974
+    },
+    {
+      "path": "uv.lock",
+      "index_blob": "3151880ae3453321bfc19ad1be84ac2376606886",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 71994
+    },
+    {
+      "path": "workflows/codex-autonomous-delivery.md",
+      "index_blob": "d336ae5ee0724121cef0662d5dc37f3d7b242ee2",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 9175
+    },
+    {
+      "path": "workflows/conclusion-review.md",
+      "index_blob": "389fc7bd1c3d4f9bd8a4312d16270abdbf6e89e0",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 943
+    },
+    {
+      "path": "workflows/engagement-setup.md",
+      "index_blob": "27352c110def06d809cd9f8e55836efd1b502b42",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 707
+    },
+    {
+      "path": "workflows/evidence-review.md",
+      "index_blob": "eeca34452b870119de4dd0efb9c8f17012d6c0db",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 734
+    },
+    {
+      "path": "workflows/field-evidence-capture.md",
+      "index_blob": "3c2e27f90dd20ad38ac002a383af22db5ad2c294",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 699
+    },
+    {
+      "path": "workflows/mate-assessment.md",
+      "index_blob": "0b78e693a94fd89d9c68cfb9c1dd21418cf6a960",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 888
+    },
+    {
+      "path": "workflows/relationship-review.md",
+      "index_blob": "21bbe0f760cf376107850fe76dfa767d4075328a",
+      "stage": "0",
+      "disposition": "Preserve clean delivery baseline on Mac",
+      "bytes": 819
+    }
+  ],
+  "ignored_roots": {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Developer/sqe-platform-release-layout",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z"
+    ],
+    "exit_code": 0,
+    "stdout": "tools/__pycache__/\u0000tools/tests/__pycache__/\u0000",
+    "stderr": ""
+  },
+  "mac_delivery_clean": true,
+  "note": "Bulk ignored evidence remains at original paths; not recursively enumerated or transferred."
+}

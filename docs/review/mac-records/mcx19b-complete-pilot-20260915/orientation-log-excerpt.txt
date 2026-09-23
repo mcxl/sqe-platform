@@ -1,0 +1,48 @@
+1926: 15:10:49.711 ACEClientAppUITests-Runner[15259:4085146] <XCTWaiter: 0x600000c5e490> entering wait loop for 5.00s with expectations: `Expect predicate `BLOCKPREDICATE(0x600000c5e820)``
+1927: 15:10:50.753 ACEClientAppUITests-Runner[15259:4085146] <XCTContext: 0x600002121ae0> started activity <XCActivityRecord: 0x600002925ea0> 2026-09-15 05:10:50 +0000: Find the Target Application 'com.example.aceclientapp'
+1928:     t =    65.27s Find the Target Application 'com.example.aceclientapp'
+1929: 15:10:50.755 xcodebuild[15227:4084518] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf, method, swift ["ACEClientAppUITests", "testConfigureAccessibilitySettings"]> willStartActivity:<XCActivityRecord: 0x60000305f790> 2026-09-15 05:10:50 +0000: Find the Target Application 'com.example.aceclientapp'
+1930: 15:10:50.755 xcodebuild[15227:4084518] Nothing to delete
+1931: 15:10:50.755 ACEClientAppUITests-Runner[15259:4085146] Executing query:
+1932: 
+1933: 15:10:50.755 ACEClientAppUITests-Runner[15259:4085146] Creating future for 'checking for continuity enablement' with timeout 30.00
+1934: 15:10:50.755 ACEClientAppUITests-Runner[15259:4085146] Error (com.apple.dt.xctest.ui-testing.error) 10401, userInfo keys: (null): Continuity display is unsupported on this device.
+1935: 15:10:50.756 ACEClientAppUITests-Runner[15259:4085146] <XCTWaiter: 0x600000c2e460> entering wait loop for 30.00s with expectations: `checking for continuity enablement`
+1936: 15:10:50.756 ACEClientAppUITests-Runner[15259:4085146] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c2e460>
+1937: 15:10:50.756 ACEClientAppUITests-Runner[15259:4085146] Wait <XCTWaiterWait: 0x60000172c8c0> completed after 0.001s
+1938: 15:10:50.757 ACEClientAppUITests-Runner[15259:4085146] cleaning up checking for continuity enablement
+1939: 15:10:50.757 ACEClientAppUITests-Runner[15259:4085146] Should evaluate query remotely? XCTDisableRemoteQueryEvaluation(d-write): NO, hasAutomationSession: YES, supportsRemoteEvaluation: YES
+1940: 15:10:50.757 ACEClientAppUITests-Runner[15259:4085146] Getting matching snapshots for remotely evaluated query
+1941: 15:10:50.758 ACEClientAppUITests-Runner[15259:4085146] Creating future for 'evaluating UI query' with timeout 30.00
+1942: 15:10:50.758 ACEClientAppUITests-Runner[15259:4085146] <XCTWaiter: 0x600000c5e0a0> entering wait loop for 30.00s with expectations: `evaluating UI query`
+1943: 15:10:51.550 ACEClientAppUITests-Runner[15259:4085314] Handling kAXPidStatusChangedNotification
+1944: 15:10:51.551 ACEClientAppUITests-Runner[15259:4085314] Got kAXPidStatusChangedNotification for pid 15346: active
+1945: 15:10:51.617 ACEClientAppUITests-Runner[15259:4085146] No application process found matching pid 15346, caching
+1946: 15:10:54.994 ACEClientAppUITests-Runner[15259:4085315] <XCTWaiter: 0x600000c5e490> watchdog first trigger, notifying manager of timeout
+1947: 15:10:54.995 ACEClientAppUITests-Runner[15259:4085315] Interrupting <XCTWaiter: 0x600000c5e0a0> during wait <XCTWaiterWait: 0x60000177cf40> for waiter <XCTWaiter: 0x600000c5e490>
+1948: 15:10:54.996 ACEClientAppUITests-Runner[15259:4085146] Returning result XCTWaiterResultInterrupted for synchronous waiter <XCTWaiter: 0x600000c5e0a0>
+1949: 15:10:54.996 ACEClientAppUITests-Runner[15259:4085146] Wait <XCTWaiterWait: 0x60000177cf40> completed after 4.238s
+1950: 15:10:54.996 ACEClientAppUITests-Runner[15259:4085146] cleaning up evaluating UI query
+1951: 15:10:54.997 ACEClientAppUITests-Runner[15259:4085146] Future for 'evaluating UI query' canceled by waiter interruption.
+1952: 15:10:54.997 ACEClientAppUITests-Runner[15259:4085146] Remote query evaluation failed with error: Error Domain=com.apple.dt.XCTest.XCTFuture Code=1001 "Interrupted by waiter." UserInfo={NSLocalizedDescription=Interrupted by waiter.}
+1953:     t =    69.53s     Find the Target Application 'com.example.aceclientapp' (retry 1)
+1954: 15:10:55.004 ACEClientAppUITests-Runner[15259:4085146] Interrupting <XCTWaiter: 0x600000c84db0> during wait <XCTWaiterWait: 0x60000175e3c0> for waiter <XCTWaiter: 0x600000c5e490>
+2103: 15:10:55.053 ACEClientAppUITests-Runner[15259:4085146] Failed to get matching snapshot because future was canceled.
+2104: 15:10:55.053 ACEClientAppUITests-Runner[15259:4085146] <XCTContext: 0x600002121ae0> finished activity <XCActivityRecord: 0x600002925ea0> 2026-09-15 05:10:50 +0000: Find the Target Application 'com.example.aceclientapp' (4.30001s)
+2105: 15:10:55.079 xcodebuild[15227:4084518] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf, method, swift ["ACEClientAppUITests", "testConfigureAccessibilitySettings"]> didFinishActivity:<XCActivityRecord: 0x60000305aca0> 2026-09-15 05:10:50 +0000: Find the Target Application 'com.example.aceclientapp' (4.30001s)
+2106: 15:10:55.079 xcodebuild[15227:4084518] Nothing to delete
+2107: 15:10:55.062 ACEClientAppUITests-Runner[15259:4085146] <XCTWaiter: 0x600000c5e490> reporting timed out failure with Expect predicate `BLOCKPREDICATE(0x600000c5e820)`
+2108: 15:10:55.063 ACEClientAppUITests-Runner[15259:4085146] Returning result XCTWaiterResultTimedOut for synchronous waiter <XCTWaiter: 0x600000c5e490>
+2109: 15:10:55.063 ACEClientAppUITests-Runner[15259:4085146] Wait <XCTWaiterWait: 0x60000177c3c0> completed after 5.352s
+2110: 15:10:55.063 ACEClientAppUITests-Runner[15259:4085146] cleaning up Expect predicate `BLOCKPREDICATE(0x600000c5e820)`
+2111: 15:10:56.781 ACEClientAppUITests-Runner[15259:4086757] Got snapshot response with runtime issue support from testmanagerd.
+2112: 15:10:56.962 ACEClientAppUITests-Runner[15259:4086757] Got snapshot response with runtime issue support from testmanagerd.
+2113: 15:10:58.085 ACEClientAppUITests-Runner[15259:4085315] Handling kAXPidStatusChangedNotification
+2114: 15:10:58.086 ACEClientAppUITests-Runner[15259:4085315] Got kAXPidStatusChangedNotification for pid 15352: active
+2115: 15:10:59.244 ACEClientAppUITests-Runner[15259:4085146] Error getting symbolication information for <XCTSourceCodeFrame: 0x6000002995c0> Error Domain=XCTSymbolicationServiceErrorDomain Code=6 "Unable to get source info for address 4374388500 in image 'ACEClientAppUITests-Runner'" UserInfo={NSLocalizedDescription=Unable to get source info for address 4374388500 in image 'ACEClientAppUITests-Runner'}
+2116: 15:10:59.245 ACEClientAppUITests-Runner[15259:4085146] Error getting symbolication information for <XCTSourceCodeFrame: 0x6000002993a0> Error Domain=XCTSymbolicationServiceErrorDomain Code=6 "Unable to get source info for address 4374387988 in image 'ACEClientAppUITests-Runner'" UserInfo={NSLocalizedDescription=Unable to get source info for address 4374387988 in image 'ACEClientAppUITests-Runner'}
+2117: 15:10:59.245 ACEClientAppUITests-Runner[15259:4085146] Error getting symbolication information for <XCTSourceCodeFrame: 0x600000299680> Error Domain=XCTSymbolicationServiceErrorDomain Code=6 "Unable to get source info for address 4374389521 in image 'ACEClientAppUITests-Runner'" UserInfo={NSLocalizedDescription=Unable to get source info for address 4374389521 in image 'ACEClientAppUITests-Runner'}
+2118: 15:10:59.246 ACEClientAppUITests-Runner[15259:4085146] Creating future for 'getting screen identifiers' with timeout 30.00
+2119: 15:10:59.246 ACEClientAppUITests-Runner[15259:4085146] <XCTWaiter: 0x600000ca9470> entering wait loop for 30.00s with expectations: `getting screen identifiers`
+2120: 15:10:59.247 ACEClientAppUITests-Runner[15259:4085146] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000ca9470>
+2121: 15:10:59.247 ACEClientAppUITests-Runner[15259:4085146] Wait <XCTWaiterWait: 0x60000179a880> completed after 0.001s

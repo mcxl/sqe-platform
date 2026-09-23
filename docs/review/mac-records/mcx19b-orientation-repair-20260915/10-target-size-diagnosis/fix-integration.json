@@ -1,0 +1,18 @@
+{
+  "recordedUTC": "2026-09-15T12:43:47.231078+00:00",
+  "base": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "files": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "patchSha256": "4c76f7987557bd9edc4b9eb52e6847d44a22fb9c5c67c51b903599269d787a1d",
+  "primaryCompleteDiffInspection": "passed",
+  "primaryBoundaryChecks": 10,
+  "swiftParse": "passed",
+  "diffCheck": "passed",
+  "scope": "Test numerical comparison and exact diagnostics only. No app, audit, capture or runner change.",
+  "precisionPolicyPoints": 1e-09,
+  "limitations": "The band accepts infinitesimal shortfalls below44 points. Apple internal arithmetic remains unknown. Native focused verification pending.",
+  "correctionAttempt": 1,
+  "push": false
+}

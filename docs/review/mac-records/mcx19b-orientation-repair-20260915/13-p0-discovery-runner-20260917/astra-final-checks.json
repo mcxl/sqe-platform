@@ -1,0 +1,17 @@
+{
+  "tools/ace_ios_local.py": {
+    "sha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+    "syntax": "passed"
+  },
+  "tools/tests/test_ace_ios_local.py": {
+    "sha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+    "syntax": "passed"
+  },
+  "diffCheckExit": 0,
+  "runnerTests": 59,
+  "discoveryTests": 22,
+  "retainedNativeScreenshotsValidated": 2,
+  "pngCorrectionAttempt": 1,
+  "nativeTestExecution": "not run",
+  "status": "stable for primary rerun and fresh review"
+}

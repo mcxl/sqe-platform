@@ -1,0 +1,23 @@
+{
+  "runnerCommit": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+  "runnerSha256": "22ffe41fd705e61729bd3cee78f88188ae2c1c87b738f5f0a505e5b71bb28dd8",
+  "question": "Does the reviewed command timeout retain both captured streams?",
+  "expected": {
+    "stdoutContains": "partial stdout",
+    "stderrContains": "partial stderr",
+    "exit": null
+  },
+  "actual": {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-c",
+      "import sys,time; print('partial stdout',flush=True); print('partial stderr',file=sys.stderr,flush=True); time.sleep(2)"
+    ],
+    "start": "2026-09-14T10:43:38.008745+00:00",
+    "end": "2026-09-14T10:43:39.044662+00:00",
+    "exit": null,
+    "error": "Command '['/Library/Frameworks/Python.framework/Versions/3.14/bin/python3', '-c', \"import sys,time; print('partial stdout',flush=True); print('partial stderr',file=sys.stderr,flush=True); time.sleep(2)\"]' timed out after 1 seconds",
+    "seconds": 1.028
+  },
+  "checkPassed": false
+}

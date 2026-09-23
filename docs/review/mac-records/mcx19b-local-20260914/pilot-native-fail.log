@@ -1,0 +1,31 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-local-20260914/derived-debug/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=2EB0863C-470E-467D-A0C6-CD216DA70C67" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-fail.xcresult "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 60 -maximum-test-execution-time-allowance 60
+
+2026-09-14 12:19:15.736 xcodebuild[36559:1130935] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-fail.xcresult
+
+2026-09-14 12:19:15.780 xcodebuild[36559:1130935] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 12:19:17.210 xcodebuild[36559:1130935] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Test Suite 'Selected tests' started at 2026-09-14 12:19:30.875.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 12:19:30.878.
+Test Suite 'ACEClientAppTests' started at 2026-09-14 12:19:30.879.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.
+LOCAL_HOME/Developer/sqe-platform/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift:59: error: -[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache] : XCTAssertEqual failed: ("Optional("GET")") is not equal to ("Optional("POST")")
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' failed (2.049 seconds).
+Test Suite 'ACEClientAppTests' failed at 2026-09-14 12:19:32.934.
+	 Executed 1 test, with 1 failure (0 unexpected) in 2.049 (2.055) seconds
+Test Suite 'ACEClientAppTests.xctest' failed at 2026-09-14 12:19:32.936.
+	 Executed 1 test, with 1 failure (0 unexpected) in 2.049 (2.058) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 12:19:32.937.
+	 Executed 1 test, with 1 failure (0 unexpected) in 2.049 (2.062) seconds
+2026-09-14 12:20:41.375 xcodebuild[36559:1130935] [MT] IDETestOperationsObserverDebug: 84.158 elapsed -- Testing started completed.
+2026-09-14 12:20:41.375 xcodebuild[36559:1130935] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 12:20:41.376 xcodebuild[36559:1130935] [MT] IDETestOperationsObserverDebug: 84.158 sec, +84.158 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-fail.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

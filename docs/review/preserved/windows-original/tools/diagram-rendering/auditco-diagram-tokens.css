@@ -1,0 +1,13 @@
+:root {
+  --paper: #f7f9fb;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --accent: #0b5cab;
+  --accent-soft: #e8f1fb;
+  --success: #18794e;
+  --warning: #9a6700;
+  --danger: #b42318;
+  --font-sans: Arial, Helvetica, sans-serif;
+}

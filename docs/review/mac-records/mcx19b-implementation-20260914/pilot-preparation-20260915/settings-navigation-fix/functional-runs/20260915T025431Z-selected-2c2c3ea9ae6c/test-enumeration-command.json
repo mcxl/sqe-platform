@@ -1,0 +1,26 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-enumerate-tests",
+    "-test-enumeration-style",
+    "flat",
+    "-test-enumeration-format",
+    "json",
+    "-test-enumeration-output-path",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/test-enumeration.json"
+  ],
+  "end": "2026-09-15T02:56:34.036327+00:00",
+  "exit": 0,
+  "seconds": 18.47,
+  "start": "2026-09-15T02:56:15.566307+00:00",
+  "stderr": "2026-09-15 12:56:20.592 xcodebuild[2984:3831870] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 12:56:20.612 xcodebuild[2984:3831870] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 12:56:21.596 xcodebuild[2984:3831870] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO -enumerate-tests -test-enumeration-style flat -test-enumeration-format json -test-enumeration-output-path LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/test-enumeration.json\n\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/Library/Developer/Xcode/DerivedData/ACEClientApp-eercqnwbowpgnaaxvltrkwnahrph/Logs/Test/Test-ACEClientApp-2026.09.15_12-56-20-+1000.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\n",
+  "timedOut": false
+}

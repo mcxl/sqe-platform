@@ -1,0 +1,8 @@
+{
+  "format": "controlled-mermaid-source-v1",
+  "diagrams": [
+    "controlled/mermaid/auditor-workflow.mmd",
+    "controlled/mermaid/approval-review-states.mmd",
+    "controlled/mermaid/evidence-relationship-map.mmd"
+  ]
+}

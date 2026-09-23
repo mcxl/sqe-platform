@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "C23DA324-180C-4A36-8B9B-E9156EE88215.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Pixel observation after full audit_0_04A99DEB-0076-421E-B80A-3ABF8E58921E.png",
+        "timestamp" : 1789376862.038
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "4A849496-BBD7-4A41-B25D-94EDCE72B69F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Pixel observation stable before audit_0_A1F1A09C-B84A-453C-ABF4-D886054C6D64.png",
+        "timestamp" : 1789376853.25
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "E226B45A-B426-4C02-89EF-EB1F0DC3D0AC.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Pixel observation first_0_CB155A21-C557-4AB2-BB65-BBBEBA799E99.png",
+        "timestamp" : 1789376853.246
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "5D58E11C-50EC-4C04-B00E-7E36DABFF230.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Minimal audit reproduction — post-scroll — light_0_4CC43920-4C4D-4264-B7F0-ED5F473B9120.png",
+        "timestamp" : 1789376851.781
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testMinimalAuditReproPixelStableAllAudits()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testMinimalAuditReproPixelStableAllAudits"
+  }
+]

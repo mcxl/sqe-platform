@@ -1,0 +1,90 @@
+{
+  "checkedUTC": "2026-09-15T05:16:24.567105+00:00",
+  "commit": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "workingTreeStatus": "",
+  "sourceHashDrift": [],
+  "sourceHashes": {
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "b5f6b0783f4de206b205928dd46b846ceb2c4499b72653e30c151d8da96e843c",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b",
+    "docs/specs/autonomous-delivery-workflow-repair.md": "c45ba49f914f3842d5fd19a6577b542fee240a6850f570a6ccbb957d6949c8d4",
+    "docs/specs/documentation-control.md": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+    "docs/specs/phase6-stage1-release-service-boundary.md": "ab25e6321d7fdfacfeec2a256f9b1c3a1b637840da4e548ee0f7e969a202dfa6",
+    "docs/specs/phase6-stage2-release-workflow.md": "0afaad9be9771951c116aa90b1de6315aef1f63964aba8528c0f75edca3ca68c",
+    "docs/specs/phase6-stage3-release-trigger-decisions.md": "f8b7952280e1e5edb3709c1a104e780342f447ebc4479774c8ec669673d0aabd",
+    "docs/specs/phase6b2-read-only-client-release-projection.md": "18a69b1b0608460dd4aface9ec32b5b9421f961726392bbf8e7a7373165f8a10",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+    "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "4fb5f44d88a34db25879ba2aeea6ab3b3f7edb4f6ffa0a2ca079e6320d541915",
+    "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+    "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+    "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+    "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+    "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "cccd23735441a3a3943f4b43581a9b597984a8d70fa89ec7b2ce026d239d7615",
+    "ios/ACEClientApp/Makefile": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.json": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.md": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+    "ios/ACEClientApp/RuntimeEvidencePlan.md": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+    "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+    "ios/ACEClientApp/evidence-matrix-audit.md": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+    "quality/test-groups.json": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+    "tools/ace_ios_local.py": "3bf5f3732babfdb501a20d3428f57045ab58b285897891f3dc4ceaa5f14ae2bb",
+    "tools/diagnose_ios.py": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+    "tools/run_tests.py": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+    "tools/tests/test_ace_ios_local.py": "9cd58777cd56ba91d58e204bef04dd0d2f1fcd50ee78d1e468f4572752ae5fcf"
+  },
+  "simulators": [
+    {
+      "name": "iPhone 17 Pro Max",
+      "udid": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+      "state": "Booted"
+    },
+    {
+      "name": "iPhone 17",
+      "udid": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "state": "Shutdown"
+    },
+    {
+      "name": "iPhone 16 Pro Max",
+      "udid": "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F",
+      "state": "Booted"
+    }
+  ],
+  "restorationFailures": [],
+  "restorationReadbacks": {
+    "restoration/iPhone 17 Pro Max-simctl-readback.json": {
+      "expected": {
+        "appearance": "light",
+        "content_size": "large",
+        "increase_contrast": "disabled"
+      },
+      "observed": {
+        "appearance": "light",
+        "content_size": "large",
+        "increase_contrast": "disabled"
+      }
+    },
+    "restoration/iPhone 17-simctl-readback.json": {
+      "expected": {
+        "appearance": "light",
+        "content_size": "large",
+        "increase_contrast": "disabled"
+      },
+      "observed": {
+        "appearance": "light",
+        "content_size": "large",
+        "increase_contrast": "disabled"
+      }
+    }
+  },
+  "xcodebuildProcesses": "",
+  "macFreeBytes": 239196581888
+}

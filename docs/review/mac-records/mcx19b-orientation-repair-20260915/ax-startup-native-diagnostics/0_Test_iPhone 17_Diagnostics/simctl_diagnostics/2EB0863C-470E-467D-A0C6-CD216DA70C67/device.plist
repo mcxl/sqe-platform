@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UDID</key>
+	<string>2EB0863C-470E-467D-A0C6-CD216DA70C67</string>
+	<key>deviceType</key>
+	<string>com.apple.CoreSimulator.SimDeviceType.iPhone-17</string>
+	<key>isDeleted</key>
+	<false/>
+	<key>isEphemeral</key>
+	<false/>
+	<key>lastBootedAt</key>
+	<date>2026-09-15T06:29:08Z</date>
+	<key>name</key>
+	<string>iPhone 17</string>
+	<key>runtime</key>
+	<string>com.apple.CoreSimulator.SimRuntime.iOS-26-4</string>
+	<key>runtimePolicy</key>
+	<string>System</string>
+	<key>state</key>
+	<integer>3</integer>
+</dict>
+</plist>

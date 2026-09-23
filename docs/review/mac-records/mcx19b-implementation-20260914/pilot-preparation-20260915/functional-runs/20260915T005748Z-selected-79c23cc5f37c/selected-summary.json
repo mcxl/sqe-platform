@@ -1,0 +1,64 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 2,
+      "passedTests": 66,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientApp \u00b7 Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 2,
+  "finishTime": 1789434094.339,
+  "passedTests": 66,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789434016.975,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\")",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 49,
+      "testIdentifierString": "AcceptanceEvidenceContractTests/testProjectConfiguration()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration",
+      "testName": "testProjectConfiguration()"
+    },
+    {
+      "failureText": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\")",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 63,
+      "testIdentifierString": "AcceptanceEvidenceContractTests/testSourceBoundaryInspection()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection",
+      "testName": "testSourceBoundaryInspection()"
+    }
+  ],
+  "title": "Test - ACEClientApp",
+  "topInsights": [
+    {
+      "category": "Common Failures",
+      "impact": "100% of failures",
+      "text": "2 runs of 2 tests failed with XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\")"
+    },
+    {
+      "category": "Longest Test Runs",
+      "impact": "25% of duration",
+      "text": "2 longest test runs with outlier durations exceeding 0.22s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 68
+}

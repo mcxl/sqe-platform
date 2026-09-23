@@ -1,0 +1,86 @@
+{
+  "question": "Does the native build reject missing and HTTP-only origin input in Validate Preview Inputs?",
+  "started": 1789379484.60593,
+  "projectSha256": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+  "results": [
+    {
+      "case": "missing-origin",
+      "command": [
+        "xcodebuild",
+        "build",
+        "-project",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientApp.xcodeproj",
+        "-scheme",
+        "ACEClientApp",
+        "-configuration",
+        "Debug",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/missing-origin/derived",
+        "-resultBundlePath",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/missing-origin/result.xcresult",
+        "ACE_PREVIEW_ORIGIN=",
+        "ACE_BUNDLE_IDENTIFIER=com.example.aceclientapp",
+        "ARCHS=x86_64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGN_IDENTITY=",
+        "CODE_SIGNING_REQUIRED=NO",
+        "CODE_SIGNING_ALLOWED=NO"
+      ],
+      "started": 1789379484.6069021,
+      "finished": 1789379497.2884731,
+      "exit": 65,
+      "expectedError": "error: ACE_PREVIEW_ORIGIN must be an approved HTTPS origin",
+      "actualErrors": [
+        "error: ACE_PREVIEW_ORIGIN must be an approved HTTPS origin"
+      ],
+      "passed": true,
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/missing-origin",
+      "logSha256": "d0b36f9fc07ae935174dd3eb589af0b75b21db41af95ecf1cce4a2a95bf6ffd7"
+    },
+    {
+      "case": "http-origin",
+      "command": [
+        "xcodebuild",
+        "build",
+        "-project",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientApp.xcodeproj",
+        "-scheme",
+        "ACEClientApp",
+        "-configuration",
+        "Debug",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/http-origin/derived",
+        "-resultBundlePath",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/http-origin/result.xcresult",
+        "ACE_PREVIEW_ORIGIN=http://preview.example.invalid",
+        "ACE_BUNDLE_IDENTIFIER=com.example.aceclientapp",
+        "ARCHS=x86_64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGN_IDENTITY=",
+        "CODE_SIGNING_REQUIRED=NO",
+        "CODE_SIGNING_ALLOWED=NO"
+      ],
+      "started": 1789379497.290823,
+      "finished": 1789379510.286431,
+      "exit": 65,
+      "expectedError": "error: ACE_PREVIEW_ORIGIN must be an approved HTTPS origin",
+      "actualErrors": [
+        "error: ACE_PREVIEW_ORIGIN must be an approved HTTPS origin"
+      ],
+      "passed": true,
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/negative-build-inputs/http-origin",
+      "logSha256": "c68be6e3996a7755db22d802c5e9c252cdaf495846668e45c5d724dfc7d9d8bb"
+    }
+  ],
+  "finished": 1789379510.288394,
+  "projectUnchanged": true,
+  "passed": true
+}

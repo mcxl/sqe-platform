@@ -1,0 +1,28 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "pack.threads=1",
+    "-C",
+    "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+    "bundle",
+    "create",
+    "-",
+    "refs/heads/main"
+  ],
+  "source_head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+  "source_sha256": "971b35017becc953fbf4a7922fa0f4463e024af2973cb30795d14ef48615ea98",
+  "source_bytes": 641992,
+  "receiver": {
+    "path": "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle",
+    "bytes": 641992,
+    "sha256": "971b35017becc953fbf4a7922fa0f4463e024af2973cb30795d14ef48615ea98"
+  },
+  "exit_codes": {
+    "producer": 0,
+    "ssh": 0
+  },
+  "producer_stderr": "",
+  "elapsed_seconds": 1.41,
+  "windows_bundle_file_created": false
+}

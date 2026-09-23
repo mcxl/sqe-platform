@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "import importlib.metadata as m,json; print(json.dumps(sorted([(d.metadata[\"Name\"],d.version) for d in m.distributions()]),indent=2))"
+  ],
+  "exit_code": 0,
+  "seconds": 4.294861600006698
+}

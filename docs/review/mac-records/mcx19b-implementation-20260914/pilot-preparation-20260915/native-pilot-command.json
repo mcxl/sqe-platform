@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs",
+    "pilot",
+    "--pocock-evidence",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pocock-readiness-b2c4509.json",
+    "--functional-evidence",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/functional-readiness-b2c4509.json",
+    "--evidence-gate",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/evidence-gate-readiness-b2c4509.json",
+    "--private-input-record",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/private-input-readiness-b2c4509.json"
+  ],
+  "startedUTC": "2026-09-15T01:13:00.133991+00:00",
+  "finishedUTC": "2026-09-15T01:39:46.054257+00:00",
+  "runnerExit": 2,
+  "stdout": "",
+  "stderr": "{\"error\": \"native settings selector failed after evidence collection: native result summary is not a complete pass; native settings process failed; restoration failures: iPhone 17:native-restore\", \"evidence\": \"LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/failure.json\", \"result\": \"blocked\"}\n"
+}

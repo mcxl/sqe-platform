@@ -1,0 +1,56 @@
+{
+  "updatedUTC": "2026-09-15T09:16:44.795708+00:00",
+  "candidate": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+  "pilot": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076",
+  "status": "native pilot failed; selected failure images inspected; remaining images pending",
+  "failure": {
+    "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+    "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:373",
+    "case": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+    "expected": "Unrestricted native audit has no issues",
+    "actual": "Contrast failed for SwiftUI.AccessibilityNode",
+    "label": "Release Details",
+    "category": "rendered heading clipping observed; exact native audit mechanism not established",
+    "nativeExit": 65,
+    "pilotExit": 2,
+    "acceptedPilotCases": 0,
+    "earlierWithinFailedBatch": [
+      "signIn passed",
+      "release passed"
+    ],
+    "restorationFailures": []
+  },
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/attachments/F39B6398-3DF4-432C-9430-99538ACF2041.png",
+      "sha256": "84003e782dbe56529d64931e58a3e10c1b332b011d7a90e513989877c37cf3ad",
+      "bytes": 190496,
+      "inspection": "primary viewed at original resolution",
+      "observation": "Native audit failure. Release Details heading partly clipped at upper scroll viewport edge. Remaining visible release fields, action values, Copy action, notice and Refresh readable."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/attachments/CD9255F4-7B74-4386-B36F-F72611C630AF.png",
+      "sha256": "8bd5d8f4024c76b8bd5e3e83bcf00168b591963f5e1844d86f6ab1024d57758c",
+      "bytes": 4213,
+      "inspection": "primary viewed at original resolution",
+      "observation": "Native element crop. Top portion white; lower heading glyphs visible. Clear clipping. No numerical contrast claim."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/attachments/DE78DFA9-60DC-4190-BF58-53D2C3217EAF.png",
+      "sha256": "df98b3e751774dfb607d2c0c4d8a3e6f464e405f60ac912acc1e6f7f9222fb58",
+      "bytes": 179549,
+      "inspection": "primary viewed at original resolution",
+      "observation": "Pre-audit no-conclusion-notice viewport. Release Details heading entirely above visible viewport. Visible fields, action card, notice, Refresh and Sign out readable."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/attachments/60212F12-A19D-4CD9-92B8-6C8D51FFC6D2.png",
+      "sha256": "d74bf09fc963b3cc5af5020f6be03d7f374abc5ed5d05c7bb5093212148b2add",
+      "bytes": 192980,
+      "inspection": "primary viewed at original resolution",
+      "observation": "Initial noConclusion viewport. Current Release, handling label and Release Details heading fully visible. Initial layout readable."
+    }
+  ],
+  "hypothesis": "Outer RootView padding clips content near the scroll viewport edge. Proposed move of release margins into ScrollView content must be tested. Callback frame is callback-time evidence only.",
+  "correctiveAttempts": 0,
+  "next": "One margin correction with unchanged native audit, followed by a focused noConclusion run. No complete pilot retry until evidence supports correction."
+}

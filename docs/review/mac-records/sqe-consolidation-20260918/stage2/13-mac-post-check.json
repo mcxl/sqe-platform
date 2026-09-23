@@ -1,0 +1,238 @@
+{
+  "captured_at": "2026-09-18T13:05:57.120807+10:00",
+  "checks": {
+    "head_unchanged": true,
+    "refs_unchanged_since_stage1": true,
+    "status_unchanged": true,
+    "index_entries_unchanged_since_stage1": true,
+    "tracked_worktree_clean": true
+  },
+  "head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "refs": "refs/heads/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\nrefs/heads/codex/mcx19b-release-layout 40bae2640b23eb05496a093d09a4c20186403879\nrefs/remotes/origin/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\n",
+  "status": "",
+  "index_entries": 169,
+  "preserved_files": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "80b5121f9607a1e8751ed2017a1e6957027aa2a835b4802016f2471a581e357f",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "11352f78c9112fb81d3c64e60fe0e52f66729f47a91cccf3b2af6c23a079243e",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/implementation-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "13b6d42d27da7fbd414259c9fa592b97667274a27c09a6c6ccf1125d8afd1e0a",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/measurement-fix-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "fd337029dee2f485b7540eae450145abd39b6a58c52876146d7e33f655c5dd1e",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/settings-fix-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "518c26b08e0b1382c08343247404b8e1aa139cd193f9b46facf9d691bfdde12c",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl/ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "98b9bbcda7eb2deedabdb792d5f8c28bbcfefcfb351b5513ec117a7dbb07f82f",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree/tools/ace_ios_local.py",
+      "sha256": "cb7d50d0bd677b57751a7ff6e295f220a75f4e156b019a5f5a07ff2f6d1563be",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree/tools/tests/test_ace_ios_local.py",
+      "sha256": "294049651531e4eadec9dced056b2ba41c9e358aa6167a8689f6794075fd2184",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "56cfea56f54fd5458412d5376d58b01ca97ed6f53c0204b4b9e6e8ccb4a284ad",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3/tools/ace_ios_local.py",
+      "sha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3/tools/tests/test_ace_ios_local.py",
+      "sha256": "b50c74ebbf5f7d59fe1985ad37745db4dae1a2f2c1f97f3a70b781ea7f3f62f5",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "56cfea56f54fd5458412d5376d58b01ca97ed6f53c0204b4b9e6e8ccb4a284ad",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "b549d16757d2b0e5e9cce70c8231957a306e7d15e86f018d2a91fbc5f3da43ba",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "dea59c5756a9bf8268b1ce854e68279c2951b1bfe6199656f151a5e18352e31e",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "3429cb6089ee0555bbf2e447d61838888661be5453a0dce73be4edc5dc094042",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "3429cb6089ee0555bbf2e447d61838888661be5453a0dce73be4edc5dc094042",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "670f6a19c73a303c084cbae319f5b15c4d00b4d5025b4596cd26fb4c2dede63e",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "3a23812a4abe08458ee6a10fb9de6a86608a4468e7e019775bc312989f981f1a",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8",
+      "matches_stage1": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "d1970169effbfd0239d89d1ec1e770f5e670c2bd8560e1ada5333c2895e569b5",
+      "matches_stage1": true
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "diff",
+        "--name-only"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "stage2_bytes_before_report": 5646567,
+  "mac_free_bytes": 222713446400,
+  "storage_checks": {
+    "under_2GiB_cap": true,
+    "above_20GiB_free": true
+  },
+  "limitations": "Raw pre-stage index checksum was not recorded. Stage 1 index entries compared. Untracked or ignored output trees not exhaustively rehashed."
+}

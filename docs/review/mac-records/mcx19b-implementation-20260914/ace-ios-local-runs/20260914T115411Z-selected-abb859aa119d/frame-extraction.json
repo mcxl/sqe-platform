@@ -1,0 +1,15 @@
+{
+  "command": [
+    "xcrun",
+    "swift",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/extract-native-frame.swift",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected-attachments/91BD286A-2389-45B8-9FB0-9E6AA8FF3A7D.mp4",
+    "25",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/seed-failure-frame.png"
+  ],
+  "exitCode": 0,
+  "stdout": "Saved native frame\n",
+  "stderr": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/extract-native-frame.swift:8:27: warning: 'copyCGImage(at:actualTime:)' was deprecated in macOS 15.0: Use generateCGImageAsynchronouslyForTime:completionHandler: instead [#DeprecatedDeclaration]\n 6 | let generator = AVAssetImageGenerator(asset: asset)\n 7 | generator.appliesPreferredTrackTransform = true\n 8 | let image = try generator.copyCGImage(at: CMTime(seconds: Double(CommandLine.arguments[2])!, preferredTimescale: 600), actualTime: nil)\n   |                           `- warning: 'copyCGImage(at:actualTime:)' was deprecated in macOS 15.0: Use generateCGImageAsynchronouslyForTime:completionHandler: instead [#DeprecatedDeclaration]\n 9 | let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: CommandLine.arguments[3]) as CFURL, UTType.png.identifier as CFString, 1, nil)!\n10 | CGImageDestinationAddImage(destination, image, nil)\n\n[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>\n",
+  "requestedSeconds": 25,
+  "limit": "A selected frame, not whole video inspection. Image generator default time tolerance applies."
+}

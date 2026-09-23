@@ -1,0 +1,62 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/derived-diagnostic/Build/Products/settings-read-integration.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-read-integration.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300
+
+2026-09-14 18:03:21.431 xcodebuild[62843:1778438] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-read-integration.xcresult
+
+2026-09-14 18:03:21.450 xcodebuild[62843:1778438] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:03:22.683 xcodebuild[62843:1778438] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:03:30.330252+1000 ACEClientAppUITests-Runner[62868:1779035] [Default] Running tests...
+2026-09-14 18:03:30.700005+1000 ACEClientAppUITests-Runner[62868:1779131] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+    t =      nans Interface orientation changed to Portrait
+2026-09-14 18:03:34.745285+1000 ACEClientAppUITests-Runner[62868:1779135] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-09-14 18:03:34.802.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 18:03:34.804.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 18:03:34.805.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.01s Start Test at 2026-09-14 18:03:34.818
+    t =     0.40s Set Up
+    t =     0.43s Open com.example.aceclientapp
+    t =     0.44s     Launch com.example.aceclientapp
+2026-09-14 18:03:36.276 xcodebuild[62843:1778438] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 18:03:36.276 xcodebuild[62843:1778438] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     3.81s         Setting up automation session
+    t =     9.20s         Wait for com.example.aceclientapp to idle
+    t =    12.55s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    13.61s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    13.61s         Checking existence of `"Effective interface style" StaticText`
+    t =    15.40s Find the "Effective interface style" StaticText
+    t =    15.63s Find the "Effective interface style" StaticText
+    t =    15.83s Terminate com.example.aceclientapp:62888
+    t =    16.85s Open com.example.aceclientapp
+    t =    16.85s     Launch com.example.aceclientapp
+2026-09-14 18:03:51.668 xcodebuild[62843:1778438] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 18:03:51.668 xcodebuild[62843:1778438] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    18.14s         Setting up automation session
+    t =    23.46s         Wait for com.example.aceclientapp to idle
+    t =    26.62s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    27.69s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    27.69s         Checking existence of `"Effective interface style" StaticText`
+    t =    29.31s Find the "Effective interface style" StaticText
+    t =    29.53s Find the "Effective interface style" StaticText
+ACE_SETTINGS_RESULT {"mode":"read","observed":{"boldText":false,"increaseContrast":false,"reduceMotion":false}}
+    t =    29.84s Terminate com.example.aceclientapp:62903
+    t =    30.90s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' passed (31.035 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 18:04:05.854.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.035 (31.048) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 18:04:05.857.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.035 (31.052) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 18:04:05.859.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.035 (31.057) seconds
+2026-09-14 18:04:06.261 xcodebuild[62843:1778438] [MT] IDETestOperationsObserverDebug: 43.553 elapsed -- Testing started completed.
+2026-09-14 18:04:06.262 xcodebuild[62843:1778438] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:04:06.262 xcodebuild[62843:1778438] [MT] IDETestOperationsObserverDebug: 43.553 sec, +43.553 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-read-integration.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

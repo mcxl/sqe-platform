@@ -1,0 +1,21 @@
+{
+  "reviewedBy": "Primary at original resolution",
+  "pngCount": 2,
+  "uniqueCount": 2,
+  "images": [
+    {
+      "sha256": "27af3cd5d9fe11e7d0ccd801efda5d21156d8fd91cc831ef9104f1a0f0adc21e",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected-attachments/6C3DD7EB-AA01-4E1A-B90D-DF17F034044C.png"
+      ],
+      "observation": "No actions state. Release details, conclusion, No actions are available, Refresh and Sign out readable. No Copy present."
+    },
+    {
+      "sha256": "cc71f5edc9d57363102b075dddc4bc4fa84a0be0ec0ca006fe4de8d298ec0af6",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected-attachments/949C1E0D-65DD-4EDC-84C8-94347D2F927F.png"
+      ],
+      "observation": "No conclusion state after scroll. Complete action and Copy visible. No conclusion is available readable below. Upper release details above viewport."
+    }
+  ]
+}

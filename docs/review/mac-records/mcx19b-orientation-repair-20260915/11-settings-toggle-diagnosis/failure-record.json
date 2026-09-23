@@ -1,0 +1,26 @@
+{
+  "updatedUTC": "2026-09-15T13:16:55.180186+00:00",
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+  "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:451",
+  "expected": "Bold Text true",
+  "actual": "Settings control Bold Text: expected true, actual Optional(false)",
+  "nativeExit": 65,
+  "pilotExit": 2,
+  "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09",
+  "passedCases": 5,
+  "passedNativeAudits": 9,
+  "wholePilot": "failed",
+  "sourceUnchanged": true,
+  "restoration": "all native restore phases and boot states passed",
+  "classification": "Settings automation/environment fault; mechanism unresolved",
+  "observations": [
+    "Retained synthesized event touch x333,y160.3333282470703; down/up0.05seconds apart, same coordinate.",
+    "Touch coordinate lies within the visible Bold Text switch.",
+    "Original-resolution frames actual48.9417,52.2233,53.1683seconds show switch off, no dialog or overlay.",
+    "Video is sparse; these frames do not exclude a brief intermediate state.",
+    "Retained passing run used the same switch frame, point and helper.",
+    "No Settings correction has been attempted."
+  ],
+  "correctionAttempts": 0
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105749Z-selected-a3ce7a2127bf/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-enumerate-tests",
+    "-test-enumeration-style",
+    "flat",
+    "-test-enumeration-format",
+    "json",
+    "-test-enumeration-output-path",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105749Z-selected-a3ce7a2127bf/test-enumeration.json"
+  ],
+  "end": "2026-09-14T10:59:59.183816+00:00",
+  "exit": 0,
+  "seconds": 12.436,
+  "start": "2026-09-14T10:59:46.747741+00:00",
+  "stderr": "2026-09-14 20:59:52.626 xcodebuild[85121:2161413] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 20:59:52.661 xcodebuild[85121:2161413] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 20:59:53.758 xcodebuild[85121:2161413] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105749Z-selected-a3ce7a2127bf/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO -enumerate-tests -test-enumeration-style flat -test-enumeration-format json -test-enumeration-output-path LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105749Z-selected-a3ce7a2127bf/test-enumeration.json\n\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/Library/Developer/Xcode/DerivedData/ACEClientApp-gryzbddrulbpyuevaijnurwnkidu/Logs/Test/Test-ACEClientApp-2026.09.14_20-59-52-+1000.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\n",
+  "timedOut": false
+}

@@ -1,0 +1,166 @@
+{
+  "scope": "pure-data fixtures only; no native execution",
+  "checkedUTC": "2026-09-16T12:30:14.843160+00:00",
+  "wrapperSha256": "76235dd27439a3545515a21a8b2a6acae4038403950b1935ba659a5152be7fe1",
+  "passed": 28,
+  "checks": [
+    {
+      "name": "B fourteen normal calls",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "C two unrestricted calls and placement",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "Native findings with all calls normal",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "Native issue throw with exact matching callback evidence",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "Missing audit call blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Missing, duplicated, reordered, or unexpected audit calls"
+    },
+    {
+      "name": "Duplicate audit call blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Missing, duplicated, reordered, or unexpected audit calls"
+    },
+    {
+      "name": "Wrong repetition blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Wrong diagnostic arm/repetition"
+    },
+    {
+      "name": "Completion false success blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Completion mismatch: returnedNormallyAuditCalls"
+    },
+    {
+      "name": "Missing completion blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Expected exactly one diagnostic completion marker"
+    },
+    {
+      "name": "Thrown error without findings blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Ambiguous/infrastructure audit error: Contrast failed"
+    },
+    {
+      "name": "Infrastructure error despite findings blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Ambiguous/infrastructure audit error: Lost AX connection"
+    },
+    {
+      "name": "Unmatched error marker blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Audit error markers disagree with per-call evidence"
+    },
+    {
+      "name": "Missing issue frame blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Missing or invalid frame for an available audit element"
+    },
+    {
+      "name": "Native nil element preserved as unavailable evidence",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "C unstable placement blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "C placement repetition or settle check failed"
+    },
+    {
+      "name": "C wrong placement geometry blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "C placement geometry failed"
+    },
+    {
+      "name": "Both arms and repetition injected",
+      "result": "passed"
+    },
+    {
+      "name": "Settings environment preserved without D1 request",
+      "result": "passed"
+    },
+    {
+      "name": "Settings diagnostic request rejected",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "D1 request in settings configuration"
+    },
+    {
+      "name": "Collected native exit65 remains FAILED",
+      "result": "passed"
+    },
+    {
+      "name": "False pass marker with finding blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "A native finding must not have a passed case marker"
+    },
+    {
+      "name": "Mixed native app launch failure blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Unclassified native failure: {'targetName': 'ACEClientAppUITests', 'testIdentifierString': 'ACEClientAppUITests/testCoverageBatch()', 'failureText': 'App failed to launch'}"
+    },
+    {
+      "name": "Timeout blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Native execution incomplete/abnormal"
+    },
+    {
+      "name": "Clean native pass recognised",
+      "result": "passed"
+    },
+    {
+      "name": "Generated __TESTROOT__/__TESTHOST__ test bundle structure resolves correctly",
+      "result": "passed"
+    },
+    {
+      "name": "Duplicate callback names retained as separate exports",
+      "result": "passed",
+      "expected": "accepted",
+      "actual": "accepted"
+    },
+    {
+      "name": "Missing callback image count blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Callback PNG count differs from native findings: D1 B repetition 1 initial contrast callback-time evidence"
+    },
+    {
+      "name": "Manifest reference to missing export blocked",
+      "result": "passed",
+      "expected": "rejected",
+      "actual": "Missing/empty exported attachment"
+    }
+  ]
+}

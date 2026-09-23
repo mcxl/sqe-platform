@@ -1,0 +1,94 @@
+{
+  "reviewedAtUTC": "2026-09-14T11:03:08.521054+00:00",
+  "sourceVideo": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/release-current-build/attachments/E974C273-3E1E-4032-BD15-99C5F7BF0013.mp4",
+  "sourceVideoSha256": "bc23f31a86aa84cc3123364a294c9661013af86519e01cd690a06109df48405c",
+  "method": "Primary inspected each of five distinct extracted frames at full resolution. Seven requested times map to five recorded images.",
+  "frames": [
+    {
+      "sha256": "18e6c1a5175f5f032bee8d0327a570de38d8cfd87f5ec8369615bf035c2fc9d6",
+      "recordedFrames": [
+        {
+          "actualSeconds": 105.115,
+          "file": "frame-152.png",
+          "height": 2868,
+          "requestedSeconds": 152,
+          "width": 1320
+        },
+        {
+          "actualSeconds": 105.115,
+          "file": "frame-154.png",
+          "height": 2868,
+          "requestedSeconds": 154,
+          "width": 1320
+        }
+      ],
+      "inspection": "Before the audit, Conclusion and Actions use normal text size. Refresh and Sign out are visible."
+    },
+    {
+      "sha256": "8d7062fe4d9cff8262c5d3c3939a9ce6a753549fff6338a1f7fc29ec008b07e2",
+      "recordedFrames": [
+        {
+          "actualSeconds": 155.83666666666667,
+          "file": "frame-156.png",
+          "height": 2868,
+          "requestedSeconds": 156,
+          "width": 1320
+        }
+      ],
+      "inspection": "Text is smaller during the audit interval. Copy controls and other text remain visually readable."
+    },
+    {
+      "sha256": "527f6a3a3ce967038cb9be88267f1130d95a55af844e490463fa034eefaf6cdb",
+      "recordedFrames": [
+        {
+          "actualSeconds": 157.98166666666665,
+          "file": "frame-158.png",
+          "height": 2868,
+          "requestedSeconds": 158,
+          "width": 1320
+        }
+      ],
+      "inspection": "Text has enlarged. Row heights and scroll position change."
+    },
+    {
+      "sha256": "8870dbf818b875a753371d9ad1675f10872b03de37dc3b10e0a71d7db6b56e7c",
+      "recordedFrames": [
+        {
+          "actualSeconds": 159.96166666666667,
+          "file": "frame-160.png",
+          "height": 2868,
+          "requestedSeconds": 160,
+          "width": 1320
+        }
+      ],
+      "inspection": "Text is very large. The viewport shows release metadata. Copy controls stack below values."
+    },
+    {
+      "sha256": "76b99fd86bb8814959c65f8e32d3cdb3a4af873f00f33c3d0cfb8d581d1f2391",
+      "recordedFrames": [
+        {
+          "actualSeconds": 160.20333333333335,
+          "file": "frame-164.png",
+          "height": 2868,
+          "requestedSeconds": 164,
+          "width": 1320
+        },
+        {
+          "actualSeconds": 160.20333333333335,
+          "file": "frame-172.png",
+          "height": 2868,
+          "requestedSeconds": 172,
+          "width": 1320
+        }
+      ],
+      "inspection": "Text returns to its initial size. The Conclusion card is lower than before the audit. Sign out is now partly outside the viewport."
+    }
+  ],
+  "observation": "The recorded full-audit interval contains text-size changes and returns to a different scroll position.",
+  "limits": [
+    "Only the selected frames were inspected. This is not a claim that the whole video was watched.",
+    "Use actualSeconds, not requestedSeconds, for presentation times. The recording has intervals with no new video frame.",
+    "The recording does not identify the private native audit sample times. It does not establish the contrast or inaccessible-text cause.",
+    "No app correction or native-audit exception is justified by this observation alone."
+  ]
+}

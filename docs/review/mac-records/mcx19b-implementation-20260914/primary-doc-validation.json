@@ -1,0 +1,21 @@
+{
+  "check": "primary mechanical document check",
+  "requirement_ids_unchanged": 197,
+  "case_groups": [
+    144,
+    396,
+    60,
+    216,
+    20
+  ],
+  "unique_cases": 836,
+  "audit_cases": 512,
+  "layout_only_cases": 324,
+  "pilot_cases": 22,
+  "pilot_layout_only": 2,
+  "files": {
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "2a23c1a8dd4fe6d51f92eacecd1b010c00509267b43235372748cb4d257497b7",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "6cc92d1f6fa5d1b9eff9113454209806bfaaab676fcee62ed9e4b6600f124150"
+  },
+  "native_acceptance": "pending, not established by these checks"
+}

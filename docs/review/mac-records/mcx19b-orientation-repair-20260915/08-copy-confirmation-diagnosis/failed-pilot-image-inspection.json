@@ -1,0 +1,153 @@
+{
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "status": "inspection complete; native Copy contrast failure remains unresolved",
+  "updatedUTC": "2026-09-15T10:17:29.870715+00:00",
+  "nativeImages": 38,
+  "distinctImagesInspected": 13,
+  "review": [
+    {
+      "sha256": "01551c5f617ca1e36dba1031dfbd849c72eb6243f780813f115dc64c2121c02b",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/044DB129-159F-458E-B736-D7027E225FB1.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/044DB129-159F-458E-B736-D7027E225FB1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/42A42DAA-9027-461C-887A-69F2AAAB8B7F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/4A523BA7-FB32-40C8-8164-193289781F8B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/517DD7A3-33C3-4932-9CE7-F47360699B2E.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/6F106CEC-5A6C-4934-8086-0AFDD191480B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/8970F114-839A-41FC-9A77-D5EAF5FC91F5.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/8BE655FF-A9A0-4E38-A69D-E08EF00BDE67.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "noConclusion default: all release and action values and Copy button readable; system area clear."
+    },
+    {
+      "sha256": "2422fd28ef7656ee9f1a682633bcf19c505729872d81208b448b73076dd7a07f",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/078A6545-CCCA-4E5E-8230-C2EB92F4A746.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/078A6545-CCCA-4E5E-8230-C2EB92F4A746.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/0BCB483F-024A-4704-8E35-32F958B36E71.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/5EFDBC31-09E0-4211-ADB1-53AE046378E0.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/B462D3D0-79C1-49C2-84AF-94E1D58382DC.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/D1DBEB5C-803F-4459-85A9-7BBD3E14F50D.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "noActions initial: release values, conclusion, empty notice and commands readable."
+    },
+    {
+      "sha256": "385afad1f80e440e2c323e8468cf9a9c3d2a95023889c1b22336cc79f65081d4",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/0B903402-52C3-4F21-884F-9960F8B9CD83.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/0B903402-52C3-4F21-884F-9960F8B9CD83.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/365DD72F-EEBA-400A-BC13-EB92EDECD785.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/41A0EC95-99B1-4321-AE5D-FB2D9C3509D6.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/75D59819-7343-4B5E-ADFE-AEB45F4EFF5A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/83042C34-4A64-4E6D-9E43-CC94B20CAF7C.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/A73DDC19-0B11-412E-B0C3-6ADAA510E387.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/BF547EB4-712A-4267-AC2A-71541137617D.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "release middle viewport: target release/conclusion values readable; action continues below scroll edge."
+    },
+    {
+      "sha256": "59e72756fe6dcd746ea8f4bc1240034d2da20f26fac787f737c5f3d2abc2d997",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/264DF19D-3E58-4DFE-9BD1-8F9DF850B192.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/264DF19D-3E58-4DFE-9BD1-8F9DF850B192.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/BEEA5299-6E66-402B-AEA9-29CA2C5505DA.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/D72072E3-EAE7-49D3-B7B8-68B7FCEEBB9F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/E95EE904-778E-4DF1-B748-222C12BFD1F5.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "release final: action values and Copy button readable; Refresh and Sign out visible."
+    },
+    {
+      "sha256": "0f51cf92af3093301cbebcd36c2dc540930e4f8aec0c93805f66fa8e8a6c9ed8",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/2F329CA6-2E8E-40C8-B100-91C5DF5B2056.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/2F329CA6-2E8E-40C8-B100-91C5DF5B2056.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/B7297D76-8F60-4C25-A707-B2091A43ADE9.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "signIn: title, Username, Password and Sign in control visible. No overlap or fixed truncation seen."
+    },
+    {
+      "sha256": "c5dba6f392f56fa1dc5ed36c2453aaa63e1811f691b494135f57bbfdd2857ba6",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/2F5EAEB5-08F4-4316-8795-C8C16748A04D.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/2F5EAEB5-08F4-4316-8795-C8C16748A04D.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "copyConfirmation initial: release and conclusion values readable; action extends below viewport."
+    },
+    {
+      "sha256": "c849d0d7678da04e542a60ec2e32fedd8c749a6cd4ae7204cd3b97d0c8d6bc87",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/54C8A4C9-3652-45DB-8F72-45F567C33F08.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/54C8A4C9-3652-45DB-8F72-45F567C33F08.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/A96B92DB-4DD5-44CC-A566-E18E6899435D.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/CA852CD2-E97B-4D2A-8736-DCE8D7A48DDC.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/F34ACC8B-8311-4450-9248-EA5947CE0F88.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "noActions final: all required fields, empty notice and commands visible."
+    },
+    {
+      "sha256": "991249dfceafbe966dafc6bfc6bbaa685fec1bded1d27327bbce19b7facdbde5",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/5C8FC288-F20A-4262-BA20-007973916E30.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/5C8FC288-F20A-4262-BA20-007973916E30.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "Native failure app screenshot: complete dark Copy action label on grey button. Confirmation visible. Content position differs from pre-audit capture by approximately61.67pt."
+    },
+    {
+      "sha256": "0ca21249ae8002b07a0dd3d1d382dcd57516111605f637ffdd2777ba757398ae",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/71EA6A84-A057-4C92-9A9D-FA2203527A44.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/71EA6A84-A057-4C92-9A9D-FA2203527A44.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/DD1D547C-B7BB-4A85-8272-4919CE7E1947.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "noConclusion initial: release and action values and Copy button readable."
+    },
+    {
+      "sha256": "a46359a500add00c28f08ace3b63cc53cf09b81f6f3256be327b2758066c91fa",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/9FC9E24F-6AE0-44BA-8076-94C56930DE19.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/9FC9E24F-6AE0-44BA-8076-94C56930DE19.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/B213011A-A7C9-4B05-8173-F048BFDC193F.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "release initial: release and conclusion values readable; action extends below normal scroll edge."
+    },
+    {
+      "sha256": "b0e03ce90c5e21f4f4d293ae07e30208bb05c4f7f94945220f7cf0cd61c11c88",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/CB4C2053-E066-449F-8EC9-A6BCBA90CC7A.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/CB4C2053-E066-449F-8EC9-A6BCBA90CC7A.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "noConclusion final: top prior value clips at normal viewport edge below clock; action, Copy, missing-conclusion notice and commands readable."
+    },
+    {
+      "sha256": "7303d73d4545d1d37397bbfe77f49b4c726bbb841327798893ecd8348936bcb1",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/E68D80D2-AEA9-44A0-9AD4-F602A56EDA6F.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/E68D80D2-AEA9-44A0-9AD4-F602A56EDA6F.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "Copy confirmation before audit: complete dark Copy label and Copied Action1. visible; status area clear."
+    },
+    {
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/F49E7030-3109-40AE-956F-A02C7D4C2A5E.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/F49E7030-3109-40AE-956F-A02C7D4C2A5E.png"
+      ],
+      "inspectedAtOriginalResolution": true,
+      "observation": "Native element crop: entire black Copy action label and icon visible on grey. No clipping or occlusion. Native contrast failure remains unresolved."
+    }
+  ],
+  "acceptanceCredit": 0,
+  "limitation": "Visual inspection does not override the native audit failure."
+}

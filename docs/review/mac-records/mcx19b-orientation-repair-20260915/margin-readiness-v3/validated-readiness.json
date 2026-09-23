@@ -1,0 +1,18 @@
+{
+  "functional": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-readiness-v3/functional-readiness.json",
+    "sha256": "13d0b09c3b682b566ae51536ef99e65a73acf53972fe4106a13fc6c1ced6471d"
+  },
+  "pocock": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-readiness-v3/pocock-readiness.json",
+    "sha256": "0e882b9575e6610c5db40dea4e5c7cd09121f9f5319627788f02a141d842d001"
+  },
+  "evidence-gate": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-readiness-v3/evidence-gate-readiness.json",
+    "sha256": "97208c5969ecf4dd9ba35c3d66abc2d86298b90aa58e77aae063e1b389741aed"
+  },
+  "private-input": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-readiness-v3/private-input-readiness.json",
+    "sha256": "3c3e5337283c050aa309bc7d0ea567e6f6d928d7cbac3aa8df8a261775ddc461"
+  }
+}

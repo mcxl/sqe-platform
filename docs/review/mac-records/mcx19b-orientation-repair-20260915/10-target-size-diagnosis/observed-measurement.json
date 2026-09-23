@@ -1,0 +1,40 @@
+{
+  "timeUTC": "2026-09-15T12:37:29.166576+00:00",
+  "probeCommit": "f5bd9c43cb1bf6dfb45986b9e5df420be28ad9d2",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "expected": "44-point minimum target height",
+  "actualHeight": 43.99999999999966,
+  "deficit": 3.410605131648481e-13,
+  "existingTolerance": 5.684341886080802e-14,
+  "frame": {
+    "x": 16,
+    "y": 716,
+    "width": 56,
+    "height": 43.99999999999966
+  },
+  "finding": "Native measurement lies infinitesimally below44; existing8ULP scalar comparison rejects it. App source already requests44-point minimum. The exact internal arithmetic is unknown.",
+  "classification": "test numerical comparison fault; not evidence of a materially undersized app control",
+  "image": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-target-probe/batches/001/attachments/403F9791-BF15-4484-95F2-AE954F539F6E.png",
+    "sha256": "6f3cfdc4387decfe0ec6d5d682fcc271ae787e6d791ca8dce02d26554a5ab42b",
+    "bytes": 176645,
+    "inspection": "Original-resolution image inspected. Refresh and Sign out fully visible below complete Action1. No clipping observed; pixels do not establish exact AX dimensions."
+  },
+  "correctionAttempts": 0,
+  "pilotCredit": 0,
+  "diagnosticResult": {
+    "nativeCase": "failed as expected from captured measurement",
+    "exit": 2,
+    "candidateUnchanged": true,
+    "bootStatesRestored": true,
+    "settingsTestsPassed": 5,
+    "nativeAuditCount": 0,
+    "pilotCredit": 0,
+    "startedUTC": "2026-09-15T12:28:14.232094+00:00",
+    "finishedUTC": "2026-09-15T12:39:00.696280+00:00"
+  },
+  "executionEvidence": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-target-probe/execution.json",
+    "sha256": "887bb9499206dc6733b8a0dc3d79ed4bc63151feb67fd6636276a83aed93598e"
+  }
+}

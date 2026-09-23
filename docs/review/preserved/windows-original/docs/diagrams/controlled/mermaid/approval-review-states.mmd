@@ -1,0 +1,30 @@
+flowchart TD
+    subgraph EVIDENCE_ITEM_REVIEW["Evidence Item Review"]
+        PENDING_REVIEW["PENDING_REVIEW"] -->|"auditor confirms review"| REVIEWED["REVIEWED"]
+        REVIEWED -.-> REVIEW_NOTE["Does not approve a relationship, MATE Assessment or conclusion"]
+    end
+
+    subgraph RELATIONSHIP_APPROVAL["Relationship Approval"]
+        PROPOSED_RELATIONSHIP["Proposed Relationship"] --> RELATIONSHIP_VERSION["Relationship Version"]
+        RELATIONSHIP_VERSION --> RELATIONSHIP_DECISION{"Auditor Decision"}
+        RELATIONSHIP_DECISION -->|"approve"| APPROVED_RELATIONSHIP["Approved Relationship"]
+        RELATIONSHIP_DECISION -->|"reject"| RELATIONSHIP_REJECTED["Rejected"]
+        RELATIONSHIP_DECISION -->|"request changes"| RELATIONSHIP_CHANGES["Changes Required"]
+        RELATIONSHIP_CHANGES --> NEW_RELATIONSHIP_VERSION["New Relationship Version"]
+        NEW_RELATIONSHIP_VERSION --> RELATIONSHIP_DECISION
+        APPROVED_RELATIONSHIP -.-> RELATIONSHIP_NOTE["Approved records are never overwritten"]
+    end
+
+    subgraph CONCLUSION_APPROVAL["Conclusion Approval"]
+        CONCLUSION_VERSION["Conclusion Version"] --> CONCLUSION_DECISION{"Auditor Decision"}
+        CONCLUSION_DECISION -->|"approve"| APPROVED_CONCLUSION["Approved Conclusion"]
+        CONCLUSION_DECISION -->|"reject"| CONCLUSION_REJECTED["Rejected"]
+        CONCLUSION_DECISION -->|"request changes"| CONCLUSION_CHANGES["Changes Required"]
+        CONCLUSION_CHANGES --> NEW_CONCLUSION_VERSION["New Conclusion Version"]
+        NEW_CONCLUSION_VERSION --> CONCLUSION_DECISION
+        APPROVED_CONCLUSION --> IMPLEMENTATION_CONCLUSION["Implementation Conclusion"]
+        APPROVED_CONCLUSION --> EFFECTIVENESS_CONCLUSION["Effectiveness Conclusion"]
+        APPROVED_CONCLUSION --> NOT_DETERMINED_CONCLUSION["Not Determined Conclusion"]
+    end
+
+    REVIEWED -.->|"proposal can enter queue"| PROPOSED_RELATIONSHIP

@@ -1,0 +1,8 @@
+{
+  "baseCommit": "b2c45093a44c6171ca250b858378ea57693d8477",
+  "diffSha256": "c70132aa12ed7f1bdfe29b0bed72b7eda0f8e0863ac1f2855d4b85c17dc2b89b",
+  "sourceReview": "Primary inspected complete one-file diff and read independent Sol source verdict. No blocking source finding.",
+  "acceptance": "Final switch value must equal request. Final in-app flags and orientation remain mandatory. Native audits unchanged.",
+  "nativeVerification": "Build passed; focused recovery/all-on/restore running; source SHIP is not acceptance.",
+  "updatedUTC": "2026-09-15T02:11:44.430092+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration",
+    "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection",
+    "-resultBundlePath",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult"
+  ],
+  "end": "2026-09-15T01:08:14.746704+00:00",
+  "exit": 0,
+  "seconds": 15.941,
+  "start": "2026-09-15T01:07:58.805524+00:00",
+  "stderr": "2026-09-15 11:08:05.803 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 11:08:05.850 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 11:08:07.460 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 6.987 elapsed -- Testing started completed.\n2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start\n2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 6.987 sec, +6.987 sec -- end\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO \"-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration\" \"-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection\" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult\n\nWriting result bundle at path:\n\tLOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult\n\nTest Suite 'Selected tests' started at 2026-09-15 11:08:13.646.\nTest Suite 'ACEClientAppTests.xctest' started at 2026-09-15 11:08:13.648.\nTest Suite 'AcceptanceEvidenceContractTests' started at 2026-09-15 11:08:13.649.\nTest Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' started.\nTest Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' passed (0.257 seconds).\nTest Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' started.\nTest Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' passed (0.188 seconds).\nTest Suite 'AcceptanceEvidenceContractTests' passed at 2026-09-15 11:08:14.104.\n\t Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.455) seconds\nTest Suite 'ACEClientAppTests.xctest' passed at 2026-09-15 11:08:14.106.\n\t Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.458) seconds\nTest Suite 'Selected tests' passed at 2026-09-15 11:08:14.107.\n\t Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.462) seconds\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\nTesting started\n",
+  "timedOut": false
+}

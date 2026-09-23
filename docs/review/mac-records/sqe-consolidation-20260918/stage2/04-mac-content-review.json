@@ -1,0 +1,703 @@
+{
+  "head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "reviewed_blobs": 526,
+  "reviewed_bytes": 18419904,
+  "rules": [
+    "private_key_header",
+    "github_token",
+    "aws_access_key",
+    "openai_key_shape",
+    "slack_token",
+    "credentialed_url"
+  ],
+  "findings": [
+    {
+      "oid": "70c20446002bb7c1619a80ba3ad96558936bac41",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 255,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1939,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1986,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "00536de3e301c7370c3e7d4e5af6835f5bbe1581",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 255,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f537f1be285bf7a9bc7db4ea504a6dbc0387899f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 255,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "75fd6eb44c3ca653bf05370639b1ebce3f0751a3",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f1368122518afe06c543f601bacd88212d12090c",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1939,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f1368122518afe06c543f601bacd88212d12090c",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1986,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "9db2d4093f83843a07b4df417ef7e6d721fef820",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1939,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "9db2d4093f83843a07b4df417ef7e6d721fef820",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1986,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "b7a93f1d66eb73f766ca82a180c5262db4442187",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "5f6d3299b9483ab145f1b5779292392498aee464",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1911,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "5f6d3299b9483ab145f1b5779292392498aee464",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1958,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "27998397b7acc111b7ace7c310545fe40f05cf4e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1909,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "27998397b7acc111b7ace7c310545fe40f05cf4e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1956,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "8f842030c0083ec1d9e7c2ad01eb1229b5c554c6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1706,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "8f842030c0083ec1d9e7c2ad01eb1229b5c554c6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1753,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f3fb24d3b5d339527f50ae8527988eee441c09f5",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1620,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f3fb24d3b5d339527f50ae8527988eee441c09f5",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1667,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "d59aeb2bcb894bfa115d6497407937291e1d84a0",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1620,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "d59aeb2bcb894bfa115d6497407937291e1d84a0",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1667,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "09c3beb57c4bc22cc81fa627ee9b897fe3b7529e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "09c3beb57c4bc22cc81fa627ee9b897fe3b7529e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "639fbd921cf3db87627209ed097bfd33729c6d88",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "639fbd921cf3db87627209ed097bfd33729c6d88",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "426b4b50908e2a3dd51ae17b20c101f46ef0e1af",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "426b4b50908e2a3dd51ae17b20c101f46ef0e1af",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "d5ce8b92a59fc4119ae9fc557ceda265e777ef08",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "1ea52d8564f4649aeb74a27b7774bc54984b07f2",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "1ea52d8564f4649aeb74a27b7774bc54984b07f2",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "ba4c54c503a1c31cba89bbb1cebbb114d28dd261",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "ba4c54c503a1c31cba89bbb1cebbb114d28dd261",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "02eb0d2f4c6ec34d387d54538979cebf49215f55",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1559,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "02eb0d2f4c6ec34d387d54538979cebf49215f55",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1606,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "39ebecff8796d522dc3f44bba1c39027e07ec3ef",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1510,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "39ebecff8796d522dc3f44bba1c39027e07ec3ef",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1557,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "e84ee99bd66aeebca00a1dbbce5a12d1e4c1de77",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1504,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "e84ee99bd66aeebca00a1dbbce5a12d1e4c1de77",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1551,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "b0bb51b1eec4891d5ec110a30a3bca555c92b7bc",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "3a6c32689388e4a56098e3cd518c3bc821e0f9df",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "252f3d7019bc4b003148a9088b6da8168db45530",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1164,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "252f3d7019bc4b003148a9088b6da8168db45530",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1211,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "c7d3410950fe3800774eb33ed46b00f3ba52df45",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "90762b0ac393b51cd965208e4f9bbaba6174a9ac",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1154,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "90762b0ac393b51cd965208e4f9bbaba6174a9ac",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1201,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "bbe5119de5fe9526a8af57cd5ea990bf62ab4087",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 993,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "bbe5119de5fe9526a8af57cd5ea990bf62ab4087",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 1040,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "cc0705128a8d1500863f7ddb8e57d22709f0286b",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 941,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "cc0705128a8d1500863f7ddb8e57d22709f0286b",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 988,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "eed3dcbf005bb795d40a5ce641a36e9f246d4059",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "e8da15bda4ff8b1cdf0392057c4c701a73b161f6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 941,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "e8da15bda4ff8b1cdf0392057c4c701a73b161f6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 988,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "50635e3bfacbaf86c16076f46119158784ce855a",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 941,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "50635e3bfacbaf86c16076f46119158784ce855a",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 988,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "b27f02d94dbd58bd1d533a25938320b99d5af3df",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 849,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "b27f02d94dbd58bd1d533a25938320b99d5af3df",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 896,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "1f9868d97a4e12b40e32520d2287fb31f293d17e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 848,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "1f9868d97a4e12b40e32520d2287fb31f293d17e",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 895,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "a314cd1652bb3834443aa307d41a72c01123cd8d",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 625,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "a314cd1652bb3834443aa307d41a72c01123cd8d",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 672,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "3a24f86088c495f3ac32c315fa19c886c89b81ec",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 571,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "3a24f86088c495f3ac32c315fa19c886c89b81ec",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 618,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f5a225061717e10f2928e11f4b36f1890dd6b878",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 467,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f5a225061717e10f2928e11f4b36f1890dd6b878",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 514,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f8e65068149c0af8b2df9b7bf15003af1cff6b67",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 349,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "f8e65068149c0af8b2df9b7bf15003af1cff6b67",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 396,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "fecb64b0be5d5addf6584a57da392394978780c4",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 298,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "fecb64b0be5d5addf6584a57da392394978780c4",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 345,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "c1d67d222a53615fac5427dbe5c7d3525e3d26f6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 290,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "c1d67d222a53615fac5427dbe5c7d3525e3d26f6",
+      "path": "tests/test_run_tests.py",
+      "rule": "credentialed_url",
+      "line": 337,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "745541ba7ac101756dad95d651b80416caa64421",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    },
+    {
+      "oid": "022a63a3f2106734604301182f4c6425b41dae5f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "rule": "credentialed_url",
+      "line": 252,
+      "matched_value": "REDACTED"
+    }
+  ],
+  "non_utf8_blobs": [],
+  "environment_examples": [
+    {
+      "oid": "1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163",
+      "variables": [
+        {
+          "name": "NEXT_PUBLIC_CONVEX_URL",
+          "empty_value": true
+        }
+      ]
+    }
+  ],
+  "all_paths": [
+    ".github/workflows/quality-gates.yml",
+    ".github/workflows/release-quality.yml",
+    ".gitignore",
+    "ACE_PROGRESS_GUIDE.html",
+    "ACE_VISION_AND_ROADMAP.md",
+    "AGENTS.md",
+    "CONTEXT.md",
+    "DEV_STATE.md",
+    "README.md",
+    "WORKFLOW-NOTES.md",
+    "apps/relationship-review-pilot/.env.example",
+    "apps/relationship-review-pilot/.gitignore",
+    "apps/relationship-review-pilot/README.md",
+    "apps/relationship-review-pilot/app/error.tsx",
+    "apps/relationship-review-pilot/app/globals.css",
+    "apps/relationship-review-pilot/app/layout.tsx",
+    "apps/relationship-review-pilot/app/page.tsx",
+    "apps/relationship-review-pilot/components.json",
+    "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+    "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+    "apps/relationship-review-pilot/components/ui/alert.tsx",
+    "apps/relationship-review-pilot/components/ui/card.tsx",
+    "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+    "apps/relationship-review-pilot/components/ui/table.tsx",
+    "apps/relationship-review-pilot/components/ui/utils.ts",
+    "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+    "apps/relationship-review-pilot/convex/_generated/api.js",
+    "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+    "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+    "apps/relationship-review-pilot/convex/_generated/server.js",
+    "apps/relationship-review-pilot/convex/relationships.ts",
+    "apps/relationship-review-pilot/convex/schema.ts",
+    "apps/relationship-review-pilot/convex/seed.ts",
+    "apps/relationship-review-pilot/convex/tsconfig.json",
+    "apps/relationship-review-pilot/eslint.config.mjs",
+    "apps/relationship-review-pilot/next-env.d.ts",
+    "apps/relationship-review-pilot/next.config.ts",
+    "apps/relationship-review-pilot/package-lock.json",
+    "apps/relationship-review-pilot/package.json",
+    "apps/relationship-review-pilot/postcss.config.mjs",
+    "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+    "apps/relationship-review-pilot/tests/relationships.test.ts",
+    "apps/relationship-review-pilot/tsconfig.json",
+    "apps/relationship-review-pilot/vitest.config.ts",
+    "apps/relationship-review-pilot/vitest.setup.ts",
+    "codemagic.yaml",
+    "docs/DOCUMENTATION-INVENTORY.md",
+    "docs/adr/0001-human-auditor-controls-final-decisions.md",
+    "docs/adr/0002-g0-protects-the-data-boundary.md",
+    "docs/adr/0003-approved-records-use-versioned-history.md",
+    "docs/adr/0004-release-projection-is-read-only.md",
+    "docs/agents/agent-permissions.md",
+    "docs/agents/domain.md",
+    "docs/agents/issue-tracker.md",
+    "docs/agents/triage-labels.md",
+    "docs/diagrams/README.md",
+    "docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+    "docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+    "docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+    "docs/diagrams/diagram-manifest.json",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "docs/specs/autonomous-delivery-workflow-repair.md",
+    "docs/specs/documentation-control.md",
+    "docs/specs/phase6-stage1-release-service-boundary.md",
+    "docs/specs/phase6-stage2-release-workflow.md",
+    "docs/specs/phase6-stage3-release-trigger-decisions.md",
+    "docs/specs/phase6b2-read-only-client-release-projection.md",
+    "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+    "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+    "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+    "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+    "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+    "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+    "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+    "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+    "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Info.plist",
+    "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+    "ios/ACEClientApp/ACEClientApp/Network.swift",
+    "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+    "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "ios/ACEClientApp/Makefile",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json",
+    "ios/ACEClientApp/RuntimeEvidencePlan.md",
+    "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+    "ios/ACEClientApp/evidence-matrix-audit.md",
+    "pyproject.toml",
+    "quality/test-groups.json",
+    "security/deepsec/deepsec-residual-risk.yaml",
+    "src/__init__.py",
+    "src/ace/__init__.py",
+    "src/ace/app.py",
+    "src/ace/domain/__init__.py",
+    "src/ace/domain/assessment.py",
+    "src/ace/domain/enums.py",
+    "src/ace/domain/models.py",
+    "src/ace/domain/release.py",
+    "src/ace/domain/trace.py",
+    "src/ace/engine/__init__.py",
+    "src/ace/engine/approval.py",
+    "src/ace/engine/evaluator.py",
+    "src/ace/engine/tracing.py",
+    "src/ace/workbench/__init__.py",
+    "src/ace/workbench/action_result.py",
+    "src/ace/workbench/change_record.py",
+    "src/ace/workbench/client_auth.py",
+    "src/ace/workbench/client_release_projection.py",
+    "src/ace/workbench/client_release_service.py",
+    "src/ace/workbench/client_routes.py",
+    "src/ace/workbench/document_toolchain_doctor.py",
+    "src/ace/workbench/engagement.py",
+    "src/ace/workbench/evidence_review.py",
+    "src/ace/workbench/export_builder.py",
+    "src/ace/workbench/extraction.py",
+    "src/ace/workbench/notion_publisher.py",
+    "src/ace/workbench/relationship_review.py",
+    "src/ace/workbench/relationship_review_storage.py",
+    "src/ace/workbench/release_storage.py",
+    "src/ace/workbench/routes.py",
+    "src/ace/workbench/storage.py",
+    "tests/test_action_result.py",
+    "tests/test_app.py",
+    "tests/test_approval_gate.py",
+    "tests/test_capture.py",
+    "tests/test_change_export.py",
+    "tests/test_client_release.py",
+    "tests/test_client_release_projection.py",
+    "tests/test_diagnose_ios.py",
+    "tests/test_engagement_setup.py",
+    "tests/test_engagement_summary.py",
+    "tests/test_evidence_review.py",
+    "tests/test_extraction.py",
+    "tests/test_graph_projection.py",
+    "tests/test_ios_accessibility_layout.py",
+    "tests/test_ios_action_targets.py",
+    "tests/test_offline_drafts.py",
+    "tests/test_planning_trace.py",
+    "tests/test_quality_gates_workflow.py",
+    "tests/test_rating_engine.py",
+    "tests/test_relationship_review.py",
+    "tests/test_run_tests.py",
+    "tests/test_workbench.py",
+    "tools/ace_ios_local.py",
+    "tools/diagnose_ios.py",
+    "tools/run_tests.py",
+    "tools/tests/test_ace_ios_local.py",
+    "uv.lock",
+    "workflows/codex-autonomous-delivery.md",
+    "workflows/conclusion-review.md",
+    "workflows/engagement-setup.md",
+    "workflows/evidence-review.md",
+    "workflows/field-evidence-capture.md",
+    "workflows/mate-assessment.md",
+    "workflows/relationship-review.md"
+  ],
+  "claim_limit": "Bounded transfer review; not exhaustive security certification"
+}

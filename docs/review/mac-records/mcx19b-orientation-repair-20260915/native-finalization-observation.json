@@ -1,0 +1,29 @@
+{
+  "atUTC": "2026-09-15T07:07:19.011280+00:00",
+  "nativeDescendants": [
+    [
+      "27512",
+      "26327",
+      "13:36",
+      "0.4",
+      "S",
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild"
+    ],
+    [
+      "27552",
+      "27512",
+      "13:21",
+      "0.0",
+      "S",
+      "/Applications/Xcode.app/Contents/SharedFrameworks/DVTInstrumentsFoundation.framework/Resources/DTServiceHub"
+    ],
+    [
+      "27991",
+      "27512",
+      "04:03",
+      "0.0",
+      "S",
+      "/Library/Developer/PrivateFrameworks/CoreSimulator.framework/Versions/A/Resources/bin/simctl"
+    ]
+  ]
+}

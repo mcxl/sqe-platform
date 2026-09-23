@@ -1,0 +1,107 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 0fe7961..54db2a6 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -415,6 +415,18 @@ final class ACEClientAppUITests: XCTestCase {
+         return true
+     }
+ 
++    private enum NativeSwitchAction {
++        case succeed
++        case tap
++        case fail
++    }
++
++    private static func nativeSwitchAction(current: Bool?, expected: Bool, taps: Int) -> NativeSwitchAction {
++        guard let current else { return .fail }
++        if current == expected { return .succeed }
++        return taps < 2 ? .tap : .fail
++    }
++
+     private func setNativeAccessibilityToggle(_ label: String, path: [String], enabled: Bool, in settings: XCUIApplication) -> Bool {
+         guard returnToSettingsRoot(settings) else {
+             addScreenshot(of: settings, named: "Accessibility settings missing root")
+@@ -428,30 +440,60 @@ final class ACEClientAppUITests: XCTestCase {
+             XCTFail(message)
+             return false
+         }
+-        let toggle = settings.switches[label]
+-        guard toggle.waitForExistence(timeout: 5), let current = nativeSwitchValue(toggle) else {
+-            addScreenshot(of: settings, named: "Accessibility settings missing \(label)")
+-            XCTFail("Missing Settings control: \(label)")
+-            return false
+-        }
+-        // Settings exposes the whole row as a Switch. A centre tap misses the visible switch.
+-        print("ACE_NATIVE_SWITCH \(label) before=\(current) expected=\(enabled) frame=\(toggle.frame)")
+-        if current != enabled {
+-            toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+-        }
+-        let observationStart = ProcessInfo.processInfo.systemUptime
+-        let changed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.nativeSwitchValue(toggle) == enabled }, object: nil)
+-        let waitResult = XCTWaiter.wait(for: [changed], timeout: 5)
+-        // Read the current value before diagnostics; the wait can expire while Settings rebuilds its controls.
+-        let actual = nativeSwitchValue(settings.switches[label])
+-        let observationSeconds = ProcessInfo.processInfo.systemUptime - observationStart
+-        print("ACE_NATIVE_SWITCH_RESULT \(label) wait=\(waitResult.rawValue) seconds=\(observationSeconds) expected=\(enabled) actual=\(String(describing: actual))")
+-        guard actual == enabled else {
+-            addScreenshot(of: settings, named: "Accessibility settings \(label) did not change")
+-            XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: actual))")
+-            return false
++        var taps = 0
++        var firstAttemptActual: Bool?
++        while true {
++            let toggle = settings.switches[label]
++            guard toggle.waitForExistence(timeout: 5) else {
++                addScreenshot(of: settings, named: "Accessibility settings missing \(label)")
++                XCTFail("Missing Settings control: \(label)")
++                return false
++            }
++            let current = nativeSwitchValue(toggle)
++            switch Self.nativeSwitchAction(current: current, expected: enabled, taps: taps) {
++            case .succeed:
++                emitJSON(marker: "ACE_NATIVE_SWITCH_ATTEMPT", payload: [
++                    "action": "alreadyRequested", "attempt": taps, "current": current.map { $0 as Any } ?? NSNull(),
++                    "expected": enabled, "label": label
++                ])
++                return true
++            case .fail:
++                let failure = current == nil ? "unreadable" : "exhausted"
++                addScreenshot(of: settings, named: "Accessibility settings \(label) \(failure)")
++                XCTFail("Settings control \(label): \(failure), expected \(enabled), current \(String(describing: current)), taps \(taps)")
++                return false
++            case .tap:
++                let nextAttempt = taps + 1
++                let frame = toggle.frame
++                emitJSON(marker: "ACE_NATIVE_SWITCH_ATTEMPT", payload: [
++                    "action": "tap", "attempt": nextAttempt, "before": current.map { $0 as Any } ?? NSNull(),
++                    "expected": enabled, "frame": ["height": frame.height, "width": frame.width, "x": frame.minX, "y": frame.minY],
++                    "label": label
++                ])
++                // Settings exposes the whole row as a Switch. A centre tap misses the visible switch.
++                toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
++                taps = nextAttempt
++                let observationStart = ProcessInfo.processInfo.systemUptime
++                let changed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.nativeSwitchValue(toggle) == enabled }, object: nil)
++                let waitResult = XCTWaiter.wait(for: [changed], timeout: 5)
++                // Read the current value before diagnostics; the wait can expire while Settings rebuilds its controls.
++                let actual = nativeSwitchValue(settings.switches[label])
++                let observationSeconds = ProcessInfo.processInfo.systemUptime - observationStart
++                emitJSON(marker: "ACE_NATIVE_SWITCH_RESULT", payload: [
++                    "actual": actual.map { $0 as Any } ?? NSNull(), "attempt": taps, "expected": enabled,
++                    "label": label, "seconds": observationSeconds, "wait": waitResult.rawValue
++                ])
++                if actual == enabled { return true }
++                if taps == 1 {
++                    firstAttemptActual = actual
++                    addScreenshot(of: settings, named: "Accessibility settings \(label) first attempt did not change")
++                    continue
++                }
++                addScreenshot(of: settings, named: "Accessibility settings \(label) did not change after two attempts")
++                XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: actual)), attempts \(taps), first attempt actual \(String(describing: firstAttemptActual))")
++                return false
++            }
+         }
+-        return true
+     }
+ 
+     private func returnToSettingsRoot(_ settings: XCUIApplication) -> Bool {

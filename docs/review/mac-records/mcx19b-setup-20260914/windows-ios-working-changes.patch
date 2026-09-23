@@ -1,0 +1,32 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 8ce039f..1723565 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -167,6 +167,18 @@ final class ACEClientAppUITests: XCTestCase {
+             )
+             XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
+             assertMinimumActionTargets(in: app)
++            switch scenario {
++            case "noConclusion", "noActions":
++                scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
++            case "copyConfirmation":
++                app.buttons[expected].tap()
++                XCTAssertTrue(
++                    app.staticTexts["Copied Engagement name."].waitForExistence(timeout: 5),
++                    "Copy confirmation must be available to VoiceOver"
++                )
++            default:
++                break
++            }
+             addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
+             try assertAccessibilityAudit(in: app, scenario: scenario)
+             app.terminate()
+@@ -178,7 +190,7 @@ final class ACEClientAppUITests: XCTestCase {
+         XCUIDevice.shared.orientation = .landscapeLeft
+         assertOrientation(in: app, landscape: true)
+         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)
+-        addScreenshot(of: app, named: "Release — landscape-left — \(requiredAppearance())")
++        addScreenshot(of: app, named: "Release — landscape-left — \(requiredAppearance())", snapshot: XCUIScreen.main.screenshot())
+         XCUIDevice.shared.orientation = .portrait
+         assertOrientation(in: app, landscape: false)
+         XCTAssertTrue(app.staticTexts["FICTIONAL PILOT — CONTROLLED"].exists)

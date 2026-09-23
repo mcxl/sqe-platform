@@ -1,0 +1,106 @@
+7dc7cee7654ae8cc002da54324c3d1475a8494e6	2026-09-12T16:37:56+10:00	test: name the complete evidence publication contract
+50aaf697673756e7935fcc20908c44749a905e51	2026-09-12T16:27:12+10:00	test: retain private native evidence and capture release rows
+006193066a6c9c1db47554c6a80090b028724f1d	2026-09-12T13:08:56+10:00	fix(ios): allow release labels to wrap at large text sizes
+483063bf23b000b2d816365a3046d8a828748dfd	2026-09-12T12:49:44+10:00	test(ios): add bounded release matrix pilot
+4c3304da4de642f493ffcdeb04577fd7a9c2bd31	2026-09-12T12:08:38+10:00	test(ios): require full visibility before trial audit
+2a785d93bf26a74eab91793bd61dace1712ba8f9	2026-09-12T11:54:15+10:00	test(ios): read trial copy values after native markers
+b50455f57a3378e6d7abb6405d2c93233ca9c016	2026-09-12T11:42:13+10:00	fix(ios): set explicit semantic colour on trial headers
+ba7490665d4a5417b6d1dc580b6a1717c46e0b8c	2026-09-12T11:26:40+10:00	fix(ios): improve Landmarks trial section contrast
+f14567b77936034445f35d4bce515f3006b238d7	2026-09-12T10:15:08+10:00	Retain ACE audit diagnostic and provisional preview candidate
+cc971c6917fd6ab2108078946c83078cf2f5ad03	2026-09-12T09:41:23+10:00	Observe native trial copy values from the simulator host
+39535d0da01fb877e737cd87498381e7d2dd132a	2026-09-12T09:13:49+10:00	Allow simulator startup migration to complete in trial
+ab4e943ff1c07dd9bc12ec4db138ab40b43b3f6e	2026-09-12T09:05:41+10:00	feat(ios): add isolated ACE Landmarks release trial
+448e5a0825b39c9b29336b3c809eff2235ca4670	2026-09-12T08:30:20+10:00	test(ios): correct deliberate Landmarks assertion
+d6c82e8e5e0a282b2a521948a76bcca529139fe1	2026-09-12T08:19:02+10:00	Add one native Landmarks failure and passing evidence test
+700c830a2f3b123ca7cc061685f72af3283d861d	2026-09-12T07:51:36+10:00	Allow simulator discovery to initialise for Landmarks trial
+4f0b947ed53e65d75a48d14a4d80a41e9963bd1f	2026-09-12T07:11:33+10:00	ci: prepare isolated Apple Landmarks baseline trial
+783a12113a8e85ba228d5a96f6bdc2678820e3e6	2026-09-11T21:38:04+10:00	test: align native evidence pin with approved specification
+3acd4147c176465a7c8f167da542d8cbd7184e3a	2026-09-11T20:06:24+10:00	fix(ios): size full-matrix retention controls from native records
+0196fdbba0071c53747249dd0352b6f9e36fb555	2026-09-11T18:49:09+10:00	test: retain setup phase in missing-resolution-log fixture
+045e626e9c0e8b91de2869eee8fd8a36dc4f183a	2026-09-11T18:34:51+10:00	fix: preserve exact live retention ownership and interruption evidence
+a3f6d5e75a7a95c9c533fb46faac6e4562c1cc59	2026-09-11T17:43:01+10:00	feat: retain each full matrix test before advancing
+4b92bc340b2997eaf0200a220b4b1b03eb619900	2026-09-11T14:48:37+10:00	test: bound the manual live evidence workflow check
+3e1415f28c78406f61af6aafb04844e42cc19dab	2026-09-11T14:40:01+10:00	fix: preserve diagnostic workflow test boundaries
+2eafeb48a01431563d95aba8949260ef06b11ce5	2026-09-11T14:23:29+10:00	fix: retain verified MCX-19 pilot checkpoints and acknowledgements
+39eed65f197c9344216bbcbe938ce0812f5d9d5d	2026-09-11T09:37:00+10:00	diagnose(mcx-19): isolate Pro Max contrast audit
+86d60f395feb22967db94ba360bec9bce056ca21	2026-09-11T09:19:03+10:00	test(mcx-19): align action target source contract
+b33548a53a8808d42888a0aed9dc7dcb64cefa46	2026-09-11T09:08:27+10:00	fix(mcx-19): retain baseline history in Codemagic workflows
+1883d95e938dff9afdeaca018472120a22fb3d6e	2026-09-11T08:45:00+10:00	fix(mcx-19): repair native checks and add focused verification
+6155d1197dc01910b0d7cd8bbb4ceb949969c5f9	2026-09-11T05:18:04+10:00	ci(mcx-19): allow live evidence matrix to finish
+809a4576fb03d35eea52d0a2fe174151e3fc2949	2026-09-10T19:07:53+10:00	Increase simulator verification window for live evidence
+dbb2bbf5e27011d0590d3e04b95fbeefd8647ba6	2026-09-10T14:09:33+10:00	ci(mcx-19): use m2 pool for live simulators
+0fed7141bdc7268b3f86cc3ccf82aa4b901f59d4	2026-09-10T14:00:45+10:00	docs(mcx-19): correct simulator log stream wording
+e25dd29c8aae3da3f5a22088e8f20e66b22aa6c1	2026-09-10T13:54:23+10:00	fix(mcx-19): keep simulator diagnostics off destination stdout
+7519dba068ee6c52497c29acfbf6dd263bf764d5	2026-09-10T13:47:54+10:00	fix(mcx-19): harden simulator diagnostics
+a3a95955c862d55b9bb679fa988fecb4429a59c5	2026-09-10T11:40:48+10:00	test(mcx-19): correct native action order fixture
+2b5cebe2144ad0fc99fa4be748d3653e2a8038ce	2026-09-10T10:39:32+10:00	feat: retain full matrix records in private quarantine
+4c2e56efc4ef21355707ac612e21da5a543fedf9	2026-09-10T06:49:07+10:00	fix: retain unresolved native records in private quarantine
+f9dba2f78929eb6ce00fb2e2d4c6b3732dbac12e	2026-09-10T04:46:43+10:00	Inspect blocked native records with a bounded private decoder
+bcfbbb26d7073d1dc5a21b977a1e40158aaf6b3e	2026-09-10T04:05:13+10:00	Classify blocked native record prefixes safely
+06f60eeb3446f45ff7cb5bdf80cb714d51b641bf	2026-09-09T22:01:57+10:00	Identify native content scan failures with fixed safe categories
+ba42dd4e5cf9ddf1d9517b069820aae584792321	2026-09-09T21:45:36+10:00	Retain native result bundle filenames without changing path limits
+a0e146d5faac7db91cc20efd7425ad1129b5d7f1	2026-09-09T21:29:27+10:00	Report bounded native archive path diagnostics
+25e978226b98a05a738c79eec91a4a47191d8d6c	2026-09-09T21:08:58+10:00	Allow bounded native simulator setup time
+980a25af4edfccd3171ef8d91b9aa6d761e87765	2026-09-09T20:52:40+10:00	Prepare MCX19-B native failure evidence cycle
+725d1a0fd7ed945fc59b3912871dbcde267a9ffb	2026-09-09T15:37:46+10:00	fix: retain safe iOS setup diagnostics within pilot budget
+33c995a25d7fa4c1103faafa676d310c4d9a6894	2026-09-09T15:14:27+10:00	Prepare exact simulators before native evidence checks
+7f2a002926ce0447ad628ccf42516a78281eeaff	2026-09-09T14:44:05+10:00	Retain actionable native unit diagnostic evidence
+74c9a08729a4aa5530d59fd700147ab7beab273b	2026-09-09T13:09:10+10:00	Capture initial iOS audit state in focused diagnostic
+5929b0cf42cfa7855b451d0d93d088a79e6e99ee	2026-09-09T12:31:21+10:00	Retain focused MCX19-B iOS diagnostics
+b494ae95a1324091ce817cfc94694c8fd91cba97	2026-09-09T10:33:07+10:00	Prepare MCX19-B native evidence collection
+3259048186916941bf3557d55503e7375e432c57	2026-09-08T21:28:43+10:00	ci(ios): run manual diagnostic on Mac mini M4
+f9b77a819fd608cb57d334d2a106ea80422222e4	2026-09-08T19:13:28+10:00	fix(ios): move sign-in heading into an accessible form row
+3105a63b95aec0b04b36b0181abfc4b94539aa7e	2026-09-08T14:13:55+10:00	fix(ios): repair identified accessibility layout issues
+838ae6af5933495c49f74d3e47109e6159bb951b	2026-09-08T13:14:19+10:00	fix(ios): remove non-Sendable audit callback capture
+583daded5540d5f87a95138694f37548290ce2e6	2026-09-08T12:37:44+10:00	fix(ios): make audit callback capture explicit
+8348d9f0650a50df1c89406f0664ba8b828689bf	2026-09-08T12:16:00+10:00	test(ios): retain bounded accessibility issue details
+0a936811f75713d43235f86176e55e756b48ba73	2026-09-08T11:29:50+10:00	fix(ios): size action targets and scope functional diagnostic
+b6eabcdc36e80ba55ff0f6dd1201b96a0547b44e	2026-09-08T09:04:13+10:00	Fix deterministic UI appearance and isolate its assertion
+d7955042870c5458778bf57c4bccc5703aa0a08b	2026-09-08T06:54:07+10:00	fix(ios): read appearance indicator from window view
+1dc21a3481de549f338b34ee298f67c3adb0bc5d	2026-09-08T06:28:19+10:00	test(mcx-19): isolate dark orientation diagnostic
+3a52b52c0e6124137f2f25a9ce810fb489c7adcf	2026-09-07T20:34:39+10:00	fix(mcx-19): retain safe progress after each live command
+c8dc459c20472092b80b83d44d980b5670dc61fa	2026-09-07T17:15:12+10:00	fix(mcx-19): forward UI input and use unsigned negative build
+18ec5a0456c1392022f27007dab3fd071266b9f7	2026-09-07T16:01:08+10:00	fix(mcx-19): isolate diagnostic approval group
+c22c246d71026fa73b0b74cf95bbab8b7a3b1308	2026-09-07T15:58:13+10:00	test(mcx-19): retain two bounded diagnostic errors
+965c244d29b428091879194ed1143ac1fbf95422	2026-09-07T14:43:08+10:00	fix(mcx-19): report controlled live failure diagnostics
+40f04d96311d6cc3f384d3afe06eb9329df33859	2026-09-07T10:58:50+10:00	fix: repair MCX-19 live Xcode command settings
+a1daf3dbde1b72ce05db9f4857d7127848f19c2e	2026-09-07T09:47:45+10:00	MCX-19 repair live simulator setup gate
+3703458db72ce1e388967c7af3b760108db3bab9	2026-09-07T08:05:29+10:00	MCX-19 add controlled live failure reasons
+7e663758df36a1c54f9f7a18d0f056242978175e	2026-09-06T18:24:56+10:00	fix: report failed live evidence commands
+fcbe3583b54a974e74eb71d4175a01e587c9a79c	2026-09-06T15:05:41+10:00	fix: allow live UI appearance input
+4cf12fd5395fc290235e359aa8485f903b8f11da	2026-09-06T14:05:41+10:00	Accept Codemagic authenticated repository remote
+11b41a2631831361bd67b6d5a03c3d32424e1186	2026-09-06T11:21:13+10:00	Clarify MCX-19 approved input handling
+ec0f19bc1e469ba90d9bb90f9b71fdaf3b7d401a	2026-09-06T11:09:12+10:00	Import MCX-19 Codemagic variable group
+f77bc6184a04fe1abab4574070a18cc807adf9c2	2026-09-06T09:47:03+10:00	Enforce MCX-19 manual trigger controls
+acea7785df09207e4cda3600499357c1b12c7234	2026-09-06T09:33:42+10:00	Harden MCX-19 approval boundary
+c78dfc5c717eafe46c37afade7eca4e7e1c5d044	2026-09-06T08:43:01+10:00	Use canonical macOS evidence path
+7fa7df8fdf80c65485d690c8262fada8f6665cda	2026-09-06T08:30:49+10:00	Add MCX-19 live evidence harness
+6d5a20c51ec009cc0a7f317f96e4095f35820c34	2026-09-06T07:19:26+10:00	Avoid absolute path interpolation in UI Make target
+4306edd463271c8560225f0369b16fccc31a29bf	2026-09-06T07:04:12+10:00	Exercise real resolver in UI Make test
+61a1cc58a6a38d09e93c3205d51da637c381d233	2026-09-06T06:23:40+10:00	Test strict iOS UI Make command path
+3de745934d62034d843032ad9b202b2fecc93a6b	2026-09-05T20:58:26+10:00	Test blank reviewed evidence fields
+c345b4e5654be0efc4d767e5621618ecfc06122d	2026-09-05T20:51:30+10:00	Align reviewed evidence field description
+2e0e31ffe21feee4ce3e5927c733d70e429429b9	2026-09-05T15:49:23+10:00	Add wrong UUID simulator regression
+25a3035eed07306e5b3e4aa8a67d8aa2235fed34	2026-09-05T14:22:34+10:00	Protect MATE origin cleanup from races
+a40d34b82d784baee498361a837c3585cbab48d9	2026-09-05T14:08:10+10:00	Remove dead MATE origin records
+bdbceb6d0dd260dded1782f9b9c76aa5f7bad14b	2026-09-05T11:48:05+10:00	Fail closed on simulator ambiguity and evidence types
+7db3dd7a783120401575206f838d1f34ceabc2dd	2026-09-05T10:58:39+10:00	Harden public evidence preflight controls
+38c1790ff83b26ec49a8f261ee57ff5103139ab2	2026-09-05T08:59:50+10:00	Close Pocock approval and evidence gates
+6dbf8046858df7c6e25d2dbef7db73b8d9d303ce	2026-09-05T04:06:14+10:00	Close remaining Pocock release gates
+183ae36a464e7b46a6f424551d4ba9eae8c50881	2026-09-04T22:41:06+10:00	Provision required iOS simulators
+e6560a496a4babdd764bb18890402d90d9ecf44b	2026-09-04T22:24:12+10:00	Preserve adversarial trace gate tests
+eaa383f09566a37b0cbeb2ed3ba9dfeaa8cfafac	2026-09-04T22:15:18+10:00	Fix Pocock release blockers
+5af22fa37df865616ebfb6549b1dbf39cfd460de	2026-09-04T21:22:13+10:00	Harden quality workflow triggers
+8a6742fe5a6730cd66a9985a642bfc5743fd59f2	2026-09-04T20:57:28+10:00	Enable manual quality gate dispatch
+bfa9013ed219a47ed5e14c19415d88104a227210	2026-09-04T20:55:38+10:00	Fix controlled iOS runner contracts
+326b2b7f5292ac71423201f32e6b68222e0e7e25	2026-09-04T20:24:30+10:00	Model Windows LibreOffice probe platform
+308f12fd1369b55ac03c7b2633f5a4f71372db39	2026-09-04T20:18:55+10:00	Install LibreOffice for Python quality gates
+9414b265863d4ba4989ac7b5b4ca8d2cd8652e49	2026-09-04T20:02:53+10:00	Run Python core without document runtime
+fe91ef14d1eef0b7c441b5551bca5cacb3ad7934	2026-09-04T20:00:37+10:00	Fix Python quality gate bootstrap
+f0b9da8e6d89da2d632fbb2e106f84ce349e2c97	2026-09-04T19:55:17+10:00	Add core and release quality gates
+59378e9277bd4c7c9be89694f2220cbc28e7c211	2026-09-04T19:48:46+10:00	Add tiered SQE platform test runner
+01d583af137ca645ce830e3e5e26fc8e1bd7c036	2026-09-04T19:36:23+10:00	Organise controlled SQE technical documentation
+6e0e66ea78cc48fcd10a34d4a30220506aebcb9d	2026-09-04T19:29:09+10:00	Support Windows LibreOffice discovery and guarded trace fixtures
+c761fe2045e9f16dc1bd1770f8d940215247e26d	2026-09-04T18:27:41+10:00	Port MATE approval construction guard
+d1507336ca6be5f6ae5f90227a66f10dffa83728	2026-09-04T18:22:50+10:00	Import controlled ACE iOS source snapshot
+1084f13a041ff3866daf5fc9e68d17ce173fb3e5	2026-09-04T18:21:47+10:00	Initial sanitised SQE platform baseline

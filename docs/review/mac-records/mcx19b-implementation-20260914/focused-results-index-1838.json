@@ -1,0 +1,120 @@
+{
+  "baseline": "Commit found; no common ancestry with controlled import source",
+  "currentUnresolvedNativeCases": 4,
+  "mandatoryCoverageAccepted": 0,
+  "privateService": "Missing approved inputs",
+  "recordedAt": "2026-09-14T08:38:00Z",
+  "records": [
+    {
+      "failed": 0,
+      "name": "contracts-after",
+      "nativeElapsedSeconds": 6.717,
+      "passed": 4,
+      "result": "Passed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-after.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-after-summary.json",
+      "summarySha256": "7b7d72fe35e51a195d294cc32a709052db0c52a3a97825f998e0ab94e3f5fbb3",
+      "testFailures": [],
+      "total": 4
+    },
+    {
+      "failed": 0,
+      "name": "settings-read-integration",
+      "nativeElapsedSeconds": 44.824,
+      "passed": 1,
+      "result": "Passed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-read-integration.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-read-integration-summary.json",
+      "summarySha256": "5a05ee4ba3b9cd2be212b02fb57c845ccccc033e054248569addf0c4231e45ab",
+      "testFailures": [],
+      "total": 1
+    },
+    {
+      "failed": 0,
+      "name": "settings-bold-corrected",
+      "nativeElapsedSeconds": 84.543,
+      "passed": 1,
+      "result": "Passed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-bold-corrected.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-bold-corrected-summary.json",
+      "summarySha256": "d18a6b13a4e3ac56924999f0e5af60821ebed559ee6281e556d15b0277b76e13",
+      "testFailures": [],
+      "total": 1
+    },
+    {
+      "failed": 0,
+      "name": "settings-bold-restored",
+      "nativeElapsedSeconds": 72.889,
+      "passed": 1,
+      "result": "Passed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-bold-restored.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/settings-bold-restored-summary.json",
+      "summarySha256": "71aaca4238669a8446d3e3d2af54db403a2e3835fa014ace87a4909cd8f7dca3",
+      "testFailures": [],
+      "total": 1
+    },
+    {
+      "failed": 1,
+      "name": "no-conclusion-initial-diagnostic",
+      "nativeElapsedSeconds": 141.317,
+      "passed": 0,
+      "result": "Failed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-initial-diagnostic.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-initial-diagnostic-summary.json",
+      "summarySha256": "d6215ae06d5c94bc5fd1b712a399d5e6cd7100d12b2e94ddb936569936ef06f7",
+      "testFailures": [
+        {
+          "failureText": "Contrast failed",
+          "targetName": "ACEClientAppUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ACEClientAppUITests/testClippingNoConclusionStandaloneAudit()",
+          "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+          "testName": "testClippingNoConclusionStandaloneAudit()"
+        }
+      ],
+      "total": 1
+    },
+    {
+      "failed": 1,
+      "name": "no-conclusion-contrast-diagnostic",
+      "nativeElapsedSeconds": 134.478,
+      "passed": 0,
+      "result": "Failed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic-summary.json",
+      "summarySha256": "2588239d0c6330735d7fde7af0173d649d1fd7a9eb7b9fa91f12bb7a03e8e27b",
+      "testFailures": [
+        {
+          "failureText": "Contrast failed",
+          "targetName": "ACEClientAppUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ACEClientAppUITests/testClippingNoConclusionStandaloneAudit()",
+          "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+          "testName": "testClippingNoConclusionStandaloneAudit()"
+        }
+      ],
+      "total": 1
+    },
+    {
+      "failed": 0,
+      "name": "pro-max-visible",
+      "nativeElapsedSeconds": 105.78,
+      "passed": 1,
+      "result": "Passed",
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible.xcresult",
+      "skipped": 0,
+      "summary": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible-summary.json",
+      "summarySha256": "9021ea7c9c2383e67fc00b09c9e4ccf0e0fd6a5735b5fe6770bdd2a7ee758b34",
+      "testFailures": [],
+      "total": 1
+    }
+  ],
+  "reviewRoute": "Installed matt-skills-curated code-review skill; two isolated standards/spec reviews on pinned base...HEAD. Not yet executed.",
+  "scope": "Focused implementation evidence; no final candidate acceptance"
+}

@@ -1,0 +1,82 @@
+{
+  "recordedAt": "2026-09-14T07:45:59.271592+00:00",
+  "baseCommit": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "results": [
+    {
+      "name": "no-conclusion-initial-diagnostic",
+      "nativeExit": 65,
+      "summarySHA256": "d6215ae06d5c94bc5fd1b712a399d5e6cd7100d12b2e94ddb936569936ef06f7",
+      "nativeResult": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "bundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-initial-diagnostic.xcresult",
+      "startTime": 1789369465.007,
+      "finishTime": 1789369606.324
+    },
+    {
+      "name": "no-conclusion-contrast-diagnostic",
+      "nativeExit": 65,
+      "summarySHA256": "2588239d0c6330735d7fde7af0173d649d1fd7a9eb7b9fa91f12bb7a03e8e27b",
+      "nativeResult": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "bundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult",
+      "startTime": 1789370661.179,
+      "finishTime": 1789370795.657
+    },
+    {
+      "name": "pro-max-visible",
+      "nativeExit": 0,
+      "summarySHA256": "9021ea7c9c2383e67fc00b09c9e4ccf0e0fd6a5735b5fe6770bdd2a7ee758b34",
+      "nativeResult": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "bundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible.xcresult",
+      "startTime": 1789370930.497,
+      "finishTime": 1789371036.277
+    },
+    {
+      "name": "contracts-before",
+      "nativeExit": 65,
+      "summarySHA256": "2c81aab936234f5bd15009ca3fe908090ee1ed76c5946501106c256fcccdf8d6",
+      "nativeResult": "Failed",
+      "totalTestCount": 3,
+      "passedTests": 0,
+      "failedTests": 3,
+      "skippedTests": 0,
+      "bundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-before.xcresult",
+      "startTime": 1789371233.815,
+      "finishTime": 1789371305.66
+    }
+  ],
+  "proMaxInitialViewportInspection": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible-attachments/DCD56637-EFCA-4322-83DF-733B6C66F8CE.png",
+      "sha256": "53da65dc69857784e67a4eef414903ab073b9a2efeee7e917aec7684e8f1fe4c",
+      "appearance": "light",
+      "inspectedBy": "primary assistant",
+      "fullResolution": true,
+      "result": "Displayed release content in this initial viewport is readable. No blank launch panel. Scrolling and complete accessibility acceptance are separate checks.",
+      "candidateTestSHA256": "aeeee9381dc99a3c978d8879aa353a13434ea3bdffd3b4485976535b0b9bc2b7"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible-attachments/E28C726E-95E6-4B9A-B95B-3C717BD48381.png",
+      "sha256": "0e90890792633881385eacc989dff1d44b736e48087550cb35630bbbce9a79e7",
+      "appearance": "dark",
+      "inspectedBy": "primary assistant",
+      "fullResolution": true,
+      "result": "Displayed release content in this initial viewport is readable. No blank launch panel. Scrolling and complete accessibility acceptance are separate checks.",
+      "candidateTestSHA256": "aeeee9381dc99a3c978d8879aa353a13434ea3bdffd3b4485976535b0b9bc2b7"
+    }
+  ],
+  "overall": "UNVERIFIED - native audits fail; source import ancestry acceptance blocked; private service inputs missing",
+  "retainUntilAtLeast": "2026-10-14T08:00:00Z",
+  "privateDirectoryMode": "0o700",
+  "temporaryUIProbesRestoredTo": "d93939981d5fe7e4759f3a36beced9f6613ff84eada82351da76707aaf217a2b"
+}

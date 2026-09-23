@@ -1,0 +1,18 @@
+{
+  "uiTestSha256": "50422346e84232ba959d37d7caaf28976eb676a1d8b6884329177b3bcb44ebca",
+  "source": "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "causeEvidence": [
+    "settings-bold-integration/native-settings/changed/attachments/bold-frame-58.png",
+    "settings-bold-integration/native-settings/changed/attachments/BCD7B1CD-A6F3-4218-881E-900C5459A5D3"
+  ],
+  "failedTapPoints": {
+    "x": 220,
+    "y": 160.3333282470703
+  },
+  "screenPoints": {
+    "width": 440,
+    "height": 956
+  },
+  "correction": "Tap within the visible right-side native switch; no delay change",
+  "correctiveAttempt": 1
+}

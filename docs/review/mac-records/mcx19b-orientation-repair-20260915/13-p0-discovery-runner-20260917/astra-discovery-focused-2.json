@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests",
+    "tools.tests.test_ace_ios_local.DiscoveryExecutionTests",
+    "-v"
+  ],
+  "exit": 0,
+  "runnerSha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+  "testsSha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d"
+}

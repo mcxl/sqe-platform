@@ -1,0 +1,14 @@
+{
+  "updatedUTC": "2026-09-15T09:44:07.327616+00:00",
+  "base": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+  "fault": "Scrolled content overlaps system status bar",
+  "expected": "Content remains within the release viewport and outside clock/status icons",
+  "actual": "Release Details heading rendered at imagey0 and Engagement name behind clock",
+  "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/image-inspection.json",
+  "correctiveAttempt": 2,
+  "change": "Add standard clipped modifier only to ReleaseView ScrollView. Preserve inner default margin, all text and scrolling, audit/test code and other views.",
+  "patchSha256": "d3526a9c765a356885ad203acbb253d4bd7ef08b0402d26e1a6e92f27e4be839",
+  "fullPatchSha256": "3f57e1cd13b0496861254c0b64898cd2b4e4e3975fb27fb99b675779d4da254f",
+  "primaryCompleteDiffInspection": "passed; one added modifier",
+  "nextCheck": "Same noConclusion case and two unrestricted audits plus full-resolution images; no pilot until both native and visual checks pass."
+}

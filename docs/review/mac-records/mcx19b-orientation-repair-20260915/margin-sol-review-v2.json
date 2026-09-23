@@ -1,0 +1,17 @@
+{
+  "updatedUTC": "2026-09-15T09:44:07.088257+00:00",
+  "candidate": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+  "fullPatchSha256": "9fa51e8924b0a16fe32721e18b9ab2b9b787c8d46faa90ee1bb33032055a445d",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "actualRuntime": "unobservable",
+  "verdict": "fix-first",
+  "confirmed": [
+    "Correct edge-set overload",
+    "Generic build passed",
+    "Both native noConclusion audits passed"
+  ],
+  "blocker": "Image shows scrolled text behind status bar",
+  "proposal": "Explicitly clip ReleaseView ScrollView drawing to its bounds. No test filtering or removal of scrollable content.",
+  "limitation": "App frame402x874 does not establish scroll viewport frame. Clip effect needs native image proof."
+}

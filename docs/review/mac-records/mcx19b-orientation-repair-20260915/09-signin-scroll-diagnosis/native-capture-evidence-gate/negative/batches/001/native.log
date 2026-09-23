@@ -1,0 +1,61 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/batches/001/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/batches/001/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/batches/001/result.xcresult
+
+2026-09-15 22:12:07.530431+1000 ACEClientAppUITests-Runner[69246:5146736] [Default] Running tests...
+2026-09-15 22:12:07.747902+1000 ACEClientAppUITests-Runner[69246:5146952] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 22:12:11.542.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 22:12:11.543.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 22:12:11.544.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-15 22:12:11.558
+2026-09-15 22:12:11.608191+1000 ACEClientAppUITests-Runner[69246:5146947] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =     0.20s Set Up
+    t =     0.24s Setting device orientation to Portrait
+    t =     0.32s     Wait for com.apple.springboard to idle
+    t =     0.38s Open com.example.aceclientapp
+    t =     0.39s     Launch com.example.aceclientapp
+    t =     2.61s         Setting up automation session
+    t =     6.80s         Wait for com.example.aceclientapp to idle
+    t =     9.25s Waiting 5.0s for "Current Release" StaticText to exist
+    t =    10.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Current Release" StaticText`
+    t =    10.33s         Checking existence of `"Current Release" StaticText`
+    t =    10.54s Checking existence of `"Current Release" StaticText`
+    t =    10.64s Find the "Current Release" StaticText
+    t =    10.75s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    10.81s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.048752853996120393,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+    t =    10.86s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    11.93s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    11.93s         Checking existence of `"Effective interface style" Any`
+    t =    13.05s Find the "Effective interface style" Any
+    t =    13.11s Find the "Effective interface style" ScrollView
+    t =    13.76s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport initial'
+LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:124: error: -[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : failed - ACE_CAPTURE_GATE_INTENTIONAL_FAILURE after retained initial viewport
+    t =    15.16s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (15.635 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 22:12:27.192.
+	 Executed 1 test, with 1 failure (0 unexpected) in 15.635 (15.648) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 22:12:27.194.
+	 Executed 1 test, with 1 failure (0 unexpected) in 15.635 (15.651) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 22:12:27.195.
+	 Executed 1 test, with 1 failure (0 unexpected) in 15.635 (15.654) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/batches/001/result.xcresult
+
+Testing started
+2026-09-15 22:11:58.011 xcodebuild[69210:5145956] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:11:58.032 xcodebuild[69210:5145956] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:11:59.099 xcodebuild[69210:5145956] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:12:12.158 xcodebuild[69210:5145956] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 22:12:12.158 xcodebuild[69210:5145956] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 22:13:18.325 xcodebuild[69210:5145956] [MT] IDETestOperationsObserverDebug: 79.218 elapsed -- Testing started completed.
+2026-09-15 22:13:18.325 xcodebuild[69210:5145956] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 22:13:18.325 xcodebuild[69210:5145956] [MT] IDETestOperationsObserverDebug: 79.218 sec, +79.218 sec -- end
+** TEST EXECUTE FAILED **
+

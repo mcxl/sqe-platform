@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "candidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "scope": "Focused Settings on/off; no coverage cases or audits. Build,6nativechecks,inside-appstates,allartifacthashes,originalsettingsandbootstates verified.",
+  "evidence": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/native-settings-on-off-v1/execution.json",
+      "sha256": "360ac0f950d6d21b5dbbbbec9a3cbaebd1c1c483debefdd7921ecbc2a43f4597"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/native-settings-on-off-v1/native-evidence-integrity.json",
+      "sha256": "8ddad5359cafce70b02725eb8a5038ae890af8bfaee11ca2e4b11516c8f9ec7f"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/primary-switch-policy-check.swift",
+      "sha256": "d7299850c012e7ace13a527d3781c9a76559cd8f16c89d46048ca5c4c5cff553"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/primary-switch-policy-results.txt",
+      "sha256": "6fa39c9a5abd08137fc58f646b3ed20fb18972b75160009aeb3b45ecf911f30a"
+    }
+  ],
+  "imageInspection": "No PNG attachments were produced; there were no missed-state screenshot events in the successful run. All native records and attachments remain retained.",
+  "actualRetry": "All6switchchanges passed on firstinput. Deterministic decision-policy checks cover retry/stop branches; native retry delivery was not exercised.",
+  "limitation": "Apple lost-input mechanism remains unresolved. Fullpilot remains pending."
+}

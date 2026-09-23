@@ -1,0 +1,12 @@
+{
+  "parentCommit": "7fee853aef52e85a813368a51d833c134710186d",
+  "question": "Does selecting the visibly present Paste menu by its exact label enable actual clipboard verification?",
+  "appSourceChanged": false,
+  "testFile": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/source/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "oldTestSha256": "c5e041819981f3c748df7d52b3372bd53e493a6cf73e6663a850004932d77451",
+  "newTestSha256": "6c4b24a3f6b96032d408e7a29c6a870347d255d1ab8ede66211d21f7feed2aec",
+  "acceptanceUse": "Focused functional evidence only. No accessibility or physical acceptance.",
+  "previousEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste",
+  "singleVariable": "Use a type-independent exact-label Paste query instead of restricting it to Button.",
+  "correctiveAttemptForPasteSelectorFault": 1
+}

@@ -1,0 +1,37 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/derived-functional/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-after.xcresult "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testComposedCredentialStoreSessionLifecycle" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300
+
+2026-09-14 18:00:27.552 xcodebuild[62572:1773763] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-after.xcresult
+
+2026-09-14 18:00:27.625 xcodebuild[62572:1773763] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:00:28.633 xcodebuild[62572:1773763] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:00:28.976 xcodebuild[62572:1773763] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Test Suite 'Selected tests' started at 2026-09-14 18:00:33.714.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 18:00:33.717.
+Test Suite 'AcceptanceEvidenceContractTests' started at 2026-09-14 18:00:33.718.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testComposedCredentialStoreSessionLifecycle]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testComposedCredentialStoreSessionLifecycle]' passed (0.030 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' passed (0.014 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' passed (0.060 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' passed (0.055 seconds).
+Test Suite 'AcceptanceEvidenceContractTests' passed at 2026-09-14 18:00:33.890.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.159 (0.172) seconds
+Test Suite 'ACEClientAppTests.xctest' passed at 2026-09-14 18:00:33.892.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.159 (0.174) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 18:00:33.893.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.159 (0.179) seconds
+2026-09-14 18:00:34.322 xcodebuild[62572:1773763] [MT] IDETestOperationsObserverDebug: 5.341 elapsed -- Testing started completed.
+2026-09-14 18:00:34.322 xcodebuild[62572:1773763] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:00:34.322 xcodebuild[62572:1773763] [MT] IDETestOperationsObserverDebug: 5.341 sec, +5.341 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-after.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

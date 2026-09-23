@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "recordedUTC": "2026-09-15T12:53:51.800830+00:00",
+  "nativeCaptures": 13,
+  "uniqueImages": 3,
+  "method": "Each unique image viewed at original resolution. Byte-identical captures share that inspection within this candidate.",
+  "observations": [
+    {
+      "sha256": "9e0cd2e28cbc1bf344a420d7d1835251dc51d4eb0f9f9db6ed8cfe799adee8d3",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/01BE6830-8D0E-4862-A896-DE2724ADDB4A.png",
+      "duplicatePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/01BE6830-8D0E-4862-A896-DE2724ADDB4A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/1FDBBC06-04D8-40BE-9915-4C7D7DEB1E23.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/271F21F3-E4D8-4EFB-960A-A17B08E134BA.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/4677B09F-23CD-47BF-BE38-F6FDE762D733.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/7A161267-BBF0-4DC3-81EA-E8BF96616524.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/9424C7B7-8229-4B90-8F5F-FC3AEE34F8A2.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/BDC9B9A8-C543-45BC-9729-CC7520F8804F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/D41A0C84-9746-43DE-A684-6D6A1B101122.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/E9C27EE7-D2DB-474C-AE7A-7A0FB50D4810.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/FEF0AE82-E2D2-416E-ABC7-9AE330DAC5DF.png"
+      ],
+      "result": "passed",
+      "observation": "Initial portrait screen: release details and conclusion fully readable. Action content continues below the scroll viewport; later captures show it completely."
+    },
+    {
+      "sha256": "b8795a8aa61067addccbe1d70e9de6a5da05d39809cf0a986df28766ce4c2226",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/87746FFC-D19C-47C8-9BE0-A2163D1B463A.png",
+      "duplicatePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/87746FFC-D19C-47C8-9BE0-A2163D1B463A.png"
+      ],
+      "result": "passed",
+      "observation": "Scrolled portrait screen: conclusion and all Action1 values, Copy action, Refresh and Sign out visible. Scroll indicator stays at screen edge."
+    },
+    {
+      "sha256": "61ad0157a19ae7742f2d8e1022be4da57b122ccf4fea8126b086bacc3d436ffd",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/8EE0DF25-3895-4899-B5CE-08AE71C98FD1.png",
+      "duplicatePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/8EE0DF25-3895-4899-B5CE-08AE71C98FD1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments/955F2C76-1562-45C5-88CD-5159E35555DB.png"
+      ],
+      "result": "passed",
+      "observation": "Settled final portrait screen: full Action1 and all controls visible. No text truncation or drawing behind the status bar. User interface remains unchanged."
+    }
+  ],
+  "timing": "Focused inspection time was not separately instrumented. No full-pilot review projection derives from this focused check.",
+  "pilotCredit": 0,
+  "limitations": "Image inspection does not replace native size, observed-setting or accessibility audit checks."
+}

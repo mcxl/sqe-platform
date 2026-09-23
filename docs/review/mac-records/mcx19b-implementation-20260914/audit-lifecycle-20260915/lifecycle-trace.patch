@@ -1,0 +1,78 @@
+--- a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
++++ b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+@@ -1,6 +1,7 @@
+ import Foundation
+ import SwiftUI
+ import UIKit
++import OSLog
+ 
+ @main
+ struct ACEClientApp: App {
+@@ -105,6 +106,10 @@
+             .background(.background)
+             .accessibilityIdentifier("Effective interface style")
+             .accessibilityValue(accessibilityValue)
++            .onAppear { AuditLifecycleTrace.write("indicator-appear size=" + contentSizeCategory) }
++            .onChange(of: dynamicTypeSize) { _, _ in
++                AuditLifecycleTrace.write("text-size-change size=" + contentSizeCategory)
++            }
+     }
+ }
+ #endif
+@@ -123,17 +128,45 @@
+     private var cover: UIWindow?
+ 
+     func sceneWillResignActive(_ scene: UIScene) {
++        #if DEBUG
++        AuditLifecycleTrace.write("scene-will-resign")
++        #endif
+         guard let windowScene = scene as? UIWindowScene else { return }
+         let cover = UIWindow(windowScene: windowScene)
+         cover.windowLevel = .alert + 1
+         cover.rootViewController = UIHostingController(rootView: PrivacyCoverView())
+         UIView.performWithoutAnimation { cover.isHidden = false }
+         self.cover = cover
++        #if DEBUG
++        AuditLifecycleTrace.write("privacy-cover-shown")
++        #endif
+     }
+ 
+     func sceneDidBecomeActive(_ scene: UIScene) {
++        #if DEBUG
++        AuditLifecycleTrace.write("scene-did-become-active")
++        #endif
+         guard let cover else { return }
+         UIView.performWithoutAnimation { cover.isHidden = true }
+         self.cover = nil
++        #if DEBUG
++        AuditLifecycleTrace.write("privacy-cover-removed")
++        #endif
+     }
+ }
++
++
++#if DEBUG
++@MainActor
++private enum AuditLifecycleTrace {
++    private static let logger = Logger(subsystem: "com.auditco.ace.audit-diagnostic", category: "lifecycle")
++
++    static func write(_ event: String) {
++        guard UITestScenario.current != nil else { return }
++        let application = UIApplication.shared
++        let windows = application.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap(\.windows)
++        let visibleLevels = windows.filter { !$0.isHidden }.map { String(describing: $0.windowLevel.rawValue) }.joined(separator: ",")
++        logger.notice("\(event, privacy: .public) epoch=\(Date().timeIntervalSince1970, privacy: .public) appState=\(application.applicationState.rawValue, privacy: .public) visibleWindowLevels=\(visibleLevels, privacy: .public)")
++    }
++}
++#endif
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -973,6 +973,8 @@
+     }
+ 
+     private func assertAccessibilityAudit(in app: XCUIApplication, scenario: String) throws {
++        print("ACE_AUDIT_BEGIN scenario=\(scenario) epoch=\(Date().timeIntervalSince1970)")
++        defer { print("ACE_AUDIT_END scenario=\(scenario) epoch=\(Date().timeIntervalSince1970)") }
+         let auditIssueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
+             // Keep bounded failure diagnostics for the approved controlled runner.
+             print("ACE_A11Y_ISSUE \(Self.accessibilityIssueJSON(issue, scenario: scenario))")

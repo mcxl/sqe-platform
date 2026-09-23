@@ -1,0 +1,11 @@
+{
+  "candidate": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+  "script": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/run-native-focus-v1-replay.py",
+  "sha256": "c613a2bfc84bb8084232e18872ea42dfc4596779c5d27e6ad953f72051fabd05",
+  "question": "Repeatability of one missed Settings input, then pending single Sign in check if setup passes",
+  "scope": "one existing pilot case; original e426 build reused after identity verification",
+  "changes": "no source, app, setting method or assertion change",
+  "stop": "first settings or app failure; no full-pilot restart",
+  "pilotCredit": 0,
+  "causeRule": "A passing replay does not explain or clear the historical settings miss or Copy finding"
+}

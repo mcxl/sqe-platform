@@ -1,0 +1,20 @@
+{
+  "recordedAtUTC": "2026-09-14T20:28:06.103058+00:00",
+  "commit": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "parent": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "branch": "codex/mcx19b-release-layout",
+  "files": [
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "clean": true,
+  "sourceHashesMatchReviewedTests": true,
+  "pushed": false,
+  "merged": false,
+  "finalAcceptance": false
+}

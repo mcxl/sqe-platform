@@ -1,0 +1,21 @@
+{
+  "question": "Do both previously failing empty states pass unrestricted audits after removing diagnostic inset geometry?",
+  "expected": "Exactly two selected tests; zero failures/skips. Native result and all images retained.",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-audit-metadata/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+    "--test-env-json",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-states.json"
+  ],
+  "priorInvocationFault": "Unsupported selected env ACE_ACCESSIBILITY_SETTINGS_JSON rejected before build. Removed support selector and used supported light-only input. No runner/source change."
+}

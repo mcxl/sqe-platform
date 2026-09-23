@@ -1,0 +1,159 @@
+{
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "batch": "001",
+  "status": "passed",
+  "captureCount": 36,
+  "uniqueImages": 9,
+  "inspectionStartUTC": "2026-09-15 13:05:29 UTC",
+  "inspectionEndUTC": "2026-09-15 13:06:56 UTC",
+  "inspectionElapsedSeconds": 87,
+  "imageTransferCommandSecondsSum": 10.7105716,
+  "timingDefinition": "Elapsed non-idle image review window includes image transfer, reasoning and brief commentary. Parallel transfer command durations are reported separately and are not subtracted as serial wall time. This is a conservative review rate, not a pure human viewing duration.",
+  "observations": [
+    {
+      "sha256": "da3d957a995581a90f44170be5d4d491d8b29b5951a1c5b547dd31ad16d093ec",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/137967F6-F30A-4AD7-AD06-990B07517A6E.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/137967F6-F30A-4AD7-AD06-990B07517A6E.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/DCFA9B71-8934-440F-9B75-A957928A8591.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.signIn.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Sign in heading, Username, Password and Sign in control are visible. No clipping or overlap."
+    },
+    {
+      "sha256": "5bbf655d29dd450882a1519392d421c5efa9ac69809b7074c76c619809e778ee",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/1F35558E-051E-456E-A005-983F6DC2A031.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/1F35558E-051E-456E-A005-983F6DC2A031.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/49299F26-B9D4-4CA1-9436-F77F498D9903.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/59AFA475-F876-48B8-8DE7-536FC34823D6.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/78CB23AB-8875-4022-A670-9485989620AF.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/A9530FA3-BBFD-474F-8E76-0AD1DC2F504C.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/B0B5DA6B-B84D-4584-9EB7-15FB066CC28B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/E678771F-381C-4CA4-8742-B7E64DBC099A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/F9F471FD-8CDA-40C3-85DB-295A7C350FA4.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/FA75220F-8B5A-41D5-99BD-864CDFE89B2D.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noActions.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "No actions notice, release values, conclusion, Refresh and Sign out are readable and visible."
+    },
+    {
+      "sha256": "59c1a31269e54eed3e26c35147aadcdbca0aada2ad5976145188ce195630a390",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/23206E21-0DC2-4FEA-A1DB-CA5CFE8867DE.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/23206E21-0DC2-4FEA-A1DB-CA5CFE8867DE.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Copied Action1 confirmation appears under Copy action. Action values and bottom controls remain visible."
+    },
+    {
+      "sha256": "d44d96ea0ed13eaac71bb8619f1b766b6c6b61b53ea278c4389f17e746ec1fc3",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/262C640D-5624-4141-891E-B09CD7525176.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/262C640D-5624-4141-891E-B09CD7525176.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/3884044C-06FD-4225-B9F2-FFF3DDF214B6.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/3B4344EB-43A8-4F84-A5D9-CEC7A2BC5C58.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/6D10F96D-E39D-4696-A436-E475B207610A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/85B386A4-92D6-49DC-BE49-845FC23E086D.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/D290706F-8EA8-4659-910F-70CC62969E4C.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/D2908DC3-81CD-4B12-BACF-F890478E1540.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/D7D976FD-CB75-4429-BF13-20733EAEBB3A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/FA3533FF-661E-49FB-BB82-FAD2F61C068C.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "No-conclusion initial viewport shows release values and the complete Action1 card. The notice follows below and is inspected separately."
+    },
+    {
+      "sha256": "640bc61ed0b2b7ba656a4acb3ef569fbd134d3890c17c04d160b0ce23367a0bd",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/2D1413D5-6E86-4DC6-95D3-D8038AC3832A.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/2D1413D5-6E86-4DC6-95D3-D8038AC3832A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/371B5739-8714-4681-AF4E-AC8BFADA475F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/483F872B-7265-44E2-A8CC-501DB87326F7.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/93A5AFE3-0FA4-40E2-8267-01F01D750174.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/ADCE6592-3D9D-4149-86CF-B3A996FBC87F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/BB07B132-F3FB-4310-809F-AE0EAC4B8EC1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/ECA23635-EE50-4942-84A6-38483512461A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/F20808F7-92D5-48CC-8733-81DFA477925C.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Release initial viewport shows release values and conclusion. Action content continues below the scroll viewport and is inspected separately."
+    },
+    {
+      "sha256": "dd629ec2da0166bf0f3cb6f5ba7d5ce05d30c8e6974258f7a9f8386e768c480b",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/391C750B-ECF1-4F35-911A-B421C3FFCDB9.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/391C750B-ECF1-4F35-911A-B421C3FFCDB9.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Release initial viewport at a later capture time; the same required values remain readable. Continued action content is covered in the next viewport."
+    },
+    {
+      "sha256": "193ec21d1724ef21bbc1e78ecca6049aef1ac22a4aeb0003d0c1c575db8b6970",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/5E701B53-B5FC-4349-9A90-6734AB6218D1.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/5E701B53-B5FC-4349-9A90-6734AB6218D1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/C6CE5600-50A8-4AC9-A3BA-B32DA81C6C64.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/EC0A9B6C-6A95-48F4-9DA1-42A1749A02EF.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/EEAE37B2-1B4E-4542-AD25-751E7C2FCDE1.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Scrolled release viewport shows complete Action1, Copy action, Refresh and Sign out. No clipping within those controls."
+    },
+    {
+      "sha256": "f807a57ba0054646d2bc8ee978cc13047cd75b693a28fb72e7a10d666d46d086",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/B6B52B3A-EFDD-41C3-9AB9-3EDBB419AB20.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/B6B52B3A-EFDD-41C3-9AB9-3EDBB419AB20.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "No-conclusion final viewport shows the complete notice, Action1, Copy action, Refresh and Sign out. Top content is clipped at the scroll boundary as expected."
+    },
+    {
+      "sha256": "9c3fc4103906bfea8d118f29aa6cb7b5ff7e2b3735aa0f977165e9dc8c45c83b",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/CBE10788-74C0-4D50-BD0E-98860E007608.png",
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/batches/001/attachments/CBE10788-74C0-4D50-BD0E-98860E007608.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
+      ],
+      "inspection": "Original resolution",
+      "result": "passed",
+      "observation": "Copy-confirmation initial viewport shows release and conclusion values. The final capture shows the complete action and Copy confirmation."
+    }
+  ],
+  "limits": "This batch passes native and visual checks. It does not establish complete22 acceptance. Subsequent settings phase failed."
+}

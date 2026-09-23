@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-c",
+      "from pathlib import Path; compile(Path('tools/ace_ios_local.py').read_text(encoding='utf-8'), 'tools/ace_ios_local.py', 'exec'); compile(Path('tools/tests/test_ace_ios_local.py').read_text(encoding='utf-8'), 'tools/tests/test_ace_ios_local.py', 'exec')"
+    ],
+    "cwd": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+    "exit": 0,
+    "name": "syntax compile",
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "test_ace_ios_local.NativeRecordTests.test_environment_identity_ignores_only_runtime_last_usage_without_mutating_raw_input",
+      "test_ace_ios_local.NativeRecordTests.test_environment_identity_rejects_runtime_device_tool_and_python_changes"
+    ],
+    "cwd": "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests",
+    "exit": 0,
+    "name": "focused environment identity tests",
+    "stderr": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n",
+    "stdout": ""
+  },
+  {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "test_ace_ios_local"
+    ],
+    "cwd": "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests",
+    "exit": 0,
+    "name": "runner Python test module",
+    "stderr": "..........................\n----------------------------------------------------------------------\nRan 26 tests in 3.235s\n\nOK\n",
+    "stdout": ""
+  }
+]

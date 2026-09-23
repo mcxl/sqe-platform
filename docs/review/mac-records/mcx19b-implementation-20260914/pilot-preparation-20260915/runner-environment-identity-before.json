@@ -1,0 +1,45 @@
+{
+  "actual": {
+    "devices": {
+      "iPhone 17": {
+        "udid": "A"
+      },
+      "iPhone 17 Pro Max": {
+        "udid": "B"
+      }
+    },
+    "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "runtime": {
+      "buildversion": "23E254a",
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
+      "isAvailable": true,
+      "lastUsage": {
+        "x86_64": "2026-09-14T22:20:13Z"
+      }
+    },
+    "xcode": "Xcode 26.4.1\nBuild version 17E202"
+  },
+  "assertion": "Environment identity should remain equal when only runtime.lastUsage changes",
+  "equal": false,
+  "expected": {
+    "devices": {
+      "iPhone 17": {
+        "udid": "A"
+      },
+      "iPhone 17 Pro Max": {
+        "udid": "B"
+      }
+    },
+    "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "runtime": {
+      "buildversion": "23E254a",
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
+      "isAvailable": true,
+      "lastUsage": {
+        "x86_64": "2026-09-14T21:58:52Z"
+      }
+    },
+    "xcode": "Xcode 26.4.1\nBuild version 17E202"
+  },
+  "test": "lastUsage-only environment identity reuse"
+}

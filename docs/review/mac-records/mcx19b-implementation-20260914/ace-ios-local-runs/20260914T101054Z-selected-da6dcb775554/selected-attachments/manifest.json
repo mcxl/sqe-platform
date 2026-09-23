@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "0BFCCAC9-16B5-4E2A-86FE-045665CF74ED.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Controlled state — signIn — dark_0_90A27A02-991A-410B-B4BF-2D7EA8F63DC6.png",
+        "timestamp" : 1789381006.445
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testSignInPasswordFieldIsSecure()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure"
+  }
+]

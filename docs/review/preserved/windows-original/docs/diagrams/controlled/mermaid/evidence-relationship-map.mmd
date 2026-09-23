@@ -1,0 +1,26 @@
+flowchart TD
+    subgraph GOVERNANCE["Governance Chain"]
+        ENGAGEMENT["Engagement"] --> BINDING_OBLIGATION["Binding Obligation"]
+        BINDING_OBLIGATION --> RISK["Risk"]
+        RISK --> RISK_CONTROL_RELATIONSHIP["Risk-Control Relationship"]
+        RISK_CONTROL_RELATIONSHIP --> CONTROL["Control"]
+        ACCOUNTABLE_ROLE["Accountable Role"] -->|"accountable for"| CONTROL
+        ROLE_ASSIGNMENT["Role Assignment"] -->|"identifies holder of"| ACCOUNTABLE_ROLE
+        CONTROL -->|"examined by"| AUDIT_QUESTION["Audit Question"]
+    end
+
+    subgraph PROVENANCE["Evidence Provenance"]
+        EVIDENCE_PROVIDER["Evidence Provider"] -->|"supplies"| SOURCE["Source"]
+        SOURCE --> EVIDENCE_ITEM["Evidence Item"]
+        SEPARATION["Evidence Provider is not Accountable Role"]
+    end
+
+    subgraph REVIEW["Evidence Review And Links"]
+        EVIDENCE_ITEM --> EVIDENCE_RELATIONSHIP["Evidence Relationship"]
+        EVIDENCE_RELATIONSHIP --> AUDIT_QUESTION
+        EVIDENCE_ITEM --> EVIDENCE_REVIEW["Evidence Review"]
+        AUDIT_QUESTION --> EVIDENCE_REVIEW
+        EVIDENCE_REVIEW --> EVIDENCE_RELEVANCE["Evidence Relevance"]
+        EVIDENCE_REVIEW --> EVIDENCE_GAP["Evidence Gap"]
+        EVIDENCE_REVIEW --> PROPOSED_RELATIONSHIP["Proposed Relationship"]
+    end

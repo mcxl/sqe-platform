@@ -1,0 +1,17 @@
+{
+  "engagement_id": "ENG-FIC-0001",
+  "engagement_title": "Fictional Mobile Field Capture Engagement",
+  "engagement_state": "READY_FOR_CAPTURE",
+  "evidence_id": "EVD-FIC-0001",
+  "evidence_state": "PENDING_REVIEW",
+  "evidence_source_context": null,
+  "evidence_version_limitation": "Seed has no source context/version or media; do not claim populated source version verified.",
+  "relationship_id": "REL-FIC-0001",
+  "relationship_version": 1,
+  "relationship_decisions": [],
+  "seed_sources": [
+    "src/ace/workbench/storage.py:_seed_fictional_chain",
+    "src/ace/workbench/storage.py:evidence_review_state",
+    "tests/test_relationship_review.py:test_queue_and_item_show_current_fictional_relationship_state"
+  ]
+}

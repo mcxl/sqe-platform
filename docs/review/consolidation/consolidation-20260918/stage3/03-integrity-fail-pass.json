@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "C:\\Users\\AlanRichardson\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+      "-B",
+      "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3\\integrity-probe\\verify_sha256.py",
+      "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3\\integrity-probe\\payload.bin",
+      "0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "expected_exit": 1,
+    "exit_code": 1,
+    "stdout": "expected=0000000000000000000000000000000000000000000000000000000000000000 actual=71b458997eb87a3273f8d4f83b2b54bda8ad8eb479720060748b0c4fc794e4bd\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\AlanRichardson\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+      "-B",
+      "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3\\integrity-probe\\verify_sha256.py",
+      "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3\\integrity-probe\\payload.bin",
+      "71b458997eb87a3273f8d4f83b2b54bda8ad8eb479720060748b0c4fc794e4bd"
+    ],
+    "expected_exit": 0,
+    "exit_code": 0,
+    "stdout": "expected=71b458997eb87a3273f8d4f83b2b54bda8ad8eb479720060748b0c4fc794e4bd actual=71b458997eb87a3273f8d4f83b2b54bda8ad8eb479720060748b0c4fc794e4bd\n",
+    "stderr": ""
+  }
+]

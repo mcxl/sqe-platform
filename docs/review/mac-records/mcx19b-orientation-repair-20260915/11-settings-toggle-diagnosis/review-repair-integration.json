@@ -1,0 +1,19 @@
+{
+  "UTC": "2026-09-15T13:37:24.159965+00:00",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "parent": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "patch": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/DIAG11/DIAG11-v2-incremental-af8c82d.patch",
+    "sha256": "b9acd5429676f3c37d41632be23b71636e9e1982e442490fd7eb9a914519321d"
+  },
+  "changedFiles": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "primaryReview": "Complete incremental diff inspected, matches isolatedreviewrepair;parseanddiffcheckpass.",
+  "scope": "Failure diagnostic wording only. No operation, wait, tap, state, audit or runner change.",
+  "nativeReuse": "Focused on/off executed on actual af8parent. Its successfulpathsarebyteidentical. Newfullpilotmustusecurrenthead.",
+  "sourceReview": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/standards-review-v2.json",
+    "sha256": "33232eb7c5835eef59629281d6a253d051a8cdbe0eaab2a84e6c971a2858983b"
+  }
+}

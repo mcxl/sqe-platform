@@ -1,0 +1,41 @@
+{
+  "UTC": "2026-09-15T13:37:47.911353+00:00",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "base": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "changedFiles": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "scope": "Only Settings desired-state retry and attempt diagnostics changed. App, runner, native audit, capture, coverage and unit/model/contract paths remain unchanged.",
+  "unchangedSections": [
+    "    func testConfigureAccessibilitySettings()",
+    "    private func captureCoverageViewport(",
+    "    private func addScreenshot("
+  ],
+  "focusActualCandidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "postFocusDelta": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/DIAG11/DIAG11-v2-incremental-af8c82d.patch",
+    "sha256": "b9acd5429676f3c37d41632be23b71636e9e1982e442490fd7eb9a914519321d"
+  },
+  "focusedReuse": "The final delta only corrects failure wording for unreadable/exhausted control; successful on/off paths and decision policy are identical. Native focus is attributed to its actual af8 head, not the new head.",
+  "captureGateReuse": "The deliberate negative capture at c8 and positive medium case at c0 retain the same app/capture/extraction path. Settings recovery is checked separately. Historical failure evidence remains unchanged.",
+  "functionalReuse": "68 native model/unit/contract passes, including43contracts, remain attributable to actual a84 head and prior checked source hashes; app/unit/project inputs unchanged from c0.",
+  "priorReadinessRecords": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/evidence-gate-readiness.json",
+      "sha256": "8a28862d4556a344425533f2a12856115b807f0ae0ec0286196ca819955d19d0"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/functional-readiness.json",
+      "sha256": "8a1a9d2681b82038f7441ac3f53241302cc8c189025d7938ff166c2279e01ba1"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/pocock-readiness.json",
+      "sha256": "351bd466e9ff14919abdfdc69e120be14cbeea966df56ed19f91d62d767ce1f9"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/private-input-readiness.json",
+      "sha256": "87d51af670a3f1190b6e1b4951d00afd5e8e2bc001a223c19647ddb7f64efaef"
+    }
+  ],
+  "limitation": "Full22 acceptance requires the new clean candidate. Apple missed-input cause remains unresolved. No phone/service/836 acceptance."
+}

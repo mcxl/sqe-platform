@@ -1,0 +1,53 @@
+[
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "appearance",
+      "light"
+    ],
+    "end": "2026-09-15T13:33:26.558881+00:00",
+    "exit": 0,
+    "seconds": 0.798,
+    "start": "2026-09-15T13:33:25.760644+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": false
+  },
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "content_size",
+      "large"
+    ],
+    "end": "2026-09-15T13:33:27.333650+00:00",
+    "exit": 0,
+    "seconds": 0.775,
+    "start": "2026-09-15T13:33:26.559026+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": false
+  },
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "increase_contrast",
+      "disabled"
+    ],
+    "end": "2026-09-15T13:33:28.083273+00:00",
+    "exit": 0,
+    "seconds": 0.75,
+    "start": "2026-09-15T13:33:27.333804+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": false
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "simulatorID": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+  "name": "iPhone 17 Pro Max",
+  "originalState": "Booted",
+  "purpose": "Temporarily stop the inactive required simulator. Its mediaanalysisd PID59503 used202.8%CPU during severe memory and CPU pressure. Preserve unrelated iPhone16ProMax. This does not establish cause of previous failures.",
+  "startedUTC": "2026-09-15T02:41:35.527216+00:00",
+  "restoreRequired": false,
+  "shutdownExit": 0,
+  "stdout": "",
+  "stderr": "",
+  "finishedUTC": "2026-09-15T02:41:41.373018+00:00",
+  "restoredUTC": "2026-09-15T02:52:46.569191+00:00",
+  "restoredState": "Booted"
+}

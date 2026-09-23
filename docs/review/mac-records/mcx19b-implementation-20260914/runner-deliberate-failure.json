@@ -1,0 +1,12 @@
+{
+  "question": "Does the final runner retain the deliberately incorrect POST expectation and actual GET result?",
+  "selector": "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+  "expected": "POST",
+  "actualExpected": "GET",
+  "sourceOriginalSha256": "8bcd2da3c4bc53e65a2a05e7a3109bf66616b97993a32dd18aa108607111c4a3",
+  "sourceProbeSha256": "ce1d874a525aeaadd7b3c77799c56a06bb5a8e6cde8ca34ccee682e68bdc39b8",
+  "started": 1789374711.8512409,
+  "runnerExit": 2,
+  "restoredSha256": "8bcd2da3c4bc53e65a2a05e7a3109bf66616b97993a32dd18aa108607111c4a3",
+  "finished": 1789374942.233981
+}

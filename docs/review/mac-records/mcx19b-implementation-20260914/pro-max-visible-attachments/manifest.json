@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "E28C726E-95E6-4B9A-B95B-3C717BD48381.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Fictional release — forced-dark_0_D76568E4-61B5-4097-B9AC-FBE504F809B6.png",
+        "timestamp" : 1789371032.953
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "DCD56637-EFCA-4322-83DF-733B6C66F8CE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Fictional release — forced-light_0_7D423324-349F-4FF6-924F-BC896FA8E331.png",
+        "timestamp" : 1789371016.169
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testBothAppearances()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testBothAppearances"
+  }
+]

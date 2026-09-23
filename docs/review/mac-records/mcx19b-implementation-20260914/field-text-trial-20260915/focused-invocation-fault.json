@@ -1,0 +1,8 @@
+{
+  "job": "1789425834475-ace-single-text-focused-5cb222e4",
+  "exit": 2,
+  "kind": "Invocation fault before native build/test",
+  "exact": "argument --device: invalid choice: iPhone (choose from iPhone 17, iPhone 17 Pro Max)",
+  "cause": "SSH remote shell split simulator name into words.",
+  "correction": "Use a retained remote Python wrapper with subprocess argv, as in proven maximum test wrapper."
+}

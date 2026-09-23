@@ -1,0 +1,50 @@
+{
+  "largeLight": {
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs/20260914T230801Z-selected-156183575705",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "nativeExit": 0,
+    "buildSeconds": 81.818,
+    "enumerationSeconds": 20.855,
+    "nativeCommandSeconds": 110.485,
+    "unrestrictedAuditCalls": 3
+  },
+  "smallLight": {
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "nativeExit": 0,
+    "buildSeconds": 75.162,
+    "enumerationSeconds": 283.904,
+    "nativeCommandSeconds": 155.722,
+    "unrestrictedAuditCalls": 3
+  },
+  "largeDark": {
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/dark-runs/20260914T232753Z-selected-97c06b7e5334",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "nativeExit": 0,
+    "buildSeconds": 79.718,
+    "enumerationSeconds": 18.664,
+    "nativeCommandSeconds": 156.014,
+    "unrestrictedAuditCalls": 5
+  },
+  "largeMaximumLight": {
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "nativeExit": 0,
+    "buildSeconds": 69.633,
+    "enumerationSeconds": 20.055,
+    "nativeCommandSeconds": 100.877,
+    "unrestrictedAuditCalls": 2
+  }
+}

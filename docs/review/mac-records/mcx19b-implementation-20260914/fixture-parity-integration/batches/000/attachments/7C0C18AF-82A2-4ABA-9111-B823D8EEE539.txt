@@ -1,0 +1,10 @@
+Application, 0x10770e590, pid: 74422, label: 'ACE Client' <App element pid: 74422>
+  Window (Main), 0x107713d50, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 74422, elementOrHash.elementID: 4588606448.3>
+    Other, 0x107714110, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 74422, elementOrHash.elementID: 4588616640.4>
+      Other, 0x107714230, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 74422, elementOrHash.elementID: 4588618720.5>
+        Other, 0x107713e70, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 74422, elementOrHash.elementID: 4590875792.6>
+          Other, 0x107713f90, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 74422, elementOrHash.elementID: 4533043840.7>
+            ActivityIndicator, 0x107714660, {{189.7, 486.7}, {60.7, 46.9}}, label: 'Loading current release', value: 1 <AX element pid: 74422, elementOrHash.elementID: 4591750528.8>
+              ActivityIndicator, 0x107714780, {{210.0, 486.7}, {20.0, 20.0}}, value: 1 <AX element pid: 74422, elementOrHash.elementID: 4529920144.10>
+              StaticText, 0x1077148a0, {{0.0, 0.0}, {0.0, 0.0}}, label: 'Loading' <AX element pid: 74422, elementOrHash.elementID: 4591749744.11>
+            StaticText, 0x1077149c0, {{0.0, 434.3}, {440.0, 36.3}}, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 74422, elementOrHash.elementID: 4533052032.9>

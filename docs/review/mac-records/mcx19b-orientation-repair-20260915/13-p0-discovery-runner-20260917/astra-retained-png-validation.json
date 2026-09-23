@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "read-only validation of two retained native screenshot PNGs; no native test execution",
+  "directory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments",
+  "names": [
+    "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial",
+    "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation"
+  ],
+  "runnerSha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5"
+}

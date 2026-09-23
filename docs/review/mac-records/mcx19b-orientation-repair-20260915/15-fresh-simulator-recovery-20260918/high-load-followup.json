@@ -1,0 +1,32 @@
+{
+  "at": "2026-09-17T14:14:58.192728+00:00",
+  "commands": [
+    {
+      "command": [
+        "ps",
+        "-p",
+        "34529,82429,34721,82811",
+        "-o",
+        "pid,ppid,%cpu,etime,args"
+      ],
+      "exit": 0,
+      "output": "  PID  PPID  %CPU     ELAPSED ARGS\n34529     1   0.0 03-12:19:19 launchd_sim LOCAL_HOME/Library/Developer/CoreSimulator/Devices/3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F/data/var/run/launchd_bootstrap.plist\n34721 34529 483.5 03-12:18:55 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n82429     1   0.0 02-00:25:43 launchd_sim LOCAL_HOME/Library/Developer/CoreSimulator/Devices/D1BAA05C-52DD-4E57-832F-C0A75718E085/data/var/run/launchd_bootstrap.plist\n82811 82429 325.0 02-00:23:35 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n"
+    },
+    {
+      "command": [
+        "sysctl",
+        "-n",
+        "hw.logicalcpu"
+      ],
+      "exit": 0,
+      "output": "16\n"
+    },
+    {
+      "command": [
+        "uptime"
+      ],
+      "exit": 0,
+      "output": " 0:14  up 4 days,  8:22, 2 users, load averages: 120.48 167.83 108.01\n"
+    }
+  ]
+}

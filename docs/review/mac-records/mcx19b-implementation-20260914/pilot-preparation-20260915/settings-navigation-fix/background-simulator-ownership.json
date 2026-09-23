@@ -1,0 +1,19 @@
+{
+  "utc": "2026-09-15T02:40:48.126868+00:00",
+  "records": [
+    {
+      "pid": 34721,
+      "process": "  PID  PPID     ELAPSED      TIME COMMAND\n34721 34529 01-00:44:45 8611:59.20 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n",
+      "simulatorIDsFromOpenPaths": [
+        "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F"
+      ]
+    },
+    {
+      "pid": 59503,
+      "process": "  PID  PPID  ELAPSED      TIME COMMAND\n59503 59084 19:10:25 6477:30.55 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n",
+      "simulatorIDsFromOpenPaths": [
+        "D1BAA05C-52DD-4E57-832F-C0A75718E085"
+      ]
+    }
+  ]
+}

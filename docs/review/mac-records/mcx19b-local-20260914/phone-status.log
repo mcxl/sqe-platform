@@ -1,0 +1,94 @@
+Failed to load provisioning paramter list due to error: Error Domain=com.apple.dt.CoreDeviceError Code=1002 "No provider was found." UserInfo={NSLocalizedDescription=No provider was found.}.
+`devicectl manage create` may support a reduced set of arguments.
+Gathering device information...
+Current device information:
+? identifier: CD033598-77C2-5F34-9DB2-D90082F10623
+? tags: 
+? hardwareProperties:
+    ? cpuType: arm64e (type: 16777228, subtype: 2)
+    ? deviceType: iPhone
+    ? ecid: 5679236229857338
+    ? hardwareModel: D84AP
+    ? internalStorageCapacity: 512000000000
+    ? isProductionFused: true
+    ? marketingName: iPhone 15 Pro Max
+    ? platform: iOS
+    ? productType: iPhone16,2
+    ? reality: physical
+    ? serialNumber: C9YJ2VCTF5
+    ? supportedCPUTypes:
+        ? arm64e (type: 16777228, subtype: 2)
+        ? arm64 (type: 16777228, subtype: 0)
+    ? supportedDeviceFamilies: [1]
+    ? thinningProductType: iPhone16,2
+    ? udid: 00008130-00142D3C3A13803A
+? deviceProperties:
+    ? bootState: booted
+    ? ddiServicesAvailable: true
+    ? developerModeStatus: enabled
+    ? hasInternalOSBuild: false
+    ? name: Alan?s :) iPhone
+    ? osBuildUpdate: 23G83
+    ? osVersionNumber: 26.6.1
+    ? providerSpecificValues:
+        ? hasAMRestorableDeviceRef: true
+    ? rootFileSystemIsWritable: false
+    ? screenViewingURL: devices://device/open?id=CD033598-77C2-5F34-9DB2-D90082F10623
+    ? bootedFromSnapshot: true
+    ? bootedSnapshotName: com.apple.os.update-5CC54351C8520CBC723685715B4F95BF66D35B234ED4C1B1365F0B628D60EE79
+    ? supportsCheckedAllocations: false
+? connectionProperties:
+    ? authenticationType: manualPairing
+    ? isMobileDeviceOnly: false
+    ? lastConnectionDate: 2026-09-14 02:02:00 +0000
+    ? localHostnames:
+        ? Alans-iPhone.coredevice.local
+        ? CD033598-77C2-5F34-9DB2-D90082F10623.coredevice.local
+        ? 00008130-00142D3C3A13803A.coredevice.local
+    ? potentialHostnames:
+        ? Alans-iPhone.coredevice.local
+        ? CD033598-77C2-5F34-9DB2-D90082F10623.coredevice.local
+        ? 00008130-00142D3C3A13803A.coredevice.local
+    ? pairingState: paired
+    ? transportType: wired
+    ? tunnelTransportProtocol: tcp
+    ? tunnelIPAddress: fddb:d20b:6739::1
+    ? tunnelState: connected
+? capabilities:
+    ? Acquire Usage Assertion (com.apple.coredevice.feature.acquireusageassertion)
+    ? Application Control (com.apple.coredevice.feature.applicationcontrol)
+    ? Capture Sysdiagnose (com.apple.coredevice.feature.capturesysdiagnose)
+    ? Create Service Connection (com.apple.dt.serviceconnection.create)
+    ? Create Service Socket (com.apple.dt.servicesocket.create)
+    ? Disable Developer Disk Image Services (com.apple.coredevice.feature.disableddiservices)
+    ? Disconnect from Device (com.apple.coredevice.feature.disconnectdevice)
+    ? Fetch Application Icons (com.apple.coredevice.feature.fetchappicons)
+    ? Fetch AuthListing Identifiers (com.apple.coredevice.feature.getauthlistingidentifiers)
+    ? Fetch Developer Disk Image Services Metadata (com.apple.coredevice.feature.fetchddimetadata)
+    ? Fetch Extended Device Info (com.apple.coredevice.feature.getdeviceinfo)
+    ? Get Display Information (com.apple.coredevice.feature.getdisplayinfo)
+    ? Get Lock State (com.apple.coredevice.feature.getlockstate)
+    ? Install Application (com.apple.coredevice.feature.installapp)
+    ? Install Root (com.apple.coredevice.feature.installroot)
+    ? Launch Application (com.apple.coredevice.feature.launchapplication)
+    ? List Files (com.apple.coredevice.feature.listFiles)
+    ? List Roots (com.apple.coredevice.feature.listroots)
+    ? Modify Tags (com.apple.coredevice.feature.tags)
+    ? Modify credentials for default users for a device (com.apple.coredevice.feature.default.user.credentials)
+    ? Monitor Process for Termination (com.apple.coredevice.feature.monitorprocesstermination)
+    ? Post Darwin Notification (com.apple.dt.customer.postdarwinnotification)
+    ? Process Control (com.apple.coredevice.feature.processcontrol)
+    ? Query MobileGestalt (com.apple.coredevice.feature.querymobilegestalt)
+    ? Reboot Device (com.apple.coredevice.feature.rebootdevice)
+    ? Send Memory Warning to Process (com.apple.coredevice.feature.sendmemorywarningtoprocess)
+    ? Send Signal to Process (com.apple.coredevice.feature.sendsignaltoprocess)
+    ? Service Hub Profile (com.apple.dt.profile)
+    ? Spawn Executable (com.apple.coredevice.feature.spawnexecutable)
+    ? Stream Application List (com.apple.coredevice.feature.streamapplist)
+    ? Stream Process List (com.apple.coredevice.feature.streamprocesslist)
+    ? Transfer Files (com.apple.coredevice.feature.transferFiles)
+    ? Uninstall Application (com.apple.coredevice.feature.uninstallapp)
+    ? Uninstall Root (com.apple.coredevice.feature.uninstallroot)
+    ? Unpair Device (com.apple.coredevice.feature.unpairdevice)
+    ? View Device Screen (com.apple.coredevice.feature.viewdevicescreen)
+? visibilityClass: default

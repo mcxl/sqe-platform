@@ -1,0 +1,5 @@
+Simplify ACE clipboard to complete action records
+
+Replace individual field Copy controls with one action Copy control. Preserve local-only clipboard options and five-minute expiry. Update the approved specification and focused tests.
+
+Focused native Copy and 68 unit/contract checks pass. The light post-scroll accessibility audit remains failed; this commit is not delivery acceptance.

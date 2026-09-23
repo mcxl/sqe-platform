@@ -1,0 +1,21 @@
+{
+  "utc": "2026-09-14T06:53:21.986605+00:00",
+  "runtimes": [
+    {
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
+      "version": "26.4.1",
+      "buildversion": "23E254a",
+      "isAvailable": true
+    }
+  ],
+  "signedProduct": {
+    "signatureExit": 0,
+    "bundle": "com.alanrichardson.aceclientapp",
+    "expectedAccessGroup": "85SMJXHMJ5.com.alanrichardson.aceclientapp",
+    "entitlementAccessGroups": null,
+    "applicationIdentifier": "85SMJXHMJ5.com.alanrichardson.aceclientapp",
+    "profileExpiresUTC": "2026-09-21 02:37:21",
+    "getTaskAllow": true
+  },
+  "effectiveRuntimeAccessGroup": "PENDING: signed entitlements do not establish Keychain runtime acceptance"
+}

@@ -1,0 +1,14 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -166,6 +166,10 @@ final class ACEClientAppUITests: XCTestCase {
+         )
+         XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
+         assertMinimumActionTargets(in: app)
++        if scenario == "noConclusion" {
++            addScreenshot(of: app, named: "Controlled state — noConclusion — initial-audit")
++            try assertAccessibilityAudit(in: app, scenario: "noConclusion-initial")
++        }
+         scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
+         addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
+         try assertAccessibilityAudit(in: app, scenario: scenario)

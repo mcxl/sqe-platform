@@ -1,0 +1,272 @@
+[
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree",
+    "head": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 59150,
+    "sha256": "80b5121f9607a1e8751ed2017a1e6957027aa2a835b4802016f2471a581e357f"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-worktree",
+    "head": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 59062,
+    "sha256": "11352f78c9112fb81d3c64e60fe0e52f66729f47a91cccf3b2af6c23a079243e"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/implementation-worktree",
+    "head": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 59022,
+    "sha256": "13b6d42d27da7fbd414259c9fa592b97667274a27c09a6c6ccf1125d8afd1e0a"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/measurement-fix-worktree",
+    "head": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 59311,
+    "sha256": "fd337029dee2f485b7540eae450145abd39b6a58c52876146d7e33f655c5dd1e"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/settings-fix-worktree",
+    "head": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 61477,
+    "sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/negative-probe-worktree",
+    "head": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 58579,
+    "sha256": "518c26b08e0b1382c08343247404b8e1aa139cd193f9b46facf9d691bfdde12c"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl",
+    "head": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+    "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 6761,
+    "sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl",
+    "head": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+    "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 13276,
+    "sha256": "98b9bbcda7eb2deedabdb792d5f8c28bbcfefcfb351b5513ec117a7dbb07f82f"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree",
+    "head": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+    "path": "tools/ace_ios_local.py",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 76339,
+    "sha256": "cb7d50d0bd677b57751a7ff6e295f220a75f4e156b019a5f5a07ff2f6d1563be"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree",
+    "head": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+    "path": "tools/tests/test_ace_ios_local.py",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 43897,
+    "sha256": "294049651531e4eadec9dced056b2ba41c9e358aa6167a8689f6794075fd2184"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree",
+    "head": "905004fc71107565abf2d68cb05fc581cf5bf310",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 58579,
+    "sha256": "56cfea56f54fd5458412d5376d58b01ca97ed6f53c0204b4b9e6e8ccb4a284ad"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3",
+    "head": "905004fc71107565abf2d68cb05fc581cf5bf310",
+    "path": "tools/ace_ios_local.py",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 76397,
+    "sha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3",
+    "head": "905004fc71107565abf2d68cb05fc581cf5bf310",
+    "path": "tools/tests/test_ace_ios_local.py",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 45546,
+    "sha256": "b50c74ebbf5f7d59fe1985ad37745db4dae1a2f2c1f97f3a70b781ea7f3f62f5"
+  },
+  {
+    "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-negative-probe-worktree",
+    "head": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 58579,
+    "sha256": "56cfea56f54fd5458412d5376d58b01ca97ed6f53c0204b4b9e6e8ccb4a284ad"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 6668,
+    "sha256": "b549d16757d2b0e5e9cce70c8231957a306e7d15e86f018d2a91fbc5f3da43ba"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56375,
+    "sha256": "dea59c5756a9bf8268b1ce854e68279c2951b1bfe6199656f151a5e18352e31e"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-metadata",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 5242,
+    "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-metadata",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56327,
+    "sha256": "3429cb6089ee0555bbf2e447d61838888661be5453a0dce73be4edc5dc094042"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-metadata-control",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56327,
+    "sha256": "3429cb6089ee0555bbf2e447d61838888661be5453a0dce73be4edc5dc094042"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 5242,
+    "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 12897,
+    "sha256": "080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56468,
+    "sha256": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917",
+    "head": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 72706,
+    "sha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-field-text-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 5242,
+    "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-field-text-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 12873,
+    "sha256": "670f6a19c73a303c084cbae319f5b15c4d00b4d5025b4596cd26fb4c2dede63e"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-field-text-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56468,
+    "sha256": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-native-list-control",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56639,
+    "sha256": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-native-list-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 12565,
+    "sha256": "3a23812a4abe08458ee6a10fb9de6a86608a4468e7e019775bc312989f981f1a"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-native-list-trial",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 56639,
+    "sha256": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8"
+  },
+  {
+    "worktree": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic",
+    "head": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "status": " M",
+    "disposition": "Preserve in original diagnostic worktree; integration decision pending",
+    "bytes": 75227,
+    "sha256": "d1970169effbfd0239d89d1ec1e770f5e670c2bd8560e1ada5333c2895e569b5"
+  }
+]

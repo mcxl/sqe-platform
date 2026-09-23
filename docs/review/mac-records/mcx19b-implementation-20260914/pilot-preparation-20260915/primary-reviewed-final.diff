@@ -1,0 +1,117 @@
+diff --git a/docs/plans/2026-09-14-ace-ios-local-verification.md b/docs/plans/2026-09-14-ace-ios-local-verification.md
+index 867276a..33eb24f 100644
+--- a/docs/plans/2026-09-14-ace-ios-local-verification.md
++++ b/docs/plans/2026-09-14-ace-ios-local-verification.md
+@@ -50,7 +50,7 @@ Use a Python standard-library local runner and Apple tools only.
+ 
+ Use generic `build-for-testing`, the generated `xctestrun`, and `test-without-building`.
+ 
+-The starting inventory contained 65 tests, including 42 contract tests. The new composed credential-lifecycle test raises the source inventory to 66, including 43 contract tests. These are source counts until native execution confirms them. Do not count the subset twice.
++The current inventory contains 68 unit and contract tests, including 43 contract tests. The retained action-Copy run confirms these counts on its earlier candidate. Run the required current-candidate checks. Do not count the subset twice.
+ 
+ Record each test count and its evidence inside the native result bundle.
+ 
+@@ -85,6 +85,10 @@ Retain the nine existing UI regression selectors and record their overlap.
+ 
+ Run 22 pilot cases on one unchanged candidate.
+ 
++The approved plan permits independent simulator work while service checks are blocked. The simulator pilot uses built-in fictional fixtures. Its private-input record must identify these fixtures, their source hashes, and private evidence access. Confirm that fixture launch skips service startup. Do not record the missing approved service address, certificate, account, phone access, or signed-device checks as passed. Those inputs remain required before their dependent checks and final delivery.
++
++Record the pilot readiness scope explicitly as simulator fixtures and private evidence. This does not waive the historical baseline, security, service, physical-device, or final review gates.
++
+ For every complex state and required simulator, run A at `DEFAULT`, portrait, light appearance, and all toggles off. Run B at `MAX`, landscape, dark appearance, and all toggles on.
+ 
+ Run release at medium text, portrait, and light appearance on both simulators without a full audit.
+diff --git a/docs/specs/2026-08-24-ace-ios-read-only-client-application.md b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+index 0621fc7..3bcbe57 100644
+--- a/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
++++ b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+@@ -1187,7 +1187,7 @@ The approved starting inventory contained 65 unit and contract tests, including
+ 
+ ### Verification Sequence
+ 
+-1. Confirm the required simulators, approved iPhone 15 Pro Max, signing, Keychain access group, storage, private evidence retrieval, private service, certificate, and fictional account.
++1. Confirm required access before dependent checks. For the simulator fixture programme, confirm the required simulators, built-in fictional inputs, storage, and private evidence retrieval. Confirm the approved iPhone 15 Pro Max, signing, Keychain access group, private service, certificate, and fictional account before their dependent checks. Missing service or phone access does not prevent independent simulator work, as authorised in the approved plan. All these inputs remain mandatory for final delivery.
+ 2. Run focused functional checks and the local runner evidence gate. Retain the deliberate failure assertion and its corrected passing result.
+ 3. Freeze a clean candidate at one exact commit.
+ 4. Obtain Pocock review for that clean candidate.
+diff --git a/tools/ace_ios_local.py b/tools/ace_ios_local.py
+index a5f47eb..57c74dd 100644
+--- a/tools/ace_ios_local.py
++++ b/tools/ace_ios_local.py
+@@ -657,7 +657,11 @@ def reuse_build(candidate_record: dict[str, object], pilot: dict[str, object]) -
+ def environment_identity(environment: object) -> dict[str, object]:
+     if not isinstance(environment, dict):
+         raise RunnerError("recorded environment identity is invalid")
+-    return {key: environment.get(key) for key in ("python", "xcode", "runtime", "devices")}
++    identity = {key: environment.get(key) for key in ("python", "xcode", "runtime", "devices")}
++    runtime = identity["runtime"]
++    if isinstance(runtime, dict):
++        identity["runtime"] = {key: value for key, value in runtime.items() if key != "lastUsage"}
++    return identity
+ 
+ 
+ def canonical_case(device: str, scenario: str, settings: dict[str, object]) -> tuple[str, str, str]:
+diff --git a/tools/tests/test_ace_ios_local.py b/tools/tests/test_ace_ios_local.py
+index 6c3eeb1..7e7c318 100644
+--- a/tools/tests/test_ace_ios_local.py
++++ b/tools/tests/test_ace_ios_local.py
+@@ -1,3 +1,4 @@
++from copy import deepcopy
+ import importlib.util
+ import json
+ import plistlib
+@@ -195,6 +196,53 @@ class NativeRecordTests(unittest.TestCase):
+         with self.assertRaisesRegex(ace.RunnerError, "runtime"):
+             ace.required_runtime(runtime)
+ 
++    def test_environment_identity_ignores_only_runtime_last_usage_without_mutating_raw_input(self):
++        before = {
++            "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
++            "xcode": "Xcode 26.4.1 Build version 17E202",
++            "runtime": {"buildversion": "23E254a", "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
++                        "isAvailable": True, "lastUsage": {"x86_64": "2026-09-14T21:58:52Z"}},
++            "devices": {"iPhone 17": {"udid": "A"}, "iPhone 17 Pro Max": {"udid": "B"}},
++        }
++        after = deepcopy(before)
++        after["runtime"]["lastUsage"]["x86_64"] = "2026-09-14T22:20:13Z"
++        before_raw, after_raw = deepcopy(before), deepcopy(after)
++
++        self.assertEqual(ace.environment_identity(before), ace.environment_identity(after))
++        self.assertEqual(before, before_raw)
++        self.assertEqual(after, after_raw)
++        self.assertIn("lastUsage", before["runtime"])
++        self.assertIn("lastUsage", after["runtime"])
++
++    def test_environment_identity_rejects_runtime_device_tool_and_python_changes(self):
++        environment = {
++            "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
++            "xcode": "Xcode 26.4.1 Build version 17E202",
++            "runtime": {"buildversion": "23E254a", "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
++                        "isAvailable": True, "lastUsage": {"x86_64": "2026-09-14T21:58:52Z"}},
++            "devices": {"iPhone 17": {"udid": "A"}, "iPhone 17 Pro Max": {"udid": "B"}},
++        }
++
++        def changed(path, value):
++            result = deepcopy(environment)
++            target = result
++            for key in path[:-1]:
++                target = target[key]
++            target[path[-1]] = value
++            return result
++
++        changes = (
++            ("runtime build", ("runtime", "buildversion"), "other"),
++            ("runtime identity", ("runtime", "identifier"), "other.runtime"),
++            ("runtime availability", ("runtime", "isAvailable"), False),
++            ("device", ("devices", "iPhone 17", "udid"), "changed"),
++            ("tool", ("xcode",), "Xcode other"),
++            ("python", ("python",), "/other/python3"),
++        )
++        for name, path, value in changes:
++            with self.subTest(change=name):
++                self.assertNotEqual(ace.environment_identity(environment), ace.environment_identity(changed(path, value)))
++
+     def test_device_records_rejects_malformed_required_udid(self):
+         original = ace.json_command
+         ace.json_command = lambda *_args: {"devices": {"com.apple.CoreSimulator.SimRuntime.iOS-26-4": [

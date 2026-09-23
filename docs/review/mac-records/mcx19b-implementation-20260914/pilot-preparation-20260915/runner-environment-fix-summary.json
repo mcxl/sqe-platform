@@ -1,0 +1,58 @@
+{
+  "afterRegression": {
+    "lastUsageOnlyEqual": true,
+    "protectedChangesStillDiffer": {
+      "device": true,
+      "python": true,
+      "runtimeAvailability": true,
+      "runtimeBuild": true,
+      "runtimeIdentifier": true,
+      "tool": true
+    },
+    "rawInputsUnchanged": true,
+    "rawRuntimeStillHasLastUsage": true,
+    "test": "environment identity regression after correction"
+  },
+  "baselineCommit": "023b1e8dd0a742d2a1caa3f30f5141af2c5021db",
+  "beforeRegression": {
+    "assertion": "Environment identity should remain equal when only runtime.lastUsage changes",
+    "equal": false
+  },
+  "changedFiles": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "diffSha256": "0b1f4e4c704460a534f6cd665b16e4146b972c2ee1c139397dcbf094abc51f4a",
+  "evidenceFiles": {
+    "runner-environment-fix.diff": "0b1f4e4c704460a534f6cd665b16e4146b972c2ee1c139397dcbf094abc51f4a",
+    "runner-environment-identity-after.json": "f1c470cbaa2825d3c246a5eaea9230fda5728533a59bf9352aff328d2c77da92",
+    "runner-environment-identity-before.json": "c3d67b83913903f83a22a8404dc2dc7185b6212427adc160ad9db9b5499a4e89",
+    "runner-environment-identity-tests.json": "34bebb5c2653a4a972b3bc937d72939abd7ed26db9c45cae3a061f4d08e15f3a",
+    "settings-environment-rejection-source.json": "f98a3defdb7a56df574db88120ceca5a17012ebf4d790672c71951219325f91d"
+  },
+  "retainedFault": {
+    "assertion": "Environment changed",
+    "changedLeaves": [
+      {
+        "after": "2026-09-14T22:20:13Z",
+        "before": "2026-09-14T21:58:52Z",
+        "path": "runtime.lastUsage.x86_64"
+      }
+    ],
+    "nativeTestsRun": 0
+  },
+  "testResults": [
+    {
+      "exit": 0,
+      "name": "syntax compile"
+    },
+    {
+      "exit": 0,
+      "name": "focused environment identity tests"
+    },
+    {
+      "exit": 0,
+      "name": "runner Python test module"
+    }
+  ]
+}

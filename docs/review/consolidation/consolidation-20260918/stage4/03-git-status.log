@@ -1,0 +1,12 @@
+## codex/sqe-workspace-consolidation
+ M DEV_STATE.md
+ M docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+?? .snapshots/
+?? SQE_DEVELOPER_HUB.html
+?? WORKSPACE-GUIDE.md
+?? docs/ace/
+?? docs/plans/
+?? ios/
+?? tests/test_ios_accessibility_layout.py
+?? tests/test_ios_action_targets.py
+?? tools/

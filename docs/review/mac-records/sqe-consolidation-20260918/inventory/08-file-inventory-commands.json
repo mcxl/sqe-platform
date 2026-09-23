@@ -1,0 +1,1458 @@
+[
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 1.01,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 1.119,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 1.073,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform-public-clean",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.894,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform-public-clean",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.999,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/sqe-platform-public-clean",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.907,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe/.artifacts/apple-landmarks-trial-20260912/worktree",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.902,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe/.artifacts/apple-landmarks-trial-20260912/worktree",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.768,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe/.artifacts/apple-landmarks-trial-20260912/worktree",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.834,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.015,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.919,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 4.288,
+    "stderr": "warning: could not open directory 'sqe/.artifacts/apple-landmarks-trial-20260912/release-focus-02/evidence/results/iphone-17-light-large.xcresult/Staging/1_Test/Diagnostics/LandmarksTrialUITests-B3D88B6C-327D-4BA7-A8F1-335A1E228D7F-Configuration-Test Scheme Action-Iteration-1/': Filename too long\nwarning: could not open directory 'sqe/.artifacts/apple-landmarks-trial-20260912/release-focus-02/iphone-17-light-large.xcresult/Staging/1_Test/Diagnostics/LandmarksTrialUITests-B3D88B6C-327D-4BA7-A8F1-335A1E228D7F-Configuration-Test Scheme Action-Iteration-1/': Filename too long\nwarning: could not open directory 'sqe/.tmp_pytest_mcx19_diag/': Permission denied\nwarning: could not open directory 'sqe/.tmp_pytest_mcx19_diag2/': Permission denied\nwarning: could not open directory 'sqe/.tmp_pytest_mcx19_full/': Permission denied\n"
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-assurance-workflow-consolidation",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.147,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-assurance-workflow-consolidation",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.102,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-assurance-workflow-consolidation",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.159,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-fictional-pilot-spec",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.187,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-fictional-pilot-spec",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.173,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-fictional-pilot-spec",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.17,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-1",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.191,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-1",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.222,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-1",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.255,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-4",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.048,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-4",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.082,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ace-sprint-4",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.208,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-deepsec-closeout",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.021,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-deepsec-closeout",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.154,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-deepsec-closeout",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.084,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-final-spec",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.76,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-final-spec",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.877,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-final-spec",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.871,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-spec-state-sync",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.905,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-spec-state-sync",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.019,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-ios-spec-state-sync",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.098,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-issue18-controlled-actions",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.89,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-issue18-controlled-actions",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.938,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-issue18-controlled-actions",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.879,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.015,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.952,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.963,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-evidence",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.249,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-evidence",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.162,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-evidence",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 1.128,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.747,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.544,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.883,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe-v2",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.739,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe-v2",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.765,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe-v2",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.862,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-5",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 3.608,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-5",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.23,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-5",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 2.529,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-6",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.168,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-6",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.194,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-mcx-6",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.191,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6a-exact-base",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.195,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6a-exact-base",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.228,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6a-exact-base",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.284,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b1-goal-7aa5084",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.242,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b1-goal-7aa5084",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.264,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b1-goal-7aa5084",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.268,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b2-controlled-target",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.422,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b2-controlled-target",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.233,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-phase6b2-controlled-target",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.271,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-pr26-completion",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.211,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-pr26-completion",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.235,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "C:/tmp/sqe-pr26-completion",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.307,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/.codex/worktrees/fefc/agentic-os-workspace",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.245,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/.codex/worktrees/fefc/agentic-os-workspace",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.226,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/.codex/worktrees/fefc/agentic-os-workspace",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.212,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe-pr38",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.193,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe-pr38",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.201,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace/sqe-pr38",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.221,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx-7",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.199,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx-7",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.23,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx-7",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.252,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx8",
+      "ls-files",
+      "--stage",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.188,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx8",
+      "ls-files",
+      "--others",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.175,
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "core.fsmonitor=false",
+      "-C",
+      "LOCAL_HOME/Documents/agentic-os-workspace-mcx8",
+      "ls-files",
+      "--others",
+      "--ignored",
+      "--exclude-standard",
+      "--directory",
+      "-z",
+      "--",
+      "sqe"
+    ],
+    "exit_code": 0,
+    "seconds": 0.178,
+    "stderr": ""
+  }
+]

@@ -1,0 +1,60 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 38d6c59..b5ab0b0 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -383,8 +383,10 @@ final class ACEClientAppUITests: XCTestCase {
+             return false
+         }
+         for item in path where !tapSettingsItem(item, in: settings) {
++            let message = "Missing Settings control or destination: \(item)"
++            print("ACE_NATIVE_SETTINGS_FAILURE \(message)")
+             addScreenshot(of: settings, named: "Accessibility settings missing \(item)")
+-            XCTFail("Missing Settings control: \(item)")
++            XCTFail(message)
+             return false
+         }
+         let toggle = settings.switches[label]
+@@ -398,11 +400,16 @@ final class ACEClientAppUITests: XCTestCase {
+         if current != enabled {
+             toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+         }
++        let observationStart = ProcessInfo.processInfo.systemUptime
+         let changed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.nativeSwitchValue(toggle) == enabled }, object: nil)
+-        let reached = XCTWaiter.wait(for: [changed], timeout: 5) == .completed
+-        guard reached else {
++        let waitResult = XCTWaiter.wait(for: [changed], timeout: 5)
++        // Read the current value before diagnostics; the wait can expire while Settings rebuilds its controls.
++        let actual = nativeSwitchValue(settings.switches[label])
++        let observationSeconds = ProcessInfo.processInfo.systemUptime - observationStart
++        print("ACE_NATIVE_SWITCH_RESULT \(label) wait=\(waitResult.rawValue) seconds=\(observationSeconds) expected=\(enabled) actual=\(String(describing: actual))")
++        guard actual == enabled else {
+             addScreenshot(of: settings, named: "Accessibility settings \(label) did not change")
+-            XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: nativeSwitchValue(toggle)))")
++            XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: actual))")
+             return false
+         }
+         return true
+@@ -419,10 +426,19 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func tapSettingsItem(_ label: String, in settings: XCUIApplication) -> Bool {
+-        for _ in 0..<12 {
+-            let candidates = [settings.cells[label], settings.staticTexts[label], settings.buttons[label]]
+-            if let candidate = candidates.first(where: { $0.exists && $0.isHittable }) { candidate.tap(); return true }
+-            settings.swipeUp()
++        // Settings retains its scroll position. Search above and below that position.
++        for step in 0...24 {
++            let candidates = [settings.cells[label],
++                              settings.cells.containing(.staticText, identifier: label).firstMatch,
++                              settings.buttons[label], settings.staticTexts[label]]
++            if let candidate = candidates.first(where: { $0.exists && $0.isHittable }) {
++                candidate.tap()
++                let opened = settings.navigationBars[label].waitForExistence(timeout: 5)
++                print("ACE_NATIVE_SETTINGS_NAVIGATION \(label) destinationOpened=\(opened)")
++                return opened
++            }
++            if step == 24 { break }
++            if step < 12 { settings.swipeDown() } else { settings.swipeUp() }
+         }
+         return false
+     }

@@ -1,0 +1,4 @@
+Query chain:
+ →Find: Target Application 'com.example.aceclientapp'
+  ↪︎Find: Descendants matching type ProgressIndicator
+    ↪︎Find: Elements matching predicate '"Loading current release" IN identifiers'

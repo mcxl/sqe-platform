@@ -1,0 +1,23 @@
+{
+  "recordedUTC": "2026-09-15T11:54:35.707002+00:00",
+  "candidate": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+  "native": "passed",
+  "caseCount": 1,
+  "auditCount": 1,
+  "auditInvocations": 1,
+  "pilotCredit": 0,
+  "restored": true,
+  "helperCorrection": "confirmed: collection drag exposed offscreen Sign in; target checks and unrestricted audit passed",
+  "imageInspection": [
+    {
+      "sha256": "2a5801afd431c792dc9ad5ed4b5ea03abe43dd619baaadd43e1428e8abe0e34a",
+      "inspection": "reuse identical initial image inspection; incomplete landscape capture"
+    },
+    {
+      "sha256": "51618e2823bddb5737da48b394db42d97769053f4f681296137c81ede716a8d7",
+      "inspection": "inspected original resolution; Sign in visible but scene capture remains cropped"
+    }
+  ],
+  "imageAcceptance": "failed capture completeness; separate test evidence fault",
+  "settingsReplay": "passed unchanged; first missed Bold Text tap cause unresolved"
+}

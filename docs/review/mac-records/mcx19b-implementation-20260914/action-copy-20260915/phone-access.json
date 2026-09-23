@@ -1,0 +1,103 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "list",
+      "devices",
+      "--timeout",
+      "15",
+      "--json-output",
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/phone-access.json"
+    ],
+    "commandType" : "devicectl.list.devices",
+    "environment" : {
+
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.27"
+  },
+  "result" : {
+    "devices" : [
+      {
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify credentials for default users for a device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.unpairdevice",
+            "name" : "Unpair Device"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "manualPairing",
+          "isMobileDeviceOnly" : false,
+          "lastConnectionDate" : "2026-09-14T20:05:00.000Z",
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+            "Alans-iPhone.coredevice.local",
+            "CD033598-77C2-5F34-9DB2-D90082F10623.coredevice.local",
+            "00008130-00142D3C3A13803A.coredevice.local"
+          ],
+          "tunnelState" : "unavailable"
+        },
+        "deviceProperties" : {
+          "bootedFromSnapshot" : true,
+          "bootedSnapshotName" : "com.apple.os.update-5CC54351C8520CBC723685715B4F95BF66D35B234ED4C1B1365F0B628D60EE79",
+          "ddiServicesAvailable" : false,
+          "developerModeStatus" : "enabled",
+          "hasInternalOSBuild" : false,
+          "name" : "Alan’s :) iPhone",
+          "osBuildUpdate" : "23G83",
+          "osVersionNumber" : "26.6.1",
+          "rootFileSystemIsWritable" : false,
+          "supportsCheckedAllocations" : false
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64e",
+            "subType" : 2,
+            "type" : 16777228
+          },
+          "deviceType" : "iPhone",
+          "ecid" : 5679236229857338,
+          "hardwareModel" : "D84AP",
+          "internalStorageCapacity" : 512000000000,
+          "isProductionFused" : true,
+          "marketingName" : "iPhone 15 Pro Max",
+          "platform" : "iOS",
+          "productType" : "iPhone16,2",
+          "reality" : "physical",
+          "serialNumber" : "C9YJ2VCTF5",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64e",
+              "subType" : 2,
+              "type" : 16777228
+            },
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            }
+          ],
+          "supportedDeviceFamilies" : [
+            1
+          ],
+          "thinningProductType" : "iPhone16,2",
+          "udid" : "00008130-00142D3C3A13803A"
+        },
+        "identifier" : "CD033598-77C2-5F34-9DB2-D90082F10623",
+        "tags" : [
+
+        ],
+        "visibilityClass" : "default"
+      }
+    ]
+  }
+}

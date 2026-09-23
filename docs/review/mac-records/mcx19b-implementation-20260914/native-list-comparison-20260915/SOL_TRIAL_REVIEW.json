@@ -1,0 +1,60 @@
+{
+  "reviewer": "/root/native_list_review",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedReasoning": "high",
+  "actualModelMetadata": "not exposed",
+  "verdict": "fix-first",
+  "scope": "Read-only source review of the detached List diagnostic trial; no adoption or final acceptance.",
+  "reviewedHashes": {
+    "Views.swift": "3a23812a4abe08458ee6a10fb9de6a86608a4468e7e019775bc312989f981f1a",
+    "ACEClientAppUITests.swift": "2fc45160c612f50ea2a096a947e0aff4edb553207007e1b28625ecccc797c5e8"
+  },
+  "findings": [
+    {
+      "source": "ACEClientAppUITests.swift",
+      "lines": [
+        215,
+        241,
+        301,
+        315
+      ],
+      "finding": "Broader coverage helpers still assume ScrollView or Table; CollectionView support is incomplete.",
+      "primaryDisposition": "Confirmed by source inspection. These helpers are outside the executed selected test path. Must be corrected only if adopting List. No change is needed for the retained ScrollView main layout."
+    },
+    {
+      "source": "ACEClientAppUITests.swift",
+      "lines": [
+        677,
+        681
+      ],
+      "finding": "Realised Copy control counts cannot prove absence of off-screen controls in a virtualised List.",
+      "primaryDisposition": "Confirmed diagnostic limitation. A positive trial would require viewport-by-viewport absence and presence checks. Trial failed, so adoption is rejected."
+    },
+    {
+      "source": "ACEClientAppUITests.swift",
+      "lines": [
+        675,
+        692,
+        703,
+        849,
+        856
+      ],
+      "finding": "Intermediate field traversal has no audits. A List pass may cover fewer elements.",
+      "primaryDisposition": "Already specified as comparison limitation in PLAN.json. Trial failed at all three audits. No pass or coverage credit is claimed."
+    },
+    {
+      "source": "Views.swift",
+      "lines": [
+        171,
+        198
+      ],
+      "finding": "Native sections replace action accessibility containment; physical grouping is not verified.",
+      "primaryDisposition": "Keep as unverified trial behaviour. No production adoption."
+    }
+  ],
+  "scopePreservation": "Reviewer found no production source defect in the scoped change and confirmed eleven fields, conditional sections, callbacks, Copy payload/options, headings and persistent confirmation retained.",
+  "primaryChecks": "Complete diffs inspected, git diff --check passed, all tracked files compared, both native minimal builds passed. Selected tests executed on the identical test source. Both failed. Main remains clean.",
+  "trialResultAfterReview": "43 audit findings: 13 initial, 15 post-scroll, 15 post-Copy. All 32 unique trial images inspected. See trial-fault.json.",
+  "decision": "Retain the failed trial and reviewer findings. Do not promote it to main or perform adoption tests.",
+  "recordedUTC": "2026-09-14T21:19:29.950453+00:00"
+}

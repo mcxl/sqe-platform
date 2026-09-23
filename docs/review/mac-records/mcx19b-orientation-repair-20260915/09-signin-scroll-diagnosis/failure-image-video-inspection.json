@@ -1,0 +1,35 @@
+{
+  "recordedUTC": "2026-09-15T11:25:35.277939+00:00",
+  "status": "failure evidence inspected; screenshot capture defect open",
+  "frames": {
+    "durationSeconds": 22.666666666666668,
+    "frames": [
+      {
+        "actualSeconds": 9.881666666666666,
+        "height": 2622,
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/failure-video-frames/frame-013.00.png",
+        "requestedSeconds": 13,
+        "width": 1206,
+        "sha256": "fd41bddc89ed800030b6b3967d6d28c12d124b153ac80b6d024b1e54d3612560",
+        "inspection": "Full native video frame inspected at original resolution. Landscape content is rotated within the portrait encoded video. Complete horizontal Sign In, Username and Password rows visible. Sign in button is below the viewport."
+      },
+      {
+        "actualSeconds": 17.825,
+        "height": 2622,
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/failure-video-frames/frame-020.80.png",
+        "requestedSeconds": 20.8,
+        "width": 1206,
+        "sha256": "cdcd956416dfee29f5473e41957ab70c44722f299e1e4288693d1fa96e68c29a",
+        "inspection": "Full native video frame inspected at original resolution. Landscape content is rotated within the portrait encoded video. Complete horizontal Sign In, Username and Password rows visible. Sign in button is below the viewport."
+      }
+    ],
+    "video": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/attachments/49D43AF5-0FE8-403D-9B3A-9B4A6549F27A.mp4"
+  },
+  "nativePNG": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/attachments/07126ED3-BFD3-4635-91DF-B6D404A610C1.png",
+    "inspection": "PNG is portrait-sized but contains upright landscape content displaced downward and clipped at the right edge. It does not show the complete scene present in the video.",
+    "acceptance": "not acceptable as complete landscape image evidence"
+  },
+  "distinction": "Native hierarchy and video agree on landscape scene. The app-scoped PNG is a separate evidence-capture defect; it does not establish actual horizontal app clipping.",
+  "plannedComparison": "After focused scrolling validation, compare app.screenshot and full-screen native capture on the same landscape viewport before changing the retained capture method."
+}

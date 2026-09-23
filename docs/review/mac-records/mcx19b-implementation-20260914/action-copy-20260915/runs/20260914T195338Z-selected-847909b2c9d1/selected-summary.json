@@ -1,0 +1,45 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1789415818.58,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789415719.961,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "Failed to synthesize event: Neither element nor any descendant has keyboard focus. Event dispatch snapshot: TextField, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nElement debug description:\nAttributes: TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nElement subtree:\n \u2192TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nPath to element:\n \u2192Application, 0x102705a70, pid: 46852, label: 'ACE Client'\n  \u21b3Window (Main), 0x1027191b0, {{0.0, 0.0}, {440.0, 956.0}}\n   \u21b3Other, 0x10271c030, {{0.0, 0.0}, {440.0, 956.0}}\n    \u21b3Other, 0x1027228a0, {{0.0, 0.0}, {440.0, 956.0}}\n     \u21b3Other, 0x10272e4c0, {{0.0, 0.0}, {440.0, 956.0}}\n      \u21b3Other, 0x102715900, {{0.0, 0.0}, {440.0, 956.0}}\n       \u21b3CollectionView, 0x102722c30, {{16.0, 114.3}, {408.0, 791.7}}\n        \u21b3Cell, 0x10271ec90, {{36.0, 240.7}, {368.0, 52.0}}\n         \u21b3Other, 0x10271fed0, {{36.0, 240.7}, {368.0, 52.0}}\n          \u21b3Other, 0x102720a80, {{36.0, 240.7}, {368.0, 52.0}}\n           \u21b3Other, 0x10271f010, {{36.0, 240.7}, {368.0, 52.0}}\n            \u21b3TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nQuery chain:\n \u2192Find: Target Application 'com.example.aceclientapp'\n  Output: {\n    Application, 0x105826cf0, pid: 46852, label: 'ACE Client'\n  }\n  \u21aa\ufe0eFind: Descendants matching type TextField\n    Output: {\n      TextField, 0x10be09a20, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\n    }\n    \u21aa\ufe0eFind: Elements matching predicate '\"Username\" IN identifiers'\n      Output: {\n        TextField, 0x105827550, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\n      }\n",
+      "targetName": "ACEClientAppUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppUITests/testCompleteActionClipboardPastesExactly()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCompleteActionClipboardPastesExactly",
+      "testName": "testCompleteActionClipboardPastesExactly()"
+    }
+  ],
+  "title": "Test - ACEClientAppUITests",
+  "topInsights": [],
+  "totalTestCount": 1
+}

@@ -1,0 +1,73 @@
+{
+  "checkedUTC": "2026-09-15T05:47:46.279482+00:00",
+  "userChange": "Low Power Mode changed to Never",
+  "commands": {
+    "power": {
+      "command": [
+        "pmset",
+        "-g",
+        "custom"
+      ],
+      "exit": 0,
+      "stdout": "Battery Power:\n lidwake              1\n lowpowermode         0\n standbydelayhigh     86400\n proximitywake        0\n standby              1\n standbydelaylow      10800\n ttyskeepawake        1\n hibernatemode        3\n powernap             0\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 0\n networkoversleep     0\n sleep                1\n lessbright           1\n halfdim              1\n acwake               0\n tcpkeepalive         1\n disksleep            0\nAC Power:\n lidwake              1\n lowpowermode         0\n standbydelayhigh     86400\n proximitywake        1\n standby              1\n standbydelaylow      0\n ttyskeepawake        1\n hibernatemode        3\n powernap             1\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n halfdim              1\n acwake               0\n disksleep            0\n",
+      "stderr": ""
+    },
+    "powerSource": {
+      "command": [
+        "pmset",
+        "-g",
+        "batt"
+      ],
+      "exit": 0,
+      "stdout": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=8192099)\t100%; charged; 0:00 remaining present: true\n",
+      "stderr": ""
+    },
+    "thermal": {
+      "command": [
+        "pmset",
+        "-g",
+        "therm"
+      ],
+      "exit": 0,
+      "stdout": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\n2026-09-15 15:47:45 +1000 CPU Power notify\n\tCPU_Scheduler_Limit \t= 100\n\tCPU_Available_CPUs \t= 16\n\tCPU_Speed_Limit \t= 54\n",
+      "stderr": ""
+    },
+    "nativeProcesses": {
+      "command": [
+        "pgrep",
+        "-fl",
+        "xcodebuild"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "candidate": {
+      "command": [
+        "git",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "464671562cfb0249e859ffc8905a8f8c5ef17e55\n",
+      "stderr": ""
+    },
+    "workingTree": {
+      "command": [
+        "git",
+        "-C",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout",
+        "status",
+        "--porcelain"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "testRun": false,
+  "sourceChangedByAssistant": false,
+  "note": "Post-change observation only. This does not establish correction of either prior timeout."
+}

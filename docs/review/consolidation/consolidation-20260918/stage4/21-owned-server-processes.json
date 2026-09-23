@@ -1,0 +1,20 @@
+[
+  {
+    "ProcessId": 34564,
+    "ParentProcessId": 27856,
+    "ExecutablePath": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "CommandLine": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe -B -m uvicorn src.ace.app:app --host 127.0.0.1 --port 60097"
+  },
+  {
+    "ProcessId": 41560,
+    "ParentProcessId": 34564,
+    "ExecutablePath": "C:\\Windows\\system32\\conhost.exe",
+    "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4"
+  },
+  {
+    "ProcessId": 36940,
+    "ParentProcessId": 34564,
+    "ExecutablePath": "C:\\Users\\AlanRichardson\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "CommandLine": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe -B -m uvicorn src.ace.app:app --host 127.0.0.1 --port 60097"
+  }
+]

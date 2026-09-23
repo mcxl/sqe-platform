@@ -1,0 +1,219 @@
+{
+  "errors" : [
+
+  ],
+  "values" : [
+    {
+      "disabledTests" : [
+
+      ],
+      "enabledTests" : [
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testActionOrderAndUnknownFieldsRemainSafe()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testClipboardWriteOptionsRemainLocalForFiveMinutes()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testDeletionUsesServiceAndAllSynchronisationClasses()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testDifferentAccountDeletesBeforeAddingReplacement()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testDuplicateAddUpdatesExactAccountOnly()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testExactReadFailureAfterInventoryIsControlledReadFailure()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testExactReadNotFoundAfterInventoryIsUnsafe()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testInvalidReleaseValuesFailClosed()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testInvalidReturnedAttributeEntersUnsafeRecovery()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testMissingTopLevelNestedAndActionsFieldsFailDecoding()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testOnlyDefinedEmptyResponsePassesValidation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testOriginRequiresAbsoluteHTTPSRoot()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testRepositoryMapsDeniedWithoutJSONContentType()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testRepositoryRejectsWrongSuccessContentType()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testSameAccountUpdateFailureDeletesAllServiceItems()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testSaveAddsExactGenericPasswordContract()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testStateMapsUnavailableAndSignOutDeletionFailure()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/ACEClientAppTests/testValidReleasePassesValidation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueHasUniqueIdentifiers()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueMethodsExist()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testPendingRuntimePlanHasUniqueStructuredEntries()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityAuditPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityLabelsUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testBoldTextPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testClipboardContract()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testComposedCredentialStoreSessionLifecycle()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testContrastPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testDecodingFailsClosed()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testDynamicTypePending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testEvidencePrivacyInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainLifecycle()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainQueries()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSerialisation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSourceInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainValidation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testLayoutMatrixPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testManualAppSwitcherPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testManualVoiceOverPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testOriginValidation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testPhysicalDevicePending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacyCoverUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacySourceInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testRedirectDelegate()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testReduceMotionPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseScreenUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseValidation()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testRepositoryResponseMapping()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testRequestConstruction()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSafeInterfaceUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSceneDelegateTest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testScreenshotPolicyInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testServerCompatibilityExternal()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSessionConfiguration()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSignInUITest()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSimulatorMatrixPending()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testStateErrorHandling()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testStateGeneration()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testStateMatrix()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testTrustHandlingSourceInspection()"
+        },
+        {
+          "identifier" : "ACEClientAppTests/AcceptanceEvidenceContractTests/testVoiceOverOrderUITest()"
+        }
+      ],
+      "testPlan" : "ACEClientApp"
+    }
+  ]
+}

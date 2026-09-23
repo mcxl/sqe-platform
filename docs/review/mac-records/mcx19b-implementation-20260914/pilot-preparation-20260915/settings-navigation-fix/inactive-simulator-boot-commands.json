@@ -1,0 +1,25 @@
+[
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "boot",
+      "D1BAA05C-52DD-4E57-832F-C0A75718E085"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "bootstatus",
+      "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+      "-b"
+    ],
+    "exit": 0,
+    "stdout": "Monitoring boot status for iPhone 17 Pro Max (D1BAA05C-52DD-4E57-832F-C0A75718E085).\n[2026-09-15 02:52:08 +0000] Status=1, isTerminal=NO, Elapsed=00:05.\n\tWaiting on BackBoard\n\n[2026-09-15 02:52:20 +0000] Status=4, isTerminal=NO, Elapsed=00:17.\n\tWaiting on System App\n\n[2026-09-15 02:52:20 +0000] Status=4, isTerminal=NO, Elapsed=00:18.\n\tWaiting on System App\n\n[2026-09-15 02:52:21 +0000] Status=4, isTerminal=NO, Elapsed=00:18.\n\tWaiting on System App\n\n[2026-09-15 02:52:22 +0000] Status=4, isTerminal=NO, Elapsed=00:19.\n\tWaiting on System App\n\n[2026-09-15 02:52:22 +0000] Status=4, isTerminal=NO, Elapsed=00:20.\n\tWaiting on System App\n\n[2026-09-15 02:52:24 +0000] Status=4, isTerminal=NO, Elapsed=00:21.\n\tWaiting on System App\n\n[2026-09-15 02:52:25 +0000] Status=4, isTerminal=NO, Elapsed=00:22.\n\tWaiting on System App\n\n[2026-09-15 02:52:25 +0000] Status=4, isTerminal=NO, Elapsed=00:23.\n\tWaiting on System App\n\n[2026-09-15 02:52:26 +0000] Status=4, isTerminal=NO, Elapsed=00:24.\n\tWaiting on System App\n\n[2026-09-15 02:52:27 +0000] Status=4, isTerminal=NO, Elapsed=00:25.\n\tWaiting on System App\n\n[2026-09-15 02:52:28 +0000] Status=4, isTerminal=NO, Elapsed=00:26.\n\tWaiting on System App\n\n[2026-09-15 02:52:30 +0000] Status=4, isTerminal=NO, Elapsed=00:27.\n\tWaiting on System App\n\n[2026-09-15 02:52:31 +0000] Status=4, isTerminal=NO, Elapsed=00:28.\n\tWaiting on System App\n\n[2026-09-15 02:52:32 +0000] Status=4, isTerminal=NO, Elapsed=00:29.\n\tWaiting on System App\n\n[2026-09-15 02:52:32 +0000] Status=4, isTerminal=NO, Elapsed=00:30.\n\tWaiting on System App\n\n[2026-09-15 02:52:34 +0000] Status=4, isTerminal=NO, Elapsed=00:31.\n\tWaiting on System App\n\n[2026-09-15 02:52:35 +0000] Status=4, isTerminal=NO, Elapsed=00:32.\n\tWaiting on System App\n\n[2026-09-15 02:52:36 +0000] Status=4, isTerminal=NO, Elapsed=00:33.\n\tWaiting on System App\n\n[2026-09-15 02:52:37 +0000] Status=4, isTerminal=NO, Elapsed=00:34.\n\tWaiting on System App\n\n[2026-09-15 02:52:37 +0000] Status=4, isTerminal=NO, Elapsed=00:35.\n\tWaiting on System App\n\n[2026-09-15 02:52:40 +0000] Status=4, isTerminal=NO, Elapsed=00:37.\n\tWaiting on System App\n\n[2026-09-15 02:52:40 +0000] Status=4, isTerminal=NO, Elapsed=00:38.\n\tWaiting on System App\n\n[2026-09-15 02:52:41 +0000] Status=4, isTerminal=NO, Elapsed=00:38.\n\tWaiting on System App\n\n[2026-09-15 02:52:42 +0000] Status=4, isTerminal=NO, Elapsed=00:39.\n\tWaiting on System App\n\n[2026-09-15 02:52:43 +0000] Status=4, isTerminal=NO, Elapsed=00:40.\n\tWaiting on System App\n\n[2026-09-15 02:52:44 +0000] Status=4, isTerminal=NO, Elapsed=00:41.\n\tWaiting on System App\n\n[2026-09-15 02:52:44 +0000] Status=4294967295, isTerminal=YES, Elapsed=00:42.\n\tFinished\n\n",
+    "stderr": ""
+  }
+]

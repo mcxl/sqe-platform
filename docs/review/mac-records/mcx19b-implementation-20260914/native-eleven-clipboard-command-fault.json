@@ -1,0 +1,11 @@
+{
+  "job": "1789386763296-ace-native-eleven-clipboard-3caf4ecd",
+  "classification": "command argument fault before test execution",
+  "expected": "device argument iPhone 17 Pro Max",
+  "actual": "argument --device: invalid choice: 'iPhone'",
+  "exit_code": 2,
+  "tests_executed": 0,
+  "correction": "Use a private Python subprocess argument list, avoiding SSH remote shell argument splitting.",
+  "source_change": false,
+  "corrective_attempt": 1
+}

@@ -1,0 +1,21 @@
+{
+  "review": "Primary cumulative full diff inspection: original full variant, correction1 delta, correction2 delta",
+  "recordedUTC": "2026-09-16T12:46:35.036390+00:00",
+  "patchSha256": "41a4aa36b13b93ee65011ef8590d9aed0cdf69eac11cbde765c34942a6aca9f1",
+  "sourceSha256": "d1970169effbfd0239d89d1ec1e770f5e670c2bd8560e1ada5333c2895e569b5",
+  "correctionAttempt": 2,
+  "status": "Static review passed; compilation pending",
+  "changes": [
+    "Use a nonoptional local attachmentName with the identical string for attachment.name and XCTContext.runActivity"
+  ],
+  "checks": [
+    "Actual worktree diff equals retained reviewed patch",
+    "git diff --check passed",
+    "Full patch applies to clean live baseline",
+    "Live baseline clean and unchanged"
+  ],
+  "diagnosticProceduresUnchanged": true,
+  "applicationChanges": false,
+  "nativeRuns": 0,
+  "stopRule": "If this corrective build fails, stop; no third corrective attempt"
+}

@@ -1,0 +1,14 @@
+{
+  "baseCandidate": "b2c45093a44c6171ca250b858378ea57693d8477",
+  "changedSourceHashes": [
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "before": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303",
+      "after": "b91ff4bc1501fa9cdb0de4cd2d4f4b6f8c4370b98c09ca613f2c5e729922353f"
+    }
+  ],
+  "classification": "Only UI test Settings helper changed. App, unit/contract tests, project build settings, runner and artifact collector hashes remain identical. This is a new candidate; earlier pilot cases remain historical.",
+  "functionalPrerequisite": "68 native tests passed on b2c4509; use as unchanged-code prerequisite only, repeat required final programme on eventual clean candidate.",
+  "evidenceRetentionGate": "Native unit failure/pass target, runner and collector hashes unchanged. Retained UI settings failures also demonstrate native assertions and image export; reverify artifact hashes before pilot.",
+  "updatedUTC": "2026-09-15T02:10:02.530132+00:00"
+}

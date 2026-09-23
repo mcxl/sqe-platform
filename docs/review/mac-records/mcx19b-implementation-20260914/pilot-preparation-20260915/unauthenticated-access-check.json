@@ -1,0 +1,21 @@
+{
+  "command": [
+    "ssh.exe",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "PubkeyAuthentication=no",
+    "-o",
+    "PreferredAuthentications=none",
+    "ace-mac",
+    "true"
+  ],
+  "observedExit": 1,
+  "stderr": "alanrichardson@192.168.86.114: Permission denied (publickey,password,keyboard-interactive).",
+  "expected": "remote access without authentication is refused",
+  "result": "passed",
+  "scope": "SSH access; directory permissions recorded separately",
+  "observedUTC": "2026-09-15T00:50:38.087927+00:00"
+}

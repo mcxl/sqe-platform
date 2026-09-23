@@ -1,0 +1,25 @@
+{
+  "timeUTC": "2026-09-15T07:27:17.797860+00:00",
+  "candidate": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "pilotScreenCasesCompleted": 0,
+  "nativeAuditInvocationsCompleted": 0,
+  "settingsFailure": {
+    "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+    "file": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "line": 153,
+    "expected": "Native accessibility snapshot exposes observedSettings metadata and confirms requested settings.",
+    "actual": "Failed to get matching snapshots: Timed out while fetching snapshot from testmanagerd..",
+    "nativeExit": 65,
+    "nativeCommandSeconds": 1100.877,
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/001-set"
+  },
+  "restoration": {
+    "status": "native test failure reported; Xcode diagnostics still running; final restoration unknown",
+    "device": "iPhone 17 Pro Max",
+    "line": 153,
+    "actual": "Failed to get matching snapshots: Error getting main window kAXErrorServerNotFound"
+  },
+  "diagnosticImageLedger": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frame-inspection.json",
+  "interpretation": "The confirmed orientation waiter cancellation was corrected. Current native snapshot failures occur before that helper. Resource saturation is observed but its causal contribution is not established.",
+  "next": "Wait for active restoration. Correct and review isolated serial runner proposal. Preserve unrelated iPhone 16 Pro Max until ownership answer."
+}

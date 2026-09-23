@@ -1,0 +1,9 @@
+{
+  "base": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "head": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "patch": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/primary-complete-goal-diff.patch",
+  "sha256": "43eb801bea65e9b1a500870b43c1891e3ee28bb96237aeaa33a1f8b4b7cac5b5",
+  "primaryCompleteDiffInspection": "passed; no further source change required",
+  "inspectedUTC": "2026-09-15T12:09:32.748981+00:00",
+  "scope": "Entire goal delta: 5 files,34126 bytes; orientation,serial restoration,padding/clipping,offscreen helper,full-screen capture. Native proof and final22 are separate checks."
+}

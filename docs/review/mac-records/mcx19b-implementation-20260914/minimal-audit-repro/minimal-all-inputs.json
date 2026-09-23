@@ -1,0 +1,25 @@
+{
+  "expected": "Initial and post-scroll full audits return no findings; a failure will remain retained",
+  "question": "Does the reduced view reproduce an unrestricted full audit failure after scrolling?",
+  "scope": "Private diagnosis; no app acceptance credit",
+  "scriptSha256": "f6d5af327ae9765f3c1cdb52f9b6598d4cf934d1748fd525f21da4514554fff1",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testMinimalAuditReproAllAudits",
+  "sourceHashes": {
+    "ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+    "ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+    "ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+    "ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "af600b46ea52b3702cbd322b92108d90f55a75830ca6b6f47eb6c4e766876f28",
+    "ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+    "ACEClientApp/ACEClientApp/DebugScenario.swift": "a46115b821b1ab2feabce7e248f645e948c2707a5ad8c8dd19c21545ceaad34d",
+    "ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+    "ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+    "ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+    "ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+    "ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+    "ACEClientApp/ACEClientApp/Views.swift": "1c03abe88283bb557147d80e15c8d14aca5c2a982cddfac6fbccd678ce468adf",
+    "ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "8bcd2da3c4bc53e65a2a05e7a3109bf66616b97993a32dd18aa108607111c4a3",
+    "ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+    "ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "da620eef3fd66d7717d1cf3d40622701d0266a0a9bc9c70c383b2f6fe2e6c847",
+    "ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "1392d6291d512887d25dba539292a567d9e737c674210ff475395e57ea0a0829"
+  }
+}

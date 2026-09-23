@@ -1,0 +1,21 @@
+{
+  "review": "primary complete Swift diff inspection",
+  "recordedUTC": "2026-09-16T12:21:49.974918+00:00",
+  "patchSha256": "62f87d10820c5cbffdc06f4d663d4ed5e2f23486ae9a5b9c2a833569283b3e3e",
+  "status": "static inspection passed; compilation and native verification pending",
+  "checks": [
+    "Function-scope diagnostic session cleanup",
+    "Arm B fixed seven-type order for both viewports",
+    "Arm C unrestricted audit and upper-half placement with approved0.5second frame reads",
+    "Handler false preserves native findings",
+    "No passed case marker on issues or audit errors",
+    "Callback screenshot described only as callback-time evidence",
+    "Only isolated UI-test source changed"
+  ],
+  "limitations": [
+    "No build or native execution of variant yet",
+    "Error text classification and callback attachment retrieval require external B/C wrapper verification",
+    "C placement screenshot is captured by existing pipeline before placement; position evidence comes from recorded frames, not that screenshot"
+  ],
+  "applicationChanges": false
+}

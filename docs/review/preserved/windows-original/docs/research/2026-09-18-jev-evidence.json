@@ -1,0 +1,665 @@
+{
+  "research_date": "2026-09-18",
+  "subject": "Jev capabilities and proposed opportunities for SQE/ACE",
+  "research_contract": {
+    "tier": "R3",
+    "question": "What is Typesafe Jev capable of as of 18 September 2026, and what new customer-facing, backend and admin capabilities could it enable for SQE?",
+    "decision_sought": "Whether to investigate or pilot Jev; ranked concrete opportunities, integration constraints, evidence gaps and acceptance criteria, without authorising implementation or safety/compliance decisions.",
+    "claim_clusters": [
+      "C1 released identity capabilities architecture modalities availability",
+      "C2 benchmarks methodology limitations independent corroboration",
+      "C3 integration deployment pricing privacy operational readiness",
+      "C4 local SQE product baseline and net-new opportunity mapping",
+      "C5 bounded pilot recommendations and human review limits"
+    ],
+    "freshness_requirement": "Current-state evidence retrieved 2026-09-18 and last-30-day dated sources when available; distinguish live undated documentation from dated releases, disclose lack of dated September corroboration. Do not infer future September events.",
+    "preferred_source_classes": [
+      "local repository product evidence kept private",
+      "Typesafe official launch docs API repositories evals",
+      "independent primary reproduction or first-person technical evidence",
+      "direct reporting for corroboration"
+    ],
+    "stop_conditions": [
+      "Target 25 minutes and keep this pass within 30 minutes",
+      "No paid model calls, code or configuration changes, external uploads of private data",
+      "At most two targeted verification repair cycles",
+      "Report inaccessible evidence and unknowns rather than fabricate"
+    ],
+    "privacy_classification": "Mixed public vendor research and private repository context. Keep repository data local/within Codex agents. No private content in web queries or cross-provider review."
+  },
+  "scope_note": "Public web research plus local product-context inspection. No Jev execution, paid API calls, product changes, external private-data transfers or deployment validation.",
+  "source_count": {
+    "public": 25,
+    "local": 8,
+    "total": 33
+  },
+  "source_list": [
+    "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+    "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+    "https://docs.typesafe.ai/models",
+    "https://docs.typesafe.ai/api",
+    "https://docs.typesafe.ai/introduction",
+    "https://docs.typesafe.ai/primitives/score",
+    "https://docs.typesafe.ai/primitives/noul",
+    "https://docs.typesafe.ai/primitives/choice",
+    "https://docs.typesafe.ai/confidence",
+    "https://docs.typesafe.ai/model-jaggedness/jev-1.13",
+    "https://docs.typesafe.ai/patterns/fan-out",
+    "https://evals.typesafe.ai/",
+    "https://aerabrowser.com/news/agent-memory-doesnt-need-a-generator-typesafes-jev-vs-llm-on-400-real-tasks",
+    "https://docs.typesafe.ai/cookbooks/citation_check",
+    "https://docs.typesafe.ai/cookbooks/classifying_rag_passages",
+    "https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook",
+    "https://docs.typesafe.ai/cookbooks/entity_alignment",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/CONTEXT.md",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/src/ace/engine/approval.py",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/src/ace/engine/conclusion.py",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/docs/specs/2026-08-23-ace-provider-neutral-extraction-and-retrieval-boundaries.md",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/docs/specs/2026-08-22-phase-6b2-controlled-client-release-lifecycle.md",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/ACE_VISION_AND_ROADMAP.md",
+    "https://docs.typesafe.ai/sdk",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/src/ace/domain/models.py",
+    "https://vercel.com/ai-gateway/models/jev",
+    "https://docs.typesafe.ai/legal",
+    "https://vercel.com/docs/ai-gateway/security-and-compliance/zdr",
+    "https://typesafe.ai/legal/data-processing",
+    "https://typesafe.ai/legal/privacy-policy",
+    "https://typesafe.ai/legal/mca",
+    "https://github.com/typesafe-ai",
+    "LOCAL_HOME/Documents/agentic-os-workspace/sqe/docs/ace/2026-09-10-turbovec-pilot-proposal.md"
+  ],
+  "evidence_records": [
+    {
+      "claim_id": "C1",
+      "status": "supported",
+      "source": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "source_type": "vendor launch article",
+      "publication_date": "2026-09-15",
+      "event_date": "2026-09-15",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe founder announcement",
+      "independence": "vendor self-report; not independent validation",
+      "notes": "TypeSafe introduced Jev as its first public System One model in early access. It describes a new architecture, parallel sampler, and RLCD training; unstructured state enters and typed probabilistic decisions leave. It says Jev gives up string generation and is for structured outputs. These are architecture/product claims, not independently confirmed performance evidence."
+    },
+    {
+      "claim_id": "C1",
+      "status": "supported",
+      "source": "https://docs.typesafe.ai/introduction and https://docs.typesafe.ai/api",
+      "source_type": "official product and HTTP API documentation",
+      "publication_date": "undated live documentation",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe API documentation",
+      "independence": "vendor primary source",
+      "notes": "Jev evaluates a text/JSON state against a map of typed questions at POST https://api.typesafe.ai/v1/systemone. The three question primitives are Choice (selected closed-set option plus per-option probabilities and confidence), Score (ordered-rubric probability-weighted score, probabilities and confidence), and Noul (0–1 yes probability). Questions share state but are evaluated independently and can be mixed in one call."
+    },
+    {
+      "claim_id": "C1",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/models and https://docs.typesafe.ai/concepts/state",
+      "source_type": "official model and input documentation",
+      "publication_date": "undated live documentation",
+      "event_date": "Jev 1.13 current at retrieval",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe model documentation",
+      "independence": "vendor primary source",
+      "notes": "Current documented version is jev-1.13.0; aliases jev-latest and jev-preview both resolve to it at retrieval. It accepts text only: string, JSON object, or array of text values. Images, audio, and video are unsupported. Context is 64k tokens/request, with a 32k limit for state plus the longest question. English has best documented accuracy; other languages including CJK are accepted but not equally accurate."
+    },
+    {
+      "claim_id": "C1",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/model-jaggedness/jev-1.13",
+      "source_type": "official known-limitations documentation",
+      "publication_date": "last reviewed 2026-09-17",
+      "event_date": "2026-09-17",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe model documentation",
+      "independence": "vendor primary source",
+      "notes": "Vendor documents current failure modes: literal instruction interpretation, numeric/math and counting unreliability, date/time comparison unreliability, indirection, large irrelevant state, adversarial content, contradictory criteria, some structural invariants, and all generation. It directs users to keep arithmetic/date logic/invariants in code, filter state, give precise criteria, and use generative models for text generation."
+    },
+    {
+      "claim_id": "C1",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/confidence",
+      "source_type": "official confidence documentation",
+      "publication_date": "undated live documentation",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe API documentation",
+      "independence": "vendor primary source",
+      "notes": "Choice and Score confidence is a 0–1 statistic derived from their returned probability distributions; Noul has no separate confidence field. Vendor recommends action thresholds vary by risk and says teams must test/calibrate thresholds on their own domain data. Thus returned confidence is an input to a controlled policy, not evidence an answer is correct."
+    },
+    {
+      "claim_id": "C3",
+      "status": "supported",
+      "source": "https://docs.typesafe.ai/models",
+      "source_type": "official model/pricing documentation",
+      "publication_date": "undated live documentation",
+      "event_date": "Jev 1.13 current at retrieval",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe pricing and model documentation",
+      "independence": "vendor primary source",
+      "notes": "TypeSafe lists jev-1.13.0 at US$0.042/M input tokens (US$42/B); output tokens are listed as free. Documented limits are 250,000 tokens/sec and 1,200 requests/minute, but TypeSafe says limits are dynamically adjusted and can change without notice. Standard direct access is hosted API, API key, HTTP endpoint, and official Python plus JavaScript/TypeScript SDKs; direct HTTP may be used from any language."
+    },
+    {
+      "claim_id": "C3",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/models; https://typesafe.ai/blog/introducing-system-one-models-and-jev; https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "source_type": "official vendor and integration-provider access documentation",
+      "publication_date": "2026-09-15 (launch); 2026-09-16 (Gateway announcement); live docs undated",
+      "event_date": "2026-09-15 / 2026-09-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe and Vercel",
+      "independence": "two commercial primary sources; Vercel independently operates the gateway but reports provider capabilities",
+      "notes": "Direct TypeSafe launch was early access/waitlist, with API key obtained from the dashboard. Vercel announced Jev availability through AI Gateway on 2026-09-16 under model identifier typesafe-ai/jev, using AI SDK experimental_evaluate. This provides a documented alternative access path; it does not prove direct TypeSafe access is generally open."
+    },
+    {
+      "claim_id": "C3",
+      "status": "qualified",
+      "source": "https://typesafe.ai/legal/privacy-policy; https://typesafe.ai/legal/data-processing; https://typesafe.ai/legal/mca; https://docs.typesafe.ai/legal",
+      "source_type": "official legal/privacy documentation",
+      "publication_date": "2025-11-19 privacy policy; 2026-04-24 DPA; 2026-08-27 MCA; live docs undated",
+      "event_date": "as stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe legal documents",
+      "independence": "vendor legal commitments; no external certification evaluated",
+      "notes": "TypeSafe says it will not train/fine-tune models on Input and will not disclose Input except to service providers; its DPA calls TypeSafe processor for customer personal data and says customer data is retained as necessary. US hosting is stated in the privacy policy. Enterprise ZDR is offered by contact, but no public default retention duration or data-residency choice was found. MCA permits unrestricted processing of Telemetry including logs, hashes, summary statistics, classifications, metrics and learnings; it also says output can be inaccurate and customers must evaluate it independently."
+    },
+    {
+      "claim_id": "C3",
+      "status": "qualified",
+      "source": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway and https://vercel.com/ai-gateway/models/jev",
+      "source_type": "official AI Gateway product/integration documentation",
+      "publication_date": "2026-09-16; model page undated live",
+      "event_date": "2026-09-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "Vercel, gateway operator",
+      "independence": "independent integration provider; capability information may originate with TypeSafe",
+      "notes": "Vercel documents per-request gateway zeroDataRetention:true for Jev and calls it ZDR/No Training; evaluation calls are logged for Gateway budgets/reporting. This applies to the Vercel Gateway route and should be contract-verified for the chosen account/plan. Its Jev model page shows US$0.04/M input and does not publish context, throughput, regional inference, free tier, or modality values."
+    },
+    {
+      "claim_id": "C3",
+      "status": "unknown",
+      "source": "https://docs.typesafe.ai/models and https://github.com/typesafe-ai",
+      "source_type": "official live docs and official GitHub organization inventory",
+      "publication_date": "undated live documentation; organization inventory retrieved 2026-09-18",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor primary source",
+      "notes": "No official public evidence found for released Jev weights, self-hosting/on-prem deployment, customer fine-tuning/LoRA, or a model card. Docs explicitly say the same weights serve every account and Jev is not fine-tuned or LoRA-adapted with customer data. Public repositories are SDKs, skills and adapters, not Jev weights. Absence of a public page is not proof these options cannot be contracted privately."
+    },
+    {
+      "claim_id": "C1",
+      "status": "contradicted",
+      "source": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "source_type": "vendor launch article",
+      "publication_date": "2026-09-15",
+      "event_date": "2026-09-15",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe founder announcement",
+      "independence": "vendor self-report",
+      "notes": "Marketing implication of universally reliable automation is limited by the same article: its reported workflow reference answer is an average of two external frontier models, workflows were created by its model-capabilities team, and the vendor says reported 193.6x/444.6x gains are likely high-end real-world gains. It also states 0% type-error is schema matching, not empirical accuracy."
+    },
+    {
+      "claim_id": "C3",
+      "status": "contradicted",
+      "source": "https://typesafe.ai/legal/mca",
+      "source_type": "official master customer agreement",
+      "publication_date": "2026-08-27",
+      "event_date": "2026-08-27",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe legal agreement",
+      "independence": "vendor legal commitment",
+      "notes": "Any claim that no customer-derived data is retained is too broad: the MCA permits telemetry processing without restriction and says TypeSafe has no obligation to retain customer data after termination and may delete it. Direct default retention is therefore not ZDR; enterprise ZDR must be separately obtained/verified."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://evals.typesafe.ai/",
+      "source_type": "official evaluation dashboard",
+      "publication_date": null,
+      "event_date": null,
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor-authored; not independent",
+      "notes": "Four workflow results are equally weighted and measured against model-derived consensus labels: average GPT-6 Astra and Claude Fable 5.1 at high thinking; others use default reasoning. Therefore accuracy is model agreement, not independently adjudicated ground truth. No frozen data, code, raw outputs, denominator, model versions, variance or repeatable run found."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://evals.typesafe.ai/",
+      "source_type": "official evaluation dashboard",
+      "publication_date": null,
+      "event_date": null,
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor-authored; not independent",
+      "notes": "Vendor overview reports67.8%agreement. Independent quality-judge HTML inspection corrected an internal transcription error: four workflow values61.7,71.6,61.8,76.0 have equal-weight mean67.775, rounding67.8. No source arithmetic conflict remains. Metrics remain vendor/model-reference results; not independently reproduced. Report omits aggregate numerical results."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "source_type": "official launch post",
+      "publication_date": "2026-09-15 (page; search rendering says Sep 14)",
+      "event_date": "2026-09-15",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe founder",
+      "independence": "vendor-authored",
+      "notes": "Claims 70–500ms end-to-end response time. Says evals generally ran from US West Coast laptops and a short dense demo state favoured Jev. Schema validity does not validate semantic correctness; OpenRouter LLM data may be biased."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/model-jaggedness/jev-1.13",
+      "source_type": "official model limitations documentation",
+      "publication_date": "2026-09-17 (last reviewed)",
+      "event_date": null,
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor-authored; direct limitations disclosure",
+      "notes": "Documents literal reading, unreliable counting/numbers and date comparison, indirection, distractor-heavy context, adversarial content, contradictory criteria and non-guaranteed probability invariants. Advises code for arithmetic/dates and threshold-specific edge-case tests."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://aerabrowser.com/news/agent-memory-doesnt-need-a-generator-typesafes-jev-vs-llm-on-400-real-tasks",
+      "source_type": "first-person technical benchmark",
+      "publication_date": "2026-09-17",
+      "event_date": "2026-09-12 and 2026-09-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "Aera product team",
+      "independence": "independent of TypeSafe; narrow internal study",
+      "notes": "On 276 unattended cases, same 28-candidate pool: Jev 46% coverage, 85% precision, 147/271ms median/p95; LLM selector 46%, 79%, 463/707ms. Labels came from hindsight GPT-5.6 Luna judge plus matcher, not human ground truth. Reports one working profile, Choice ranking regressions, ensemble rate limits and no shipped TypeSafe integration as of Sep 16."
+    },
+    {
+      "claim_id": "C2",
+      "status": "supported",
+      "source": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "source_type": "third-party platform announcement",
+      "publication_date": "2026-09-16",
+      "event_date": "2026-09-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "Vercel",
+      "independence": "independent availability confirmation; performance attributed to TypeSafe",
+      "notes": "Confirms AI Gateway availability. Repeats performance multipliers only as TypeSafe-reported and advises local calibration against labelled workflow examples."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://evals.typesafe.ai/",
+      "source_type": "official evaluation dashboard",
+      "publication_date": null,
+      "event_date": null,
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor-authored",
+      "notes": "Model-derived reference labels constrain benchmark interpretation. Earlier suspected aggregate/card mismatch was an internal transcription error, resolved by independent judge's HTML inspection. No dashboard arithmetic contradiction remains."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://aerabrowser.com/news/agent-memory-doesnt-need-a-generator-typesafes-jev-vs-llm-on-400-real-tasks",
+      "source_type": "first-person technical benchmark",
+      "publication_date": "2026-09-17",
+      "event_date": "2026-09-12 and 2026-09-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "Aera product team",
+      "independence": "independent; narrow internal study",
+      "notes": "Reports faster/more precise selection, but no coverage increase under the same pool; ranking, ensemble and query-writing limitations remain."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/model-jaggedness/jev-1.13",
+      "source_type": "official model limitations documentation",
+      "publication_date": "2026-09-17",
+      "event_date": null,
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor-authored; direct limitations disclosure",
+      "notes": "Schema validity does not establish semantic truth, secure prompt handling or calibrated probabilities for SQE work."
+    },
+    {
+      "claim_id": "C1",
+      "status": "supported",
+      "source": "https://docs.typesafe.ai/primitives/choice",
+      "source_type": "official API documentation",
+      "publication_date": "undated live page",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor primary source",
+      "notes": "Choice accepts255 options; returns one winner and distribution summing1. Questions independent. Criteria/options supplied; use none-of-above to prevent forced choice where appropriate."
+    },
+    {
+      "claim_id": "C1",
+      "status": "supported",
+      "source": "https://docs.typesafe.ai/primitives/score",
+      "source_type": "official API documentation",
+      "publication_date": "undated live page",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor primary source",
+      "notes": "Score uses ordered rubric and returns score, distribution and confidence."
+    },
+    {
+      "claim_id": "C1",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/patterns/fan-out",
+      "source_type": "official documented pattern",
+      "publication_date": "undated live page",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor primary source",
+      "notes": "Multiple questions share state and evaluated in parallel; savings claim is pattern guidance not unlimited latency guarantee. Aera study reports slowdown for very many questions."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/cookbooks/citation_check",
+      "source_type": "official historical cookbook",
+      "publication_date": "undated live page",
+      "event_date": "2026-08-16",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor example",
+      "notes": "8citation demonstration including4 planted failures. Results cached Jev1.12 Aug16; use solely as pattern not present current benchmark."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/cookbooks/classifying_rag_passages",
+      "source_type": "official historical cookbook",
+      "publication_date": "undated live page",
+      "event_date": "2026-08-27",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor example",
+      "notes": "Classifies retrieved passages for relevance evidence conflict injection with per-passage questions, then route in code. Cached Jev1.12Aug27 examples."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook",
+      "source_type": "official cookbook",
+      "publication_date": "undated live page",
+      "event_date": "not stated; Jev1.12",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor example",
+      "notes": "Regex finds values, model selects candidate, code copies exact original span; may choose wrong span. Not open-ended extraction."
+    },
+    {
+      "claim_id": "C2",
+      "status": "qualified",
+      "source": "https://docs.typesafe.ai/cookbooks/entity_alignment",
+      "source_type": "official historical cookbook",
+      "publication_date": "undated live page",
+      "event_date": "2026-08-11",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor example",
+      "notes": "450 candidate beer pairs, ambiguity routed to curator; cached Jev1.12Aug11. No inference about ACE precision; proposed only."
+    },
+    {
+      "claim_id": "C4",
+      "status": "supported",
+      "source": "CONTEXT.md; ACE_VISION_AND_ROADMAP.md; src/ace/engine/approval.py; src/ace/engine/conclusion.py; src/ace/domain/models.py",
+      "source_type": "private local product documents and source",
+      "publication_date": "roadmap updated2026-09-07; other source versions hashed in context",
+      "event_date": "working tree inspected2026-09-18",
+      "retrieved_at": "2026-09-18",
+      "authority": "SQE project local authority",
+      "independence": "direct product evidence",
+      "notes": "ACE is private auditor workbench; separate source/review/relationships/decisions/conclusions. MATE design distinct implementation effectiveness. Gates check source status contradictions matching approved versions. Code generic confidence_score under0.8review flag; don't map vendor confidence without semantics. Local working tree has changes and no deployed-state certification."
+    },
+    {
+      "claim_id": "C4",
+      "status": "qualified",
+      "source": "docs/specs/2026-08-23-ace-provider-neutral-extraction-and-retrieval-boundaries.md; docs/specs/2026-08-22-phase-6b2-controlled-client-release-lifecycle.md; docs/ace/2026-09-10-turbovec-pilot-proposal.md",
+      "source_type": "private local planning documents",
+      "publication_date": "2026-08-23;2026-08-22;2026-09-10",
+      "event_date": "working tree inspected2026-09-18",
+      "retrieved_at": "2026-09-18",
+      "authority": "SQE planning boundaries not implementation approvals",
+      "independence": "direct product planning evidence",
+      "notes": "provider plans proposal-only, mobileACE API, remote call external transfer, fictional pilots. Client lifecycle explicitly draft. Turbovec local search staged pilot native checks pending; unrelated requirement to hosted inference."
+    },
+    {
+      "claim_id": "C5",
+      "status": "qualified",
+      "source": "Primary synthesis of C1,C2,C3,C4; no experimental product result",
+      "source_type": "analyst recommendation",
+      "publication_date": "2026-09-18",
+      "event_date": "not implemented or tested",
+      "retrieved_at": "2026-09-18",
+      "authority": "research synthesis",
+      "independence": "inference explicitly labelled",
+      "notes": "Proposed opportunities including evidence guidance, impact notifications, semantic review queue, citations, reconciliation, portfolio exploration. Pilot300–500 cases, qualified reviewers, heldout source families,95%recall/80%precision provisional goals not safety automation licence; compare baseline and preserve human decisions/permissions. No delivery estimate established; access/privacy/performance untested."
+    },
+    {
+      "claim_id": "C3",
+      "status": "supported",
+      "source": "https://vercel.com/docs/ai-gateway/security-and-compliance/zdr",
+      "source_type": "official Gateway policy documentation",
+      "publication_date": "live undated",
+      "event_date": "not stated",
+      "retrieved_at": "2026-09-18",
+      "authority": "Vercel",
+      "independence": "Gateway operator primary source",
+      "notes": "ZDR available ProEnterprise; per-request no extra cost; teamwide0.10per1000successfulresponseswithusage; provider routing validation needed. Jev specific launch saysZDR, catalog blank policyfields; confirm account route."
+    },
+    {
+      "claim_id": "C3",
+      "status": "qualified",
+      "source": "https://typesafe.ai/legal/mca; https://typesafe.ai/legal/data-processing",
+      "source_type": "currently linked vendor legal terms",
+      "publication_date": "2026-08-27;2026-04-24",
+      "event_date": "current linked terms retrieved2026-09-18",
+      "retrieved_at": "2026-09-18",
+      "authority": "TypeSafe",
+      "independence": "vendor terms primary",
+      "notes": "MCA2.3(f)publishing performance info restrictions and2.3(h)security vulnerability testing restrictions; planned adversarial pilot and publication need terms clearance. DPA governs customer personal data with precedence over conflicts, not unrestricted personaldata use."
+    }
+  ],
+  "working_tree": {
+    "head": "29b62df901af9833be334392d97a6b45a42d1962",
+    "note": "Working tree had existing changes including approval.py. Hashes identify local files read; no product files edited.",
+    "source_hashes": [
+      {
+        "Algorithm": "SHA256",
+        "Hash": "2B8781D5CE4F34693EB8DB29E8DA99EA86DBF9B718FFE0FB3DA3EFDACA917D5C",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\CONTEXT.md"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "DD0BDC56BE992A9A2E4ED389899E3857E002630CC81597A2653938653ED05438",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\ACE_VISION_AND_ROADMAP.md"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "A9B15F047635D57EEAD360D4882D92342C4102DEE73D2D169D788CF13E07E511",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\docs\\specs\\2026-08-23-ace-provider-neutral-extraction-and-retrieval-boundaries.md"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "596D98BE74DD29BE00256CC344078633D82325D633BED9007803A70E7703DC56",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\src\\ace\\engine\\approval.py"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "69FD8B111F8413723C58142D57FED9400949836D2AA845627034A8C338CAD9A0",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\src\\ace\\engine\\conclusion.py"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "2FE5BD2AC582EF7E291B52DBC1DB7098DD276DAF90F7C297D2E3C057B6F5C25D",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\src\\ace\\domain\\models.py"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "2C8176A241129090ABDA8F6D60071B68DBEAD1ED247924C556F14470EE93AB0B",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\docs\\specs\\2026-08-22-phase-6b2-controlled-client-release-lifecycle.md"
+      },
+      {
+        "Algorithm": "SHA256",
+        "Hash": "86E0B3481E1C03B12040ACC2718D54E36481911D2F27CADF483AD4B579E70098",
+        "Path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\docs\\ace\\2026-09-10-turbovec-pilot-proposal.md"
+      }
+    ]
+  },
+  "verification": {
+    "repair_cycles": 1,
+    "claim_reverification": {
+      "C1": {
+        "findings": [
+          {
+            "claim_id": "C1",
+            "status": "supported",
+            "source_alignment": "Revised report limits the absence of retrieval, browsing, generation and execution to the documented evaluation call. API reference documents state/questions/answers and no such step. Final answer accurately says supplied text/structured state yields predefined Choice, Noul and Score results. https://docs.typesafe.ai/api ; https://docs.typesafe.ai/introduction",
+            "calculation_check": "No C1 calculation.",
+            "temporal_check": "Report and final answer use the 15 Sep 2026 launch date and current model documentation as of 18 Sep; these are supported.",
+            "citation_check": "The revised API and introduction citations directly support these claims.",
+            "contradiction_check": "No contrary evidence found for the documented endpoint. The narrowed wording resolves prior overbreadth."
+          },
+          {
+            "claim_id": "C1",
+            "status": "supported",
+            "source_alignment": "Revised Score table identifies a probability-weighted position, level probabilities and confidence; Score docs support these. The nearby direct Noul citation supports yes-probability. Choice citation supports one of up to 255 options and independent questions. https://docs.typesafe.ai/primitives/score ; https://docs.typesafe.ai/primitives/noul ; https://docs.typesafe.ai/primitives/choice",
+            "calculation_check": "Score is a weighted mean of ordinal level numbers; no numeric example is computed in the draft.",
+            "temporal_check": "Undated live docs are framed as current as of retrieval, without asserting a publication date.",
+            "citation_check": "Direct Score and Noul citations now present; prior traceability request resolved.",
+            "contradiction_check": "The wording 'between ordered rubric levels' is slightly imprecise because an answer can land exactly on a level, but it is not materially misleading."
+          },
+          {
+            "claim_id": "C1",
+            "status": "supported",
+            "source_alignment": "Shortened model paragraph matches jev-1.13.0 alias mapping, text/JSON input, required preprocessing, 64k total/32k state-plus-longest-question budgets, dynamic rate limits and strongest English performance. Final answer correctly says no direct photo or audio input. https://docs.typesafe.ai/models",
+            "calculation_check": "All reported token and rate figures match source.",
+            "temporal_check": "The paragraph states these are live specifications retrieved 18 Sep and no performance test was run.",
+            "citation_check": "Models citation directly supports paragraph and final answer limitation.",
+            "contradiction_check": "No contrary official source found."
+          },
+          {
+            "claim_id": "C1",
+            "status": "supported",
+            "source_alignment": "Revised report distinguishes schema-valid output from semantic accuracy and retains versioned Jev 1.13 limitations. Final answer repeats these caveats. https://typesafe.ai/blog/introducing-system-one-models-and-jev ; https://docs.typesafe.ai/model-jaggedness/jev-1.13 ; https://docs.typesafe.ai/confidence",
+            "calculation_check": "0.95 confidence is correctly not interpreted as 95% certainty of control effectiveness.",
+            "temporal_check": "Limitations last-reviewed 17 Sep date is supported; vendor launch 15 Sep supported.",
+            "citation_check": "Claims align with direct sources. Launch-derived text is shorter than first draft and no clear 200-word source-allowance issue remains.",
+            "contradiction_check": "Known limitations provide contrary evidence to broad reliability; report and final answer include them."
+          }
+        ],
+        "repair_requests": [
+          "Optional precision edit: in Score table change 'a probability-weighted position between ordered rubric levels' to 'a probability-weighted position on or between ordered rubric levels'. No material claim block remains.",
+          "Preserve final-answer distinction between proposed ACE uses and demonstrated Jev capabilities; current text does so."
+        ]
+      },
+      "C2": {
+        "findings": [
+          {
+            "claim_id": "C2",
+            "status": "supported",
+            "source_alignment": "The revised report labels TypeSafe's 193.6x and 444.6x claims as selected-workflow, vendor-reported, high-end results. The evaluation page's four equal-weight workflows and GPT-6 Astra/Claude Fable 5.1 reference match its methodology statement. The compressed final response likewise calls the headline comparison vendor-designed. https://typesafe.ai/blog/introducing-system-one-models-and-jev ; https://evals.typesafe.ai/",
+            "calculation_check": "No aggregate dashboard numbers are quoted. Its unresolved 67.8% overview versus 70.25% mean of displayed cards therefore creates no unsupported reported result.",
+            "temporal_check": "The launch is dated 15 September 2026. The undated live evaluation page is treated as retrieved current evidence, not a dated independent experiment.",
+            "citation_check": "Primary launch and methodology links directly support the revised claims; Vercel is used only as availability corroboration.",
+            "contradiction_check": "Vendor-generated workflow design, model-derived reference answers and probability-producing wrappers remain visible qualifications. No claim of human-ground-truth accuracy appears."
+          },
+          {
+            "claim_id": "C2",
+            "status": "supported",
+            "source_alignment": "The revised report calls Aera a first-person study independent of TypeSafe and states one internal profile and model-generated labels. Aera directly reports the same-pool 276 unattended-case figures: 46% needs coverage for each selector, matcher-judged precision 85% versus 79%, and median model times 147 versus 463 ms. It names DeepSeek V4 Flash without reasoning. https://aerabrowser.com/news/agent-memory-doesnt-need-a-generator-typesafes-jev-vs-llm-on-400-real-tasks",
+            "calculation_check": "70 run reviews + 82 scheduled runs + 124 delegated subagents = 276 unattended cases; with 124 chat starts = 400 total. The observed precision difference is six percentage points and median difference is 316 ms. No statistical-significance claim was added.",
+            "temporal_check": "Aera published on 17 September. LLM runs were on 12 and 16 September; Jev was measured on 16 September from a US connection. The revised paragraph explicitly says US benchmark and reported median model time.",
+            "citation_check": "The Aera article directly supports each figure and caveat. The compressed final response mentions retrieval gains only with one-profile and AI-label qualifications nearby.",
+            "contradiction_check": "The same-pool unattended comparison shows no coverage increase; at chat start the narrow-pool Jev configuration covered less than the LLM. The report does not claim universal superiority or an SQE accuracy result."
+          },
+          {
+            "claim_id": "C2",
+            "status": "supported",
+            "source_alignment": "The four revised cookbook bullets accurately describe exact quote checking plus context classification, passage triage, parser-supplied value selection and pairwise entity alignment. They cite the respective official cookbook pages. https://docs.typesafe.ai/cookbooks/citation_check ; https://docs.typesafe.ai/cookbooks/classifying_rag_passages ; https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook ; https://docs.typesafe.ai/cookbooks/entity_alignment",
+            "calculation_check": "The citation example has eight cases with four planted failures; no cross-domain accuracy rate is inferred.",
+            "temporal_check": "All four bullets now identify Jev 1.12 examples. The citation, passage and entity runs specify 16, 27 and 11 August respectively. They are clearly historical patterns rather than Jev 1.13 validation.",
+            "citation_check": "Each bullet has a direct citation. Its description of source-bound extraction confines exact copying to parser-provided candidates.",
+            "contradiction_check": "The report says Jev may select the wrong candidate and does not claim it performs retrieval or generates answers. The passage cookbook uses other models for those steps."
+          }
+        ],
+        "repair_requests": []
+      },
+      "C3": {
+        "findings": [
+          {
+            "claim_id": "C3",
+            "status": "supported",
+            "source_alignment": "The revised report distinguishes direct early access from Vercel Gateway; identifies the direct HTTP/Python/JavaScript route; states live model limits as documentation rather than measured performance; and treats self-hosting/weights as absent public evidence. The fine-tuning sentence now accurately describes the currently documented shared-weights service. These align with the 15 September TypeSafe launch, 16 September Vercel announcement, TypeSafe model and SDK pages, and official repository inventory.",
+            "calculation_check": "At 3,000 input tokens per request, 100,000 requests consume 300 million tokens and cost US$12.60 at US$0.042/M; one million consume three billion and cost US$126. The draft separates Vercel's displayed US$0.04/M from direct pricing, and excludes relevant additional costs. Vercel ZDR prices now match its policy: per-request no extra fee; team-wide US$0.10 per 1,000 successful responses with usage data.",
+            "temporal_check": "The report dates the launch and Gateway announcement to 15 and 16 September 2026. It identifies live undated specifications as retrieved on 18 September and older legal terms as currently linked, without presenting them as new September commitments. Account access, actual routing, retention, Australian inference, SLA and performance remain explicitly unverified. The compressed final retains early-access and access/data gates.",
+            "citation_check": "The four targeted repairs cite the relevant primary pages: https://vercel.com/docs/ai-gateway/security-and-compliance/zdr for plan eligibility and fees; https://typesafe.ai/legal/data-processing for customer-personal-data limits and DPA precedence; https://typesafe.ai/legal/mca for benchmark-publication and security/vulnerability-test restrictions; https://docs.typesafe.ai/models for current shared weights and no customer fine-tuning/LoRA. No clear 200-word source attribution excess appears in the revised C3 prose.",
+            "contradiction_check": "Previously noted tensions are now qualified. The draft does not conflate no training, no retention and Australian residency; does not imply MCA telemetry language overrides DPA personal-data limits; and acknowledges blank Vercel catalog policy fields despite the Jev ZDR announcement. It conditions hostile-text pilot cases and external benchmark publication on terms clearance. The final summary's proposed fictional-data pilot is consistent with these gates and claims no access or test result. No remaining C3 contradiction requiring repair was found."
+          }
+        ],
+        "repair_requests": []
+      },
+      "C5": {
+        "findings": [
+          {
+            "claim_id": "C5",
+            "status": "supported",
+            "source_alignment": "The revised text labels all opportunities and the pilot as proposals. Jev remains limited to bounded semantic judgments; ACE code handles relationship traversal and candidate selection. New client and notification routes require separate review. The pilot is explicitly separately approved and subject to the local plan's pilot, architecture and privacy decisions, including fictional remote transfers. Human decisions, proposal status, access filters and existing release gates remain authoritative.",
+            "calculation_check": "The cost arithmetic remains correct: 100,000 x 3,000 / 1,000,000 x US$0.042 = US$12.60, and one million such requests = US$126. The revised 300-500 cases are explicitly a feasibility sample. Prespecified class counts, prevalence, uncertainty intervals and representative natural-case precision address the prior risk of overstating 95% recall and 80% precision. Reviewer minutes per case at matched contradiction recall now account for unflagged and unchecked items. Calibration is a measurement objective, not an asserted result.",
+            "temporal_check": "The revised report makes no claim that the pilot, adapter or customer features exist as of 18 September 2026. No production delivery time or Australian latency performance is asserted. Current access and data terms remain unresolved before execution.",
+            "citation_check": "The revised run-record and cache requirements now align with the local provider-boundary specification: per-Engagement namespaces, source/version/location and text hash, question/threshold/adapter/model/configuration versions, run ID/time, input/output hashes, transfer details, raw result and proposal route. The TypeSafe limitations and cookbooks support the mechanism but are not presented as ACE performance validation. The final answer links the local boundary plan and calls it unimplemented.",
+            "contradiction_check": "Prior material conflicts are repaired. The revised decision is to prepare a separately approved pilot after access, privacy and adapter decisions. The final answer also names remote fictional-data transfer approval. Security-sensitive suspicious-input checking is only an additional flag; deterministic controls and auditor approval remain outside Jev. Minor wording opportunity: 'approved baseline model' assumes one will be available; if none exists, compare the current human/deterministic workflow and identify any separately approved comparator. This does not invalidate the bounded recommendation."
+          }
+        ],
+        "repair_requests": [
+          "Optional precision: change 'the approved baseline model' to 'any separately approved baseline model, if available' in the report and final answer, so the pilot is not blocked by an unverified existing comparator."
+        ]
+      },
+      "C4": {
+        "findings": [
+          {
+            "claim_id": "C4",
+            "status": "supported",
+            "source_alignment": "Targeted recheck confirms the revised report now distinguishes local vocabulary and implemented approval/conclusion gates from the complete deployed product. CONTEXT.md defines Evidence Items, Proposed Relationships, Auditor Decisions and Approved Conclusions; approval.py, conclusion.py and tracing.py contain corresponding gated record construction. The provider-neutral extraction document explicitly defines planning boundaries only, and the Phase 6B2 client release specification is Draft For Review. The report states that no implemented Jev adapter or approved live customer-submission route was established by the inspected sources. Proposed customer, admin and backend features are clearly labelled as proposals.",
+            "calculation_check": "The revised numerical statement is precise: Control.confidence_score is 0–1, and values below 0.8 add a flag to reviewer_notes in src/ace/domain/models.py. The report correctly rejects direct mapping from Jev confidence. No other C4 calculation was introduced.",
+            "temporal_check": "The revised report attributes the fictional/public/AuditCo-owned material restriction to the roadmap's 7 September 2026 status and says current client acceptance was not independently verified. It identifies the local Git HEAD and explicitly notes uncommitted approval-gate changes, without presenting the inspected working tree as a deployed certification.",
+            "citation_check": "The revised citations align with the local assertions: CONTEXT.md for vocabulary, approval.py and conclusion.py for gates, the provider-neutral and client lifecycle specifications for planning/draft state, ACE_VISION_AND_ROADMAP.md for product direction and dated client status, and models.py for the confidence flag. The short final answer links the full report and the provider boundary and does not add a contrary implementation claim.",
+            "contradiction_check": "No remaining direct contradiction found in the changed C4 text or compressed final answer. Human approval remains explicit. The final answer's 'existing separation between suggestions and approved records' is a fair short description of local vocabulary and gates in context; it states the provider plan is not an implemented adapter. New customer routes remain hypothetical, and pilot data is fictional."
+          }
+        ],
+        "repair_requests": []
+      }
+    },
+    "quality_gate": {
+      "pass": true,
+      "score": 10,
+      "critical_failures": [],
+      "failed_dimensions": [],
+      "repair_requests": [],
+      "retry_number": 1,
+      "cross_provider_status": "not-authorized"
+    },
+    "corrections": [
+      "One internal dashboard-value transcription error was found and resolved by the independent judge. Jev per-workflow scores61.7,71.6,61.8,76.0 average67.775, rounded67.8. Report and final answer never asserted a dashboard mismatch or used the erroneous numbers."
+    ]
+  },
+  "acceptance": {
+    "current_capabilities": "independently checked against cited sources",
+    "benchmark_qualifications": "independently checked; no benchmark executed",
+    "product_mapping": "checked against local files; planned/deployed distinction retained",
+    "novel_opportunities": "analyst proposals, not implemented",
+    "pilot": "proposed only; approval/access/privacy/performance pending",
+    "local_links": "8of8exist",
+    "independent_quality_gate": "passed10of10; no critical failures"
+  },
+  "deliverables": [
+    "2026-09-18-jev-for-ace.md",
+    "2026-09-18-jev-evidence.json"
+  ]
+}

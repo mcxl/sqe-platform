@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Private copy targets and identity pins for MCX19B local ACE iOS evidence reproduction. Do not copy this record into the repository.",
+  "candidateIdentity": {
+    "repositoryHead": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+    "branch": "codex/mcx-19-live-evidence-harness",
+    "cleanUiTestBaselineSha256": "afa3af14408c897e071dad3932a34c658e1ad84bbce62c766578a0dfe16e799a",
+    "workingTreeUiTestSha256": "5ced0a7a02d06b687b254f4321745319fa8b84c10ce239784bcf3bff5afbd31c",
+    "privateDebugScenarioBaselineSha256": "9b844d1216aadbd1677777ef2aacdd9e54a0d12d85060eb3864dedc939036a82",
+    "privateDebugScenarioCandidateSha256": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751"
+  },
+  "applyOrder": {
+    "latestScrollDiagnostics": [
+      "Use the exact scroll test overlay as the complete UI-test overlay.",
+      "Apply the standalone DebugScenario patch separately.",
+      "Do not also apply windows-ios-working-changes.patch because its changes are already in the scroll overlay."
+    ],
+    "historicalClippingDiagnostics": [
+      "Use the exact clipping test overlay as the complete UI-test overlay.",
+      "Apply the standalone DebugScenario patch separately.",
+      "Do not also apply windows-ios-working-changes.patch because its changes are already in the clipping overlay."
+    ]
+  },
+  "candidateOverlays": [
+    {
+      "name": "latest-scroll-ui-test-overlay",
+      "path": "C:\\Users\\AlanRichardson\\OneDrive - AuditCo\\Documents\\MCX19B-CLAUDE-HANDOVER-20260913\\source-snapshots\\scroll-ACEClientAppUITests.swift",
+      "sha256": "5170abef034ea9ff5e24891e879c016674d812ac3eaf00b3ded1b677b7d1a5b4",
+      "usedByBuild": "6aa6108efec619c30b3e7b0e",
+      "selectors": [
+        "testClippingNoActionsStandaloneAudit",
+        "testClippingNoConclusionStandaloneAudit",
+        "testAccessibilityAuditFirstFiveOriginalScenarioOrder",
+        "testClippingSettingsAndRetentionProbe",
+        "testClippingReleaseBeforeCopy",
+        "testClippingReleaseAfterCopy",
+        "testClippingStandaloneBeforeCopy",
+        "testClippingStandaloneAfterCopy"
+      ]
+    },
+    {
+      "name": "historical-clipping-ui-test-overlay",
+      "path": "C:\\Users\\AlanRichardson\\OneDrive - AuditCo\\Documents\\MCX19B-CLAUDE-HANDOVER-20260913\\source-snapshots\\clipping-ACEClientAppUITests.swift",
+      "sha256": "68b8e82ac3a5235fce8e6aa71328254a578c9543edcef0ca254ff92d0e084ba2",
+      "usedByBuild": "6aa5d3e5a5297549762a03ca",
+      "selectors": [
+        "testClippingSettingsAndRetentionProbe",
+        "testClippingReleaseBeforeCopy",
+        "testClippingReleaseAfterCopy",
+        "testClippingStandaloneBeforeCopy",
+        "testClippingStandaloneAfterCopy"
+      ]
+    }
+  ],
+  "preservedPatches": [
+    {
+      "name": "working-tree-ui-test-patch",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-14\\ace-mac-setup\\windows-ios-working-changes.patch",
+      "sha256": "4200520eeb2c2d80ce26475dc48a1d14f2d473abd2b6c728cd3e8665ffb9dac7",
+      "role": "Historical working-tree UI corrections. It overlaps both complete test overlays."
+    },
+    {
+      "name": "standalone-debug-container-patch",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-14\\ace-mac-setup\\standalone-container.patch",
+      "sha256": "927ff700112a521dcac6efab51031dbb93eedf4fd1268bbd057577b264f7def6",
+      "role": "Required application overlay for the accepted private copyConfirmation container candidate."
+    }
+  ],
+  "failureEvidence": [
+    {
+      "name": "controlled-scenarios-failure-json",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\LEGACY-CONTROLLED-FAILURE-EVIDENCE.json",
+      "sha256": "e79d080571530ba4e3a1869ce4669d9138a3e03de501b6e1df1b83dea83a6662",
+      "test": "testAllControlledScenariosShowExpectedStateAndAudit",
+      "sourceLine": 183,
+      "correspondingCommandLog": {
+        "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\final-legacy-controlled-review\\commands\\legacy-controlled-smoke\\ios-normal-settings-iPhone 17-light-testAllControlledScenariosShowExpectedStateAndAudit.log",
+        "sha256": "955cf2b906deaaebd2b39d8fe3ac3f91b6c0a07c12af0cdc79aecf7db80d0483"
+      },
+      "finding": "Five noConclusion contrast findings, then a separate noActions audit timeout with error -56."
+    },
+    {
+      "name": "release-controls-failure-json",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\LEGACY-RELEASE-FAILURE-EVIDENCE.json",
+      "sha256": "440ab31260eb325a8fa5373829aad51af52f33225ef7b237a6707439116170a1",
+      "test": "testFictionalReleaseHasApprovedCopyControls",
+      "sourceLine": 135,
+      "correspondingCommandLog": {
+        "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\final-legacy-release-review\\commands\\legacy-release-smoke\\ios-normal-settings-iPhone 17-light-testFictionalReleaseHasApprovedCopyControls.log",
+        "sha256": "373739eb453f27f953b39ee7037a803f235377f887366597b60a2b18d08cb528"
+      },
+      "finding": "Contrast nearly passed for Action 1 and OPEN."
+    },
+    {
+      "name": "clipping-container-experiment-json",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\CONTAINER-EXPERIMENT-EVIDENCE.json",
+      "sha256": "6a57a130dd26cb37809dbf6efc2f59842b1696166dd0cafd8246afa68d180463",
+      "test": "testClippingStandaloneAfterCopy",
+      "sourceLine": 366,
+      "correspondingCommandLogs": [
+        {
+          "role": "candidate-pass",
+          "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\process-logs\\1789254958564-clipping-candidate-after-large-607fd56e.log",
+          "sha256": "f0aaa3f2a18659298a94e7d54f07765dea1315c641df1604f352128d74d8808e"
+        },
+        {
+          "role": "baseline-reversal-fail",
+          "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\process-logs\\1789255008148-clipping-reversal-after-large-5a4d1f9c.log",
+          "sha256": "55d90ca1e93ef0f34dfb7b43bce4993fd56026d4c9ea7cfc088d28a102e132da"
+        }
+      ],
+      "finding": "Baseline failed, private container candidate passed, and restored baseline failed at the same selector and settings."
+    }
+  ],
+  "latestScrollEvidence": [
+    {
+      "name": "no-actions-command-log",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\scroll-6aa6108efec619c30b3e7b0e\\1789268881017-scroll-no-actions-6729df68.log",
+      "sha256": "563f79fc4aa26d31778de0936905fc9118e707bd13040b503287e20bd80b280c",
+      "selector": "testClippingNoActionsStandaloneAudit",
+      "result": "Passed once. This does not establish the cause of the earlier timeout."
+    },
+    {
+      "name": "first-five-command-log",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\scroll-6aa6108efec619c30b3e7b0e\\1789268950015-scroll-first-five-ebaae3bd.log",
+      "sha256": "acb3fb43b6a69567262924f0c91a96d6bd9853783ae12dad7fa6f2dd27e9cc75",
+      "selector": "testAccessibilityAuditFirstFiveOriginalScenarioOrder",
+      "result": "Native XCTest passed once; collection failed with time-bound-exhausted-during-collection."
+    }
+  ],
+  "matrixAndArchives": [
+    {
+      "name": "focused-matrix",
+      "path": "C:\\Users\\AlanRichardson\\OneDrive - AuditCo\\Documents\\MCX19B-CLAUDE-HANDOVER-20260913\\FOCUSED-MATRIX.csv",
+      "sha256": "fb019248368711987a7e179d0445b412940aa8af9430bc13a9fd2284ef9a2cc0",
+      "status": "5 native passes of 48; 4 manual passes; 1 manual check pending; 43 cases not run."
+    },
+    {
+      "name": "no-actions-passed-archive",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\scroll-6aa6108efec619c30b3e7b0e\\no-actions-no-actions-standalone-light-large.tar.gz",
+      "sha256": "5979400bdbb088037fb948400a31cee000cb9a38916945d22361552fee8a6512"
+    },
+    {
+      "name": "first-five-partial-collection-archive",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\scroll-6aa6108efec619c30b3e7b0e\\first-five-first-five-original-loop-light-large.tar.gz",
+      "sha256": "b43c9363e07811a66ff9f85ddd8ab80e2ad045aed233b5928aa1b0bdf2c5033b"
+    },
+    {
+      "name": "clipping-candidate-passed-archive",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\candidate-after-large-standalone-after-copy-light-large.tar.gz",
+      "sha256": "87d6a37569361d4eee9be372628b6be23272774e95428f600933f916eadd451f"
+    },
+    {
+      "name": "clipping-baseline-failed-archive",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\baseline-large-all-light-large.tar.gz",
+      "sha256": "14067307083705f872d8986caa493fc6846cac76073060bf565bff39b36b853c"
+    },
+    {
+      "name": "clipping-restored-baseline-failed-archive",
+      "path": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\reversal-after-large-standalone-after-copy-light-large.tar.gz",
+      "sha256": "616619e65bdc0e5e186b3b42df22553c38a4419e178a8370c4ca4d08c602990e"
+    }
+  ],
+  "notes": [
+    "Metadata conflict: candidate-manifest.json calls the clipping overlay baseline afa3af14408c897e071dad3932a34c658e1ad84bbce62c766578a0dfe16e799a. OVERLAY-NOTES.md and baseline/ACEClientAppUITests.swift identify the clipping overlay input as 5ced0a7a02d06b687b254f4321745319fa8b84c10ce239784bcf3bff5afbd31c. Use exact retained overlay file hashes as the identity pins.",
+    "The source overlays are private complete files, not standalone patch files. Preserve the repository-relative destination when you transfer them.",
+    "Historical test passes, the noActions pass, and the first-five XCTest pass do not prove that the prior timeout cause is fixed.",
+    "Private evidence must remain outside the repository."
+  ]
+}

@@ -1,0 +1,35 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -299,8 +299,32 @@
+         captureCoverageViewport(in: app, caseID: caseID, viewport: viewport, screenshots: &screenshots)
+         guard audit else { return true }
++        let isCopyConfirmationAudit = scenario == "copyConfirmation" && viewport == "copy-confirmation"
++        if isCopyConfirmationAudit {
++            emitCopyConfirmationAuditFrames(in: app, phase: "pre")
++        }
++        defer {
++            if isCopyConfirmationAudit {
++                emitCopyConfirmationAuditFrames(in: app, phase: "post")
++            }
++        }
+         guard runCoverageAudit(in: app, scenario: scenario, viewport: viewport) else { return false }
+         audits += 1
+         return true
+     }
++
++    private func emitCopyConfirmationAuditFrames(in app: XCUIApplication, phase: String) {
++        emitJSON(marker: "ACE_COPY_CONFIRMATION_AUDIT_FRAMES", payload: [
++            "phase": phase,
++            "uptime": ProcessInfo.processInfo.systemUptime,
++            "frames": [
++                "app": Self.frameJSON(app.frame),
++                "scrollView": Self.frameJSON(app.scrollViews.firstMatch.frame),
++                "copyAction1Button": Self.frameJSON(app.buttons["Copy action 1"].frame),
++                "copyActionText": Self.frameJSON(app.staticTexts["Copy action 1"].frame),
++                "copiedAction1Text": Self.frameJSON(app.staticTexts["Copied Action 1."].frame)
++            ]
++        ])
++    }
+ 
+     private func coverageActionLabels(for scenario: String) -> [String] {

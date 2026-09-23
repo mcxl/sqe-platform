@@ -1,0 +1,12 @@
+{
+  "sourcePath": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "beforeSha256": "b91ff4bc1501fa9cdb0de4cd2d4f4b6f8c4370b98c09ca613f2c5e729922353f",
+  "afterSha256": "cccd23735441a3a3943f4b43581a9b597984a8d70fa89ec7b2ce026d239d7615",
+  "question": "Can the native Settings test open each required page, recover the original flags, set all three flags, and restore them with final in-app confirmation?",
+  "navigationCorrectionAttempt": 1,
+  "observationCorrectionAttempt": 1,
+  "observationStatus": "Not reached by previous run; blocked by navigation failure.",
+  "scope": "Settings helper only; one iPhone17 targeted selector.",
+  "expectedEvidence": "Destination navigation markers, actual switch results, exact in-app settings, native summaries and retained failures, restoration.",
+  "createdUTC": "2026-09-15T02:24:55.420309+00:00"
+}

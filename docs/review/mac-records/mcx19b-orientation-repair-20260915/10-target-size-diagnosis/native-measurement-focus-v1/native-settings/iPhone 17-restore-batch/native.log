@@ -1,0 +1,65 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-restore-batch/ACEClientAppUITests.xctestrun" -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-restore-batch/result.xcresult"
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-restore-batch/result.xcresult
+
+2026-09-15 22:51:33.193650+1000 ACEClientAppUITests-Runner[75016:5266803] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 22:51:36.522.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 22:51:36.524.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 22:51:36.525.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.01s Start Test at 2026-09-15 22:51:36.534
+    t =     0.22s Set Up
+    t =     0.25s Open com.example.aceclientapp
+    t =     0.25s     Launch com.example.aceclientapp
+    t =     4.13s         Setting up automation session
+    t =     7.90s         Wait for com.example.aceclientapp to idle
+    t =    10.39s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    11.46s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    11.46s         Checking existence of `"Effective interface style" Any`
+    t =    12.81s Find the "Effective interface style" Any
+    t =    12.89s Find the "Effective interface style" ScrollView
+    t =    12.96s Terminate com.example.aceclientapp:75036
+    t =    13.97s Setting device orientation to Portrait
+    t =    14.00s     Wait for com.apple.springboard to idle
+    t =    14.02s Open com.example.aceclientapp
+    t =    14.03s     Launch com.example.aceclientapp
+    t =    14.69s         Setting up automation session
+    t =    18.71s         Wait for com.example.aceclientapp to idle
+    t =    21.38s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    22.46s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    22.46s         Checking existence of `"Effective interface style" Any`
+    t =    23.74s Find the "Effective interface style" Any
+    t =    23.79s Find the "Effective interface style" ScrollView
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    23.84s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.070061595004517585,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+ACE_SETTINGS_RESULT {"mode":"set","observed":{"boldText":false,"increaseContrast":false,"orientation":"portrait","reduceMotion":false}}
+    t =    23.91s Terminate com.example.aceclientapp:75057
+    t =    24.93s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' passed (25.009 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 22:52:01.543.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.009 (25.018) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 22:52:01.544.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.009 (25.020) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 22:52:01.546.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.009 (25.024) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-restore-batch/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 22:51:26.473 xcodebuild[74997:5266306] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:51:26.494 xcodebuild[74997:5266306] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:51:27.384 xcodebuild[74997:5266306] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:51:36.927 xcodebuild[74997:5266306] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 22:51:36.928 xcodebuild[74997:5266306] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 22:51:50.557 xcodebuild[74997:5266306] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 22:51:50.557 xcodebuild[74997:5266306] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 22:52:01.923 xcodebuild[74997:5266306] [MT] IDETestOperationsObserverDebug: 34.529 elapsed -- Testing started completed.
+2026-09-15 22:52:01.923 xcodebuild[74997:5266306] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 22:52:01.923 xcodebuild[74997:5266306] [MT] IDETestOperationsObserverDebug: 34.529 sec, +34.529 sec -- end

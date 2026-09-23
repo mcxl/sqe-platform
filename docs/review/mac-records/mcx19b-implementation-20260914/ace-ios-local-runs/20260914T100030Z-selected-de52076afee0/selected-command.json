@@ -1,0 +1,21 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+    "-resultBundlePath",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xcresult"
+  ],
+  "end": "2026-09-14T10:03:00.159161+00:00",
+  "exit": 0,
+  "seconds": 13.947,
+  "start": "2026-09-14T10:02:46.211938+00:00",
+  "stderr": "2026-09-14 20:02:51.848 xcodebuild[77612:2038741] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 20:02:51.928 xcodebuild[77612:2038741] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 20:02:53.168 xcodebuild[77612:2038741] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 20:02:59.998 xcodebuild[77612:2038741] [MT] IDETestOperationsObserverDebug: 6.819 elapsed -- Testing started completed.\n2026-09-14 20:02:59.998 xcodebuild[77612:2038741] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start\n2026-09-14 20:02:59.998 xcodebuild[77612:2038741] [MT] IDETestOperationsObserverDebug: 6.819 sec, +6.819 sec -- end\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO \"-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache\" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xcresult\n\nWriting result bundle at path:\n\tLOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xcresult\n\nTest Suite 'Selected tests' started at 2026-09-14 20:02:59.558.\nTest Suite 'ACEClientAppTests.xctest' started at 2026-09-14 20:02:59.560.\nTest Suite 'ACEClientAppTests' started at 2026-09-14 20:02:59.562.\nTest Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.\nTest Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' passed (0.015 seconds).\nTest Suite 'ACEClientAppTests' passed at 2026-09-14 20:02:59.583.\n\t Executed 1 test, with 0 failures (0 unexpected) in 0.015 (0.021) seconds\nTest Suite 'ACEClientAppTests.xctest' passed at 2026-09-14 20:02:59.585.\n\t Executed 1 test, with 0 failures (0 unexpected) in 0.015 (0.025) seconds\nTest Suite 'Selected tests' passed at 2026-09-14 20:02:59.586.\n\t Executed 1 test, with 0 failures (0 unexpected) in 0.015 (0.029) seconds\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/selected.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\nTesting started\n"
+}

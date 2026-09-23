@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "recordedUTC": "2026-09-15T12:55:46.170326+00:00",
+  "nativeCases": 1,
+  "layoutOnlyCases": 1,
+  "nativeAuditInvocations": 0,
+  "settingsChecks": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/001-set/summary.json",
+      "sha256": "c8f07a42ec0b15f1bcc9dd2a3316e22b6c4863ca0b222e9a602ecb6697702a8e"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17 Pro Max-read/summary.json",
+      "sha256": "5319dd6ef384cfe6cb3fa70233634fc10c6ddbe4579e7d4d2c898af320642b65"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17 Pro Max-restore-post-boot/summary.json",
+      "sha256": "d010c1a38b6f2b85f987a3e1d7de055787e4e5a86ef023014b79c36deb100dba"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-read/summary.json",
+      "sha256": "35117de369fe6a299a450267e60724748c8df7ef83483a290281b0617cf798e0"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/native-settings/iPhone 17-restore-batch/summary.json",
+      "sha256": "c971ba9b828c98407c91a5d5979212718c3d09c5de12526430d38b23eb1e00eb"
+    }
+  ],
+  "sourceUnchanged": true,
+  "restoration": "passed",
+  "buildBundleLogRunfileImageHashes": "verified",
+  "images": "13 captures,3 unique full-resolution images inspected",
+  "pilotCredit": 0,
+  "evidence": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/execution.json",
+      "sha256": "212f059cb8c026a45a3a86f2ae7a1b5efd4477a9d60e8617fdee20b64844c2ca"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/result.json",
+      "sha256": "a2d308e5d351007cac6fd13fcc529b58da0fdfa7aa66c08411d6a533809dd208"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/image-index.json",
+      "sha256": "5fa946a98ed17ac390277aff377ddd056b9ee76334ed0f9ffcffa383564ffe40"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/image-inspection.json",
+      "sha256": "605e299e2fa8a9da62e732b645819afbc3cff1cb4ff5f7b2404aa3dd550a8973"
+    }
+  ]
+}

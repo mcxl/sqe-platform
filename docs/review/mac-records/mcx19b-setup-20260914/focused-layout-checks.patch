@@ -1,0 +1,41 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -138,11 +138,50 @@
+         let confirmationApp = launch("copyConfirmation")
+         confirmationApp.buttons["Copy Engagement name"].tap()
+         XCTAssertTrue(confirmationApp.staticTexts["Copied Engagement name."].exists, "Copy confirmation must be available to VoiceOver")
++        scrollUntilVisible(confirmationApp.staticTexts["Copied Engagement name."], in: confirmationApp, field: "Copy confirmation")
+         addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(appearance)")
++        try assertAccessibilityAudit(in: confirmationApp, scenario: "copyConfirmation-after-copy")
+         confirmationApp.terminate()
+     }
+ 
++    func testClippingNoActionsStandaloneAudit() throws {
++        try runOriginalScenarioAudit(scenario: "noActions", expected: "No actions are available.")
++    }
++
++    func testClippingNoConclusionStandaloneAudit() throws {
++        try runOriginalScenarioAudit(scenario: "noConclusion", expected: "No conclusion is available.")
++    }
++
++    private func runOriginalScenarioAudit(scenario: String, expected: String) throws {
++        let app = launch(scenario)
++        defer { app.terminate() }
++        let expectedState = XCTNSPredicateExpectation(
++            predicate: NSPredicate { _, _ in
++                app.staticTexts[expected].exists
++                    || app.buttons[expected].exists
++                    || app.progressIndicators[expected].exists
++            },
++            object: nil
++        )
++        XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
++        assertMinimumActionTargets(in: app)
++        scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
++        addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
++        try assertAccessibilityAudit(in: app, scenario: scenario)
++    }
++
+     func testAllControlledScenariosShowExpectedStateAndAudit() throws {
+         let states = [

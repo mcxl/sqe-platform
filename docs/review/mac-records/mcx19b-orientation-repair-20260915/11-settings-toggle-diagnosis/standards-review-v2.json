@@ -1,0 +1,25 @@
+{
+  "review_axis": "standards",
+  "review_scope": "incremental diagnostic repair only",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "source_worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/settings-fix-worktree",
+  "base_ref": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "head_ref": "incremental repair from af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "patch_sha256": "b9acd5429676f3c37d41632be23b71636e9e1982e442490fd7eb9a914519321d",
+  "inspected_sources": [
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/DIAG11/DIAG11-v2-incremental-af8c82d.patch",
+    "settings-fix-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "AGENTS.md"
+  ],
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "medium",
+  "actual_runtime_model_or_effort": "unobservable",
+  "findings": [],
+  "repair_confirmation": "The repair separates unreadable nil values from exhausted retries at lines 461-463, preserves the two-tap bound, and leaves control and wait logic unchanged.",
+  "limits": [
+    "Spec axis was not inspected.",
+    "No native tests, simulator checks, whole-pilot run or UI acceptance were run.",
+    "No source edits were made."
+  ],
+  "verdict": "PASS — prior diagnostic finding repaired; no remaining actionable Standards concern in this incremental patch"
+}

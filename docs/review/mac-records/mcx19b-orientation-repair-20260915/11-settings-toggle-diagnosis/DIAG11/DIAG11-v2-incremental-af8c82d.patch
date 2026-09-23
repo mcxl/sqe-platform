@@ -1,0 +1,16 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index fa4afb0..54db2a6 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -458,8 +458,9 @@ final class ACEClientAppUITests: XCTestCase {
+                 ])
+                 return true
+             case .fail:
+-                addScreenshot(of: settings, named: "Accessibility settings missing \(label)")
+-                XCTFail("Missing Settings control: \(label)")
++                let failure = current == nil ? "unreadable" : "exhausted"
++                addScreenshot(of: settings, named: "Accessibility settings \(label) \(failure)")
++                XCTFail("Settings control \(label): \(failure), expected \(enabled), current \(String(describing: current)), taps \(taps)")
+                 return false
+             case .tap:
+                 let nextAttempt = taps + 1

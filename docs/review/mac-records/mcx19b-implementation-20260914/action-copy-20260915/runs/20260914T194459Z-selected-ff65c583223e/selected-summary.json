@@ -1,0 +1,72 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 3,
+      "passedTests": 65,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientApp \u00b7 Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 3,
+  "finishTime": 1789415293.904,
+  "passedTests": 65,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789415227.189,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertEqual failed: (\"[\"2026-08-24T10:15:30Z\", \"Access denied. Sign in again.\", \"RELEASED\", \"Fictional summary\", \"ACE could not establish a secure connection. Try again later.\", \"Sign-in could not be saved. Try again.\", \"Sign-out could not be completed. Try again.\", \"No actions are available.\", \"Second fictional owner\", \"Loading current release\", \"Try again\", \"\", \"No current release is available.\", \"2026-08-25\", \"OPEN\", \"Fictional action\", \"Clipboard paste destination\", \"Saved sign-in could not be read. Try again.\", \"Fictional Engagement\", \"Reset saved sign-in\", \"FICTIONAL-REF-001\", \"ACE is unavailable. Try again later.\", \"COMPLETE\", \"This app is not configured for access.\", \"Saved sign-in must be reset before access.\", \"Loading\", \"Fictional conclusion\", \"No conclusion is available.\", \"ACE could not be reached. Check your connection and try again.\", \"Second fictional action\", \"2026-08-26\", \"Saved sign-in could not be removed. Try again.\", \"Fictional owner\", \"The request timed out. Try again.\", \"ACE_UI_TEST_SCENARIO\"]\") is not equal to (\"[\"FICTIONAL-REF-001\", \"2026-08-24T10:15:30Z\", \"Reset saved sign-in\", \"Saved sign-in must be reset before access.\", \"ACE could not establish a secure connection. Try again later.\", \"Loading\", \"Saved sign-in could not be removed. Try again.\", \"Access denied. Sign in again.\", \"2026-08-25\", \"ACE_UI_TEST_SCENARIO\", \"Fictional action\", \"Loading current release\", \"Sign-out could not be completed. Try again.\", \"The request timed out. Try again.\", \"This app is not configured for access.\", \"Fictional owner\", \"Try again\", \"No actions are available.\", \"No current release is available.\", \"Fictional conclusion\", \"Fictional summary\", \"OPEN\", \"Saved sign-in could not be read. Try again.\", \"ACE could not be reached. Check your connection and try again.\", \"Fictional Engagement\", \"No conclusion is available.\", \"RELEASED\", \"ACE is unavailable. Try again later.\", \"Sign-in could not be saved. Try again.\"]\") - Controlled scenario literals changed; review each value before approval",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 36,
+      "testIdentifierString": "AcceptanceEvidenceContractTests/testFixtureInspection()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection",
+      "testName": "testFixtureInspection()"
+    },
+    {
+      "failureText": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b\"]\")",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 49,
+      "testIdentifierString": "AcceptanceEvidenceContractTests/testProjectConfiguration()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration",
+      "testName": "testProjectConfiguration()"
+    },
+    {
+      "failureText": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b\"]\")",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 63,
+      "testIdentifierString": "AcceptanceEvidenceContractTests/testSourceBoundaryInspection()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection",
+      "testName": "testSourceBoundaryInspection()"
+    }
+  ],
+  "title": "Test - ACEClientApp",
+  "topInsights": [
+    {
+      "category": "Common Failures",
+      "impact": "66% of failures",
+      "text": "2 runs of 2 tests failed with XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b\"]\")"
+    },
+    {
+      "category": "Longest Test Runs",
+      "impact": "31% of duration",
+      "text": "2 longest test runs with outlier durations exceeding 0.23s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 68
+}

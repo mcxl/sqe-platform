@@ -1,0 +1,112 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/native-settings/001-recover/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/native-settings/001-recover/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/native-settings/001-recover/result.xcresult
+
+2026-09-15 12:43:26.571896+1000 ACEClientAppUITests-Runner[1232:3798718] [Default] Running tests...
+Test Suite 'Selected tests' started at 2026-09-15 12:43:52.547.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 12:43:52.552.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 12:43:52.554.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.02s Start Test at 2026-09-15 12:43:52.570
+    t =     1.59s Set Up
+    t =     1.63s Open com.example.aceclientapp
+    t =     1.64s     Launch com.example.aceclientapp
+    t =     5.84s         Setting up automation session
+    t =    12.33s         Wait for com.example.aceclientapp to idle
+    t =    15.36s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    16.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    16.43s         Checking existence of `"Effective interface style" Any`
+    t =    17.90s Find the "Effective interface style" Any
+    t =    18.04s Find the "Effective interface style" ScrollView
+    t =    18.11s Terminate com.example.aceclientapp:1327
+    t =    19.22s Open com.apple.Preferences
+    t =    19.23s     Launch com.apple.Preferences
+    t =    20.26s         Setting up automation session
+    t =    25.16s         Wait for com.apple.Preferences to idle
+    t =    35.17s Wait for com.apple.Preferences to become Running Foreground
+    t =    35.18s Checking existence of `"Settings" NavigationBar`
+    t =    36.47s Checking existence of `"Accessibility" Cell`
+    t =    37.03s Checking existence of `Cell (First Match)`
+    t =    37.30s Find the Cell (First Match)
+    t =    37.66s Tap Cell at {{16.0, 432.3}, {370.0, 52.0}}
+    t =    37.67s     Wait for com.apple.Preferences to idle
+    t =    37.68s     Find the Cell at {{16.0, 432.3}, {370.0, 52.0}}
+    t =    37.88s     Check for interrupting elements affecting Cell
+    t =    38.25s     Synthesize event
+    t =    38.73s     Wait for com.apple.Preferences to idle
+    t =    44.94s Waiting 5.0s for "Accessibility" NavigationBar to exist
+    t =    46.04s     Checking `Expect predicate `existsNoRetry == 1` for object "Accessibility" NavigationBar`
+    t =    46.04s         Checking existence of `"Accessibility" NavigationBar`
+ACE_NATIVE_SETTINGS_NAVIGATION Accessibility destinationOpened=true
+    t =    46.95s Checking existence of `"Motion" Cell`
+    t =    47.84s Find the "Motion" Cell
+    t =    48.50s Tap "MOTION_TITLE" Cell
+    t =    48.50s     Wait for com.apple.Preferences to idle
+    t =    48.51s     Find the "MOTION_TITLE" Cell
+    t =    49.01s     Check for interrupting elements affecting "MOTION_TITLE" Cell
+    t =    49.44s     Synthesize event
+    t =    49.81s     Wait for com.apple.Preferences to idle
+    t =    50.95s Waiting 5.0s for "Motion" NavigationBar to exist
+    t =    52.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Motion" NavigationBar`
+    t =    52.04s         Checking existence of `"Motion" NavigationBar`
+ACE_NATIVE_SETTINGS_NAVIGATION Motion destinationOpened=true
+    t =    52.37s Waiting 5.0s for "Reduce Motion" Switch to exist
+    t =    53.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Reduce Motion" Switch`
+    t =    53.46s         Checking existence of `"Reduce Motion" Switch`
+    t =    53.65s Find the "Reduce Motion" Switch
+    t =    53.84s Find the "REDUCE_MOTION" Switch
+ACE_NATIVE_SWITCH Reduce Motion before=true expected=false frame=(36.0, 146.3333282470703, 330.0, 28.0)
+    t =    54.15s Tap "REDUCE_MOTION" Switch[0.90, 0.50]
+    t =    54.15s     Wait for com.apple.Preferences to idle
+    t =    54.19s     Find the "REDUCE_MOTION" Switch
+    t =    54.40s     Check for interrupting elements affecting "REDUCE_MOTION" Switch
+    t =    54.78s     Synthesize event
+    t =    54.79s         Find the "REDUCE_MOTION" Switch
+    t =    55.02s         Find the "REDUCE_MOTION" Switch
+    t =    55.33s         Find the "REDUCE_MOTION" Switch
+    t =    55.88s     Wait for com.apple.Preferences to idle
+    t =    57.31s Find the "REDUCE_MOTION" Switch
+    t =    57.65s Find the "Reduce Motion" Switch
+ACE_NATIVE_SWITCH_RESULT Reduce Motion wait=1 seconds=1.721715770981973 expected=false actual=Optional(false)
+    t =    58.00s Setting device orientation to Portrait
+    t =    58.01s     Device orientation changed to Portrait
+    t =    58.05s     Wait for com.apple.Preferences to idle
+    t =    58.07s Open com.example.aceclientapp
+    t =    58.07s     Launch com.example.aceclientapp
+    t =    59.19s         Setting up automation session
+    t =    66.39s         Wait for com.example.aceclientapp to idle
+    t =    69.72s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    70.80s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    70.80s         Checking existence of `"Effective interface style" Any`
+    t =    72.18s Find the "Effective interface style" Any
+    t =    72.26s Find the "Effective interface style" ScrollView
+    t =    73.33s Find the Target Application 'com.example.aceclientapp'
+ACE_SETTINGS_RESULT {"mode":"set","observed":{"boldText":false,"increaseContrast":false,"orientation":"portrait","reduceMotion":false}}
+    t =    73.48s Terminate com.example.aceclientapp:1452
+    t =    77.56s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' passed (80.045 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 12:45:12.614.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.045 (80.060) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 12:45:12.616.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.045 (80.064) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 12:45:12.619.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.045 (80.072) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/native-settings/001-recover/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 12:41:57.004 xcodebuild[1015:3794121] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:41:57.072 xcodebuild[1015:3794121] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:42:00.407 xcodebuild[1015:3794121] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:43:54.773 xcodebuild[1015:3794121] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 12:43:54.773 xcodebuild[1015:3794121] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 12:44:50.635 xcodebuild[1015:3794121] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 12:44:50.635 xcodebuild[1015:3794121] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 12:45:13.130 xcodebuild[1015:3794121] [MT] IDETestOperationsObserverDebug: 192.712 elapsed -- Testing started completed.
+2026-09-15 12:45:13.130 xcodebuild[1015:3794121] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 12:45:13.130 xcodebuild[1015:3794121] [MT] IDETestOperationsObserverDebug: 192.712 sec, +192.712 sec -- end

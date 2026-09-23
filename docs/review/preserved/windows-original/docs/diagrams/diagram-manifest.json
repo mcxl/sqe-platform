@@ -1,0 +1,101 @@
+{
+  "authority": {
+    "audit_records": "ACE",
+    "controlled_diagram_source": "Mermaid .mmd",
+    "presentation_role": "Auditor guidance only"
+  },
+  "tools": {
+    "mermaid_cli": "11.16.0",
+    "diagram_design_commit": "4da4dfb80b1f3d2f11678726b0db58c33c1d7e9d"
+  },
+  "diagrams": [
+    {
+      "name": "auditor-workflow",
+      "files": {
+        "controlled_source": {
+          "path": "docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+          "sha256": "6e95cefccd5a14e05a7c265357dabc6eb1da724839d3a6b0f543aeb84e921002"
+        },
+        "controlled_svg": {
+          "path": "docs/diagrams/controlled/svg/auditor-workflow.svg",
+          "sha256": "10e796acaaca0c7c19354a419ced1cf6d58d67486720d6444c100868238729a3"
+        },
+        "presentation_source": {
+          "path": "docs/diagrams/presentation/html/auditor-workflow.html",
+          "sha256": "53b6f146c8ece9b3c5ce4e97c7acf90afad091a119f04e9d4a7804813f4c1443"
+        },
+        "presentation_svg": {
+          "path": "docs/diagrams/presentation/svg/auditor-workflow.svg",
+          "sha256": "52e679a03737dcbaafcbba6405d2daa6ad68912e1d38679c461dfabc86f64ac2"
+        },
+        "fidelity_report": {
+          "path": "docs/diagrams/presentation/fidelity/auditor-workflow.md",
+          "sha256": "b81500ec071c7a3d4fe69704f67840b592041a42b2c0589b039fe74869f50cd6"
+        }
+      }
+    },
+    {
+      "name": "evidence-relationship-map",
+      "files": {
+        "controlled_source": {
+          "path": "docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+          "sha256": "364f3184811979c928be01971626de6c9bb69b71f2566cacccf529a32cd2e4e0"
+        },
+        "controlled_svg": {
+          "path": "docs/diagrams/controlled/svg/evidence-relationship-map.svg",
+          "sha256": "b2e08e159137b75986bfd50bf60c0b197550c0856092cd66a52f1dabdabb401d"
+        },
+        "presentation_source": {
+          "path": "docs/diagrams/presentation/html/evidence-relationship-map.html",
+          "sha256": "ec263fce385dfb872613e08fead676c627a4020d6d9cd8b1e233430ce0e7a2b0"
+        },
+        "presentation_svg": {
+          "path": "docs/diagrams/presentation/svg/evidence-relationship-map.svg",
+          "sha256": "7ade6d2def7e86ade9de7e17cee778d667e743b2ea9c0ac91c617f20f04ccd5f"
+        },
+        "fidelity_report": {
+          "path": "docs/diagrams/presentation/fidelity/evidence-relationship-map.md",
+          "sha256": "cdf638f0ca9334506e0e02ccd46faaf9889293b990eb073392b2b54ae1acaa38"
+        }
+      }
+    },
+    {
+      "name": "approval-review-states",
+      "files": {
+        "controlled_source": {
+          "path": "docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+          "sha256": "b88d5726dd0a6018752675b8da85f39be36d4a6ec7b42b0503e278aad81b4d7f"
+        },
+        "controlled_svg": {
+          "path": "docs/diagrams/controlled/svg/approval-review-states.svg",
+          "sha256": "b7f75b8d925576e2e89bde6cd01b7b592f339bdf00eeef10c1de0b378c23a21f"
+        },
+        "presentation_source": {
+          "path": "docs/diagrams/presentation/html/approval-review-states.html",
+          "sha256": "2be4c2b181701d08ec22ddbc3a94ef49c4cf2fa7b0bc6e22ce71e4c691894a80"
+        },
+        "presentation_svg": {
+          "path": "docs/diagrams/presentation/svg/approval-review-states.svg",
+          "sha256": "ba20e6a6a9bd9bd3c3b5d22ad32aab924bfec4d321b293cb0f70be1baad966d6"
+        },
+        "fidelity_report": {
+          "path": "docs/diagrams/presentation/fidelity/approval-review-states.md",
+          "sha256": "e1150f6e8357081cd8013db0f6a741b89806498f30d53ed9048a622d3c4ddf0a"
+        }
+      }
+    },
+    {
+      "name": "superpowers-build-foundation",
+      "files": {
+        "controlled_source": {
+          "path": "docs/diagrams/controlled/mermaid/superpowers-build-foundation.mmd",
+          "sha256": "ce0097ba66a53537cdaddbcaac4c7c61585f9f96af9c6091c5e6cb26146c73ca"
+        },
+        "controlled_svg": {
+          "path": "docs/diagrams/controlled/svg/superpowers-build-foundation.svg",
+          "sha256": "82c2c3fecdb49abe66b0c3890821ee48b16b8919d7fc57d808d5a63f18130503"
+        }
+      }
+    }
+  ]
+}

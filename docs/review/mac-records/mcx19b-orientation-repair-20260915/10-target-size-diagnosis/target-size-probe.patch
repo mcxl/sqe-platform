@@ -1,0 +1,28 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 29f56b9..a4d49e9 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -359,9 +359,20 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func verifyActionTarget(_ button: XCUIElement, name: String) -> Bool {
+-        requireCoverage(button.exists && button.isHittable, "\(name) must be reachable")
+-            && requireCoverage(isAtLeast44Points(button.frame.width), "\(name) width is below 44 points")
+-            && requireCoverage(isAtLeast44Points(button.frame.height), "\(name) height is below 44 points")
++        guard requireCoverage(button.exists && button.isHittable, "\(name) must be reachable") else { return false }
++        let frame = button.frame
++        emitJSON(marker: "ACE_TARGET_SIZE_PROBE", payload: [
++            "name": name, "x": Double(frame.minX), "y": Double(frame.minY),
++            "width": Double(frame.width), "height": Double(frame.height),
++            "maxX": Double(frame.maxX), "maxY": Double(frame.maxY),
++            "heightDeficit": Double(44 - frame.height), "minimumULP": Double(CGFloat(44).ulp),
++            "originYULP": Double(frame.minY.ulp), "maxYULP": Double(frame.maxY.ulp)
++        ])
++        if !isAtLeast44Points(frame.width) || !isAtLeast44Points(frame.height) {
++            addScreenshot(of: XCUIApplication(), named: "Target size probe — \(name)", snapshot: XCUIScreen.main.screenshot())
++        }
++        return requireCoverage(isAtLeast44Points(frame.width), actionTargetDiagnostic(name, dimension: "width", measurement: frame.width))
++            && requireCoverage(isAtLeast44Points(frame.height), actionTargetDiagnostic(name, dimension: "height", measurement: frame.height))
+     }
+ 
+     private func coverageElement(in app: XCUIApplication, labeled label: String) -> XCUIElement {

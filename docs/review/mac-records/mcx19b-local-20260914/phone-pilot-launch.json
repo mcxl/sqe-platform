@@ -1,0 +1,73 @@
+{
+  "error" : {
+    "code" : 10002,
+    "domain" : "com.apple.dt.CoreDeviceError",
+    "userInfo" : {
+      "BundleIdentifier" : {
+        "string" : "com.alanrichardson.aceclientapp"
+      },
+      "NSLocalizedDescription" : {
+        "string" : "The application failed to launch."
+      },
+      "NSUnderlyingError" : {
+        "error" : {
+          "code" : 1,
+          "domain" : "FBSOpenApplicationServiceErrorDomain",
+          "userInfo" : {
+            "BSErrorCodeDescription" : {
+              "string" : "RequestDenied"
+            },
+            "FBSOpenApplicationRequestID" : {
+              "string" : "0xb6f8"
+            },
+            "NSLocalizedDescription" : {
+              "string" : "The request to open \"com.alanrichardson.aceclientapp\" failed."
+            },
+            "NSLocalizedFailureReason" : {
+              "string" : "The request was denied by service delegate (SBMainWorkspace) for reason: Security (\"Unable to launch com.alanrichardson.aceclientapp because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user\")."
+            },
+            "NSUnderlyingError" : {
+              "error" : {
+                "code" : 3,
+                "domain" : "FBSOpenApplicationErrorDomain",
+                "userInfo" : {
+                  "BSErrorCodeDescription" : {
+                    "string" : "Security"
+                  },
+                  "NSLocalizedFailureReason" : {
+                    "string" : "Unable to launch com.alanrichardson.aceclientapp because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "CD033598-77C2-5F34-9DB2-D90082F10623",
+      "--terminate-existing",
+      "--timeout",
+      "30",
+      "--json-output",
+      "LOCAL_HOME/ace-private/mcx19b-local-20260914/phone-pilot-launch.json",
+      "--log-output",
+      "LOCAL_HOME/ace-private/mcx19b-local-20260914/phone-pilot-launch.log",
+      "com.alanrichardson.aceclientapp"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+
+    },
+    "jsonVersion" : 3,
+    "outcome" : "failed",
+    "version" : "518.27"
+  }
+}

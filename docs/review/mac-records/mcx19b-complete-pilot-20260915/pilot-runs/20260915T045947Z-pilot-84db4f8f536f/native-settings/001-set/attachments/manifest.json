@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "496EFD2A-0534-469E-B075-23F837BC36F7.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Element Debug Description_0_20C44361-467C-4D1D-B47F-5FAE9079B4C1.txt",
+        "timestamp" : 1789449055.051
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "9F6C2B09-6D2E-48F4-880D-1BAB117A8ECE.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-15 at 03.09.45 pm.mp4",
+        "timestamp" : 1789448985.716
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings"
+  }
+]

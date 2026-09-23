@@ -1,0 +1,57 @@
+{
+  "createdAtUTC": "2026-09-14T10:35:29.138415+00:00",
+  "result": "inspected; native failure unresolved",
+  "scope": "Private reduced reproduction; no final-candidate coverage credit",
+  "nativeOutcome": "8 contrast and 2 potentially inaccessible text findings",
+  "imageCount": 19,
+  "uniqueImageCount": 4,
+  "fullResolutionInspection": true,
+  "imageGroups": [
+    {
+      "sha256": "6aa7b5ae350195ba7f5ca392465081fe201d028cb5bb3124f2774973176086d2",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/1AA8263A-DEE3-41E2-AF6B-A74E6C3DB271.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/3A8334C9-B87F-4292-ADA9-1AA78FCF15AE.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/556A0CB9-DA63-41DE-A8ED-856E9173578F.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/5E28AA24-703C-414A-A72F-461D0F4C54DD.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/73B57C88-5DC3-42BE-8E13-FC7906863F93.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/8BA40511-FBAB-4F1B-81C0-05F2EF14C6E3.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/9435A1F9-DA40-474E-8759-45945F202895.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/C958E590-7C47-4509-B678-7455470779A3.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/D3A8EACC-FB8A-45B6-9421-7A76C02BA478.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/D84A8F8A-A692-4FFB-983A-6DBC698D2591.png"
+      ]
+    },
+    {
+      "sha256": "3738a967985db27673f8970b82ae7b170cff1534bd39dc1efec451541605c4c6",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/1AC977CD-095F-4948-98C9-EFCD81C1A0C3.png"
+      ]
+    },
+    {
+      "sha256": "e5901805175418853e7d766ae5f2ee49349a227b07f22105abf93ed70dd8d60c",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/2B75DBBF-A392-403D-862F-3CE16F9C380D.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/4D255AFD-437E-4942-97F6-73C9AA8C29CD.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/5A389C46-DEFB-4504-9688-CEC9107EDE7A.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/5DF8F7E3-2351-418D-A5FE-C8D55290021D.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/93D028C1-25FC-49B1-939A-A8B69B48EDAC.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/B76B00A5-9E48-4059-A4B2-8FB422072BD0.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/DE7264BD-00FE-4CC1-A7F3-C69F51F60FFE.png"
+      ]
+    },
+    {
+      "sha256": "e781144fe7d57a67739b298c74c8780133e9b1435cca46ec1e9233460944d9f4",
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all-attachments/8DBD185F-D927-4EF1-9A02-4BD9F3BC4AE8.png"
+      ]
+    }
+  ],
+  "observations": [
+    "Pre-audit full viewport contains readable release metadata and action values.",
+    "Native full app screenshot differs from the pre-audit capture and omits visible system/test header content. Both images are 1320x2868. This does not establish sample-time coordinates.",
+    "Two distinct native Copy crop hashes show black text and icon on grey.",
+    "Screenshots alone do not establish an Apple defect. Same-build control later passed; cause remains unresolved."
+  ],
+  "videoInspected": false
+}

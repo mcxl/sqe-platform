@@ -1,0 +1,51 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1789417521.911,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789417350.479,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "Contrast failed",
+      "targetName": "ACEClientAppUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+      "testName": "testFictionalReleaseHasApprovedCopyControls()"
+    }
+  ],
+  "title": "Test - ACEClientAppUITests",
+  "topInsights": [
+    {
+      "category": "Common Failures",
+      "impact": "100% of failures",
+      "text": "5 runs of 1 test failed with Contrast failed"
+    }
+  ],
+  "totalTestCount": 1
+}

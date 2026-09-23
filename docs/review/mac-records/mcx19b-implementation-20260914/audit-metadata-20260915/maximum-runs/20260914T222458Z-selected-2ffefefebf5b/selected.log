@@ -1,0 +1,283 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testNormalDeviceSettings" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xcresult
+
+2026-09-15 08:26:48.816437+1000 ACEClientAppUITests-Runner[67560:3292083] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 08:26:53.515.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 08:26:53.517.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 08:26:53.518.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings]' started.
+    t =     0.01s Start Test at 2026-09-15 08:26:53.529
+    t =     0.22s Set Up
+    t =     0.23s Setting device orientation to Portrait
+    t =     0.27s     Wait for com.apple.springboard to idle
+    t =     0.33s Open com.example.aceclientapp
+    t =     0.34s     Launch com.example.aceclientapp
+    t =     3.07s         Setting up automation session
+    t =     8.32s         Wait for com.example.aceclientapp to idle
+    t =    11.25s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    12.31s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    12.31s         Checking existence of `"Effective interface style" Any`
+    t =    13.67s Checking `Expect predicate `label == "light"` for object "Effective interface style" Any`
+    t =    13.67s     Find the "Effective interface style" Any
+    t =    14.84s Checking `Expect predicate `value == "accessibility-extra-extra-extra-large"` for object "Effective interface style" ScrollView`
+    t =    14.84s     Find the "Effective interface style" ScrollView
+    t =    14.89s Get all elements bound by index for: Descendants matching type Button
+    t =    15.05s Find the Button (Element at index 0)
+    t =    15.17s Find the Button (Element at index 1)
+    t =    15.31s Find the Button (Element at index 2)
+    t =    20.55s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    21.65s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    21.65s         Checking existence of `ScrollView (First Match)`
+    t =    21.69s Checking existence of `Any (First Match)`
+    t =    21.76s Find the Any (First Match)
+    t =    21.88s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    22.08s Find the ScrollView (First Match)
+    t =    22.13s Get all elements bound by index for: Descendants matching type Button
+    t =    22.31s Find the Button (Element at index 0)
+    t =    22.48s Find the Button (Element at index 1)
+    t =    22.62s Find the Button (Element at index 2)
+    t =    23.57s Added attachment named 'Release detail — Engagement name — normal-device-settings-light'
+    t =    23.58s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    24.65s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    24.65s         Checking existence of `ScrollView (First Match)`
+    t =    24.69s Checking existence of `Any (First Match)`
+    t =    24.75s Find the Any (First Match)
+    t =    24.89s Find the "Review status: RELEASED" StaticText
+    t =    24.97s Find the ScrollView (First Match)
+    t =    25.02s Get all elements bound by index for: Descendants matching type Button
+    t =    25.12s Find the Button (Element at index 0)
+    t =    25.30s Find the Button (Element at index 1)
+    t =    25.44s Find the Button (Element at index 2)
+    t =    26.34s Added attachment named 'Release detail — Review status — normal-device-settings-light'
+    t =    26.35s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    27.43s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    27.43s         Checking existence of `ScrollView (First Match)`
+    t =    27.47s Checking existence of `Any (First Match)`
+    t =    27.53s Find the Any (First Match)
+    t =    27.69s Find the "Release version: 1" StaticText
+    t =    27.78s Find the ScrollView (First Match)
+    t =    27.86s Find the "Effective interface style" ScrollView
+    t =    27.94s Checking existence of `"Release version: 1" StaticText`
+    t =    28.01s Find the "Release version: 1" StaticText
+    t =    28.14s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    28.14s     Wait for com.example.aceclientapp to idle
+    t =    28.15s     Find the "Effective interface style" ScrollView
+    t =    28.23s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    28.35s     Synthesize event
+    t =    28.35s         Find the "Effective interface style" ScrollView
+    t =    28.42s         Find the "Effective interface style" ScrollView
+    t =    28.50s         Find the "Effective interface style" ScrollView
+    t =    28.56s         Find the "Effective interface style" ScrollView
+    t =    28.65s         Find the "Effective interface style" ScrollView
+    t =    29.77s     Wait for com.example.aceclientapp to idle
+    t =    31.33s Checking existence of `"Release version: 1" StaticText`
+    t =    31.39s Find the "Release version: 1" StaticText
+    t =    31.59s Find the "Release version: 1" StaticText
+    t =    31.71s Find the "Effective interface style" ScrollView
+    t =    31.76s Get all elements bound by index for: Descendants matching type Button
+    t =    31.86s Find the Button (Element at index 0)
+    t =    32.03s Find the Button (Element at index 1)
+    t =    32.17s Find the Button (Element at index 2)
+    t =    33.14s Added attachment named 'Release detail — Release version — normal-device-settings-light'
+    t =    33.15s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    34.15s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    34.15s         Checking existence of `ScrollView (First Match)`
+    t =    34.19s Checking existence of `Any (First Match)`
+    t =    34.33s Find the Any (First Match)
+    t =    34.48s Find the "Published date and time: 2026-08-24T10:15:30Z" StaticText
+    t =    34.57s Find the ScrollView (First Match)
+    t =    34.63s Get all elements bound by index for: Descendants matching type Button
+    t =    34.72s Find the Button (Element at index 0)
+    t =    34.85s Find the Button (Element at index 1)
+    t =    35.06s Find the Button (Element at index 2)
+    t =    35.84s Added attachment named 'Release detail — Published date and time — normal-device-settings-light'
+    t =    35.84s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    36.92s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    36.92s         Checking existence of `ScrollView (First Match)`
+    t =    36.95s Checking existence of `Any (First Match)`
+    t =    37.03s Find the Any (First Match)
+    t =    37.22s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    37.31s Find the ScrollView (First Match)
+    t =    37.45s Find the "Effective interface style" ScrollView
+    t =    37.53s Checking existence of `"Conclusion title: Fictional conclusion" StaticText`
+    t =    37.62s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    37.77s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    37.77s     Wait for com.example.aceclientapp to idle
+    t =    37.78s     Find the "Effective interface style" ScrollView
+    t =    37.85s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    37.98s     Synthesize event
+    t =    37.98s         Find the "Effective interface style" ScrollView
+    t =    38.06s         Find the "Effective interface style" ScrollView
+    t =    38.15s         Find the "Effective interface style" ScrollView
+    t =    38.23s         Find the "Effective interface style" ScrollView
+    t =    38.39s         Find the "Effective interface style" ScrollView
+    t =    39.53s     Wait for com.example.aceclientapp to idle
+    t =    41.10s Checking existence of `"Conclusion title: Fictional conclusion" StaticText`
+    t =    41.17s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    41.33s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    41.48s Find the "Effective interface style" ScrollView
+    t =    41.53s Get all elements bound by index for: Descendants matching type Button
+    t =    41.64s Find the Button (Element at index 0)
+    t =    41.78s Find the Button (Element at index 1)
+    t =    41.92s Find the Button (Element at index 2)
+    t =    42.89s Added attachment named 'Release detail — Conclusion title — normal-device-settings-light'
+    t =    42.89s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    43.98s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    43.98s         Checking existence of `ScrollView (First Match)`
+    t =    44.01s Checking existence of `Any (First Match)`
+    t =    44.09s Find the Any (First Match)
+    t =    44.25s Find the "Conclusion summary: Fictional summary" StaticText
+    t =    44.36s Find the ScrollView (First Match)
+    t =    44.41s Get all elements bound by index for: Descendants matching type Button
+    t =    44.51s Find the Button (Element at index 0)
+    t =    44.64s Find the Button (Element at index 1)
+    t =    44.84s Find the Button (Element at index 2)
+    t =    45.68s Added attachment named 'Release detail — Conclusion summary — normal-device-settings-light'
+    t =    45.70s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    46.78s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    46.78s         Checking existence of `ScrollView (First Match)`
+    t =    46.82s Checking existence of `Any (First Match)`
+    t =    46.91s Find the Any (First Match)
+    t =    47.06s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    47.17s Find the ScrollView (First Match)
+    t =    47.24s Find the "Effective interface style" ScrollView
+    t =    47.33s Checking existence of `"Evidence reference: FICTIONAL-REF-001" StaticText`
+    t =    47.42s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    47.59s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    47.59s     Wait for com.example.aceclientapp to idle
+    t =    47.60s     Find the "Effective interface style" ScrollView
+    t =    47.66s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    47.81s     Synthesize event
+    t =    47.81s         Find the "Effective interface style" ScrollView
+    t =    47.89s         Find the "Effective interface style" ScrollView
+    t =    47.98s         Find the "Effective interface style" ScrollView
+    t =    48.05s         Find the "Effective interface style" ScrollView
+    t =    48.14s         Find the "Effective interface style" ScrollView
+    t =    49.24s     Wait for com.example.aceclientapp to idle
+    t =    50.80s Checking existence of `"Evidence reference: FICTIONAL-REF-001" StaticText`
+    t =    50.88s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    51.03s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    51.18s Find the "Effective interface style" ScrollView
+    t =    51.22s Get all elements bound by index for: Descendants matching type Button
+    t =    51.35s Find the Button (Element at index 0)
+    t =    51.50s Find the Button (Element at index 1)
+    t =    51.65s Find the Button (Element at index 2)
+    t =    52.62s Added attachment named 'Release detail — Evidence reference — normal-device-settings-light'
+    t =    52.62s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    53.69s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    53.69s         Checking existence of `ScrollView (First Match)`
+    t =    53.72s Checking existence of `Any (First Match)`
+    t =    53.89s Find the Any (First Match)
+    t =    54.21s Find the "Action description: Fictional action" StaticText
+    t =    54.43s Find the ScrollView (First Match)
+    t =    54.51s Get all elements bound by index for: Descendants matching type Button
+    t =    54.61s Find the Button (Element at index 0)
+    t =    54.75s Find the Button (Element at index 1)
+    t =    54.89s Find the Button (Element at index 2)
+    t =    55.83s Added attachment named 'Release detail — Action description — normal-device-settings-light'
+    t =    55.83s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    56.90s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    56.91s         Checking existence of `ScrollView (First Match)`
+    t =    56.94s Checking existence of `Any (First Match)`
+    t =    57.11s Find the Any (First Match)
+    t =    57.40s Find the "Action owner: Fictional owner" StaticText
+    t =    57.77s Find the ScrollView (First Match)
+    t =    57.85s Find the "Effective interface style" ScrollView
+    t =    57.93s Checking existence of `"Action owner: Fictional owner" StaticText`
+    t =    58.11s Find the "Action owner: Fictional owner" StaticText
+    t =    58.36s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    58.36s     Wait for com.example.aceclientapp to idle
+    t =    58.38s     Find the "Effective interface style" ScrollView
+    t =    58.45s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    58.58s     Synthesize event
+    t =    58.58s         Find the "Effective interface style" ScrollView
+    t =    58.66s         Find the "Effective interface style" ScrollView
+    t =    58.75s         Find the "Effective interface style" ScrollView
+    t =    58.83s         Find the "Effective interface style" ScrollView
+    t =    58.94s         Find the "Effective interface style" ScrollView
+    t =    60.09s     Wait for com.example.aceclientapp to idle
+    t =    61.66s Checking existence of `"Action owner: Fictional owner" StaticText`
+    t =    61.83s Find the "Action owner: Fictional owner" StaticText
+    t =    62.19s Find the "Action owner: Fictional owner" StaticText
+    t =    62.42s Find the "Effective interface style" ScrollView
+    t =    62.52s Get all elements bound by index for: Descendants matching type Button
+    t =    62.62s Find the Button (Element at index 0)
+    t =    62.80s Find the Button (Element at index 1)
+    t =    62.98s Find the Button (Element at index 2)
+    t =    63.21s Find the "Copy action 1" Button
+    t =    63.34s Find the "Copy action 1" Button
+    t =    64.35s Added attachment named 'Release detail — Action owner — normal-device-settings-light'
+    t =    64.36s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    65.39s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    65.39s         Checking existence of `ScrollView (First Match)`
+    t =    65.48s Checking existence of `Any (First Match)`
+    t =    65.64s Find the Any (First Match)
+    t =    65.92s Find the "Action target date: 2026-08-25" StaticText
+    t =    66.19s Find the ScrollView (First Match)
+    t =    66.27s Get all elements bound by index for: Descendants matching type Button
+    t =    66.37s Find the Button (Element at index 0)
+    t =    66.63s Find the Button (Element at index 1)
+    t =    66.83s Find the Button (Element at index 2)
+    t =    67.01s Find the "Copy action 1" Button
+    t =    67.14s Find the "Copy action 1" Button
+    t =    68.05s Added attachment named 'Release detail — Action target date — normal-device-settings-light'
+    t =    68.05s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    69.08s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    69.08s         Checking existence of `ScrollView (First Match)`
+    t =    69.12s Checking existence of `Any (First Match)`
+    t =    69.29s Find the Any (First Match)
+    t =    69.62s Find the "Action status: OPEN" StaticText
+    t =    69.95s Find the ScrollView (First Match)
+    t =    70.01s Get all elements bound by index for: Descendants matching type Button
+    t =    70.11s Find the Button (Element at index 0)
+    t =    70.28s Find the Button (Element at index 1)
+    t =    70.42s Find the Button (Element at index 2)
+    t =    70.65s Find the "Copy action 1" Button
+    t =    70.79s Find the "Copy action 1" Button
+    t =    71.68s Added attachment named 'Release detail — Action status — normal-device-settings-light'
+    t =    71.68s Get all elements bound by index for: Descendants matching type Button
+    t =    71.80s Find the Button (Element at index 0)
+    t =    71.96s Find the Button (Element at index 1)
+    t =    72.14s Find the Button (Element at index 2)
+    t =    72.36s Find the "Copy action 1" Button
+    t =    72.51s Find the "Copy action 1" Button
+    t =    72.64s Find the Target Application 'com.example.aceclientapp'
+    t =    73.56s Added attachment named 'Fictional release — normal-device-settings — light'
+    t =    79.50s Find the Any (Descendant with identity binding to AX element pid: 67577, elementOrHash.elementID: 4432450368.35)
+    t =    79.64s Find the "2026-08-24T10:15:30Z" StaticText
+    t =    79.77s Find the "2026-08-24T10:15:30Z" StaticText
+    t =    79.87s Find the "2026-08-24T10:15:30Z" StaticText
+    t =    80.00s Find the "2026-08-24T10:15:30Z" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":125.33333333333348,"width":352.66666666666669,"x":32,"y":824.33333333333303},"identifier":"","label":"2026-08-24T10:15:30Z","type":"XCUIElementType(rawValue: 48)"},"scenario":"release-normal-device-settings"}
+    t =    80.20s Find the Any (Descendant with identity binding to AX element pid: 67577, elementOrHash.elementID: 4432450368.35)
+    t =    80.38s Checking existence of `"2026-08-24T10:15:30Z" StaticText`
+    t =    80.47s Find the "2026-08-24T10:15:30Z" StaticText
+LOCAL_HOME/Developer/sqe-platform-audit-metadata/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:837: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed
+    t =    80.96s Terminate com.example.aceclientapp:67577
+    t =    82.10s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings]' failed (82.271 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 08:28:15.800.
+	 Executed 1 test, with 1 failure (0 unexpected) in 82.271 (82.282) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 08:28:15.802.
+	 Executed 1 test, with 1 failure (0 unexpected) in 82.271 (82.285) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 08:28:15.805.
+	 Executed 1 test, with 1 failure (0 unexpected) in 82.271 (82.289) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xcresult
+
+Testing started
+2026-09-15 08:26:40.329 xcodebuild[67538:3291604] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:26:40.350 xcodebuild[67538:3291604] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:26:41.633 xcodebuild[67538:3291604] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:26:54.118 xcodebuild[67538:3291604] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 08:26:54.118 xcodebuild[67538:3291604] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 08:29:19.816 xcodebuild[67538:3291604] [MT] IDETestOperationsObserverDebug: 158.176 elapsed -- Testing started completed.
+2026-09-15 08:29:19.816 xcodebuild[67538:3291604] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 08:29:19.816 xcodebuild[67538:3291604] [MT] IDETestOperationsObserverDebug: 158.176 sec, +158.175 sec -- end
+** TEST EXECUTE FAILED **
+

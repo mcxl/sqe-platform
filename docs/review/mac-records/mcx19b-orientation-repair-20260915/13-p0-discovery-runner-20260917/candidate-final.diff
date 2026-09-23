@@ -1,0 +1,875 @@
+diff --git a/ACE_PROGRESS_GUIDE.html b/ACE_PROGRESS_GUIDE.html
+index deb5dce..3e75655 100644
+--- a/ACE_PROGRESS_GUIDE.html
++++ b/ACE_PROGRESS_GUIDE.html
+@@ -26,10 +26,18 @@
+ <body>
+ <main>
+   <h1>ACE — Progress Guide</h1>
+-  <p class="muted">Last updated: 25 August 2026</p>
++  <p class="muted">ACE iOS candidate plan updated: 17 September 2026. Earlier delivery records below remain historical.</p>
+ 
+   <div class="section">
+-    <h2>Overall Status</h2>
++    <h2>Current ACE iOS Candidate</h2>
++    <p>Continue the Swift app on <code>codex/mcx19b-release-layout</code>, prepared from <code>52b212aca02190ee0e742debe383fa6016fe36b9</code>.</p>
++    <p>The planned discovery runner records all 22 pilot outcomes while keeping failed cases failed. It stops on evidence, launch or environment faults.</p>
++    <p>No acceptance is claimed. The Copy contrast finding and baseline ancestry decision remain open. Required coverage remains 836 cases.</p>
++    <p><a href="docs/plans/2026-09-17-ace-ios-discovery-candidate.md">Candidate and planned verification</a> · <a href="docs/plans/2026-09-14-ace-ios-local-verification.md">Controlling local plan</a></p>
++  </div>
++
++  <div class="section">
++    <h2>Historical Specification Delivery Status — August 2026</h2>
+     <table>
+       <tr><th>Phase</th><td>ACE iOS Read-Only Client Specification Delivery Record</td></tr>
+       <tr><th>Branch</th><td><code>codex/ios-spec-state-sync</code></td></tr>
+@@ -331,15 +339,16 @@
+     <h3>ACE iOS Read-Only Client Specification</h3>
+     <p><a href="https://github.com/mcxl/agentic-os-workspace/pull/61">PR #61</a> merged exact head <code>c2f3de05fb317d15f563356aaf8305be25fe434e</code> as <code>436fed942d1b45da7473f98930de11b33f861d13</code> at 11:04:09 UTC on 24 August 2026. The original Security review approved Git blob <code>5e0df37037aef24bb55ef9cbafd670d601410de0</code>.</p>
+     <p><a href="https://github.com/mcxl/agentic-os-workspace/pull/62">PR #62</a> records the final specification artifact. Its file SHA-256 is <code>15B65ECE3306E6D6918A2233001CE534A64590E9F9B3464BBA0DACA997639943</code>. Its Git blob is <code>a60efb08bdf4056bddab837f1e0f831fe8f273c6</code>. Independent Pocock and Security reviews approved this exact artifact with no remaining findings. The catalogue has 197 identifiers, 197 unique identifiers, no duplicates, no sequence gaps, and complete <code>IOS-AUTH-001</code> through <code>IOS-AUTH-070</code>.</p>
+-    <p>No application code changed. <a href="https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application">MCX-15</a> records the implementation scope, tests, ten-working-day limit, exclusions, data controls, approved Mac, and pending inputs. The issue remains <code>Todo</code> and is not approved for implementation.</p>
++    <p>No application code changed. <a href="https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application">MCX-15</a> records the implementation scope, tests, ten-working-day limit, exclusions, data controls, approved Mac, and pending inputs. This was the August issue status. The current Swift implementation authority and planned verification are recorded in the candidate plan above.</p>
+   </div>
+ 
+   <div class="section">
+     <h2>Native iOS Development Path</h2>
+     <table>
+-      <tr><th>Build And Automated Tests</th><td>After provider approval, Codemagic receives only the approved private source. It uses Xcode 26 for builds and automated tests.</td></tr>
+-      <tr><th>Simulator Evidence</th><td>Revyl receives only the compiled simulator <code>.app</code>. It provides the required iOS 26 simulator evidence.</td></tr>
+-      <tr><th>Final Device Evidence</th><td>Use the approved Mac and an iPhone 15 Pro or later model.</td></tr>
++      <tr><th>Build And Automated Tests</th><td>Use the approved Mac and local Xcode 26.4.1 workflow. Windows controls work and reviews compact records.</td></tr>
++      <tr><th>Simulator Evidence</th><td>Use iPhone 17 and iPhone 17 Pro Max on iOS 26.4.1. Keep bulk evidence in private Mac storage.</td></tr>
++      <tr><th>Final Device Evidence</th><td>Use the already approved iPhone 15 Pro Max, with current free signing and required manual checks.</td></tr>
++      <tr><th>Closed Alternatives</th><td>Continue Swift. Expo and Bolt would require replacement implementation and new evidence; no framework cause has been established. Codemagic is excluded.</td></tr>
+       <tr><th>Separate Pilots</th><td>Sift-KG and OpenViking remain separate fictional-data pilots. They are not build dependencies.</td></tr>
+       <tr><th>Data Boundary</th><td>Do not transfer personal information, client evidence, passwords, certificates, Production credentials, or usable tokens.</td></tr>
+     </table>
+@@ -348,14 +357,13 @@
+   <div class="section">
+     <h2>Next Steps</h2>
+     <ul>
+-      <li><strong>Specification Delivery:</strong> Pocock and Security approved the exact artifact. Record the final PR #62 commit and obtain user approval.</li>
+-      <li><strong>Implementation Entry:</strong> Approve MCX-15.</li>
+-      <li><strong>Provider Transfers:</strong> Approve Codemagic before private-source transfer. Approve Revyl before compiled-application transfer.</li>
+-      <li><strong>Network And Device Testing:</strong> Approve the private test server and certificate before network testing. Approve the exact bundle identifier, signing team, and entitlements before a physical-device build.</li>
+-      <li><strong>Build And Verification:</strong> Record exact Xcode 26 host evidence from Codemagic and iOS 26 simulator evidence from Revyl.</li>
+-      <li><strong>Final Device Evidence:</strong> Use the approved Mac and an iPhone 15 Pro or later model after implementation.</li>
++      <li><strong>Runner:</strong> Implement discovery mode, verify failure handling and obtain the required fresh review.</li>
++      <li><strong>Freeze:</strong> Complete candidate records, commit only task files and retain the clean candidate identity externally.</li>
++      <li><strong>Pilot:</strong> Complete the 22-case discovery pilot. Preserve and classify every failure before corrections.</li>
++      <li><strong>Acceptance:</strong> Obtain Pocock review before final verification. Require the acceptance pilot and all 836 cases to pass.</li>
++      <li><strong>Device And Service:</strong> Complete signing, physical iPhone, private-service, baseline and remaining review gates.</li>
+     </ul>
+-    <p>Keep fictional-only data, G0, client editing, new authentication, and Production controls excluded unless separately approved.</p>
++    <p>Keep fictional-only data and G0 controls. No real client data, Production deployment or automatic merge.</p>
+   </div>
+ </main>
+ </body>
+diff --git a/DEV_STATE.md b/DEV_STATE.md
+index 2c04978..3d1b4cf 100644
+--- a/DEV_STATE.md
++++ b/DEV_STATE.md
+@@ -1,9 +1,20 @@
+ # Development State
+ 
+-## Controlled Branch
++## Current ACE iOS Candidate
+ 
+-The current delivery branch is `codex/sqe-pivot-integration`.
+-Its baseline is the sanitised SQE Platform repository root.
++The current ACE iOS delivery branch is `codex/mcx19b-release-layout` on the approved Mac.
++The discovery candidate is prepared from `52b212aca02190ee0e742debe383fa6016fe36b9`.
++Continue the Swift application. Expo, Bolt and Codemagic are outside the approved route.
++
++See [ACE iOS Discovery Candidate](docs/plans/2026-09-17-ace-ios-discovery-candidate.md) for planned verification and freeze rules.
++This record does not establish acceptance. The original Copy contrast finding and baseline ancestry decision remain unresolved.
++Retain the 22-case pilot, 836-case programme, physical-device, service, signing and review requirements.
++Keep results outside the frozen candidate and bind each result to its tested identity.
++
++## Historical Platform Integration Context
++
++The earlier platform delivery branch was `codex/sqe-pivot-integration`.
++Its baseline was the sanitised SQE Platform repository root.
+ 
+ ## Current Controls
+ 
+@@ -22,7 +33,7 @@ The iOS client source is a read-only, controlled snapshot.
+ The release service and release projection retain their approved ownership boundaries.
+ See [Approved Specifications](docs/specs/) and [Architecture Decisions](docs/adr/).
+ 
+-## Current Delivery Goal
++## Historical Platform Delivery Goal
+ 
+ The Platform Pivot prepares one protected integration branch for final review.
+ It does not change client data, Production, schema, queries, or evidence records.
+diff --git a/docs/plans/2026-09-14-ace-ios-local-verification.md b/docs/plans/2026-09-14-ace-ios-local-verification.md
+index 33eb24f..20f2b0a 100644
+--- a/docs/plans/2026-09-14-ace-ios-local-verification.md
++++ b/docs/plans/2026-09-14-ace-ios-local-verification.md
+@@ -44,6 +44,17 @@ The iPhone 16e simulator is optional compatibility evidence. It is not part of r
+ 
+ Free-signing profiles are valid for seven days. Local signing evidence records expiry at `2026-09-21 12:37:21 AEST`. Before installation or delivery, check the profile expiry. Renew before expiry by re-signing with the same approved bundle and signing team. Then repeat affected signed-device checks.
+ 
++## Discovery Transition — 17 September 2026
++
++The user approved closing the D1 positioning experiment as incomplete and proceeding to P0 runner work.
++The [discovery candidate record](2026-09-17-ace-ios-discovery-candidate.md) defines the change, bounded work block and planned verification.
++This does not waive the unresolved Copy finding or reduce final acceptance requirements.
++
++Discovery runs each pilot case independently and preserves every native failure.
++It stops on lost evidence, unexpected or incomplete native execution, failed launch, infrastructure faults or failed restoration.
++A completed discovery run with failures is not acceptance. The default acceptance pilot still requires every gate to pass.
++No D1 diagnostic procedure enters the application or committed UI tests under this transition.
++
+ ## Local Runner And Evidence
+ 
+ Use a Python standard-library local runner and Apple tools only.
+diff --git a/docs/specs/2026-08-24-ace-ios-read-only-client-application.md b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+index 3bcbe57..ce352bd 100644
+--- a/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
++++ b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+@@ -875,6 +875,8 @@ Use `EXL` and `MAX` for difficult-layout coverage.
+ 
+ The current local verification record gives the complete matrix, pilot, resource, runner, diagnostic, and renewal controls: [ACE iOS Local Verification](../plans/2026-09-14-ace-ios-local-verification.md).
+ 
++The approved [Discovery Candidate](../plans/2026-09-17-ace-ios-discovery-candidate.md) adds a diagnostic pilot execution mode. Failed cases stay failed. This mode cannot satisfy the acceptance pilot or waive any accessibility requirement. The 836-case coverage and final acceptance gates remain unchanged.
++
+ Run Bold Text off and on.
+ 
+ Run Reduce Motion off and on.
+diff --git a/tools/ace_ios_local.py b/tools/ace_ios_local.py
+index 17c4683..a31950b 100644
+--- a/tools/ace_ios_local.py
++++ b/tools/ace_ios_local.py
+@@ -20,6 +20,7 @@ import shutil
+ import subprocess
+ import sys
+ import time
++import zlib
+ from datetime import datetime, timezone
+ from collections import defaultdict
+ from dataclasses import asdict, dataclass
+@@ -600,7 +601,114 @@ def native_flags(identifier: str, template: Path, evidence: Path, label: str, re
+     return {key: observed[key] for key in fields}
+ 
+ 
+-def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Case, ...], build_record: dict[str, object], evidence: Path, index: int) -> dict[str, object]:
++def verify_discovery_screenshots(names: list[str], attachments: Path) -> None:
++    """Validate retained PNG contents as well as their native attachment names."""
++    for exported in screenshot_exports(names, attachments):
++        try:
++            data = (attachments / exported).read_bytes()
++            if not data.startswith(b"\x89PNG\r\n\x1a\n"):
++                raise ValueError("PNG signature")
++            offset, kinds, compressed = 8, [], bytearray()
++            while offset < len(data):
++                size = int.from_bytes(data[offset:offset + 4], "big")
++                end = offset + size + 12
++                if end > len(data) or end - offset < 12:
++                    raise ValueError("PNG chunk length")
++                kind = data[offset + 4:offset + 8]
++                content = data[offset + 8:end - 4]
++                if zlib.crc32(kind + content) != int.from_bytes(data[end - 4:end], "big"):
++                    raise ValueError("PNG checksum")
++                kinds.append(kind)
++                if kind == b"IHDR":
++                    if size != 13:
++                        raise ValueError("PNG header")
++                    width, height = int.from_bytes(content[:4], "big"), int.from_bytes(content[4:8], "big")
++                    depth, colour, compression, filtering, interlace = content[8:]
++                    if (width == 0 or height == 0 or depth != 8 or colour not in (2, 6)
++                            or compression != 0 or filtering != 0 or interlace != 0):
++                        raise ValueError("unsupported native screenshot PNG header")
++                    row_bytes = width * (3 if colour == 2 else 4) + 1
++                    expected_bytes = height * row_bytes
++                if kind == b"IDAT":
++                    compressed.extend(content)
++                offset = end
++            if not kinds or kinds[0] != b"IHDR" or kinds[-1] != b"IEND" or kinds.count(b"IHDR") != 1 or kinds.count(b"IEND") != 1:
++                raise ValueError("PNG structure")
++            decoder = zlib.decompressobj()
++            pixels = decoder.decompress(bytes(compressed), expected_bytes + 1)
++            if (len(pixels) != expected_bytes or not decoder.eof or decoder.unused_data or decoder.unconsumed_tail
++                    or any(pixels[offset] > 4 for offset in range(0, expected_bytes, row_bytes))):
++                raise ValueError("PNG image scanlines")
++        except (OSError, ValueError, zlib.error) as error:
++            raise RunnerError("discovery screenshot is unreadable or corrupt") from error
++
++
++def discovery_native_result(bundle: Path, summary_path: Path, log: Path, attachments: Path,
++                            case: Case, process: dict[str, object]) -> dict[str, object]:
++    """Continue only positively evidenced audit assertions; ambiguous faults block."""
++    response = checked(["xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(bundle)], timeout=120)
++    try:
++        payload = json.loads(str(response["stdout"]))
++    except json.JSONDecodeError as error:
++        raise RunnerError("discovery native result summary is invalid") from error
++    summary_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
++    fields = ("totalTestCount", "passedTests", "failedTests", "skippedTests", "expectedFailures")
++    if (not isinstance(payload, dict) or any(type(payload.get(key)) is not int for key in fields)
++            or payload["totalTestCount"] != 1 or payload["skippedTests"] != 0 or payload["expectedFailures"] != 0
++            or (payload["passedTests"], payload["failedTests"], payload.get("result")) not in ((1, 0, "Passed"), (0, 1, "Failed"))):
++        raise RunnerError("discovery native counts are incomplete, skipped or unexpected")
++    if process.get("timedOut") is not False or process.get("error") or process.get("exit") != (0 if payload["result"] == "Passed" else 65):
++        raise RunnerError("discovery native process outcome is ambiguous")
++    try:
++        text = log.read_text(encoding="utf-8")
++    except (OSError, UnicodeError) as error:
++        raise RunnerError("discovery native log is unreadable or corrupt") from error
++    records = marker_records(log, CASE_MARKER)
++    if payload["result"] == "Passed":
++        verify_case_markers((case,), records)
++        verify_screenshot_attachments(records, attachments)
++        if payload.get("testFailures") not in (None, []):
++            raise RunnerError("passed discovery summary contains unexpected failures")
++        verify_discovery_screenshots(records[0]["screenshots"], attachments)
++        return {"status": "passed", "classification": "complete-pass", "nativeSummary": payload,
++                "caseRecords": records, "auditFindings": []}
++    if records:
++        raise RunnerError("failed discovery test contains unexpected completion markers")
++    failures = payload.get("testFailures")
++    findings = marker_records(log, "ACE_A11Y_ISSUE ")
++    if (not case.audit or not isinstance(failures, list) or not failures or not findings
++            or any(not isinstance(failure, dict) or failure.get("targetName") != "ACEClientAppUITests"
++                   or failure.get("testIdentifierString") != "ACEClientAppUITests/testCoverageBatch()"
++                   or not isinstance(failure.get("failureText"), str) or not failure["failureText"] for failure in failures)
++            or any(not isinstance(finding.get("scenario"), str) or not finding["scenario"].startswith(case.scenario + "-")
++                   or not isinstance(finding.get("compactDescription"), str) or not finding["compactDescription"]
++                   or not isinstance(finding.get("detailedDescription"), str) or not finding["detailedDescription"]
++                   or not isinstance(finding.get("auditType"), str) or not isinstance(finding.get("element"), dict) for finding in findings)
++            or {failure["failureText"] for failure in failures} != {finding["compactDescription"] for finding in findings}):
++        raise RunnerError("native assertion cannot be distinguished from a launch, test-service or environment fault")
++    # Require the native assertion location and test completion, not exit 65 alone.
++    assertion_pattern = r"^.+/ACEClientAppUITests[.]swift:[0-9]+: error: -\[ACEClientAppUITests[.]ACEClientAppUITests testCoverageBatch\] : (.+)$"
++    assertions = re.findall(assertion_pattern, text, flags=re.MULTILINE)
++    error_lines = [line for line in text.splitlines() if "error:" in line]
++    if (sorted(assertions) != sorted(failure["failureText"] for failure in failures)
++            or len(error_lines) != len(assertions)
++            or len(re.findall(r"Test Case '-\[ACEClientAppUITests[.]ACEClientAppUITests testCoverageBatch\]' failed \([0-9.]+ seconds\)[.]", text)) != 1
++            or re.search(r"Testing failed:|Failed to launch|failed to launch|Early unexpected exit|Lost connection|lost connection|crashed|timed out|TEST EXECUTE INTERRUPTED", text)):
++        raise RunnerError("discovery native log does not prove an isolated audit assertion")
++    # This capture occurs only after launch, state and observed-settings checks.
++    screenshot_names = sorted({f"Coverage {case.id} viewport initial", *(
++        f"Coverage {case.id} viewport {finding['scenario'][len(case.scenario) + 1:]}" for finding in findings)})
++    verify_discovery_screenshots(screenshot_names, attachments)
++    return {"status": "failed", "classification": "native-accessibility-assertion", "nativeSummary": payload,
++            "caseRecords": [], "auditFindings": findings, "nativeAssertions": error_lines,
++            "screenshots": screenshot_names, "auditInvocationCount": None,
++            "auditCompletion": "interrupted-by-native-assertion"}
++
++
++def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Case, ...], build_record: dict[str, object], evidence: Path, index: int,
++              discovery: bool = False) -> dict[str, object]:
++    if discovery and len(cases) != 1:
++        raise RunnerError("discovery requires one independent native case")
+     for setting in setting_commands(identifier, settings):
+         checked(setting, timeout=60)
+     payload = json.dumps([case.payload() for case in cases], separators=(",", ":"))
+@@ -621,31 +729,40 @@ def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Cas
+     (batch_root / "native-command.json").write_text(json.dumps(process, indent=2, sort_keys=True), encoding="utf-8")
+     summary = batch_root / "native-summary.json"
+     attachments = batch_root / "attachments"
++    outcome: dict[str, object] = {}
+     failures: list[str] = []
+     count = 0
+     if not result_bundle.is_dir():
+         failures.append("result bundle missing")
+     else:
+-        try:
+-            count = native_summary(result_bundle, summary, 1)
+-        except RunnerError as error:
+-            failures.append(str(error))
++        if not discovery:
++            try:
++                count = native_summary(result_bundle, summary, 1)
++            except RunnerError as error:
++                failures.append(str(error))
+         try:
+             _export_attachments(result_bundle, attachments)
+         except RunnerError as error:
+             failures.append(str(error))
+-    if process.get("exit") != 0:
++        if discovery:
++            try:
++                outcome = discovery_native_result(result_bundle, summary, log, attachments, cases[0], process)
++                count = 1
++            except RunnerError as error:
++                failures.append(str(error))
++    if not discovery and process.get("exit") != 0:
+         failures.append("native process failed")
+     if failures:
+         raise RunnerError(f"native batch {index} failed after evidence collection: {'; '.join(failures)}")
+-    records = marker_records(log, CASE_MARKER)
+-    verify_case_markers(cases, records)
+-    verify_screenshot_attachments(records, attachments)
++    records = outcome["caseRecords"] if discovery else marker_records(log, CASE_MARKER)
++    if not discovery:
++        verify_case_markers(cases, records)
++        verify_screenshot_attachments(records, attachments)
+     return {"device": device, "settings": settings.payload(), "caseCount": len(cases), "auditCount": sum(case.audit for case in cases),
+             "nativeTestCount": count, "runfileSha256": sha256(runfile), "resultBundle": str(result_bundle),
+             "resultBundleSha256": directory_hash(result_bundle), "attachmentDirectory": str(attachments),
+             "attachmentSha256": directory_hash(attachments), "summarySha256": sha256(summary),
+-            "logSha256": sha256(log), "command": process["command"], "exit": process["exit"], "caseRecords": records}
++            "logSha256": sha256(log), "command": process["command"], "exit": process["exit"], "caseRecords": records, **outcome}
+ 
+ 
+ def directory_hash(path: Path) -> str:
+@@ -817,7 +934,9 @@ def validate_review_projection(resources: dict[str, object], ledger: dict[str, o
+ 
+ 
+ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[str, object] | None = None,
+-                 frozen_candidate: dict[str, object] | None = None) -> dict[str, object]:
++                 frozen_candidate: dict[str, object] | None = None, discovery: bool = False) -> dict[str, object]:
++    if discovery and retained_pilot is not None:
++        raise RunnerError("discovery does not reuse acceptance cases")
+     environment = preflight()
+     candidate_record = candidate() if frozen_candidate is None else frozen_candidate
+     if candidate() != candidate_record:
+@@ -829,7 +948,8 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+     assert isinstance(devices, dict)
+     reused = set() if retained_pilot is None else eligible_pilot_cases(retained_pilot)
+     execution_cases = tuple(case for case in cases if canonical_case(case.device, case.scenario, case.settings.payload()) not in reused)
+-    unordered_batch_plan = coverage_batches(execution_cases)
++    unordered_batch_plan = (tuple((case.device, case.settings, (case,)) for case in execution_cases)
++                            if discovery else coverage_batches(execution_cases))
+     batch_plan = tuple(batch for device in DEVICES for batch in unordered_batch_plan if batch[0] == device)
+     final_batch_index = {device: index for index, (device, _settings, _cases) in enumerate(batch_plan, 1)}
+     previous: dict[str, dict[str, str]] = {}
+@@ -874,9 +994,15 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+                 "mode": "set", "boldText": settings.boldText, "reduceMotion": settings.reduceMotion,
+                 "increaseContrast": settings.increaseContrast, "orientation": settings.orientation,
+             })
+-            records.append(run_batch(device, identifier, settings, batch_cases, build_record, evidence, index))
++            record = (run_batch(device, identifier, settings, batch_cases, build_record, evidence, index, discovery=True)
++                      if discovery else run_batch(device, identifier, settings, batch_cases, build_record, evidence, index))
++            if discovery:
++                if record.get("status") not in {"passed", "failed"}:
++                    raise RunnerError("discovery native outcome is unsupported")
++                record["case"] = batch_cases[0].payload()
++            records.append(record)
+             (evidence / "batches" / f"{index:03d}" / "checkpoint.json").write_text(
+-                json.dumps({"status": "passed", "record": records[-1]}, indent=2, sort_keys=True), encoding="utf-8")
++                json.dumps({"status": record.get("status", "passed"), "record": record}, indent=2, sort_keys=True), encoding="utf-8")
+             if candidate() != candidate_record:
+                 raise RunnerError("candidate identity changed after native batch")
+             if index == final_batch_index[device]:
+@@ -892,8 +1018,10 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+                     post_boot_restored_devices.add(device)
+                 if initial_boot_states[device] == "Shutdown" or index != len(batch_plan):
+                     checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
+-    except RunnerError as error:
+-        primary_error = error
++    except (RunnerError, OSError, UnicodeError) as error:
++        if not discovery and not isinstance(error, RunnerError):
++            raise
++        primary_error = error if isinstance(error, RunnerError) else RunnerError(f"discovery evidence is unreadable: {error}")
+         (evidence / "coverage-checkpoint.json").write_text(json.dumps({"status": "failed", "candidate": candidate_record,
+             "completedBatches": records, "error": str(error)}, indent=2, sort_keys=True), encoding="utf-8")
+     finally:
+@@ -940,6 +1068,10 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+             indent=2, sort_keys=True), encoding="utf-8")
+         raise RunnerError("simulator setting restoration failed: " + ", ".join(restoration_failures))
+     if candidate() != candidate_record:
++        if discovery:
++            (evidence / "coverage-final-failure.json").write_text(json.dumps({"candidate": candidate_record,
++                "primaryError": "candidate identity changed before final report", "restorationFailures": [],
++                "completedBatches": records}, indent=2, sort_keys=True), encoding="utf-8")
+         raise RunnerError("candidate identity changed before final report")
+     result = {"candidate": candidate_record, "environment": environment, "build": build_record, "batches": records,
+               "caseCount": len(cases), "auditCount": sum(case.audit for case in cases), "layoutCount": sum(not case.audit for case in cases),
+@@ -949,6 +1081,35 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+     return result
+ 
+ 
++def discovery_summary(cases: tuple[Case, ...], candidate_record: object, records: list[dict[str, object]],
++                      error: str | None = None) -> dict[str, object]:
++    passed = sum(record.get("status") == "passed" for record in records)
++    failed = sum(record.get("status") == "failed" for record in records)
++    return {"mode": "pilot-discovery", "status": "blocked" if error else ("completed-with-failures" if failed else "completed"),
++            "acceptanceEligible": False, "candidate": candidate_record, "caseCount": len(cases),
++            "completedCaseCount": passed + failed, "passedCaseCount": passed, "failedCaseCount": failed,
++            "remainingCaseCount": len(cases) - passed - failed, "cases": records, "error": error}
++
++
++def run_discovery(cases: tuple[Case, ...], evidence: Path, frozen_candidate: dict[str, object] | None = None) -> dict[str, object]:
++    """Build once, execute independent cases, and retain blocked or completed outcomes."""
++    try:
++        result = run_coverage(cases, evidence, frozen_candidate=frozen_candidate, discovery=True)
++    except RunnerError as error:
++        records: list[dict[str, object]] = []
++        failure = evidence / "coverage-final-failure.json"
++        if failure.is_file():
++            records = _load_object(failure, "discovery failure").get("completedBatches", [])
++        summary = discovery_summary(cases, frozen_candidate, records, str(error))
++        (evidence / "discovery-summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
++        raise
++    summary = {**result, **discovery_summary(cases, result["candidate"], result["batches"])}
++    summary["completedAuditInvocationCount"] = summary.pop("auditInvocationCount")
++    summary["auditInvocationCount"] = None if summary["failedCaseCount"] else summary["completedAuditInvocationCount"]
++    (evidence / "discovery-summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
++    return summary
++
++
+ def validate_pilot_result(result: dict[str, object]) -> None:
+     if result.get("caseCount") != 22 or result.get("auditCount") != 20 or result.get("layoutCount") != 2:
+         raise RunnerError("pilot counts are incomplete")
+@@ -1257,6 +1418,7 @@ def main(argv: list[str] | None = None) -> int:
+     selected_parser.add_argument("--device", choices=DEVICES, default="iPhone 17")
+     selected_parser.add_argument("--test-env-json", type=Path)
+     pilot_parser = sub.add_parser("pilot")
++    pilot_parser.add_argument("--discovery", action="store_true")
+     pilot_parser.add_argument("--pocock-evidence", type=Path, required=True)
+     pilot_parser.add_argument("--functional-evidence", type=Path, required=True)
+     pilot_parser.add_argument("--evidence-gate", type=Path, required=True)
+@@ -1279,11 +1441,13 @@ def main(argv: list[str] | None = None) -> int:
+             readiness_paths = {"pocock": args.pocock_evidence, "functional": args.functional_evidence,
+                                "evidence-gate": args.evidence_gate, "private-input": args.private_input_record}
+             readiness = pilot_readiness(frozen_candidate, readiness_paths)
+-            result = run_coverage(pilot_cases(), evidence, frozen_candidate=frozen_candidate)
++            result = (run_discovery(pilot_cases(), evidence, frozen_candidate=frozen_candidate)
++                      if args.discovery else run_coverage(pilot_cases(), evidence, frozen_candidate=frozen_candidate))
+             if pilot_readiness(frozen_candidate, readiness_paths) != readiness or candidate() != frozen_candidate:
+                 raise RunnerError("pilot candidate or readiness evidence changed before manifest")
+             result["readinessEvidence"] = readiness
+-            validate_pilot_result(result)
++            if not args.discovery:
++                validate_pilot_result(result)
+         else:
+             current_candidate = candidate()
+             pilot = validate_full_gate(args.pilot_manifest, args.review_ledger, current_candidate)
+@@ -1293,9 +1457,18 @@ def main(argv: list[str] | None = None) -> int:
+             result["reviewLedger"] = str(args.review_ledger.resolve())
+             result["reviewLedgerSha256"] = sha256(args.review_ledger)
+         manifest = write_manifest(evidence, result, args.mode)
++        if args.mode == "pilot" and args.discovery:
++            print(json.dumps({"result": result["status"], "acceptanceEligible": False, "manifest": str(manifest)}, sort_keys=True))
++            return 1 if result["failedCaseCount"] else 0
+         print(json.dumps({"result": "passed", "manifest": str(manifest)}, sort_keys=True))
+         return 0
+     except RunnerError as error:
++        if args.mode == "pilot" and args.discovery:
++            summary_path = evidence / "discovery-summary.json"
++            summary = (_load_object(summary_path, "discovery summary") if summary_path.is_file()
++                       else discovery_summary(pilot_cases(), None, [], str(error)))
++            summary.update(status="blocked", error=str(error), acceptanceEligible=False)
++            summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
+         failure = evidence / "failure.json"
+         failure.write_text(json.dumps({"mode": args.mode, "error": str(error)}, indent=2, sort_keys=True), encoding="utf-8")
+         print(json.dumps({"result": "blocked", "error": str(error), "evidence": str(failure)}, sort_keys=True), file=sys.stderr)
+diff --git a/tools/tests/test_ace_ios_local.py b/tools/tests/test_ace_ios_local.py
+index 4705ce0..fbddcf6 100644
+--- a/tools/tests/test_ace_ios_local.py
++++ b/tools/tests/test_ace_ios_local.py
+@@ -1,4 +1,8 @@
+ from copy import deepcopy
++from contextlib import ExitStack, redirect_stdout, redirect_stderr
++import io
++import struct
++import zlib
+ import importlib.util
+ import json
+ import plistlib
+@@ -695,5 +699,334 @@ class CommandAndResourceEvidenceTests(unittest.TestCase):
+                     ace.validate_full_gate(manifest, ledger, candidate)
+ 
+ 
++
++class DiscoveryNativeEvidenceTests(unittest.TestCase):
++    """Synthetic native evidence exercises parsing; it is not native execution proof."""
++
++    def setUp(self):
++        self.directory = tempfile.TemporaryDirectory()
++        self.addCleanup(self.directory.cleanup)
++        self.root = Path(self.directory.name)
++        self.bundle = self.root / "result.xcresult"
++        self.bundle.mkdir()
++        self.attachments = self.root / "attachments"
++        self.attachments.mkdir()
++        self.case = ace.make_case("pilot", "iPhone 17", "signIn", ace.Settings("light", "large", "portrait"), True)
++        self.process = {"exit": 65, "timedOut": False}
++        self.summary = {"totalTestCount": 1, "passedTests": 0, "failedTests": 1, "skippedTests": 0,
++                        "expectedFailures": 0, "result": "Failed", "testFailures": [{
++                            "targetName": "ACEClientAppUITests",
++                            "testIdentifierString": "ACEClientAppUITests/testCoverageBatch()",
++                            "failureText": "Contrast failed"}]}
++        self.finding = {"scenario": "signIn-initial", "compactDescription": "Contrast failed",
++                        "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
++                        "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
++                        "element": {"label": "Sign in", "identifier": "", "type": "button"}}
++        self.screenshot_name = f"Coverage {self.case.id} viewport initial"
++        self.image = self.attachments / "E28C726E-95E6-4B9A-B95B-3C717BD48381.png"
++        self.image.write_bytes(self.png())
++        self.manifest = [{"attachments": [{"exportedFileName": self.image.name,
++                                            "suggestedHumanReadableName": self.screenshot_name}]}]
++        self.write_manifest()
++        self.log = self.root / "native.log"
++        self.write_log()
++
++    @staticmethod
++    def png(raw=b"\x00\xff\xff\xff", colour=2, depth=8, interlace=0):
++        def chunk(kind, data):
++            return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
++        return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 1, 1, depth, colour, 0, 0, interlace))
++                + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
++
++    def write_manifest(self):
++        (self.attachments / "manifest.json").write_text(json.dumps(self.manifest), encoding="utf-8")
++
++    def write_log(self, include_finding=True, completion=True, extra=""):
++        lines = []
++        if include_finding:
++            lines.append("ACE_A11Y_ISSUE " + json.dumps(self.finding))
++        lines.append("/synthetic/ACEClientAppUITests.swift:386: error: "
++                     "-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : Contrast failed")
++        if completion:
++            lines.append("Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (1.0 seconds).")
++        self.log.write_text("\n".join(lines) + "\n" + extra, encoding="utf-8")
++
++    def classify(self, summary_text=None):
++        output = json.dumps(self.summary) if summary_text is None else summary_text
++        with patch.object(ace, "checked", return_value={"stdout": output, "exit": 0}):
++            return ace.discovery_native_result(self.bundle, self.root / "summary.json", self.log,
++                                               self.attachments, self.case, self.process)
++
++    def test_matched_failure_preserves_native_summary_assertion_and_finding(self):
++        result = self.classify()
++        self.assertEqual(result["status"], "failed")
++        self.assertEqual(result["classification"], "native-accessibility-assertion")
++        self.assertEqual(result["nativeSummary"], self.summary)
++        self.assertEqual(result["auditFindings"], [self.finding])
++        self.assertIn("ACEClientAppUITests.swift:386", result["nativeAssertions"][0])
++        self.assertEqual(result["caseRecords"], [])
++        self.assertIsNone(result["auditInvocationCount"])
++        self.assertEqual(json.loads((self.root / "summary.json").read_text()), self.summary)
++
++    def test_missing_and_malformed_native_summary_block(self):
++        for text in ("not JSON", "{}", "[]"):
++            with self.subTest(summary=text), self.assertRaises(ace.RunnerError):
++                self.classify(text)
++
++    def test_skipped_incomplete_unexpected_and_boolean_counts_block(self):
++        original = deepcopy(self.summary)
++        for field, value in (("totalTestCount", 0), ("totalTestCount", 2), ("skippedTests", 1),
++                             ("expectedFailures", 1), ("passedTests", 1), ("failedTests", 0), ("failedTests", True)):
++            with self.subTest(field=field, value=value):
++                self.summary = {**original, field: value}
++                with self.assertRaisesRegex(ace.RunnerError, "counts"):
++                    self.classify()
++
++    def test_wrong_summary_assertion_or_test_identity_blocks(self):
++        for field, value in (("failureText", "Another assertion"), ("targetName", "OtherTarget"),
++                             ("testIdentifierString", "OtherTest()")):
++            with self.subTest(field=field):
++                original = deepcopy(self.summary["testFailures"])
++                self.summary["testFailures"][0][field] = value
++                with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++                    self.classify()
++                self.summary["testFailures"] = original
++        self.summary["testFailures"] = []
++        with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++            self.classify()
++
++    def test_missing_malformed_and_mismatched_issue_markers_block(self):
++        self.write_log(include_finding=False)
++        with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++            self.classify()
++        self.write_log(include_finding=False, extra="ACE_A11Y_ISSUE not-json\n")
++        with self.assertRaisesRegex(ace.RunnerError, "marker JSON"):
++            self.classify()
++        for field, value in (("scenario", "release-initial"), ("compactDescription", "Other issue")):
++            with self.subTest(field=field):
++                original = dict(self.finding)
++                self.finding[field] = value
++                self.write_log()
++                with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++                    self.classify()
++                self.finding = original
++
++    def test_missing_mismatched_and_corrupt_screenshot_evidence_block(self):
++        self.image.unlink()
++        with self.assertRaisesRegex(ace.RunnerError, "exported file"):
++            self.classify()
++        self.image.write_bytes(self.png())
++        self.manifest[0]["attachments"][0]["suggestedHumanReadableName"] = "another case"
++        self.write_manifest()
++        with self.assertRaisesRegex(ace.RunnerError, "map to one attachment"):
++            self.classify()
++        self.manifest[0]["attachments"][0]["suggestedHumanReadableName"] = self.screenshot_name
++        self.write_manifest()
++        self.image.write_bytes(self.png()[:-5])
++        with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++            self.classify()
++        (self.attachments / "manifest.json").write_text("not-json", encoding="utf-8")
++        with self.assertRaisesRegex(ace.RunnerError, "manifest"):
++            self.classify()
++
++    def test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks(self):
++        for raw in (b"bad", b"\x00\x01\x02\x03\x04\x05", b"\x05\x01\x02\x03\x04"):
++            with self.subTest(raw=raw):
++                self.image.write_bytes(self.png(raw=raw, colour=6))
++                with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++                    self.classify()
++
++    def test_unsupported_png_headers_block(self):
++        for overrides in ({"depth": 16}, {"colour": 3}, {"interlace": 1}):
++            with self.subTest(header=overrides):
++                self.image.write_bytes(self.png(**overrides))
++                with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++                    self.classify()
++
++    def test_valid_native_rgb_and_rgba_screenshot_formats_are_supported(self):
++        for colour, raw in ((2, b"\x00\xff\xff\xff"), (6, b"\x00\xff\xff\xff\xff")):
++            with self.subTest(colour=colour):
++                self.image.write_bytes(self.png(raw=raw, colour=colour))
++                self.assertEqual(self.classify()["status"], "failed")
++
++    def test_finding_viewport_requires_its_own_screenshot(self):
++        self.finding["scenario"] = "signIn-other-viewport"
++        self.write_log()
++        with self.assertRaisesRegex(ace.RunnerError, "map to one attachment"):
++            self.classify()
++
++    def test_process_faults_do_not_become_native_assertions(self):
++        for process in ({"exit": 1, "timedOut": False}, {"exit": 65, "timedOut": True},
++                        {"exit": None, "timedOut": False}, {"exit": 65, "timedOut": False, "error": "launch failed"}):
++            with self.subTest(process=process):
++                self.process = process
++                with self.assertRaisesRegex(ace.RunnerError, "process outcome"):
++                    self.classify()
++
++    def test_launch_fault_and_missing_completion_block_despite_matching_finding(self):
++        self.write_log(extra="Failed to launch test runner\n")
++        with self.assertRaisesRegex(ace.RunnerError, "isolated audit assertion"):
++            self.classify()
++        self.write_log(completion=False)
++        with self.assertRaisesRegex(ace.RunnerError, "isolated audit assertion"):
++            self.classify()
++
++    def test_invalid_utf8_and_missing_log_block(self):
++        with self.log.open("ab") as stream:
++            stream.write(b"\xff")
++        with self.assertRaisesRegex(ace.RunnerError, "log is unreadable or corrupt"):
++            self.classify()
++        self.log.unlink()
++        with self.assertRaisesRegex(ace.RunnerError, "log is unreadable or corrupt"):
++            self.classify()
++
++    def test_prior_case_completion_marker_blocks_singleton_failure(self):
++        self.write_log(extra='ACE_CASE_RESULT {"id":"prior-case"}\n')
++        with self.assertRaisesRegex(ace.RunnerError, "unexpected completion"):
++            self.classify()
++
++    def test_pass_requires_real_case_marker_and_valid_screenshot(self):
++        self.summary.update(result="Passed", passedTests=1, failedTests=0, testFailures=[])
++        self.process["exit"] = 0
++        record = {"id": self.case.id, "scenario": self.case.scenario, "observed": self.case.settings.payload(),
++                  "result": "passed", "screenshots": [self.screenshot_name], "auditInvocations": 1}
++        self.log.write_text("ACE_CASE_RESULT " + json.dumps(record), encoding="utf-8")
++        result = self.classify()
++        self.assertEqual(result["status"], "passed")
++        self.assertEqual(result["caseRecords"], [record])
++        self.image.write_bytes(b"invalid PNG")
++        with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++            self.classify()
++
++
++class DiscoveryExecutionTests(unittest.TestCase):
++    """Exercise real orchestration with synthetic native command boundaries."""
++
++    def setUp(self):
++        self.directory = tempfile.TemporaryDirectory()
++        self.addCleanup(self.directory.cleanup)
++        self.root = Path(self.directory.name)
++        self.identity = {"commit": "synthetic-candidate", "status": "clean"}
++        self.cases = tuple(ace.make_case("pilot", device, "signIn", ace.Settings("light", "large", "portrait"), True)
++                           for device in ace.DEVICES)
++        self.calls = []
++        self.outcomes = ["failed", "passed"]
++        self.restore_failures = []
++        self.stack = ExitStack()
++        self.addCleanup(self.stack.close)
++        self.preflight = self.stack.enter_context(patch.object(ace, "preflight", return_value={
++            "devices": {device: {"udid": device} for device in ace.DEVICES}}))
++        self.build = self.stack.enter_context(patch.object(ace, "build", return_value={"template": "synthetic-template"}))
++        self.candidate = self.stack.enter_context(patch.object(ace, "candidate", return_value=self.identity))
++        for name, value in (("simulator_state", "Shutdown"), ("boot_required_simulator", True),
++                            ("current_simctl_settings", {"appearance": "light"}),
++                            ("native_flags", {"boldText": False, "reduceMotion": False,
++                                              "increaseContrast": False, "orientation": "portrait"}),
++                            ("checked", {"exit": 0}), ("restore_boot_state", None)):
++            self.stack.enter_context(patch.object(ace, name, return_value=value))
++        self.restoration = self.stack.enter_context(patch.object(ace, "restore_device_configuration",
++                                                                 side_effect=self.restore))
++        self.stack.enter_context(patch.object(ace, "run_batch", side_effect=self.batch))
++
++    def restore(self, *args):
++        return list(self.restore_failures)
++
++    def batch(self, device, identifier, settings, cases, build, evidence, index, discovery=False):
++        self.calls.append((device, cases, discovery))
++        (evidence / "batches" / f"{index:03d}").mkdir(parents=True, exist_ok=True)
++        outcome = self.outcomes[index - 1]
++        if isinstance(outcome, Exception):
++            raise outcome
++        records = []
++        if outcome == "passed":
++            records = [{"id": cases[0].id, "auditInvocations": 1}]
++        return {"status": outcome, "nativeTestCount": 1, "caseRecords": records}
++
++    def test_failure_continues_then_completes_with_one_build_and_preflight(self):
++        result = ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual([call[0] for call in self.calls], list(ace.DEVICES))
++        self.assertTrue(all(len(call[1]) == 1 and call[2] for call in self.calls))
++        self.preflight.assert_called_once()
++        self.build.assert_called_once()
++        self.assertEqual(result["status"], "completed-with-failures")
++        self.assertEqual((result["completedCaseCount"], result["passedCaseCount"], result["failedCaseCount"]), (2, 1, 1))
++        self.assertEqual(result["remainingCaseCount"], 0)
++        self.assertFalse(result["acceptanceEligible"])
++        self.assertIsNone(result["auditInvocationCount"])
++        self.assertEqual(result["completedAuditInvocationCount"], 1)
++        checkpoint = json.loads((self.root / "batches" / "001" / "checkpoint.json").read_text())
++        self.assertEqual(checkpoint["status"], "failed")
++        self.assertEqual(json.loads((self.root / "discovery-summary.json").read_text())["status"], result["status"])
++
++    def test_evidence_or_launch_fault_stops_before_next_case(self):
++        self.outcomes[0] = ace.RunnerError("native launch or evidence fault")
++        with self.assertRaisesRegex(ace.RunnerError, "native launch or evidence fault"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["completedCaseCount"], 0)
++        self.assertEqual(summary["remainingCaseCount"], 2)
++        self.restoration.assert_called_once()
++
++    def test_restoration_fault_stops_before_next_device(self):
++        self.restore_failures = ["synthetic-settings-readback-failure"]
++        with self.assertRaisesRegex(ace.RunnerError, "restoration failed"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["failedCaseCount"], 1)
++        self.assertEqual(summary["remainingCaseCount"], 1)
++
++    def test_acceptance_native_error_still_stops(self):
++        self.outcomes[0] = ace.RunnerError("acceptance native failure")
++        with self.assertRaisesRegex(ace.RunnerError, "acceptance native failure"):
++            ace.run_coverage(self.cases, self.root, frozen_candidate=self.identity)
++        self.assertEqual(len(self.calls), 1)
++        self.assertFalse(self.calls[0][2])
++
++    def test_candidate_change_after_case_blocks_remaining_cases(self):
++        self.candidate.side_effect = [self.identity, self.identity, {"commit": "changed"}]
++        with self.assertRaisesRegex(ace.RunnerError, "candidate identity changed"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["completedCaseCount"], 1)
++
++    def test_discovery_cli_reports_distinct_completed_failed_and_blocked_exits(self):
++        arguments = ["--evidence-root", str(self.root), "pilot", "--discovery", "--pocock-evidence", "p",
++                     "--functional-evidence", "f", "--evidence-gate", "g", "--private-input-record", "i"]
++        with patch.object(ace, "pilot_cases", return_value=self.cases), patch.object(ace, "pilot_readiness", return_value={}):
++            for outcomes, expected_exit, expected_status in ((["failed", "passed"], 1, "completed-with-failures"),
++                    (["passed", "passed"], 0, "completed"), ([ace.RunnerError("launch fault"), "passed"], 2, "blocked")):
++                with self.subTest(status=expected_status):
++                    self.outcomes = outcomes
++                    self.calls.clear()
++                    stdout, stderr = io.StringIO(), io.StringIO()
++                    with redirect_stdout(stdout), redirect_stderr(stderr):
++                        actual_exit = ace.main(arguments)
++                    self.assertEqual(actual_exit, expected_exit)
++                    output = json.loads(stderr.getvalue() if expected_exit == 2 else stdout.getvalue())
++                    self.assertEqual(output["result"], expected_status)
++                    if expected_exit != 2:
++                        manifest = json.loads(Path(output["manifest"]).read_text())
++                        self.assertEqual(manifest["mode"], "pilot-discovery")
++                        self.assertFalse(manifest["acceptanceEligible"])
++
++    def test_all_pass_discovery_manifest_is_rejected_by_actual_full_gate(self):
++        fixture = CommandAndResourceEvidenceTests()
++        identity, manifest, ledger, batch, attachments = fixture.full_gate_fixture(self.root)
++        required = json.loads(ledger.read_text())["resourceGate"]["requiredFreeBytes"]
++        with patch.object(ace.shutil, "disk_usage", return_value=SimpleNamespace(free=required)):
++            self.assertEqual(ace.validate_full_gate(manifest, ledger, identity)["caseCount"], 22)
++            payload = json.loads(manifest.read_text())
++            payload.update(mode="pilot-discovery", status="completed", acceptanceEligible=False)
++            manifest.write_text(json.dumps(payload), encoding="utf-8")
++            with self.assertRaisesRegex(ace.RunnerError, "pilot manifest candidate"):
++                ace.validate_full_gate(manifest, ledger, identity)
++
++
+ if __name__ == "__main__":
+     unittest.main()
+diff --git a/docs/plans/2026-09-17-ace-ios-discovery-candidate.md b/docs/plans/2026-09-17-ace-ios-discovery-candidate.md
+new file mode 100644
+index 0000000..3b5a2da
+--- /dev/null
++++ b/docs/plans/2026-09-17-ace-ios-discovery-candidate.md
+@@ -0,0 +1,62 @@
++# ACE iOS Discovery Candidate
++
++## Authority And Scope
++
++This record describes the planned verification of the Swift discovery candidate. It reports no future gate as passed.
++
++The approved 16 September instruction is Revision 5, SHA-256 `252aab6ba1115b72f1fcbd84c3d49f3429550c0845d96c2008088d15bdbbe629`.
++Alan subsequently approved closing Arm C as incomplete and moving to the runner step on 17 September.
++The new runner work block starts at `2026-09-16T20:50:47Z` and ends at `2026-09-16T21:50:47Z`.
++This transition does not renew D1, waive an audit finding or change acceptance coverage.
++
++The candidate is prepared on `codex/mcx19b-release-layout`, from `52b212aca02190ee0e742debe383fa6016fe36b9`.
++Record the eventual clean commit and source hashes outside the repository after the P0 commit.
++Do not infer historical baseline ancestry. That decision still blocks final acceptance and merge.
++
++## Chosen Product Route
++
++Continue the existing Swift application and its current complete-action Copy design.
++Expo and Bolt are closed alternatives for this task. Existing Swift source and retained native evidence support continuing this implementation.
++The intermittent audit finding does not establish a framework defect. A rebuild would require new implementation and verification evidence.
++Codemagic, paid membership, TestFlight, App Store submission, new server development and Production remain excluded.
++
++## Candidate Changes
++
++The runner gains an explicit discovery option for the existing 22-case pilot.
++Each case runs independently. A failed case remains failed and keeps its native evidence.
++Later cases may continue only after a positively correlated native accessibility assertion with retained evidence.
++The native summary, issue marker, source assertion, completed test and screenshots must agree.
++Other assertions remain blocked when the runner cannot distinguish an application finding from a harness fault.
++Missing evidence, unexpected test counts or skips, failed launch, infrastructure failure and failed restoration stop discovery.
++Discovery must not grant acceptance credit. Default acceptance behaviour and unrestricted native audits remain unchanged.
++
++The temporary D1 split-audit and positioning procedures are not imported into the candidate.
++Application source, UI assertions, fixtures, authentication, Keychain, clipboard rules and API contracts remain unchanged by this runner work.
++The development state, progress guide and specification references are prepared before freezing the candidate.
++
++## Required Verification
++
++1. Verify focused runner tests for continuation, retained failure, stop conditions and acceptance compatibility.
++2. Inspect the complete candidate diff and obtain a fresh Sol review.
++3. Commit only task files and record the clean candidate identity externally.
++4. Run the required 68 unit and contract tests, including the 43-test contract subset, on that candidate.
++5. Confirm the changed discovery flow with deliberate-failure and corrected-pass evidence before its pilot.
++6. Run the 22-case discovery pilot and retain every passed, failed or blocked outcome.
++7. Classify failures before corrective changes. Keep the original unexplained Copy finding open.
++
++Discovery is a learning run. It cannot replace the final 22-case acceptance pilot or the 836-case programme.
++Final verification requires Pocock review on the frozen candidate, then the controlling plan's acceptance and review gates.
++The required programme remains 512 unrestricted audit cases and 324 layout-only cases.
++Keep the nine regression selectors, physical iPhone 15 Pro Max checks, signing, approved service and review evidence.
++
++## Evidence And Freeze
++
++The [local verification plan](2026-09-14-ace-ios-local-verification.md) controls coverage, storage, privacy and final acceptance.
++The [application specification](../specs/2026-08-24-ace-ios-read-only-client-application.md) remains authoritative for product behaviour.
++P0 evidence stays under `LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917`.
++D1's disposition is retained at `08-copy-confirmation-diagnosis/discriminating-diagnostic-result.json` under the same parent evidence root.
++Keep its failed placement result and unresolved contrast finding visible. Do not reinterpret incomplete Arm C as passed.
++
++After freeze, store results and review records outside the candidate. Reference run paths and hashes from the review records.
++Any application, test, runner, workflow or repository-record change creates a new candidate and renews affected final gates.
++Do not merge or deploy to Production under this authority.

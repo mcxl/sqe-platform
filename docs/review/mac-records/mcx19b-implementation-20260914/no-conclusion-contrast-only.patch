@@ -1,0 +1,16 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -172,6 +172,12 @@ final class ACEClientAppUITests: XCTestCase {
+         }
+         scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
+         addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
++        if scenario == "noConclusion" {
++            try app.performAccessibilityAudit(for: .contrast) { issue in
++                print("ACE_A11Y_ISSUE \(Self.accessibilityIssueJSON(issue, scenario: "noConclusion-contrast-only"))")
++                return false
++            }
++        }
+         try assertAccessibilityAudit(in: app, scenario: scenario)
+     }
+ 

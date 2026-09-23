@@ -1,0 +1,5 @@
+Query chain:
+ →Find: Target Application 'com.example.aceclientapp'
+  ↪︎Find: Descendants matching type Any
+    ↪︎Find: Elements matching predicate '"Effective interface style" IN identifiers'
+      ↪︎Find: First Match

@@ -1,0 +1,128 @@
+{
+  "candidate": "6718b437b10a51eeee0e5c6b3918dc2d5e052260",
+  "inspectedUTC": "2026-09-15T10:52:47.550249+00:00",
+  "method": "Primary agent inspected nine distinct PNGs at original resolution via authenticated memory-only SSH streaming.",
+  "imageCount": 36,
+  "distinctImageCount": 9,
+  "images": [
+    {
+      "sha256": "379044af0d37238def7a259f7a3b69e003a0dd4de101359b14580979cc517ab1",
+      "bytes": 187050,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E85786E1-CDD3-41DA-8C69-C6316650DC23.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E85786E1-CDD3-41DA-8C69-C6316650DC23.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/EC2F8B8D-DD3D-49DB-ACCC-B3339E9BEE3D.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/34603828-A736-4FFE-A142-C485E67565BC.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/8DC8AB05-39D6-4CCB-B605-E86442227F72.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/347E3EDC-F31A-4462-91D7-E30DB3A1DD75.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/067647A1-3DAB-4637-9B0A-FD248A7E61CD.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/33C39D0F-C5D7-4252-902E-F3CEB115FD41.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/14986C6F-FA72-4320-B469-0A303B633E3D.png"
+      ],
+      "inspection": "No-actions initial: displayed values, notice and controls are complete and clear.",
+      "result": "passed"
+    },
+    {
+      "sha256": "016b9c14bd10afd6d31ab9debe74370a02dd667c4cb9bfb97eb370896dca1db8",
+      "bytes": 182464,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E58F48E2-D764-4153-B81D-0933B7A9A348.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E58F48E2-D764-4153-B81D-0933B7A9A348.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/DB89A7EC-CD27-45FD-B83D-68E3DD6E9519.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/610CA636-05E0-4F15-951C-0F8D3A7CD0FD.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/BDAA7AF4-BCA2-42D5-A136-91D7A10630DA.png"
+      ],
+      "inspection": "Release final: action values and Copy are complete; all text stays below the status area.",
+      "result": "passed"
+    },
+    {
+      "sha256": "aced7fa7b20761fa96f3627b4db4430bb5f742ddbde7543ed5daede016b05ce3",
+      "bytes": 192553,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/C45E1BD5-FC21-4DA2-AB7C-6F051130FC93.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/C45E1BD5-FC21-4DA2-AB7C-6F051130FC93.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/F4E4D675-5903-4D7E-B215-6CB4D9D5F626.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/A54CFF0E-F73D-4E67-A21B-385BF046DA93.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/C480D774-BF7E-422E-B250-4FEF00DE496C.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/95ECD352-6586-43E7-AAD3-2C37B1DC11BA.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/A925C1A8-D00E-4A0D-A675-F65B528CC074.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/7EBAC10A-7742-466F-8D99-44644E2607D1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/C6AC9D78-BB82-4949-A583-9896E22CB78A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E3E9BB70-1381-424F-9106-285619F68EF1.png"
+      ],
+      "inspection": "Release initial: visible values are complete; action content continues below the scroll edge.",
+      "result": "passed"
+    },
+    {
+      "sha256": "f2b3aef11270cef2de7c3c25a8f09dbb1ad3077f16f5321d708748aec3522bf7",
+      "bytes": 193576,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/3C227DF0-E2BC-4D26-9D81-7BF36F4E185A.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/3C227DF0-E2BC-4D26-9D81-7BF36F4E185A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/7EC2DE19-810E-4205-83A6-660D45118331.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/C2105451-88A8-4845-8E91-DC94BD5FDE87.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/99032CE9-26F8-4AA6-B001-912E16D3FFFE.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/7EF09D21-4ECC-4703-B39D-FE8EB4AE71F9.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/E31BF9A7-CA48-4E56-A579-A8BF85E8CB53.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/D30AC20C-CF08-4FA2-94D2-D796EA9CED50.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/76A0068E-A661-4223-A94C-33F8D250266B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/6577F374-0B5F-4765-BB40-85BB39E02AE8.png"
+      ],
+      "inspection": "No-conclusion initial: visible release and action values and Copy are complete.",
+      "result": "passed"
+    },
+    {
+      "sha256": "7962d3c5bc6780b9f458956a45d421bf90bfed2a3335847ad67cc345197395b1",
+      "bytes": 80800,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/FE07913C-D6B1-4D87-B0EB-058014C48294.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/FE07913C-D6B1-4D87-B0EB-058014C48294.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/D8351E10-8FB4-49EC-8804-00D0B3943AC1.png"
+      ],
+      "inspection": "Sign-in: fields and button are clear, with no overlap or clipping.",
+      "result": "passed"
+    },
+    {
+      "sha256": "441693d29af1dbe12fc77ac0f2105e33002d8000d361c30ff2b7c53bbf5a1568",
+      "bytes": 191203,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/77B293AF-9B5B-45BE-B1B2-9E1F43FFE4C4.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/77B293AF-9B5B-45BE-B1B2-9E1F43FFE4C4.png"
+      ],
+      "inspection": "Copy confirmation: complete Copy and confirmation; no visible overlap.",
+      "result": "passed"
+    },
+    {
+      "sha256": "ead253e1f4734463f8007820f23dd75d2a03ab206ff7d0f9616fbb467ae30a8e",
+      "bytes": 184567,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/AF9D8543-3046-4DA2-832E-CC3D175BD5DC.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/AF9D8543-3046-4DA2-832E-CC3D175BD5DC.png"
+      ],
+      "inspection": "No-conclusion final: prior engagement value crosses the normal upper scroll edge. Required action values, notice and controls are clear below the status area.",
+      "result": "passed"
+    },
+    {
+      "sha256": "1ed61cd56b517ebc533e5992eb1cacc270d97d55a9675a479db969f68a63b7ad",
+      "bytes": 187236,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/6D039AF6-FC23-496D-90BF-C25D2A076B1B.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/6D039AF6-FC23-496D-90BF-C25D2A076B1B.png"
+      ],
+      "inspection": "No-actions final: notice and controls are complete; no overlap.",
+      "result": "passed"
+    },
+    {
+      "sha256": "65091456a30f510f5bea123997ff69cdd5c6f887b2297e061453836eef0dd9e5",
+      "bytes": 193268,
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/77FE3DF7-6718-4999-85D5-85CCB4682671.png",
+      "duplicates": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/batches/001/attachments/77FE3DF7-6718-4999-85D5-85CCB4682671.png"
+      ],
+      "inspection": "Intermediate release: visible rows are clear; action content continues below the lower scroll boundary.",
+      "result": "passed"
+    }
+  ],
+  "status": "passed",
+  "pilotCredit": 0
+}

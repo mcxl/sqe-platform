@@ -1,0 +1,22 @@
+{
+  "question": "Does contrast alone report the same post-scroll noConclusion findings before unchanged unrestricted all audit?",
+  "kind": "diagnostic, not a correction or final acceptance",
+  "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "sourceHashes": {
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "ab451f6660f908eee2017e692ea75300f3c37488af8b5742238bd2b173781d2d",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "656af6f4d152dcb4a8ea6cd88fae829907255c9237f3f51df7cafc3c1a78e84e",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "7565677693019b3f77d255ff627b0ee0f4a16f36923e8e8b1079a5a954f300f5"
+  },
+  "variablesChanged": [
+    "Supplemental contrast-only audit before unchanged post-scroll all audit"
+  ],
+  "unchanged": [
+    "application source",
+    "light appearance",
+    "large content size",
+    "existing post-scroll audit",
+    "audit type all",
+    "300 second native limit"
+  ]
+}

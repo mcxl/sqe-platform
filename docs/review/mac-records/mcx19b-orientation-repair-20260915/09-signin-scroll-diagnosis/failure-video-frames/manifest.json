@@ -1,0 +1,20 @@
+{
+  "durationSeconds" : 22.666666666666668,
+  "frames" : [
+    {
+      "actualSeconds" : 9.8816666666666659,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/09-signin-scroll-diagnosis\/failure-video-frames\/frame-013.00.png",
+      "requestedSeconds" : 13,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 17.824999999999999,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/09-signin-scroll-diagnosis\/failure-video-frames\/frame-020.80.png",
+      "requestedSeconds" : 20.800000000000001,
+      "width" : 1206
+    }
+  ],
+  "video" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/post-diagnostic-pilot-runs\/20260915T110638Z-pilot-71f4f52cf8a8\/batches\/002\/attachments\/49D43AF5-0FE8-403D-9B3A-9B4A6549F27A.mp4"
+}

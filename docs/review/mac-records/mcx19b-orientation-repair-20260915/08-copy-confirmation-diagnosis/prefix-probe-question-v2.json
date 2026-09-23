@@ -1,0 +1,18 @@
+{
+  "question": "Does the original preceding-case sequence account for the failure absent from the isolated Copy probe?",
+  "oneChangedVariable": "restore signIn, release, noConclusion, noActions before Copy in same native batch",
+  "unchanged": "clean6718 diagnostic candidate; .all audits; device/settings/runner/frame logging",
+  "expectedEvidence": "five case records and9 audit invocations if passed; exact first native assertion otherwise; before/after Copy frames; images; original settings/boot restoration",
+  "inferenceLimit": "A pass rules out a deterministic sequence failure in this observation; it does not resolve the original intermittent contrast failure.",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0,
+  "scriptSha256": "4cce5981e3f0c30886484079dd2b4a5eca3bf1ccff59661c54ef696fe896f4e2",
+  "launcherCorrection": "Explicitly require large/default text; preserves intended original prefix",
+  "selectedCases": [
+    "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+    "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+    "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+    "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+    "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
+  ]
+}

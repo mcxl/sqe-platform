@@ -1,0 +1,318 @@
+23d480dbedf140be73ff92b2530ec7bdecc4e2ca	2026-09-11T08:32:33+10:00	Codex worktree snapshot: archive-cleanup
+91818a476c7ddb81c48aba63c76b11cfbcb70df4	2026-09-03T18:17:27+10:00	MCX-15: Use absolute screenshot paths for controlled evidence
+921d38e096ad4214f44f0f9c32cdad96ab1a49cf	2026-09-03T16:22:45+10:00	MCX-15: Wait for controlled UI state and admit readiness build
+ff0556229f17d3ee05487391c9c4e26da346fea4	2026-09-03T15:17:54+10:00	MCX-15: Add bounded simulator screenshot-path pilot
+ddace288d47766172aa8a6fa6b3e5a3e500e0bc6	2026-09-03T14:20:18+10:00	MCX-15: Declare app launch screen and admit controlled pilot build
+4650a614032d227054bf7f143f409eb7e66e0a38	2026-09-03T11:51:36+10:00	MCX-15: Correct copy-control label query and admit controlled evidence build
+f0cb10b68cce137826c44327f9f433e6b60d3361	2026-09-03T10:21:48+10:00	MCX-15: Enable Debug UI fixtures and admit controlled evidence build
+e90efc6123537633dcc8fcb7c27b5bdf2627c3d3	2026-09-03T09:47:52+10:00	MCX-15: Define app executable and admit controlled plist evidence build
+d9aacced1d451c64649a08ac3f2012df43b7f27d	2026-09-03T09:17:08+10:00	MCX-15: Name the UI-test product and admit controlled evidence build
+ffa73729ab1c45e947ec13d6db00a7b709143b3a	2026-09-03T08:43:26+10:00	MCX-15: Admit controlled simulator correction evidence build
+b0eaaa74fa45f60e1ccbda6c3b4ec6faa5e07982	2026-09-02T17:09:49+10:00	MCX-15: Support UI tests on iPhone simulator
+b36f89c7fee9e37f1014933408fea78bd9eb80a1	2026-09-02T09:46:19+10:00	MCX-15: Correct Codemagic simulator destination
+5f88563248650f263b4b0fc6c333731868114a25	2026-09-01T17:57:08+10:00	Prepare Phase 6.1 controlled evidence workflow
+ef9beb558ea81c014d6ee1c5d6f043fa49b7b63a	2026-09-01T10:57:30+10:00	MCX-15: Probe exact iOS simulators
+3b342b92e647ef78cb4d177803ab868ff7434bb4	2026-09-01T10:06:31+10:00	MCX-15: Prepare Phase 6.1 evidence workflow
+cdc4f458bfd3ede385844b31eed117d3c06e854d	2026-09-01T08:14:09+10:00	MCX-15: Align evidence tests with presentation mapping
+4155eebdf46964aeb4739ec2f41afe4c77d67a5e	2026-09-01T08:08:30+10:00	MCX-15: Fix Swift source enumeration
+185848b57553c8bde3435d1d7481b9a3a86d6c7c	2026-09-01T08:04:55+10:00	MCX-15: Correct final review findings
+644b51c3626f95f4076aa98cdb2e5030e8b25456	2026-09-01T06:53:53+10:00	MCX-15: Reconcile authentication evidence
+6d5e3c69dbbb597bb3d8a79ba92eb7f174beba2e	2026-09-01T06:34:00+10:00	MCX-15: Prove Keychain lifecycle serialisation
+f0272575eb4209145dd8baed9038b6ada7c54c1a	2026-09-01T06:19:26+10:00	MCX-15: Correct pending readiness evidence
+22c8177b77ca2f7d8423fe49b239877068681208	2026-09-01T06:08:28+10:00	MCX-15: Align UI test Release settings
+cb7b6ee22da21f61f7bd778f05111e0ab9a2fd7b	2026-09-01T06:05:23+10:00	MCX-15: Add UI readiness evidence
+345e6946ae8fc567d7598f383098f61d3bea6500	2026-09-01T05:44:41+10:00	MCX-15: Match escaped build checks
+07b995d14f43d16330b9ef3aa3415a987689d2fb	2026-09-01T05:40:52+10:00	MCX-15: Fix Release closure captures
+d6a9932a1394b8c79eb6bc7bd229924419f32e42	2026-09-01T05:32:13+10:00	MCX-15: Complete final evidence gaps
+eaf1941d8971b4532913ad77445316f07811dadf	2026-08-31T22:13:15+10:00	MCX-15: Close final readiness findings
+c47e3fee1dc8a73754bb7351f3a6787d5949c909	2026-08-31T20:45:23+10:00	MCX-15: Close evidence review findings
+ded8499dcbe84737001b7c3c55ba66f5ba531b27	2026-08-31T20:23:22+10:00	MCX-15: Fix stateful Keychain test compile
+806fef65d15e7ddb5eab34e4cd25cf4bdbb4a732	2026-08-31T20:21:15+10:00	MCX-15: Complete state matrix evidence
+70c909a8ff04dc903c6f1e90e7a855bef0764c00	2026-08-28T08:20:03+10:00	MCX-15: Complete failed request coordination
+b2b4720cf1b3a19e78b27879855fee994c204247	2026-08-28T08:15:57+10:00	MCX-15: Complete recovery evidence validation
+106a862415134cd5dfbb030fdca660c7bcb5756a	2026-08-28T07:48:30+10:00	MCX-15: Complete recovery reset evidence
+2b7a012bb15b37c844b72be33cfe75832759a20b	2026-08-28T06:48:56+10:00	MCX-15: Complete replacement failure evidence
+7ba3f6b714fd492fd5709e8f07066cdd5c4feeef	2026-08-28T05:40:34+10:00	MCX-15: Fix accessibility announcement compile
+6fced5303f3b289923f0b0658a04c3060a5874a7	2026-08-27T23:26:25+10:00	MCX-15: Complete adaptive recovery evidence
+52ee2257a305305dd89342e97a11c8efde80674d	2026-08-27T12:27:55Z	MCX-15: Fix catalogue mappings and add direct case assertions for AUTH identifiers
+265dadd3fd3952d2ecea862c988efc90bc519acf	2026-08-27T06:46:04Z	MCX-15: Add iOS client adaptive recovery status to DEV_STATE.md and ACE_PROGRESS_GUIDE.html
+20b6e296c267ae0aa968de01957e5d7a6cfc7196	2026-08-27T05:08:12Z	MCX-15: Pocock review fixes — remove vestigial build setting, dead code, and real email
+2cbcdb4dea1750e9e96330f0b80b95d6dccf008c	2026-08-27T04:42:24Z	MCX-15: Add Swift Concurrency + Xcode Build Optimization skills to AGENTS.md, and agent-friendly Makefile
+5f55e1b26a7940d23f3aa108f918ce144dd980dd	2026-08-27T04:33:07Z	MCX-15: Fix Codex P2 absent-account test (kSecAttrService -> kSecAttrAccount)
+42805ffef5cd8819c12cbabb385f3bf7f5a5bf56	2026-08-27T04:28:47Z	MCX-15: Address Greptile P1 accessibility and P2 catalogue validation
+c94764f463c3b5c2083c38f53493f2914c78fd4d	2026-08-27T04:19:29Z	Revert "MCX-15: Fix Codex P2 absent-account test and P1 accessibility announcement"
+2a1a2a362b03ace0206208288d2269a4ac25c452	2026-08-27T04:18:23Z	MCX-15: Fix Codex P2 absent-account test and P1 accessibility announcement
+d9af227fbfbb74f1c94f10520315494111924763	2026-08-27T03:40:14Z	MCX-15: Skip ObjC runtime method-existence check in Release builds
+ba5a92153d71cb669af26c41e577250ab5570116	2026-08-27T03:24:46Z	MCX-15: Fix last 2 test failures
+6a9d3278191c4ba1d9eda42185c00059f2d1b331	2026-08-27T03:11:55Z	MCX-15: Fix variable shadowing — local 'sourceText' hid method name
+d1b2cea1cdc393667c31ee0c2c19389f197a8489	2026-08-27T03:03:25Z	MCX-15: Fix all 14 remaining test failures in one batch
+5ce8115d430af2007fb095c836839746c7b998a2	2026-08-27T02:45:15Z	MCX-15: Add Task.yield() to test doubles — Release-mode optimizations skip suspension without explicit yield
+571cc5da2b9e13b240fb5f188f70eb7e569e965e	2026-08-26T23:26:21Z	MCX-15: Add Views.swift to test target — CopyableReleaseField defined there
+7c1be6b568bd55282039a2a9cd9263d1abc53960	2026-08-26T22:13:40Z	MCX-15: Compile production sources directly into test target — eliminates runtime symbol dependencies
+d7f2068c82936fb583e5a1fa128b1a98bd28dbca	2026-08-26T21:51:24Z	MCX-15: Add BUNDLE_LOADER to test target — resolves production symbols at link time without requiring TEST_HOST at runtime
+f54dee5dc1262cec1ad3149d497fd57dc68d83ec	2026-08-26T21:37:21Z	MCX-15: Link test target against app product — hostless tests need explicit link for production symbols
+648ceb283dd783f563d9225c73ec30c70e3b9372	2026-08-26T21:02:24Z	MCX-15: Add Sendable conformance to ScreenState — required for @Published in @MainActor class under Swift 6 strict concurrency
+453d3765dfeeb2443f518af4f45ca4a75399936e	2026-08-26T20:36:19Z	MCX-15: Extract await from XCTAssertEqual autoclosure — Swift 6 doesn't support await in @autoclosure
+4c8e3fc3105f4c3aa8861ded13b59f08dec248bc	2026-08-25T22:43:05Z	MCX-15: Add missing selectorNames static property — uses ObjC runtime to introspect test methods
+83b2f06ac64683ce184df69ab3e2be05b7d7a5b8	2026-08-25T22:26:43Z	MCX-15: Add missing RuntimePlan Decodable struct — referenced but never defined
+aa513880dca6bd33fb1630ec3d9ae51d29ce39fc	2026-08-25T22:15:14Z	MCX-15: Embed ARCHS=arm64 and ONLY_ACTIVE_ARCH=YES in project Release configs — command-line override insufficient with generic destination
+7a398db8a68f098fc0a097b9123fba91430ef4f0	2026-08-25T12:52:49Z	MCX-15: Enable ENABLE_TESTABILITY on app Release config (required for @testable import); remove ONLY_ACTIVE_ARCH
+82c8adaa0d51de2ab64b9d29e5421b80bf8c6ebf	2026-08-25T12:38:32Z	MCX-15: Set test target SDKROOT to iphonesimulator directly (not iphoneos), restore two-phase build
+82c439b00c8ec76f3cc6601c35976f02b6ce10d4	2026-08-25T12:29:55Z	MCX-15: Switch to single xcodebuild test (not two-phase) for consistent platform resolution
+e83bc114fffc156be2bca31065038b6d847359d6	2026-08-25T12:24:14Z	MCX-15: Switch test target to simulator-only platform to match app module target
+0840d2d54cf728e085833adecf76ee91699446e5	2026-08-25T12:16:46Z	MCX-15: Remove PRODUCT_NAME command-line override (forces all targets to same name); add clean step
+7a1378c2a04ac4558a5dfb16113d23725adf6d28	2026-08-25T12:09:00Z	MCX-15: Add PRODUCT_MODULE_NAME to test target to prevent swiftmodule collision
+4e38b1f8dedb09021c3ac00c1319c6433ff065c6	2026-08-25T12:03:58Z	MCX-15: Fix test target SDKROOT — was defaulting to macOS, not iOS Simulator
+f3e88ee3463933e36c8c64766893ec116ae8b93b	2026-08-25T11:55:23Z	MCX-15: Add missing class declaration for AcceptanceEvidenceContractTests
+c46490bcf962a7efcb303a8efb6dee7182a1be7a	2026-08-25T11:45:26Z	MCX-15: Fix missing closing parens in test file (lines 157, 168)
+1ba3b85251655a387d1a7086e9591ec69a0ebfbd	2026-08-25T11:35:31Z	MCX-15: Remove ACEClientAppUITests from scheme TestAction
+394f3c780588da38c3d4d75eb0b8e6cfc1a0da5c	2026-08-25T11:29:34Z	MCX-15: Convert test target to hostless — remove TEST_HOST and BUNDLE_LOADER
+e76408e77ac50dbde067c527c9ca3fd17fba2fb0	2026-08-25T10:56:12Z	MCX-15: Fix scheme TestAction buildConfiguration Debug→Release
+49bf3aa89a3d912a5f0033b0df04031aab6beb8f	2026-08-25T03:36:54Z	MCX-15: Fix accessibilityLiveRegion removed in Xcode 26.2 SwiftUI
+c7f0d91d799b5c91d5dde6a0af06c43fd71d8dc1	2026-08-25T01:47:15Z	MCX-15: Replace source-text evidence with behavioural tests
+f0ca3f958334af7b6727742460ed060cf9c077aa	2026-08-25T11:23:51+10:00	Import MCX-15 Vorflux harness
+88efc4a2ba9ccaae8dd82fcd8bb39229f504cf50	2026-08-25T08:24:39+10:00	Clarify ACE iOS verification gates
+7af84172628fd6b548def5cf00a94f95642c98ed	2026-08-25T07:29:39+10:00	Finalize ACE iOS specification delivery record
+29b62df901af9833be334392d97a6b45a42d1962	2026-08-25T05:59:02+10:00	docs: add ACE system atlas
+9944e5a923cff012d464190eb0e50709c7905e8e	2026-08-24T21:11:12+10:00	Record merged ACE iOS specification state
+c2f3de05fb317d15f563356aaf8305be25fe434e	2026-08-24T20:55:47+10:00	Revise ACE iOS Keychain security contract
+17c7e71a207d248979b9601b4cf4a9dfc71f548d	2026-08-24T14:21:35+10:00	Add ACE iOS read-only client specification
+759cfa0fab3b8cb423bc0f2808f4f2289710c54b	2026-08-23T20:14:54Z	Record merged Phase 6B2 state
+ddd1b69d84cdc36cb7a28f3aed6ae83a5119b0dd	2026-08-23T19:49:59Z	Cover absolute boundary imports
+04b21a0bffc02cb8b752474d3d6f7e40e0eb9591	2026-08-23T19:36:45Z	Cover projection boundary bypasses
+ce20c35ffa903c8b378c8dc14fe0990629ec35e3	2026-08-23T19:20:22Z	Strengthen projection boundary test
+125901b45ec95cc55fa741c315a48d0308d11fb8	2026-08-23T18:46:07Z	Correct projection specification ownership
+3e7904901772fb5f182d4f57f76f6dbed1085735	2026-08-23T18:32:28Z	Extract client release projection
+e1404eaf72212f71e10c7ef81e1013b9ab3a10d9	2026-08-23T09:44:14Z	Synchronize Phase 6 final state
+727243d890738f103b94ca6926fd0ae299b0a001	2026-08-23T09:04:37Z	Update Phase 6 progress guide
+2887c0ce0782910e648860b8157d2d2a966172a2	2026-08-23T08:10:13Z	Strengthen trigger ownership evidence
+9d7c4806355dc76b7bc083ef29dc55fc3b868c57	2026-08-23T07:39:21Z	Finalize release trigger ownership
+761b0cb9941c52e90c8db7ad806cee49d0531732	2026-08-23T06:22:04Z	Move client release workflow into service
+7e67ee62ffabdc7e54fbb07f91d509f6ebc72c94	2026-08-23T04:49:35Z	Preserve legacy release history
+098ddc795c24ebb3fd4ce86a8d4e2208ef8c6dbf	2026-08-23T04:22:04Z	Add client release service boundary
+3c5d2313302b60038d56adf884ed5e0f6024f1ac	2026-08-23T11:50:05+10:00	Record Phase 6B1 completion
+1d832a54065b7446df21346c79fe2b6270716eed	2026-08-23T11:33:00+10:00	Reject null release entry IDs
+bc6d2df1f07f092b5d04bbdadcb157acf597426b	2026-08-23T08:42:05+10:00	Isolate terminal trigger replacement
+65462bfaa1912597e93403337a9581e85c02ab5d	2026-08-23T08:07:58+10:00	Recreate corrected release triggers
+cef5a777beac3ed6c7e1a85eb92d40be047c1932	2026-08-23T07:53:20+10:00	Guard null release IDs across publication
+1dc5c2f0047b19a2c08fc00c0cb624279cec3548	2026-08-23T07:32:43+10:00	Use null-safe release ID comparisons
+fda7240f315175bffa8dd1b9f355b9899f03e1eb	2026-08-23T07:02:37+10:00	Skip conflicting optional draft versions
+0ee10246fa3f59873d5120c2279043f6341ef0b5	2026-08-23T06:37:13+10:00	Keep upgrade release versions unique
+a9c5406d5d6273bc8fe4641559db8bec71998e41	2026-08-23T06:24:17+10:00	Prevent orphan draft creation events
+a70d5699149f3abd2cb4c76ab4259c5354ec4efa	2026-08-22T21:58:52+10:00	Choose unused release version during upgrade
+26398e7b13866b05f2e847574a06a4e095262c79	2026-08-22T21:29:47+10:00	Block duplicate release versions at publication
+f2b01e7be6ad8fbf2c0d85127b271497d0c2d514	2026-08-22T20:33:31+10:00	Reject ASCII whitespace release metadata
+85775635bc67c1ca2633bfbde38bf67269c1d4e0	2026-08-22T20:17:34+10:00	Harden release version boundaries
+cc1cc0b0338b0d4475a709cb12e1e292081ba22b	2026-08-22T19:53:06+10:00	Close Phase 6B1 integrity gaps
+41fc05eb95e7fb1708d8e27c6b8a498e7912dd24	2026-08-22T16:55:07+10:00	Restrict legacy conclusion lineage
+300e1abd3994fa55e484e751621a263601180fcc	2026-08-22T16:27:19+10:00	Require release creation audit history
+033a5b5de747d5ddac38140be26a88b9406a96b1	2026-08-22T15:52:01+10:00	Bind conclusion lineage to publication history
+cd414443a74ab7e27b2bd58523003c731fd3c743	2026-08-22T14:45:25+10:00	Preserve Phase 6A conclusion release lineage
+b3b058a1ff36869001f8db7ba7e1af94aee65831	2026-08-22T14:11:29+10:00	Fix Phase 6A conclusion snapshot migration
+c79fb8562e330ecaf9ff143ab7c5308871f4e4c3	2026-08-22T13:36:11+10:00	Add Phase 6A action release upgrade
+288ad7233807a15277668603842019d40d93adb4	2026-08-22T13:19:52+10:00	Require draft release package creation
+4365e2e72672ce85c2b802c6eed458c4532e7f08	2026-08-22T12:54:00+10:00	Lock approved actions after approval
+1935e92d4c7aa4c9d81096bf0cb5293d8a930ffe	2026-08-22T12:43:54+10:00	On vorflux/phase6b1-approved-actions: phase6b1-full-approved-action-lock-backup
+473e7f6a764faf17508642c59c9d36d88b0107fb	2026-08-22T02:17:32Z	Add content immutability trigger for APPROVED actions
+f99cbb604f4d6ccd8965fa7fc857825bc6c56a56	2026-08-22T11:55:08+10:00	Reject normalized publication timestamps
+cecc3c4877de73880bdc361b70f9c4bf32fb9dde	2026-08-22T11:45:13+10:00	Fix Phase 6B1 publication integrity
+7aa508434ecfdfa4ba3a342d5acb733a8b22a001	2026-08-22T00:37:41Z	Fix Codex P2: reject whitespace-only and malformed publication metadata
+2a4ebe9628fb92b625f6f4ae9fbec3d3a74bd995	2026-08-22T00:13:14Z	Rename helper: _recreate_ → _create_phase6b1_release_validation_triggers
+65a802897c3b3343ba18d2bab5b0d40e26c71860	2026-08-22T00:00:50Z	Refine Phase 6B1 integrity: one trigger path, NULL-safe checks, 35 explicit tests
+b673301db9fc7cfa001a7c9ccc27772b4bc65c72	2026-08-21T22:08:21Z	Fix three Codex P2 findings: conclusion snapshots, ownerless actions, action audit coupling
+7932b61acac5ac8c7d78717d9455e168bfc1e0ee	2026-08-21T21:11:43Z	Fix Codex P2: validate CONCLUSION source at insert time
+55298f8815404a7f924f08e8f7cd43a2e27073f5	2026-08-21T20:46:02Z	Fix seed upgrade-safety: skip non-DRAFT packages, not just PUBLISHED
+e126f8b2867a089cdd84594945a04c0dd8717a35	2026-08-21T20:22:48Z	Fix seed upgrade-safety check to use package status, not event ID
+e4de82c2c5627e3b0c28b04313b05ceeb2cd1890	2026-08-21T12:51:43Z	Fix three Codex P2 findings: auto-publish event, snapshot validation, blank attribution
+bf22ae9a83433a09f683314dee6faffdd17cbcf0	2026-08-21T11:53:30Z	Fix three Codex P2 findings on PR #52
+79830bcf746ec9375fa37619fada0f4733112788	2026-08-20T13:29:48Z	Fix Codex P2 findings: insert guard and canonical date validation
+88cced01104bf785603a3b8954c7661ec9da646a	2026-08-20T12:37:35Z	Fix upgrade-path mutation and snapshot date validation
+7cef7c282d6a0e031c12d4eab25f25fe4d929ee5	2026-08-20T12:06:47Z	Fix three Codex findings: seed ordering, date validation, delivery status
+e30784b375f9741484fb0c4bf226a92cdee2828c	2026-08-20T09:11:42Z	Remove stale comment, update test docstrings
+c214ed11453b6ecd53537ef47b51bbd29e55c256	2026-08-20T09:09:02Z	Remove approved_actions live query — render Actions from snapshot fields only
+6be789b3d043c454be7478e04bb1baae5ca2a9ef	2026-08-20T07:14:05Z	Fix Phase 6B1 findings: snapshot fields, integrity, migration, withdrawal, dates
+ac5f9f62e725d4026bbc3c0d2bef56761822802d	2026-08-20T06:36:24Z	Phase 6B1: approved actions in client release view
+d99791fac82a9e0b577f2a834a76455db6715b36	2026-08-20T05:28:19Z	Record Phase 6A merge confirmations, test results, and Linear labels
+7032cad6af164d474fd59f21edc5030c9ad18111	2026-08-20T05:24:07Z	Fix Phase 6A file inventory and merge records (#51)
+38760a6bdd6b91d07cdc942f8de2182b534837a3	2026-08-20T05:01:40Z	Finalize Phase 6A documentation with full merge chain
+814bbd8145b3b7f388032ec031010148979a9f71	2026-08-20T04:57:37Z	Isolate migration test behind tmp_path
+5d82b39f5990ffd621780782ebf6e14fed6e9ec7	2026-08-20T04:53:53Z	Fix Codex P1 findings: G0 guard and CHECK constraint migration
+2c6fdd51dd5ca76251fbabdbd42bc7bb8e80c626	2026-08-20T04:43:11Z	Finalize merge records in DEV_STATE.md and ACE_PROGRESS_GUIDE.html
+1ef19eaba18119f4ba440031c3b41261977fbfdb	2026-08-20T04:42:15Z	Phase 6A: Reconcile client release view onto controlled baseline
+3ee7be5358974aaf895727773b8b4ef39c71d6ee	2026-08-20T04:39:46Z	Update DEV_STATE.md and ACE_PROGRESS_GUIDE.html for Phase 6A reconciliation
+ca9b35af99fff21a18c81f4d7b4cb81d2725050f	2026-08-20T04:38:33Z	Phase 6A: Reconcile client release view onto controlled baseline
+b2fc889d03b8a1ee1756960011706de4d12b1116	2026-08-20T00:01:38Z	Phase 6A: Minimal client release view with protected read-only endpoint
+ca1f7de75c3fb2bac1217a7d87f4abd5e6f36028	2026-08-19T20:54:23Z	Clarify _xlsx_safe coverage scope in DEV_STATE.md (#44)
+003a34cac1559e0a0857894c40f0c4f353f66a18	2026-08-19T20:51:10Z	Restore Phase 5B documentation lost during rebase (#43)
+173f7f62244cecdbdff953091946e7c069b07c3f	2026-08-19T20:48:04Z	Phase 5B: ACE Change Record And Export Authorities — snapshot-based change detection, 10-file export ZIP, fictional Notion publisher (#42)
+f61439fd73ad4ed88e7d069c0272bc89a58ba6c7	2026-08-19T20:46:57Z	Phase 5: Read-only engagement graph projection with SVG, XLSX export, and approved-relationship filtering (#41)
+6a43864584166acfae0698faa898c47d4b22656e	2026-08-19T20:45:02Z	Phase 4: Deterministic Review Suggestions for ACE Evidence Review (#40)
+112b9e62bb057bb5317fe0a3ba58f1e2ba3d884a	2026-08-19T07:08:15Z	Add evidence suggestions endpoint and review panel
+837fbdb3c586aeeb8aa5fd226d594ac2be284869	2026-08-19T07:00:38Z	Add deterministic extraction adapter and source_text column
+df0ad6ffc3718a83a6de5cf888d4e95096ba679a	2026-08-19T05:07:30Z	Strengthen recommendation link test with seeded pending evidence
+e1093c13cdd153b82f49ef95db0840e19e3888a4	2026-08-19T05:05:42Z	Update state files for Phase 3 enhancements
+8bf191a492e7a3e8afe2ede6bff8169521424759	2026-08-19T05:03:46Z	Phase 3 enhancements: pending preview, conflict note, navigation links
+f09b96fd960725bc272db00949613007ac7a796c	2026-08-19T04:30:14Z	Finalise Phase 2 state: PR #39 merged at bcc5db6
+a4fd72e91fd20a37870cd3d726aafa68a4be50d8	2026-08-19T04:24:05Z	Document Phase 2 known limitations in state file
+21203b0c68328614890b79308bd372d8accb01ee	2026-08-19T04:14:19Z	Address review: add G0 validation and strengthen evidence count assertions
+c3cf9c733f9f97f3707d3ccff6469ca39d2b8da0	2026-08-19T04:09:53Z	Record exact head SHA in state file
+c5ff6795b82c8facc7b1ad672f3620633a9aa182	2026-08-19T04:08:01Z	Add read-only Engagement Control Summary page
+17587f8db7311675860b0c0ee82af3c828a47d92	2026-08-18T12:14:34Z	docs: add DEV_STATE.md and ACE_PROGRESS_GUIDE.html with Phase 1 final evidence
+0daa2f29d990e7f04f821b5629d2329eb7bab245	2026-08-18T12:12:04Z	fix: variable shadowing in sync, add IndexedDB transaction error handling, add full record review integration test
+9a9ce19070aaafc89cee901e43783eba24213e1c	2026-08-18T04:26:11Z	fix: strip IndexedDB metadata before sync, re-enable activate on failure, fall back to offline on fetch error
+bb835fe506a606eb9887ee79e5640cc3e3fa6d87	2026-08-18T04:20:33Z	feat: ACE protected offline engagement drafts with IndexedDB and sync endpoint
+d71693a39caca3d89c951b4633fc5d5da3808b64	2026-08-18T09:54:46+10:00	Add Relationship Details view (#37)
+373b84d843043f202b021a63c1524303e1f4be31	2026-08-17T21:49:23Z	restore Owner label per acceptance criteria
+43036844457931d385875a9453fb95db11690500	2026-08-17T21:36:35Z	revert Owner label to Linked Engagement per Codex P2 finding
+6b084822dd5067ce91e6fb29008b00c2aa5956a0	2026-08-17T20:18:36+10:00	fix(sqe): preserve review outcomes
+83ede977f8435be77df6a261060d9d1bedc9fc32	2026-08-17T19:51:39+10:00	feat(sqe): add relationship details view
+f80e60efb4c57c1a6c138b7e488920099ec4f926	2026-08-16T19:46:17+10:00	fix: validate relationship review URLs
+a64f13bfcf06452e269dad6f85a0b0cf79183f36	2026-08-16T08:58:35+10:00	chore(sqe): refresh Convex generated utilities
+21c7c78d17f5e33ad9f876959774bfd8cd99e6d7	2026-08-16T07:48:43+10:00	fix(sqe): sync relationship history selection
+4004c9c0316dbc89a3cdc8fbf96323ee7c85eb54	2026-08-16T07:37:10+10:00	[SQE] Add fictional Relationship Review pilot
+94db5223f1d2b6337719fba5550911c54ac10f34	2026-08-15T20:18:25+10:00	SQE: log relationship queue failures
+5d69f6e0b9e29e8de602c209dd26f4267b023b1b	2026-08-15T17:41:58+10:00	SQE: add relationship review queue navigation
+bf24a44f068aaee6764a86543f9a67517ae7c4fa	2026-08-15T12:37:31+10:00	fix: enforce G0 before trace input loading
+7a8591cd1f31613dd7ce310cba9a855054c8d588	2026-08-15T09:13:17+10:00	SQE: supply fictional relationship trace inputs
+9f955820b9265116c9c6e1c2293e93a466a7f58f	2026-08-15T08:54:32+10:00	SQE: bound relationship revision sources
+ab3079b5763cb6f5972e19f143988aa4ae4bd824	2026-08-15T08:36:20+10:00	SQE: fix relationship review recovery
+abbbde0896b6073f40518725ce3136df79f6726f	2026-08-15T07:47:12+10:00	SQE: reconcile relationship review
+0a7c39673baab0308ee27d9fc3e6dddbfbf9d7a3	2026-08-15T02:47:06+10:00	SQE: bind landing to approved candidate
+bca45d6029a0ea6e021df616d38813d070d006e0	2026-08-15T02:42:25+10:00	SQE: address Greptile workflow findings
+b4d276917a77c2f28124510972e1bf8c4912e8c2	2026-08-15T02:26:33+10:00	SQE: repair autonomous delivery workflow
+77b0967df341afe7d8b3546229ba9f5ea3d10dbc	2026-08-14T22:58:17+10:00	SQE: verify complete outgoing push range
+c17e7bf6218d5f10bd2cf7b2fdefc9d04a37c9c6	2026-08-14T22:50:51+10:00	SQE: allow bounded task commit and push
+6fe64751f50ba03931af988e452fecba4057d01b	2026-08-14T22:34:31+10:00	SQE: archive abandoned DeepSec pilot
+aebf663d80b461813d923d32fb3fd4062b49a78c	2026-08-14T22:28:32+10:00	SQE: add bounded Codex work policy
+9cdae92f7ac0958519280e2ed27e37c309fa907f	2026-08-14T22:34:31+10:00	SQE: archive abandoned DeepSec pilot
+030813f0b44db8b228a4f34b806f8d4cb3d7d0fc	2026-08-14T22:28:32+10:00	SQE: add bounded Codex work policy
+94e25ed0ce8ba937a661da4aedced19a73258431	2026-08-14T11:12:00+10:00	SQE: order legacy review upgrades
+ec12ad6bef55831597bd1a0d119080b1e8d2704d	2026-08-14T10:58:43+10:00	SQE: seal completed evidence records
+d5dd12426b8c0ce2879477a73ba6c2ec8aa8b924	2026-08-14T10:44:07+10:00	SQE: align legacy review controls
+2b387fb6f6b76091aeeffbefa8907bb8c1f28b04	2026-08-14T10:26:51+10:00	SQE: hide review retry keys
+19f487e5a485eb6413a45f7fe24830683d14e029	2026-08-14T10:18:26+10:00	SQE: migrate legacy evidence reviews
+1c42e3724d355bc55ca4c414471d31c89ceeb7bd	2026-08-14T09:55:39+10:00	SQE: lock completed evidence reviews
+e1ff0ff41ed5cbea296e55cd644ce0af9d946c72	2026-08-14T09:40:18+10:00	SQE: preserve evidence provenance
+4e33ac4586bc457e86799f344aafc4083497edc2	2026-08-14T09:22:57+10:00	SQE: make audit decisions retry safe
+fd341cb20d55f7bbb4dff089e536382d393a5887	2026-08-14T08:12:05+10:00	SQE: enforce external evidence storage
+6dcb6da7b3276b15af702ad726e5044af2b44d4a	2026-08-14T07:59:37+10:00	SQE: preserve migrated question fields
+ab400292740e2e3a3e0215a386aa898a4e0f968c	2026-08-14T07:41:52+10:00	SQE: refine review transactions
+f91d3e669bfe7b918265d283cbe79638f0cce845	2026-08-14T07:31:09+10:00	SQE: address Evidence Review findings
+af2b19e848cc47168b752f095aa9ff4e7268652a	2026-08-14T07:11:22+10:00	SQE: resolve Evidence Review feedback
+b219ba6ad9195e783be07d6961acb6e445264239	2026-08-14T02:27:32+10:00	SQE: add controlled relationship review
+e9313a040c55f3fefaf5b21176cbc601438ea0ff	2026-08-13T23:30:35+10:00	SQE: require source context for all reviews
+7e50426528574828c9fa8168eb0fb273b7109e88	2026-08-13T22:46:11+10:00	SQE: add controlled Evidence Review (#17)
+bdf6495566082a9944fa2e76af49d5398acb0def	2026-08-13T17:39:45+10:00	SQE: wire the local auditor workbench (#14)
+72bc104df1489d478c9a0435f9d0402198ab97e0	2026-08-13T17:38:24+10:00	SQE: capture evidence in active Engagement (#16)
+f170d7244bf0469ff43c149c107e0113b2ad0655	2026-08-13T17:09:30+10:00	SQE: start one safe Engagement (#15)
+b6ad6f8949dcd2c48bae74d194074c375d919c53	2026-08-13T17:39:45+10:00	SQE: wire the local auditor workbench (#14)
+ddf29fd4d2f17deb31dbad52e4a574a053b60e98	2026-08-13T17:38:24+10:00	SQE: capture evidence in active Engagement (#16)
+ca517747dfac0bc6327f1fe8213395ed6e206fa9	2026-08-13T17:09:30+10:00	SQE: start one safe Engagement (#15)
+8004bd299161feac02a194d23927a9f7aff3be47	2026-08-10T23:06:26+10:00	feat: expose evidence conclusion workflow
+c97ac589e23502abd952fa4f204538ea84904728	2026-08-10T22:57:11+10:00	fix: restore specific conclusion gate errors
+63bb1f36cb403187b750f1b043ab6d1d4ef9ce70	2026-08-10T22:47:12+10:00	fix: validate evidence conclusion input counts
+2ba94b1d59b4e99752ae117aef1d1ab888c6c50e	2026-08-10T22:33:51+10:00	test: harden evidence conclusion approvals
+6cac5b71b8581925d18f414e027b5bf9e78f1f39	2026-08-10T22:23:36+10:00	feat: add evidence conclusion approval gate
+93e0c4668e813b59fd7d70903cece446e1127723	2026-08-10T22:14:01+10:00	fix: preserve conclusion outcome types
+4d420402de50a9fe22a7ce5fcdaacd7fd3f4a5fc	2026-08-10T22:05:34+10:00	feat: add controlled conclusion records
+cd7151bbd634ea584eac133086521d745c03bc69	2026-08-10T21:58:58+10:00	feat: add evidence matrix records
+75313afd25c85f2c42183480157de544856a31bb	2026-08-10T21:51:00+10:00	feat: add controlled audit question records
+26c017aefc98710522ef358fc6916fc6397ae75f	2026-08-05T19:08:45+10:00	docs: specify ACE and MATE infographic
+d256e6942a6ce005857371cc780e8a6fa752a3c5	2026-08-04T18:54:25+10:00	feat: make ACE commands atomic and replayable
+4f33d87fa872c3ff9c98e00ed11496f826eda907	2026-08-04T08:07:37+10:00	feat: add tenant-isolated immutable ACE ledger
+bcfab660f8d98726f79d6730c63e5ac644fc7584	2026-08-04T05:23:08+10:00	fix: constrain assurance authority scopes and preparers
+64866404252b543be3dfa11b4dcf43a8fb8859c0	2026-08-04T05:10:58+10:00	fix: preserve canonical actor identity across assurance authority
+2697e6cad16ed2648046b691d870a81a765a3abd	2026-08-04T04:10:47+10:00	fix: enforce ACE lifecycle and connected assurance gates
+a56d4d852fc502c17bad43310dc8f5ea47513f9c	2026-08-04T03:30:46+10:00	fix: close ACE command integrity gates
+5dae4889b0c6a654bc771b17402a7dc1f63163b0	2026-08-04T02:24:12+10:00	fix: tighten ACE command boundary controls
+53838f52cc8a2bf1062da9bd714608d55eadefe6	2026-08-04T02:13:47+10:00	feat: add controlled ACE command boundary
+92afcf2bb9b2b9858c06ad958c5dda94ceaed44a	2026-08-04T01:50:46+10:00	fix: harden ACE snapshot integrity
+1730e8914f56d6e755e1d460cf1cc8ebb49c08cc	2026-08-04T01:31:47+10:00	fix: enforce deterministic ACE record references
+2d5cfcaafe1c124e4fb3c25a185b161168dd8306	2026-08-04T01:27:00+10:00	fix: harden ACE controlled record integrity
+bcd5106ebd068d440e9748a0690fc8598569e7a6	2026-08-04T01:18:32+10:00	feat: freeze ACE controlled workflow records
+99ebff9b31bd9fae4a4ab61d6f06ec41eec7f60d	2026-08-04T01:09:36+10:00	docs: correct ACE kernel task boundary
+6270eb2bcfab9b5f91bd7515e24e361c970aa0a8	2026-08-04T01:04:52+10:00	docs: plan ACE production workflow release 1
+c4a185fa22bd722ba46edb336ef9ffb91230ee6d	2026-08-03T22:16:57+10:00	docs: separate frozen policy from active authority
+c3181c413ec9c24df1ee84193ff706227a80d82c	2026-08-03T22:13:20+10:00	docs: harden ACE release 1 control invariants
+e501d4e88410b017d915ac9a7e1137bd834e8ea5	2026-08-03T22:00:37+10:00	docs: design ACE production workflow release 1
+fcabfe35badc22e79aea911238909b491a095e1b	2026-08-03T21:11:54+10:00	docs: record final independent review
+89ed1ae8a3b442beee486a35fc2702f40b23ff3e	2026-08-03T20:58:50+10:00	docs: resolve final review evidence findings
+308f594074276b02dd996e66d4a5897b43380b82	2026-08-03T20:40:51+10:00	docs: record final form correction evidence
+1904ff1c20340203ee8832a2e33921825756a8b7	2026-08-03T20:23:05+10:00	docs: validate form limitation corrections
+535568fdf5988b9c86ea69021e2bd6370d0b439b	2026-07-31T11:44:41+10:00	docs: revise consolidation facilitator matrices
+a58ad7b9131cb0463225fd8d5411ab0e2ee86929	2026-07-31T11:20:41+10:00	docs: refine participant row trace layout
+0b8381f60537e3fb302ad5bd73aea25d68cfb045	2026-07-31T10:54:21+10:00	docs: revise consolidation participant matrix
+67ea32201ac25649de63410c6c6c98d125811438	2026-07-31T10:19:52+10:00	docs: define matrix row trace and criteria
+af5ba3819a5a22c29385aadb5b0dda0381e9646d	2026-07-31T08:04:32+10:00	docs: plan assurance form corrections
+8ffee1cc58aafdbf36182341728b98cfc5a3026c	2026-07-31T07:57:15+10:00	docs: clarify entry id verification
+9c4f308a5b4c14cd6c778f257dce22418b18af98	2026-07-31T00:49:19+10:00	docs: design assurance form corrections
+57292ae141486e1ddfa5185ac818084364c61089	2026-07-30T19:12:50+10:00	docs: correct usability engagement identifier
+59c8921cc29f1dd0db3cf05db95947772b816d9d	2026-07-30T18:09:14+10:00	docs: finalise assurance workflow consolidation
+4d4a47beed83410e1f74a1abe7231342beb781d8	2026-07-30T17:02:25+10:00	docs: validate consolidated assurance workflow
+717b1b40e63683f480cf4aed349dbf47990ed6c5	2026-07-30T16:19:00+10:00	docs: add consolidation usability record
+d78aba1d23c5a5ba4777e80a3d51a4f307e97978	2026-07-30T13:01:44+10:00	docs: add consolidation facilitator guide
+6d7623572e2bc323dbd81af9cb17ec4141c68433	2026-07-30T12:07:54+10:00	docs: fix participant relationship wrapping
+d35b34af49b54f195bf44f494548b4059aeac9db	2026-07-30T10:46:43+10:00	docs: add consolidation participant pack
+9e7f30fa7daa600f8b10a75c28acec344bb27ae6	2026-07-30T09:51:54+10:00	docs: establish consolidation validation package
+36b0ea4a73c6bc1ab1887caa139fcafca1cc21ad	2026-07-30T09:34:13+10:00	docs: correct draft reference gate
+97d300728d782b5d6cb760d892603ee64385e669	2026-07-30T09:19:14+10:00	docs: add assurance record convention
+0fa1b206ca9a4189ec98bd68b48eb17d6cfb639e	2026-07-30T08:41:37+10:00	docs: refine assurance workflow guide
+19eb9d163fc718fd325e90bf6ec4c1a34c2d6b97	2026-07-30T08:14:25+10:00	docs: add assurance workflow guide
+041f55f04a6669586070cf35151c0f2996f0bba8	2026-07-30T07:19:19+10:00	docs: correct assurance workflow traceability
+eb29ae41ff2c74ff23ae5f1fa3be1711defe8b1f	2026-07-30T07:13:00+10:00	docs: establish assurance workflow sources
+e0cca2216bde507c18f710853d829d296aff8efc	2026-07-30T05:30:58+10:00	docs: plan assurance workflow consolidation
+c682fc57cdc684d715274bd9fca90c543b312d00	2026-07-29T23:27:45+10:00	docs: specify assurance workflow consolidation
+c4b6f27c06b18404ec03fa7a33dd72cd506186b1	2026-07-29T22:24:49+10:00	docs: polish Harbourlight usability record
+06b46ace4096c941d08b2227f5149edad7f61987	2026-07-29T21:16:09+10:00	docs: finalise Harbourlight pilot materials
+4d60fb4907cac69d4451944adaa89de4ad26045e	2026-07-29T20:40:14+10:00	docs: correct Harbourlight dry-run QA
+0816639ad69c6f7c859c67b0809ca7ff5981c49d	2026-07-29T20:16:42+10:00	docs: verify Harbourlight pilot materials
+380f6f3a34b507227c5f5f03b32fe54225fa8e90	2026-07-29T18:55:15+10:00	fix: stabilise Harbourlight usability headers
+76e392598579dd56df99890b9aaecf59808db178	2026-07-29T16:13:53+10:00	docs: add Harbourlight usability record
+bee352d3eab917d887a66ad1a956b39c393954c1	2026-07-29T14:39:17+10:00	docs: add Harbourlight facilitator guide
+94f4500557d9adb4a89a3a3ed8694b9af399dc7e	2026-07-29T13:03:18+10:00	docs: fix Harbourlight running headers
+50aa2fab649ace30582d60524166e957ad9f489c	2026-07-29T11:38:15+10:00	docs: add Harbourlight participant pack
+790b925948943a3c2c8a3b8caebcdbd9533d31c7	2026-07-29T09:18:17+10:00	fix: place Harbourlight content in sqe
+2e796b131af9ee40552666b708d1816f2d315271	2026-07-29T08:48:41+10:00	docs: harden pilot plan self-check
+fae247b45042bda30aec7fb6c5d4f09eb1d1e05b	2026-07-29T08:46:54+10:00	docs: plan Harbourlight pilot materials
+7fa2a3c476b48a9490343456736c87b4abccdea8	2026-07-29T07:24:52+10:00	docs: specify fictional review-team pilot
+3bdb89b4dcafb2065c55731152b5a0ae5e163740	2026-07-29T06:13:23+10:00	fix: reconcile conclusion evidence limitations
+5dc783c2d9ce5f632cd88c141b57266f6879c8f0	2026-07-29T05:56:07+10:00	feat: expose evidence conclusion workflow
+dcaf3a9c8bf79ea39acdf134858d66c037e1ea68	2026-07-28T15:54:14+10:00	test: harden evidence conclusion approvals
+20e269627ae205688b2dafff9509e5a365a3e761	2026-07-28T15:37:18+10:00	fix: bind contradiction evidence to matrix
+31001e12354320369eb6829b747d3ee8010e9755	2026-07-28T15:26:01+10:00	feat: add evidence conclusion approval gate
+96bbb27317b04a336310c354a2ea60160b666a46	2026-07-28T15:09:55+10:00	fix: preserve typed conclusion outcomes
+115533006d170608588416b72e8f13c8797da957	2026-07-28T15:02:14+10:00	fix: preserve conclusion outcome type
+e4d9208b76e5eb47851a85b72698f51235cbe463	2026-07-28T14:52:29+10:00	feat: add controlled conclusion records
+58e04a3249cc9d65740f96360c5c634e9bb8e6a7	2026-07-28T14:41:45+10:00	feat: add evidence matrix records
+f5861128e202f5e8779bfca3d0b4397b91e3a52a	2026-07-28T14:31:43+10:00	feat: add controlled audit question records
+2cfda8b971104f9a2a7cc73af9364daf2af736f6	2026-07-28T14:07:08+10:00	docs: add ACE Sprint 4 implementation plan
+11a38954b6762283d0923382e99560508e770fde	2026-07-28T13:26:50+10:00	docs: add approved ACE Sprint 4 design
+2e3fa6c19459bc523dafd88952f7bf7302b2e660	2026-07-28T08:33:42+10:00	docs: approve SQE reference learning guidance
+ccd54d89a44951d4d497f532be0fbba4fa7f7802	2026-07-28T08:20:24+10:00	docs: add SQE reference learning review
+370fea1d953ea6ec67817af1d8d48b6fdc005749	2026-07-28T07:48:38+10:00	fix: harden accepted planning traces
+47dc55d7bfefc3c1bdd6762a95c4edca815d948d	2026-07-28T07:20:52+10:00	feat: add deterministic planning trace views
+f9dd8462edc5c39bbe85189ea3829c55afa038ce	2026-07-28T05:43:45+10:00	feat: approve one Connected Assurance trace
+cda1443ba45255136967f2ace72dc59f44612989	2026-07-28T05:31:56+10:00	feat: add trace relationship decisions
+2672a5318f1d4fc93aecbde862548d2c569f5315	2026-07-28T05:21:51+10:00	feat: add Connected Assurance planning facts
+edcec67ffbf991e674ea3f75c0dc421a570b2467	2026-07-28T05:09:20+10:00	docs: add ACE Sprint 3 implementation plan
+2cab62331da6bdb3b347a20e00f76d55288a35db	2026-07-28T05:08:01+10:00	docs: correct Sprint 3 reverse trace order
+e8511f4c0948392a15f1185da83259b890b9cec5	2026-07-28T05:01:13+10:00	docs: clarify MATE timing in Sprint 3
+2ca393304d76483d276c105e0e11847764f04d04	2026-07-28T04:53:36+10:00	docs: add ACE Sprint 3 connected trace design
+3ce71be2a67afc6462dca9e93a557d19dc5f4bd5	2026-07-27T22:13:28+10:00	fix: strengthen approval traceability
+873dd1e524edac42e3c842c77d3e8586549fbf15	2026-07-27T22:02:49+10:00	feat: evaluate approved MATE assessments
+f35f656e94541c1ee00a75f130a9a9fb6b13620c	2026-07-27T22:01:30+10:00	feat: require auditor approval for MATE inputs
+e9dc78d47039108eca8b33539e9514c6a06d8c86	2026-07-27T21:57:59+10:00	feat: validate evidence reviews and auditor decisions
+7f8113bdc336d3bc49109b071e622b6a004e5c8a	2026-07-27T21:55:07+10:00	feat: add controlled MATE assessment records
+616e2b30fa4ff27e49e73e57dde96c8091c38ad5	2026-07-27T21:50:07+10:00	docs: add ACE Sprint 2 implementation plan
+ad2294d54950a2faffcbce11941d51fdca10c345	2026-07-27T21:39:49+10:00	docs: add ACE Sprint 2 controlled evidence design
+750f47ecd905f92827fd2018d16944013f829560	2026-07-27T15:51:37+10:00	fix: reject noncanonical timestamp whitespace
+41be57ab6e12b885a0d7cad1149a6a7d5a8ee31c	2026-07-27T15:36:30+10:00	fix: enforce canonical UTC timestamps
+5166829d8b0016d15437a9d502c66529179eeeb9	2026-07-27T15:00:05+10:00	fix: validate immutable evaluation records
+53f552fdafbbd6b9d6c9ea28e89b459434764e00	2026-07-27T10:59:00+10:00	docs: add ACE local operation guide
+98f1255449bd89e3cd6439dcf19ef26b9ab238d6	2026-07-27T10:50:06+10:00	test: enforce GET-only ACE routes
+66d76b706617ac2f1dd4de8506c77cd6bcf881b3	2026-07-27T10:43:57+10:00	feat: add local ACE evaluation server
+35b1076f2b9db43f30de8ee46d050773ec08fad4	2026-07-27T10:36:07+10:00	feat: add deterministic ACE rating engine
+5eaeb0567b5e89685a2050443090d4b462d00db2	2026-07-27T10:27:11+10:00	feat: add validated ACE domain records
+086bf25d3dfadb1ccfce1929b3c4e0f98912d97e	2026-07-27T10:20:45+10:00	build: initialise ACE Python project
+d111b31767028fe4c58410d71499532982df8a55	2026-07-26T20:14:45+10:00	docs: plan ACE Sprint 1 implementation
+da205d08130fc172d3c30ad349fead80760bdd14	2026-07-26T20:03:06+10:00	docs: define ACE Sprint 1 design

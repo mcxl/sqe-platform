@@ -1,0 +1,96 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-layout-20260914/derived/Build/Products/no-actions-v2.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=2EB0863C-470E-467D-A0C6-CD216DA70C67" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300
+
+2026-09-14 13:29:41.351 xcodebuild[41992:1275826] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.xcresult
+
+2026-09-14 13:29:41.368 xcodebuild[41992:1275826] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 13:29:41.943 xcodebuild[41992:1275826] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 13:29:42.097 xcodebuild[41992:1275826] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 13:29:46.203610+1000 ACEClientAppUITests-Runner[42002:1276194] [Default] Running tests...
+2026-09-14 13:29:46.374 xcodebuild[41992:1275826] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 13:29:48.942.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 13:29:48.944.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 13:29:48.944.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit]' started.
+    t =     0.01s Start Test at 2026-09-14 13:29:48.953
+    t =     0.14s Set Up
+    t =     0.15s Open com.example.aceclientapp
+    t =     0.15s     Launch com.example.aceclientapp
+2026-09-14 13:29:49.191 xcodebuild[41992:1275826] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 13:29:49.191 xcodebuild[41992:1275826] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.55s         Setting up automation session
+    t =     4.26s         Wait for com.example.aceclientapp to idle
+    t =     7.39s Checking existence of `"No actions are available." StaticText`
+    t =     7.55s Get all elements bound by index for: Descendants matching type Button
+    t =     7.61s Find the Button (Element at index 0)
+    t =     7.77s Find the "Copy Engagement name" Button
+    t =     7.86s Find the "Copy Engagement name" Button
+    t =     7.93s Find the Button (Element at index 1)
+    t =     8.03s Find the "Copy Review status" Button
+    t =     8.14s Find the "Copy Review status" Button
+    t =     8.23s Find the Button (Element at index 2)
+    t =     8.33s Find the "Copy Release version" Button
+    t =     8.41s Find the "Copy Release version" Button
+    t =     8.48s Find the Button (Element at index 3)
+    t =     8.62s Find the "Copy Published date and time" Button
+    t =     8.70s Find the "Copy Published date and time" Button
+    t =     8.76s Find the Button (Element at index 4)
+    t =     8.89s Find the "Copy Conclusion title" Button
+    t =     8.99s Find the "Copy Conclusion title" Button
+    t =     9.05s Find the Button (Element at index 5)
+    t =     9.15s Find the "Copy Conclusion summary" Button
+    t =     9.27s Find the "Copy Conclusion summary" Button
+    t =     9.34s Find the Button (Element at index 6)
+    t =     9.44s Find the "Copy Evidence reference" Button
+    t =     9.53s Find the "Copy Evidence reference" Button
+    t =     9.62s Find the Button (Element at index 7)
+    t =     9.73s Find the Button (Element at index 8)
+    t =     9.81s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    10.86s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    10.86s         Checking existence of `ScrollView (First Match)`
+    t =    10.88s Checking existence of `"No actions are available." StaticText`
+    t =    10.96s Find the "No actions are available." StaticText
+    t =    11.09s Find the ScrollView (First Match)
+    t =    11.13s Checking existence of `"No actions are available." StaticText`
+    t =    11.21s Find the "No actions are available." StaticText
+    t =    11.62s Press ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    11.62s     Wait for com.example.aceclientapp to idle
+    t =    11.64s     Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    11.69s     Check for interrupting elements affecting ScrollView
+    t =    11.78s     Synthesize event
+    t =    11.79s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    11.84s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    11.89s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    11.94s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    11.98s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    12.95s     Wait for com.example.aceclientapp to idle
+    t =    13.36s Checking existence of `"No actions are available." StaticText`
+    t =    13.45s Find the "No actions are available." StaticText
+    t =    13.58s Find the "No actions are available." StaticText
+    t =    13.67s Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    13.70s Find the Target Application 'com.example.aceclientapp'
+    t =    14.06s Added attachment named 'Controlled state — noActions — light'
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"identifier":"","label":"","type":"unavailable"},"scenario":"noActions"}
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit] : Contrast failed
+    t =    18.10s Terminate com.example.aceclientapp:42012
+    t =    19.20s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit]' failed (19.263 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 13:30:08.215.
+	 Executed 1 test, with 1 failure (0 unexpected) in 19.263 (19.271) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 13:30:08.217.
+	 Executed 1 test, with 1 failure (0 unexpected) in 19.263 (19.273) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 13:30:08.218.
+	 Executed 1 test, with 1 failure (0 unexpected) in 19.263 (19.276) seconds
+2026-09-14 13:30:34.787 xcodebuild[41992:1275826] [MT] IDETestOperationsObserverDebug: 52.686 elapsed -- Testing started completed.
+2026-09-14 13:30:34.787 xcodebuild[41992:1275826] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 13:30:34.787 xcodebuild[41992:1275826] [MT] IDETestOperationsObserverDebug: 52.686 sec, +52.686 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

@@ -1,0 +1,380 @@
+{
+  "destination": {
+    "root": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "seconds": 1.171,
+      "stdout": "LOCAL_HOME/Documents/sqe-platform\n",
+      "stderr": ""
+    },
+    "head": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.818,
+      "stdout": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a\n",
+      "stderr": ""
+    },
+    "branch": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "symbolic-ref",
+        "--quiet",
+        "--short",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.765,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    "common_dir": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "rev-parse",
+        "--path-format=absolute",
+        "--git-common-dir"
+      ],
+      "exit_code": 0,
+      "seconds": 0.689,
+      "stdout": "LOCAL_HOME/Documents/sqe-platform/.git\n",
+      "stderr": ""
+    },
+    "refs": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.742,
+      "stdout": "refs/heads/main 478a7d8cd9c97d0bc43bd4d41ea460d589d4003a\nrefs/remotes/origin/main 29b62df901af9833be334392d97a6b45a42d1962\n",
+      "stderr": ""
+    },
+    "object_sizes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "count-objects",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.853,
+      "stdout": "count: 0\nsize: 0\nin-pack: 4976\npacks: 3\nsize-pack: 295907\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+      "stderr": ""
+    },
+    "worktrees": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "seconds": 1.055,
+      "stdout": "worktree LOCAL_HOME/Documents/sqe-platform\nHEAD 478a7d8cd9c97d0bc43bd4d41ea460d589d4003a\nbranch refs/heads/main\n\n",
+      "stderr": ""
+    },
+    "remotes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.07,
+      "stdout": "origin\thttps://github.com/mcxl/sqe-platform.git (fetch)\norigin\thttps://github.com/mcxl/sqe-platform.git (push)\n",
+      "stderr": ""
+    }
+  },
+  "public_clean": {
+    "root": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "seconds": 1.043,
+      "stdout": "LOCAL_HOME/Documents/sqe-platform-public-clean\n",
+      "stderr": ""
+    },
+    "head": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 1.181,
+      "stdout": "7dc7cee7654ae8cc002da54324c3d1475a8494e6\n",
+      "stderr": ""
+    },
+    "branch": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "symbolic-ref",
+        "--quiet",
+        "--short",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 1.232,
+      "stdout": "codex/mcx-19-live-evidence-harness\n",
+      "stderr": ""
+    },
+    "common_dir": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "rev-parse",
+        "--path-format=absolute",
+        "--git-common-dir"
+      ],
+      "exit_code": 0,
+      "seconds": 1.177,
+      "stdout": "LOCAL_HOME/Documents/sqe-platform-public-clean/.git\n",
+      "stderr": ""
+    },
+    "refs": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0,
+      "seconds": 1.023,
+      "stdout": "refs/heads/codex/ace-landmarks-trial-20260912 006193066a6c9c1db47554c6a80090b028724f1d\nrefs/heads/codex/mcx-18-strict-ui-test 6d5a20c51ec009cc0a7f317f96e4095f35820c34\nrefs/heads/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\nrefs/heads/codex/mcx-20-mate-origin-cleanup 25a3035eed07306e5b3e4aa8a67d8aa2235fed34\nrefs/heads/codex/mcx-21-align-reviewed-evidence 3de745934d62034d843032ad9b202b2fecc93a6b\nrefs/heads/codex/mcx-22-wrong-uuid-simulator-regression 2e0e31ffe21feee4ce3e5927c733d70e429429b9\nrefs/heads/codex/sqe-pivot-integration bdbceb6d0dd260dded1782f9b9c76aa5f7bad14b\nrefs/heads/main 7da6228dc87ad970aa8d44365fbc3823c58020da\nrefs/remotes/origin/HEAD 7da6228dc87ad970aa8d44365fbc3823c58020da\nrefs/remotes/origin/codex/ace-landmarks-trial-20260912 006193066a6c9c1db47554c6a80090b028724f1d\nrefs/remotes/origin/codex/mcx-18-strict-ui-test 6d5a20c51ec009cc0a7f317f96e4095f35820c34\nrefs/remotes/origin/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\nrefs/remotes/origin/codex/mcx-20-mate-origin-cleanup 25a3035eed07306e5b3e4aa8a67d8aa2235fed34\nrefs/remotes/origin/codex/mcx-21-align-reviewed-evidence 3de745934d62034d843032ad9b202b2fecc93a6b\nrefs/remotes/origin/codex/mcx-22-wrong-uuid-simulator-regression 2e0e31ffe21feee4ce3e5927c733d70e429429b9\nrefs/remotes/origin/codex/sqe-pivot-gate-bootstrap bdbceb6d0dd260dded1782f9b9c76aa5f7bad14b\nrefs/remotes/origin/codex/sqe-pivot-integration 326b2b7f5292ac71423201f32e6b68222e0e7e25\nrefs/remotes/origin/main 7da6228dc87ad970aa8d44365fbc3823c58020da\n",
+      "stderr": ""
+    },
+    "object_sizes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "count-objects",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.257,
+      "stdout": "count: 1022\nsize: 3997\nin-pack: 134\npacks: 1\nsize-pack: 467\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+      "stderr": ""
+    },
+    "worktrees": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "seconds": 1.026,
+      "stdout": "worktree LOCAL_HOME/Documents/sqe-platform-public-clean\nHEAD 7dc7cee7654ae8cc002da54324c3d1475a8494e6\nbranch refs/heads/codex/mcx-19-live-evidence-harness\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace/sqe/.artifacts/apple-landmarks-trial-20260912/worktree\nHEAD 006193066a6c9c1db47554c6a80090b028724f1d\nbranch refs/heads/codex/ace-landmarks-trial-20260912\n\n",
+      "stderr": ""
+    },
+    "remotes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.065,
+      "stdout": "origin\thttps://github.com/mcxl/sqe-platform.git (fetch)\norigin\thttps://github.com/mcxl/sqe-platform.git (push)\n",
+      "stderr": ""
+    }
+  },
+  "monorepo": {
+    "root": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "seconds": 0.99,
+      "stdout": "LOCAL_HOME/Documents/agentic-os-workspace\n",
+      "stderr": ""
+    },
+    "head": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.956,
+      "stdout": "29b62df901af9833be334392d97a6b45a42d1962\n",
+      "stderr": ""
+    },
+    "branch": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "symbolic-ref",
+        "--quiet",
+        "--short",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.906,
+      "stdout": "codex/ace-sprint-1\n",
+      "stderr": ""
+    },
+    "common_dir": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "rev-parse",
+        "--path-format=absolute",
+        "--git-common-dir"
+      ],
+      "exit_code": 0,
+      "seconds": 0.889,
+      "stdout": "LOCAL_HOME/Documents/agentic-os-workspace/.git\n",
+      "stderr": ""
+    },
+    "refs": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.974,
+      "stdout": "refs/codex/snapshots/2bd73ec05c322172db42ff8722b23f0812d97c0d 23d480dbedf140be73ff92b2530ec7bdecc4e2ca\nrefs/heads/agent/sqe-engagement-capture bdf6495566082a9944fa2e76af49d5398acb0def\nrefs/heads/agent/sqe-evidence-review 94e25ed0ce8ba937a661da4aedced19a73258431\nrefs/heads/agent/sqe-relationship-review b219ba6ad9195e783be07d6961acb6e445264239\nrefs/heads/alanrichardson/mcx-11-relationship-details-final a6cd5f379bfe853aae66e65d116544ba14d326af\nrefs/heads/alanrichardson/mcx-11-relationship-details-replacement 7942e60fd55d9965f47a2a6dc8b0b8b3e9f175a1\nrefs/heads/alanrichardson/mcx-11-sqe-reconcile-relationship-details-pilot-source 6b084822dd5067ce91e6fb29008b00c2aa5956a0\nrefs/heads/claude/sharp-albattani-PjUb8 10d5df1cda34617e9c69568e8b70cd9a3f5eb4c3\nrefs/heads/codex/ace-assurance-workflow-consolidation fcabfe35badc22e79aea911238909b491a095e1b\nrefs/heads/codex/ace-fictional-pilot-spec e0cca2216bde507c18f710853d829d296aff8efc\nrefs/heads/codex/ace-ios-read-only-client b6e5d480a5e50d60cc9e9e5c49df5ea70b153232\nrefs/heads/codex/ace-production-release-1-design d256e6942a6ce005857371cc780e8a6fa752a3c5\nrefs/heads/codex/ace-sprint-1 29b62df901af9833be334392d97a6b45a42d1962\nrefs/heads/codex/ace-sprint-1-build 750f47ecd905f92827fd2018d16944013f829560\nrefs/heads/codex/ace-sprint-4 3bdb89b4dcafb2065c55731152b5a0ae5e163740\nrefs/heads/codex/audit-concierge-baseline-20260730 3c1778654a445deff1146a001972dfd66e7771c1\nrefs/heads/codex/audit-concierge-hardening 5a99435d0f96d72a3e2d6a3f4bd1cac0e3cfae41\nrefs/heads/codex/audit-concierge-post-deploy-filter 032941cc83dd24e4ef4a0d4f39d54d151e4a1b18\nrefs/heads/codex/auditor-mobile-slice1 81ab9031158976e2b5511875ef264caa56fcd075\nrefs/heads/codex/auditor-mobile-slice1-closure 715f88df6a6b4e890cb804fd976c952ddf1a8289\nrefs/heads/codex/deepsec-pilot-closeout 6fe64751f50ba03931af988e452fecba4057d01b\nrefs/heads/codex/dilap-smoke-existing-session f9c363c820926ddbd783b0ba73afeb9924ab2f6c\nrefs/heads/codex/ios-final-spec c2f3de05fb317d15f563356aaf8305be25fe434e\nrefs/heads/codex/ios-spec-state-sync 88efc4a2ba9ccaae8dd82fcd8bb39229f504cf50\nrefs/heads/codex/ios-vorflux-planning-brief 6b0160befc9191dbccd527bdd385b891782ddad8\nrefs/heads/codex/kapso-sender-split-20260722 06312d4882b8c409f8b8c9dc7b177e8b7601f6a5\nrefs/heads/codex/kapso-sender-split-hardening eae72f0cc86f7830a9c351a618996ce89cb1c70d\nrefs/heads/codex/kapso-sender-split-health-hotfix 4c5b4559fe69549021a277db0d3ad6ef79802863\nrefs/heads/codex/kapso-webhook-secret-hotfix a681e2f6f605f7ac9e48a3c4f100bdb262ebf981\nrefs/heads/codex/kapso-webhook-secret-rotation 39c45d4af6907f2263ed63aa9b9965ce48998209\nrefs/heads/codex/mcx-15-phase6-1-evidence 3b342b92e647ef78cb4d177803ab868ff7434bb4\nrefs/heads/codex/mcx-15-phase6-1-simulator-probe ef9beb558ea81c014d6ee1c5d6f043fa49b7b63a\nrefs/heads/codex/mcx-15-phase6-1-simulator-probe-v2 91818a476c7ddb81c48aba63c76b11cfbcb70df4\nrefs/heads/codex/mcx-5-reconcile-relationship-review bf24a44f068aaee6764a86543f9a67517ae7c4fa\nrefs/heads/codex/mcx-6-relationship-review 94db5223f1d2b6337719fba5550911c54ac10f34\nrefs/heads/codex/mcx-7-repair-autonomous-delivery-workflow 0a7c39673baab0308ee27d9fc3e6dddbfbf9d7a3\nrefs/heads/codex/mcx-8-relationship-review-pilot f80e60efb4c57c1a6c138b7e488920099ec4f926\nrefs/heads/codex/offline-ssa-local-evidence cebb52cc5ef9e1afed140bde0ece79fa129798f9\nrefs/heads/codex/phase6b1-closeout 3c5d2313302b60038d56adf884ed5e0f6024f1ac\nrefs/heads/codex/split-dilap-standalone eb09268a0f9e2c1b67251efc832680685ed7e84a\nrefs/heads/codex/sqe-task-commit-push-policy 77b0967df341afe7d8b3546229ba9f5ea3d10dbc\nrefs/heads/codex/ssa-dilap-routing-hotfix db7efbb6b1dc44b3c000cfbbbc4ea77f8af5b0ae\nrefs/heads/feat/conversational-ux 1706c35e662c9fc466b198044470a4a5704971f4\nrefs/heads/production/audit-concierge 367dfb903fb0b04fe5ce835ce568ea03e3b786eb\nrefs/heads/vorflux/phase6b1-approved-actions 1d832a54065b7446df21346c79fe2b6270716eed\nrefs/remotes/origin/HEAD 265dadd3fd3952d2ecea862c988efc90bc519acf\nrefs/remotes/origin/agent/sqe-engagement-capture bdf6495566082a9944fa2e76af49d5398acb0def\nrefs/remotes/origin/agent/sqe-evidence-review 94e25ed0ce8ba937a661da4aedced19a73258431\nrefs/remotes/origin/alanrichardson/mcx-11-relationship-details-final 373b84d843043f202b021a63c1524303e1f4be31\nrefs/remotes/origin/alanrichardson/mcx-11-relationship-details-manual-review 373b84d843043f202b021a63c1524303e1f4be31\nrefs/remotes/origin/alanrichardson/mcx-11-relationship-details-replacement 7942e60fd55d9965f47a2a6dc8b0b8b3e9f175a1\nrefs/remotes/origin/alanrichardson/mcx-11-sqe-reconcile-relationship-details-pilot-source 6b084822dd5067ce91e6fb29008b00c2aa5956a0\nrefs/remotes/origin/claude/sharp-albattani-PjUb8 265dadd3fd3952d2ecea862c988efc90bc519acf\nrefs/remotes/origin/codex/ace-sprint-1 b6e5d480a5e50d60cc9e9e5c49df5ea70b153232\nrefs/remotes/origin/codex/audit-concierge-baseline-20260730 3c1778654a445deff1146a001972dfd66e7771c1\nrefs/remotes/origin/codex/audit-concierge-hardening 5a99435d0f96d72a3e2d6a3f4bd1cac0e3cfae41\nrefs/remotes/origin/codex/audit-concierge-post-deploy-filter 032941cc83dd24e4ef4a0d4f39d54d151e4a1b18\nrefs/remotes/origin/codex/auditor-mobile-slice1 81ab9031158976e2b5511875ef264caa56fcd075\nrefs/remotes/origin/codex/deepsec-pilot-closeout 6fe64751f50ba03931af988e452fecba4057d01b\nrefs/remotes/origin/codex/dilap-smoke-existing-session f9c363c820926ddbd783b0ba73afeb9924ab2f6c\nrefs/remotes/origin/codex/ios-final-spec c2f3de05fb317d15f563356aaf8305be25fe434e\nrefs/remotes/origin/codex/ios-spec-state-sync 88efc4a2ba9ccaae8dd82fcd8bb39229f504cf50\nrefs/remotes/origin/codex/kapso-sender-split-20260722 06312d4882b8c409f8b8c9dc7b177e8b7601f6a5\nrefs/remotes/origin/codex/kapso-sender-split-hardening eae72f0cc86f7830a9c351a618996ce89cb1c70d\nrefs/remotes/origin/codex/kapso-sender-split-health-hotfix 4c5b4559fe69549021a277db0d3ad6ef79802863\nrefs/remotes/origin/codex/kapso-webhook-secret-hotfix a681e2f6f605f7ac9e48a3c4f100bdb262ebf981\nrefs/remotes/origin/codex/kapso-webhook-secret-rotation 39c45d4af6907f2263ed63aa9b9965ce48998209\nrefs/remotes/origin/codex/mcx-5-reconcile-relationship-review bf24a44f068aaee6764a86543f9a67517ae7c4fa\nrefs/remotes/origin/codex/mcx-6-relationship-review 94db5223f1d2b6337719fba5550911c54ac10f34\nrefs/remotes/origin/codex/mcx-7-repair-autonomous-delivery-workflow 0a7c39673baab0308ee27d9fc3e6dddbfbf9d7a3\nrefs/remotes/origin/codex/mcx-8-relationship-review-pilot f80e60efb4c57c1a6c138b7e488920099ec4f926\nrefs/remotes/origin/codex/phase6b1-closeout 3c5d2313302b60038d56adf884ed5e0f6024f1ac\nrefs/remotes/origin/codex/sqe-task-commit-push-policy 77b0967df341afe7d8b3546229ba9f5ea3d10dbc\nrefs/remotes/origin/codex/ssa-dilap-routing-hotfix db7efbb6b1dc44b3c000cfbbbc4ea77f8af5b0ae\nrefs/remotes/origin/feat/conversational-ux 1706c35e662c9fc466b198044470a4a5704971f4\nrefs/remotes/origin/production/audit-concierge ee1140cffc712e4c2586ba32cee719ae8d4f70ab\nrefs/remotes/origin/vorflux/engagement-control-summary a4fd72e91fd20a37870cd3d726aafa68a4be50d8\nrefs/remotes/origin/vorflux/offline-drafts 17587f8db7311675860b0c0ee82af3c828a47d92\nrefs/remotes/origin/vorflux/phase6-final-state-sync e1404eaf72212f71e10c7ef81e1013b9ab3a10d9\nrefs/remotes/origin/vorflux/phase6-progress-guide 727243d890738f103b94ca6926fd0ae299b0a001\nrefs/remotes/origin/vorflux/phase6-release-service-boundary 7e67ee62ffabdc7e54fbb07f91d509f6ebc72c94\nrefs/remotes/origin/vorflux/phase6-release-trigger-reduction 2887c0ce0782910e648860b8157d2d2a966172a2\nrefs/remotes/origin/vorflux/phase6-release-workflow 761b0cb9941c52e90c8db7ad806cee49d0531732\nrefs/remotes/origin/vorflux/phase6a-reconcile 2c6fdd51dd5ca76251fbabdbd42bc7bb8e80c626\nrefs/remotes/origin/vorflux/phase6b1-approved-actions 1d832a54065b7446df21346c79fe2b6270716eed\nrefs/remotes/origin/vorflux/phase6b2-dev-state-sync 759cfa0fab3b8cb423bc0f2808f4f2289710c54b\nrefs/remotes/origin/vorflux/phase6b2-read-only-projection ddd1b69d84cdc36cb7a28f3aed6ae83a5119b0dd\nrefs/remotes/vorflux-harness/HEAD cdc4f458bfd3ede385844b31eed117d3c06e854d\nrefs/remotes/vorflux-harness/codex/mcx-15-phase6-1-evidence 3b342b92e647ef78cb4d177803ab868ff7434bb4\nrefs/remotes/vorflux-harness/codex/mcx-15-phase6-1-simulator-probe ef9beb558ea81c014d6ee1c5d6f043fa49b7b63a\nrefs/remotes/vorflux-harness/codex/mcx-15-phase6-1-simulator-probe-v2 91818a476c7ddb81c48aba63c76b11cfbcb70df4\nrefs/remotes/vorflux-harness/main f0ca3f958334af7b6727742460ed060cf9c077aa\nrefs/remotes/vorflux-harness/vorflux/mcx-15-adaptive cdc4f458bfd3ede385844b31eed117d3c06e854d\nrefs/stash 1935e92d4c7aa4c9d81096bf0cb5293d8a930ffe\n",
+      "stderr": ""
+    },
+    "object_sizes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "count-objects",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 2.909,
+      "stdout": "count: 1070\nsize: 584804\nin-pack: 5777\npacks: 6\nsize-pack: 303699\nprune-packable: 24\ngarbage: 18\nsize-garbage: 668105\n",
+      "stderr": "warning: garbage found: .git/objects/6f/tmp_obj_aIDgHr\nwarning: garbage found: .git/objects/77/tmp_obj_vvqa20\nwarning: garbage found: .git/objects/98/tmp_obj_2UATDl\nwarning: garbage found: .git/objects/98/tmp_obj_35Dtjr\nwarning: garbage found: .git/objects/98/tmp_obj_84BkcM\nwarning: garbage found: .git/objects/98/tmp_obj_bz4eOl\nwarning: garbage found: .git/objects/98/tmp_obj_gfYKVm\nwarning: garbage found: .git/objects/98/tmp_obj_H36nOc\nwarning: garbage found: .git/objects/98/tmp_obj_JqK0g7\nwarning: garbage found: .git/objects/98/tmp_obj_K8sGlI\nwarning: garbage found: .git/objects/98/tmp_obj_lA5vhp\nwarning: garbage found: .git/objects/98/tmp_obj_MJuIG9\nwarning: garbage found: .git/objects/98/tmp_obj_onrh6F\nwarning: garbage found: .git/objects/98/tmp_obj_qdG8bS\nwarning: garbage found: .git/objects/98/tmp_obj_QQ4YQb\nwarning: garbage found: .git/objects/98/tmp_obj_RDHvNr\nwarning: garbage found: .git/objects/98/tmp_obj_VmRIh6\nwarning: garbage found: .git/objects/98/tmp_obj_XK0H3B\n"
+    },
+    "worktrees": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "seconds": 1.484,
+      "stdout": "worktree LOCAL_HOME/Documents/agentic-os-workspace\nHEAD 29b62df901af9833be334392d97a6b45a42d1962\nbranch refs/heads/codex/ace-sprint-1\n\nworktree C:/tmp/audit-concierge-auditor-mobile-slice1\nHEAD 81ab9031158976e2b5511875ef264caa56fcd075\nbranch refs/heads/codex/auditor-mobile-slice1\n\nworktree C:/tmp/audit-concierge-auditor-mobile-slice1-closure\nHEAD 715f88df6a6b4e890cb804fd976c952ddf1a8289\nbranch refs/heads/codex/auditor-mobile-slice1-closure\n\nworktree C:/tmp/audit-concierge-baseline-20260730\nHEAD 3c1778654a445deff1146a001972dfd66e7771c1\nbranch refs/heads/codex/audit-concierge-baseline-20260730\n\nworktree C:/tmp/audit-concierge-baseline-clean-20260730\nHEAD 1ae1c01c5b07b89852a3c554fb35db577bf00060\ndetached\n\nworktree C:/tmp/audit-concierge-offline-ssa\nHEAD cebb52cc5ef9e1afed140bde0ece79fa129798f9\nbranch refs/heads/codex/offline-ssa-local-evidence\n\nworktree C:/tmp/sqe-ace-assurance-workflow-consolidation\nHEAD d256e6942a6ce005857371cc780e8a6fa752a3c5\nbranch refs/heads/codex/ace-production-release-1-design\n\nworktree C:/tmp/sqe-ace-fictional-pilot-spec\nHEAD e0cca2216bde507c18f710853d829d296aff8efc\nbranch refs/heads/codex/ace-fictional-pilot-spec\n\nworktree C:/tmp/sqe-ace-sprint-1\nHEAD 750f47ecd905f92827fd2018d16944013f829560\nbranch refs/heads/codex/ace-sprint-1-build\n\nworktree C:/tmp/sqe-ace-sprint-4\nHEAD 3bdb89b4dcafb2065c55731152b5a0ae5e163740\nbranch refs/heads/codex/ace-sprint-4\n\nworktree C:/tmp/sqe-deepsec-closeout\nHEAD 77b0967df341afe7d8b3546229ba9f5ea3d10dbc\nbranch refs/heads/codex/sqe-task-commit-push-policy\n\nworktree C:/tmp/sqe-ios-final-spec\nHEAD c2f3de05fb317d15f563356aaf8305be25fe434e\nbranch refs/heads/codex/ios-final-spec\n\nworktree C:/tmp/sqe-ios-spec-state-sync\nHEAD 88efc4a2ba9ccaae8dd82fcd8bb39229f504cf50\nbranch refs/heads/codex/ios-spec-state-sync\n\nworktree C:/tmp/sqe-issue18-controlled-actions\nHEAD b219ba6ad9195e783be07d6961acb6e445264239\nbranch refs/heads/agent/sqe-relationship-review\n\nworktree C:/tmp/sqe-mcx-15\nHEAD b6e5d480a5e50d60cc9e9e5c49df5ea70b153232\nbranch refs/heads/codex/ace-ios-read-only-client\n\nworktree C:/tmp/sqe-mcx-15-phase6-1-evidence\nHEAD 3b342b92e647ef78cb4d177803ab868ff7434bb4\nbranch refs/heads/codex/mcx-15-phase6-1-evidence\n\nworktree C:/tmp/sqe-mcx-15-phase6-1-simulator-probe\nHEAD ef9beb558ea81c014d6ee1c5d6f043fa49b7b63a\nbranch refs/heads/codex/mcx-15-phase6-1-simulator-probe\n\nworktree C:/tmp/sqe-mcx-15-phase6-1-simulator-probe-v2\nHEAD 91818a476c7ddb81c48aba63c76b11cfbcb70df4\nbranch refs/heads/codex/mcx-15-phase6-1-simulator-probe-v2\n\nworktree C:/tmp/sqe-mcx-5\nHEAD bf24a44f068aaee6764a86543f9a67517ae7c4fa\nbranch refs/heads/codex/mcx-5-reconcile-relationship-review\n\nworktree C:/tmp/sqe-mcx-6\nHEAD 94db5223f1d2b6337719fba5550911c54ac10f34\nbranch refs/heads/codex/mcx-6-relationship-review\n\nworktree C:/tmp/sqe-phase6a-exact-base\nHEAD d99791fac82a9e0b577f2a834a76455db6715b36\ndetached\n\nworktree C:/tmp/sqe-phase6b1-goal-7aa5084\nHEAD 3c5d2313302b60038d56adf884ed5e0f6024f1ac\nbranch refs/heads/codex/phase6b1-closeout\n\nworktree C:/tmp/sqe-phase6b2-controlled-target\nHEAD 6b0160befc9191dbccd527bdd385b891782ddad8\nbranch refs/heads/codex/ios-vorflux-planning-brief\n\nworktree C:/tmp/sqe-pr26-completion\nHEAD 94e25ed0ce8ba937a661da4aedced19a73258431\nbranch refs/heads/agent/sqe-evidence-review\n\nworktree LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace\nHEAD b2fc889d03b8a1ee1756960011706de4d12b1116\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace\nHEAD b36f89c7fee9e37f1014933408fea78bd9eb80a1\ndetached\n\nworktree LOCAL_HOME/.codex/worktrees/fefc/agentic-os-workspace\nHEAD a6cd5f379bfe853aae66e65d116544ba14d326af\nbranch refs/heads/alanrichardson/mcx-11-relationship-details-final\n\nworktree LOCAL_HOME/AppData/Local/Temp/ace-ios-spec-pocock-17c7e71a\nHEAD 17c7e71a207d248979b9601b4cf4a9dfc71f548d\ndetached\nprunable gitdir file points to non-existent location\n\nworktree LOCAL_HOME/AppData/Local/Temp/sqe-phase6b1-preview-ac5f9f6\nHEAD e30784b375f9741484fb0c4bf226a92cdee2828c\ndetached\nprunable gitdir file points to non-existent location\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace/_deploy-audit-dilap-20260713-084150\nHEAD 10d5df1cda34617e9c69568e8b70cd9a3f5eb4c3\ndetached\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace/audit-concierge/tmp/prod-hotfix-ssa-routing\nHEAD db7efbb6b1dc44b3c000cfbbbc4ea77f8af5b0ae\nbranch refs/heads/codex/ssa-dilap-routing-hotfix\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace/sqe-pr38\nHEAD 9a9ce19070aaafc89cee901e43783eba24213e1c\ndetached\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace-mcx-7\nHEAD 0a7c39673baab0308ee27d9fc3e6dddbfbf9d7a3\nbranch refs/heads/codex/mcx-7-repair-autonomous-delivery-workflow\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace-mcx8\nHEAD f80e60efb4c57c1a6c138b7e488920099ec4f926\nbranch refs/heads/codex/mcx-8-relationship-review-pilot\n\nworktree LOCAL_HOME/Documents/agentic-os-workspace-release-kapso-sender-split\nHEAD eae72f0cc86f7830a9c351a618996ce89cb1c70d\nbranch refs/heads/codex/kapso-sender-split-hardening\n\nworktree LOCAL_HOME/Documents/audit-concierge-hardening-worktree\nHEAD 367dfb903fb0b04fe5ce835ce568ea03e3b786eb\nbranch refs/heads/production/audit-concierge\n\n",
+      "stderr": ""
+    },
+    "remotes": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.802,
+      "stdout": "origin\thttps://github.com/mcxl/agentic-os-workspace.git (fetch)\norigin\thttps://github.com/mcxl/agentic-os-workspace.git (push)\nvorflux-harness\thttps://github.com/mcxl/ace-iphone-fictional-test.git (fetch)\nvorflux-harness\thttps://github.com/mcxl/ace-iphone-fictional-test.git (push)\n",
+      "stderr": ""
+    }
+  }
+}

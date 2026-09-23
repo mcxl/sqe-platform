@@ -1,0 +1,99 @@
+{
+  "source": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/native-settings/002-set/attachments/C20915FE-3CD2-4D6C-8BB9-B710A22EBDCF",
+  "SHA256": "140dafd6fc91009018f2ec14b410a3cd63e38498108ce52a726dd5e32e3c5071",
+  "event": {
+    "originalOffset.dx": 297.0,
+    "parentWindowSize": {
+      "NS.keys": [
+        "Width",
+        "Height"
+      ],
+      "NS.objects": [
+        0.0,
+        0.0
+      ]
+    },
+    "orientation": 1,
+    "targetProcessID": 76670,
+    "endsPersistentState": false,
+    "displayID": 1,
+    "systemAutomationProperties": {
+      "NS.keys": [],
+      "NS.objects": []
+    },
+    "originalOffset.dy": 14.0,
+    "beginsPersistentState": false,
+    "name": "tap",
+    "eventPaths": {
+      "NS.objects": [
+        {
+          "targetFrame.width": 0.0,
+          "targetFrame.x": 0.0,
+          "pathType": 1,
+          "targetFrame.y": 0.0,
+          "deviceID": 0,
+          "pointerEvents": {
+            "NS.objects": [
+              {
+                "pressure": 0.0,
+                "eventType": 1,
+                "clickCount": 0,
+                "duration": 0.0,
+                "verticalLineScroll": 0,
+                "keyCode": 0,
+                "gesturePhase": 0,
+                "deltaVector.dy": 0.0,
+                "destination.y": 0.0,
+                "buttonType": 0,
+                "keyModifierFlags": 0,
+                "gestureStage": 0,
+                "typingSpeed": 0,
+                "destination.x": 0.0,
+                "deviceID": 0,
+                "offset": 0.0,
+                "deltaVector.dx": 0.0,
+                "coordinate.y": 160.3333282470703,
+                "mergeModifierFlagsWithCurrentFlags": false,
+                "coordinate.x": 333.0,
+                "keyPhase": 0,
+                "shouldRedact": false,
+                "string": "$null",
+                "key": "$null"
+              },
+              {
+                "pressure": 0.0,
+                "eventType": 3,
+                "clickCount": 0,
+                "duration": 0.0,
+                "verticalLineScroll": 0,
+                "keyCode": 0,
+                "gesturePhase": 0,
+                "deltaVector.dy": 0.0,
+                "destination.y": 0.0,
+                "buttonType": 0,
+                "keyModifierFlags": 0,
+                "gestureStage": 0,
+                "typingSpeed": 0,
+                "destination.x": 0.0,
+                "deviceID": 0,
+                "offset": 0.05,
+                "deltaVector.dx": 0.0,
+                "coordinate.y": 160.3333282470703,
+                "mergeModifierFlagsWithCurrentFlags": false,
+                "coordinate.x": 333.0,
+                "keyPhase": 0,
+                "shouldRedact": false,
+                "string": "$null",
+                "key": "$null"
+              }
+            ]
+          },
+          "speedFactor": 0.0,
+          "eventStream": "$null",
+          "targetFrame.height": 0.0,
+          "index": 1
+        }
+      ]
+    }
+  }
+}

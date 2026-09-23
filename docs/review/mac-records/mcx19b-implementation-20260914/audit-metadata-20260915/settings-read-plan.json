@@ -1,0 +1,11 @@
+{
+  "question": "Does the new root metadata expose valid JSON from actual app settings to the existing settings selector?",
+  "scope": "One testConfigureAccessibilitySettings in read mode through unchanged native_flags helper. No OS setting changes.",
+  "expected": "1 passed, zero skipped; native summary, log, marker and attachments retained. Six CoverageSettings fields decode; four flags/orientation emitted by existing result marker.",
+  "buildReuse": "Existing runner reuse_build validates exact candidate, template, build bundle, build log and product hashes; preflight environment identity checked.",
+  "command": [
+    "python3",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/read-settings.py"
+  ],
+  "invocationOnly": true
+}

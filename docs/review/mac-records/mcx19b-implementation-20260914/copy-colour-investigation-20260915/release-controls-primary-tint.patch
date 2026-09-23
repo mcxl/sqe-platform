@@ -1,0 +1,10 @@
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -203,6 +203,7 @@
+             }
+             .frame(maxWidth: .infinity, alignment: .leading)
+         }
++        .tint(.primary)
+     }
+ }
+ 

@@ -1,0 +1,20 @@
+status: open
+temporary: true
+title: DeepSec PR 26 Pilot Residual Risk
+pilot_disposition: abandoned
+abandoned_on: 2026-08-14
+evidence_classification: historical_preliminary
+closure_conditions:
+  - Successful DeepSec process and revalidation
+  - Host package hash checks
+  - G0 checks
+  - Complete SQE test suite
+  - CodeRabbit review
+  - Fresh Sol High ship verdict
+notes: |
+  The user stopped the pilot on 2026-08-14.
+  The saved PR 26 scan is preliminary and stale relative to later harness changes.
+  Retain the saved report only as historical evidence.
+  Do not use the saved report for acceptance or assurance.
+  Keep this risk open.
+  Close this risk only after a successful reviewed scan satisfies all closure conditions.

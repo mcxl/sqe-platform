@@ -1,0 +1,14 @@
+12:42:10  Enabling developer disk image services.
+12:42:10  Acquired usage assertion.
+ERROR: The application failed to launch. (com.apple.dt.CoreDeviceError error 10002 (0x2712))
+       BundleIdentifier = com.alanrichardson.aceclientapp
+       ----------------------------------------
+           The request to open "com.alanrichardson.aceclientapp" failed. (FBSOpenApplicationServiceErrorDomain error 1 (0x01))
+           BSErrorCodeDescription = RequestDenied
+           FBSOpenApplicationRequestID = 0xb6f8
+           NSLocalizedFailureReason = The request was denied by service delegate (SBMainWorkspace) for reason: Security ("Unable to launch com.alanrichardson.aceclientapp because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user").
+       ----------------------------------------
+               The operation couldn’t be completed. Unable to launch com.alanrichardson.aceclientapp because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user. (FBSOpenApplicationErrorDomain error 3 (0x03))
+               NSLocalizedFailureReason = Unable to launch com.alanrichardson.aceclientapp because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user.
+               BSErrorCodeDescription = Security
+Saving JSON output file to LOCAL_HOME/ace-private/mcx19b-local-20260914/phone-pilot-launch.json

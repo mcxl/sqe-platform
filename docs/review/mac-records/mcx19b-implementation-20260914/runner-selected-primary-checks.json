@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_ace_ios_local.py",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_approved_coverage_counts_and_states (test_ace_ios_local.CoverageMatrixTests.test_approved_coverage_counts_and_states) ... ok\ntest_pilot_contains_22_cases_and_two_layout_only_release_cases (test_ace_ios_local.CoverageMatrixTests.test_pilot_contains_22_cases_and_two_layout_only_release_cases) ... ok\ntest_actual_native_enumeration_schema_rejects_disabled_tests (test_ace_ios_local.NativeRecordTests.test_actual_native_enumeration_schema_rejects_disabled_tests) ... ok\ntest_attachment_manifest_maps_human_name_to_uuid_export (test_ace_ios_local.NativeRecordTests.test_attachment_manifest_maps_human_name_to_uuid_export) ... ok\ntest_case_markers_require_matching_observed_settings_and_screenshot (test_ace_ios_local.NativeRecordTests.test_case_markers_require_matching_observed_settings_and_screenshot) ... ok\ntest_complex_audit_viewports_do_not_change_audited_case_count (test_ace_ios_local.NativeRecordTests.test_complex_audit_viewports_do_not_change_audited_case_count) ... ok\ntest_device_records_rejects_malformed_required_udid (test_ace_ios_local.NativeRecordTests.test_device_records_rejects_malformed_required_udid) ... ok\ntest_marker_reader_rejects_invalid_json (test_ace_ios_local.NativeRecordTests.test_marker_reader_rejects_invalid_json) ... ok\ntest_pilot_readiness_rejects_loose_prose_and_bad_artifact_hash (test_ace_ios_local.NativeRecordTests.test_pilot_readiness_rejects_loose_prose_and_bad_artifact_hash) ... ok\ntest_retained_summary_schema_requires_a_complete_pass (test_ace_ios_local.NativeRecordTests.test_retained_summary_schema_requires_a_complete_pass) ... ok\ntest_runtime_schema_requires_the_retained_version_build_and_identifier (test_ace_ios_local.NativeRecordTests.test_runtime_schema_requires_the_retained_version_build_and_identifier) ... ok\ntest_selected_boot_helpers_restore_only_an_initially_shutdown_simulator (test_ace_ios_local.NativeRecordTests.test_selected_boot_helpers_restore_only_an_initially_shutdown_simulator) ... ok\ntest_selected_forwards_input_and_retains_original_record_when_input_is_deleted (test_ace_ios_local.NativeRecordTests.test_selected_forwards_input_and_retains_original_record_when_input_is_deleted) ... ok\ntest_selected_restores_shutdown_state_after_partial_boot_failure (test_ace_ios_local.NativeRecordTests.test_selected_restores_shutdown_state_after_partial_boot_failure) ... ok\ntest_selected_ui_environment_accepts_only_the_approved_values_and_hashes (test_ace_ios_local.NativeRecordTests.test_selected_ui_environment_accepts_only_the_approved_values_and_hashes) ... ok\ntest_bootstatus_failure_still_restores_original_shutdown_state (test_ace_ios_local.PartialBootRecoveryTests.test_bootstatus_failure_still_restores_original_shutdown_state) ... ok\ntest_format_one_flat_target_is_configured (test_ace_ios_local.XctestrunTests.test_format_one_flat_target_is_configured) ... ok\ntest_rejects_configuration_style_format (test_ace_ios_local.XctestrunTests.test_rejects_configuration_style_format) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.214s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "hashes": {
+    "tools/ace_ios_local.py": "22ffe41fd705e61729bd3cee78f88188ae2c1c87b738f5f0a505e5b71bb28dd8",
+    "tools/tests/test_ace_ios_local.py": "b48ec6ec4b94d7974045d2759ab4a6d1f85fe1aee9e4ca6f258f24bcc7788d84"
+  }
+}

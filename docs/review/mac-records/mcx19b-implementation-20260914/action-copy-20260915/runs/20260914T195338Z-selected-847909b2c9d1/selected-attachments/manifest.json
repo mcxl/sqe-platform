@@ -1,0 +1,52 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "C65BCBDE-2051-457D-82E6-B2208241B42A",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-15 at 05.55.48 am",
+        "timestamp" : 1789415748.228
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "AFB757E5-D851-4ED1-B4B5-E29D33CF4C2E.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-15 at 05.55.32 am.mp4",
+        "timestamp" : 1789415732.545
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "24667629-481C-4311-9CD1-959A64DA928E.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "Complete Issue Description.txt"
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "6ACA5DFB-3874-4B32-AE30-61AC0ABC0587.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.example_0_961BCD66-7B1E-4081-A7EC-A1497B59918B.aceclientapp",
+        "timestamp" : 1789415756.122
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "27426C9C-E354-49BF-AB68-68D4C0274C18",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-09-15 at 05.55.56 am",
+        "timestamp" : 1789415756.122
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testCompleteActionClipboardPastesExactly()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCompleteActionClipboardPastesExactly"
+  }
+]

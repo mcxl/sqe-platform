@@ -1,0 +1,3192 @@
+[
+  {
+    "worktree": "LOCAL_HOME/Documents/sqe-platform",
+    "HEAD": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+    "branch": "refs/heads/main",
+    "owner": "destination",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Named source or SQE repository",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.289,
+      "stderr": ""
+    },
+    "dirty_count": 2,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 2,
+    "status_entries": [
+      {
+        "status": "??",
+        "path": ".snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "docs/plans/"
+      }
+    ],
+    "sqe_scope": ".",
+    "sqe_status_entries": [
+      {
+        "status": "??",
+        "path": ".snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "docs/plans/"
+      }
+    ]
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/sqe-platform-public-clean",
+    "HEAD": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+    "branch": "refs/heads/codex/mcx-19-live-evidence-harness",
+    "owner": "public_clean",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Named source or SQE repository",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.288,
+      "stderr": ""
+    },
+    "dirty_count": 10,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 6,
+    "untracked_entry_count": 4,
+    "status_entries": [
+      {
+        "status": " M",
+        "path": "ACE_PROGRESS_GUIDE.html"
+      },
+      {
+        "status": " M",
+        "path": "ACE_VISION_AND_ROADMAP.md"
+      },
+      {
+        "status": " M",
+        "path": "AGENTS.md"
+      },
+      {
+        "status": " M",
+        "path": "DEV_STATE.md"
+      },
+      {
+        "status": " M",
+        "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      },
+      {
+        "status": " M",
+        "path": "uv.lock"
+      },
+      {
+        "status": "??",
+        "path": ".codegraph/"
+      },
+      {
+        "status": "??",
+        "path": "DEVELOPER_ROADMAP.html"
+      },
+      {
+        "status": "??",
+        "path": "DEVELOPER_ROADMAP.md"
+      },
+      {
+        "status": "??",
+        "path": "SQE_DEVELOPER_HUB.html"
+      }
+    ],
+    "sqe_scope": ".",
+    "sqe_status_entries": [
+      {
+        "status": " M",
+        "path": "ACE_PROGRESS_GUIDE.html"
+      },
+      {
+        "status": " M",
+        "path": "ACE_VISION_AND_ROADMAP.md"
+      },
+      {
+        "status": " M",
+        "path": "AGENTS.md"
+      },
+      {
+        "status": " M",
+        "path": "DEV_STATE.md"
+      },
+      {
+        "status": " M",
+        "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+      },
+      {
+        "status": " M",
+        "path": "uv.lock"
+      },
+      {
+        "status": "??",
+        "path": ".codegraph/"
+      },
+      {
+        "status": "??",
+        "path": "DEVELOPER_ROADMAP.html"
+      },
+      {
+        "status": "??",
+        "path": "DEVELOPER_ROADMAP.md"
+      },
+      {
+        "status": "??",
+        "path": "SQE_DEVELOPER_HUB.html"
+      }
+    ]
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace/sqe/.artifacts/apple-landmarks-trial-20260912/worktree",
+    "HEAD": "006193066a6c9c1db47554c6a80090b028724f1d",
+    "branch": "refs/heads/codex/ace-landmarks-trial-20260912",
+    "owner": "public_clean",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Named source or SQE repository",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\.artifacts\\apple-landmarks-trial-20260912\\worktree",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.295,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": ".",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+    "HEAD": "29b62df901af9833be334392d97a6b45a42d1962",
+    "branch": "refs/heads/codex/ace-sprint-1",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Named source or SQE repository",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.13,
+      "stderr": "warning: could not open directory 'sqe/.tmp_pytest_mcx19_diag/': Permission denied\nwarning: could not open directory 'sqe/.tmp_pytest_mcx19_diag2/': Permission denied\nwarning: could not open directory 'sqe/.tmp_pytest_mcx19_full/': Permission denied\n"
+    },
+    "dirty_count": 340,
+    "status_complete": false,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 54,
+    "untracked_entry_count": 286,
+    "status_entries": [
+      {
+        "status": " M",
+        "path": "audit-concierge/.env.example"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/.gitignore"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/README.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/docs/AUDIT-RUNBOOK.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/docs/OVERVIEW.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/docs/SSA-PIMS-architecture.excalidraw"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/docs/SSA-PIMS-architecture.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/docs/_gen_excalidraw.py"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/package.json"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/prompts/AUDITCO-REPORT-FORMAT.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/prompts/reviewed-register-source-of-truth.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/prompts/vision-prompt.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/reference/clients/rpd/whs-refs.json"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/reference/clients/sdgroup/checklist-sdg-whs.md"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/reference/clients/sdgroup/meta.json"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/reference/clients/sdgroup/whs-refs.json"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/add-whs-refs.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/apply-review.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/build-register.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/build-review-xlsx-from-supabase.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/export-pims-observations.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/md-to-pdf.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/pims-release.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/reissue.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/smoke-reviewed-export.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/strip-internal.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/scripts/verify-release.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/server/index.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/server/jobs.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/server/kapso-client.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/server/notify.js"
+      },
+      {
+        "status": " M",
+        "path": "audit-concierge/server/space-kapso.js"
+      },
+      {
+        "status": " M",
+        "path": "macro/balance/menu-server.js"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/CLAUDE.md"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/brand/manual.yaml"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_forms.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_infographics.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_manual.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_quick_guides.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_quick_guides_pdf.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/build_ssmp.py"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/infra/cloudflare/clients/rpd.tfvars"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/infra/cloudflare/main.tf"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/infra/cloudflare/variables.tf"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/mkdocs.yml"
+      },
+      {
+        "status": " M",
+        "path": "rpd-new-whs/validate_docx.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/.gitignore"
+      },
+      {
+        "status": " M",
+        "path": "sqe/AGENTS.md"
+      },
+      {
+        "status": " M",
+        "path": "sqe/README.md"
+      },
+      {
+        "status": " M",
+        "path": "sqe/src/ace/domain/assessment.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/src/ace/engine/approval.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/tests/test_approval_gate.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/tests/test_planning_trace.py"
+      },
+      {
+        "status": " M",
+        "path": "whs-factory/.gitignore"
+      },
+      {
+        "status": "??",
+        "path": ".gitignore"
+      },
+      {
+        "status": "??",
+        "path": ".snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "Safe Method Logo - Light Black.png"
+      },
+      {
+        "status": "??",
+        "path": "_deploy-audit-dilap-20260713-084150/"
+      },
+      {
+        "status": "??",
+        "path": "_deploy-audit-dilap-localpull-20260713-094500/"
+      },
+      {
+        "status": "??",
+        "path": "_deploy-audit-dilap-min-20260713-084548/"
+      },
+      {
+        "status": "??",
+        "path": "_public_publish/"
+      },
+      {
+        "status": "??",
+        "path": "_report-library/"
+      },
+      {
+        "status": "??",
+        "path": "agent-time-savings-site/"
+      },
+      {
+        "status": "??",
+        "path": "alan-public/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.agents/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.playwright-cli/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.superpowers/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmp/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_final/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_font10/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_font10b/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_font10c/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_spacing_v4b/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/.tmpsdg_withers_260804lo_profile_spacing_v5/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/AGENTS.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/Rico Logistics Auburn Audit Plan - Draft V1.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/Rico Logistics Auburn Audit Plan - Non-Branded V1.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/Rico_Auburn_WHS_Audit_Report_Shadow_Draft_V1.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/artifacts/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/audit-plan-auburn.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/build_rico_audit_register.mjs"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/checks.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/classified-roads-schedule.pdf"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/classified-roads-schedule2.pdf"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/classified-roads-schedule3.pdf"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/client-brief.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/config/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/controlled/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/create_rico_audit_plan.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/create_rico_nonbranded_plan.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/deerflow-post-implementation-readiness-012c1148-499b-49b7-8494-1cb2a5d81001.sse.log"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/deerflow-post-implementation-readiness-date-fix-012c1148-499b-49b7-8494-1cb2a5d81001.sse.log"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/AUDIT-CONCIERGE-COMMERCIAL-INVESTIGATION.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/Audit-Concierge-Architecture-Review.excalidraw"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/Audit-Concierge-Full-Architecture-v2.excalidraw"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/DEERFLOW-AUDIT-CONCIERGE-COMMERCIAL-PROMPT.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/DEERFLOW-AUDIT-CONCIERGE-HANDOVER-PROMPT.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/DILAP-WHATSAPP-CAPTURE.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/GROK-IPHONE-CODEX-SITE-SAFETY-WORKFLOW.excalidraw"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/GROK-IPHONE-PILOT-RUNBOOK.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/GROK-PILOT-STATUS.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/KAPSO-CONTROLLED-PILOT-RUNBOOK.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/KAPSO-LIBRARY-INDEX.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/Master DeerFlow.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/PIMS-PHOTO-RETENTION.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/PLAN-KAPSO-SENDER-SPLIT-ROUTING.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/gemini-code-1782706745042.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/ims-audit-skill/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/kapso-control-plane-proof.example.json"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/recordkeeping-policy.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/rico-audit-codex-workflow.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/superpowers/plans/2026-07-26-grok-site-cheat-sheet.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/docs/superpowers/specs/2026-07-26-grok-site-cheat-sheet-design.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/due.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/email-local.pdf"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/email-page-1.png"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/email-page-2.png"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/kapso-doctor.cmd"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/output/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/populate_rico_audit_register.mjs"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/prompts/CODEX-GROK-VISIT-REVIEW.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/prompts/GROK-SITE-VISIT.md"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/qa-rico-nonbranded/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/qa-rico-nonbranded2/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/qa-rico/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/reference/clients/zauner/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/schemas/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/__pycache__/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build-evidence-manifest.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build-grok-pilot-scorecard.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build-register-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build-sdg-response-workbook-artifact.mjs"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build_rico_report.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build_rico_v2_from_zauner.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build_zauner_photo_register.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/build_zauner_post_audit_review.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/close-dilap-session.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/dilap-onedrive-preflight.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/evaluate-grok-pilot.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/evidence-manifest-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/export-sdg-airtable-seed.mjs"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/final-email-draft-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/final-email-draft.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/grok-pilot-ops-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/grok-visit-pack-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/ingest-grok-visit-pack.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/inventory_zauner_photos.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/kapso-doctor.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/photo-description.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/pilot-setup.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/pilot-verify.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/pims-photo-retention-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/pims-photo-retention.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/preflight-sender-routing.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/prepare-grok-codex-review.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/reconcile-completed-media-events.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/reconcile-pending-control-events.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/recordkeeping-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/recordkeeping.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/release-control-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/retire-site-safety-session.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/revise_zauner_auditor_references.py"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/smoke-dilap-route.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/ssa-format-baseline-core.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/ssa-report-projection.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/start-grok-pilot-visit.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/validate-grok-visit-pack.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/validate-sdg-response-workbook-artifact.mjs"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/verify-kapso-sender-routing-control-plane.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/scripts/verify-ssa-format-baseline.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-ack.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-capture-utils.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-capture.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-photo.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-pull-service.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-repository.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/dilap-route-smoke.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/kapso-webhook-security.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/microsoft-graph-drive.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/sender-routing-preflight.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/sender-routing-runtime.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/server/sender-routing.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/skills-lock.json"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/ssa-ric-outline.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/style/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/.branches/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/.temp/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/migrations/014_audit_findings_ncr_vocab.sql"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/migrations/016_release_controls.sql"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/migrations/20260713090000_dilap_capture.sql"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/migrations/20260713093000_dilap_local_pull_queue.sql"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/supabase/migrations/20260713100500_dilap_queue_crypto_schema.sql"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/templates/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/build-register-core.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-ack.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-capture-utils.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-capture.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-onedrive-preflight.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-photo.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-pull-service.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-repository.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/dilap-route-smoke.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/evidence-manifest-core.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/final-email-draft.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/fixtures/grok-pilot/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/fixtures/grok-visit-pack/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/fixtures/kapso-v2/"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/grok-pilot-ops.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/grok-visit-pack.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/ims-draft-validator.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/kapso-doctor.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/microsoft-graph-drive.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/photo-description.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/pims-photo-retention-runner.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/pims-photo-retention.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/recordkeeping.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/release-control-core.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/sender-routing-failures.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/sender-routing-integration.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/sender-routing-preflight.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/sender-routing.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/ssa-format-baseline.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/test/ssa-report-projection.test.js"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/tmp_CON-F-079.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/tmp_withers_roads.geojson"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/zauner-v14.docx"
+      },
+      {
+        "status": "??",
+        "path": "audit-concierge/{console.log('done')}"
+      },
+      {
+        "status": "??",
+        "path": "bubble/"
+      },
+      {
+        "status": "??",
+        "path": "ci-preflight/"
+      },
+      {
+        "status": "??",
+        "path": "deer-flow/"
+      },
+      {
+        "status": "??",
+        "path": "deerflow-setup-for-claude-code.md"
+      },
+      {
+        "status": "??",
+        "path": "dilap-backups/"
+      },
+      {
+        "status": "??",
+        "path": "dilap-local-backups/"
+      },
+      {
+        "status": "??",
+        "path": "gatekeeper/"
+      },
+      {
+        "status": "??",
+        "path": "groundworks/"
+      },
+      {
+        "status": "??",
+        "path": "macro/.gitignore"
+      },
+      {
+        "status": "??",
+        "path": "macro/.snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "macro/.vscode/"
+      },
+      {
+        "status": "??",
+        "path": "macro/Healing through macrobiotics.cleaned.md"
+      },
+      {
+        "status": "??",
+        "path": "macro/Healing through macrobiotics.md"
+      },
+      {
+        "status": "??",
+        "path": "macro/Healing through macrobiotics.pdf"
+      },
+      {
+        "status": "??",
+        "path": "macro/Screenshot 2026-06-20 074421.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/Screenshot 2026-06-20 074748.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/Screenshot 2026-06-20 084307.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/image copy 2.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/image copy 3.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/image copy 4.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/image copy.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/image.png"
+      },
+      {
+        "status": "??",
+        "path": "macro/ios/"
+      },
+      {
+        "status": "??",
+        "path": "millings/"
+      },
+      {
+        "status": "??",
+        "path": "risk register/"
+      },
+      {
+        "status": "??",
+        "path": "risk-register-v2/"
+      },
+      {
+        "status": "??",
+        "path": "rpd-new-whs/outputs/deliverables-timeline/"
+      },
+      {
+        "status": "??",
+        "path": "safe-method-risk-register-public/"
+      },
+      {
+        "status": "??",
+        "path": "safe-method-risk-register-showcase-promo/"
+      },
+      {
+        "status": "??",
+        "path": "safe-method-risk-register-showcase/"
+      },
+      {
+        "status": "??",
+        "path": "safe-method-swms-public/"
+      },
+      {
+        "status": "??",
+        "path": "smartsite/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-ace-build/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-ace-review/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-local-data/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-pr38-data/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-pr38/"
+      },
+      {
+        "status": "??",
+        "path": "sqe-quarantine-2026-08-12/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.artifacts/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.cache/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.playwright-cli/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.tmp_release_margin_impl.patch"
+      },
+      {
+        "status": "??",
+        "path": "sqe/260723 EOI and Plan/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_PLANNING_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_VORFLUX_REPORT V2.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_VORFLUX_REPORT.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_PROGRESS_GUIDE.html"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_SIFT_KG_OPENVIKING_INVESTIGATION_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_VISION_AND_ROADMAP.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_EOI_Squadron_Energy_WHS_Framework_Review_REISSUED_V2.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_SQE_Safety_Risk_Management_Internal_Audit_Delivery_Journeyboard_V3.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_SQE_Safety_Risk_Management_Internal_Audit_Delivery_Plan_REISSUED_V3.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/CONTEXT.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Claude_Review_Handover_SQE_Delivery_Plan.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/DEV_STATE.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Flexible review option/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Full review option only/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/MCX15_MANUAL_EVIDENCE_HANDOFF.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Outlook.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/PHASE_6B2_READ_ONLY_CLIENT_RELEASE_PROJECTION_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/PHASE_6_RELEASE_ENGINE_REFACTOR_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - AuditCo_SQE_Delivery_Plan_Independent_Review.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - ChatGPT - Aussie WHS Specialist.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - Proposal Review and Timeline Optimization - Google Gemini.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/SQE 260723 EOI and Plan/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/SWIFT_AGENT_SKILLS_AND_APP_CREATOR_MATRIX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Squadron Energy - Safety Risk Management Scope - Final 1.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/WORKFLOW-NOTES.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/_AuditCo Report Template - Australia.docx"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_ios_local.py.transfer"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_55ec9c66866f453b820a45a13774ec16/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_70280835ca2c47a195c6587c9f6b0b43/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_a09fb9e29c6344e0a97999f0d72dc7ef/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_bd0b6056334944469e447dfa935baf6f/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_ec07a994414e4cb696d822b2125b76bb/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-08-25-ace-ios-next-delivery-goal.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-native-preparation-results.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-pilot-proposal.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-stage1-access-record.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-windows-component-results.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-16-ace-ios-swift-completion-instruction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-17-ace-ios-copy-reflow-check-instruction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/agents/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/diagrams/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/podcast/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/simulations/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/specs/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/superpowers/plans/2026-08-05-ace-mate-infographic.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/superpowers/specs/2026-08-12-mobile-field-capture-workbench.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/large-scale renewable energy infrastructure.odt"
+      },
+      {
+        "status": "??",
+        "path": "sqe/pocock_runner_resource_correction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/podlog-energy-inc-ace-mate-learning/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ss/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/test_ace_ios_local.py.transfer"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tests/test_diagram_guides.py"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmp/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmplo_profile_eoi/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmplo_profile_eoi2/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tools/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/workflows/"
+      },
+      {
+        "status": "??",
+        "path": "ssmp/"
+      },
+      {
+        "status": "??",
+        "path": "swms-drafting-au.skill"
+      },
+      {
+        "status": "??",
+        "path": "swms-worktrees/"
+      },
+      {
+        "status": "??",
+        "path": "timber frame cutting list/"
+      },
+      {
+        "status": "??",
+        "path": "timber hardwood guide/"
+      },
+      {
+        "status": "??",
+        "path": "water bot/"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/10 Week Business Strategy Accelerator - Consultancy DD.pdf"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/Business Breakthrough Session - Consultancy DD.pdf"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/CDD-NQ-Paper-Ceiling-7-Tools-Overview.pdf"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/Redstone Civil \u2014 CDD 7 Tools Results _ Consultancy Done Differently.pdf"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/apps/"
+      },
+      {
+        "status": "??",
+        "path": "whs-factory/docs/"
+      }
+    ],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": [
+      {
+        "status": " M",
+        "path": "sqe/.gitignore"
+      },
+      {
+        "status": " M",
+        "path": "sqe/AGENTS.md"
+      },
+      {
+        "status": " M",
+        "path": "sqe/README.md"
+      },
+      {
+        "status": " M",
+        "path": "sqe/src/ace/domain/assessment.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/src/ace/engine/approval.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/tests/test_approval_gate.py"
+      },
+      {
+        "status": " M",
+        "path": "sqe/tests/test_planning_trace.py"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.artifacts/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.cache/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.playwright-cli/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.snapshots/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/.tmp_release_margin_impl.patch"
+      },
+      {
+        "status": "??",
+        "path": "sqe/260723 EOI and Plan/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_PLANNING_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_VORFLUX_REPORT V2.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_VORFLUX_REPORT.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_PROGRESS_GUIDE.html"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_SIFT_KG_OPENVIKING_INVESTIGATION_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ACE_VISION_AND_ROADMAP.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_EOI_Squadron_Energy_WHS_Framework_Review_REISSUED_V2.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_SQE_Safety_Risk_Management_Internal_Audit_Delivery_Journeyboard_V3.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/AuditCo_SQE_Safety_Risk_Management_Internal_Audit_Delivery_Plan_REISSUED_V3.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/CONTEXT.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Claude_Review_Handover_SQE_Delivery_Plan.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/DEV_STATE.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Flexible review option/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Full review option only/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/MCX15_MANUAL_EVIDENCE_HANDOFF.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Outlook.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/PHASE_6B2_READ_ONLY_CLIENT_RELEASE_PROJECTION_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/PHASE_6_RELEASE_ENGINE_REFACTOR_VORFLUX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - AuditCo_SQE_Delivery_Plan_Independent_Review.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - ChatGPT - Aussie WHS Specialist.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Review 1 - Proposal Review and Timeline Optimization - Google Gemini.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/SQE 260723 EOI and Plan/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/SWIFT_AGENT_SKILLS_AND_APP_CREATOR_MATRIX.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/Squadron Energy - Safety Risk Management Scope - Final 1.pdf"
+      },
+      {
+        "status": "??",
+        "path": "sqe/WORKFLOW-NOTES.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/_AuditCo Report Template - Australia.docx"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_ios_local.py.transfer"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_55ec9c66866f453b820a45a13774ec16/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_70280835ca2c47a195c6587c9f6b0b43/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_a09fb9e29c6344e0a97999f0d72dc7ef/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_bd0b6056334944469e447dfa935baf6f/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ace_runner_test_stage_ec07a994414e4cb696d822b2125b76bb/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-08-25-ace-ios-next-delivery-goal.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-native-preparation-results.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-pilot-proposal.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-stage1-access-record.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-10-turbovec-windows-component-results.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-16-ace-ios-swift-completion-instruction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/ace/2026-09-17-ace-ios-copy-reflow-check-instruction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/agents/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/diagrams/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/podcast/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/simulations/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/specs/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/superpowers/plans/2026-08-05-ace-mate-infographic.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/docs/superpowers/specs/2026-08-12-mobile-field-capture-workbench.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/large-scale renewable energy infrastructure.odt"
+      },
+      {
+        "status": "??",
+        "path": "sqe/pocock_runner_resource_correction.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/podlog-energy-inc-ace-mate-learning/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ss/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/test_ace_ios_local.py.transfer"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tests/test_diagram_guides.py"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmp/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmplo_profile_eoi/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tmplo_profile_eoi2/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/tools/"
+      },
+      {
+        "status": "??",
+        "path": "sqe/workflows/"
+      }
+    ]
+  },
+  {
+    "worktree": "C:/tmp/audit-concierge-auditor-mobile-slice1",
+    "HEAD": "81ab9031158976e2b5511875ef264caa56fcd075",
+    "branch": "refs/heads/codex/auditor-mobile-slice1",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\audit-concierge-auditor-mobile-slice1",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.132,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "C:/tmp/audit-concierge-auditor-mobile-slice1-closure",
+    "HEAD": "715f88df6a6b4e890cb804fd976c952ddf1a8289",
+    "branch": "refs/heads/codex/auditor-mobile-slice1-closure",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\audit-concierge-auditor-mobile-slice1-closure",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.135,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "C:/tmp/audit-concierge-baseline-20260730",
+    "HEAD": "3c1778654a445deff1146a001972dfd66e7771c1",
+    "branch": "refs/heads/codex/audit-concierge-baseline-20260730",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\audit-concierge-baseline-20260730",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.217,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "C:/tmp/audit-concierge-baseline-clean-20260730",
+    "HEAD": "1ae1c01c5b07b89852a3c554fb35db577bf00060",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\audit-concierge-baseline-clean-20260730",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.208,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "C:/tmp/audit-concierge-offline-ssa",
+    "HEAD": "cebb52cc5ef9e1afed140bde0ece79fa129798f9",
+    "branch": "refs/heads/codex/offline-ssa-local-evidence",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\audit-concierge-offline-ssa",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.959,
+      "stderr": ""
+    },
+    "dirty_count": 8,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 4,
+    "untracked_entry_count": 4
+  },
+  {
+    "worktree": "C:/tmp/sqe-ace-assurance-workflow-consolidation",
+    "HEAD": "d256e6942a6ce005857371cc780e8a6fa752a3c5",
+    "branch": "refs/heads/codex/ace-production-release-1-design",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ace-assurance-workflow-consolidation",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.959,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-ace-fictional-pilot-spec",
+    "HEAD": "e0cca2216bde507c18f710853d829d296aff8efc",
+    "branch": "refs/heads/codex/ace-fictional-pilot-spec",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ace-fictional-pilot-spec",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.96,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-ace-sprint-1",
+    "HEAD": "750f47ecd905f92827fd2018d16944013f829560",
+    "branch": "refs/heads/codex/ace-sprint-1-build",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ace-sprint-1",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.973,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-ace-sprint-4",
+    "HEAD": "3bdb89b4dcafb2065c55731152b5a0ae5e163740",
+    "branch": "refs/heads/codex/ace-sprint-4",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ace-sprint-4",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.896,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-deepsec-closeout",
+    "HEAD": "77b0967df341afe7d8b3546229ba9f5ea3d10dbc",
+    "branch": "refs/heads/codex/sqe-task-commit-push-policy",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-deepsec-closeout",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.899,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-ios-final-spec",
+    "HEAD": "c2f3de05fb317d15f563356aaf8305be25fe434e",
+    "branch": "refs/heads/codex/ios-final-spec",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ios-final-spec",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.019,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-ios-spec-state-sync",
+    "HEAD": "88efc4a2ba9ccaae8dd82fcd8bb39229f504cf50",
+    "branch": "refs/heads/codex/ios-spec-state-sync",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-ios-spec-state-sync",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.163,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-issue18-controlled-actions",
+    "HEAD": "b219ba6ad9195e783be07d6961acb6e445264239",
+    "branch": "refs/heads/agent/sqe-relationship-review",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-issue18-controlled-actions",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.165,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-15",
+    "HEAD": "b6e5d480a5e50d60cc9e9e5c49df5ea70b153232",
+    "branch": "refs/heads/codex/ace-ios-read-only-client",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-15",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.955,
+      "stderr": ""
+    },
+    "dirty_count": 1,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 1,
+    "status_entries": [
+      {
+        "status": "??",
+        "path": "sqe/ios/"
+      }
+    ],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": [
+      {
+        "status": "??",
+        "path": "sqe/ios/"
+      }
+    ]
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-15-phase6-1-evidence",
+    "HEAD": "3b342b92e647ef78cb4d177803ab868ff7434bb4",
+    "branch": "refs/heads/codex/mcx-15-phase6-1-evidence",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-15-phase6-1-evidence",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.699,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe",
+    "HEAD": "ef9beb558ea81c014d6ee1c5d6f043fa49b7b63a",
+    "branch": "refs/heads/codex/mcx-15-phase6-1-simulator-probe",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-15-phase6-1-simulator-probe",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.696,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-15-phase6-1-simulator-probe-v2",
+    "HEAD": "91818a476c7ddb81c48aba63c76b11cfbcb70df4",
+    "branch": "refs/heads/codex/mcx-15-phase6-1-simulator-probe-v2",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-15-phase6-1-simulator-probe-v2",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.368,
+      "stderr": ""
+    },
+    "dirty_count": 3,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 2,
+    "untracked_entry_count": 1,
+    "status_entries": [
+      {
+        "status": " M",
+        "path": "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json"
+      },
+      {
+        "status": " M",
+        "path": "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ios/ACEClientApp/build/"
+      }
+    ],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": [
+      {
+        "status": " M",
+        "path": "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json"
+      },
+      {
+        "status": " M",
+        "path": "sqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md"
+      },
+      {
+        "status": "??",
+        "path": "sqe/ios/ACEClientApp/build/"
+      }
+    ]
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-5",
+    "HEAD": "bf24a44f068aaee6764a86543f9a67517ae7c4fa",
+    "branch": "refs/heads/codex/mcx-5-reconcile-relationship-review",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-5",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.79,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-mcx-6",
+    "HEAD": "94db5223f1d2b6337719fba5550911c54ac10f34",
+    "branch": "refs/heads/codex/mcx-6-relationship-review",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-mcx-6",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.789,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-phase6a-exact-base",
+    "HEAD": "d99791fac82a9e0b577f2a834a76455db6715b36",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-phase6a-exact-base",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.554,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-phase6b1-goal-7aa5084",
+    "HEAD": "3c5d2313302b60038d56adf884ed5e0f6024f1ac",
+    "branch": "refs/heads/codex/phase6b1-closeout",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-phase6b1-goal-7aa5084",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.343,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "C:/tmp/sqe-phase6b2-controlled-target",
+    "HEAD": "6b0160befc9191dbccd527bdd385b891782ddad8",
+    "branch": "refs/heads/codex/ios-vorflux-planning-brief",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-phase6b2-controlled-target",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.342,
+      "stderr": ""
+    },
+    "dirty_count": 1,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 1,
+    "status_entries": [
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_PLANNING_VORFLUX.md"
+      }
+    ],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": [
+      {
+        "status": "??",
+        "path": "sqe/ACE_IOS_READ_ONLY_CLIENT_APP_PLANNING_VORFLUX.md"
+      }
+    ]
+  },
+  {
+    "worktree": "C:/tmp/sqe-pr26-completion",
+    "HEAD": "94e25ed0ce8ba937a661da4aedced19a73258431",
+    "branch": "refs/heads/agent/sqe-evidence-review",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\tmp\\sqe-pr26-completion",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.419,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\259a\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.654,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\31c9\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.653,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\6084\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.629,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\844e\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.222,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\c27a\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.223,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\c67a\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 3.301,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace",
+    "HEAD": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\c848\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.7,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace",
+    "HEAD": "b36f89c7fee9e37f1014933408fea78bd9eb80a1",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unknown",
+    "relevance_basis": "Detached/general worktree; no scope inference from shared monorepo contents",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\e452\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.697,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/fefc/agentic-os-workspace",
+    "HEAD": "a6cd5f379bfe853aae66e65d116544ba14d326af",
+    "branch": "refs/heads/alanrichardson/mcx-11-relationship-details-final",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\.codex\\worktrees\\fefc\\agentic-os-workspace",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.45,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/AppData/Local/Temp/ace-ios-spec-pocock-17c7e71a",
+    "HEAD": "17c7e71a207d248979b9601b4cf4a9dfc71f548d",
+    "detached": true,
+    "prunable": "gitdir file points to non-existent location",
+    "owner": "monorepo",
+    "exists": false,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "dirty_count": null,
+    "status_complete": false,
+    "blocker": "Missing registered worktree; preserve registration"
+  },
+  {
+    "worktree": "LOCAL_HOME/AppData/Local/Temp/sqe-phase6b1-preview-ac5f9f6",
+    "HEAD": "e30784b375f9741484fb0c4bf226a92cdee2828c",
+    "detached": true,
+    "prunable": "gitdir file points to non-existent location",
+    "owner": "monorepo",
+    "exists": false,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "dirty_count": null,
+    "status_complete": false,
+    "blocker": "Missing registered worktree; preserve registration"
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace/_deploy-audit-dilap-20260713-084150",
+    "HEAD": "10d5df1cda34617e9c69568e8b70cd9a3f5eb4c3",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\_deploy-audit-dilap-20260713-084150",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.449,
+      "stderr": ""
+    },
+    "dirty_count": 12,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 2,
+    "untracked_entry_count": 10
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace/audit-concierge/tmp/prod-hotfix-ssa-routing",
+    "HEAD": "db7efbb6b1dc44b3c000cfbbbc4ea77f8af5b0ae",
+    "branch": "refs/heads/codex/ssa-dilap-routing-hotfix",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\audit-concierge\\tmp\\prod-hotfix-ssa-routing",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.446,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace/sqe-pr38",
+    "HEAD": "9a9ce19070aaafc89cee901e43783eba24213e1c",
+    "detached": true,
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe-pr38",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.536,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace-mcx-7",
+    "HEAD": "0a7c39673baab0308ee27d9fc3e6dddbfbf9d7a3",
+    "branch": "refs/heads/codex/mcx-7-repair-autonomous-delivery-workflow",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace-mcx-7",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.537,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace-mcx8",
+    "HEAD": "f80e60efb4c57c1a6c138b7e488920099ec4f926",
+    "branch": "refs/heads/codex/mcx-8-relationship-review-pilot",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace-mcx8",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.537,
+      "stderr": ""
+    },
+    "dirty_count": 1,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 1,
+    "status_entries": [
+      {
+        "status": "??",
+        "path": ".recovery/"
+      }
+    ],
+    "sqe_scope": "sqe",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/agentic-os-workspace-release-kapso-sender-split",
+    "HEAD": "eae72f0cc86f7830a9c351a618996ce89cb1c70d",
+    "branch": "refs/heads/codex/kapso-sender-split-hardening",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "SQE",
+    "relevance_basis": "Worktree path or branch explicitly identifies SQE/ACE/MCX/iOS",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace-release-kapso-sender-split",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.412,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0,
+    "status_entries": [],
+    "sqe_scope": ".",
+    "sqe_status_entries": []
+  },
+  {
+    "worktree": "LOCAL_HOME/Documents/audit-concierge-hardening-worktree",
+    "HEAD": "367dfb903fb0b04fe5ce835ce568ea03e3b786eb",
+    "branch": "refs/heads/production/audit-concierge",
+    "owner": "monorepo",
+    "exists": true,
+    "relevance": "unrelated",
+    "relevance_basis": "Path/branch identifies another project; preserve in place",
+    "status_command": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\audit-concierge-hardening-worktree",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0,
+      "seconds": 2.405,
+      "stderr": ""
+    },
+    "dirty_count": 0,
+    "status_complete": true,
+    "status_count_unit": "porcelain entries; untracked directories grouped, not individual files",
+    "tracked_change_count": 0,
+    "untracked_entry_count": 0
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "appearance",
+      "light"
+    ],
+    "end": "2026-09-15T02:25:09.009317+00:00",
+    "error": "Command '['xcrun', 'simctl', 'ui', '2EB0863C-470E-467D-A0C6-CD216DA70C67', 'appearance', 'light']' timed out after 60 seconds",
+    "exit": null,
+    "seconds": 64.931,
+    "start": "2026-09-15T02:24:04.079524+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": true
+  },
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "content_size",
+      "large"
+    ],
+    "end": "2026-09-15T02:25:51.172874+00:00",
+    "exit": 0,
+    "seconds": 42.164,
+    "start": "2026-09-15T02:25:09.009612+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": false
+  },
+  {
+    "command": [
+      "xcrun",
+      "simctl",
+      "ui",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "increase_contrast",
+      "disabled"
+    ],
+    "end": "2026-09-15T02:26:33.961322+00:00",
+    "exit": 0,
+    "seconds": 42.789,
+    "start": "2026-09-15T02:25:51.172983+00:00",
+    "stderr": "",
+    "stdout": "",
+    "timedOut": false
+  }
+]

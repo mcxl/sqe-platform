@@ -1,0 +1,6 @@
+{
+  "question": "Does the same metadata candidate expose real maximum system text size, retain all eleven release fields, and pass initial and post-scroll unrestricted audits?",
+  "scope": "One testNormalDeviceSettings, iPhone 17 Pro Max, actual system maximum text, light, portrait. Test asserts observed size and appearance inside app.",
+  "expected": "Exactly 1 test passed; zero failures/skips; all fields and native images retained; both unrestricted audits pass. Restore original text size in finally.",
+  "commandsReviewed": "Existing selected runner; only supported expected appearance/content-size environment keys. No app appearance or text-size override."
+}

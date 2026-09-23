@@ -1,0 +1,522 @@
+[
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.175,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.173,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/259a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.17,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.134,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.196,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/31c9/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.188,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.194,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.217,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/6084/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.196,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.214,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.218,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/844e/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.246,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.222,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.233,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c27a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.205,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.236,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.229,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c67a/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.274,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace",
+    "head": "b2fc889d03b8a1ee1756960011706de4d12b1116",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.339,
+      "stdout": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\tsqe/.gitignore\u0000100644 66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d 0\tsqe/ACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tsqe/AGENTS.md\u0000100644 0467688e6a9a363201e546bfc8d1191de61b53f8 0\tsqe/DEV_STATE.md\u0000100644 6d58d4d19d9271cc966414f6ee937166625a16fa 0\tsqe/README.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tsqe/apps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tsqe/apps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tsqe/apps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tsqe/apps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tsqe/apps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tsqe/apps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tsqe/apps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tsqe/apps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tsqe/apps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tsqe/apps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tsqe/apps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tsqe/apps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tsqe/apps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tsqe/apps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tsqe/apps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tsqe/apps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tsqe/apps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tsqe/apps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tsqe/apps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tsqe/apps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tsqe/apps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tsqe/apps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tsqe/apps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tsqe/apps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tsqe/apps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tsqe/apps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tsqe/apps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tsqe/apps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tsqe/apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tsqe/apps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tsqe/apps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tsqe/apps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tsqe/apps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tsqe/docs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tsqe/docs/agents/issue-tracker.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tsqe/docs/specs/autonomous-delivery-workflow-repair.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tsqe/docs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tsqe/docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tsqe/docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tsqe/docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tsqe/docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tsqe/docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tsqe/docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tsqe/pyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsqe/security/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsqe/security/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsqe/security/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsqe/security/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsqe/src/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsqe/src/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsqe/src/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsqe/src/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsqe/src/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsqe/src/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsqe/src/ace/domain/models.py\u0000100644 3f266cc1f1a33d3f3d1ef571bc546a891318ce18 0\tsqe/src/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsqe/src/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsqe/src/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsqe/src/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsqe/src/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsqe/src/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsqe/src/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsqe/src/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsqe/src/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsqe/src/ace/workbench/client_auth.py\u0000100644 6cc5432aaa2d9ce0f49dae932245f9a84ab07893 0\tsqe/src/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsqe/src/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsqe/src/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsqe/src/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsqe/src/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsqe/src/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsqe/src/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsqe/src/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsqe/src/ace/workbench/relationship_review_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsqe/src/ace/workbench/routes.py\u0000100644 3b57ac7e8301644e705054cafd17bb003f255361 0\tsqe/src/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\tsqe/tests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\tsqe/tests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\tsqe/tests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\tsqe/tests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\tsqe/tests/test_change_export.py\u0000100644 9f0a1b16152c0775941faddf63ab9f391b2d3322 0\tsqe/tests/test_client_release.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\tsqe/tests/test_engagement_setup.py\u0000100644 a3af896eed4b852ca47cc1e69d3e5996586e13e5 0\tsqe/tests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\tsqe/tests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\tsqe/tests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\tsqe/tests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\tsqe/tests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\tsqe/tests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\tsqe/tests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\tsqe/tests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\tsqe/tests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tsqe/uv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tsqe/workflows/codex-autonomous-delivery.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.331,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/c848/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.241,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "worktree": "LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace",
+    "head": "b36f89c7fee9e37f1014933408fea78bd9eb80a1",
+    "scope": "sqe",
+    "disposition": "Preserve in place; clean SQE historical/mixed worktree; no retirement approval",
+    "tracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.25,
+      "stdout": "100644 f91c6ef24ee01e50ebbd1fa55ef48e6f19d36bed 0\tsqe/AGENTS.md\u0000100644 a60efb08bdf4056bddab837f1e0f831fe8f273c6 0\tsqe/docs/specs/2026-08-24-ace-ios-read-only-client-application.md\u0000100644 50f48a1017e275956b1e1cb22a112b917fe9c398 0\tsqe/ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj\u0000100644 aa82130565c15085d1e2bebfbea31a2644b2a543 0\tsqe/ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme\u0000100644 8696ec1ee823fbf26a0c980876579509ec48e53a 0\tsqe/ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme\u0000100644 d47d571b0805d627571834a61239938c2b4de31f 0\tsqe/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\u0000100644 f51d2b28d7dc79352a216a6949104d9a853a9f5f 0\tsqe/ios/ACEClientApp/ACEClientApp/Configuration.swift\u0000100644 ff2857764786668e433443c44167e00951e690fb 0\tsqe/ios/ACEClientApp/ACEClientApp/DebugScenario.swift\u0000100644 d0a93ce5f26d3287538ece5dd533ce3e9c4ce393 0\tsqe/ios/ACEClientApp/ACEClientApp/Info.plist\u0000100644 333506cfd67e186439ca1bf4d5f8be86ea3b4734 0\tsqe/ios/ACEClientApp/ACEClientApp/KeychainStore.swift\u0000100644 fbba5660ace68df9fb25228b9fa325266cf82224 0\tsqe/ios/ACEClientApp/ACEClientApp/Network.swift\u0000100644 17c5efa9886867531294a2a0a72adb448960b4a5 0\tsqe/ios/ACEClientApp/ACEClientApp/ReleaseModels.swift\u0000100644 21d5d70a35651836807c9e19da6c62487b754cf6 0\tsqe/ios/ACEClientApp/ACEClientApp/SessionState.swift\u0000100644 688c2ffb391ec674cbd843665d598e9ba4d82d13 0\tsqe/ios/ACEClientApp/ACEClientApp/Views.swift\u0000100644 65327cd1743bba1416c9a1e60444672910b4e08c 0\tsqe/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift\u0000100644 30afc85efe57e82f9fd6bcda454b64dbeaeb53a5 0\tsqe/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift\u0000100644 022a63a3f2106734604301182f4c6425b41dae5f 0\tsqe/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift\u0000100644 dec57ab5427251b443b6f0e7889b5f75d4c7e828 0\tsqe/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\u0000100644 a015f0afa042eb1069a60a5bd233ebfdad19b700 0\tsqe/ios/ACEClientApp/Makefile\u0000100644 08c31b7d1527166eeeb00febf620f44c503c8920 0\tsqe/ios/ACEClientApp/Phase6_1EvidenceRegister.json\u0000100644 ef04c67210014863f736714f8ef27a1dd71a218e 0\tsqe/ios/ACEClientApp/Phase6_1EvidenceRegister.md\u0000100644 83090a4288afddc9068b758aba348da3279f9a22 0\tsqe/ios/ACEClientApp/RuntimeEvidencePlan.json\u0000100644 2fc28c87d2a0cbf32e0f0edfdceb2e8f7126d0d8 0\tsqe/ios/ACEClientApp/RuntimeEvidencePlan.md\u0000100644 d928fbf82ab9fc92cf80ab7f9c95a01f9677590f 0\tsqe/ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md\u0000100644 5d5ffe54ad5aa224c0cef69c8e78a008b3f0e186 0\tsqe/ios/ACEClientApp/evidence-matrix-audit.md\u0000",
+      "stderr": ""
+    },
+    "ignored": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.263,
+      "stdout": "",
+      "stderr": ""
+    },
+    "untracked": {
+      "command": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "LOCAL_HOME/.codex/worktrees/e452/agentic-os-workspace",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--directory",
+        "-z",
+        "--",
+        "sqe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.235,
+      "stdout": "",
+      "stderr": ""
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "foreground": "#000000",
+  "background": "#c6c6cb",
+  "sRGBContrastRatio": 12.341146082257941,
+  "evidence": "pixel-measurement-command.json",
+  "limitation": "Solid foreground/background measurement from retained element crop. Does not reveal the native audit internal sample or classification. Native failure remains unresolved."
+}

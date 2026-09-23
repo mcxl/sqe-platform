@@ -1,0 +1,52 @@
+{
+  "recordedUTC": "2026-09-15T12:17:51.736066+00:00",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "functionalTestedCommit": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "nativeFunctionalCount": 68,
+  "directlyComparedUnchangedSources": [
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+    "ios/ACEClientApp/ACEClientApp/Info.plist",
+    "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+    "ios/ACEClientApp/ACEClientApp/Network.swift",
+    "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+    "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift"
+  ],
+  "sourceHashes": "all matched",
+  "oldEvidenceHashesReverified": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/functional-runs/20260915T061955Z-selected-6d1e36eb268b/manifest.json",
+      "sha256": "280053fa349a2389b1c8907d07396b9028e1e3b5f89725403ff8096e6d6d3064"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-source-impact-v3.json",
+      "sha256": "56025b4bc809eda0d2374221ed9d7faaa6785aa601cc02619968676616f16bcc"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/acceptance.json",
+      "sha256": "dab1dedffe3b0bd992a35ee403c7fad9d9f1107a74ac19e2cb9acab60f9ea3fd"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-readiness/private-input-readiness.json",
+      "sha256": "ffe1470832110f60b3bf7754160698f03864089fa7ef0b9a007489a1be283931"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-source-impact-v3.json",
+      "sha256": "56025b4bc809eda0d2374221ed9d7faaa6785aa601cc02619968676616f16bcc"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/acceptance.json",
+      "sha256": "dab1dedffe3b0bd992a35ee403c7fad9d9f1107a74ac19e2cb9acab60f9ea3fd"
+    }
+  ],
+  "functionalManifestSHA256": "280053fa349a2389b1c8907d07396b9028e1e3b5f89725403ff8096e6d6d3064",
+  "privateAncestorMode": "0o700",
+  "bulkEvidenceLocation": "private Mac storage",
+  "limitations": "Functional reuse does not prove physical Keychain,service,manual checks or changed UI. Current archive/retrieval still required."
+}

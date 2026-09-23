@@ -1,0 +1,25 @@
+{
+  "candidate": "1b38b90e9a949b7e73965602612c11be6f19e9fc plus lifecycle-trace.patch",
+  "reviewMethod": "Parent viewed all four distinct PNGs at original resolution; exact duplicates mapped in image-groups.json.",
+  "pngCount": 14,
+  "distinctCount": 4,
+  "findings": [
+    {
+      "sha256": "443a1d9fad9dbdfb0a0bf441999564326db7d40f5b028cc50aa4d0b54335fdd9",
+      "observation": "Initial release. Four release fields and three conclusion fields readable. Action heading and description visible. Remaining action fields below viewport."
+    },
+    {
+      "sha256": "40b3fc02f24e159dfa43774a09835e389249d0f5e852507e02f369396fd796fc",
+      "observation": "Scrolled release. Complete action, Copy, Refresh and Sign out readable."
+    },
+    {
+      "sha256": "15e8b98d574fa773adb212d32548bc300b55fa2d3d7a8e8b3ef6a11bb70402bf",
+      "observation": "Initial release at earlier clock time. Content readable."
+    },
+    {
+      "sha256": "c4c2742c19572cc8f875c0d42aac558d598dbf6dacf25f42741ef7dedf91a3d4",
+      "observation": "After Copy. Complete action and Copied Action 1 confirmation readable."
+    }
+  ],
+  "acceptance": "Historical diagnostic only; passing result does not establish cause or correction."
+}

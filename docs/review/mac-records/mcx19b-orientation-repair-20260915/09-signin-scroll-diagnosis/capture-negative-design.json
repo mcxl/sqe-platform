@@ -1,0 +1,10 @@
+{
+  "base": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "scope": "one intentional XCTFail after initial capture, isolated diagnostic worktree only",
+  "question": "Does the changed full-screen capture remain attached and retrievable after a native failure, and does the same test pass with the injection absent?",
+  "test": "one medium-text portrait/light release layout case; no audits; no pilot credit",
+  "patchSHA256": "4f4d2f43337cfddbfec7cdc9ceaa92a7f247e9e1e71b26a9d48615c86daa2bde",
+  "primaryDiffInspection": "passed",
+  "sourceSyntax": "passed",
+  "runtime": "not yet run"
+}

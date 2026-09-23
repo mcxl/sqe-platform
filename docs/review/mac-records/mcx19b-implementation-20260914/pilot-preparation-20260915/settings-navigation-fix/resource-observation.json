@@ -1,0 +1,33 @@
+{
+  "utc": "2026-09-15T02:40:02.059998+00:00",
+  "records": [
+    {
+      "command": [
+        "top",
+        "-l",
+        "2",
+        "-s",
+        "1",
+        "-n",
+        "8",
+        "-o",
+        "cpu",
+        "-stats",
+        "pid,command,cpu,mem"
+      ],
+      "exit": 0,
+      "stdout": "Processes: 1536 total, 31 running, 1505 sleeping, 5380 threads \n2026/09/15 12:39:59\nLoad Avg: 169.77, 400.51, 337.51 \nCPU usage: 86.84% user, 9.38% sys, 3.76% idle \nSharedLibs: 366M resident, 45M data, 33M linkedit.\nMemRegions: 565522 total, 2998M resident, 108M private, 2007M shared.\nPhysMem: 16G used (6099M wired, 1272M compressor), 169M unused.\nVM: 81T vsize, 32G framework vsize, 22247876(0) swapins, 24447290(0) swapouts.\nNetworks: packets: 15416786/9527M in, 5992480/1817M out.\nDisks: 32897475/509G read, 7407667/226G written.\n\nPID    COMMAND          %CPU MEM  \n99995  top              0.0  7020K\n99994  Python           0.0  7816K\n99993  sshd-session     0.0  1124K\n99986  sshd-session     0.0  2340K\n99958  Google Chrome He 0.0  51M  \n99936  ChatGPT for Chro 0.0  728K \n99935  Google Chrome He 0.0  33M  \n99928  mdmclient        0.0  1252K\nProcesses: 1535 total, 20 running, 2 stuck, 1513 sleeping, 5404 threads \n2026/09/15 12:40:02\nLoad Avg: 158.74, 394.39, 335.72 \nCPU usage: 78.25% user, 17.93% sys, 3.80% idle \nSharedLibs: 366M resident, 45M data, 33M linkedit.\nMemRegions: 0 total, 0B resident, 108M private, 2007M shared.\nPhysMem: 16G used (6286M wired, 1132M compressor), 125M unused.\nVM: 82T vsize, 32G framework vsize, 22251502(3626) swapins, 24472554(25264) swapouts.\nNetworks: packets: 15417008/9527M in, 5992582/1817M out.\nDisks: 32898884/509G read, 7408579/226G written.\n\nPID    COMMAND          %CPU  MEM   \n34721  mediaanalysisd   242.4 43M+  \n59503  mediaanalysisd   202.8 57M-  \n234    loginwindow      15.1  184M+ \n0      kernel_task      14.7  248M- \n624    WallpaperAerials 14.3  16M-  \n227    WindowServer     13.8  847M+ \n99995  top              12.4  7148K+\n5697   Google Chrome    4.9   258M+ \n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "therm"
+      ],
+      "exit": 0,
+      "stdout": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\n2026-09-15 12:40:02 +1000 CPU Power notify\n\tCPU_Scheduler_Limit \t= 100\n\tCPU_Available_CPUs \t= 16\n\tCPU_Speed_Limit \t= 39\n",
+      "stderr": ""
+    }
+  ]
+}

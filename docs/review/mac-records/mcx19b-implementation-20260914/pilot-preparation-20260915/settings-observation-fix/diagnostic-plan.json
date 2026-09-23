@@ -1,0 +1,12 @@
+{
+  "candidateBase": "b2c45093a44c6171ca250b858378ea57693d8477",
+  "sourcePath": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "beforeSha256": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303",
+  "afterSha256": "b91ff4bc1501fa9cdb0de4cd2d4f4b6f8c4370b98c09ca613f2c5e729922353f",
+  "attempt": 1,
+  "question": "Does checking the final native switch value resolve setup failures while the in-app check confirms the requested flags and restoration?",
+  "scope": "testConfigureAccessibilitySettings on iPhone 17; recover original flags, all three on with landscape, then original flags off with portrait. No coverage batch.",
+  "expectedEvidence": "Native summaries, logs, switch waiter/result timing, final in-app ACE_SETTINGS_RESULT values, screenshots on failure, original boot state restored.",
+  "rule": "No timeout increase or fixed wait. Native audits untouched. Final observed switch value is mandatory, then independent in-app flag and orientation match.",
+  "createdUTC": "2026-09-15T02:06:39.319828+00:00"
+}

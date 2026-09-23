@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "from fastapi.testclient import TestClient; from src.ace.app import app; r=TestClient(app).get('/'); print(r.status_code,r.json()); assert r.status_code==200; assert r.json()['status']=='ONLINE'"
+  ],
+  "exit_code": 0,
+  "seconds": 6.002211700004409
+}

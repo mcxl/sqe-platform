@@ -1,0 +1,53 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "D363A80B-574E-43D1-82DE-07D33FBFF4CA.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Element Debug Description_0_ECA91FBB-B338-4428-B456-655828EDBB58.txt",
+        "timestamp" : 1789373346.553
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "BCD7B1CD-A6F3-4218-881E-900C5459A5D3",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-14 at 06.09.01 pm",
+        "timestamp" : 1789373341.182
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "90231218-6C65-4622-B02C-F94483CE8F4E",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-14 at 06.08.56 pm",
+        "timestamp" : 1789373336.499
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "454C057D-9290-4DFC-9B8D-3B8B9AEE45B6",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-14 at 06.08.43 pm",
+        "timestamp" : 1789373323.372
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "E4DBFD82-93F5-41A3-8E96-EE813FDBB2AD.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-14 at 06.08.05 pm.mp4",
+        "timestamp" : 1789373285.938
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings"
+  }
+]

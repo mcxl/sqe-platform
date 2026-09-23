@@ -1,0 +1,18 @@
+{
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "standards": {
+    "status": "passed",
+    "findings": [],
+    "record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/pocock-standards-review.json",
+    "sha256": "c8ec75b292d1ea7d4a6d8a83a47ceb3f83a79fea51595a76c62dc20d24709393"
+  },
+  "spec": {
+    "status": "passed",
+    "findings": [],
+    "record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/pocock-spec-review.json",
+    "sha256": "4e700b2462245d3cb0e48315d017afdba82e8e6db0e94b0a9c723caccced4a8a"
+  },
+  "method": "matt-skills-curated code-review skill; isolated standards and specification subagents; primary inspected complete final delta",
+  "scope": "current UITest corrections; source only; prior candidate findings retained; no full pilot or app acceptance",
+  "reviewSkill": "LOCAL_HOME/.codex/plugins/cache/openai-curated-remote/matt-skills-curated/1.1.0/skills/code-review/SKILL.md"
+}

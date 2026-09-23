@@ -1,0 +1,53 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "3CAFE363-4D77-4029-8E84-881CFEFE7EB5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Accessibility settings Bold Text did not change_0_87E69C26-CD45-48F1-817C-266CBAD03E0D.png",
+        "timestamp" : 1789477505.694
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "C20915FE-3CD2-4D6C-8BB9-B710A22EBDCF",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-15 at 11.04.59 pm",
+        "timestamp" : 1789477499.23
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "7D70589D-D3BF-4943-8C09-7E8AFECF837C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-15 at 11.04.52 pm",
+        "timestamp" : 1789477492.539
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "C758545B-D562-407C-A58A-3EBE6C0D1A07",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-15 at 11.04.41 pm",
+        "timestamp" : 1789477481.613
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "19BE91EA-259C-4CF1-B5BE-C11F96BA2055.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-15 at 11.04.06 pm.mp4",
+        "timestamp" : 1789477446.851
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings"
+  }
+]

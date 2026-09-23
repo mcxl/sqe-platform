@@ -1,0 +1,20 @@
+{
+  "completed_at": "2026-09-18T14:58:41.597864+10:00",
+  "handoff": {
+    "archive_sha256": "129f3e02a700659619f1bcd70b9cf9d17c6508337693e85efd66617400548a72",
+    "all_members_verified": true,
+    "files": 23,
+    "mac_stage3_bytes": 9021676,
+    "mac_free_bytes": 227324944384
+  },
+  "retrieved_report_sha256": "3b1cef8a3a780369dc524818645ec950bf844414deb84411eb43e065fd09e27e",
+  "retrieved_manifest_sha256": "43ede3c16810a22cdda32e0d0cd5a3374d40bd4b56bf7aed007e7ab7b155a593",
+  "report_and_manifest_byte_match": true,
+  "windows_stage3_bytes_before_receipt": 4509311,
+  "combined_output_bytes_before_receipt": 15328877,
+  "within_256MiB_cap": true,
+  "windows_free_bytes": 11383459840,
+  "mac_root": "LOCAL_HOME/ace-private/sqe-consolidation-20260918/stage3",
+  "windows_root": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3",
+  "active_processes_started": 0
+}

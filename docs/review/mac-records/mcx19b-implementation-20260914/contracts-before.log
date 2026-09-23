@@ -1,0 +1,40 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/derived-functional/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-before.xcresult "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection" -parallel-testing-enabled NO
+
+2026-09-14 17:33:53.782 xcodebuild[59931:1722901] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-before.xcresult
+
+2026-09-14 17:33:53.808 xcodebuild[59931:1722901] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:33:55.253 xcodebuild[59931:1722901] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:33:55.501 xcodebuild[59931:1722901] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Test Suite 'Selected tests' started at 2026-09-14 17:34:01.917.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 17:34:01.919.
+Test Suite 'AcceptanceEvidenceContractTests' started at 2026-09-14 17:34:01.920.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' started.
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift:1346: error: -[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest] : XCTAssertEqual failed: ("0") is not equal to ("1") - ValueRow must contain one copy-control implementation
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift:1347: error: -[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest] : XCTAssertEqual failed: ("0") is not equal to ("1") - ValueRow must contain one copy-control label
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift:1351: error: -[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest] : XCTAssertTrue failed - Copy confirmation must remain visible to accessibility services
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' failed (2.076 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' started.
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift:33: error: -[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration] : XCTAssertEqual failed: ("["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "2a23c1a8dd4fe6d51f92eacecd1b010c00509267b43235372748cb4d257497b7"]") is not equal to ("["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "6f86f11027b11f47eb4b4983839cda9e924a023d2cb666ad18ddad93e2ef0c36"]")
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' failed (0.289 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' started.
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift:81: error: -[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection] : XCTAssertEqual failed: ("["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "2a23c1a8dd4fe6d51f92eacecd1b010c00509267b43235372748cb4d257497b7"]") is not equal to ("["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "6f86f11027b11f47eb4b4983839cda9e924a023d2cb666ad18ddad93e2ef0c36"]")
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' failed (0.162 seconds).
+Test Suite 'AcceptanceEvidenceContractTests' failed at 2026-09-14 17:34:04.457.
+	 Executed 3 tests, with 5 failures (0 unexpected) in 2.526 (2.536) seconds
+Test Suite 'ACEClientAppTests.xctest' failed at 2026-09-14 17:34:04.458.
+	 Executed 3 tests, with 5 failures (0 unexpected) in 2.526 (2.539) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 17:34:04.460.
+	 Executed 3 tests, with 5 failures (0 unexpected) in 2.526 (2.543) seconds
+2026-09-14 17:35:05.644 xcodebuild[59931:1722901] [MT] IDETestOperationsObserverDebug: 70.136 elapsed -- Testing started completed.
+2026-09-14 17:35:05.645 xcodebuild[59931:1722901] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 17:35:05.645 xcodebuild[59931:1722901] [MT] IDETestOperationsObserverDebug: 70.136 sec, +70.136 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/contracts-before.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

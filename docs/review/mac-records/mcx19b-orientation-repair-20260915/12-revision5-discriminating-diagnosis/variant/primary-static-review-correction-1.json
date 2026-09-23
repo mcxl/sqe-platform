@@ -1,0 +1,23 @@
+{
+  "review": "primary cumulative full diff inspection: original complete patch plus correction1 delta",
+  "recordedUTC": "2026-09-16T12:38:15.867157+00:00",
+  "patchSha256": "6d0df6f404b32cc8dd8af9fa83effeda6e94977e238be7998d53accc40d3d053",
+  "sourceSha256": "80e11068c96843d3bd243d8bcb0d59459604052a57352f85b3a8637175c084bd",
+  "status": "static review passed; corrective compilation pending",
+  "correctionAttempt": 1,
+  "failure": "Swift line570 sending issueHandler.some risks causing data races",
+  "changes": [
+    "Sendable callback captures mutex-protected issue counter and immutable values",
+    "Static issue payload/JSON helpers avoid XCTestCase capture",
+    "XCTContext retains callback attachment with unchanged names and schemas"
+  ],
+  "checks": [
+    "git diff --check passed",
+    "Patch applies to clean baseline",
+    "Actual worktree diff equals reviewed patch hash",
+    "Swift6/iOS26 target supports installed standard-library Mutex"
+  ],
+  "diagnosticProceduresUnchanged": true,
+  "nativeRuns": 0,
+  "applicationChanges": false
+}

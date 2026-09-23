@@ -1,0 +1,34 @@
+{
+  "durationSeconds" : 73.556666666666672,
+  "frames" : [
+    {
+      "actualSeconds" : 0,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-complete-pilot-20260915\/failure-video-frames\/frame-001.00.png",
+      "requestedSeconds" : 1,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 60.396666666666668,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-complete-pilot-20260915\/failure-video-frames\/frame-064.00.png",
+      "requestedSeconds" : 64,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 68.693333333333328,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-complete-pilot-20260915\/failure-video-frames\/frame-069.00.png",
+      "requestedSeconds" : 69,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 68.693333333333328,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-complete-pilot-20260915\/failure-video-frames\/frame-073.00.png",
+      "requestedSeconds" : 73,
+      "width" : 1206
+    }
+  ],
+  "video" : "\/Users\/alanrichardson\/ace-private\/mcx19b-complete-pilot-20260915\/pilot-runs\/20260915T045947Z-pilot-84db4f8f536f\/native-settings\/001-set\/attachments\/9F6C2B09-6D2E-48F4-880D-1BAB117A8ECE.mp4"
+}

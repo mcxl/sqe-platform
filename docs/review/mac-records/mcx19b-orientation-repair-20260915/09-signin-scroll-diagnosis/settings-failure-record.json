@@ -1,0 +1,31 @@
+{
+  "recordedUTC": "2026-09-15T11:41:02.614562+00:00",
+  "candidate": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+  "sourceLine": 450,
+  "expected": "Bold Text true",
+  "actual": "Optional(false)",
+  "nativeFailure": [
+    {
+      "failureText": "failed - Settings control Bold Text: expected true, actual Optional(false)",
+      "targetName": "ACEClientAppUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+      "testName": "testConfigureAccessibilitySettings()"
+    }
+  ],
+  "appCasesExecuted": 0,
+  "testHelperVerification": "not reached",
+  "nativeCorrectiveAttemptForHelper": 1,
+  "helperCorrectionOutcome": "untested because settings setup failed",
+  "settingsFaultCorrectionAttempts": 0,
+  "restoration": "passed",
+  "evidenceInspected": [
+    "native log",
+    "failure PNG at original resolution",
+    "three distinct full-resolution video frames at actual40.94,44.11,44.69sec"
+  ],
+  "observations": "No dialog or material position change is visible. Bold Text remained off. The identical tap and frame passed in the preceding full-pilot settings phase.",
+  "cause": "unresolved native input or Settings behaviour; no evidence for an app defect or guessed timing correction"
+}

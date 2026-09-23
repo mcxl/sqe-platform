@@ -1,0 +1,67 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/native-settings/iPhone 17 Pro Max-restore-post-boot/ACEClientAppUITests.xctestrun" -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult"
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult
+
+2026-09-15 18:41:34.985161+1000 ACEClientAppUITests-Runner[40034:4591756] [Default] Running tests...
+2026-09-15 18:41:35.303162+1000 ACEClientAppUITests-Runner[40034:4592042] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-15 18:41:35.346343+1000 ACEClientAppUITests-Runner[40034:4592038] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-09-15 18:41:57.458.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 18:41:57.464.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 18:41:57.465.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.02s Start Test at 2026-09-15 18:41:57.483
+    t =     0.98s Set Up
+    t =     1.02s Open com.example.aceclientapp
+    t =     1.03s     Launch com.example.aceclientapp
+    t =     4.57s         Setting up automation session
+    t =     9.48s         Wait for com.example.aceclientapp to idle
+    t =    12.10s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    13.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    13.19s         Checking existence of `"Effective interface style" Any`
+    t =    14.47s Find the "Effective interface style" Any
+    t =    14.53s Find the "Effective interface style" ScrollView
+    t =    14.58s Terminate com.example.aceclientapp:40103
+    t =    15.62s Setting device orientation to Portrait
+    t =    15.63s     Device orientation changed to Portrait
+    t =    15.73s     Wait for com.apple.springboard to idle
+    t =    15.90s Open com.example.aceclientapp
+    t =    15.90s     Launch com.example.aceclientapp
+    t =    16.58s         Setting up automation session
+    t =    21.16s         Wait for com.example.aceclientapp to idle
+    t =    23.70s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    24.78s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    24.79s         Checking existence of `"Effective interface style" Any`
+    t =    25.99s Find the "Effective interface style" Any
+    t =    26.05s Find the "Effective interface style" ScrollView
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    26.10s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.066201652021845803,"frame":{"height":"956.0","width":"440.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+ACE_SETTINGS_RESULT {"mode":"set","observed":{"boldText":false,"increaseContrast":false,"orientation":"portrait","reduceMotion":false}}
+    t =    26.17s Terminate com.example.aceclientapp:40124
+    t =    27.19s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' passed (27.334 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 18:42:24.809.
+	 Executed 1 test, with 0 failures (0 unexpected) in 27.334 (27.343) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 18:42:24.810.
+	 Executed 1 test, with 0 failures (0 unexpected) in 27.334 (27.346) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 18:42:24.812.
+	 Executed 1 test, with 0 failures (0 unexpected) in 27.334 (27.353) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 18:40:42.986 xcodebuild[39936:4589295] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 18:40:43.013 xcodebuild[39936:4589295] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 18:40:44.261 xcodebuild[39936:4589295] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 18:41:58.673 xcodebuild[39936:4589295] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 18:41:58.674 xcodebuild[39936:4589295] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 18:42:13.375 xcodebuild[39936:4589295] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 18:42:13.375 xcodebuild[39936:4589295] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 18:42:25.212 xcodebuild[39936:4589295] [MT] IDETestOperationsObserverDebug: 100.945 elapsed -- Testing started completed.
+2026-09-15 18:42:25.212 xcodebuild[39936:4589295] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 18:42:25.212 xcodebuild[39936:4589295] [MT] IDETestOperationsObserverDebug: 100.945 sec, +100.945 sec -- end

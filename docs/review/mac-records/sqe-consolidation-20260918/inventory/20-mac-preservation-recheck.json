@@ -1,0 +1,126 @@
+{
+  "delivery_head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "matches_initial_head": true,
+  "changed_files": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/implementation-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/measurement-fix-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/settings-fix-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl/ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree/tools/ace_ios_local.py",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree/tools/tests/test_ace_ios_local.py",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3/tools/ace_ios_local.py",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3/tools/tests/test_ace_ios_local.py",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-audit-metadata-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-field-text-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-trial/ios/ACEClientApp/ACEClientApp/Views.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-native-list-trial/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    },
+    {
+      "path": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "matches_inventory": true
+    }
+  ]
+}

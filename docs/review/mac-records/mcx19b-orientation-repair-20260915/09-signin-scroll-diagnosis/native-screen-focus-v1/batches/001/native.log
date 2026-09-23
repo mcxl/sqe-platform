@@ -1,0 +1,90 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/result.xcresult
+
+2026-09-15 22:01:54.245959+1000 ACEClientAppUITests-Runner[67289:5114292] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 22:02:00.574.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 22:02:00.577.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 22:02:00.578.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.07s Start Test at 2026-09-15 22:02:00.643
+    t =     0.61s Set Up
+    t =     0.63s Setting device orientation to Landscape Left
+    t =     0.67s     Wait for com.apple.springboard to idle
+    t =     3.74s Open com.example.aceclientapp
+    t =     3.74s     Launch com.example.aceclientapp
+    t =     5.86s         Setting up automation session
+    t =     6.03s             Interface orientation changed to Landscape Right
+    t =    11.89s         Wait for com.example.aceclientapp to idle
+    t =    14.95s Waiting 5.0s for "Sign In heading" StaticText to exist
+    t =    16.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Sign In heading" StaticText`
+    t =    16.02s         Checking existence of `"Sign In heading" StaticText`
+    t =    16.47s Checking existence of `"Sign In heading" StaticText`
+    t =    16.56s Find the "Sign In heading" StaticText
+    t =    16.67s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"landscape"}
+    t =    16.73s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.048368912015575916,"frame":{"height":"402.0","width":"874.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"landscape"}
+    t =    16.78s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    17.85s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    17.86s         Checking existence of `"Effective interface style" Any`
+    t =    19.03s Find the "Effective interface style" Any
+    t =    19.09s Find the "Effective interface style" CollectionView
+    t =    19.96s Added attachment named 'Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport initial'
+    t =    25.73s Checking existence of `"Username" TextField`
+    t =    25.81s Checking existence of `"Password" SecureTextField`
+    t =    25.89s Checking existence of `"Sign in" Button`
+    t =    25.96s Checking existence of `ScrollView (First Match)`
+    t =    26.07s Checking existence of `CollectionView (First Match)`
+    t =    26.10s Checking existence of `"Sign in" Button`
+    t =    26.19s Checking existence of `"Sign in" Button`
+    t =    26.28s Checking existence of `"Sign in" Button`
+    t =    26.36s Press CollectionView (First Match)[0.50, 0.72] for 0.1 seconds, then drag to CollectionView (First Match)[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    26.36s     Wait for com.example.aceclientapp to idle
+    t =    26.39s     Find the CollectionView (First Match)
+    t =    26.54s     Check for interrupting elements affecting "Effective interface style" CollectionView
+    t =    26.69s     Synthesize event
+    t =    26.70s         Find the "Effective interface style" CollectionView
+    t =    26.79s         Find the "Effective interface style" CollectionView
+    t =    26.87s         Find the "Effective interface style" CollectionView
+    t =    26.99s         Find the "Effective interface style" CollectionView
+    t =    27.08s         Find the "Effective interface style" CollectionView
+    t =    27.77s     Wait for com.example.aceclientapp to idle
+    t =    28.14s Checking existence of `"Sign in" Button`
+    t =    28.25s Find the "Sign in" Button
+    t =    28.41s Find the "Sign in" Button
+    t =    28.57s Find the "Effective interface style" CollectionView
+    t =    28.64s Checking existence of `"Sign in" Button`
+    t =    28.75s Find the "Sign in" Button
+    t =    28.92s Find the "Sign in" Button
+    t =    29.12s Find the "Sign in" Button
+    t =    30.11s Added attachment named 'Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport control-Sign in'
+ACE_CASE_RESULT {"auditInvocations":1,"id":"pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1","observed":{"appearance":"dark","boldText":true,"contentSize":"accessibility-extra-extra-extra-large","increaseContrast":true,"orientation":"landscape","reduceMotion":true},"result":"passed","scenario":"signIn","screenshots":["Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport initial","Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport control-Sign in"]}
+    t =    30.11s Terminate com.example.aceclientapp:67323
+    t =    30.32s     Interface orientation changed to Portrait
+    t =    31.17s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' passed (31.711 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 22:02:32.341.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.711 (31.762) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 22:02:32.343.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.711 (31.766) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 22:02:32.345.
+	 Executed 1 test, with 0 failures (0 unexpected) in 31.711 (31.771) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/batches/001/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 22:01:45.100 xcodebuild[67249:5113594] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:01:45.155 xcodebuild[67249:5113594] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:01:45.233 xcodebuild[67249:5113594] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:02:04.557 xcodebuild[67249:5113594] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 22:02:04.557 xcodebuild[67249:5113594] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 22:02:32.748 xcodebuild[67249:5113594] [MT] IDETestOperationsObserverDebug: 46.308 elapsed -- Testing started completed.
+2026-09-15 22:02:32.748 xcodebuild[67249:5113594] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 22:02:32.748 xcodebuild[67249:5113594] [MT] IDETestOperationsObserverDebug: 46.308 sec, +46.308 sec -- end

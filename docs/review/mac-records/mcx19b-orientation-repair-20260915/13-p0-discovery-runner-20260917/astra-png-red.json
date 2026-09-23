@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks",
+    "-v"
+  ],
+  "exit": 1,
+  "runnerSha256": "144a3d6d86924b0af5394d3c8de2276e372bfd8a5a12fe263b5c556589dfb523",
+  "testsSha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+  "expected": "RunnerError for invalid decoded PNG scanlines",
+  "actual": "see retained exact unittest assertion log"
+}

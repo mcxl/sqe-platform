@@ -1,0 +1,58 @@
+{
+  "review_type": "Pocock specification axis — target-measurement precision delta",
+  "scope": "Specification intent and authorised scope only. Naming and standards were not assessed.",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "pinned_refs": {
+    "base": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "head": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+    "diff": "git diff c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d...c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+    "changed_files": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+    "primary_fix_diff": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/primary-fix-diff.patch",
+    "primary_fix_diff_sha256": "4c76f7987557bd9edc4b9eb52e6847d44a22fb9c5c67c51b903599269d787a1d"
+  },
+  "inspected_sources": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:361-365,969-1000",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/observed-measurement.json:1-39",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md:819-868,913-915,944-946,1161-1168,1290-1295,1347-1355,1414-1426",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md:33,61-65,71-102,104-128"
+  ],
+  "requirement_refs": [
+    "Spec:819-825 requires accessible controls and no clipping; spec:855-868 preserves the 512-audit, 324-layout-only, 836-case matrix and forbids an audit exception.",
+    "Spec:913-915 and 1161-1168 require native audit results with no unresolved accessibility failure.",
+    "Spec:944-946 requires XCTest UI journeys and forbids tests of private Swift helpers.",
+    "Spec:1347-1355 requires reachable controls, named screenshots, native settings evidence, and actual image inspection.",
+    "Spec:1414-1426 preserves the full programme and rejects unsupported inference from XCTest attachments.",
+    "Plan:33 and 61-65 preserve unrestricted audits and prohibit conversion of a failed native result into a pass."
+  ],
+  "assessment": [
+    {
+      "subject": "44-point target policy",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:988-995"],
+      "result": "Pass",
+      "rationale": "The implementation retains the 44-point minimum. It accepts only a finite value within 1e-9 point below that minimum. It rejects NaN and infinity, and does not change application target sizing."
+    },
+    {
+      "subject": "Failure diagnostics and action reachability",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:361-365", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:969-1000"],
+      "result": "Pass",
+      "rationale": "Hittability remains mandatory. Width and height checks remain separate. Diagnostics now retain both exact frame dimensions, the minimum, and the precision policy."
+    },
+    {
+      "subject": "Evidence and masking",
+      "source_refs": ["observed-measurement.json:5-16,25-38", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:969-995"],
+      "result": "Pass",
+      "rationale": "The retained diagnostic records 43.99999999999966 for a source-defined 44-point target, a 3.41e-13 deficit. The change is a bounded test-comparison correction. It does not suppress accessibility audits, alter capture, runner behaviour, coverage counts, or the app target minimum."
+    }
+  ],
+  "findings": [],
+  "verdict": "PASS — the finite 1e-9 precision band preserves the 44-point policy for the documented numerical-comparison fault. No specification-scope leak or audit masking was found. This does not claim knowledge of Apple arithmetic or native, pilot, UI, or final acceptance.",
+  "retained_limitations": [
+    "The reported ten boundary checks and rejection of larger undersizes were not rerun by this review.",
+    "Native focus remains active. The 22-case pilot, full 836-case programme, audit results, image inspection, and final gates remain pending.",
+    "Historical Copy-contrast and Settings missed-tap causes remain unresolved."
+  ],
+  "requested_model": "gpt-5.6-terra",
+  "requested_effort": "medium",
+  "actual_runtime": "unobservable",
+  "reviewed_at": "2026-09-15"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "78DD87AD-77FB-46E1-AEF5-5DE6D0EE6A41.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Effective interface style\" Any`_0_385E063A-F5F3-4ADA-BAED-4B640D952ED1.txt",
+        "timestamp" : 1789456629.194
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "1A0C8145-4B49-45A4-AE95-9FEBE89F8E2A.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-15 at 05.15.08 pm.mp4",
+        "timestamp" : 1789456508.399
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings"
+  }
+]

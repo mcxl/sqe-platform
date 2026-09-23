@@ -1,0 +1,141 @@
+{
+  "finishedUTC": "2026-09-14T23:43:35.557950+00:00",
+  "result": "Focused native UI correction passed and adopted. Overall delivery remains unverified.",
+  "base": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "adoptedCommit": "023b1e8dd0a742d2a1caa3f30f5141af2c5021db",
+  "branch": "codex/mcx19b-release-layout",
+  "testedPatchSHA256": "c7691eca25ac7402b00a4b6e64f94b62ea67ca58b5c076a71ea8899f3a290fe2",
+  "sourceSHA256": {
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "c462a7af9a0d232dbf5676cd4cdb0bf575fbc2df78694090c3ce126be068e303"
+  },
+  "changes": [
+    "Use primary tint for ReleaseView controls.",
+    "Use a single wrapping body Text for each exact field label and value.",
+    "Replace DEBUG visible settings banner/inset with observed accessibility metadata.",
+    "Adapt metadata and complete-field queries without weakening native audit assertions."
+  ],
+  "preserved": [
+    "All eleven field types and their order.",
+    "One Copy action button per complete action.",
+    "Clipboard payload, local-only handling, five-minute expiry and confirmation.",
+    "Unlimited supported Dynamic Type and unrestricted .all audits."
+  ],
+  "nativeChecks": {
+    "largeLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs/20260914T230801Z-selected-156183575705",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 81.818,
+      "enumerationSeconds": 20.855,
+      "nativeCommandSeconds": 110.485,
+      "unrestrictedAuditCalls": 3
+    },
+    "smallLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 75.162,
+      "enumerationSeconds": 283.904,
+      "nativeCommandSeconds": 155.722,
+      "unrestrictedAuditCalls": 3
+    },
+    "largeDark": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/dark-runs/20260914T232753Z-selected-97c06b7e5334",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 79.718,
+      "enumerationSeconds": 18.664,
+      "nativeCommandSeconds": 156.014,
+      "unrestrictedAuditCalls": 5
+    },
+    "largeMaximumLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 69.633,
+      "enumerationSeconds": 20.055,
+      "nativeCommandSeconds": 100.877,
+      "unrestrictedAuditCalls": 2
+    }
+  },
+  "nativeTestExecutions": 6,
+  "distinctNativeSelectors": 4,
+  "unrestrictedAuditCalls": 13,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "imageFiles": 53,
+  "distinctImagesInspected": 19,
+  "imageReviewFiles": [
+    "light-image-review.json",
+    "small-light-image-review.json",
+    "dark-image-review.json",
+    "maximum-image-review.json"
+  ],
+  "review": {
+    "file": "SOL_COPY_TINT_REVIEW.md",
+    "sha256": "8bda8d2c80760b7af617c3fd1cbd01ba8fff7fc8a7f8708840df6adf19bb1faf",
+    "result": "No required source findings. Limited source review; not full acceptance.",
+    "requested": "Fresh Sol/high",
+    "observedRuntime": "unobservable"
+  },
+  "limits": [
+    "Native runs bind to base plus exact dirty source patch; adopted source bytes match. These are diagnostic tests, not final clean-candidate acceptance.",
+    "Passing tests do not establish the native audit internal sampling cause.",
+    "Maximum-size test checks both release audits and eleven fields; it does not exercise Copy at maximum size.",
+    "All selected tests here used portrait. Broader orientations, settings and state coverage remain pending.",
+    "Physical phone disconnected; no installation or physical test occurred.",
+    "Private approved service inputs and historical baseline resolution remain blocked.",
+    "Native settings build-reuse comparison includes a runtime-use timestamp; assess before pilot/full reuse."
+  ],
+  "requirements": {
+    "focusedReleaseCopyNativeChecks": "passed",
+    "lightBothRequiredSimulatorModels": "passed",
+    "darkReleaseCopyAndEmptyStatesProMax": "passed",
+    "maximumReleaseProMax": "passed",
+    "fullResolutionFocusedImageInspection": "passed",
+    "freshSourceReview": "passed",
+    "exactPatchAdoption": "passed",
+    "completeUnitAndContractSuiteOnFinalCandidate": "pending",
+    "clean22CasePilot": "pending",
+    "clean836CaseProgramme": "pending",
+    "physicalVoiceOverClipboardKeychainPrivacy": "blocked: phone disconnected",
+    "approvedPrivateServiceAndNetworkChecks": "blocked: missing approved service inputs",
+    "historicalBaseline": "blocked: unresolved baseline",
+    "PocockAndFreshFinalSolReview": "pending",
+    "signedPhoneInstall": "blocked: phone disconnected"
+  },
+  "acceptedFinalPilotCases": 0,
+  "acceptedFinalCoverageCases": 0,
+  "restoration": {
+    "maximumSettingsRestored": true,
+    "iPhone17OriginalShutdownRestored": true
+  },
+  "operations": {
+    "activeNativeProcesses": 0,
+    "pushed": false,
+    "merged": false,
+    "phoneInstalled": false,
+    "windowsBulkEvidenceExports": false
+  },
+  "measuredCommandSeconds": {
+    "buildSeconds": 306.331,
+    "enumerationSeconds": 343.478,
+    "nativeCommandSeconds": 523.098
+  },
+  "activeHumanAndAgentWorkSeconds": "not measured separately; do not infer from wall time",
+  "hostObservation": "small-device-host-observation.json records two high-CPU background simulator processes. Neither was terminated. Test eventually passed."
+}

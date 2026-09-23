@@ -1,0 +1,143 @@
+{
+  "file_and_subtree_records": 4339,
+  "categories": {
+    "source_or_document_candidate": 2873,
+    "private_or_binary_preserve_only": 141,
+    "generated_or_retained_evidence": 1159,
+    "unclassified_preserve": 166
+  },
+  "tracked_changed": 15,
+  "index_path_groups": {
+    "same_index_blob": 128,
+    "different_index_versions_review_required": 53,
+    "single_observed_index_entry": 70
+  },
+  "expanded_generated_subtrees": false,
+  "unclassified_examples": [
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/ace_ios_local.py.transfer",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/large-scale renewable energy infrastructure.odt",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-00-start-with-the-diagnostic-mindset.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-01-mobilise-before-you-assess.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-02-scan-before-you-select.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-03-safety-in-design-and-project-kraken.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-04-framework-coherence-and-golden-rules.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-05-explain-the-decision-and-next-phase.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-06-mate-from-memory.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-07-ace-in-one-breath.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-08-evidence-and-contradiction-drill.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-09-project-kraken-three-state-drill.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-10-golden-rules-verbal-audit-judo.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/podlog-energy-inc-ace-mate-learning/docs/audio/episode-11-full-diagnostic-mastery-drill.mp3",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/test_ace_ios_local.py.transfer",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fdivf4b05cc8de6347ae6fc0bc687737c283-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsub_fsubcae63ff924034fa148b6b64425ec67-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsub_Sin_fsum_Tan_Cos_ScATane59ae302d99abf458bad42d1502bb-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsum_fsub_fsum_fmul_fdiv_Powerb32d41f39fc3d0b222b9c75a4c22ce-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsum_fsum_fsub_fsum_Var_OpNormsdist_Covar_OpPearson_Slope27fd69cdbcc3a8267a6ff779a2ec596f-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsum_fsum_fsum98ee81a85f7a311192787295ed8a41cb-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_fsum_fsum_Product_SumIfs_fsop765eb6d6c135fc25523327de207b361c-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/cache/_nop_Sqrt_fmul_fsub_fsubf628cca0fe9b781b768256844c519e5-B69F5568F4E21DC75A07253BA984A6FB.bin",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/crash/dump.ini",
+      "kind": "file"
+    },
+    {
+      "worktree": "LOCAL_HOME/Documents/agentic-os-workspace",
+      "path": "sqe/tmplo_profile_eoi/user/registrymodifications.xcu",
+      "kind": "file"
+    }
+  ]
+}

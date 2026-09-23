@@ -1,0 +1,38 @@
+{
+  "objective": "Isolate release-final accessibility timeout, implement only demonstrated correction, verify next-stage readiness",
+  "status": "closed_non_reproduction",
+  "startedUTC": "2026-09-15T04:13:32Z",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "sourceChanges": [],
+  "activeJob": null,
+  "activeDiagnostic": null,
+  "diagnosticQuestion": "Verify same affected screens on the second required simulator; not a causal experiment",
+  "correctiveAttempts": 0,
+  "nativeScope": "signIn then release, iPhone17, default text, light, portrait, flags off",
+  "plan": "LOCAL_HOME/ace-private/mcx19b-release-timeout-20260915/PLAN.md",
+  "next": "Inspect result, original-resolution images, and restoration before next experiment",
+  "completedDiagnostics": [
+    {
+      "name": "01-unchanged-prefix",
+      "result": "passed",
+      "cases": 2,
+      "auditInvocations": 3,
+      "uniqueImagesInspected": 4,
+      "restorationFailures": []
+    },
+    {
+      "name": "02-pro-max-prefix",
+      "result": "passed",
+      "cases": 2,
+      "auditInvocations": 3,
+      "uniqueImagesInspected": 4,
+      "restorationFailures": []
+    }
+  ],
+  "timeoutCause": "unresolved",
+  "completedUTC": "2026-09-15T04:32:52.127800+00:00",
+  "originalPilotStatus": "failed",
+  "nextStage": "fresh22-case pilot; no836beforeallgates",
+  "nextStageStarted": false,
+  "outcomeReview": "LOCAL_HOME/ace-private/mcx19b-release-timeout-20260915/outcome-review.json"
+}

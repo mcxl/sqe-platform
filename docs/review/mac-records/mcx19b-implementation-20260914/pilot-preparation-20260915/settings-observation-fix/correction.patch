@@ -1,0 +1,22 @@
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -398,11 +398,16 @@
+         if current != enabled {
+             toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+         }
++        let observationStart = ProcessInfo.processInfo.systemUptime
+         let changed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.nativeSwitchValue(toggle) == enabled }, object: nil)
+-        let reached = XCTWaiter.wait(for: [changed], timeout: 5) == .completed
+-        guard reached else {
++        let waitResult = XCTWaiter.wait(for: [changed], timeout: 5)
++        // Read the current value before diagnostics; the wait can expire while Settings rebuilds its controls.
++        let actual = nativeSwitchValue(settings.switches[label])
++        let observationSeconds = ProcessInfo.processInfo.systemUptime - observationStart
++        print("ACE_NATIVE_SWITCH_RESULT \(label) wait=\(waitResult.rawValue) seconds=\(observationSeconds) expected=\(enabled) actual=\(String(describing: actual))")
++        guard actual == enabled else {
+             addScreenshot(of: settings, named: "Accessibility settings \(label) did not change")
+-            XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: nativeSwitchValue(toggle)))")
++            XCTFail("Settings control \(label): expected \(enabled), actual \(String(describing: actual))")
+             return false
+         }
+         return true

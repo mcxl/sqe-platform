@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-14",
+  "macCheckout": "LOCAL_HOME/Developer/sqe-platform",
+  "macPrivateSetup": "LOCAL_HOME/ace-private/mcx19b-setup-20260914",
+  "repository": "https://github.com/mcxl/sqe-platform.git",
+  "branch": "codex/mcx-19-live-evidence-harness",
+  "commit": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "checkoutState": "Clean saved baseline. These two patches are preserved separately and have not been applied.",
+  "evidenceState": "SSH, Xcode version and simulator availability verified. No app build or app tests run on this Mac during setup.",
+  "macOS": "26.6.2 (25G83)",
+  "hardware": "MacBookPro16,1; Intel x86_64",
+  "xcode": "26.4.1 (17E202)",
+  "codexCLI": "0.154.0",
+  "agreedOrder": [
+    "Verify access and candidate",
+    "Prove local build and failure/pass evidence",
+    "Agree coverage",
+    "Reproduce and compare",
+    "Make demonstrated corrections",
+    "Add only necessary tools",
+    "Verify one clean final candidate"
+  ],
+  "remainingSetup": [],
+  "controls": [
+    "No Codemagic",
+    "No push or merge",
+    "Private evidence stays outside the repository",
+    "Existing Windows changes are preserved",
+    "Historical test passes do not prove this Mac candidate passes"
+  ],
+  "patches": [
+    {
+      "file": "windows-ios-working-changes.patch",
+      "sha256": "4200520eeb2c2d80ce26475dc48a1d14f2d473abd2b6c728cd3e8665ffb9dac7"
+    },
+    {
+      "file": "standalone-container.patch",
+      "sha256": "927ff700112a521dcac6efab51031dbb93eedf4fd1268bbd057577b264f7def6"
+    }
+  ],
+  "savedProject": {
+    "name": "ACE iOS Mac",
+    "id": "904f145e-6c00-4ce3-99aa-cb574eaba879",
+    "host": "remote-ssh-discovered:ace-mac",
+    "verifiedPath": "LOCAL_HOME/Developer/sqe-platform"
+  },
+  "nextDevelopmentChecks": [
+    "Reconcile the two preserved patches before selecting the diagnostic candidate",
+    "Transfer only the private evidence needed for the next diagnostic step",
+    "Prove one minimal app build, deliberate failed test evidence, and the same corrected test passing before broader testing"
+  ]
+}

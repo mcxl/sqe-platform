@@ -1,0 +1,12 @@
+{
+  "commit": "add02b803eaf9e655f544f9b111733d1c07004b7",
+  "status": "clean",
+  "files": [
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift"
+  ],
+  "patchSha256": "2e7d0db8b8606c8b85f30136c1d5cabd203cf657b150e7f7ad251ca7e0711e15",
+  "stagedInspection": "exact two current-task files",
+  "push": "not performed",
+  "nativeChecks": "pending"
+}

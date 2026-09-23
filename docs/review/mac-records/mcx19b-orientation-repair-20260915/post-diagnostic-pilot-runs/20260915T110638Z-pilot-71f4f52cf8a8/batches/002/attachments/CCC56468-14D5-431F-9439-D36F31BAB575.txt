@@ -1,0 +1,35 @@
+Application, 0x10a112d40, pid: 60389, label: 'ACE Client' <App element pid: 60389>
+  Window (Main), 0x10a1045c0, {{0.0, 0.0}, {874.0, 402.0}} <AX element pid: 60389, elementOrHash.elementID: 4452639888.3>
+    Other, 0x10a117800, {{0.0, 0.0}, {874.0, 402.0}} <AX element pid: 60389, elementOrHash.elementID: 4460719952.4>
+      Other, 0x10a117920, {{0.0, 0.0}, {874.0, 402.0}} <AX element pid: 60389, elementOrHash.elementID: 4458668032.5>
+        Other, 0x10a10df60, {{0.0, 0.0}, {874.0, 402.0}} <AX element pid: 60389, elementOrHash.elementID: 4508915072.6>
+          Other, 0x10a109080, {{0.0, 0.0}, {874.0, 402.0}} <AX element pid: 60389, elementOrHash.elementID: 4508983168.7>
+            CollectionView, 0x10a117a40, {{78.0, 16.0}, {718.0, 350.0}}, identifier: 'Effective interface style', label: 'dark', value: {"appearance":"dar... <AX element pid: 60389, elementOrHash.elementID: 4530190848.8>
+              Other, 0x10a117b60, {{58.0, -684.0}, {758.0, 849.7}} <AX element pid: 60389, elementOrHash.elementID: 4452406368.11>
+              Cell, 0x10a117c80, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4563757568.10>
+                Other, 0x10a117da0, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4508989984.16>
+                  Other, 0x10a117f50, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4508990992.23>
+                Other, 0x10a118070, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4508965936.17>
+                  Other, 0x10a118190, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4563737600.24>
+                    Other, 0x10a1182b0, {{98.0, 51.0}, {678.0, 97.0}} <AX element pid: 60389, elementOrHash.elementID: 4508988640.29>
+                      StaticText, 0x10a1183d0, {{98.0, 51.0}, {678.0, 97.0}}, identifier: 'Sign In heading', label: 'Sign In' <AX element pid: 60389, elementOrHash.elementID: 4508986800.32>
+              Other, 0x10a1184f0, {{58.0, 165.7}, {758.0, 984.7}} <AX element pid: 60389, elementOrHash.elementID: 4452714576.9>
+              Cell, 0x10a118610, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4479735808.12>
+                Other, 0x10a118730, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4505815600.18>
+                  Other, 0x10a118850, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4505816096.25>
+                Other, 0x10a118970, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4505790048.19>
+                  Other, 0x10a118a90, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4479698944.26>
+                    Other, 0x10a118bb0, {{98.0, 183.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4509045568.30>
+                      TextField, 0x10a118cd0, {{118.0, 198.0}, {638.0, 64.0}}, label: 'Username', placeholderValue: 'Username' <AX element pid: 60389, elementOrHash.elementID: 4588799488.33>
+              Cell, 0x10a118df0, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4471262720.13>
+                Other, 0x10a118f10, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4452542784.20>
+                  Other, 0x10a119030, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4452543280.27>
+                Other, 0x10a119150, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4452323936.21>
+                  Other, 0x10a119270, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4471284736.28>
+                    Other, 0x10a119390, {{98.0, 277.0}, {678.0, 94.0}} <AX element pid: 60389, elementOrHash.elementID: 4509049248.31>
+                      SecureTextField, 0x10a1194b0, {{118.0, 292.0}, {638.0, 64.0}}, label: 'Password', placeholderValue: 'Password' <AX element pid: 60389, elementOrHash.elementID: 4471307776.34>
+              Other, 0x10a1195d0, {{118.0, 276.0}, {638.0, 1.0}} <AX element pid: 60389, elementOrHash.elementID: 4452715072.14>
+              Other, 0x10a1196f0, {{763.0, 16.0}, {30.0, 350.0}}, label: 'Vertical scroll bar, 2 pages', value: 0% <AX element pid: 60389, elementOrHash.elementID: 4458738224.15>
+                Other, 0x10a119810, {{790.0, 356.0}, {3.0, 7.0}} <AX element pid: 60389, elementOrHash.elementID: 4458739200.22>
+              Other, 0x10a119930, {{763.0, 16.0}, {30.0, 350.0}}, label: 'Vertical scroll bar, 2 pages', value: 0% <AX element pid: 60389, elementOrHash.elementID: 4458738224.15>
+                Other, 0x10a119a50, {{790.0, 356.0}, {3.0, 7.0}} <AX element pid: 60389, elementOrHash.elementID: 4458739200.22>

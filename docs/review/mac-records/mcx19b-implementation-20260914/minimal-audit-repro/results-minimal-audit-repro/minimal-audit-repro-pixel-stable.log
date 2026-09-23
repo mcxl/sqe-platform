@@ -1,0 +1,135 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/derived-minimal-audit-repro/Build/Products/minimal-audit-repro.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-pixel-stable.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testMinimalAuditReproPixelStableAllAudits"
+
+2026-09-14 19:06:37.329 xcodebuild[70894:1922937] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-pixel-stable.xcresult
+
+2026-09-14 19:06:37.354 xcodebuild[70894:1922937] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 19:06:38.723 xcodebuild[70894:1922937] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 19:06:46.586011+1000 ACEClientAppUITests-Runner[70923:1923502] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 19:06:51.730.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 19:06:51.732.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 19:06:51.736.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproPixelStableAllAudits]' started.
+    t =     0.02s Start Test at 2026-09-14 19:06:51.755
+    t =     0.28s Set Up
+    t =     0.30s Open com.example.aceclientapp
+    t =     0.30s     Launch com.example.aceclientapp
+2026-09-14 19:06:52.219 xcodebuild[70894:1922937] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 19:06:52.220 xcodebuild[70894:1922937] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     2.91s         Setting up automation session
+    t =     8.62s         Wait for com.example.aceclientapp to idle
+    t =    11.90s Waiting 5.0s for "Minimal audit reproduction bottom" StaticText to exist
+    t =    12.96s     Checking `Expect predicate `existsNoRetry == 1` for object "Minimal audit reproduction bottom" StaticText`
+    t =    12.96s         Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    13.61s Get all elements bound by index for: Descendants matching type Button
+    t =    13.75s Find the Button (Element at index 0)
+    t =    13.98s Find the "Copy Engagement name" Button
+    t =    14.19s Find the "Copy Engagement name" Button
+    t =    14.33s Find the Button (Element at index 1)
+    t =    14.54s Find the "Copy Review status" Button
+    t =    14.70s Find the "Copy Review status" Button
+    t =    14.84s Find the Button (Element at index 2)
+    t =    15.02s Find the "Copy Release version" Button
+    t =    15.24s Find the "Copy Release version" Button
+    t =    15.36s Find the Button (Element at index 3)
+    t =    15.57s Find the "Copy Published date and time" Button
+    t =    15.72s Find the "Copy Published date and time" Button
+    t =    15.85s Find the Button (Element at index 4)
+    t =    16.03s Find the "Copy Action description" Button
+    t =    16.18s Find the "Copy Action description" Button
+    t =    16.45s Find the Button (Element at index 5)
+    t =    16.65s Find the "Copy Action owner" Button
+    t =    16.80s Find the "Copy Action owner" Button
+    t =    16.96s Find the Button (Element at index 6)
+    t =    17.16s Find the "Copy Action target date" Button
+    t =    17.35s Find the "Copy Action target date" Button
+    t =    17.48s Find the Button (Element at index 7)
+    t =    17.66s Find the "Copy Action status" Button
+    t =    17.85s Find the "Copy Action status" Button
+    t =    28.70s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    29.78s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    29.78s         Checking existence of `ScrollView (First Match)`
+    t =    29.82s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    30.07s Find the "Minimal audit reproduction bottom" StaticText
+    t =    30.36s Find the ScrollView (First Match)
+    t =    30.43s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    30.74s Find the "Minimal audit reproduction bottom" StaticText
+    t =    31.00s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    31.00s     Wait for com.example.aceclientapp to idle
+    t =    31.02s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.08s     Check for interrupting elements affecting ScrollView
+    t =    31.22s     Synthesize event
+    t =    31.22s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.31s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.39s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.54s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.67s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    32.76s     Wait for com.example.aceclientapp to idle
+    t =    33.21s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    33.46s Find the "Minimal audit reproduction bottom" StaticText
+    t =    33.77s Find the "Minimal audit reproduction bottom" StaticText
+    t =    34.05s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    34.12s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    34.40s Find the "Minimal audit reproduction bottom" StaticText
+    t =    34.68s Find the "Minimal audit reproduction bottom" StaticText
+    t =    34.91s Find the ScrollView (First Match)
+    t =    34.96s Get all elements bound by index for: Descendants matching type Button
+    t =    35.11s Find the Button (Element at index 0)
+    t =    35.31s Find the "Copy Engagement name" Button
+    t =    35.46s Find the "Copy Engagement name" Button
+    t =    35.58s Find the Button (Element at index 1)
+    t =    35.77s Find the "Copy Review status" Button
+    t =    35.93s Find the "Copy Review status" Button
+    t =    36.06s Find the Button (Element at index 2)
+    t =    36.26s Find the "Copy Release version" Button
+    t =    36.46s Find the "Copy Release version" Button
+    t =    36.58s Find the Button (Element at index 3)
+    t =    36.77s Find the "Copy Published date and time" Button
+    t =    37.01s Find the "Copy Published date and time" Button
+    t =    37.16s Find the Button (Element at index 4)
+    t =    37.39s Find the "Copy Action description" Button
+    t =    37.54s Find the "Copy Action description" Button
+    t =    37.70s Find the Button (Element at index 5)
+    t =    37.93s Find the "Copy Action owner" Button
+    t =    38.08s Find the "Copy Action owner" Button
+    t =    38.21s Find the Button (Element at index 6)
+    t =    38.40s Find the "Copy Action target date" Button
+    t =    38.55s Find the "Copy Action target date" Button
+    t =    38.69s Find the Button (Element at index 7)
+    t =    38.90s Find the "Copy Action status" Button
+    t =    39.05s Find the "Copy Action status" Button
+    t =    39.19s Find the Target Application 'com.example.aceclientapp'
+    t =    40.04s Added attachment named 'Minimal audit reproduction — post-scroll — light'
+    t =    40.05s Checking existence of `ScrollView (First Match)`
+    t =    40.08s Find the ScrollView (First Match)
+    t =    40.76s Checking existence of `ScrollView at {{16.0, 114.3}, {408.0, 791.7}}`
+    t =    40.79s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    41.51s Added attachment named 'Pixel observation first'
+    t =    41.51s Added attachment named 'Pixel observation stable before audit'
+ACE_PIXEL_STABILITY before=true captures=2 elapsed=1.4693189590034308
+    t =    49.64s Checking existence of `ScrollView at {{16.0, 114.3}, {408.0, 791.7}}`
+    t =    49.67s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    50.30s Added attachment named 'Pixel observation after full audit'
+ACE_PIXEL_STABILITY beforeAfterIdentical=false
+    t =    50.31s Terminate com.example.aceclientapp:70941
+    t =    51.42s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproPixelStableAllAudits]' passed (51.631 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 19:07:43.378.
+	 Executed 1 test, with 0 failures (0 unexpected) in 51.631 (51.643) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 19:07:43.381.
+	 Executed 1 test, with 0 failures (0 unexpected) in 51.631 (51.649) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 19:07:43.383.
+	 Executed 1 test, with 0 failures (0 unexpected) in 51.631 (51.653) seconds
+2026-09-14 19:07:43.834 xcodebuild[70894:1922937] [MT] IDETestOperationsObserverDebug: 65.101 elapsed -- Testing started completed.
+2026-09-14 19:07:43.834 xcodebuild[70894:1922937] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 19:07:43.834 xcodebuild[70894:1922937] [MT] IDETestOperationsObserverDebug: 65.101 sec, +65.101 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-pixel-stable.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

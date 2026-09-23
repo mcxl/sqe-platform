@@ -1,0 +1,17 @@
+{
+  "atUTC": "2026-09-15T07:13:40.780102+00:00",
+  "candidate": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+  "file": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "line": 153,
+  "expected": "Native accessibility snapshot contains Effective interface style observation element.",
+  "actual": "Failed to get matching snapshots: Timed out while fetching snapshot from testmanagerd..",
+  "nativeExit": 65,
+  "commandSeconds": 1100.877,
+  "pilotCasesExecuted": 0,
+  "orientationHelperReached": false,
+  "classification": "Native snapshot service timeout; host overload observed, full cause not established.",
+  "log": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/001-set/native.log",
+  "logSha256": "ac6dd5535feae7215011687c3a461d807446236b2b64f1ec9539b2aa252d923a",
+  "next": "complete restoration, inspect retained native artifacts, review proposed runner resource change"
+}

@@ -1,0 +1,2 @@
+command: git -C LOCAL_HOME/Developer/sqe-platform-copy-colour-trial diff --check
+exit: 0

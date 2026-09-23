@@ -1,0 +1,9 @@
+{
+  "expected": "Generic iOS simulator build succeeds",
+  "actual": "Swift compiler failed to produce diagnostic for expression at Views.swift:19:49",
+  "retainedLog": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-build.log",
+  "retainedBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-build.xcresult",
+  "change": "Replace optional bound-method conditional with an explicit closure. Other presentation changes unchanged.",
+  "beforeSha256": "6080ff02e6b4df7fc2f1ed383cbb4c737245284abdf20256bbd0b2cefbf85fe2",
+  "afterSha256": "13b4bf7ae35a7a545e1de8bb16d40f264ec2b3765979227b7ea90ba05899dbe0"
+}

@@ -1,0 +1,84 @@
+{
+  "result": "passed-unchanged-diagnostic",
+  "nativeChecks": {
+    "read": {
+      "command": [
+        "xcodebuild",
+        "test-without-building",
+        "-xctestrun",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/read/ACEClientAppUITests.xctestrun",
+        "-destination",
+        "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+        "-resultBundlePath",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/read/result.xcresult"
+      ],
+      "exit": 0,
+      "seconds": 145.763,
+      "result": "Passed",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "cdf1717a56a8a104b85f9c69bb17eb9b71dd65595a8c18006a66a4db7834e58c",
+      "summarySha256": "be83cb322af6bcfe693c74faf4ecd2958a2e672039edc43a7fee8b83fb0b2d3b"
+    },
+    "restore": {
+      "command": [
+        "xcodebuild",
+        "test-without-building",
+        "-xctestrun",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/restore/ACEClientAppUITests.xctestrun",
+        "-destination",
+        "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+        "-resultBundlePath",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/restore/result.xcresult"
+      ],
+      "exit": 0,
+      "seconds": 46.302,
+      "result": "Passed",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "66e48dca04439e28c43e4efa16ed74c68c8f5a33b151d3da13fc42056fa7adbc",
+      "summarySha256": "083ea97f21a3f63e1645ad9de122daa2c07c7e230aee2e50d6f2ece7c6e5266d"
+    },
+    "target": {
+      "command": [
+        "xcodebuild",
+        "test-without-building",
+        "-xctestrun",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/target/ACEClientAppUITests.xctestrun",
+        "-destination",
+        "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+        "-resultBundlePath",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/target/result.xcresult"
+      ],
+      "exit": 0,
+      "seconds": 56.832,
+      "result": "Passed",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "52b74ecc2b032d58ec613b28c68e2a3e6b723e9921cb9969445735907deeca9a",
+      "summarySha256": "2c96b0b91558d62cdc9218f9daec191d4c737137a86c601fa7dae5cea5d915e9"
+    }
+  },
+  "restored": true,
+  "sourceUnchanged": true,
+  "meaning": "The same compiled orientation check passed after the user disabled Low Power Mode. This one pass does not prove causality or remove the confirmed nested-waiter fault.",
+  "priorFailureNativeSeconds": 187.775,
+  "currentTargetNativeSeconds": 56.832,
+  "pilotCasesExecuted": 0,
+  "correctiveAttempts": 0
+}

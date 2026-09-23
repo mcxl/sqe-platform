@@ -1,0 +1,41 @@
+{
+  "question": "Does the unchanged app copy expire from the simulator clipboard after the retained Copy action?",
+  "copyConfirmationCaptureTime": 1789386045.34,
+  "baseline": {
+    "observedAt": 1789386276.852476,
+    "exit": 0,
+    "matchesExpectedFictionalValue": true,
+    "empty": false,
+    "stderr": "",
+    "claim": "Read-only observation of simulator clipboard. No physical-device or timing-bound acceptance."
+  },
+  "reads": [
+    {
+      "time": 1789386325.8662982,
+      "exit": 0,
+      "matchesExpectedFictionalValue": true,
+      "empty": false
+    },
+    {
+      "time": 1789386331.648447,
+      "exit": 0,
+      "matchesExpectedFictionalValue": true,
+      "empty": false
+    },
+    {
+      "time": 1789386337.5427651,
+      "exit": 0,
+      "matchesExpectedFictionalValue": true,
+      "empty": false
+    },
+    {
+      "time": 1789386343.207635,
+      "exit": 0,
+      "matchesExpectedFictionalValue": false,
+      "empty": true
+    }
+  ],
+  "acceptance": "Focused simulator observation only. The capture time is an upper bound on write time; physical and exact-boundary checks remain pending.",
+  "transitionObserved": true,
+  "finished": 1789386343.2089741
+}

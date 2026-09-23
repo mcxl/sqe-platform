@@ -1,0 +1,26 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-enumerate-tests",
+    "-test-enumeration-style",
+    "flat",
+    "-test-enumeration-format",
+    "json",
+    "-test-enumeration-output-path",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/test-enumeration.json"
+  ],
+  "end": "2026-09-14T20:22:25.683122+00:00",
+  "exit": 0,
+  "seconds": 15.927,
+  "start": "2026-09-14T20:22:09.755522+00:00",
+  "stderr": "2026-09-15 06:22:14.837 xcodebuild[50861:3065066] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 06:22:14.853 xcodebuild[50861:3065066] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 06:22:15.688 xcodebuild[50861:3065066] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO -enumerate-tests -test-enumeration-style flat -test-enumeration-format json -test-enumeration-output-path LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/test-enumeration.json\n\n2026-09-15 06:22:20.266818+1000 ACEClientAppUITests-Runner[50880:3065585] [Default] Running tests...\n    t =      nans Interface orientation changed to Portrait\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/Library/Developer/Xcode/DerivedData/ACEClientApp-cnknxckiqgrxsxgfeuztxrulnerd/Logs/Test/Test-ACEClientAppUITests-2026.09.15_06-22-14-+1000.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\n",
+  "timedOut": false
+}

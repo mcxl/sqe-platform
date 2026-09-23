@@ -1,0 +1,51 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/ACEClientAppUITests.xctestrun" -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/result.xcresult"
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/result.xcresult
+
+2026-09-15 17:14:59.105177+1000 ACEClientAppUITests-Runner[28643:4379059] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 17:15:07.897.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 17:15:07.900.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 17:15:07.901.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.02s Start Test at 2026-09-15 17:15:07.920
+    t =     0.50s Set Up
+    t =     0.53s Open com.example.aceclientapp
+    t =     0.53s     Launch com.example.aceclientapp
+    t =    23.31s         Setting up automation session
+    t =    83.32s         Wait for com.example.aceclientapp to idle
+    t =    89.68s Unable to monitor event loop
+    t =    89.69s Unable to monitor animations
+    t =    90.70s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    91.79s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    91.79s         Checking existence of `"Effective interface style" Any`
+    t =    91.80s             Requesting snapshot of accessibility hierarchy for app with pid 28807
+    t =    92.87s             Requesting snapshot of accessibility hierarchy for app with pid 28807
+    t =    93.92s             Requesting snapshot of accessibility hierarchy for app with pid 28807
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:153: error: -[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings] : Failed to get matching snapshots: Error getting main window kAXErrorServerNotFound
+    t =   121.29s         Capturing element debug description
+    t =   121.30s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' failed (127.748 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 17:17:15.668.
+	 Executed 1 test, with 1 failure (0 unexpected) in 127.748 (127.767) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 17:17:15.670.
+	 Executed 1 test, with 1 failure (0 unexpected) in 127.748 (127.770) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 17:17:15.672.
+	 Executed 1 test, with 1 failure (0 unexpected) in 127.748 (127.775) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/result.xcresult
+
+Testing started
+2026-09-15 17:12:52.598 xcodebuild[28596:4377406] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:12:52.632 xcodebuild[28596:4377406] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:12:54.505 xcodebuild[28596:4377406] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:15:08.650 xcodebuild[28596:4377406] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 17:15:08.651 xcodebuild[28596:4377406] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 17:31:35.468 xcodebuild[28596:4377406] [MT] IDETestOperationsObserverDebug: 1120.935 elapsed -- Testing started completed.
+2026-09-15 17:31:35.468 xcodebuild[28596:4377406] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 17:31:35.468 xcodebuild[28596:4377406] [MT] IDETestOperationsObserverDebug: 1120.935 sec, +1120.935 sec -- end
+** TEST EXECUTE FAILED **
+

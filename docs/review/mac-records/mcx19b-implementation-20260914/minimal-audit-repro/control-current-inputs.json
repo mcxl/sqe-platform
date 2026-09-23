@@ -1,0 +1,7 @@
+{
+  "question": "With the same test/app build and device, does the original post-scroll full audit still fail when the pixel-stability observation is omitted?",
+  "selectedTest": "testMinimalAuditReproAllAudits",
+  "expectedEvidence": "Retained full audit findings or a native pass, with source/build identities matching the pixel-stable run. A passing control would leave the cause unresolved.",
+  "uiTestSha256": "e2c9d53ede357635b8bd2838b3033b73e8790f19ece95bc6bbb930955bd0fbe1",
+  "xctestrunSha256": "3a395333e8a3943ee88af2a6a419e860e72705e97077eaddceac027618d3a1f6"
+}

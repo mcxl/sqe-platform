@@ -1,0 +1,63 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "CD033598-77C2-5F34-9DB2-D90082F10623",
+      "--terminate-existing",
+      "--timeout",
+      "30",
+      "--json-output",
+      "LOCAL_HOME/ace-private/mcx19b-layout-20260914/phone-layout-v2-launch.json",
+      "--log-output",
+      "LOCAL_HOME/ace-private/mcx19b-layout-20260914/phone-layout-v2-launch.log",
+      "com.alanrichardson.aceclientapp"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.27"
+  },
+  "result" : {
+    "deviceIdentifier" : "CD033598-77C2-5F34-9DB2-D90082F10623",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "ACE_UI_TEST_SCENARIO" : "release",
+        "ACE_UI_TEST_SHOW_DIAGNOSTICS" : "0",
+        "TERM" : "vt100"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : true,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        1047,
+        0,
+        2852
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/2C8249BA-DC8A-426C-B6D4-961641B35321/ACEClientApp.app/ACEClientApp",
+      "processIdentifier" : 1047
+    }
+  }
+}

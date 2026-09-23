@@ -1,0 +1,17 @@
+{
+  "atUTC": "2026-09-15T07:03:33.244168+00:00",
+  "question": "Is ACE itself busy during the stalled native accessibility snapshot?",
+  "command": [
+    "/usr/bin/sample",
+    "27710",
+    "1",
+    "1",
+    "-file",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/active-ace-sample.txt"
+  ],
+  "processIdentity": "  PID  PPID ELAPSED  %CPU STAT COMM\n27710 26779   06:51   0.0 Us   LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/3F4C34F9-E886-4709-9487-365D2491F218/ACEClientApp.app/ACEClientApp\n",
+  "exit": 255,
+  "stdout": "",
+  "stderr": "sample[27982]: sample cannot examine process 27710 (with name like '27710') because it no longer appears to be running.\n",
+  "scope": "one second sample during pre-case native settings check, zero pilot screen cases have run"
+}

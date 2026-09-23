@@ -1,0 +1,504 @@
+{
+  "captured_at": "2026-09-18T19:00:52.912316+10:00",
+  "checks": {
+    "html_balanced": true,
+    "unique_ids": true,
+    "aria_targets_exist": true,
+    "all_local_hub_links_exist": true,
+    "new_hub_no_scripts_or_forms": true,
+    "historical_state_body_preserved": true,
+    "historical_hub_preserved_except_banner": true,
+    "application_files_unchanged": true,
+    "accepted_plan_and_fable_reviews_unchanged": true,
+    "2026-09-16-ace-ios-swift-completion-instruction.md": true,
+    "2026-09-17-ace-ios-copy-reflow-check-instruction.md": true,
+    "index_entries_unchanged": true
+  },
+  "links": [
+    {
+      "href": "WORKSPACE-GUIDE.md",
+      "target_exists": true
+    },
+    {
+      "href": "DEV_STATE.md",
+      "target_exists": true
+    },
+    {
+      "href": "docs/plans/2026-09-18-sqe-consolidation-web-showcase-plan.md",
+      "target_exists": true
+    },
+    {
+      "href": "file:///LOCAL_HOME/sqe-private/consolidation-20260918/stage3/STAGE-3-EXECUTION-REPORT.md",
+      "target_exists": true
+    },
+    {
+      "href": "docs/ace/2026-09-16-ace-ios-swift-completion-instruction.md",
+      "target_exists": true
+    },
+    {
+      "href": "docs/ace/2026-09-17-ace-ios-copy-reflow-check-instruction.md",
+      "target_exists": true
+    },
+    {
+      "href": "file:///LOCAL_HOME/sqe-private/consolidation-20260918/stage3-docs/SQE_DEVELOPER_HUB.before.html",
+      "target_exists": true
+    }
+  ],
+  "source_files": [
+    {
+      "path": "src/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/app.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/assessment.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/enums.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/models.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/release.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/trace.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/domain/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/engine/approval.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/engine/evaluator.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/engine/tracing.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/engine/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/action_result.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/change_record.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/client_auth.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/client_release_projection.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/client_release_service.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/client_routes.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/engagement.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/evidence_review.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/export_builder.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/extraction.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/notion_publisher.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/relationship_review.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/release_storage.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/routes.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/storage.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/ace/workbench/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_action_result.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_app.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_approval_gate.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_capture.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_change_export.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_client_release.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_client_release_projection.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_engagement_setup.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_engagement_summary.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_evidence_review.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_extraction.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_graph_projection.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_ios_accessibility_layout.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_ios_action_targets.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_offline_drafts.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_planning_trace.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_rating_engine.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_relationship_review.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_workbench.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/.env.example",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components.json",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/package.json",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/README.md",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "unchanged": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+      "unchanged": true
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "unchanged": true
+    },
+    {
+      "path": "tools/ace_ios_local.py",
+      "unchanged": true
+    },
+    {
+      "path": "tools/tests/test_ace_ios_local.py",
+      "unchanged": true
+    }
+  ],
+  "browser_visual_verification": "BLOCKED: Browser Use URL policy rejected file:// navigation. No workaround attempted. Static file checks do not establish rendered appearance.",
+  "changed_files": [
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform\\DEV_STATE.md",
+      "sha256": "dfde1ed83fbfb9178cc000bba883eab04e1f3435d6924d66efe532c198e5b214"
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform\\WORKSPACE-GUIDE.md",
+      "sha256": "cedf4280cf6485f9b37642e8431fb1bb3fd38ff8b47fb22dfc66f2b2f3e18136"
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform\\SQE_DEVELOPER_HUB.html",
+      "sha256": "3071b4de38ffc7682ecffb71c5a4c0fc920a549988070031edc4ff787174e939"
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\SQE_DEVELOPER_HUB.html",
+      "sha256": "ae29875775fb6c588e7a95a4686f050c6de7a0b320f83281d9c678dcc52c4bce"
+    }
+  ]
+}

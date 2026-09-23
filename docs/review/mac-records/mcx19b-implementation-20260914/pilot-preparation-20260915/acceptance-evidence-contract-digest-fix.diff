@@ -1,0 +1,13 @@
+diff --git a/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift b/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
+index 00536de..70c2044 100644
+--- a/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
++++ b/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
+@@ -27,7 +27,7 @@ extension AcceptanceEvidenceContractTests {
+         // This digest verifies approved document content. It does not prove direct ancestry.
+         // Commit 6b exists in the original Windows repository, but import history differs.
+         // Baseline acceptance remains blocked.
+-        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0"]
++        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b"]
+     }
+ 
+     func testProjectConfiguration() throws {

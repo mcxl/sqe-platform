@@ -1,0 +1,36 @@
+{
+  "createdAtUTC": "2026-09-14T10:37:49.972404+00:00",
+  "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "head": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+  "completeDiffInspected": true,
+  "files": [
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "result": "fix-required",
+  "acceptedFindings": [
+    {
+      "axis": "Standards",
+      "issue": "TimeoutExpired drops partial stdout/stderr",
+      "path": "tools/ace_ios_local.py:195"
+    },
+    {
+      "axis": "Specification",
+      "issue": "Full resource gate multiplies batch image count by remaining cases",
+      "path": "tools/ace_ios_local.py:867"
+    }
+  ],
+  "limits": [
+    "This is a source inspection of b9ba714 only.",
+    "Focused native checks do not establish final acceptance.",
+    "Runner fixes, four native audit faults, pilot/full programme, private service, physical checks and final Sol review remain pending."
+  ]
+}

@@ -1,0 +1,24 @@
+test_finding_viewport_requires_its_own_screenshot (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_finding_viewport_requires_its_own_screenshot) ... ok
+test_invalid_utf8_and_missing_log_block (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_invalid_utf8_and_missing_log_block) ... ok
+test_launch_fault_and_missing_completion_block_despite_matching_finding (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_launch_fault_and_missing_completion_block_despite_matching_finding) ... ok
+test_matched_failure_preserves_native_summary_assertion_and_finding (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_matched_failure_preserves_native_summary_assertion_and_finding) ... ok
+test_missing_and_malformed_native_summary_block (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_missing_and_malformed_native_summary_block) ... ok
+test_missing_malformed_and_mismatched_issue_markers_block (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_missing_malformed_and_mismatched_issue_markers_block) ... ok
+test_missing_mismatched_and_corrupt_screenshot_evidence_block (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_missing_mismatched_and_corrupt_screenshot_evidence_block) ... ok
+test_pass_requires_real_case_marker_and_valid_screenshot (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_pass_requires_real_case_marker_and_valid_screenshot) ... ok
+test_prior_case_completion_marker_blocks_singleton_failure (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_prior_case_completion_marker_blocks_singleton_failure) ... ok
+test_process_faults_do_not_become_native_assertions (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_process_faults_do_not_become_native_assertions) ... ok
+test_skipped_incomplete_unexpected_and_boolean_counts_block (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_skipped_incomplete_unexpected_and_boolean_counts_block) ... ok
+test_wrong_summary_assertion_or_test_identity_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_wrong_summary_assertion_or_test_identity_blocks) ... ok
+test_acceptance_native_error_still_stops (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_acceptance_native_error_still_stops) ... ok
+test_all_pass_discovery_manifest_is_rejected_by_actual_full_gate (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_all_pass_discovery_manifest_is_rejected_by_actual_full_gate) ... ok
+test_candidate_change_after_case_blocks_remaining_cases (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_candidate_change_after_case_blocks_remaining_cases) ... ok
+test_discovery_cli_reports_distinct_completed_failed_and_blocked_exits (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_discovery_cli_reports_distinct_completed_failed_and_blocked_exits) ... ok
+test_evidence_or_launch_fault_stops_before_next_case (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_evidence_or_launch_fault_stops_before_next_case) ... ok
+test_failure_continues_then_completes_with_one_build_and_preflight (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_failure_continues_then_completes_with_one_build_and_preflight) ... ok
+test_restoration_fault_stops_before_next_device (tools.tests.test_ace_ios_local.DiscoveryExecutionTests.test_restoration_fault_stops_before_next_device) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.898s
+
+OK

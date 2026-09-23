@@ -1,0 +1,703 @@
+{
+  "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8",
+  "candidateCommit": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "indexedUTC": "2026-09-15T11:15:04.274027+00:00",
+  "completedBatches": [
+    "001"
+  ],
+  "nativeCaptureCount": 36,
+  "uniqueImageCount": 11,
+  "collectionSeconds": 0.115,
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/049A2C2A-BE29-460B-8D40-E7316374B23B.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date_0_56BDBD57-AEC5-4C4C-BE90-80DB28CD1212.png",
+      "bytes": 181988,
+      "sha256": "2fb24940866ab7c2e82e29d2e4f83a658eb29fa9cc987461091f2b504bf9a0a1",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/0808BB51-6EA1-43A7-8E11-A7D25B3447C3.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner_0_E417A15A-54F8-40B3-8034-BE0CB06A1DBE.png",
+      "bytes": 193737,
+      "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/09898411-37A5-409C-A59E-030A13E4A316.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time_0_89499533-CD8C-4E15-BDE9-EAD6D180878A.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/201B91DF-B7F7-4B07-B299-D39C56AA6F10.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title_0_5504D9ED-ED9E-4B4D-BC0B-92FDA9BE5F6E.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/25B19D85-B606-46DA-9A9C-5CDFE6B9C8BD.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Engagement name_0_D5674A87-5F45-4EFD-97B6-AA2880B2EEEA.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/3226D243-948F-43CD-9C1E-20EBCD2897A1.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion title_0_EBDC07D0-1A90-4F1B-95B8-7DF839BAF8AF.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/337B223D-0DB0-4601-8DF4-BD624F24DBA5.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner_0_B54F4219-60DE-47EE-84AE-AA8DD8CB974F.png",
+      "bytes": 182690,
+      "sha256": "cd09e3003cd4ea6b20bc1782ad22451ab8209633ca42c59472891538f8e0e017",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/3F954958-FDE9-4EA0-BB9D-C2AE0CF0AE79.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport initial_0_7879B05A-8C18-49E1-8875-55854AB43F39.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/426BC35B-317A-42A7-8036-8FEF3EFACD06.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action status_0_B69FCF38-4313-4384-A9ED-4AFB068A66CB.png",
+      "bytes": 181988,
+      "sha256": "2fb24940866ab7c2e82e29d2e4f83a658eb29fa9cc987461091f2b504bf9a0a1",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/427F25B1-F677-4C54-8CF6-F86B33726FC2.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice_0_74C91AD1-DB7B-4A7D-BD03-0B0E5FBA5D3E.png",
+      "bytes": 183933,
+      "sha256": "a21a74c459960d079008fb2ccf92db144e249ebd60f18337bf50b3eac18b1515",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/437F99E1-F701-4CF4-9B87-45E000F8271B.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action status_0_C088D467-5C31-4BAE-9ED5-CD96769B5D7C.png",
+      "bytes": 193737,
+      "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/4AED12BD-2FBD-4F26-865F-0B1BA1E1ACAD.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Review status_0_4FA8A2DB-A8FE-4E79-95CD-182143926989.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/585E6A22-6AA0-4319-AE6F-4DF35AD5A4D4.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in_0_57B58AB5-A370-4DBD-AED6-7AC36FC73165.png",
+      "bytes": 80846,
+      "sha256": "ff733ae48c8f5448b84e704da8048983dc6e5c491161fc2e35bed781ac0646e6",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/5B9AEB8B-54D8-4416-ABAF-115A926596F8.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial_0_BF6B170F-EE86-4C61-A978-357E34B49D8B.png",
+      "bytes": 192605,
+      "sha256": "5c4533922fbae7093593ad3de923cc04fe8f6c6b8e1d5f02cea39cf1849bc5de",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/69565AEE-8743-4272-AAAF-1690344DC215.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport no-actions-notice_0_AA41A84B-4236-4C7B-8812-4DB2734EAC84.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/702B5002-501F-4DAE-A525-23E23C45A12A.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action target date_0_C9159356-DBE8-45A4-A040-DB53EA2F68E4.png",
+      "bytes": 193737,
+      "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/776FF25D-1580-4F32-9C49-D68B1C1AF4EE.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time_0_E154CC24-3D44-4622-A778-A34F427E463B.png",
+      "bytes": 193142,
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/7A8B3A1F-1794-4273-A6FA-C12D862CFFA0.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport release-final_0_D59C90C5-8928-4F1B-91F8-3D7649942D06.png",
+      "bytes": 181988,
+      "sha256": "2fb24940866ab7c2e82e29d2e4f83a658eb29fa9cc987461091f2b504bf9a0a1",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/817314A7-E472-41FC-84FC-A5AFABF5B288.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Release version_0_714D76D6-30C1-405B-AEA5-8F39A3900E73.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/8E456E2E-5871-4760-A792-8E54FA05C1A4.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Published date and time_0_374A0ED8-C48C-4566-AC40-37BFC059AAA1.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/8FB5F083-3530-4CF6-A734-E12F4BBF4166.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Engagement name_0_3820E0D1-2337-45E6-8F77-FFC7AD41928A.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9B0E6EEC-5E2A-498E-A411-ACF6322E130D.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Release version_0_7948B7B7-2A5B-4776-8953-328760AE3ACB.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9B62CB6C-6C0E-4D9B-9FE2-F1E44CB2E7F5.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_FDFAC672-B93B-4F29-8A78-3B50A9286BA2.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9ED01EA2-0771-4F84-AFB4-A3C78894BAC5.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Review status_0_2753A3B7-74C9-4E0F-90F8-413D7D6C7921.png",
+      "bytes": 193142,
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/A66914AF-BEE4-4EFB-8663-67F56665E10F.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Review status_0_7958D8B2-0FE7-4B69-8C9A-C68C76B7ED8A.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B7292336-4B87-4FCB-83C3-73A98394B75A.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport initial_0_9770A6A4-4A25-42EE-B571-B19840DD78D0.png",
+      "bytes": 80846,
+      "sha256": "ff733ae48c8f5448b84e704da8048983dc6e5c491161fc2e35bed781ac0646e6",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B86ABEBB-CC12-4086-8ACC-CDF89F3EB017.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Evidence reference_0_A895B689-B915-498B-BBFD-E61E41DBEDC3.png",
+      "bytes": 186309,
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B98484B6-2260-4791-AF1C-9C160B570979.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_085302FB-5250-464E-A710-579D28CA8F69.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/BCE157C8-7839-4BC6-A4E6-9EBA662BBDCD.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Evidence reference_0_344B77C2-ED9D-4261-AEE8-5E4CC14A9AC5.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/C218E4B2-D523-4269-B78E-C2D5283BF0E2.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Engagement name_0_59F7A001-B981-4E15-ADB8-B49B9C8FCC4D.png",
+      "bytes": 193142,
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/C2F56807-066A-409E-9BC6-0061EC58A880.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport initial_0_81AE9491-8BB4-457E-85D7-ABC9B67CFF60.png",
+      "bytes": 193142,
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/D907C716-87A3-4C5D-AC54-07D4EA4702E4.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_B775FAFC-4555-4117-8A3F-5336A6322D9C.png",
+      "bytes": 192697,
+      "sha256": "854966d0e74036da9d382f28ada76a063aa29117790652e71f1f06b8497bf693",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/EAC63426-65E5-4368-AFAD-F793AA71BC62.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_B0AF9558-9C40-4C8A-B189-CF8C7598D8F9.png",
+      "bytes": 190665,
+      "sha256": "4398dae7516ebc09926fb4ddd5368cffb5a36b7af8bee3a85066b76bf84dff60",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/F66DE0E3-FD08-4599-9D53-48006D86CD42.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Release version_0_3D260341-9BA7-447E-BA5A-0C6F95E4CA4E.png",
+      "bytes": 193142,
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/FDD7724A-231E-4CA5-9BB7-19D3E3EB682D.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action description_0_D13E1B29-FB16-4435-9757-900C2600A487.png",
+      "bytes": 193737,
+      "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/FF00F2DA-06C2-456F-B69A-DBE2B4FB5373.png",
+      "batch": "001",
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action description_0_069D47FF-D52D-4F50-9673-8D2C49C37C3E.png",
+      "bytes": 191818,
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    }
+  ],
+  "uniqueImages": [
+    {
+      "sha256": "2fb24940866ab7c2e82e29d2e4f83a658eb29fa9cc987461091f2b504bf9a0a1",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/049A2C2A-BE29-460B-8D40-E7316374B23B.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date_0_56BDBD57-AEC5-4C4C-BE90-80DB28CD1212.png",
+        "bytes": 181988,
+        "sha256": "2fb24940866ab7c2e82e29d2e4f83a658eb29fa9cc987461091f2b504bf9a0a1",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/049A2C2A-BE29-460B-8D40-E7316374B23B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/426BC35B-317A-42A7-8036-8FEF3EFACD06.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/7A8B3A1F-1794-4273-A6FA-C12D862CFFA0.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/0808BB51-6EA1-43A7-8E11-A7D25B3447C3.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner_0_E417A15A-54F8-40B3-8034-BE0CB06A1DBE.png",
+        "bytes": 193737,
+        "sha256": "0d1a11d21e52172fe13fda114a10ede1d434c38bb0559ab65d0fb5fe9d27adb3",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/0808BB51-6EA1-43A7-8E11-A7D25B3447C3.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/437F99E1-F701-4CF4-9B87-45E000F8271B.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/702B5002-501F-4DAE-A525-23E23C45A12A.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/FDD7724A-231E-4CA5-9BB7-19D3E3EB682D.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/09898411-37A5-409C-A59E-030A13E4A316.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time_0_89499533-CD8C-4E15-BDE9-EAD6D180878A.png",
+        "bytes": 186309,
+        "sha256": "10ba215e77e911e2c0c99f8a0074d607ab0a5b739bbff7fe0df052b7ecb0f81c",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/09898411-37A5-409C-A59E-030A13E4A316.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/3226D243-948F-43CD-9C1E-20EBCD2897A1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/3F954958-FDE9-4EA0-BB9D-C2AE0CF0AE79.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/4AED12BD-2FBD-4F26-865F-0B1BA1E1ACAD.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/69565AEE-8743-4272-AAAF-1690344DC215.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/8FB5F083-3530-4CF6-A734-E12F4BBF4166.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9B0E6EEC-5E2A-498E-A411-ACF6322E130D.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9B62CB6C-6C0E-4D9B-9FE2-F1E44CB2E7F5.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B86ABEBB-CC12-4086-8ACC-CDF89F3EB017.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noActions.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/201B91DF-B7F7-4B07-B299-D39C56AA6F10.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title_0_5504D9ED-ED9E-4B4D-BC0B-92FDA9BE5F6E.png",
+        "bytes": 191818,
+        "sha256": "c6dcccddc0b04d6f679db5db5b122b18140a3e510ad752c45637c58f98eefde2",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/201B91DF-B7F7-4B07-B299-D39C56AA6F10.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/25B19D85-B606-46DA-9A9C-5CDFE6B9C8BD.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/817314A7-E472-41FC-84FC-A5AFABF5B288.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/8E456E2E-5871-4760-A792-8E54FA05C1A4.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/A66914AF-BEE4-4EFB-8663-67F56665E10F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B98484B6-2260-4791-AF1C-9C160B570979.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/BCE157C8-7839-4BC6-A4E6-9EBA662BBDCD.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/FF00F2DA-06C2-456F-B69A-DBE2B4FB5373.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "cd09e3003cd4ea6b20bc1782ad22451ab8209633ca42c59472891538f8e0e017",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/337B223D-0DB0-4601-8DF4-BD624F24DBA5.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner_0_B54F4219-60DE-47EE-84AE-AA8DD8CB974F.png",
+        "bytes": 182690,
+        "sha256": "cd09e3003cd4ea6b20bc1782ad22451ab8209633ca42c59472891538f8e0e017",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/337B223D-0DB0-4601-8DF4-BD624F24DBA5.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "a21a74c459960d079008fb2ccf92db144e249ebd60f18337bf50b3eac18b1515",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/427F25B1-F677-4C54-8CF6-F86B33726FC2.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice_0_74C91AD1-DB7B-4A7D-BD03-0B0E5FBA5D3E.png",
+        "bytes": 183933,
+        "sha256": "a21a74c459960d079008fb2ccf92db144e249ebd60f18337bf50b3eac18b1515",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/427F25B1-F677-4C54-8CF6-F86B33726FC2.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "ff733ae48c8f5448b84e704da8048983dc6e5c491161fc2e35bed781ac0646e6",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/585E6A22-6AA0-4319-AE6F-4DF35AD5A4D4.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in_0_57B58AB5-A370-4DBD-AED6-7AC36FC73165.png",
+        "bytes": 80846,
+        "sha256": "ff733ae48c8f5448b84e704da8048983dc6e5c491161fc2e35bed781ac0646e6",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/585E6A22-6AA0-4319-AE6F-4DF35AD5A4D4.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/B7292336-4B87-4FCB-83C3-73A98394B75A.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.signIn.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "5c4533922fbae7093593ad3de923cc04fe8f6c6b8e1d5f02cea39cf1849bc5de",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/5B9AEB8B-54D8-4416-ABAF-115A926596F8.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial_0_BF6B170F-EE86-4C61-A978-357E34B49D8B.png",
+        "bytes": 192605,
+        "sha256": "5c4533922fbae7093593ad3de923cc04fe8f6c6b8e1d5f02cea39cf1849bc5de",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/5B9AEB8B-54D8-4416-ABAF-115A926596F8.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.release.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/776FF25D-1580-4F32-9C49-D68B1C1AF4EE.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time_0_E154CC24-3D44-4622-A778-A34F427E463B.png",
+        "bytes": 193142,
+        "sha256": "a3d5def03b6629aad700986389c27b97e69a0281825f7d380038e0d534caad20",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/776FF25D-1580-4F32-9C49-D68B1C1AF4EE.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/9ED01EA2-0771-4F84-AFB4-A3C78894BAC5.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/C218E4B2-D523-4269-B78E-C2D5283BF0E2.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/C2F56807-066A-409E-9BC6-0061EC58A880.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/F66DE0E3-FD08-4599-9D53-48006D86CD42.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "854966d0e74036da9d382f28ada76a063aa29117790652e71f1f06b8497bf693",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/D907C716-87A3-4C5D-AC54-07D4EA4702E4.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_B775FAFC-4555-4117-8A3F-5336A6322D9C.png",
+        "bytes": 192697,
+        "sha256": "854966d0e74036da9d382f28ada76a063aa29117790652e71f1f06b8497bf693",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/D907C716-87A3-4C5D-AC54-07D4EA4702E4.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
+      ]
+    },
+    {
+      "sha256": "4398dae7516ebc09926fb4ddd5368cffb5a36b7af8bee3a85066b76bf84dff60",
+      "representative": {
+        "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/EAC63426-65E5-4368-AFAD-F793AA71BC62.png",
+        "batch": "001",
+        "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+        "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_B0AF9558-9C40-4C8A-B189-CF8C7598D8F9.png",
+        "bytes": 190665,
+        "sha256": "4398dae7516ebc09926fb4ddd5368cffb5a36b7af8bee3a85066b76bf84dff60",
+        "dimensions": [
+          1206,
+          2622
+        ]
+      },
+      "allCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/001/attachments/EAC63426-65E5-4368-AFAD-F793AA71BC62.png"
+      ],
+      "caseIds": [
+        "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
+      ]
+    }
+  ]
+}

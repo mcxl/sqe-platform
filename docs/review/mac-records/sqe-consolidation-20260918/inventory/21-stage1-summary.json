@@ -1,0 +1,25 @@
+{
+  "status": "Bounded Stage 1 inventory delivered with explicit gaps; consolidation and complete recovery not performed",
+  "finished_at": "2026-09-18T12:37:33.764963+10:00",
+  "elapsed_minutes_since_original_stage1_start": 15.4,
+  "windows_worktrees": 45,
+  "sqe_relevant_windows_worktrees": 36,
+  "unrelated_windows_worktrees": 9,
+  "unknown_scope_worktrees": 0,
+  "missing_windows_worktrees": 2,
+  "mac_worktrees": 25,
+  "mac_dirty_worktrees": 20,
+  "mac_modified_files": 30,
+  "windows_file_or_subtree_entries": 4339,
+  "categories": {
+    "source_or_document_candidate": 2810,
+    "private_or_binary_preserve_only": 187,
+    "generated_or_retained_evidence": 1342
+  },
+  "windows_tracked_modified_files": 15,
+  "excluded_subtree_records": 893,
+  "mac_delivery_head_unchanged": true,
+  "mac_changed_file_mismatches": 0,
+  "warning_commands": 1,
+  "mac_free_bytes": 225956810752
+}

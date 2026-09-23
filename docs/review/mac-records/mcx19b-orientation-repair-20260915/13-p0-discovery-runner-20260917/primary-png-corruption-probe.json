@@ -1,0 +1,7 @@
+{
+  "question": "Does PNG evidence validation reject invalid scanline data with valid CRC/zlib?",
+  "expected": "rejected",
+  "actual": "accepted-invalid-png",
+  "kind": "synthetic-corruption-probe",
+  "runnerSha256": "144a3d6d86924b0af5394d3c8de2276e372bfd8a5a12fe263b5c556589dfb523"
+}

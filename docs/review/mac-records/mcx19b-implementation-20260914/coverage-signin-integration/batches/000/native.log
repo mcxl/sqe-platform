@@ -1,0 +1,68 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/coverage-signin-integration/batches/000/ACEClientAppUITests.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/coverage-signin-integration/batches/000/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/coverage-signin-integration/batches/000/result.xcresult
+
+2026-09-14 18:48:09.074701+1000 ACEClientAppUITests-Runner[68695:1882014] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 18:48:14.621.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 18:48:14.627.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 18:48:14.628.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-14 18:48:14.644
+    t =     0.28s Set Up
+    t =     0.30s Setting device orientation to Portrait
+    t =     0.34s     Wait for com.apple.springboard to idle
+    t =     0.38s Open com.example.aceclientapp
+    t =     0.38s     Launch com.example.aceclientapp
+    t =     2.89s         Setting up automation session
+    t =     8.79s         Wait for com.example.aceclientapp to idle
+    t =    12.08s Waiting 5.0s for "Sign In heading" StaticText to exist
+    t =    13.13s     Checking `Expect predicate `existsNoRetry == 1` for object "Sign In heading" StaticText`
+    t =    13.13s         Checking existence of `"Sign In heading" StaticText`
+    t =    13.61s Find the "Sign In heading" StaticText
+    t =    13.72s Find the Target Application 'com.example.aceclientapp'
+    t =    14.87s Find the Target Application 'com.example.aceclientapp'
+    t =    14.94s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    16.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    16.02s         Checking existence of `"Effective interface style" StaticText`
+    t =    17.19s Find the "Effective interface style" StaticText
+    t =    17.29s Find the "Effective interface style" StaticText
+    t =    17.41s Find the Target Application 'com.example.aceclientapp'
+    t =    18.41s Added attachment named 'Coverage diagnostic-integration.iPhone-17-Pro-Max.signIn.light.large.portrait.0.0.0 viewport initial'
+    t =    25.56s Checking existence of `"Password" SecureTextField`
+    t =    25.65s Find the "Sign in" Button
+    t =    25.79s Find the Target Application 'com.example.aceclientapp'
+    t =    25.87s Find the "Sign in" Button
+    t =    26.02s Checking existence of `"Sign in" Button`
+    t =    26.11s Find the "Sign in" Button
+    t =    26.33s Find the "Sign in" Button
+    t =    26.46s Find the "Sign in" Button
+    t =    26.55s Find the Target Application 'com.example.aceclientapp'
+    t =    27.46s Added attachment named 'Coverage diagnostic-integration.iPhone-17-Pro-Max.signIn.light.large.portrait.0.0.0 viewport control-Sign in'
+ACE_CASE_RESULT {"auditInvocations":1,"id":"diagnostic-integration.iPhone-17-Pro-Max.signIn.light.large.portrait.0.0.0","observed":{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false},"result":"passed","scenario":"signIn","screenshots":["Coverage diagnostic-integration.iPhone-17-Pro-Max.signIn.light.large.portrait.0.0.0 viewport initial","Coverage diagnostic-integration.iPhone-17-Pro-Max.signIn.light.large.portrait.0.0.0 viewport control-Sign in"]}
+    t =    27.47s Terminate com.example.aceclientapp:68723
+    t =    28.53s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' passed (28.662 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 18:48:43.305.
+	 Executed 1 test, with 0 failures (0 unexpected) in 28.662 (28.677) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 18:48:43.308.
+	 Executed 1 test, with 0 failures (0 unexpected) in 28.662 (28.681) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 18:48:43.310.
+	 Executed 1 test, with 0 failures (0 unexpected) in 28.662 (28.689) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/coverage-signin-integration/batches/000/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-14 18:47:58.785 xcodebuild[68669:1881338] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:47:58.824 xcodebuild[68669:1881338] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:47:58.843 xcodebuild[68669:1881338] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:48:15.178 xcodebuild[68669:1881338] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 18:48:15.178 xcodebuild[68669:1881338] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 18:48:43.735 xcodebuild[68669:1881338] [MT] IDETestOperationsObserverDebug: 43.576 elapsed -- Testing started completed.
+2026-09-14 18:48:43.735 xcodebuild[68669:1881338] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:48:43.735 xcodebuild[68669:1881338] [MT] IDETestOperationsObserverDebug: 43.576 sec, +43.576 sec -- end

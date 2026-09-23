@@ -1,0 +1,30 @@
+{
+  "recordedUTC": "2026-09-15T11:22:48.559482+00:00",
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8",
+  "nativeResult": "failed",
+  "nativeCompletedCases": 5,
+  "nativeAuditInvocations": 9,
+  "pilotComplete": false,
+  "failingCase": "pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+  "sourceLine": 325,
+  "expected": "Required Sign in control must become fully visible after bounded scrolling; retain hittability and minimum 44-point target checks",
+  "actual": "Failed to get matching snapshot: No matches found for Descendants matching type Button",
+  "evidence": {
+    "nativeLog": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/native.log",
+    "hierarchy": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/attachments/038C99C1-CFCF-4F4D-A1A5-BF9D73555716.txt",
+    "image": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/attachments/07126ED3-BFD3-4635-91DF-B6D404A610C1.png"
+  },
+  "observedMechanism": [
+    "scrollControlIntoView first calls isFullyVisibleInApp",
+    "isFullyVisibleInApp reads element.frame without checking existence",
+    "hierarchy contains no Button in the initial visible Form CollectionView",
+    "fallback handles ScrollView or Table only, not this CollectionView"
+  ],
+  "classification": "Test harness fault confirmed; final app reachability pending focused check",
+  "appChanges": 0,
+  "correctiveNativeAttempts": 0,
+  "historicalCopyContrastCause": "unresolved",
+  "restoration": "native settings and original boot states restored"
+}

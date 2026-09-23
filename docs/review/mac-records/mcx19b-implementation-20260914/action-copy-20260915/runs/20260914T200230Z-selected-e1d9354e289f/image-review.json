@@ -1,0 +1,37 @@
+{
+  "imageCount": 8,
+  "uniqueImageCount": 7,
+  "inspection": "Every distinct retained PNG inspected at original resolution",
+  "images": {
+    "f5a2331d8b63f935ea3d97b1f593ed12f0873f31fce8c53fa5b5a3d059460956": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/E5D4346E-0906-4F19-81EC-993A789D1680.png"
+    ],
+    "464cb5722ccf27c35acc5e9e6fb952765613f1445c3c354076d6e9ab3101b4fd": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/EB08C2EA-4B51-488F-9FF4-439D4E011E3C.png"
+    ],
+    "e97a923a3ddc5a3000c5681d25b6b85e28ba1c29716718b0f6d48cf5cc191cc9": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/1F6F8672-3372-47BC-B02D-A6F452CA1522.png"
+    ],
+    "c449f09b24ea0ec1f41919a5d800701d07fc9b576ab728ff2cef48c6fbf4d3ba": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/97D401FF-B0EA-4BE0-B231-CC8D28313352.png"
+    ],
+    "3e747031820e4294df8fcdb3644dccbc99bf96efb3fd9ebe199ee91bffb92681": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/8E0B34A0-DD03-4A29-8455-E01E866B2C10.png"
+    ],
+    "b9d64a52206d3edaeba1a21ee269410a165b5ef000a0ce09ebed22a1abc38625": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/F5629CE0-B143-43F1-B5D5-64BD59D9A79A.png",
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/FA9E5B70-BDFA-4179-8908-81CF18889AFD.png"
+    ],
+    "d6b5c29000b43345f983ba528848704821016caab65bbbe2c6eaa56f1e3c4b30": [
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected-attachments/F63B0029-6AB9-4F3F-AD5B-CF8D3E19B605.png"
+    ]
+  },
+  "observations": [
+    "Action1 full five-line native Paste exact assertion passed before later fault; screenshot confirms complete LF-separated record",
+    "Action1 card shows one Copy action control and persistent Copied Action1 confirmation",
+    "Second seed caret has no selection; native menu has Paste, Select, Select All, AutoFill",
+    "Background doc.on.doc Image label Copy was the wrong query match",
+    "DEBUG clipboard destination control appears only on helper fixture; this image is not production layout acceptance"
+  ],
+  "testResult": "failed; zero complete passing XTests"
+}

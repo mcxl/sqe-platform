@@ -1,0 +1,1355 @@
+Standard output and standard error from com.example.aceclientapp with process ID 15290 beginning at 2026-09-15 05:09:50 +0000
+
+2026-09-15 15:10:00.938124+1000 ACEClientApp[15290:4086050] [Default] Received request to exchange capabilities, remote interface capabilities are: <XCTCapabilities: 0x60000001cd40>: {
+    "query runtime issue reporting" = 1;
+    "query runtime issue reporting/automation type mismatch" = 1;
+}
+2026-09-15 15:10:00.994837+1000 ACEClientApp[15290:4086050] [Default] Received request to notify when the main run loop is idle
+2026-09-15 15:10:00.995562+1000 ACEClientApp[15290:4086050] [Default] Idle notifier finished setting up run loop observer
+2026-09-15 15:10:00.996518+1000 ACEClientApp[15290:4086049] [Default] Received request to notify when animations are idle
+2026-09-15 15:10:00.996995+1000 ACEClientApp[15290:4086049] [Default] Sending animations idle reply with error: (null)
+2026-09-15 15:10:03.083444+1000 ACEClientApp[15290:4085886] [Default] Idle notifier run loop observer fired
+2026-09-15 15:10:03.083745+1000 ACEClientApp[15290:4085886] [Default] Sending main run loop idle reply
+2026-09-15 15:10:05.197248+1000 ACEClientApp[15290:4086053] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:05.197831+1000 ACEClientApp[15290:4086058] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:05.198112+1000 ACEClientApp[15290:4086058] [Default] Getting root element snapshot
+2026-09-15 15:10:05.198331+1000 ACEClientApp[15290:4086058] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:05.198678+1000 ACEClientApp[15290:4086058] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:05.198953+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:05.199259+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:06.060419+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:06.060908+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:06.060958+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:06.061411+1000 ACEClientApp[15290:4085886] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x60000261e160>
+2026-09-15 15:10:06.061892+1000 ACEClientApp[15290:4085886] [Default] Beginning first match sequence for input App element pid: 15290 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:06.062307+1000 ACEClientApp[15290:4085886] [Default] Current tree:
+0x102c1eb60 <App element pid: 15290>
+2026-09-15 15:10:06.062923+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15290
+2026-09-15 15:10:06.679131+1000 ACEClientApp[15290:4085886] void * _Nullable NSMapGet(NSMapTable * _Nonnull, const void * _Nullable): map table argument is NULL
+2026-09-15 15:10:06.679533+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.680230+1000 ACEClientApp[15290:4085886] [Default] App element pid: 15290 (App element pid: 15290) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354774896.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.680675+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input App element pid: 15290 and transformer `Descendants matching type Any`
+2026-09-15 15:10:06.681482+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354774896.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.681955+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:06.682954+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.683344+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.683680+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:06.684292+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.684677+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.684959+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:06.685342+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.685728+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.686018+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:06.686459+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.686809+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.687197+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.687506+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:06.688700+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.689152+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361084592.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.689537+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361084592.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.689916+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:06.690563+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.690967+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.691269+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:06.691805+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.692134+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.692410+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:06.692891+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.693284+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.693682+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:06.694508+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.695068+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.695548+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.695939+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:06.696869+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.697481+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361064736.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.697839+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361064736.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.698196+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:06.699077+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.699441+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.699766+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:06.700359+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.700751+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.701090+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:06.701588+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.701960+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.702297+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:06.702766+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.703112+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.703461+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.703776+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:06.704608+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.705110+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354762288.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.705430+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354762288.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.705770+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:06.706265+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.706576+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.706854+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:06.707331+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.707656+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.707981+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:06.708390+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.708743+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.709002+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:06.709384+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.709741+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.710047+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.710331+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:06.723348+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.723849+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354883760.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.724244+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354883760.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.724610+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:06.725352+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.725741+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.726050+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:06.726571+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.726929+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.727300+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:06.727910+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.728359+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.728710+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:06.729247+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.729693+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.730191+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.730519+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:06.731078+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.731505+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4395706880.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:06.731885+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4395706880.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:06.732286+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:06.771044+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.771610+1000 ACEClientApp[15290:4085886] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:06.772190+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4395706880.8 (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:06.772676+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:06.777738+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.778527+1000 ACEClientApp[15290:4085886] [Default] label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:06.778845+1000 ACEClientApp[15290:4085886] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:06.779184+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:06.780770+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.781100+1000 ACEClientApp[15290:4085886] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:06.781572+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:06.781919+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:06.782404+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.782833+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:06.783203+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:06.783758+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:06.784183+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:06.784728+1000 ACEClientApp[15290:4085886] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:06.785086+1000 ACEClientApp[15290:4085886] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:06.786110+1000 ACEClientApp[15290:4086058] [Default] Current tree:
+0x102c1eb60 <App element pid: 15290>
+  0x103808120 <AX element pid: 15290, elementOrHash.elementID: 4354774896.3>
+    0x103815e00 <AX element pid: 15290, elementOrHash.elementID: 4361084592.4>
+      0x103b11d20 <AX element pid: 15290, elementOrHash.elementID: 4361064736.5>
+        0x102f0f7a0 <AX element pid: 15290, elementOrHash.elementID: 4354762288.6>
+          0x102c074d0 <AX element pid: 15290, elementOrHash.elementID: 4354883760.7>
+            ScrollView, 0x103b122e0, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15290, elementOrHash.elementID: 4395706880.8>
+2026-09-15 15:10:06.786635+1000 ACEClientApp[15290:4086058] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:06.787559+1000 ACEClientApp[15290:4086058] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c7e6a0> (error: (null))
+2026-09-15 15:10:07.841791+1000 ACEClientApp[15290:4086058] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.842238+1000 ACEClientApp[15290:4086049] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.842509+1000 ACEClientApp[15290:4086049] [Default] Getting root element snapshot
+2026-09-15 15:10:07.842714+1000 ACEClientApp[15290:4086049] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:07.843063+1000 ACEClientApp[15290:4086049] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.843330+1000 ACEClientApp[15290:4086049] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:07.843586+1000 ACEClientApp[15290:4086049] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:07.843606+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:07.843864+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:07.843886+1000 ACEClientApp[15290:4086049] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:07.844082+1000 ACEClientApp[15290:4085886] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x60000261e160>
+2026-09-15 15:10:07.844399+1000 ACEClientApp[15290:4085886] [Default] Beginning first match sequence for input App element pid: 15290 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.844666+1000 ACEClientApp[15290:4085886] [Default] Current tree:
+0x103809480 <App element pid: 15290>
+2026-09-15 15:10:07.844944+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15290
+2026-09-15 15:10:07.845784+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.846214+1000 ACEClientApp[15290:4085886] [Default] App element pid: 15290 (App element pid: 15290) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354774896.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.846545+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input App element pid: 15290 and transformer `Descendants matching type Any`
+2026-09-15 15:10:07.846866+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354774896.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.847241+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.847906+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.848283+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.848602+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.849095+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.849468+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.849864+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.850325+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.850834+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.851168+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.851674+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.852036+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.852352+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.852648+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.853694+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.854150+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361084592.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.854507+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361084592.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.854900+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.855609+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.855947+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.856241+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.856720+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.857082+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.857409+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.857820+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.858162+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.858465+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.858895+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.859250+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.859535+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.859836+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.860537+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.861059+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361064736.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.861462+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361064736.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.861878+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.862645+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.863058+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.863372+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.863877+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.864192+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.864476+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.864889+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.865211+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.865496+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.865963+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.866318+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.866623+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.866918+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.867585+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.868024+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354762288.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.868343+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354762288.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.868689+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.869293+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.869635+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.869919+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.870393+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.870745+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.871075+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.871462+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.871780+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.872069+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.872566+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.872923+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.873233+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.873540+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.874086+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.874550+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354883760.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.874901+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354883760.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.875266+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.875757+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.876102+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.876435+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.876894+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.877259+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.877573+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.878012+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.878321+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.878626+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.879052+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.879408+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.879703+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.879990+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.880535+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.880967+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4395706880.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.881313+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4395706880.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.881697+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.883471+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.883739+1000 ACEClientApp[15290:4085886] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:07.884220+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4395706880.8 (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.884564+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.885500+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.885952+1000 ACEClientApp[15290:4085886] [Default] label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:07.886237+1000 ACEClientApp[15290:4085886] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:07.886536+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.887787+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.888021+1000 ACEClientApp[15290:4085886] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:07.888461+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.888801+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.889289+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.889659+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.889992+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.890494+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.890862+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.891251+1000 ACEClientApp[15290:4085886] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:07.891516+1000 ACEClientApp[15290:4085886] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:07.892491+1000 ACEClientApp[15290:4086049] [Default] Current tree:
+0x103809480 <App element pid: 15290>
+  0x102e1c3c0 <AX element pid: 15290, elementOrHash.elementID: 4354774896.3>
+    0x102c1eb60 <AX element pid: 15290, elementOrHash.elementID: 4361084592.4>
+      0x103816500 <AX element pid: 15290, elementOrHash.elementID: 4361064736.5>
+        0x102c074d0 <AX element pid: 15290, elementOrHash.elementID: 4354762288.6>
+          0x103f1fcd0 <AX element pid: 15290, elementOrHash.elementID: 4354883760.7>
+            ScrollView, 0x102f05810, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15290, elementOrHash.elementID: 4395706880.8>
+2026-09-15 15:10:07.893026+1000 ACEClientApp[15290:4086049] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:07.893762+1000 ACEClientApp[15290:4086049] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c961c0> (error: (null))
+2026-09-15 15:10:07.923779+1000 ACEClientApp[15290:4086049] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.924217+1000 ACEClientApp[15290:4086058] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.924499+1000 ACEClientApp[15290:4086058] [Default] Getting root element snapshot
+2026-09-15 15:10:07.924755+1000 ACEClientApp[15290:4086058] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:07.925044+1000 ACEClientApp[15290:4086058] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.925318+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:07.925590+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:07.925614+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:07.925893+1000 ACEClientApp[15290:4085886] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:07.925920+1000 ACEClientApp[15290:4086058] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:07.926147+1000 ACEClientApp[15290:4085886] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x60000261e160>
+2026-09-15 15:10:07.926487+1000 ACEClientApp[15290:4085886] [Default] Beginning first match sequence for input App element pid: 15290 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:07.926797+1000 ACEClientApp[15290:4085886] [Default] Current tree:
+0x103f1f340 <App element pid: 15290>
+2026-09-15 15:10:07.927044+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15290
+2026-09-15 15:10:07.928191+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.928796+1000 ACEClientApp[15290:4085886] [Default] App element pid: 15290 (App element pid: 15290) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354774896.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.929243+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input App element pid: 15290 and transformer `Descendants matching type Any`
+2026-09-15 15:10:07.929657+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354774896.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.930175+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.930717+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.931111+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.931460+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.931925+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.932300+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.932615+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.933066+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.933430+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.933733+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.934144+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.934519+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.934843+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.935088+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354774896.3
+2026-09-15 15:10:07.935900+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.936352+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354774896.3 (AX element pid: 15290, elementOrHash.elementID: 4354774896.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361084592.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.936739+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361084592.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.937109+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.937569+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.937925+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.938205+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.938607+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.938911+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.939194+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.939570+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.939926+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.940221+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.940631+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.940961+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.941269+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.941573+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361084592.4
+2026-09-15 15:10:07.942126+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.942575+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361084592.4 (AX element pid: 15290, elementOrHash.elementID: 4361084592.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4361064736.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.942920+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4361064736.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.943245+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.943737+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.944119+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.944437+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.944899+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.945279+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.945609+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.946061+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.946465+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.946781+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.947249+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.947630+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.947954+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.948279+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4361064736.5
+2026-09-15 15:10:07.948793+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.949270+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4361064736.5 (AX element pid: 15290, elementOrHash.elementID: 4361064736.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354762288.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.949671+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354762288.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.950121+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.950574+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.950947+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.951302+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.951773+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.952117+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.952466+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.952878+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.953229+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.953516+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.953909+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.954230+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.954525+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.954842+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354762288.6
+2026-09-15 15:10:07.955624+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.956074+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354762288.6 (AX element pid: 15290, elementOrHash.elementID: 4354762288.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4354883760.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.956404+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4354883760.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.956787+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.957254+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.957593+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.957882+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.958318+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.958638+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.958962+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.959386+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.959744+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.960058+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.960550+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.960946+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.961372+1000 ACEClientApp[15290:4085886] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.961727+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15290, elementOrHash.elementID: 4354883760.7
+2026-09-15 15:10:07.962390+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.962986+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4354883760.7 (AX element pid: 15290, elementOrHash.elementID: 4354883760.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15290, elementOrHash.elementID: 4395706880.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:07.963980+1000 ACEClientApp[15290:4085886] [Default] [First Match] iteration with input AX element pid: 15290, elementOrHash.elementID: 4395706880.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:07.964396+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.966080+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.966402+1000 ACEClientApp[15290:4085886] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:07.966808+1000 ACEClientApp[15290:4085886] [Default] AX element pid: 15290, elementOrHash.elementID: 4395706880.8 (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:07.967174+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.967869+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.968362+1000 ACEClientApp[15290:4085886] [Default] label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:07.968672+1000 ACEClientApp[15290:4085886] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:07.968933+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.970346+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.970627+1000 ACEClientApp[15290:4085886] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:07.971060+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light' (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:07.971397+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.971882+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.972221+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:07.972488+1000 ACEClientApp[15290:4085886] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15290, elementOrHash.elementID: 4395706880.8
+2026-09-15 15:10:07.972916+1000 ACEClientApp[15290:4085886] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:07.973293+1000 ACEClientApp[15290:4085886] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15290, elementOrHash.elementID: 4395706880.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:07.973726+1000 ACEClientApp[15290:4085886] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:07.973979+1000 ACEClientApp[15290:4085886] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:07.974930+1000 ACEClientApp[15290:4086058] [Default] Current tree:
+0x103f1f340 <App element pid: 15290>
+  0x103809480 <AX element pid: 15290, elementOrHash.elementID: 4354774896.3>
+    0x103d10af0 <AX element pid: 15290, elementOrHash.elementID: 4361084592.4>
+      0x102e1c3c0 <AX element pid: 15290, elementOrHash.elementID: 4361064736.5>
+        0x103f20710 <AX element pid: 15290, elementOrHash.elementID: 4354762288.6>
+          0x102c1eb60 <AX element pid: 15290, elementOrHash.elementID: 4354883760.7>
+            ScrollView, 0x10391edb0, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15290, elementOrHash.elementID: 4395706880.8>
+2026-09-15 15:10:07.975442+1000 ACEClientApp[15290:4086058] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:07.976039+1000 ACEClientApp[15290:4086058] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c47e70> (error: (null))
+Standard output and standard error from com.example.aceclientapp with process ID 15328 beginning at 2026-09-15 05:10:12 +0000
+
+2026-09-15 15:10:34.303123+1000 ACEClientApp[15328:4087044] [Default] Received request to exchange capabilities, remote interface capabilities are: <XCTCapabilities: 0x600000004090>: {
+    "query runtime issue reporting" = 1;
+    "query runtime issue reporting/automation type mismatch" = 1;
+}
+2026-09-15 15:10:34.314224+1000 ACEClientApp[15328:4087044] [Default] Received request to notify when the main run loop is idle
+2026-09-15 15:10:34.314561+1000 ACEClientApp[15328:4087044] [Default] Idle notifier finished setting up run loop observer
+2026-09-15 15:10:34.314938+1000 ACEClientApp[15328:4087044] [Default] Received request to notify when animations are idle
+2026-09-15 15:10:34.315174+1000 ACEClientApp[15328:4087044] [Default] Sending animations idle reply with error: (null)
+2026-09-15 15:10:46.273076+1000 ACEClientApp[15328:4086837] [Default] Idle notifier run loop observer fired
+2026-09-15 15:10:46.273400+1000 ACEClientApp[15328:4086837] [Default] Sending main run loop idle reply
+2026-09-15 15:10:48.318779+1000 ACEClientApp[15328:4088440] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:48.319294+1000 ACEClientApp[15328:4088437] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:48.319531+1000 ACEClientApp[15328:4088437] [Default] Getting root element snapshot
+2026-09-15 15:10:48.319762+1000 ACEClientApp[15328:4088437] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:48.320128+1000 ACEClientApp[15328:4088437] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:48.320369+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:48.320612+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:48.320627+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:48.322414+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:48.322445+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:48.322696+1000 ACEClientApp[15328:4086837] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x600002604420>
+2026-09-15 15:10:48.323169+1000 ACEClientApp[15328:4086837] [Default] Beginning first match sequence for input App element pid: 15328 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:48.323474+1000 ACEClientApp[15328:4086837] [Default] Current tree:
+0x108824b30 <App element pid: 15328>
+2026-09-15 15:10:48.323890+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15328
+2026-09-15 15:10:48.346791+1000 ACEClientApp[15328:4086837] void * _Nullable NSMapGet(NSMapTable * _Nonnull, const void * _Nullable): map table argument is NULL
+2026-09-15 15:10:48.347311+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.348063+1000 ACEClientApp[15328:4086837] [Default] App element pid: 15328 (App element pid: 15328) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437617104.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.348528+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input App element pid: 15328 and transformer `Descendants matching type Any`
+2026-09-15 15:10:48.348900+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437617104.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.349373+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:48.350384+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.350785+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.351117+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:48.351669+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.352039+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.352381+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:48.352787+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.353084+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.353348+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:48.353788+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.354108+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.354482+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.354784+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:48.355804+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.356199+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438758784.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.356494+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438758784.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.356873+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:48.357507+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.357889+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.358142+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:48.358654+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.358977+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.359242+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:48.359768+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.360216+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.360558+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:48.361332+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.361698+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.362070+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.362407+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:48.363282+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.363687+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438801824.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.364140+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438801824.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.364502+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:48.365302+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.365642+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.365919+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:48.366389+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.366677+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.366958+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:48.367345+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.367645+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.367953+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:48.368401+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.368720+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.368977+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.369194+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:48.369898+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.370293+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437606464.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.370678+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437606464.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.371050+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:48.371701+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.372039+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.372308+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:48.372753+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.373075+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.373346+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:48.373727+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.374043+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.374338+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:48.374763+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.375092+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.375371+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.375658+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:48.388884+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.389325+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4442210512.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.389626+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4442210512.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.389945+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:48.390581+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.390874+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.391104+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:48.391558+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.391848+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.392155+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:48.392581+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.392923+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.393289+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:48.393860+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.394293+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.394672+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.394984+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:48.395695+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.396151+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4479836672.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:48.396482+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4479836672.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:48.396832+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:48.414941+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.415409+1000 ACEClientApp[15328:4086837] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:48.415974+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4479836672.8 (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:48.416448+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:48.420881+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.421507+1000 ACEClientApp[15328:4086837] [Default] label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:48.421783+1000 ACEClientApp[15328:4086837] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:48.422026+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:48.423420+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.423768+1000 ACEClientApp[15328:4086837] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:48.424189+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:48.424490+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:48.424951+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.425359+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:48.425695+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:48.426444+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:48.426963+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:48.427745+1000 ACEClientApp[15328:4086837] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:48.428216+1000 ACEClientApp[15328:4086837] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:48.429393+1000 ACEClientApp[15328:4088437] [Default] Current tree:
+0x108824b30 <App element pid: 15328>
+  0x107d0d980 <AX element pid: 15328, elementOrHash.elementID: 4437617104.3>
+    0x107b0c1c0 <AX element pid: 15328, elementOrHash.elementID: 4438758784.4>
+      0x108939a70 <AX element pid: 15328, elementOrHash.elementID: 4438801824.5>
+        0x108c07da0 <AX element pid: 15328, elementOrHash.elementID: 4437606464.6>
+          0x108c0a8b0 <AX element pid: 15328, elementOrHash.elementID: 4442210512.7>
+            ScrollView, 0x107f14350, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15328, elementOrHash.elementID: 4479836672.8>
+2026-09-15 15:10:48.430139+1000 ACEClientApp[15328:4088437] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:48.431146+1000 ACEClientApp[15328:4088437] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c81260> (error: (null))
+2026-09-15 15:10:49.495376+1000 ACEClientApp[15328:4088440] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.495829+1000 ACEClientApp[15328:4088437] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.496068+1000 ACEClientApp[15328:4088437] [Default] Getting root element snapshot
+2026-09-15 15:10:49.496246+1000 ACEClientApp[15328:4088437] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:49.496538+1000 ACEClientApp[15328:4088437] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.496744+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:49.499533+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:49.499540+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:49.500166+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:49.500195+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:49.500385+1000 ACEClientApp[15328:4086837] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x600002604420>
+2026-09-15 15:10:49.500755+1000 ACEClientApp[15328:4086837] [Default] Beginning first match sequence for input App element pid: 15328 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.503409+1000 ACEClientApp[15328:4086837] [Default] Current tree:
+0x107d0d980 <App element pid: 15328>
+2026-09-15 15:10:49.503695+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15328
+2026-09-15 15:10:49.504410+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.504786+1000 ACEClientApp[15328:4086837] [Default] App element pid: 15328 (App element pid: 15328) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437617104.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.505031+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input App element pid: 15328 and transformer `Descendants matching type Any`
+2026-09-15 15:10:49.505258+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437617104.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.507800+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.508242+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.508553+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.508774+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.509105+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.515472+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.515773+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.516200+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.516645+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.516939+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.520480+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.520833+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.521140+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.521393+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.522068+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.522454+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438758784.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.522869+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438758784.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.523218+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.523608+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.523865+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.524068+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.530116+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.530491+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.530789+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.531175+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.531468+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.546283+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.546779+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.547155+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.547415+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.547642+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.548116+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.573313+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438801824.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.573668+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438801824.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.574014+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.574423+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.598636+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.598995+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.599434+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.599810+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.600057+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.616766+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.617138+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.617436+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.617834+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.618168+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.618480+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.618739+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.619300+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.619734+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437606464.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.620068+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437606464.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.620437+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.620883+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.621186+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.621429+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.621786+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.622113+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.622356+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.622708+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.623046+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.623298+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.623730+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.624069+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.624344+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.624574+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.625067+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.625465+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4442210512.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.625812+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4442210512.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.626189+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.626860+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.627350+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.627732+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.628328+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.628800+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.629249+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.629717+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.630038+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.630339+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.630723+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.631007+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.631472+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.631750+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.632217+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.632597+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4479836672.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.632895+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4479836672.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.633231+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.634839+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.635130+1000 ACEClientApp[15328:4086837] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:49.635543+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4479836672.8 (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.635849+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.636508+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.636937+1000 ACEClientApp[15328:4086837] [Default] label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:49.637191+1000 ACEClientApp[15328:4086837] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:49.637420+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.638638+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.638880+1000 ACEClientApp[15328:4086837] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:49.639216+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.639539+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.639897+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.640250+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.640505+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.640949+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.641295+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.641691+1000 ACEClientApp[15328:4086837] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:49.641937+1000 ACEClientApp[15328:4086837] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:49.642841+1000 ACEClientApp[15328:4088437] [Default] Current tree:
+0x107d0d980 <App element pid: 15328>
+  0x108824b30 <AX element pid: 15328, elementOrHash.elementID: 4437617104.3>
+    0x107b0c1c0 <AX element pid: 15328, elementOrHash.elementID: 4438758784.4>
+      0x108c07da0 <AX element pid: 15328, elementOrHash.elementID: 4438801824.5>
+        0x108c0b330 <AX element pid: 15328, elementOrHash.elementID: 4437606464.6>
+          0x107e0b0a0 <AX element pid: 15328, elementOrHash.elementID: 4442210512.7>
+            ScrollView, 0x107e0f590, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15328, elementOrHash.elementID: 4479836672.8>
+2026-09-15 15:10:49.643304+1000 ACEClientApp[15328:4088437] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:49.643974+1000 ACEClientApp[15328:4088437] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c6e2b0> (error: (null))
+2026-09-15 15:10:49.656648+1000 ACEClientApp[15328:4088437] [Default] Received request to fetch matches for query: ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.657064+1000 ACEClientApp[15328:4088440] [Default] Evaluating query:
+ ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.657286+1000 ACEClientApp[15328:4088440] [Default] Getting root element snapshot
+2026-09-15 15:10:49.657505+1000 ACEClientApp[15328:4088440] [Default] Returning faulting root node. Data source will be attached when needed on MT.
+2026-09-15 15:10:49.657785+1000 ACEClientApp[15328:4088440] [Default] Decomposed transformers into first match sequences:
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.658009+1000 ACEClientApp[15328:4088440] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:49.658266+1000 ACEClientApp[15328:4088440] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:49.658286+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:49.658532+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:49.658553+1000 ACEClientApp[15328:4088440] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:49.658741+1000 ACEClientApp[15328:4086837] [Default] XCTElementQuery: set data source for rootElementSnapshot to <XCTAutomationSession: 0x600002604420>
+2026-09-15 15:10:49.659044+1000 ACEClientApp[15328:4086837] [Default] Beginning first match sequence for input App element pid: 15328 with transformers 
+↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match)
+2026-09-15 15:10:49.659322+1000 ACEClientApp[15328:4086837] [Default] Current tree:
+0x108c07da0 <App element pid: 15328>
+2026-09-15 15:10:49.659599+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for App element pid: 15328
+2026-09-15 15:10:49.660614+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.661171+1000 ACEClientApp[15328:4086837] [Default] App element pid: 15328 (App element pid: 15328) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437617104.3"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.661555+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input App element pid: 15328 and transformer `Descendants matching type Any`
+2026-09-15 15:10:49.661935+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437617104.3 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.662429+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.662920+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.663241+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.663537+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.663959+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.664270+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.664561+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.664922+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.665228+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.665513+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.665893+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.666228+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.666536+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.666815+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437617104.3
+2026-09-15 15:10:49.667560+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.667996+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437617104.3 (AX element pid: 15328, elementOrHash.elementID: 4437617104.3) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438758784.4"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.668345+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438758784.4 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.668733+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.669192+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.669511+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.669773+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.670173+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.670468+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.670745+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.671151+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.671480+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.671764+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.672132+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.672462+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.672753+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.673038+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438758784.4
+2026-09-15 15:10:49.673556+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.673947+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438758784.4 (AX element pid: 15328, elementOrHash.elementID: 4438758784.4) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4438801824.5"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.674246+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4438801824.5 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.674606+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.675005+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.675354+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.675630+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.676059+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.676360+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.676664+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.677086+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.677408+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.677699+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.678086+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.678408+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.678710+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.678985+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4438801824.5
+2026-09-15 15:10:49.679463+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.679855+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4438801824.5 (AX element pid: 15328, elementOrHash.elementID: 4438801824.5) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4437606464.6"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.680199+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4437606464.6 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.680558+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.680964+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.681293+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.681565+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.681973+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.682290+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.682770+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.683184+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.683512+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.683800+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.684205+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.684569+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.684859+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.685110+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4437606464.6
+2026-09-15 15:10:49.685593+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.685981+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4437606464.6 (AX element pid: 15328, elementOrHash.elementID: 4437606464.6) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4442210512.7"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.686331+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4442210512.7 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.686682+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.687107+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.687448+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.687722+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.688097+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.688417+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.688685+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.689065+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.689384+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.689672+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.690084+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.690382+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.690632+1000 ACEClientApp[15328:4086837] [Default] [First Match] no match found for transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.690853+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeChildren for AX element pid: 15328, elementOrHash.elementID: 4442210512.7
+2026-09-15 15:10:49.691302+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.691691+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4442210512.7 (AX element pid: 15328, elementOrHash.elementID: 4442210512.7) faulted in {
+    "XC_kAXXCAttributeChildren" =     (
+        "AX element pid: 15328, elementOrHash.elementID: 4479836672.8"
+    );
+}: (no error) for children using XC_kAXXCAttributeChildren
+2026-09-15 15:10:49.692058+1000 ACEClientApp[15328:4086837] [Default] [First Match] iteration with input AX element pid: 15328, elementOrHash.elementID: 4479836672.8 and transformer `Elements matching predicate '"Effective interface style" IN identifiers'`
+2026-09-15 15:10:49.692406+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeLabel for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.695399+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.695890+1000 ACEClientApp[15328:4086837] [Default] Checking 'light' for privileged AX value slot attributes
+2026-09-15 15:10:49.696428+1000 ACEClientApp[15328:4086837] [Default] AX element pid: 15328, elementOrHash.elementID: 4479836672.8 (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeLabel" = light;
+}: (no error) for label using XC_kAXXCAttributeLabel
+2026-09-15 15:10:49.696780+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.697465+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.697913+1000 ACEClientApp[15328:4086837] [Default] label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeAutomationType" = 46;
+    "XC_kAXXCAttributeElementBaseType" = UIScrollView;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.HostingScrollView";
+    "XC_kAXXCAttributeTraits" = 8589934592;
+}: (no error) for elementType using XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeTraits, XC_kAXXCAttributeAutomationType
+2026-09-15 15:10:49.698191+1000 ACEClientApp[15328:4086837] [Default] Computed elementType ScrollView.
+2026-09-15 15:10:49.698477+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.699770+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.700086+1000 ACEClientApp[15328:4086837] [Default] Checking '{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}' for privileged AX value slot attributes
+2026-09-15 15:10:49.700526+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light' (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeValue" = "{\"appearance\":\"light\",\"boldText\":false,\"contentSize\":\"large\",\"increaseContrast\":false,\"orientation\":\"portrait\",\"reduceMotion\":false}";
+}: (no error) for value using XC_kAXXCAttributeValue
+2026-09-15 15:10:49.700895+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributePlaceholderValue for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.701330+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.701698+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+}: (no error) for placeholderValue using XC_kAXXCAttributePlaceholderValue
+2026-09-15 15:10:49.701959+1000 ACEClientApp[15328:4086837] [Default] Fetching AX attributes XC_kAXXCAttributeIdentifier for AX element pid: 15328, elementOrHash.elementID: 4479836672.8
+2026-09-15 15:10:49.702368+1000 ACEClientApp[15328:4086837] [Default] Got attributes, transferring to dictionary for return.
+2026-09-15 15:10:49.702709+1000 ACEClientApp[15328:4086837] [Default] ScrollView, label: 'light', value: {"appearance":"lig... (AX element pid: 15328, elementOrHash.elementID: 4479836672.8) faulted in {
+    "XC_kAXXCAttributeIdentifier" = "Effective interface style";
+}: (no error) for identifier using XC_kAXXCAttributeIdentifier
+2026-09-15 15:10:49.703145+1000 ACEClientApp[15328:4086837] [Default] [First Match] match found and no more transformers in the current sequence - done, returning ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+2026-09-15 15:10:49.703402+1000 ACEClientApp[15328:4086837] [Default] [First Match] unioned related elements {(
+)} from {(
+)}
+2026-09-15 15:10:49.704266+1000 ACEClientApp[15328:4088440] [Default] Current tree:
+0x108c07da0 <App element pid: 15328>
+  0x107f14350 <AX element pid: 15328, elementOrHash.elementID: 4437617104.3>
+    0x107f12e50 <AX element pid: 15328, elementOrHash.elementID: 4438758784.4>
+      0x108824b30 <AX element pid: 15328, elementOrHash.elementID: 4438801824.5>
+        0x107b0c1c0 <AX element pid: 15328, elementOrHash.elementID: 4437606464.6>
+          0x108c0a8b0 <AX element pid: 15328, elementOrHash.elementID: 4442210512.7>
+            ScrollView, 0x108940fd0, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig... <AX element pid: 15328, elementOrHash.elementID: 4479836672.8>
+2026-09-15 15:10:49.704754+1000 ACEClientApp[15328:4088440] [Default] Query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) found matching snapshots: {(
+    ScrollView, identifier: 'Effective interface style', label: 'light', value: {"appearance":"lig...
+)} (error: (null))
+2026-09-15 15:10:49.705389+1000 ACEClientApp[15328:4088440] [Default] Replying to query ↪︎ Descendants matching type Any
+    ↪︎ Elements matching predicate '"Effective interface style" IN identifiers' (First Match) with results: <XCTElementQueryResults: 0x600000c6ef40> (error: (null))
+2026-09-15 15:10:50.758686+1000 ACEClientApp[15328:4088440] [Default] Received request to fetch matches for query:
+2026-09-15 15:10:50.759244+1000 ACEClientApp[15328:4088437] [Default] Evaluating query:
+2026-09-15 15:10:50.759581+1000 ACEClientApp[15328:4088437] [Default] Getting root element snapshot
+2026-09-15 15:10:50.759990+1000 ACEClientApp[15328:4088437] [Default] Getting snapshot for App element pid: 15328 for query
+2026-09-15 15:10:50.760420+1000 ACEClientApp[15328:4088437] [Default] Query requires iOS snapshot attributes .
+2026-09-15 15:10:55.011097+1000 ACEClientApp[15328:4088440] [Default] Received request to fetch matches for query:
+2026-09-15 15:10:55.021705+1000 ACEClientApp[15328:4088440] [Default] Received request to fetch matches for query:
+2026-09-15 15:10:56.757356+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:56.757670+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:56.757694+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:56.757942+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:56.757956+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:56.759517+1000 ACEClientApp[15328:4086837] [Default] Got main window <AXUIElementRef 0x600000c95440> {pid=15328} {uid=[ID:3 hash:0x10880a9d0]}
+2026-09-15 15:10:56.760000+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeParent, XC_kAXXCAttributeIdentifier, XC_kAXXCAttributeAutomationType, XC_kAXXCAttributeTraits
+2026-09-15 15:10:56.767010+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with parameters {
+    attributes =     (
+        5003,
+        5004,
+        5002,
+        5019,
+        5058,
+        2004
+    );
+    maxArrayCount = 2147483647;
+    maxChildren = 2147483647;
+    maxDepth = 2147483647;
+    snapshotKeyHonorModalViews = 0;
+    traverseFromParentsToChildren = 1;
+}
+2026-09-15 15:10:56.767485+1000 ACEClientApp[15328:4086837] [Default] Snapshot attributes 5003, 5004, 5002, 5019, 5058, 2004
+2026-09-15 15:10:56.801564+1000 ACEClientApp[15328:4086837] [Default] Got snapshot for <AXUIElementRef 0x600000c2a970> {pid=15328} {uid=[ID:1 hash:0x0]}
+2026-09-15 15:10:56.802042+1000 ACEClientApp[15328:4086837] [Default] Got app orientation 0
+2026-09-15 15:10:56.802297+1000 ACEClientApp[15328:4086837] [Default] Captured accessibility snapshot data in 0.04s
+2026-09-15 15:10:56.802766+1000 ACEClientApp[15328:4088437] [Default] Found main window: Window
+2026-09-15 15:10:56.804205+1000 ACEClientApp[15328:4088437] [Default] ScrollView, identifier: 'Effective interface style' is not actually a child of Other, including at this point anyway (rdar://problem/20738636)
+2026-09-15 15:10:56.804614+1000 ACEClientApp[15328:4088437] [Default] Query  found matching snapshots: {(
+    Application, pid: 15328
+)} (error: (null))
+2026-09-15 15:10:56.805055+1000 ACEClientApp[15328:4088437] [Default] Replying to query  with results: <XCTElementQueryResults: 0x600000ca4060> (error: (null))
+2026-09-15 15:10:56.805894+1000 ACEClientApp[15328:4088437] [Default] Evaluating query:
+2026-09-15 15:10:56.806132+1000 ACEClientApp[15328:4088437] [Default] Getting root element snapshot
+2026-09-15 15:10:56.806459+1000 ACEClientApp[15328:4088437] [Default] Getting snapshot for App element pid: 15328 for query
+2026-09-15 15:10:56.806683+1000 ACEClientApp[15328:4088437] [Default] Query requires iOS snapshot attributes .
+2026-09-15 15:10:56.807035+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:56.807255+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:56.891718+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:56.892094+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:56.892155+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:56.893991+1000 ACEClientApp[15328:4086837] [Default] Got main window <AXUIElementRef 0x600000cac000> {pid=15328} {uid=[ID:3 hash:0x10880a9d0]}
+2026-09-15 15:10:56.894667+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeParent, XC_kAXXCAttributeIdentifier, XC_kAXXCAttributeAutomationType, XC_kAXXCAttributeTraits
+2026-09-15 15:10:56.895209+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with parameters {
+    attributes =     (
+        5003,
+        5004,
+        5002,
+        5019,
+        5058,
+        2004
+    );
+    maxArrayCount = 2147483647;
+    maxChildren = 2147483647;
+    maxDepth = 2147483647;
+    snapshotKeyHonorModalViews = 0;
+    traverseFromParentsToChildren = 1;
+}
+2026-09-15 15:10:56.895654+1000 ACEClientApp[15328:4086837] [Default] Snapshot attributes 5003, 5004, 5002, 5019, 5058, 2004
+2026-09-15 15:10:56.933361+1000 ACEClientApp[15328:4086837] [Default] Got snapshot for <AXUIElementRef 0x600000c2bdb0> {pid=15328} {uid=[ID:1 hash:0x0]}
+2026-09-15 15:10:56.933795+1000 ACEClientApp[15328:4086837] [Default] Got app orientation 0
+2026-09-15 15:10:56.934058+1000 ACEClientApp[15328:4086837] [Default] Captured accessibility snapshot data in 0.04s
+2026-09-15 15:10:56.934575+1000 ACEClientApp[15328:4088437] [Default] Found main window: Window
+2026-09-15 15:10:56.936075+1000 ACEClientApp[15328:4088437] [Default] ScrollView, identifier: 'Effective interface style' is not actually a child of Other, including at this point anyway (rdar://problem/20738636)
+2026-09-15 15:10:56.936692+1000 ACEClientApp[15328:4088437] [Default] Query  found matching snapshots: {(
+    Application, pid: 15328
+)} (error: (null))
+2026-09-15 15:10:56.937118+1000 ACEClientApp[15328:4088437] [Default] Replying to query  with results: <XCTElementQueryResults: 0x600000c9c4b0> (error: (null))
+2026-09-15 15:10:56.937889+1000 ACEClientApp[15328:4088437] [Default] Evaluating query:
+2026-09-15 15:10:56.938120+1000 ACEClientApp[15328:4088437] [Default] Getting root element snapshot
+2026-09-15 15:10:56.938352+1000 ACEClientApp[15328:4088437] [Default] Getting snapshot for App element pid: 15328 for query
+2026-09-15 15:10:56.938615+1000 ACEClientApp[15328:4088437] [Default] Query requires iOS snapshot attributes .
+2026-09-15 15:10:56.939090+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: about to CFRunLoopPerform
+2026-09-15 15:10:56.939350+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting with 30.00s responsiveness timeout
+2026-09-15 15:10:56.939357+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: inside CFRunLoopPerform
+2026-09-15 15:10:56.939630+1000 ACEClientApp[15328:4086837] [Default] XCTPerformOnMainRunLoop[MT]: MT responded in time (won the race to the busy flag)
+2026-09-15 15:10:56.939660+1000 ACEClientApp[15328:4088437] [Default] XCTPerformOnMainRunLoop[not MT]: waiting 60.00s for work to complete
+2026-09-15 15:10:56.941158+1000 ACEClientApp[15328:4086837] [Default] Got main window <AXUIElementRef 0x600000c9c480> {pid=15328} {uid=[ID:3 hash:0x10880a9d0]}
+2026-09-15 15:10:56.941669+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with attributes XC_kAXXCAttributeElementType, XC_kAXXCAttributeElementBaseType, XC_kAXXCAttributeParent, XC_kAXXCAttributeIdentifier, XC_kAXXCAttributeAutomationType, XC_kAXXCAttributeTraits
+2026-09-15 15:10:56.942079+1000 ACEClientApp[15328:4086837] [Default] Capturing hierarchy with parameters {
+    attributes =     (
+        5003,
+        5004,
+        5002,
+        5019,
+        5058,
+        2004
+    );
+    maxArrayCount = 2147483647;
+    maxChildren = 2147483647;
+    maxDepth = 2147483647;
+    snapshotKeyHonorModalViews = 0;
+    traverseFromParentsToChildren = 1;
+}
+2026-09-15 15:10:56.942370+1000 ACEClientApp[15328:4086837] [Default] Snapshot attributes 5003, 5004, 5002, 5019, 5058, 2004
+2026-09-15 15:10:56.981647+1000 ACEClientApp[15328:4086837] [Default] Got snapshot for <AXUIElementRef 0x600000c06070> {pid=15328} {uid=[ID:1 hash:0x0]}
+2026-09-15 15:10:56.982025+1000 ACEClientApp[15328:4086837] [Default] Got app orientation 0
+2026-09-15 15:10:56.982282+1000 ACEClientApp[15328:4086837] [Default] Captured accessibility snapshot data in 0.04s
+2026-09-15 15:10:56.982681+1000 ACEClientApp[15328:4088437] [Default] Found main window: Window
+2026-09-15 15:10:56.984277+1000 ACEClientApp[15328:4088437] [Default] ScrollView, identifier: 'Effective interface style' is not actually a child of Other, including at this point anyway (rdar://problem/20738636)
+2026-09-15 15:10:56.984863+1000 ACEClientApp[15328:4088437] [Default] Query  found matching snapshots: {(
+    Application, pid: 15328
+)} (error: (null))
+2026-09-15 15:10:56.985290+1000 ACEClientApp[15328:4088437] [Default] Replying to query  with results: <XCTElementQueryResults: 0x600000c9c570> (error: (null))

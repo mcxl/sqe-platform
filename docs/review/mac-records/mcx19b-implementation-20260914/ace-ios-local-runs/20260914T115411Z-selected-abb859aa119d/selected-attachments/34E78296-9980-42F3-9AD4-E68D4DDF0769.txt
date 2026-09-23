@@ -1,0 +1,5 @@
+Query chain:
+ →Find: Target Application 'com.example.aceclientapp'
+  ↪︎Find: Descendants matching type Any
+    ↪︎Find: Elements matching predicate 'label == "Select All"'
+      ↪︎Find: First Match

@@ -1,0 +1,7 @@
+{
+  "time": 1789383026.01196,
+  "image": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/release-current-build/running-simulator.png",
+  "sha256": "7a65827d01077d9280e1b944cdd2975231724078a7d4e72771f49a12e297c9a2",
+  "inspection": "Full-resolution image shows simulator Home Screen, with visible wallpaper rendering corruption. ACE Client and its UI runner icons are present. No app screen is visible.",
+  "limit": "Captured after the native test finished at 10:47:49 UTC. This Home Screen environment observation does not establish the earlier audit failure cause."
+}

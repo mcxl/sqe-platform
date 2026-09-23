@@ -1,0 +1,346 @@
+{
+  "batch": "001",
+  "candidate": "b2c45093a44c6171ca250b858378ea57693d8477",
+  "device": "iPhone 17",
+  "findings": [],
+  "imageCount": 36,
+  "images": [
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/A2C758E6-A19F-4BAD-A8A2-6255FCDC6156.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date_0_B08969DD-21CC-4626-B170-7E8C53182228.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/A2C758E6-A19F-4BAD-A8A2-6255FCDC6156.png",
+      "sha256": "0f7fe43c32f4dbccf17584ad287ae729c2fd285995a0604f694d0b6438aa9a93",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Release version_0_B3A996B6-A0FF-4F90-AE48-FEB8AC417C7D.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/DA490B80-E49E-476C-88C1-9FD4B031ECA8.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport initial_0_31B88F5B-F1B2-43EE-B198-781C27416857.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/DA490B80-E49E-476C-88C1-9FD4B031ECA8.png",
+      "sha256": "5a877b6e4bccc1f0120b925414dbee2b4e171d15e2e6c3a6b5d4031ebc24391e",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/A2C758E6-A19F-4BAD-A8A2-6255FCDC6156.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner_0_3AE25609-B2A3-4FA1-8562-EF3A60E6A565.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/52FAF9CE-8C61-414D-95C2-769245707514.png",
+      "sha256": "0f7fe43c32f4dbccf17584ad287ae729c2fd285995a0604f694d0b6438aa9a93",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time_0_E1EB5630-2C19-40B2-8BD0-73C0B3821287.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "sha256": "8b3c476517d03301bf36a5bd04d7d6f021e72a4167c5da01592af79cfaeebdba",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/DA490B80-E49E-476C-88C1-9FD4B031ECA8.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Release version_0_37EF2919-4C70-422F-BC1A-C3013AF27BBA.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/05759E6A-1EF4-460A-BF02-5243B27FF948.png",
+      "sha256": "5a877b6e4bccc1f0120b925414dbee2b4e171d15e2e6c3a6b5d4031ebc24391e",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/DA490B80-E49E-476C-88C1-9FD4B031ECA8.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Engagement name_0_6BCD11F5-5D8D-4C93-9404-8B0E5D5E3857.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/551F9054-34C3-4422-AC7F-B8383E072DDA.png",
+      "sha256": "5a877b6e4bccc1f0120b925414dbee2b4e171d15e2e6c3a6b5d4031ebc24391e",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Review status_0_3E6A91D7-BE7E-475D-A0E1-B1FF97EA2639.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/6B1889F8-E48B-4529-9A14-E4B4844710E0.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial_0_9E794AD4-CFC3-49C7-8E8E-60D953311855.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/B172D6D3-5156-4A29-BC5E-CFE6FBE462EA.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Release version_0_944DF2CA-74BC-4DCA-84F7-5BB68B7CA636.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "sha256": "f507efbb2dcf96b14ea1e3bf6c22a6295a68b63eb99562e8fac0439ac80c4c56",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Published date and time_0_90DCCD3C-A414-40F6-A510-14C8B8037EFA.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/A70227BB-F1E3-434C-8983-A18860F36619.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time_0_15391C8E-E994-45D7-91E4-80E90BA8EC6D.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/929A4585-D159-4DFB-A360-A98F98E99D87.png",
+      "sha256": "f507efbb2dcf96b14ea1e3bf6c22a6295a68b63eb99562e8fac0439ac80c4c56",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/339F380E-3514-4EED-9E94-B2E664C292DA.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_FF1E209F-5D83-499F-84E5-54BB6CB7D231.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/339F380E-3514-4EED-9E94-B2E664C292DA.png",
+      "sha256": "59bd97199fd75063c28407d8e360cde642fceff3281e0d27322452488b50176f",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action target date_0_1652CF62-7676-4CA8-8BB6-76B1D6C93E92.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/9D370E82-33AC-4469-9487-38A9D176F4AF.png",
+      "sha256": "8b3c476517d03301bf36a5bd04d7d6f021e72a4167c5da01592af79cfaeebdba",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/3F6B1236-483F-4633-AC25-6933E205A166.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_19017D7B-239E-40BB-88DE-F20CD16442FD.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/3F6B1236-483F-4633-AC25-6933E205A166.png",
+      "sha256": "32e4c629d1c44f155a4379b3ce76728dcc18e6b2391e6f71fc2c5fe79c6a6d86",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/971AFA22-35D9-4521-89BE-9B95A6CB8653.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport no-actions-notice_0_54C82060-91C0-459C-B204-B99ECB66088D.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/971AFA22-35D9-4521-89BE-9B95A6CB8653.png",
+      "sha256": "b6af8fffffa37c7a75ef2e5a9a17bc5f56b3f411ba493a1e02f89c04fb7e73ae",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/B6E23C8C-99AC-49EC-AF54-7DA604F60538.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Review status_0_186F1F23-ABD8-45A5-859C-E177D988714E.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/B6E23C8C-99AC-49EC-AF54-7DA604F60538.png",
+      "sha256": "f1f87b5285ccd8f9f9ec44024edf11dce67a7cfc2c582f4ad851d95c581116a6",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner_0_C49AEF04-C112-4986-9417-FC473511A85C.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/1FF51867-C695-4B20-AB12-567A7D6F52C1.png",
+      "sha256": "8b3c476517d03301bf36a5bd04d7d6f021e72a4167c5da01592af79cfaeebdba",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action status_0_B33004B1-FECB-4DEB-A328-20EA7D83A574.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/FD5E7FB9-0D50-43C0-B7D0-5F575150291B.png",
+      "sha256": "8b3c476517d03301bf36a5bd04d7d6f021e72a4167c5da01592af79cfaeebdba",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Evidence reference_0_AD7077BC-8618-45E6-B5EC-63571B739B2C.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/929DEF5B-E530-4E32-8AE1-37A5FDE01D89.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/DA490B80-E49E-476C-88C1-9FD4B031ECA8.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Review status_0_0EC16081-CE0A-4B7A-9D63-D4289C1E9076.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/EA6746DA-115D-42E7-A7D3-35C2FCAA5040.png",
+      "sha256": "5a877b6e4bccc1f0120b925414dbee2b4e171d15e2e6c3a6b5d4031ebc24391e",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/B6E23C8C-99AC-49EC-AF54-7DA604F60538.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport initial_0_7C0E6E54-6249-42D9-9134-B5FFA9A7651C.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/D93C7D67-922A-461C-98F3-36635FE2FB91.png",
+      "sha256": "f1f87b5285ccd8f9f9ec44024edf11dce67a7cfc2c582f4ad851d95c581116a6",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_2B2E360A-F768-4211-8EF2-82FBB1C340D7.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/53998A6A-972D-42A9-BC61-C56EE39D35AE.png",
+      "sha256": "f507efbb2dcf96b14ea1e3bf6c22a6295a68b63eb99562e8fac0439ac80c4c56",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_9994A009-8DC2-48F9-8736-274A01850112.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/394206C7-77CC-4FF4-9253-C4AA138D2CD0.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/A2C758E6-A19F-4BAD-A8A2-6255FCDC6156.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action status_0_68B5B6BB-0B09-4007-ACF9-17E04B2B614A.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/FBA257D1-BC5A-410B-9D3D-A088E7B4E943.png",
+      "sha256": "0f7fe43c32f4dbccf17584ad287ae729c2fd285995a0604f694d0b6438aa9a93",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/7AC6AEEF-F34E-43EA-B31A-80F0330B3459.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport release-final_0_AE8C515B-7DAB-478E-8CBF-271883333117.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/7AC6AEEF-F34E-43EA-B31A-80F0330B3459.png",
+      "sha256": "77682cd2685aea49460abb6fd4086d56e6ceb41a01c1636c23310ce16f01007b",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Evidence reference_0_9D67AC0F-A67E-40B5-B696-E18BD846A12E.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/F16AAF44-309D-429F-BDCF-0F4CBC5D8E3D.png",
+      "sha256": "f507efbb2dcf96b14ea1e3bf6c22a6295a68b63eb99562e8fac0439ac80c4c56",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/9E2AD741-3549-4063-A747-23A739BD56FA.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in_0_CEA6457D-D095-4E00-8C0C-5BC8185FACE1.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/9E2AD741-3549-4063-A747-23A739BD56FA.png",
+      "sha256": "7e3a97ee4c9b531cb3e8fe43ac8a3536c3853efb3c3e500efddf4e777eccff2e",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Engagement name_0_001BCD3F-A2A0-4E33-9638-DAA9C1852F97.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/175B9AB7-4CF2-4AB4-8FEF-312C6FC72E72.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/B6E23C8C-99AC-49EC-AF54-7DA604F60538.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Engagement name_0_49470344-F49C-4712-8AFB-B11EA47D386D.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/481613FE-7A2F-4771-90F9-B36CCC80DE8E.png",
+      "sha256": "f1f87b5285ccd8f9f9ec44024edf11dce67a7cfc2c582f4ad851d95c581116a6",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/1279CAD1-ECE6-460E-BC80-1996EC76EEF9.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport initial_0_4CBA1D0E-CB16-4C1E-B5E0-9BE24E2A4E35.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/1279CAD1-ECE6-460E-BC80-1996EC76EEF9.png",
+      "sha256": "28903d0f8421a930de7ec5b8a0f987e9c475b4e64ce1bc3e19f4da6a58c1f6a8",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/E7EB93A2-BB6E-4151-8129-943F20B9CAEF.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action description_0_B5DF9A08-6335-4872-A387-5DDB3AED913E.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/AB50D641-8CCD-4B84-8D3C-4104EBB92BCB.png",
+      "sha256": "8b3c476517d03301bf36a5bd04d7d6f021e72a4167c5da01592af79cfaeebdba",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action description_0_F10C73AD-B065-48BE-9E05-31414C05A526.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/D18F1727-E89F-472E-9B5E-FAFF1CA1D797.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/3C7CAB0D-86B6-4BF0-9A85-4180821CF6DA.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice_0_29E5C403-0704-448A-B760-192A018743AA.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/3C7CAB0D-86B6-4BF0-9A85-4180821CF6DA.png",
+      "sha256": "39d6d180dc1ef4fc70e12cc586f4028fcf0fb3bc7c3548d2fd1183302d2d935c",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/8C71F95D-033F-4F4B-B2FA-BEE8F53AFBAE.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion title_0_CDA81358-66EC-4258-9309-0E7FA6FDE566.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/C034A70E-769C-41B4-9198-F3CA3966685D.png",
+      "sha256": "f507efbb2dcf96b14ea1e3bf6c22a6295a68b63eb99562e8fac0439ac80c4c56",
+      "status": "passed"
+    },
+    {
+      "caseId": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "inspectedRepresentative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/0B8B03F3-435B-4D3E-80A3-3EAEDE71FCC6.png",
+      "inspection": "full original resolution; primary session",
+      "nativeName": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title_0_EEF9A7C0-B0CB-4F4A-9574-3A7C4D2BFE9B.png",
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments/6E447203-0056-4449-8E2A-42AA2C7F946E.png",
+      "sha256": "0e2711a33750d518511192bbb89c6f60ffe226e11446453bdf323ef460a73460",
+      "status": "passed"
+    }
+  ],
+  "observations": [
+    "All eleven field types, complete-action Copy, confirmation and empty-state notices are readable across retained scroll positions.",
+    "No horizontal clipping or overlapping target content was observed. Partial adjacent content at scroll viewport edges is normal; required targets have complete views.",
+    "Native screenshot clock changes create some distinct hashes; every different hash was inspected.",
+    "Native audits and observed settings passed separately."
+  ],
+  "retrievalToolWallSeconds": 16.8,
+  "reviewEndUTC": "2026-09-15T01:28:42Z",
+  "reviewStartUTC": "2026-09-15T01:27:25Z",
+  "reviewWorkflowElapsedSeconds": 77,
+  "status": "passed",
+  "timingNote": "77 seconds includes retrieval and inspection; no unrelated work or deliberate wait. Use this conservative whole-review time for projection.",
+  "uniqueImageCount": 13
+}

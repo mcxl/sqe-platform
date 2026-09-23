@@ -1,0 +1,74 @@
+{
+  "candidateBase": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "candidatePatchSHA256": "73ac95cea4be82679adf297fb3e2e0b15e3a464290164aacbdd2614ebe789bf4",
+  "run": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce",
+  "test": "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+  "sourceLines": [
+    697,
+    708
+  ],
+  "expected": "Unrestricted .all audits after release scroll and Copy confirmation pass.",
+  "actual": [
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 792.6666666666666
+        },
+        "identifier": "",
+        "label": "Copy action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.333333333333485,
+          "width": 123.33333333333331,
+          "x": 32,
+          "y": 833.6666666666666
+        },
+        "identifier": "",
+        "label": "Copied Action 1.",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast failed",
+      "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 767.6666666666666
+        },
+        "identifier": "",
+        "label": "Copy action",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "copyConfirmation-after-copy"
+    }
+  ],
+  "counts": {
+    "passedTests": 2,
+    "failedTests": 1,
+    "skippedTests": 0,
+    "nativeAuditFindings": 3
+  },
+  "classification": "Unresolved native contrast audit failure; app defect versus audit sampling defect is not established.",
+  "stop": "Two corrective design trials completed without clearing all focused failures. Stop further corrective trials and expansion; preserve candidate separately.",
+  "phone": "Disconnected; not tested or installed.",
+  "pixelEvidence": "Pillow unavailable; no numeric claim added."
+}

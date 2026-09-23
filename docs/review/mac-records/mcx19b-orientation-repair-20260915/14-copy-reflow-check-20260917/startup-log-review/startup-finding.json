@@ -1,0 +1,31 @@
+{
+  "recordedUTC": "2026-09-17T03:00:13.126436+00:00",
+  "scope": "Read-only retained-log analysis; no builds, test executions, app edits, or simulator state changes",
+  "finding": "The testmanagerd service did not receive the AX loaded notification within its65-second wait. The runner separately expired its70-second startup wait.",
+  "timelineSydney": {
+    "12:20:20.487": "Runner starts70-second timer",
+    "12:20:27.928": "testmanagerd receives Accessibility load request",
+    "12:20:47.983": "testmanagerd starts65-second ready-notification wait",
+    "12:20:51.921": "SpringBoard AXRuntime server starts",
+    "12:20:55.791": "Test runner AXRuntime server starts",
+    "12:21:32.017": "Runner timeout",
+    "12:21:53.629": "testmanagerd Error18: Timed out waiting for AX loaded notification"
+  },
+  "unknown": "Why the notification was missing; no proof of corrupt simulator state or Apple defect; Copy cause remains unresolved",
+  "powerEvidence": "Xcode held a sleep-prevention assertion during the test session; no sleep entry in inspected12:15-12:25 window",
+  "sessionLog": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/startup-log-review/diagnostics/0_Test_iPhone 17_Diagnostics/ACEClientAppUITests-7470E864-5E99-4544-AF55-80F57853420B-Configuration-Test Scheme Action-Iteration-1/ACEClientAppUITests-87A59F0D-DF98-4B5C-8B81-64479C299CC9/Session-ACEClientAppUITests-2026-09-17_121752-gOTQzK.log",
+  "sessionLogSha256": "4af87d0d35eac5626d13a059ab3b01b5068ec24c3d883c9e2c40e4f0a4c3e7ed",
+  "serviceLog": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/startup-log-review/test-service-window.log",
+  "powerLog": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/startup-log-review/power-window.txt",
+  "nextExperimentAuthority": "Not authorised; D2 no-retry stop still applies",
+  "proposedExperiment": "One invocation of the existing compiled two-call deliberate-failure harness on a fresh temporary iPhone17 simulator with the same iOS26.4.1 runtime. Existing simulators preserved. Record freshUDID and settings, retain evidence, shut down temporary simulator afterwards.",
+  "experimentQuestion": "Does UI testing initialize on a fresh simulator profile?",
+  "acceptance": "Exact selected method executes, call records0,1,2 retained, only deliberate native assertion fails; classify other findings separately",
+  "limits": {
+    "hardMinutes": 20,
+    "nativeExecutions": 1,
+    "retries": 0,
+    "rebuilds": 0
+  },
+  "claimLimit": "Success on a new profile supports a device-state explanation but does not prove cause or fix Copy"
+}

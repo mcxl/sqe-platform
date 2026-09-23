@@ -1,0 +1,31 @@
+{
+  "utc": "2026-09-14T06:57:29.429122+00:00",
+  "reason": "Two booted simulator mediaanalysisd processes consume approximately 1200 percent CPU; new Pro Max bootstatus still waiting. No xcodebuild active.",
+  "commands": [
+    {
+      "command": [
+        "uptime"
+      ],
+      "exit": 0,
+      "stdout": "16:57  up 1 day,  1:05, 2 users, load averages: 211.87 155.42 87.50\n"
+    },
+    {
+      "command": [
+        "vm_stat"
+      ],
+      "exit": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 4096 bytes)\nPages free:                                     3936.\nPages active:                                1088953.\nPages inactive:                              1082191.\nPages speculative:                              5267.\nPages throttled:                                   0.\nPages wired down:                            1605023.\nPages purgeable:                               20879.\n\"Translation faults\":                     1054712654.\nPages copy-on-write:                        61466657.\nPages zero filled:                         525191165.\nPages reactivated:                          22114857.\nPages purged:                                3387767.\nFile-backed pages:                            869674.\nAnonymous pages:                             1306737.\nPages stored in compressor:                  4132671.\nPages occupied by compressor:                 407822.\nDecompressions:                             15106521.\nCompressions:                               23667276.\nPageins:                                    27740842.\nPageouts:                                     404497.\nSwapins:                                     5403422.\nSwapouts:                                    6755894.\n"
+    },
+    {
+      "command": [
+        "ps",
+        "-p",
+        "34529,35148,34721,35947,55279",
+        "-o",
+        "pid,ppid,pcpu,pmem,etime,command"
+      ],
+      "exit": 0,
+      "stdout": "  PID  PPID  %CPU %MEM  ELAPSED COMMAND\n34529     1   0.2  0.1 05:01:50 launchd_sim LOCAL_HOME/Library/Developer/CoreSimulator/Devices/3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F/data/var/run/launchd_bootstrap.plist\n34721 34529 413.2  2.4 05:01:26 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n35148     1   0.0  0.1 04:55:06 launchd_sim LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/var/run/launchd_bootstrap.plist\n35947 35148 390.7  2.5 04:47:35 /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd\n55279     1   3.9  0.1    03:54 launchd_sim LOCAL_HOME/Library/Developer/CoreSimulator/Devices/D1BAA05C-52DD-4E57-832F-C0A75718E085/data/var/run/launchd_bootstrap.plist\n"
+    }
+  ]
+}

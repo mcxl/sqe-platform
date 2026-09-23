@@ -1,0 +1,16 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "153BB6C2-5C7F-4D96-A889-2BA7D8D14056.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "Complete Issue Description.txt"
+      }
+    ],
+    "testIdentifier" : "AcceptanceEvidenceContractTests/testFixtureInspection()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection"
+  }
+]

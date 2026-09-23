@@ -1,0 +1,18 @@
+{
+  "recordedUTC": "2026-09-15T12:27:25.380158+00:00",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+  "case": "pilot.iPhone-17.release.light.medium.portrait.0.0.0",
+  "sourceLine": 390,
+  "callSiteLine": 364,
+  "expected": "Refresh target height at least44points within eight ULP tolerance",
+  "actual": "Refresh current release height is below44points; exact measurement not retained",
+  "image": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/attachments/711A813C-EFC2-4D29-BA95-099D350EC652.png",
+  "imageSHA256": "fe69534c4a7ee7c4b210ed266b1ec5ef8eb8cbbf69368884b3457836f157ce6e",
+  "imageInspection": "Full screen inspected at original resolution; Refresh is fully on screen. Source already sets44point minimum. This does not establish whether the AX frame is undersized or rounded.",
+  "classification": "unresolved test/app distinction; no corrective change yet",
+  "nextQuestion": "What exact frame and numeric deficit does the failing target check measure?",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0,
+  "testCorrectionAttempts": 0
+}

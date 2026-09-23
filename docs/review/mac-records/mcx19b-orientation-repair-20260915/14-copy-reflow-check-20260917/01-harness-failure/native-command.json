@@ -1,0 +1,21 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/ACEClientAppUITests.xctestrun",
+    "-destination",
+    "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+    "-parallel-testing-enabled",
+    "NO",
+    "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+    "-resultBundlePath",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult"
+  ],
+  "end": "2026-09-17T02:23:20.835197+00:00",
+  "exit": 65,
+  "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult",
+  "seconds": 348.53,
+  "start": "2026-09-17T02:17:32.302872+00:00",
+  "timedOut": false
+}

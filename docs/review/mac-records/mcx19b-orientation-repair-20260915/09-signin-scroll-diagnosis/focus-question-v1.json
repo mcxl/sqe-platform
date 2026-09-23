@@ -1,0 +1,13 @@
+{
+  "question": "Does the corrected helper scroll the missing Sign in control fully into view?",
+  "scope": [
+    "Case(id='pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1', group='pilot', device='iPhone 17', scenario='signIn', settings=Settings(appearance='dark', contentSize='accessibility-extra-extra-extra-large', orientation='landscape', boldText=True, reduceMotion=True, increaseContrast=True), audit=True)"
+  ],
+  "expected": "One complete case and one unrestricted audit; observed settings and native restoration; retain original captures even if separately defective",
+  "candidate": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+  "pilotCredit": 0,
+  "testHelperCorrectionAttempt": 1,
+  "separateOpenCaptureFault": "App-scoped landscape PNG is cropped; investigate only after this helper check",
+  "script": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/run-native-focus-v1.py",
+  "scriptSHA256": "04d61fbf15337f3724da5a85246c87c1cf6b2984f786a7e607111abcd8ac8eb8"
+}

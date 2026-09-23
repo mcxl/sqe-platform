@@ -1,0 +1,13 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 78943d1..e1e2317 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -41,7 +41,7 @@ struct RootView: View {
+                 SafeMessageView(message: message, action: (deletionOnlyRecovery ? "Reset saved sign-in" : "Try again", deletionOnlyRecovery ? state.resetSavedSignIn : { state.retry(.deletion) }))
+             }
+         }
+-        .padding(isReleasePresentation(presentation) ? 0 : nil)
++        .padding(isReleasePresentation(presentation) ? Edge.Set() : .all)
+         .modifier(ErrorAnnouncement(message: presentation.errorMessage, event: state.errorAnnouncementEvent))
+     }
+ 

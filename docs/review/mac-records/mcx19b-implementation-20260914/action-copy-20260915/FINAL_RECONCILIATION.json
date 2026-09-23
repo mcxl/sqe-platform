@@ -1,0 +1,40 @@
+{
+  "recordedAtUTC": "2026-09-14T20:29:08.897273+00:00",
+  "commit": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "clean": true,
+  "sourceHashesMatchFocusedUnitEvidence": true,
+  "focusedUnitCounts": {
+    "passed": 68,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "contractSubset": 43
+  },
+  "focusedCopyCounts": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "nativeCopyWrites": 3,
+    "images": 18,
+    "uniqueImagesInspected": 17
+  },
+  "lightReleaseCounts": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "contrastAssertions": 6,
+    "images": 25,
+    "uniqueImagesInspected": 10
+  },
+  "requirementCounts": {
+    "blocked": 3,
+    "pending": 194
+  },
+  "acceptedCoverageCases": 0,
+  "finalAcceptance": false,
+  "phoneCurrentlyReachable": false,
+  "nativeJobsRunning": false,
+  "macFreeGiB": 228.46
+}

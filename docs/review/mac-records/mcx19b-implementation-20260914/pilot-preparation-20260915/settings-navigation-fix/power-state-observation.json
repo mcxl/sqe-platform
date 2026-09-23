@@ -1,0 +1,35 @@
+{
+  "utc": "2026-09-15T02:37:56.398114+00:00",
+  "records": [
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "assertions"
+      ],
+      "exit": 0,
+      "stdout": "2026-09-15 12:37:56 +1000 \nAssertion status system-wide:\n   BackgroundTask                 0\n   ApplePushServiceTask           0\n   UserIsActive                   1\n   PreventUserIdleDisplaySleep    0\n   SoftwareUpdateTask             0\n   PreventSystemSleep             0\n   ExternalMedia                  0\n   PreventUserIdleSystemSleep     1\n   NetworkClientActive            0\nListed by owning process:\n   pid 165(dasd): [0x00025121000195b9] 00:09:58 PreventUserIdleSystemSleep named: \"DASActivity-ClientRequested:502:com.apple.photoanalysisd.photolibraryNonIntensiveTasks\"  \n\tCreated for PID: 98797. \n   pid 227(WindowServer): [0x0000001500098123] 00:49:50 UserIsActive named: \"com.apple.iohideventsystem.queue.tickle serviceID:10000d102 service:AppleMultitouchDevice product:Apple Internal Keyboard / Trackpad eventType:11\"  \n   pid 353(mds_stores): [0x0002513d000b95e9] 00:09:31 BackgroundTask named: \"com.apple.metadata.mds_stores.power\"  \n   pid 242(runningboardd): [0x000251f20001960e] 00:06:29 PreventUserIdleSystemSleep named: \"app<application.net.whatsapp.WhatsApp.68064672.68064678(502)>242-549-50877:Shared Background Assertion 21924 for net.whatsapp.WhatsApp(FinishTask)\"  \n\tCreated for PID: 549. \n   pid 98985(xcodebuild): [0x00025194000195ff] 00:08:03 NoIdleSleepAssertion named: \"Xcode build operation\"  \n   pid 179(bluetoothd): [0x000253760001967e] 00:00:02 PreventUserIdleSystemSleep named: \"com.apple.bluetooth.LeConnectionManager.DisconnectionTimer\"  \n\tTimeout will fire in 8 secs Action=TimeoutActionRelease\n   pid 179(bluetoothd): [0x000002db00098601] 23:52:00 UserIsActive named: \"Bluetooth LE HID Activity\"  \nKernel Assertions: 0x104=USB,MAGICWAKE\n   id=507  level=255 0x100=MAGICWAKE creat= description=en0 owner=IOSkywalkNetworkBSDClient\n   id=598  level=255 0x4=USB creat= description=com.apple.usb.externaldevice.14300000 owner=iPhone\nIdle sleep preventers: IODisplayWrangler\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "batt"
+      ],
+      "exit": 0,
+      "stdout": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=8192099)\t100%; charged; 0:00 remaining present: true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "custom"
+      ],
+      "exit": 0,
+      "stdout": "Battery Power:\n lidwake              1\n lowpowermode         1\n standbydelayhigh     86400\n proximitywake        0\n standby              1\n standbydelaylow      10800\n ttyskeepawake        1\n hibernatemode        3\n powernap             0\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 0\n networkoversleep     0\n sleep                1\n lessbright           1\n halfdim              1\n acwake               0\n tcpkeepalive         1\n disksleep            0\nAC Power:\n lidwake              1\n lowpowermode         1\n standbydelayhigh     86400\n proximitywake        1\n standby              1\n standbydelaylow      0\n ttyskeepawake        1\n hibernatemode        3\n powernap             1\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n halfdim              1\n acwake               0\n disksleep            0\n",
+      "stderr": ""
+    }
+  ]
+}

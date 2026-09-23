@@ -1,0 +1,68 @@
+{
+  "timeUTC": "2026-09-14T23:40:39.642345+00:00",
+  "before": {
+    "branch": "codex/mcx19b-release-layout",
+    "head": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+    "status": ""
+  },
+  "afterStatus": " M ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n M ios/ACEClientApp/ACEClientApp/Views.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+  "patchSHA256": "c7691eca25ac7402b00a4b6e64f94b62ea67ca58b5c076a71ea8899f3a290fe2",
+  "nativeEvidence": {
+    "largeLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs/20260914T230801Z-selected-156183575705",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 81.818,
+      "enumerationSeconds": 20.855,
+      "nativeCommandSeconds": 110.485,
+      "unrestrictedAuditCalls": 3
+    },
+    "smallLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 75.162,
+      "enumerationSeconds": 283.904,
+      "nativeCommandSeconds": 155.722,
+      "unrestrictedAuditCalls": 3
+    },
+    "largeDark": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/dark-runs/20260914T232753Z-selected-97c06b7e5334",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 79.718,
+      "enumerationSeconds": 18.664,
+      "nativeCommandSeconds": 156.014,
+      "unrestrictedAuditCalls": 5
+    },
+    "largeMaximumLight": {
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "nativeExit": 0,
+      "buildSeconds": 69.633,
+      "enumerationSeconds": 20.055,
+      "nativeCommandSeconds": 100.877,
+      "unrestrictedAuditCalls": 2
+    }
+  },
+  "review": "SOL_COPY_TINT_REVIEW.md",
+  "commit": "023b1e8dd0a742d2a1caa3f30f5141af2c5021db",
+  "scope": "Applied exact reviewed and natively tested three-file patch. No other file changes.",
+  "commitTimeUTC": "2026-09-14T23:41:30.188271+00:00",
+  "finalStatus": "",
+  "pushed": false,
+  "phoneInstalled": false,
+  "validationBinding": "Native runs used base 1b38b90e plus the exact patch. Adopted commit source bytes match that tested patch. These diagnostic runs are not final programme acceptance."
+}

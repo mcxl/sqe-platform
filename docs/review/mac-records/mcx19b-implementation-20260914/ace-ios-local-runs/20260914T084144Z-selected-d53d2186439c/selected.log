@@ -1,0 +1,30 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/selected.xcresult
+
+Test Suite 'Selected tests' started at 2026-09-14 18:44:15.331.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 18:44:15.334.
+Test Suite 'ACEClientAppTests' started at 2026-09-14 18:44:15.336.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' passed (0.011 seconds).
+Test Suite 'ACEClientAppTests' passed at 2026-09-14 18:44:15.354.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.011 (0.018) seconds
+Test Suite 'ACEClientAppTests.xctest' passed at 2026-09-14 18:44:15.356.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.011 (0.022) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 18:44:15.357.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.011 (0.026) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-14 18:44:07.855 xcodebuild[68070:1872804] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:44:07.880 xcodebuild[68070:1872804] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:44:09.079 xcodebuild[68070:1872804] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:44:15.687 xcodebuild[68070:1872804] [MT] IDETestOperationsObserverDebug: 6.590 elapsed -- Testing started completed.
+2026-09-14 18:44:15.687 xcodebuild[68070:1872804] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:44:15.687 xcodebuild[68070:1872804] [MT] IDETestOperationsObserverDebug: 6.590 sec, +6.590 sec -- end

@@ -1,0 +1,9 @@
+{
+  "status": "static primary review and pure-data verification passed; native build and execution pending",
+  "wrapperSha256": "8e4dfc56b8d359d398ff866f11a115b3bba6c12c5fececb110088f72a71cbcc3",
+  "fixtureChecksPassed": 28,
+  "changedPin": "correction1 patch",
+  "nativeExecution": false,
+  "verificationRecord": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/run-d1-bc-case-verification.json",
+  "reviewedScope": "full wrapper; then __TESTHOST__ resolution, unavailable-element branch, early native FAILED retention and correction1 identity pins"
+}

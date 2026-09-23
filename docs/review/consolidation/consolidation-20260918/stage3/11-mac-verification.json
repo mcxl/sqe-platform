@@ -1,0 +1,1199 @@
+{
+  "captured_at": "2026-09-18T14:55:23.746792+10:00",
+  "checks": {
+    "head_unchanged": true,
+    "status_unchanged": true,
+    "refs_unchanged": true,
+    "index_entries_unchanged": true,
+    "tracked_bytes_match_clean_candidate": true,
+    "mac_reserve_pass": true
+  },
+  "head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "status": "",
+  "files": [
+    {
+      "path": ".github/workflows/quality-gates.yml",
+      "sha256": "e355647b003fc350688fb7ca30463e8c8b0418a52104c9f4306b40ae3281d12a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/release-quality.yml",
+      "sha256": "a63051f3adf56037a398c2d155ad9a92bd33bdd365b759047c5462478e0d506a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "55d86a676bd9e3b6146b99da24b832b11c62c22934402df999469a0a9d2751d0",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "sha256": "aeac192a65e19a02de9571fc8e92f0a2ac6dd04ae3e41cd8d534485594b7c98f",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ACE_VISION_AND_ROADMAP.md",
+      "sha256": "e526ec4206ba474c9b0a257e8b74f68886c61d2b4be62a65795ef156f0b20891",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c9295a4409608948b343d5ef7a9a1ea2d9640656dc9e308b71cfa31f4412dbd4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "CONTEXT.md",
+      "sha256": "032fc036e03b6418f4a95bb3194e05c334a210489229fbd4b5dfbd1421ae1945",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "DEV_STATE.md",
+      "sha256": "60a4dd815df828f9881403a436d6f8e01a67f1b589a0dbfff358ccd9edbd59d7",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "README.md",
+      "sha256": "648c6992511c45e0d44744e921af8608fae1ac09ee016ee80c6f6af7ad9011e5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "WORKFLOW-NOTES.md",
+      "sha256": "89e9ef5d3d70a2de51efaec186b2abfdc261d3cdf7032ee5dcd40e81d2ee61d2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/.env.example",
+      "sha256": "9b9a6bdecc0eea67996a24ab4e8599135506c671214c8ec485fe637b7d8ccfc8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "sha256": "e236830ee2751fbe465596e45014cb07b2436b436e10c055915722a4957b370b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/README.md",
+      "sha256": "68c31ff1bb1b54eb66d86db56181a616a841c894d9169382637083bd1979eddc",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "sha256": "18c58c94a905824ea64a92a9445e1f64e9b232a5fc8b2c310d120fc09a2ba035",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "sha256": "a43415041ed646101549cb97eb435dfab212f1e8978f1e48b925509cb7cb5da0",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "sha256": "1162a5b39c69f5f229c707ccf372e477edba401ad56c6767a4036fc2a8f69cea",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "sha256": "dcb8487adaafe5caed5049fdb187e0751b19510b95a9eea24548238f4857b21d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components.json",
+      "sha256": "c38fe7bb9e20572a5372233d7e89a6ecf2029f40603d5e922348da83c054fb09",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "sha256": "373ae570c8fa3fcad11309573c756b052ade2d5848ef7e91dc27c43b6f17dfeb",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "sha256": "3060352b1569f5b824d28b40cb2f7f8919023943581c23df0c1f98a7c6d97992",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "sha256": "dab7b9d77df850b9d1bdfe2144ac8756778d2d2554cb27df90e8d264ac011a33",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "sha256": "421e9d5633e7c5ad913da6b3fe74560d6fc9872f64e1a3904f4a3d40e265fdcb",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "sha256": "9c0cc15d1aa2a511495a6b1a5e78b3ced2f9187baf9d3e169af331d38daad6a6",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "sha256": "5108ea6c81eb6f467e823670492ee16d12dbf856d3a47316010622be0e1ef18e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "sha256": "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "sha256": "35fb73740f425dbb33d10c504f1587559740525d071b8abaca09245212393312",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "sha256": "f513058549831e85376f8d19cafaf2a4a770b6eb1b859fb371141f2c9dec0d70",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "sha256": "db177073d16a4393c7a96bcdc3a2a904e88c2432d54d138ca7715cc431982c17",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "sha256": "2b536ee08d434dd044efe0302aeaf4ccb00cd08af10c9f8c7bc7a6734e4aa49b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "sha256": "0cdd1d842b9458d8a6f2444c35eb9929312316a384ca76a4b1d964bedde8a6f2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "sha256": "2ab69829a62feddf874dbb3d20800be0c6287e1e3895cf11a75bf13ebe89052c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "sha256": "e3e42c103675baacd10e82e0d2c127ef3904a6bd17828e10dfcf38ce6716e046",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "sha256": "ec0fb1697ecbeec95ec552411fb694e1ce8860b3ab8d367dfbb99f3c1a75a587",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "sha256": "644da43eaa506751682a09a285a45336927ccd6282227ad76c25424c2b5a3955",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "sha256": "08355a8fae31e10b5e58edb11383ffc2f890900c616ebfe360802a4cf5b9f2d2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "sha256": "01ff40646a62a27de7e09b7a776f71e4fe80d0c919fd4a59a9c8da0eaea6755d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "sha256": "ab4c61f6ee100ae43610a18512f1ebcec842bb2405431e1009266173f21cf772",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "sha256": "b5bdd81aca36660d362c0e150fc6e628d8f8ecccbcc8288b7fdb4a13fa7b09b2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/package.json",
+      "sha256": "8a297b96005d46b896344490e84b05dd8e85362ba6dd6fa4d982aaa635d61e0a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "sha256": "b8cd36495468ea54e029eb4b2e0e98f0feff6f95d6513e70db37a71c0e3bfba4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "sha256": "31b74065686c8508971d082668186f4473803715ff7059b1933b08cfb689bb03",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "sha256": "b40ce2676159edf9692c14debf9071f58ae6c14aeee5bd9da176557596eaa914",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "sha256": "9c86d797d76ca04c6bc3c94c1694f68c85d5e49bb8ffd29164bbac8f4cc658ea",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "sha256": "c658055f22bdd7ad9b515456e414969305a30fd230ba9ea989710d232c13b302",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "codemagic.yaml",
+      "sha256": "5293c79c96e722d7cc3b4d425a579dc7eeefca0d684c74fc1eec6f35995a6b0e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/DOCUMENTATION-INVENTORY.md",
+      "sha256": "4119092016080bc0884de9c32ecf478f6f9378091124c09891fa87c833c52089",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/adr/0001-human-auditor-controls-final-decisions.md",
+      "sha256": "e2191dee894d1d6fc0ba6a43054727d91aec14b8f5e282bc6a943796798a37b5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/adr/0002-g0-protects-the-data-boundary.md",
+      "sha256": "62be8ccfd0c90bbd68ef81251d3f913399167708b31a0079cc519b287357ebaa",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/adr/0003-approved-records-use-versioned-history.md",
+      "sha256": "8cd09b484cb8dce17bef357619d5924643888c6e0fb559b50cd254881a4b384d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/adr/0004-release-projection-is-read-only.md",
+      "sha256": "6c4fd0562070735cccb76c9cdbc355886f8aa1fc638b24da945a6c14aaeb8ba4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/agents/agent-permissions.md",
+      "sha256": "fa4ee180d41b6548c6551647b6ff8320e4939862bb1fb1db6784d1d2c86a7b7e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/agents/domain.md",
+      "sha256": "f4b31388d6ef7eccaab47886ffe145de036a80bdc97584c05b319d47760d2f0a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "sha256": "4660f37b08a342e32a233e475bb6b8cfd11277342b3a6aa46848c7e15246c778",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/agents/triage-labels.md",
+      "sha256": "668e5486f1a08d6dcae9b207194eeb63e758d7b1f42e6cfa102b19ec6f0936e5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/diagrams/README.md",
+      "sha256": "faf99455897a2c3697045354e139012536b1c353937394b1382bc457ce611962",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+      "sha256": "c0175f267c41b5dffe072ed9b71db84183e6a115e394c7a5bc85362d28d5dce2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+      "sha256": "0326f05014934c2c4212ba3994fbf00e25c279c3cd2c28622905f06c2c2ac61c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+      "sha256": "0139708148de126f1134bb6693ece8aa1c294d20da067ccc2435193e8939a37f",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/diagrams/diagram-manifest.json",
+      "sha256": "73d66a3dd24271744636e600a641ed538a8467c6206e1b532af9d40baa3778aa",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "sha256": "82ed627b02513b6b52c90244cb93d9a2dcc8738a8f06ec8cbb899255423156f4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+      "sha256": "9228d23e71fbd649ffe6dd23cbbe416d71f75e7fc127f6c6d1f231eda5a54dfd",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "sha256": "3ac56988d48275947cadf0a69e15fd9ddb160eb524174e7a0acef9a47f20b1c9",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+      "sha256": "c45ba49f914f3842d5fd19a6577b542fee240a6850f570a6ccbb957d6949c8d4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/documentation-control.md",
+      "sha256": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "sha256": "ab25e6321d7fdfacfeec2a256f9b1c3a1b637840da4e548ee0f7e969a202dfa6",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "sha256": "0afaad9be9771951c116aa90b1de6315aef1f63964aba8528c0f75edca3ca68c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "sha256": "f8b7952280e1e5edb3709c1a104e780342f447ebc4479774c8ec669673d0aabd",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "sha256": "18a69b1b0608460dd4aface9ec32b5b9421f961726392bbf8e7a7373165f8a10",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+      "sha256": "11c058677538bc4ac14bdaa1f962c4cc77fe63c00bd61a347c4444a5e041a78e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+      "sha256": "b7bf8ac97db822888a403bb7f81532048f77f976e2f96838ff294bd3ca7f9116",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "sha256": "9b676d95c7ffd85d41a62dd93e8c1df1af3e48fb9d762b9208c899592f90a62d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+      "sha256": "fe53bb82eb21a8adb9fe8fa97b47ac994b97766bc3d8d347d2f9501342e449d5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "sha256": "f3354e035b50d866b701a399cfed86e5962b4f0ba4129a6ea519c3406df98f88",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+      "sha256": "f70fd554c905ee3fbf073f7900bff6684121e58a1b2291e1c98370ecccefbc2d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "sha256": "068d070f84cfb7c380f6c9267b1b636f6b94eb086ad5d01361b44d8fb6e825ab",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+      "sha256": "3573aec11e5718a115d1db73296e16fd05c6ebe531f33bfd03a1e6906d3c2097",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "sha256": "f39a3bcebea243201b6befa1b13b16c10b7280103be8d8b5e9768e6b8c7fe874",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+      "sha256": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+      "sha256": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "sha256": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+      "sha256": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+      "sha256": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "sha256": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+      "sha256": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+      "sha256": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+      "sha256": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "sha256": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+      "sha256": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "sha256": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/Makefile",
+      "sha256": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "sha256": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "sha256": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "sha256": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "sha256": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+      "sha256": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "sha256": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "703715ceae461138871d7dea0bed5ae17641c1263fb9a6068e60a9415ea66ed8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "quality/test-groups.json",
+      "sha256": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "security/deepsec/deepsec-residual-risk.yaml",
+      "sha256": "9cba6b35b4300b79a1c75e6dea915658254fd52803509571309076a7f3d90961",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/__init__.py",
+      "sha256": "87e7a3de6912f2e71076e160d9c6380fbd4b0558166261aaeda325fb5298110d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/__init__.py",
+      "sha256": "713c403d2e8c519b501cb6c32144579b079d5fa7bf48e7b3753747709a893330",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/app.py",
+      "sha256": "94ad98127f11901982c83b172497410c9641420ecc6852b1de3bfe5a10339445",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/__init__.py",
+      "sha256": "ab08fa707bc5a2de8212cbb7c9c332638570a88336dfbdac2696a3aab9bc4c7b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/assessment.py",
+      "sha256": "bf714e4102d3484434b354a6074e9f905f2c553a35efa8be32b9b7cd356cc1aa",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/enums.py",
+      "sha256": "326acdb2d330d61a1eb98db05dc11cbb054ea6ab76ed6f99827d49c20c9c29bb",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/models.py",
+      "sha256": "3b03fa9f27752d51f41483bb2abd500fae1da7aa11de6885c1e4b594340d295e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/release.py",
+      "sha256": "3302dec9077aac377f0534531902dd27f07ba4a3f9a1524139a597ab1e3a7b38",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/domain/trace.py",
+      "sha256": "dd294f5c9ded15de5e09e66f43bc10a1970d7860a7e97995f35efb462698de9c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/engine/__init__.py",
+      "sha256": "af140715560226272be14b74b08f19a467b5c7947ef55e07fe0d34d659687848",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/engine/approval.py",
+      "sha256": "08ff57a2e77fc71fcc2d0968fdc9f133b1896611cbe7fb7037895f20ac8797e8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/engine/evaluator.py",
+      "sha256": "591d08c02aa63b174bb6b997ffb2724e1cb1e2af6d1ae9a8e7532efca41743ae",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/engine/tracing.py",
+      "sha256": "98116e53f257d157332ac93b7a41906eb2ac01176c0a6474daa286e06bff40bd",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/__init__.py",
+      "sha256": "354e5b7dd7c3017616423d4c848bd2b7c1c7cd37380bdd7e421609cb01fbc472",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/action_result.py",
+      "sha256": "3bc9c522fed3dbcda2711bef7833dc2ca0dd12f5007d4692f61e27764c10cfa4",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/change_record.py",
+      "sha256": "db91470267aee237544137789abdb873ab5787c58af9bc73311561b1017692a1",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/client_auth.py",
+      "sha256": "1bc12cbf045a2c51efafe7d572da91e44b2ea759c57c28d49b660235b84cadf5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/client_release_projection.py",
+      "sha256": "8d74d83ca8cc20eb46e5814f05bbe168a8b5e3750390cca56405be98b9cb1502",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/client_release_service.py",
+      "sha256": "f612177698f13e94f6cc79781ee941c1ee465ffe1bfb7f262c0cab7852ecc411",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/client_routes.py",
+      "sha256": "dcd9d2ead8b338928fbcf129e37c252c59ba2696a0ddbb47b27b4bb8fc695931",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "sha256": "db064f75ae8f9e99a94fa8679a51437c73b7e5bdb96b55133352bc1500535793",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/engagement.py",
+      "sha256": "c738afe1d9ccb4fd2cd01767ff96481945cad4d54789a999ebe7309d64e7f806",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/evidence_review.py",
+      "sha256": "a2e0686d36b82589e21463d455c1c322d24ba0426172a259776ec23d09593cb3",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/export_builder.py",
+      "sha256": "cdf4ee85a139370c003e9ba3317de6aa9769e498c750c952187a8a53f8eabc4a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/extraction.py",
+      "sha256": "a2be23f2efdb01e83b4c0d79301f1016dc03227572d75ca4e348eb5c0fa34d36",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/notion_publisher.py",
+      "sha256": "5a524d017dcb331595ab28d6ca4e1571296d5b42b72fb292d8cb7317fa8b3f40",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/relationship_review.py",
+      "sha256": "cfa3e720cca44c36cddc657397bca18b6bdb106547fa6311d110c04187a538ac",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "sha256": "da3c74a6feb0809905ebe450aafc638e06e3e3dcbdb6817981877975ffadc0bf",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/release_storage.py",
+      "sha256": "d14e1b2c27e31e3e8445693032cd28a576799ada3bb01bd4990ba126f061dfc9",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/routes.py",
+      "sha256": "7b1eaef3c24eef1e473985a638fa90067078ffb323ce9a7ad1a000f89a54350a",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "src/ace/workbench/storage.py",
+      "sha256": "631fec79084d7c31d845d71aaa832a8515ec9254ed0f741a0d891e2776f1d04c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_action_result.py",
+      "sha256": "c865191fe89040f79aa8634073166eb57240a57ad0eae9a14fb874dfcfb77518",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_app.py",
+      "sha256": "4bec440fc08345131e5c07fe2193fa7ff6c3bcbd65f1781a66f6822bfd4ce945",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_approval_gate.py",
+      "sha256": "67c8c56769558820060b973b490ad83c6f5a0c3d1fa3b9487c39a954fd27b037",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_capture.py",
+      "sha256": "ff9fd7589c5c2faf3c577ba0001683c4b7e09019e15613e841afd2ef6d8b3b5f",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_change_export.py",
+      "sha256": "2c7d7ece11896ffce9dc44a811d58718a3ad916096c20272910255dca6a664d3",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_client_release.py",
+      "sha256": "4eef37d9c56e024a12a7c857815f28a4e4b060ee4c356dbbb108903b324c6e89",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_client_release_projection.py",
+      "sha256": "ea3aa2acb0616bb69cd88b2eae82529b1037883d1912217bf180b28cc57e61ea",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_diagnose_ios.py",
+      "sha256": "b15f216590bf44892d45d2baca77a171ba5890536e4bac5ae481f7b80d9a06b1",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_engagement_setup.py",
+      "sha256": "2e4d1b8667f27f3c1a1cfd498aeed7b9bce86cc7128eeef9a55181cfbc646d23",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_engagement_summary.py",
+      "sha256": "54cd45ddea356dbf89cf2b75976452152499708f66120b3b224b5ccdd4a27b56",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_evidence_review.py",
+      "sha256": "e9cf3482660b10bee8f1a4375a4c79e9c703ca097e1fbb9b9b75de3a64660ac2",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_extraction.py",
+      "sha256": "c488335400396857cf9d99c790f6f9ef0c7cd0e5305ecbac98cb589c5132ce14",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_graph_projection.py",
+      "sha256": "665edf44a24dc64f3bea10e1e103e873f4aa08718a522c80081d9d76790f692b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_ios_accessibility_layout.py",
+      "sha256": "c2431a64a423d1a93bb0174b6bc4a94267c303f51474eaab6b845ce55be42761",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_ios_action_targets.py",
+      "sha256": "c5e989b26d2d32fce76e0f5d740e8c905100f52743fbc3564b2004c0a7478bd8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_offline_drafts.py",
+      "sha256": "976cddef1f1cc1e3a2b64cdc9feea4ec20e57b1ad093290964bce96d8a9a2085",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_planning_trace.py",
+      "sha256": "64b8ca47b1fb5fdda887d092048aee85c58b85febe517026b11c7487d5932ebc",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_quality_gates_workflow.py",
+      "sha256": "6d1ec5d84c41f8b406d85c1f96f52abe68383016584e0b8e15e839ef2a182a42",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_rating_engine.py",
+      "sha256": "256833a52afef0b6622e35d0c17cb973bcee0f96204990d4f268af13237c20db",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_relationship_review.py",
+      "sha256": "a30f5329e54ab5f9b7fc32d779c3eb4a646d8d238dbf3151827bc977d183bb3d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_run_tests.py",
+      "sha256": "f9c63b54853368ae08faf52450ffc2ae3914cf4b524d49e23e97fded4ca44dc8",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_workbench.py",
+      "sha256": "c91de4dedb150d42f19770605fbda3b7de2a7c17c1fb57f007c12430f2677a1c",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/ace_ios_local.py",
+      "sha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/diagnose_ios.py",
+      "sha256": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/run_tests.py",
+      "sha256": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/tests/test_ace_ios_local.py",
+      "sha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "8e056bb71d34315fba863cbc3b8f827076d7cfdd1cb926e657db7244ed4d6b67",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/codex-autonomous-delivery.md",
+      "sha256": "f9f0316b8c6077294197269f0237feef7e2c49ea983b3a7b9b01038483948561",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/conclusion-review.md",
+      "sha256": "5a7985cf152b6e18caafa0572c7fe3b71926f0e508768b41b1d1f93b2fadf49e",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/engagement-setup.md",
+      "sha256": "471d3d8c622b27997b566a035bbcef0190cbbdbeb4f34f976e923bf4811b317b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/evidence-review.md",
+      "sha256": "fa9116a4f8bb91f3b24fa42d77dfb6f9443dc63ce4187fff63261c75a68c1641",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/field-evidence-capture.md",
+      "sha256": "a3a50542e4844b9a0de7527d713feb5bffccd010a9307b1dd879aa098890de1d",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/mate-assessment.md",
+      "sha256": "43a7394e9e9a512e994685afd8f9bb198d267c309267bec13f3244c38c79fe5b",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    },
+    {
+      "path": "workflows/relationship-review.md",
+      "sha256": "ee1a05e03d85929d18a1a98d71baa65714599cab688b163f803b5e98d6d20034",
+      "matches_index_blob": true,
+      "stage": "0",
+      "mode": "100644"
+    }
+  ],
+  "free_bytes": 227338006528
+}

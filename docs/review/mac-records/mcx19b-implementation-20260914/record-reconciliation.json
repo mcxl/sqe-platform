@@ -1,0 +1,9 @@
+{
+  "reason": "Align baseline gate wording with the approved independent-work authority and proven mismatch; align the runtime procedure with approved coverage. No baseline waiver or runtime pass is recorded.",
+  "specBefore": "b4f2dd2aa2af6a6e24cccd34d05288bc45d481672c4174488a136134b0106552",
+  "specAfter": "bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b",
+  "runtimeBefore": "8720edff112f9b30e9f0d5f330648a1b6d370bebc27e48cee2914ae71fb0efdb",
+  "runtimeAfter": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+  "requirementCount": 197,
+  "runtimeRequirementCount": 44
+}

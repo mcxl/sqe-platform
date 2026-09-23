@@ -1,0 +1,26 @@
+{
+  "recordedAtUTC": "2026-09-14T12:25:29.507099+00:00",
+  "agent": "/root/native_clipboard_review",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "observedModel": null,
+  "observedEffort": null,
+  "verdict": "ship",
+  "scope": "Only the 78-line native clipboard test addition; not final app acceptance.",
+  "baseCommit": "7fee853aef52e85a813368a51d833c134710186d",
+  "sourceSha256": "4d9a0f2e0cdae86c6d1397ef995674144c45e57d4a2d2d3aabd0028b38149791",
+  "diffSha256": "3efc9a245eee2843da7f11913a5a65004f5028e8330ae765188f938069cdb4b9",
+  "blockingFindings": [],
+  "notes": [
+    "Exact pasted values prevent stale clipboard passes.",
+    "Unique values prevent a wrong field from passing.",
+    "Repeated Copy confirmation assertion is weak because the first confirmation remains visible. Later paste and unchanged field label remain meaningful.",
+    "Add this selector to the final test inventory."
+  ],
+  "limits": [
+    "One XCTest with eleven field checks.",
+    "One simulator, large text, portrait/light.",
+    "VoiceOver, localOnly, physical device, service and complete acceptance remain pending."
+  ],
+  "reviewerCorrection": "The branch-move statement was unsupported. PowerShell expanded git command substitutions on Windows. The reviewer corrected the statement. The specified Mac worktree remained on codex/mcx19b-release-layout at 7fee853a."
+}

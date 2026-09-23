@@ -1,0 +1,672 @@
+{
+  "devices": [
+    {
+      "architecture": "x86_64",
+      "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+      "deviceName": "iPhone 17 Pro Max",
+      "modelName": "iPhone 17 Pro Max",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "duration": "0.0051s",
+                  "durationInSeconds": 0.005093932151794434,
+                  "name": "testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators()",
+                  "nodeIdentifier": "ACEClientAppTests/testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.029s",
+                  "durationInSeconds": 0.028831958770751953,
+                  "name": "testActionOrderAndUnknownFieldsRemainSafe()",
+                  "nodeIdentifier": "ACEClientAppTests/testActionOrderAndUnknownFieldsRemainSafe()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testActionOrderAndUnknownFieldsRemainSafe",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0073s",
+                  "durationInSeconds": 0.00727999210357666,
+                  "name": "testClipboardWriteOptionsRemainLocalForFiveMinutes()",
+                  "nodeIdentifier": "ACEClientAppTests/testClipboardWriteOptionsRemainLocalForFiveMinutes()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testClipboardWriteOptionsRemainLocalForFiveMinutes",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0045s",
+                  "durationInSeconds": 0.0044509172439575195,
+                  "name": "testDeletionUsesServiceAndAllSynchronisationClasses()",
+                  "nodeIdentifier": "ACEClientAppTests/testDeletionUsesServiceAndAllSynchronisationClasses()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testDeletionUsesServiceAndAllSynchronisationClasses",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0085s",
+                  "durationInSeconds": 0.008549928665161133,
+                  "name": "testDifferentAccountDeletesBeforeAddingReplacement()",
+                  "nodeIdentifier": "ACEClientAppTests/testDifferentAccountDeletesBeforeAddingReplacement()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testDifferentAccountDeletesBeforeAddingReplacement",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0044s",
+                  "durationInSeconds": 0.0043790340423583984,
+                  "name": "testDuplicateAddUpdatesExactAccountOnly()",
+                  "nodeIdentifier": "ACEClientAppTests/testDuplicateAddUpdatesExactAccountOnly()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testDuplicateAddUpdatesExactAccountOnly",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0066s",
+                  "durationInSeconds": 0.006577014923095703,
+                  "name": "testExactReadFailureAfterInventoryIsControlledReadFailure()",
+                  "nodeIdentifier": "ACEClientAppTests/testExactReadFailureAfterInventoryIsControlledReadFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testExactReadFailureAfterInventoryIsControlledReadFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.014s",
+                  "durationInSeconds": 0.013619065284729004,
+                  "name": "testExactReadNotFoundAfterInventoryIsUnsafe()",
+                  "nodeIdentifier": "ACEClientAppTests/testExactReadNotFoundAfterInventoryIsUnsafe()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testExactReadNotFoundAfterInventoryIsUnsafe",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.016s",
+                  "durationInSeconds": 0.016424059867858887,
+                  "name": "testInvalidReleaseValuesFailClosed()",
+                  "nodeIdentifier": "ACEClientAppTests/testInvalidReleaseValuesFailClosed()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testInvalidReleaseValuesFailClosed",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.012004971504211426,
+                  "name": "testInvalidReturnedAttributeEntersUnsafeRecovery()",
+                  "nodeIdentifier": "ACEClientAppTests/testInvalidReturnedAttributeEntersUnsafeRecovery()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testInvalidReturnedAttributeEntersUnsafeRecovery",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0077s",
+                  "durationInSeconds": 0.00772404670715332,
+                  "name": "testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse()",
+                  "nodeIdentifier": "ACEClientAppTests/testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.011s",
+                  "durationInSeconds": 0.01061999797821045,
+                  "name": "testMissingTopLevelNestedAndActionsFieldsFailDecoding()",
+                  "nodeIdentifier": "ACEClientAppTests/testMissingTopLevelNestedAndActionsFieldsFailDecoding()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testMissingTopLevelNestedAndActionsFieldsFailDecoding",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0032s",
+                  "durationInSeconds": 0.0032110214233398438,
+                  "name": "testOnlyDefinedEmptyResponsePassesValidation()",
+                  "nodeIdentifier": "ACEClientAppTests/testOnlyDefinedEmptyResponsePassesValidation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testOnlyDefinedEmptyResponsePassesValidation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.028s",
+                  "durationInSeconds": 0.02757406234741211,
+                  "name": "testOriginRequiresAbsoluteHTTPSRoot()",
+                  "nodeIdentifier": "ACEClientAppTests/testOriginRequiresAbsoluteHTTPSRoot()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testOriginRequiresAbsoluteHTTPSRoot",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.035s",
+                  "durationInSeconds": 0.03470289707183838,
+                  "name": "testRepositoryMapsDeniedWithoutJSONContentType()",
+                  "nodeIdentifier": "ACEClientAppTests/testRepositoryMapsDeniedWithoutJSONContentType()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testRepositoryMapsDeniedWithoutJSONContentType",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.025s",
+                  "durationInSeconds": 0.02547895908355713,
+                  "name": "testRepositoryRejectsWrongSuccessContentType()",
+                  "nodeIdentifier": "ACEClientAppTests/testRepositoryRejectsWrongSuccessContentType()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testRepositoryRejectsWrongSuccessContentType",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0052s",
+                  "durationInSeconds": 0.005215048789978027,
+                  "name": "testRequestIsGETAndHasNoCache()",
+                  "nodeIdentifier": "ACEClientAppTests/testRequestIsGETAndHasNoCache()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0062s",
+                  "durationInSeconds": 0.006185054779052734,
+                  "name": "testSameAccountUpdateFailureDeletesAllServiceItems()",
+                  "nodeIdentifier": "ACEClientAppTests/testSameAccountUpdateFailureDeletesAllServiceItems()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testSameAccountUpdateFailureDeletesAllServiceItems",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0047s",
+                  "durationInSeconds": 0.004684925079345703,
+                  "name": "testSaveAddsExactGenericPasswordContract()",
+                  "nodeIdentifier": "ACEClientAppTests/testSaveAddsExactGenericPasswordContract()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testSaveAddsExactGenericPasswordContract",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.019s",
+                  "durationInSeconds": 0.018970012664794922,
+                  "name": "testStateMapsUnavailableAndSignOutDeletionFailure()",
+                  "nodeIdentifier": "ACEClientAppTests/testStateMapsUnavailableAndSignOutDeletionFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testStateMapsUnavailableAndSignOutDeletionFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.014s",
+                  "durationInSeconds": 0.013548016548156738,
+                  "name": "testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery()",
+                  "nodeIdentifier": "ACEClientAppTests/testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0049s",
+                  "durationInSeconds": 0.004889011383056641,
+                  "name": "testValidReleasePassesValidation()",
+                  "nodeIdentifier": "ACEClientAppTests/testValidReleasePassesValidation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testValidReleasePassesValidation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "ACEClientAppTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.0036s",
+                  "durationInSeconds": 0.0036270618438720703,
+                  "name": "testCatalogueHasUniqueIdentifiers()",
+                  "nodeIdentifier": "AcceptanceEvidenceCatalogueTests/testCatalogueHasUniqueIdentifiers()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueHasUniqueIdentifiers",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.047s",
+                  "durationInSeconds": 0.04719698429107666,
+                  "name": "testCatalogueMethodsExist()",
+                  "nodeIdentifier": "AcceptanceEvidenceCatalogueTests/testCatalogueMethodsExist()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueMethodsExist",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.022s",
+                  "durationInSeconds": 0.022383928298950195,
+                  "name": "testPendingRuntimePlanHasUniqueStructuredEntries()",
+                  "nodeIdentifier": "AcceptanceEvidenceCatalogueTests/testPendingRuntimePlanHasUniqueStructuredEntries()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testPendingRuntimePlanHasUniqueStructuredEntries",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AcceptanceEvidenceCatalogueTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogueTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.011703968048095703,
+                  "name": "testAccessibilityAuditPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testAccessibilityAuditPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityAuditPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.076s",
+                  "durationInSeconds": 0.07586407661437988,
+                  "name": "testAccessibilityLabelsUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testAccessibilityLabelsUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityLabelsUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0082s",
+                  "durationInSeconds": 0.008224964141845703,
+                  "name": "testBoldTextPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testBoldTextPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testBoldTextPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.035s",
+                  "durationInSeconds": 0.03463101387023926,
+                  "name": "testClipboardContract()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testClipboardContract()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testClipboardContract",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.021s",
+                  "durationInSeconds": 0.02080094814300537,
+                  "name": "testComposedCredentialStoreSessionLifecycle()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testComposedCredentialStoreSessionLifecycle()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testComposedCredentialStoreSessionLifecycle",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0056s",
+                  "durationInSeconds": 0.005594015121459961,
+                  "name": "testContrastPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testContrastPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testContrastPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.021s",
+                  "durationInSeconds": 0.02132999897003174,
+                  "name": "testCopyControlsUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testCopyControlsUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.01s",
+                  "durationInSeconds": 0.010252952575683594,
+                  "name": "testDecodingFailsClosed()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testDecodingFailsClosed()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testDecodingFailsClosed",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0056s",
+                  "durationInSeconds": 0.0056220293045043945,
+                  "name": "testDynamicTypePending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testDynamicTypePending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testDynamicTypePending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.38s",
+                  "durationInSeconds": 0.3849329948425293,
+                  "name": "testEvidencePrivacyInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testEvidencePrivacyInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testEvidencePrivacyInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.005s",
+                  "durationInSeconds": 0.004951000213623047,
+                  "name": "testFixtureInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testFixtureInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.041s",
+                  "durationInSeconds": 0.0413060188293457,
+                  "name": "testKeychainLifecycle()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testKeychainLifecycle()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainLifecycle",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.011708974838256836,
+                  "name": "testKeychainQueries()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testKeychainQueries()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainQueries",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0051s",
+                  "durationInSeconds": 0.0051070451736450195,
+                  "name": "testKeychainSerialisation()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testKeychainSerialisation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSerialisation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0041s",
+                  "durationInSeconds": 0.004094958305358887,
+                  "name": "testKeychainSourceInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testKeychainSourceInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSourceInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0057s",
+                  "durationInSeconds": 0.005674004554748535,
+                  "name": "testKeychainValidation()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testKeychainValidation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainValidation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0042s",
+                  "durationInSeconds": 0.0042220354080200195,
+                  "name": "testLayoutMatrixPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testLayoutMatrixPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testLayoutMatrixPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.011s",
+                  "durationInSeconds": 0.010735034942626953,
+                  "name": "testManualAppSwitcherPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testManualAppSwitcherPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testManualAppSwitcherPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0047s",
+                  "durationInSeconds": 0.004681944847106934,
+                  "name": "testManualVoiceOverPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testManualVoiceOverPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testManualVoiceOverPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.036s",
+                  "durationInSeconds": 0.0360490083694458,
+                  "name": "testOriginValidation()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testOriginValidation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testOriginValidation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0037s",
+                  "durationInSeconds": 0.0036590099334716797,
+                  "name": "testPhysicalDevicePending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testPhysicalDevicePending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testPhysicalDevicePending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.025s",
+                  "durationInSeconds": 0.025359034538269043,
+                  "name": "testPrivacyCoverUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testPrivacyCoverUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacyCoverUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.087s",
+                  "durationInSeconds": 0.08717894554138184,
+                  "name": "testPrivacySourceInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testPrivacySourceInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacySourceInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.088s",
+                  "durationInSeconds": 0.08800899982452393,
+                  "name": "testProjectConfiguration()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testProjectConfiguration()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.051s",
+                  "durationInSeconds": 0.05125391483306885,
+                  "name": "testRedirectDelegate()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testRedirectDelegate()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testRedirectDelegate",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0085s",
+                  "durationInSeconds": 0.008463025093078613,
+                  "name": "testReduceMotionPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testReduceMotionPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testReduceMotionPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.036s",
+                  "durationInSeconds": 0.035519957542419434,
+                  "name": "testReleaseScreenUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testReleaseScreenUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseScreenUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.035s",
+                  "durationInSeconds": 0.03519797325134277,
+                  "name": "testReleaseValidation()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testReleaseValidation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseValidation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.056s",
+                  "durationInSeconds": 0.056365013122558594,
+                  "name": "testRepositoryResponseMapping()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testRepositoryResponseMapping()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testRepositoryResponseMapping",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0031s",
+                  "durationInSeconds": 0.003054976463317871,
+                  "name": "testRequestConstruction()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testRequestConstruction()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testRequestConstruction",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.049s",
+                  "durationInSeconds": 0.04904496669769287,
+                  "name": "testSafeInterfaceUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSafeInterfaceUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSafeInterfaceUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.069s",
+                  "durationInSeconds": 0.06930303573608398,
+                  "name": "testSceneDelegateTest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSceneDelegateTest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSceneDelegateTest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.031s",
+                  "durationInSeconds": 0.03135108947753906,
+                  "name": "testScreenshotPolicyInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testScreenshotPolicyInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testScreenshotPolicyInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0049s",
+                  "durationInSeconds": 0.004917025566101074,
+                  "name": "testServerCompatibilityExternal()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testServerCompatibilityExternal()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testServerCompatibilityExternal",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.011880993843078613,
+                  "name": "testSessionConfiguration()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSessionConfiguration()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSessionConfiguration",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.073s",
+                  "durationInSeconds": 0.07320594787597656,
+                  "name": "testSignInUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSignInUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSignInUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0038s",
+                  "durationInSeconds": 0.0038019418716430664,
+                  "name": "testSimulatorMatrixPending()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSimulatorMatrixPending()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSimulatorMatrixPending",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.071s",
+                  "durationInSeconds": 0.0712900161743164,
+                  "name": "testSourceBoundaryInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testSourceBoundaryInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.04s",
+                  "durationInSeconds": 0.040071964263916016,
+                  "name": "testStateErrorHandling()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testStateErrorHandling()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testStateErrorHandling",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.0117110013961792,
+                  "name": "testStateGeneration()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testStateGeneration()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testStateGeneration",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.068s",
+                  "durationInSeconds": 0.0681380033493042,
+                  "name": "testStateMatrix()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testStateMatrix()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testStateMatrix",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.004s",
+                  "durationInSeconds": 0.0040209293365478516,
+                  "name": "testTrustHandlingSourceInspection()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testTrustHandlingSourceInspection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testTrustHandlingSourceInspection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.055s",
+                  "durationInSeconds": 0.05472695827484131,
+                  "name": "testVoiceOverOrderUITest()",
+                  "nodeIdentifier": "AcceptanceEvidenceContractTests/testVoiceOverOrderUITest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests/testVoiceOverOrderUITest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AcceptanceEvidenceContractTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            }
+          ],
+          "name": "ACEClientAppTests",
+          "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests",
+          "nodeType": "Unit test bundle",
+          "result": "Passed"
+        }
+      ],
+      "name": "ACEClientApp",
+      "nodeType": "Test Plan",
+      "result": "Passed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

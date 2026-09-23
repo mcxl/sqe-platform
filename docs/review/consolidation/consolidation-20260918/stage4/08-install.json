@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\\uv.EXE",
+    "--no-config",
+    "pip",
+    "sync",
+    "--python",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "--require-hashes",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\requirements-resolved.txt"
+  ],
+  "exit_code": 0,
+  "seconds": 24.407940499993856
+}

@@ -1,0 +1,25 @@
+{
+  "status": "passed for the dirty diagnostic candidate",
+  "runnerSha256": "22ffe41fd705e61729bd3cee78f88188ae2c1c87b738f5f0a505e5b71bb28dd8",
+  "commit": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "failureEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T095533Z-selected-279971683f21",
+  "passEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0",
+  "nativeFailure": [
+    {
+      "failureText": "XCTAssertEqual failed: (\"Optional(\"GET\")\") is not equal to (\"Optional(\"POST\")\")",
+      "targetName": "ACEClientAppTests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppTests/testRequestIsGETAndHasNoCache()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+      "testName": "testRequestIsGETAndHasNoCache()"
+    }
+  ],
+  "sourceDifference": {
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": {
+      "failure": "ce1d874a525aeaadd7b3c77799c56a06bb5a8e6cde8ca34ccee682e68bdc39b8",
+      "pass": "8bcd2da3c4bc53e65a2a05e7a3109bf66616b97993a32dd18aa108607111c4a3"
+    }
+  },
+  "originalTestRestored": true,
+  "scope": "One deliberately failing native GET assertion and the same corrected passing selector. This is the runner evidence gate, not final acceptance."
+}

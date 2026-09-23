@@ -1,0 +1,254 @@
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -4,7 +4,7 @@
+ enum UITestScenario: String {
+     case configuration, signIn, loading, emptyRelease, emptyEngagement, release, noConclusion, noActions
+     case denied, unavailable, unexpected, connection, timeout, invalidResponse, secure
+-    case keychainRead, keychainWrite, keychainDeletion, deletionOnly, deletionRetry, copyConfirmation, clipboardPaste, multiAction, privacy
++    case keychainRead, keychainWrite, keychainDeletion, deletionOnly, deletionRetry, copyConfirmation, multiAction, privacy
+ 
+     static var current: UITestScenario? {
+         guard let raw = ProcessInfo.processInfo.environment["ACE_UI_TEST_SCENARIO"] else { return nil }
+@@ -46,10 +46,8 @@
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: release.conclusion, actions: []), notices: ["No actions are available."], refresh: {}, signOut: {})
+         case .copyConfirmation:
+             ReleaseView(release: release, notices: [], refresh: {}, signOut: {})
+-        case .clipboardPaste:
+-            ClipboardPasteFixture()
+         case .multiAction:
+-            ReleaseView(
++            MultiActionClipboardFixture(
+                 release: ClientReleaseResponse(
+                     engagementName: release.engagementName,
+                     reviewStatus: release.reviewStatus,
+@@ -60,23 +58,55 @@
+                         release.actions[0],
+                         ClientAction(description: "Second fictional action", owner: "Second fictional owner", targetDate: "2026-08-26", status: "COMPLETE")
+                     ]
+-                ),
+-                notices: [],
+-                refresh: {},
+-                signOut: {}
++                )
+             )
+         case .privacy: PrivacyCoverView()
+         }
+     }
+ }
+ 
++private struct MultiActionClipboardFixture: View {
++    let release: ClientReleaseResponse
++    @State private var isClipboardTestDestinationPresented = false
++
++    var body: some View {
++        ReleaseView(release: release, notices: [], refresh: {}, signOut: {})
++            .safeAreaInset(edge: .bottom) {
++                Button {
++                    isClipboardTestDestinationPresented = true
++                } label: {
++                    Text("Clipboard test destination")
++                        .frame(minWidth: 44, minHeight: 44)
++                        .contentShape(Rectangle())
++                }
++                .accessibilityLabel("Clipboard test destination")
++            }
++            .sheet(isPresented: $isClipboardTestDestinationPresented) {
++                ClipboardPasteFixture {
++                    isClipboardTestDestinationPresented = false
++                }
++            }
++    }
++}
++
+ private struct ClipboardPasteFixture: View {
++    let close: () -> Void
+     @State private var pastedValue = ""
+ 
+     var body: some View {
+-        TextEditor(text: $pastedValue)
+-            .frame(minHeight: 120)
+-            .accessibilityLabel("Clipboard paste destination")
++        VStack(alignment: .leading, spacing: 16) {
++            TextEditor(text: $pastedValue)
++                .frame(minHeight: 120)
++                .accessibilityLabel("Clipboard paste destination")
++            Button(action: close) {
++                Text("Close")
++                    .frame(minWidth: 44, minHeight: 44)
++                    .contentShape(Rectangle())
++            }
++            .accessibilityLabel("Close clipboard test destination")
++        }
++        .padding()
++        .onAppear { pastedValue = "" }
+     }
+ }
+ #endif
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -498,92 +498,90 @@
+ 
+     func testCompleteActionClipboardPastesExactly() {
+         continueAfterFailure = false
+-        let sentinel = "FictionalClipboardSentinelMustBeReplaced"
+         let actionPayloads = [
+-            ("release", "Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"),
+-            ("multiAction", "Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"),
+-            ("multiAction", "Copy action 2", "Action 2\nDescription: Second fictional action\nOwner: Second fictional owner\nTarget date: 2026-08-26\nStatus: COMPLETE")
++            ("Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN", "ActionOneClipboardSentinelA"),
++            ("Copy action 2", "Action 2\nDescription: Second fictional action\nOwner: Second fictional owner\nTarget date: 2026-08-26\nStatus: COMPLETE", "ActionTwoClipboardSentinelB"),
++            ("Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN", "ActionOneClipboardSentinelC")
+         ]
+-        XCTAssertFalse(actionPayloads.contains { $0.2.contains(sentinel) }, "Clipboard sentinel must differ from every action payload")
+-
+-        var activeApp: XCUIApplication?
+-        defer { activeApp?.terminate() }
+-
+-        let seedApp = launch("signIn")
+-        activeApp = seedApp
+-        seedNativeClipboard(with: sentinel, in: seedApp)
+-        seedApp.terminate()
+-        activeApp = nil
+-
+-        for (scenario, label, expectedPayload) in actionPayloads {
+-            let release = launch(scenario)
+-            activeApp = release
+-            let copy = release.buttons[label]
+-            scrollUntilVisible(copy, in: release, field: label)
++        let app = launch("multiAction")
++        defer { app.terminate() }
++
++        for (position, action) in actionPayloads.enumerated() {
++            let (label, expectedPayload, sentinel) = action
++            XCTAssertFalse(expectedPayload.contains(sentinel), "Clipboard sentinel must differ from the expected action payload")
++            seedNativeClipboard(with: sentinel, in: app)
++
++            let copy = app.buttons[label]
++            scrollUntilVisible(copy, in: app, field: label)
+             XCTAssertTrue(copy.isHittable, "\(label) must be tappable")
+             copy.tap()
+ 
+             let actionNumber = label.suffix(1)
+-            let confirmation = release.staticTexts["Copied Action \(actionNumber)."]
++            let confirmation = app.staticTexts["Copied Action \(actionNumber)."]
+             XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "\(label) must show its confirmation")
+-            if scenario == "release" {
+-                let actionDescription = release.descendants(matching: .any)
++            if position == 1 {
++                XCTAssertTrue(app.staticTexts["Copied Action 1."].exists, "Action 1 confirmation must persist after copying Action 2")
++            }
++            if position == 2 {
++                let actionDescription = app.descendants(matching: .any)
+                     .matching(NSPredicate(format: "label == %@", "Action description: Fictional action"))
+                     .firstMatch
+-                XCTAssertEqual(
+-                    actionDescription.label,
+-                    "Action description: Fictional action",
+-                    "First copy must keep Action 1 values visible"
+-                )
+-                copy.tap()
+-                XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "Repeated \(label) must show its confirmation")
+-                XCTAssertEqual(
+-                    actionDescription.label,
+-                    "Action description: Fictional action",
+-                    "Repeated copy must keep Action 1 values visible"
+-                )
++                XCTAssertEqual(actionDescription.label, "Action description: Fictional action", "First Action 1 copy must keep its description visible")
++                XCTAssertTrue(app.staticTexts["Copied Action 2."].exists, "Action 2 confirmation must persist before repeated Action 1 copy")
+             }
+-            addScreenshot(of: release, named: "Native copy — \(scenario) — \(label)")
+-            release.terminate()
+-            activeApp = nil
+-
+-            let destination = launch("clipboardPaste")
+-            activeApp = destination
+-            let textEditor = destination.textViews["Clipboard paste destination"]
+-            XCTAssertTrue(textEditor.waitForExistence(timeout: 5), "Multiline paste destination must exist for \(label)")
+-            textEditor.tap()
+-            textEditor.press(forDuration: 1)
+-            addScreenshot(of: destination, named: "Native Paste menu — \(scenario) — \(label)")
+-            let paste = destination.descendants(matching: .any)
++
++            let destination = openClipboardTestDestination(in: app)
++            XCTAssertEqual(destination.value as? String, "", "Clipboard test destination must be empty before Paste")
++            destination.tap()
++            destination.press(forDuration: 1)
++            let paste = app.descendants(matching: .any)
+                 .matching(NSPredicate(format: "label == %@", "Paste"))
+                 .firstMatch
+             XCTAssertTrue(paste.waitForExistence(timeout: 5), "Native Paste command must be available for \(label)")
+             paste.tap()
+-            XCTAssertEqual(
+-                textEditor.value as? String,
+-                expectedPayload,
+-                "Native paste must reproduce the copied \(label) payload exactly"
+-            )
+-            addScreenshot(of: destination, named: "Native paste value — \(scenario) — \(label)")
+-            destination.terminate()
+-            activeApp = nil
++            XCTAssertEqual(destination.value as? String, expectedPayload, "Native Paste must reproduce the copied \(label) payload exactly")
++            closeClipboardTestDestination(in: app)
++            XCTAssertTrue(confirmation.exists, "\(label) confirmation must persist after the sheet closes")
++            if position == 2 {
++                XCTAssertEqual(
++                    app.descendants(matching: .any)
++                        .matching(NSPredicate(format: "label == %@", "Action description: Fictional action"))
++                        .firstMatch.label,
++                    "Action description: Fictional action",
++                    "Repeated Action 1 copy must keep its description visible"
++                )
++            }
+         }
+     }
+ 
+     private func seedNativeClipboard(with sentinel: String, in app: XCUIApplication) {
+-        let username = app.textFields["Username"]
+-        XCTAssertTrue(username.waitForExistence(timeout: 5), "Username field must exist to seed the native clipboard")
+-        username.tap()
+-        username.typeText(sentinel)
+-        username.doubleTap()
+-        addScreenshot(of: app, named: "Native clipboard sentinel selection")
++        let destination = openClipboardTestDestination(in: app)
++        destination.tap()
++        destination.typeText(sentinel)
++        XCTAssertEqual(destination.value as? String, sentinel, "Clipboard test destination must contain the complete sentinel before Copy")
++        destination.doubleTap()
+         let copy = app.descendants(matching: .any)
+             .matching(NSPredicate(format: "label == %@", "Copy"))
+             .firstMatch
+         XCTAssertTrue(copy.waitForExistence(timeout: 5), "Native Copy command must be available for clipboard seeding")
+-        addScreenshot(of: app, named: "Native clipboard sentinel selected")
+         copy.tap()
+-        addScreenshot(of: app, named: "Native clipboard sentinel copied")
++        closeClipboardTestDestination(in: app)
++    }
++
++    private func openClipboardTestDestination(in app: XCUIApplication) -> XCUIElement {
++        let open = app.buttons["Clipboard test destination"]
++        XCTAssertTrue(open.waitForExistence(timeout: 5), "Clipboard test destination control must exist")
++        open.tap()
++        let destination = app.textViews["Clipboard paste destination"]
++        XCTAssertTrue(destination.waitForExistence(timeout: 5), "Clipboard test destination must open")
++        XCTAssertEqual(destination.value as? String, "", "Clipboard test destination must reset when it opens")
++        return destination
++    }
++
++    private func closeClipboardTestDestination(in app: XCUIApplication) {
++        let close = app.buttons["Close clipboard test destination"]
++        XCTAssertTrue(close.waitForExistence(timeout: 5), "Clipboard test destination close control must exist")
++        close.tap()
+     }
+ 
+     func testBothAppearances() {
+--- a/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
++++ b/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
+@@ -1571,7 +1571,8 @@
+             "", "2026-08-24T10:15:30Z", "2026-08-25", "2026-08-26", "Access denied. Sign in again.",
+             "ACE could not be reached. Check your connection and try again.",
+             "ACE could not establish a secure connection. Try again later.", "ACE is unavailable. Try again later.",
+-            "ACE_UI_TEST_SCENARIO", "Clipboard paste destination", "COMPLETE", "Fictional action",
++            "ACE_UI_TEST_SCENARIO", "Clipboard paste destination", "Clipboard test destination", "Close",
++            "Close clipboard test destination", "COMPLETE", "Fictional action",
+             "Fictional conclusion", "Fictional Engagement", "Fictional owner", "Fictional summary",
+             "FICTIONAL-REF-001", "Loading", "Loading current release", "No actions are available.",
+             "No conclusion is available.", "No current release is available.", "OPEN", "RELEASED",

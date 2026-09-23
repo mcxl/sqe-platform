@@ -1,0 +1,91 @@
+{
+  "verifiedUTC": "2026-09-15T10:54:26.506012+00:00",
+  "candidate": "6718b437b10a51eeee0e5c6b3918dc2d5e052260",
+  "caseCount": 5,
+  "auditInvocationCount": 9,
+  "nativeExit": 0,
+  "imageCount": 36,
+  "distinctImagesInspected": 9,
+  "originalSettingsAndBootStatesRestored": true,
+  "frames": [
+    {
+      "copyActionExists": true,
+      "frames": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "confirmation": {
+          "height": 20.33333333333337,
+          "width": 123.33333333333331,
+          "x": 32,
+          "y": 688.0000000000001
+        },
+        "copyAction": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 622
+        },
+        "copyAction1": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 622
+        },
+        "scroll": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "phase": "before",
+      "queryFinishUptimeSeconds": 182000.94913750602,
+      "queryStartUptimeSeconds": 182000.31521373402
+    },
+    {
+      "copyActionExists": true,
+      "frames": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "confirmation": {
+          "height": 20.333333333333485,
+          "width": 123.33333333333331,
+          "x": 32,
+          "y": 751.6666666666666
+        },
+        "copyAction": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 685.6666666666666
+        },
+        "copyAction1": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 685.6666666666666
+        },
+        "scroll": {
+          "height": 873.9999999999999,
+          "width": 402,
+          "x": 0,
+          "y": -2.842170943040401e-14
+        }
+      },
+      "phase": "after",
+      "queryFinishUptimeSeconds": 182006.54765385002,
+      "queryStartUptimeSeconds": 182005.79538324
+    }
+  ],
+  "conclusion": "The original preceding-case order passed with frame logging. Prefix alone did not reproduce the failure in this run. The logging observer effect and original native contrast cause remain unresolved.",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0
+}

@@ -1,0 +1,10 @@
+{
+  "startUTC": "2026-09-14T22:00:52.417380+00:00",
+  "question": "Does removing test-only safe-area banner geometry, while retaining actual setting observation, stop the unchanged .all release audits from failing?",
+  "basis": "Banner text changes size during audit and occupies a safe-area inset above release content. Prior tests suppressed its Text only and retained inset modifier. The new lifecycle run passed without product change; intermittency remains.",
+  "change": "Store observed test settings as accessibility metadata on existing root container, without adding visible header or reserving screen area. Query by identifier independent of element type. No user content removed, no test/audit filtering, no text-size cap.",
+  "control": "Original clean1b38b90 and prior native-list control with same product source; preserve exact source identities. A candidate pass alone cannot prove cause.",
+  "preflight": "Xcode26.4.1 and iOS26.4.1 requiredsimulator verified; retained gate and runner unchanged; Mac227GiB. Phone not required.",
+  "limits": "Existing unbounded authority. Two failed corrective attempts per fault. Focused tests first; no full programme until all pilot gates.",
+  "expectedEvidence": "Retained full native bundle; all field, Copy, appearance and audit checks unchanged. Compare original if candidate passes. Then affected maximum-text/noActions/noConclusion checks."
+}

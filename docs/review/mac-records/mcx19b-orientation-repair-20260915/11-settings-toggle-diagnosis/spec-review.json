@@ -1,0 +1,67 @@
+{
+  "review_type": "Pocock specification axis — bounded Settings correction",
+  "scope": "Specification and approved bounded Settings policy only. Naming and standards were not assessed.",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "pinned_refs": {
+    "base": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+    "head": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+    "diff": "git diff c0e53738d15f677f9fd69b4d1eeba9f228ac51d1...af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+    "changed_files": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+    "primary_fix_diff": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/primary-fix-diff.patch",
+    "primary_fix_diff_sha256": "e1ce54c8f569bcbee896017e2d88bf094f88bd996047013f1a86396eda4d629b"
+  },
+  "inspected_sources": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:401-496",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/failure-record.json:1-26",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/primary-switch-policy-results.txt",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md:855-868,913-915,944-946,1188-1205,1290-1295,1345-1355,1414-1426",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md:33,61-65,71-102,104-128"
+  ],
+  "requirement_refs": [
+    "Spec:855-868 and 913-915 retain the 512 native audits, 324 layout-only cases, 836-case programme, and no audit exception.",
+    "Spec:1188-1205 and 1290-1295 require focused diagnostic evidence, an exact candidate, and a 22-case unchanged-candidate pilot before expansion.",
+    "Spec:1345-1355 requires valid native results, observed system settings, restoration, and no weakened accessibility assertions.",
+    "Spec:1414-1426 keeps untested settings pending and rejects inference from attachments alone.",
+    "Plan:33 and 61-65 retain existing failures and prohibit conversion of failed native results into passes.",
+    "Approved Bounded Settings Recovery policy requires a requested native setting with in-app verification, no guessed wait, at most two fresh-state inputs, retained first miss, final mismatch failure, and no Apple-defect exception."
+  ],
+  "assessment": [
+    {
+      "subject": "Bounded retry policy",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:418-428,443-495"],
+      "result": "Pass",
+      "rationale": "The switch policy permits at most two taps. Each loop reads a fresh native switch value. A changed value succeeds; an unreadable value fails; a persistent mismatch after the second tap fails."
+    },
+    {
+      "subject": "Evidence retention and verification",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:465-493"],
+      "result": "Pass",
+      "rationale": "Each input and result records requested state, observed state, attempt number, and frame. The first miss retains a named screenshot. The final mismatch retains another screenshot and fails with both final and first-attempt values. The wait observes the requested condition; it is not a guessed delay."
+    },
+    {
+      "subject": "Scope and audit integrity",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:401-416,430-496"],
+      "result": "Pass",
+      "rationale": "The one-file UI-test change corrects Settings automation only. It changes no application behaviour, test matrix, audit handler, capture path, runner, dependency, service, or target acceptance minimum. It does not create an Apple-defect exception."
+    },
+    {
+      "subject": "Failure basis",
+      "source_refs": ["failure-record.json:3-25"],
+      "result": "Pass",
+      "rationale": "The retained failure classifies the lost Bold Text input as an unresolved Settings automation or environment fault. This correction bounds recovery and preserves the failure path; it does not assert a known cause."
+    }
+  ],
+  "findings": [],
+  "verdict": "PASS — the bounded Settings correction preserves the requested verification, evidence, retry, and failure policy. No specification-scope leak or acceptance masking was found. This does not establish Apple causation, native success, pilot success, or final application acceptance.",
+  "reported_check_status": "The retained policy script reports 18 boundary checks passed. The native on/off run was active during review and was not treated as complete.",
+  "retained_limitations": [
+    "The previous c0 pilot failed after five cases while setting Bold Text off. That result remains a failure record, not pilot credit.",
+    "The Settings mechanism remains unresolved.",
+    "The 22-case pilot, complete 836-case programme, audit results, image inspection, and final delivery gates remain pending.",
+    "No source edit, native test, or simulator action was performed by this review."
+  ],
+  "requested_model": "gpt-5.6-terra",
+  "requested_effort": "medium",
+  "actual_runtime": "unobservable",
+  "reviewed_at": "2026-09-15"
+}

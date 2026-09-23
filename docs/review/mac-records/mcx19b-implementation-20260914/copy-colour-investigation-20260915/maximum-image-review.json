@@ -1,0 +1,73 @@
+{
+  "method": "Each distinct image inspected at original resolution by primary agent.",
+  "imageCount": 12,
+  "uniqueCount": 7,
+  "images": [
+    {
+      "sha256": "54065917c631e4a390a0013fc73716a96089c21731eebca49b0c24e9eff51312",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/2D512ACD-9F99-430F-855A-D318D0E5F3CA.png"
+      ],
+      "inspection": "passed",
+      "observation": "Conclusion title and summary readable at maximum size. Other content extends beyond viewport."
+    },
+    {
+      "sha256": "fec8b1c030d174cc315311aedcabe7be990c3b884558b1d1b2a5db58cc7e9677",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/7E0C3B2D-5A4C-4DBA-B662-8C92A037F36F.png"
+      ],
+      "inspection": "passed",
+      "observation": "Same conclusion area without scroll indicator; separately inspected."
+    },
+    {
+      "sha256": "ace6972a9b632b6093db48cbd03c890e9a5cc0f77abedb5e6373669e6512b20d",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/9086878D-66A4-4216-B2E2-61B4A61FCA08.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/C9EE62D8-5318-4964-8B59-D7A5689CBD4B.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/FDC7F28A-5450-4C8C-A5BE-4EE8365F679D.png"
+      ],
+      "inspection": "passed",
+      "observation": "Top fields wrap within available width. Engagement name, review status and release version readable."
+    },
+    {
+      "sha256": "b0002aaa0d95614138de34695a17f41da93866c3e1b2163ce1687fcf00d4bc10",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/9714D92B-8E5B-4DE7-9F11-3F928BC71EF6.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/98EBAEF5-6FCD-4407-8AA0-83D89D7DB19A.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/B8563EFA-FF08-4A12-A138-CA249513473A.png",
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/F01108B8-CF41-4813-AB62-28682B34B9CB.png"
+      ],
+      "inspection": "passed",
+      "observation": "All action values readable. Copy partly outside lower viewport; this capture does not prove a maximum-size Copy interaction."
+    },
+    {
+      "sha256": "dc73edd75aa361b22acc4f1e69192b694c0cb30fa68e711c48141e03b4598585",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/97A21CAF-97F3-40DB-8106-87675FF82091.png"
+      ],
+      "inspection": "passed",
+      "observation": "Full published date wraps onto two lines without data loss."
+    },
+    {
+      "sha256": "7a0a331618eb9652aead31b294ef39a8c6e039d654fa1d748c44f5914e90bd55",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/E329BACB-1238-4039-B97B-A993B34E9314.png"
+      ],
+      "inspection": "passed",
+      "observation": "Evidence reference wraps as FICTIONAL- and REF-001; value retained. Action description readable below."
+    },
+    {
+      "sha256": "3f655bccbca489530930ad411c6c074fef8519ff95db27fc6a94fc4eb8e324b1",
+      "files": [
+        "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/selected-attachments/F8023230-1906-463E-84E2-706AB1206BD0.png"
+      ],
+      "inspection": "passed",
+      "observation": "Same evidence and action area without scroll indicator; separately inspected."
+    }
+  ],
+  "limits": [
+    "Captures cover all eleven values across scroll positions.",
+    "Content outside the scroll viewport is not a horizontal truncation finding.",
+    "Maximum-size Copy tap/confirmation and full coverage remain outside this selected test."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-15T03:44:42.925560+00:00",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "functionalTests": {
+    "passed": 68,
+    "failed": 0,
+    "skipped": 0
+  },
+  "focusedSettingsChecksPassed": 3,
+  "pilotRun": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb",
+  "pilotStatus": "failed",
+  "settings": [
+    {
+      "name": "iPhone 17 Pro Max-read",
+      "result": "Passed"
+    },
+    {
+      "name": "iPhone 17-read",
+      "result": "Passed"
+    }
+  ],
+  "completedPilotCases": 0,
+  "failureEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-timeout-evidence.json",
+  "activeNativeProcess": false,
+  "restorationFailures": []
+}

@@ -1,0 +1,118 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 757be82..098212f 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -150,43 +150,54 @@ struct ReleaseView: View {
+     let signOut: () -> Void
+ 
+     var body: some View {
+-        ScrollView {
+-            VStack(alignment: .leading, spacing: 20) {
+-                SectionHeader("Current Release")
++        List {
++            Section {
+                 HandlingLabel()
+-                ReleaseCard {
+-                    Text("Release Details")
+-                        .font(.headline)
+-                        .accessibilityAddTraits(.isHeader)
+-                    ValueRow(field: .engagementName, value: release.engagementName)
+-                    ValueRow(field: .reviewStatus, value: release.reviewStatus)
+-                    ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
+-                    ValueRow(field: .publishedAt, value: release.publishedAt)
+-                }
+-                if let conclusion = release.conclusion {
+-                    ReleaseCard {
+-                        SectionHeader("Conclusion")
+-                        ValueRow(field: .conclusionTitle, value: conclusion.title)
+-                        ValueRow(field: .conclusionSummary, value: conclusion.summary)
+-                        ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
+-                    }
++            } header: {
++                SectionHeader("Current Release")
++            }
++
++            Section {
++                ValueRow(field: .engagementName, value: release.engagementName)
++                ValueRow(field: .reviewStatus, value: release.reviewStatus)
++                ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
++                ValueRow(field: .publishedAt, value: release.publishedAt)
++            } header: {
++                Text("Release Details")
++                    .font(.headline)
++                    .accessibilityAddTraits(.isHeader)
++            }
++
++            if let conclusion = release.conclusion {
++                Section {
++                    ValueRow(field: .conclusionTitle, value: conclusion.title)
++                    ValueRow(field: .conclusionSummary, value: conclusion.summary)
++                    ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
++                } header: {
++                    SectionHeader("Conclusion")
+                 }
+-                if !release.actions.isEmpty {
++            }
++
++            if !release.actions.isEmpty {
++                Section {
+                     SectionHeader("Actions")
+-                    ForEach(Array(release.actions.enumerated()), id: \.offset) { index, action in
+-                        ReleaseCard {
+-                            Text("Action \(index + 1)")
+-                                .font(.headline)
+-                                .accessibilityAddTraits(.isHeader)
+-                            ValueRow(field: .actionDescription, value: action.description)
+-                            ValueRow(field: .actionOwner, value: action.owner)
+-                            ValueRow(field: .actionTargetDate, value: action.targetDate)
+-                            ValueRow(field: .actionStatus, value: action.status)
+-                            ActionCopyControl(action: action, index: index)
+-                        }
+-                        .accessibilityElement(children: .contain)
++                }
++                ForEach(Array(release.actions.enumerated()), id: \.offset) { index, action in
++                    Section {
++                        ValueRow(field: .actionDescription, value: action.description)
++                        ValueRow(field: .actionOwner, value: action.owner)
++                        ValueRow(field: .actionTargetDate, value: action.targetDate)
++                        ValueRow(field: .actionStatus, value: action.status)
++                        ActionCopyControl(action: action, index: index)
++                    } header: {
++                        Text("Action \(index + 1)")
++                            .font(.headline)
++                            .accessibilityAddTraits(.isHeader)
+                     }
+                 }
++            }
++
++            Section {
+                 ForEach(notices, id: \.self) { notice in Text(notice) }
+                 Button { refresh() } label: {
+                     Text("Refresh")
+@@ -201,25 +212,8 @@ struct ReleaseView: View {
+                 }
+                 .accessibilityLabel("Sign out")
+             }
+-            .frame(maxWidth: .infinity, alignment: .leading)
+         }
+-    }
+-}
+-
+-private struct ReleaseCard<Content: View>: View {
+-    let content: Content
+-
+-    init(@ViewBuilder content: () -> Content) {
+-        self.content = content()
+-    }
+-
+-    var body: some View {
+-        VStack(alignment: .leading, spacing: 12) {
+-            content
+-        }
+-        .frame(maxWidth: .infinity, alignment: .leading)
+-        .padding()
+-        .background(Color(uiColor: .secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
++        .listStyle(.insetGrouped)
+     }
+ }
+ 

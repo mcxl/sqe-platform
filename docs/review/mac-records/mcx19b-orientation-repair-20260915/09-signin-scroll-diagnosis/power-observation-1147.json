@@ -1,0 +1,45 @@
+{
+  "utc": "2026-09-15T11:47:01.659570+00:00",
+  "commands": [
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "assertions"
+      ],
+      "exit": 0,
+      "stdout": "2026-09-15 21:47:01 +1000 \nAssertion status system-wide:\n   BackgroundTask                 0\n   ApplePushServiceTask           0\n   UserIsActive                   1\n   PreventUserIdleDisplaySleep    0\n   SoftwareUpdateTask             0\n   PreventSystemSleep             0\n   ExternalMedia                  0\n   PreventUserIdleSystemSleep     1\n   NetworkClientActive            0\nListed by owning process:\n   pid 242(runningboardd): [0x0002d42600019e82] 00:00:02 PreventUserIdleSystemSleep named: \"app<application.net.whatsapp.WhatsApp.68064672.68064678(502)>242-549-62089:Shared Background Assertion 26962 for net.whatsapp.WhatsApp(FinishTask)\"  \n\tCreated for PID: 549. \n   pid 227(WindowServer): [0x0000001500098123] 00:44:46 UserIsActive named: \"com.apple.iohideventsystem.queue.tickle serviceID:10000d102 service:AppleMultitouchDevice product:Apple Internal Keyboard / Trackpad eventType:11\"  \n   pid 64777(xcodebuild): [0x0002d41600019e7e] 00:00:18 PreventUserIdleSystemSleep named: \"Xcode running tests.\"  \n   pid 179(bluetoothd): [0x000002db00098601] 33:01:05 UserIsActive named: \"Bluetooth LE HID Activity\"  \nKernel Assertions: 0x100=MAGICWAKE\n   id=507  level=255 0x100=MAGICWAKE creat= description=en0 owner=IOSkywalkNetworkBSDClient\nIdle sleep preventers: IODisplayWrangler\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "therm"
+      ],
+      "exit": 0,
+      "stdout": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\n2026-09-15 21:47:01 +1000 CPU Power notify\n\tCPU_Scheduler_Limit \t= 100\n\tCPU_Available_CPUs \t= 16\n\tCPU_Speed_Limit \t= 41\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pmset",
+        "-g",
+        "custom"
+      ],
+      "exit": 0,
+      "stdout": "Battery Power:\n lidwake              1\n lowpowermode         0\n standbydelayhigh     86400\n proximitywake        0\n standby              1\n standbydelaylow      10800\n ttyskeepawake        1\n hibernatemode        3\n powernap             0\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 0\n networkoversleep     0\n sleep                1\n lessbright           1\n halfdim              1\n acwake               0\n tcpkeepalive         1\n disksleep            0\nAC Power:\n lidwake              1\n lowpowermode         0\n standbydelayhigh     86400\n proximitywake        1\n standby              1\n standbydelaylow      0\n ttyskeepawake        1\n hibernatemode        3\n powernap             1\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n halfdim              1\n acwake               0\n disksleep            0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "pgrep",
+        "-alf",
+        "caffeinate"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

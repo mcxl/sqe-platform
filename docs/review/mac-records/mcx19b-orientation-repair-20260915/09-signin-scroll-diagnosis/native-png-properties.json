@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "{\n    ColorModel = RGB;\n    Depth = 8;\n    Orientation = 8;\n    PixelHeight = 1206;\n    PixelWidth = 2622;\n    ProfileName = \"sRGB IEC61966-2.1\";\n    \"{Exif}\" =     {\n        PixelXDimension = 2622;\n        PixelYDimension = 1206;\n        UserComment = Screenshot;\n    };\n    \"{IPTC}\" =     {\n        \"Caption/Abstract\" = Screenshot;\n    };\n    \"{PNG}\" =     {\n        Chromaticities =         (\n            \"0.3127\",\n            \"0.329\",\n            \"0.64\",\n            \"0.33\",\n            \"0.3\",\n            \"0.6000000000000001\",\n            \"0.15\",\n            \"0.06\"\n        );\n        Description = Screenshot;\n        Gamma = \"0.45455\";\n        InterlaceType = 0;\n        sRGBIntent = 0;\n    };\n    \"{TIFF}\" =     {\n        ImageDescription = Screenshot;\n        Orientation = 8;\n    };\n}\n",
+  "stderr": ""
+}

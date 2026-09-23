@@ -1,0 +1,61 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 29f56b9..0fe7961 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -359,9 +359,10 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func verifyActionTarget(_ button: XCUIElement, name: String) -> Bool {
+-        requireCoverage(button.exists && button.isHittable, "\(name) must be reachable")
+-            && requireCoverage(isAtLeast44Points(button.frame.width), "\(name) width is below 44 points")
+-            && requireCoverage(isAtLeast44Points(button.frame.height), "\(name) height is below 44 points")
++        guard requireCoverage(button.exists && button.isHittable, "\(name) must be reachable") else { return false }
++        let frame = button.frame
++        return requireCoverage(isAtLeast44Points(frame.width), actionTargetDiagnostic(name, dimension: "width", frame: frame))
++            && requireCoverage(isAtLeast44Points(frame.height), actionTargetDiagnostic(name, dimension: "height", frame: frame))
+     }
+ 
+     private func coverageElement(in app: XCUIApplication, labeled label: String) -> XCUIElement {
+@@ -968,30 +969,34 @@ final class ACEClientAppUITests: XCTestCase {
+     private func assertMinimumActionTargets(in app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
+         // Off-screen elements need scrolling before their hit area can be measured.
+         for button in app.buttons.allElementsBoundByIndex where button.isHittable {
++            let frame = button.frame
+             XCTAssertTrue(
+-                isAtLeast44Points(button.frame.width),
+-                actionTargetDiagnostic(button.label, dimension: "width", measurement: button.frame.width),
++                isAtLeast44Points(frame.width),
++                actionTargetDiagnostic(button.label, dimension: "width", frame: frame),
+                 file: file,
+                 line: line
+             )
+             XCTAssertTrue(
+-                isAtLeast44Points(button.frame.height),
+-                actionTargetDiagnostic(button.label, dimension: "height", measurement: button.frame.height),
++                isAtLeast44Points(frame.height),
++                actionTargetDiagnostic(button.label, dimension: "height", frame: frame),
+                 file: file,
+                 line: line
+             )
+         }
+     }
+ 
++    private static let targetMeasurementPrecision: CGFloat = 0.000_000_001
++
+     private func isAtLeast44Points(_ measurement: CGFloat) -> Bool {
+         let minimum: CGFloat = 44
+-        // XCTest can report a 44-point SwiftUI target eight ULP below 44.
+-        return measurement >= minimum || minimum - measurement <= minimum.ulp * 8
++        // This test-harness precision policy does not model XCTest arithmetic.
++        guard measurement.isFinite else { return false }
++        return measurement >= minimum - Self.targetMeasurementPrecision
+     }
+ 
+-    private func actionTargetDiagnostic(_ label: String, dimension: String, measurement: CGFloat) -> String {
++    private func actionTargetDiagnostic(_ label: String, dimension: String, frame: CGRect) -> String {
+         let minimum: CGFloat = 44
+-        return "\(label) \(dimension): measured \(measurement), minimum \(minimum), tolerance \(minimum.ulp * 8) (eight ULP)"
++        return "\(label) \(dimension): measured width \(frame.width), height \(frame.height), minimum \(minimum), precision \(Self.targetMeasurementPrecision) points"
+     }
+ 
+     private func assertReleaseContrastProbeFramesAreStable(in app: XCUIApplication) {

@@ -1,0 +1,15 @@
+{
+  "updatedUTC": "2026-09-15T13:34:38.621378+00:00",
+  "nativeActualCandidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "status": "on and off passed; restoration pending",
+  "checks": [
+    "Bold Text on/off observed inside app",
+    "Reduce Motion on/off observed inside app",
+    "Increase Contrast on/off observed inside app"
+  ],
+  "tapDelivery": "all6changes succeeded on first input in this native run; no actual retry observed",
+  "decisionPolicy": "Actual extracted policy passed bothdesiredvalues at taps0/1/2 includingnil. This is policy proof, not native second-tap delivery.",
+  "sourceReview": "Spec pass; Standards diagnostic finding repaired in isolation, notyetintegrated",
+  "correctionAttempt": 1,
+  "pilotCredit": 0
+}

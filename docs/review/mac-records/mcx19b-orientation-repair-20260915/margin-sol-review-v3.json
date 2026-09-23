@@ -1,0 +1,19 @@
+{
+  "updatedUTC": "2026-09-15T09:47:30.001072+00:00",
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "fullPatchSha256": "3f57e1cd13b0496861254c0b64898cd2b4e4e3975fb27fb99b675779d4da254f",
+  "incrementalPatchSha256": "d3526a9c765a356885ad203acbb253d4bd7ef08b0402d26e1a6e92f27e4be839",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "actualRuntime": "unobservable",
+  "verdict": "ship for source only",
+  "findings": [],
+  "confirmed": [
+    "Release ScrollView drawing clipped to its bounds",
+    "Default inner margins retained",
+    "Non-release margins unchanged",
+    "Release classification preserved",
+    "multiAction safeAreaInset remains outside clip"
+  ],
+  "limitation": "No native or image acceptance from source review. Focused noConclusion run must pass native and visual checks. Other pilot variants remain within22cases. MultiAction visual/device acceptance remains outside this pilot."
+}

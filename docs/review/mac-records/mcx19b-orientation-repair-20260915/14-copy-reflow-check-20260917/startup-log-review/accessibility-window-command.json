@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/log",
+    "show",
+    "--archive",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/startup-log-review/diagnostics/0_Test_iPhone 17_Diagnostics/simctl_diagnostics/2EB0863C-470E-467D-A0C6-CD216DA70C67/system.logarchive",
+    "--style",
+    "compact",
+    "--start",
+    "2026-09-17 12:20:00",
+    "--end",
+    "2026-09-17 12:21:40",
+    "--info",
+    "--debug",
+    "--predicate",
+    "process == \"testmanagerd\" OR eventMessage CONTAINS[c] \"accessibility\" OR eventMessage CONTAINS[c] \"AXRuntime\""
+  ],
+  "exit": 0,
+  "stderr": ""
+}

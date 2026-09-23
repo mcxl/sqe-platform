@@ -1,0 +1,64 @@
+{
+  "test": "testFictionalReleaseHasApprovedCopyControls",
+  "sourceLine": 135,
+  "expected": "Release audit completes without findings",
+  "actualAuditIssues": [
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 63.333333333333336,
+          "x": 0,
+          "y": 382.3333333333332
+        },
+        "identifier": "",
+        "label": "Action 1",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 45,
+          "x": 0,
+          "y": 737
+        },
+        "identifier": "",
+        "label": "OPEN",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release"
+    }
+  ],
+  "errors": [
+    {
+      "logLine": 4133,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed"
+    },
+    {
+      "logLine": 4143,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed"
+    }
+  ],
+  "settingsEvidence": {
+    "appearanceBefore": "light",
+    "appearanceObserved": "light",
+    "appearanceRequested": "light",
+    "appearanceRestored": "light",
+    "contentSizeBefore": "large",
+    "contentSizeObserved": "large",
+    "contentSizeRequested": "large",
+    "contentSizeRestored": "large"
+  },
+  "sourceRestored": true,
+  "originalCopyConfirmationAndReleaseImagesReviewed": true,
+  "classification": "native contrast findings; underlying cause unresolved; no corrective change attempted"
+}

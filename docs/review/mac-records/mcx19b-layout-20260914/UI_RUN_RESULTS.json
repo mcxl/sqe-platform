@@ -1,0 +1,1151 @@
+{
+  "baseCommit": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "branch": "codex/mcx19b-release-layout",
+  "status": "UNVERIFIED - UI QA INCOMPLETE. Private phone preview installed; not accepted.",
+  "files": [
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "sha256": "ab451f6660f908eee2017e692ea75300f3c37488af8b5742238bd2b173781d2d"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "sha256": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "sha256": "656af6f4d152dcb4a8ea6cd88fae829907255c9237f3f51df7cafc3c1a78e84e"
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "sha256": "d93939981d5fe7e4759f3a36beced9f6613ff84eada82351da76707aaf217a2b"
+    }
+  ],
+  "runs": [
+    {
+      "tag": "release-light-audit",
+      "nativeExit": 65,
+      "startedUTC": "2026-09-14T03:07:55Z",
+      "finishedUTC": "2026-09-14T03:14:50Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1789355686.53,
+        "passedTests": 0,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1789355279.843,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "Contrast nearly passed",
+            "targetName": "ACEClientAppUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls()",
+            "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+            "testName": "testFictionalReleaseHasApprovedCopyControls()"
+          }
+        ],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "8 runs of 1 test failed with Contrast nearly passed"
+          },
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "8 runs of 1 test failed with Contrast failed"
+          },
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "2 runs of 1 test failed with Potentially inaccessible text"
+          }
+        ],
+        "totalTestCount": 1
+      },
+      "issues": [
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 17.99999999999997,
+              "width": 128,
+              "x": 32,
+              "y": 242.33333333333334
+            },
+            "identifier": "",
+            "label": "Engagement name",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 95,
+              "x": 32,
+              "y": 312.3333333333333
+            },
+            "identifier": "",
+            "label": "Review status",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 107.33333333333331,
+              "x": 32,
+              "y": 382.3333333333333
+            },
+            "identifier": "",
+            "label": "Release version",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 165.33333333333334,
+              "x": 32,
+              "y": 452.3333333333333
+            },
+            "identifier": "",
+            "label": "Published date and time",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 106,
+              "x": 32,
+              "y": 598.3333333333334
+            },
+            "identifier": "",
+            "label": "Conclusion title",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 143.66666666666666,
+              "x": 32,
+              "y": 668.3333333333334
+            },
+            "identifier": "",
+            "label": "Conclusion summary",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 132,
+              "x": 32,
+              "y": 738.3333333333334
+            },
+            "identifier": "",
+            "label": "Evidence reference",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-initial"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 106,
+              "x": 32,
+              "y": 108.00000000000001
+            },
+            "identifier": "",
+            "label": "Conclusion title",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 57.999999999999986,
+              "width": 93,
+              "x": 277,
+              "y": 108.00000000000001
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 178
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 248
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 20.333333333333314,
+              "width": 63.33333333333333,
+              "x": 32,
+              "y": 402
+            },
+            "identifier": "",
+            "label": "Action 1",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 434.33333333333326
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 504.33333333333326
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.000000000000114,
+              "width": 93,
+              "x": 277,
+              "y": 574.3333333333333
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 644.3333333333334
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "frame": {
+              "height": 20.333333333333314,
+              "width": 206,
+              "x": 16,
+              "y": 180.33333333333334
+            },
+            "identifier": "",
+            "label": "Copied Engagement name.",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "copyConfirmation-after-copy"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast nearly passed",
+          "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "copyConfirmation-after-copy"
+        }
+      ],
+      "assertionFailures": [
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:123: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Potentially inaccessible text",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Potentially inaccessible text",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:144: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:144: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:145: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Failed to terminate com.example.aceclientapp:40286: Failed to terminate com.example.aceclientapp:0"
+      ],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-audit.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-audit.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-audit-attachments"
+    },
+    {
+      "tag": "release-light-v2",
+      "nativeExit": 65,
+      "startedUTC": "2026-09-14T03:19:36Z",
+      "finishedUTC": "2026-09-14T03:22:49Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1789356165.401,
+        "passedTests": 0,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1789355980.133,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "Contrast failed",
+            "targetName": "ACEClientAppUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls()",
+            "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+            "testName": "testFictionalReleaseHasApprovedCopyControls()"
+          }
+        ],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "8 runs of 1 test failed with Contrast failed"
+          },
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "2 runs of 1 test failed with Potentially inaccessible text"
+          }
+        ],
+        "totalTestCount": 1
+      },
+      "issues": [
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 18,
+              "width": 106,
+              "x": 32,
+              "y": 108.00000000000001
+            },
+            "identifier": "",
+            "label": "Conclusion title",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 57.999999999999986,
+              "width": 93,
+              "x": 277,
+              "y": 108.00000000000001
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 178
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 248
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 434.33333333333326
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 504.33333333333326
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.000000000000114,
+              "width": 93,
+              "x": 277,
+              "y": 574.3333333333333
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 644.3333333333334
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "release"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "release"
+        }
+      ],
+      "assertionFailures": [
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Potentially inaccessible text",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:135: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Potentially inaccessible text"
+      ],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2-attachments"
+    },
+    {
+      "tag": "release-dark-v2",
+      "nativeExit": 0,
+      "startedUTC": "2026-09-14T03:23:37Z",
+      "finishedUTC": "2026-09-14T03:25:52Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1789356352.2,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1789356222.007,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "issues": [],
+      "assertionFailures": [],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-dark-v2.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-dark-v2.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-dark-v2-attachments"
+    },
+    {
+      "tag": "release-max-text-v2",
+      "nativeExit": 65,
+      "startedUTC": "2026-09-14T03:26:19Z",
+      "finishedUTC": "2026-09-14T03:28:46Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1789356523.897,
+        "passedTests": 0,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1789356382.329,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "Contrast failed",
+            "targetName": "ACEClientAppUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ACEClientAppUITests/testNormalDeviceSettings()",
+            "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testNormalDeviceSettings",
+            "testName": "testNormalDeviceSettings()"
+          }
+        ],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "5 runs of 1 test failed with Contrast failed"
+          }
+        ],
+        "totalTestCount": 1
+      },
+      "issues": [
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 116.66666666666663,
+              "width": 275.3333333333333,
+              "x": 32,
+              "y": 95.66666666666663
+            },
+            "identifier": "",
+            "label": "Engagement name",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-normal-device-settings"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 77.33333333333331,
+              "width": 224.33333333333331,
+              "x": 32,
+              "y": 351.6666666666667
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-normal-device-settings"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.66666666666674,
+              "width": 287,
+              "x": 32,
+              "y": 441
+            },
+            "identifier": "",
+            "label": "Review status",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-normal-device-settings"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 77.33333333333348,
+              "width": 224.33333333333331,
+              "x": 32,
+              "y": 577
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-normal-device-settings"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.66666666666674,
+              "width": 325,
+              "x": 32,
+              "y": 666.3333333333333
+            },
+            "identifier": "",
+            "label": "Release version",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "release-normal-device-settings"
+        }
+      ],
+      "assertionFailures": [
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:260: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:260: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:260: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:260: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:260: error: -[ACEClientAppUITests.ACEClientAppUITests testNormalDeviceSettings] : Contrast failed"
+      ],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2-attachments"
+    },
+    {
+      "tag": "no-actions-v2",
+      "nativeExit": 65,
+      "startedUTC": "2026-09-14T03:29:38Z",
+      "finishedUTC": "2026-09-14T03:30:37Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1789356634.796,
+        "passedTests": 0,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1789356581.377,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "Contrast failed",
+            "targetName": "ACEClientAppUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ACEClientAppUITests/testClippingNoActionsStandaloneAudit()",
+            "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit",
+            "testName": "testClippingNoActionsStandaloneAudit()"
+          }
+        ],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "issues": [
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "noActions"
+        }
+      ],
+      "assertionFailures": [
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit] : Contrast failed"
+      ],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2-attachments"
+    },
+    {
+      "tag": "no-conclusion-v2",
+      "nativeExit": 65,
+      "startedUTC": "2026-09-14T03:31:05Z",
+      "finishedUTC": "2026-09-14T03:32:09Z",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "x86_64",
+              "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+              "deviceName": "iPhone 17",
+              "modelName": "iPhone 17",
+              "osBuildNumber": "23E254a",
+              "osVersion": "26.4.1",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1789356726.905,
+        "passedTests": 0,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1789356668.244,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "Contrast failed",
+            "targetName": "ACEClientAppUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ACEClientAppUITests/testClippingNoConclusionStandaloneAudit()",
+            "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+            "testName": "testClippingNoConclusionStandaloneAudit()"
+          }
+        ],
+        "title": "Test - ACEClientAppUITests",
+        "topInsights": [
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "6 runs of 1 test failed with Contrast failed"
+          },
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "2 runs of 1 test failed with Potentially inaccessible text"
+          }
+        ],
+        "totalTestCount": 1
+      },
+      "issues": [
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.00000000000003,
+              "width": 93,
+              "x": 277,
+              "y": 137.33333333333331
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 57.99999999999997,
+              "width": 93,
+              "x": 277,
+              "y": 207.33333333333334
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 393.6666666666666
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 57.99999999999994,
+              "width": 93,
+              "x": 277,
+              "y": 463.6666666666666
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58.000000000000114,
+              "width": 93,
+              "x": 277,
+              "y": 533.6666666666665
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 93,
+              "x": 277,
+              "y": 603.6666666666666
+            },
+            "identifier": "",
+            "label": "Copy",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "noConclusion"
+        },
+        {
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 2)",
+          "compactDescription": "Potentially inaccessible text",
+          "detailedDescription": "This element appears to display text that should be represented using the accessibility API.",
+          "element": {
+            "identifier": "",
+            "label": "",
+            "type": "unavailable"
+          },
+          "scenario": "noConclusion"
+        }
+      ],
+      "assertionFailures": [
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Potentially inaccessible text",
+        "LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:171: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Potentially inaccessible text"
+      ],
+      "resultBundle": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2.xcresult",
+      "log": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2.log",
+      "attachments": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2-attachments"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs",
+    "pilot",
+    "--pocock-evidence",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pocock-readiness-4646715.json",
+    "--functional-evidence",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-readiness-4646715.json",
+    "--evidence-gate",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/evidence-gate-readiness-4646715.json",
+    "--private-input-record",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/private-input-readiness-4646715.json"
+  ],
+  "startedUTC": "2026-09-15T04:59:46.995580+00:00",
+  "finishedUTC": "2026-09-15T05:14:51.275939+00:00",
+  "runnerExit": 2,
+  "stdout": "",
+  "stderr": "{\"error\": \"native settings selector failed after evidence collection: native result summary is not a complete pass; native settings process failed\", \"evidence\": \"LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/failure.json\", \"result\": \"blocked\"}\n"
+}

@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-09-18T12:38:18.790955+10:00",
+  "windows_heads_unchanged": {
+    "destination": true,
+    "public_clean": true,
+    "monorepo": true
+  },
+  "windows_changed_file_hashes_match": true,
+  "mac_delivery_clean_at_finish": true,
+  "json_files_parsed": 48
+}

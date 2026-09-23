@@ -1,0 +1,12 @@
+{
+  "commit": "493e632b2640fb12b54bf709719b0320cadd899a",
+  "branch": "codex/mcx19b-release-layout",
+  "files": [
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "status": "clean",
+  "pushed": false
+}

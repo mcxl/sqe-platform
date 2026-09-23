@@ -1,0 +1,137 @@
+{
+  "reviewedAtUTC": "2026-09-14T11:36:41.222684+00:00",
+  "method": "Original-resolution primary image inspection through authenticated SSH. Inspected in pairs after an earlier oversized tool response was truncated; the truncated response was not counted.",
+  "imageCount": 43,
+  "distinctCount": 13,
+  "groups": [
+    {
+      "sha256": "f2afdd7de0673dc23d7afa0c7f792c4ec9c1f5e49fd9c2171143c3caf83db1d1",
+      "inspectedFile": "control/attachments/BAE50B7A-1E7A-4C2A-864F-3C4929FA9CEB.png",
+      "identicalFiles": [
+        "control/attachments/BAE50B7A-1E7A-4C2A-864F-3C4929FA9CEB.png"
+      ]
+    },
+    {
+      "sha256": "b818fb368acc0fcbdb1f156cb895c71b2dcf1787e63db83547f9885f8d47f3f2",
+      "inspectedFile": "control/attachments/3649895E-DEE5-47A6-A0F7-59F6D4F62D8B.png",
+      "identicalFiles": [
+        "control/attachments/3649895E-DEE5-47A6-A0F7-59F6D4F62D8B.png",
+        "control/attachments/C5F60B9E-6547-451D-9956-D1C92CF23A12.png",
+        "control/attachments/8D104CF3-3AFF-4604-BA37-1287DEE26426.png",
+        "control/attachments/4427E9D7-33C9-4BCB-A23E-8B0E1FEFF92C.png"
+      ]
+    },
+    {
+      "sha256": "e0b0977b1837d392eba07c57ef5678d2d036585d14eb25d06e29e98be5f9f715",
+      "inspectedFile": "control/attachments/7BABBD11-9B5F-4323-A4FB-0B4CE48EE9C6.png",
+      "identicalFiles": [
+        "control/attachments/7BABBD11-9B5F-4323-A4FB-0B4CE48EE9C6.png",
+        "control/attachments/780C8210-A899-4BEC-B84D-B668E4D73F12.png",
+        "control/attachments/29924EDF-5599-48D2-8294-CBE02118FBC8.png",
+        "control/attachments/F911A014-ED19-42E6-BC9E-DF65030A3717.png",
+        "control/attachments/E9EE3B22-DAA2-43AA-AADB-2BB34B481CAA.png",
+        "control/attachments/E382A06E-5006-4FC4-90E4-C569A82B96F7.png"
+      ]
+    },
+    {
+      "sha256": "152d8b391dc94849b455aecd011ed454dc0eaee880cff8da55a8c67f6e35d3f7",
+      "inspectedFile": "control/attachments/EC24964E-C633-4803-B638-657FF6749590.png",
+      "identicalFiles": [
+        "control/attachments/EC24964E-C633-4803-B638-657FF6749590.png"
+      ]
+    },
+    {
+      "sha256": "5c5d8b6e486e6e5717f24eb2cf678b0879873d4d6fb6ae9b6991243bcb34b631",
+      "inspectedFile": "control/attachments/C3CEC5B0-E84D-4A3B-B6FE-B1ACE6D4706E.png",
+      "identicalFiles": [
+        "control/attachments/C3CEC5B0-E84D-4A3B-B6FE-B1ACE6D4706E.png"
+      ]
+    },
+    {
+      "sha256": "e0755f789d3dc68d93d568640195797aeb8bf25dbe1686324ce9764610f48420",
+      "inspectedFile": "control/attachments/8B423173-D9C9-40EB-A2CE-7D8B5E4A07F9.png",
+      "identicalFiles": [
+        "control/attachments/8B423173-D9C9-40EB-A2CE-7D8B5E4A07F9.png"
+      ]
+    },
+    {
+      "sha256": "198cc71e08e554df2feca5ce91402f97605f2c898d0af68af5e24f26587b184a",
+      "inspectedFile": "omit-initial/attachments/BD973E39-F570-4E93-8992-F8DCBD58D06A.png",
+      "identicalFiles": [
+        "omit-initial/attachments/BD973E39-F570-4E93-8992-F8DCBD58D06A.png",
+        "omit-initial/attachments/1B83B571-EB33-45B4-AEE9-B3553B54AC3D.png",
+        "omit-initial/attachments/3D7E3B01-8913-4B35-B0F0-0819EB9858FD.png",
+        "omit-initial/attachments/457A5081-7881-4E04-9428-F2162C0C2331.png"
+      ]
+    },
+    {
+      "sha256": "8997523e571d775ff70e143c0c93c8b8473dbea9bba2c19e878815be511ab5d0",
+      "inspectedFile": "omit-initial/attachments/CD71230B-7A09-4746-8E00-DE49B75B4F5D.png",
+      "identicalFiles": [
+        "omit-initial/attachments/CD71230B-7A09-4746-8E00-DE49B75B4F5D.png"
+      ]
+    },
+    {
+      "sha256": "6c6490f236e41a1892d1eb874f637ca13f488685b0f7849c2e6514bff59b2888",
+      "inspectedFile": "omit-initial/attachments/D651093E-9760-4A66-89D2-5AACF8DDF64F.png",
+      "identicalFiles": [
+        "omit-initial/attachments/D651093E-9760-4A66-89D2-5AACF8DDF64F.png",
+        "omit-initial/attachments/4E8614D2-3494-4FD1-8C44-280B5244DCCA.png",
+        "omit-initial/attachments/45B98794-C1F0-4A64-85D1-BB37C47A8CB3.png",
+        "omit-initial/attachments/20800061-DA12-468B-922E-3B9C6F2E1DFA.png",
+        "omit-initial/attachments/6C1EAE1B-D0F5-48DE-AFDF-9E579D15802E.png",
+        "omit-initial/attachments/87BF2EAF-E37C-4B59-B584-5B65EC7C34BF.png",
+        "omit-initial/attachments/158CECE9-5527-45A0-BF5B-D5A86466FA61.png",
+        "omit-initial/attachments/842517EF-92CC-4E8E-839D-1BD172BEFFF4.png",
+        "omit-initial/attachments/689D90AB-3E19-40AF-9286-0F807BB92500.png"
+      ]
+    },
+    {
+      "sha256": "6c8bb0dd4609e8cac8f03bd25212aba6d4b189d5e356c69c4dbc8be769ea60b7",
+      "inspectedFile": "omit-initial/attachments/32806537-2576-44BF-BB25-86A46B6985B2.png",
+      "identicalFiles": [
+        "omit-initial/attachments/32806537-2576-44BF-BB25-86A46B6985B2.png",
+        "omit-initial/attachments/7FA4892C-8449-43AF-A24C-B45CA98EC822.png",
+        "omit-initial/attachments/41280294-C894-4E83-9497-E2FB9DF9AD3A.png",
+        "omit-initial/attachments/4A26C18E-5DC1-4DEE-8D8B-CFBA5FCA6896.png",
+        "omit-initial/attachments/2148980D-230A-409B-A116-3CBD62AA10F2.png"
+      ]
+    },
+    {
+      "sha256": "a9a4d3da10b4ca834151b473d362b2221c3aa52e78e8a40f64db10b3f8684a7c",
+      "inspectedFile": "omit-initial/attachments/F796B15B-EF0F-4B4F-8192-2302C10C2B09.png",
+      "identicalFiles": [
+        "omit-initial/attachments/F796B15B-EF0F-4B4F-8192-2302C10C2B09.png",
+        "omit-initial/attachments/F6501BE1-03C4-4D97-9D75-E185AEC55BC8.png"
+      ]
+    },
+    {
+      "sha256": "e5901805175418853e7d766ae5f2ee49349a227b07f22105abf93ed70dd8d60c",
+      "inspectedFile": "omit-initial/attachments/911B16E3-B4D7-4B31-B794-CB0ACE3D1A84.png",
+      "identicalFiles": [
+        "omit-initial/attachments/911B16E3-B4D7-4B31-B794-CB0ACE3D1A84.png",
+        "omit-initial/attachments/4B2CD389-E189-4B01-9997-62FE2791EE63.png",
+        "omit-initial/attachments/DEFC38AC-7709-4171-92EF-A36C551FD3B2.png",
+        "omit-initial/attachments/B4559F6C-2B76-4B55-B934-C356E0950DD2.png",
+        "omit-initial/attachments/5408119F-3354-4634-9BDB-FA3863242556.png",
+        "omit-initial/attachments/6DD04656-3738-4A65-A008-B39376768275.png",
+        "omit-initial/attachments/F8CFFA02-BF71-4521-A31E-01FD62C8D52B.png"
+      ]
+    },
+    {
+      "sha256": "c252852c5f2cf20f0b243e87b73bed0c51c0742a26b4575721f3a06f6898d6b6",
+      "inspectedFile": "omit-initial/attachments/0B88742A-D0D7-4BDB-89C1-7E5CA13F4612.png",
+      "identicalFiles": [
+        "omit-initial/attachments/0B88742A-D0D7-4BDB-89C1-7E5CA13F4612.png"
+      ]
+    }
+  ],
+  "observations": [
+    "Both runs retain readable release values and Copy controls at default size.",
+    "The native Copy crop shows black text and icon on grey; the seven crop files are byte-identical.",
+    "Pre-audit and native failure screenshots differ in vertical content position. These captures do not establish internal audit sample-time positions.",
+    "The Copy confirmation remains visible.",
+    "The native contrast and potentially inaccessible-text findings remain unresolved."
+  ],
+  "acceptance": "No acceptance or coverage credit."
+}

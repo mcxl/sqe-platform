@@ -1,0 +1,41 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index b11bc9c..25d0d9e 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -337,14 +337,25 @@ final class ACEClientAppUITests: XCTestCase {
+             scrollUntilVisible(control, in: app, field: field)
+             return isFullyVisible(control, in: scrollView)
+         }
++        let collectionView = app.collectionViews.firstMatch
++        if collectionView.exists {
++            return scrollControlUntilFullyVisible(control, in: collectionView)
++        }
+         let table = app.tables.firstMatch
+         guard table.exists else { return false }
++        return scrollControlUntilFullyVisible(control, in: table)
++    }
++
++    private func scrollControlUntilFullyVisible(_ control: XCUIElement, in scrollView: XCUIElement) -> Bool {
+         for _ in 0..<16 {
+-            if isFullyVisible(control, in: table) { return true }
++            if isFullyVisible(control, in: scrollView) { return true }
+             let controlFrame = control.exists ? control.frame : .zero
+-            drag(table, upward: !control.exists || controlFrame == .zero || controlFrame.maxY > table.frame.maxY)
++            drag(
++                scrollView,
++                upward: !control.exists || controlFrame == .zero || controlFrame.maxY > scrollView.frame.maxY
++            )
+         }
+-        return isFullyVisible(control, in: table)
++        return isFullyVisible(control, in: scrollView)
+     }
+ 
+     private func verifyActionTarget(_ button: XCUIElement, name: String) -> Bool {
+@@ -358,6 +369,7 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func isFullyVisibleInApp(_ element: XCUIElement, app: XCUIApplication) -> Bool {
++        guard element.exists else { return false }
+         let frame = element.frame
+         return frame.width > 0 && frame.height > 0 && app.frame.contains(frame)
+     }

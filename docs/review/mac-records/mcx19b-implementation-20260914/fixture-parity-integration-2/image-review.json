@@ -1,0 +1,196 @@
+{
+  "reviewedAt": 1789379732.610959,
+  "sourceIntegration": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/integration.json",
+  "scope": "Default large text, light appearance, portrait, all three settings off. Focused text/control visibility only; no native accessibility audit in this batch.",
+  "reviewMethod": "Primary agent inspected one original-resolution image for each SHA-256 group. Every byte-identical image maps to that inspection.",
+  "groups": [
+    {
+      "sha256": "d63eea0963e5e8c9b02060656baf9c21b2b422f7771425d4aac8f0a2904a7b75",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/07429461-D38C-46C1-88CD-8589E38D1765.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/07429461-D38C-46C1-88CD-8589E38D1765.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unexpected.light.large.portrait.0.0.0 viewport control-Sign out_0_BD7F9B85-79F5-4F43-9E27-0ED80941CA7C.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/6EB61AB5-BEA5-4D26-B109-6FC8EC1E3248.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unavailable.light.large.portrait.0.0.0 viewport control-Refresh current release_0_322ED18E-CD71-4407-805D-270733A8D2A2.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/97613E64-913B-43DA-9FCB-1BD141C99E3C.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unexpected.light.large.portrait.0.0.0 viewport initial_0_47C4F8D8-2AD6-4F19-B108-3CD419D7F1E6.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/AD09E3C8-4312-47B4-AB5F-2528208A770C.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unavailable.light.large.portrait.0.0.0 viewport control-Sign out_0_287F1BBD-A8DC-437A-A5C4-043FB665A5A7.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/B91DDF52-8223-454E-8346-2CFE90D757B7.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unavailable.light.large.portrait.0.0.0 viewport initial_0_9C288445-DE23-4DC3-A072-B417E273C428.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/E452B7B1-E89F-4D8B-B69D-319E61540175.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.unexpected.light.large.portrait.0.0.0 viewport control-Refresh current release_0_C6B8E41B-F45B-49AD-9597-EBA7EB833D6E.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "e3269394604171684cc3c7ad6885aec06df66e5c41e28402df01f216d57c9927",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/0A56FA45-5343-45B0-B7C8-BE4DF02ACA2F.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/0A56FA45-5343-45B0-B7C8-BE4DF02ACA2F.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.denied.light.large.portrait.0.0.0 viewport initial_0_6AC63484-98BD-4B9A-8BAE-304C3A3ADC81.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/10AB9E37-DAAE-443D-8397-4982A61204B7.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.denied.light.large.portrait.0.0.0 viewport control-Sign in_0_E7AD2F55-CCCE-4927-95A8-5F9D853820B8.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "388587e8789c56b765ca52ceb8bfe0f9c0a3fd38fd58133af68c5f846c44810a",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/0EF5109D-BB0A-40C5-B58A-30928498BC4C.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/0EF5109D-BB0A-40C5-B58A-30928498BC4C.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyRelease.light.large.portrait.0.0.0 viewport control-Sign out_0_8E4A93B6-9D24-4262-B302-9E1AE0B1472A.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/6C7F4D01-A4BD-4246-B18C-4A47B29967B1.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyRelease.light.large.portrait.0.0.0 viewport control-Refresh current release_0_C9FBC747-B163-44DC-AD89-FD00AF7C7CDB.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/B8BE9C8F-81AC-4A52-BBD7-88D3322FE1F8.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyEngagement.light.large.portrait.0.0.0 viewport control-Refresh current release_0_02BCEABF-21B0-43ED-A8DB-DD50CAFB822B.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/D4400F54-5959-4018-8A9E-3D37B166D0B1.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyEngagement.light.large.portrait.0.0.0 viewport control-Sign out_0_2ACFF38F-4915-44FD-B5FE-87AAA5E08B83.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/D6F51B63-BF45-4074-80E2-0C8748BAB5CB.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyEngagement.light.large.portrait.0.0.0 viewport initial_0_D8DD8C47-2FC6-4976-BE1F-A6EA0BFA64DB.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/E4F6494F-86DB-4EA6-B68F-578458080223.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.emptyRelease.light.large.portrait.0.0.0 viewport initial_0_BD3AEDB2-1E3E-4BA5-9993-566C057159B7.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "b0d253c01bf314f4499f52788a48fe81d4765d307a9b132273512253706de947",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/30C2A580-3665-496B-A73C-45FE5905687A.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/30C2A580-3665-496B-A73C-45FE5905687A.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.keychainRead.light.large.portrait.0.0.0 viewport initial_0_2D7A38F3-6713-48A1-8574-F994484AD943.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/F0FCC9A5-C480-4BE2-9BE2-550361016248.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.keychainRead.light.large.portrait.0.0.0 viewport control-Retry saved sign-in read_0_46E746AF-A2CF-4FFE-AEEC-B8A3EC86D939.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "dd4218bd6b8e254dbbcb413be4268579218efb622f70af3aa9bc15a4fcecfe61",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/42530B48-BCC0-4DF2-BA24-203D49E688ED.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/42530B48-BCC0-4DF2-BA24-203D49E688ED.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.timeout.light.large.portrait.0.0.0 viewport control-Refresh current release_0_4538A40E-8EB0-4721-B5F4-DB3F1259E6FF.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/A332B493-6FE2-4E53-AB3D-6B2370FD62D4.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.timeout.light.large.portrait.0.0.0 viewport control-Sign out_0_3ABDC48D-C425-4D93-80C8-1126DA3263CD.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/C9B601F6-B4FF-46D5-A91F-0477073039FD.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.timeout.light.large.portrait.0.0.0 viewport initial_0_3F0440CB-2E82-4BA8-AD42-211A8F2719EE.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "6f615ede3616857ef51081996a3cfd942dd84e65e5ef060fa6b4bc2626f3e698",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/42C8125B-B0AF-460F-98C8-3802052061D9.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/42C8125B-B0AF-460F-98C8-3802052061D9.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.keychainWrite.light.large.portrait.0.0.0 viewport control-Sign in_0_E0FEE2DA-24A2-47B8-A586-6227039F81FF.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/C48CCA51-2D1B-44AB-A525-510F4B437D9A.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.keychainWrite.light.large.portrait.0.0.0 viewport initial_0_C2BD54F4-8C65-4B80-BCD0-5375A81C4428.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "16e51e0e6c2043bc397032a8c8ab669aa469d5e1c8eb12bb91318482cbcda669",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/5FA97A16-EFB5-4F29-BB27-BBEDDB860409.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/5FA97A16-EFB5-4F29-BB27-BBEDDB860409.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.invalidResponse.light.large.portrait.0.0.0 viewport control-Refresh current release_0_B94F1AEA-A467-4C55-B132-78D9887153D6.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/E512F079-6480-4644-A9C2-F0A5B09FB233.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.invalidResponse.light.large.portrait.0.0.0 viewport control-Sign out_0_9609F380-5362-4FD3-A241-D38F8CFDDCF5.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/EB233729-AD58-4A07-8295-FFD1C1989084.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.invalidResponse.light.large.portrait.0.0.0 viewport initial_0_1B8613C0-A3D2-4453-82D5-4745E72D0E54.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "de53a212917714324e9eb6a7475b2ccd5d1f6d009cd43176a630e402397852dc",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/619837F6-E177-4127-BEB0-22BE590159C1.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/619837F6-E177-4127-BEB0-22BE590159C1.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.loading.light.large.portrait.0.0.0 viewport initial_0_02574D82-3F2A-41C1-8694-5A1CEF643A47.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    },
+    {
+      "sha256": "ff56cb4fd2b83dc4e29cc7870c8886dfa3ddf342ab97ec438e034798e5a65166",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/873821B8-2C14-4926-BF9A-C198C76C41EF.png",
+      "images": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/873821B8-2C14-4926-BF9A-C198C76C41EF.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.connection.light.large.portrait.0.0.0 viewport control-Refresh current release_0_3C5262F0-6249-49E0-AF9B-5E770739CE3D.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/9C9BE62A-08D0-43FD-9D22-5F533219625D.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.connection.light.large.portrait.0.0.0 viewport initial_0_C4B51968-6494-4107-AAA0-962D2E0BAEF8.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/C640B423-62FD-4E26-8D57-5E361CE3E535.png",
+          "caseViewportName": "Coverage diagnostic-fixture-parity.iPhone-17-Pro-Max.connection.light.large.portrait.0.0.0 viewport control-Sign out_0_8C7E4B64-0EFF-4DCD-8E22-C984F2894C3D.png"
+        }
+      ],
+      "layoutInspection": "passed",
+      "notes": "Visible state text and required controls are not clipped in this viewport."
+    }
+  ],
+  "imageCount": 28,
+  "uniqueImages": 9,
+  "acceptedCoverageCases": 0,
+  "contrastLimit": "Default blue action text and grey loading text need a rendered-size/weight check before contrast acceptance. Layout inspection alone does not settle the applicable threshold."
+}

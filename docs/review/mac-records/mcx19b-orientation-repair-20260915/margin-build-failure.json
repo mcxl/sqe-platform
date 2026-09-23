@@ -1,0 +1,17 @@
+{
+  "updatedUTC": "2026-09-15T09:30:42.163806+00:00",
+  "fault": "Compiler rejects nil for padding length overload",
+  "source": "Views.swift:44:60",
+  "expected": "Generic build succeeds",
+  "actual": "'nil' cannot be used in context expecting type 'CGFloat'",
+  "nativeBuildExit": 65,
+  "nativeDeviceTests": 0,
+  "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus/build.log",
+  "correction": "Select Edge.Set overload. Use empty edges for release, all edges for other screens, retaining the default length.",
+  "sdkEvidence": "Xcode26.4.1 SwiftUICore x86_64 simulator interface lines2513and2518: edge overload has optional length; length-only overload requires CGFloat.",
+  "buildFaultCorrectiveAttempt": 1,
+  "clippingCorrectionAttempt": 1,
+  "clippingNativeOutcome": "not yet tested; build failed first",
+  "newFullPatchSha256": "9fa51e8924b0a16fe32721e18b9ab2b9b787c8d46faa90ee1bb33032055a445d",
+  "completePrimaryDiffInspection": "only the proved overload correction differs from inspected23-line patch"
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "analysisColourSpace" : "sRGB",
+    "blackPixels" : 0,
+    "file" : "\/Users\/alanrichardson\/ace-private\/mcx19b-implementation-20260914\/coverage-signin-integration\/batches\/000\/attachments\/20BFAD1A-6E0C-42D2-986D-0DE454D44CA6.png|150|775|430|70",
+    "height" : 70,
+    "mostFrequentOpaqueColours" : [
+      {
+        "contrastAgainstBlack" : 21,
+        "pixelCount" : 27021,
+        "rgb" : [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.185268523800751,
+        "pixelCount" : 1780,
+        "rgb" : [
+          197,
+          197,
+          199
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.312812855841084,
+        "pixelCount" : 141,
+        "rgb" : [
+          198,
+          198,
+          200
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 17.455715087925668,
+        "pixelCount" : 79,
+        "rgb" : [
+          234,
+          234,
+          234
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 20.822041942276595,
+        "pixelCount" : 66,
+        "rgb" : [
+          254,
+          254,
+          254
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 13.498898913970097,
+        "pixelCount" : 43,
+        "rgb" : [
+          207,
+          207,
+          209
+        ]
+      }
+    ],
+    "sourceColourSpace" : "kCGColorSpaceSRGB",
+    "width" : 430
+  },
+  {
+    "analysisColourSpace" : "sRGB",
+    "blackPixels" : 0,
+    "file" : "\/Users\/alanrichardson\/ace-private\/mcx19b-implementation-20260914\/coverage-signin-integration\/batches\/000\/attachments\/20BFAD1A-6E0C-42D2-986D-0DE454D44CA6.png|150|930|430|70",
+    "height" : 70,
+    "mostFrequentOpaqueColours" : [
+      {
+        "contrastAgainstBlack" : 21,
+        "pixelCount" : 26966,
+        "rgb" : [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.185268523800751,
+        "pixelCount" : 1824,
+        "rgb" : [
+          197,
+          197,
+          199
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.312812855841084,
+        "pixelCount" : 81,
+        "rgb" : [
+          198,
+          198,
+          200
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 20.468905807968252,
+        "pixelCount" : 58,
+        "rgb" : [
+          252,
+          252,
+          252
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 16.982054760288179,
+        "pixelCount" : 51,
+        "rgb" : [
+          231,
+          231,
+          231
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 20.822041942276595,
+        "pixelCount" : 47,
+        "rgb" : [
+          254,
+          254,
+          254
+        ]
+      }
+    ],
+    "sourceColourSpace" : "kCGColorSpaceSRGB",
+    "width" : 430
+  }
+]

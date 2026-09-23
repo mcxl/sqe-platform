@@ -1,0 +1,54 @@
+{
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "scope": "one diagnostic noConclusion case; no pilot credit",
+  "captures": 10,
+  "distinctImages": 3,
+  "images": [
+    {
+      "sha256": "877f3bd6b333684121c4daf7698498e4d0db706d24ca36d062069d010d51b9ef",
+      "bytes": 193277,
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/42C32AB6-BF74-4E7C-8562-0C689C529167.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/5628E56A-9494-4758-9654-A90C519037E1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/5E641F4B-6C37-4673-8921-8012020FB87E.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/9F3D7E96-E85F-4C69-AA8D-7EC0C2ADA429.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/A6FEF023-06D7-4182-B6EC-723DDD5A4D11.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/A96CAAB0-D1E9-4EFC-A43A-8E064290FF5D.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/ABBB3582-0E1F-4928-B630-C3BD40C6505F.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/DC98D5A4-30A9-4541-8E35-7841AF2DAFC4.png"
+      ],
+      "status": "inspected",
+      "method": "primary viewed at original resolution",
+      "observation": "Initial noConclusion viewport at7:51. Current Release,handling label,Release Details and all release/action values readable. Initial left/top margins retained. Copy action fully visible. System status area clear."
+    },
+    {
+      "sha256": "5b356025fae49e0637e06e2789c29ec4ef946461bf03635efd6b92d084f48a98",
+      "bytes": 193969,
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/9A1180C1-C586-456C-BD1B-B76E925EB86B.png"
+      ],
+      "status": "inspected",
+      "method": "primary viewed at original resolution",
+      "observation": "Initial viewport at7:50. Same complete release/action content and margins. No app text behind status bar."
+    },
+    {
+      "sha256": "abdadcc20cc156c6cf1d1652cbe962b04b2235466fbf844ba750590e0dec1320",
+      "bytes": 183362,
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/batches/001/attachments/F1422295-8C82-4196-8FA5-B74222BDFA02.png"
+      ],
+      "status": "inspected",
+      "method": "primary viewed at original resolution",
+      "observation": "Final no-conclusion-notice viewport. System clock and icons remain on clear background. Scrolled prior field is clipped at normal top viewport boundary below system area; complete value is retained in initial capture. Review status,version,date,Action1 fields,Copy action,notice,Refresh and Sign out readable. No status-bar overlap."
+    }
+  ],
+  "updatedUTC": "2026-09-15T09:53:02.650500+00:00",
+  "status": "passed",
+  "nativeResult": "one noConclusion case and two unrestricted audits passed",
+  "comparison": "The previous status-bar overlap is absent. Initial margins are retained. This verifies the focused rendered behaviour, not every historical native-audit mechanism.",
+  "limitations": [
+    "Only default portrait/light noConclusion on iPhone17",
+    "Other required configurations remain in22-case pilot",
+    "No physical device or private-service acceptance"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "blocked",
+  "tool": "mcp__cua_repl.js / cua.createBrowserTab",
+  "url": "http://127.0.0.1:60097/workbench/engagement/summary",
+  "actual": "Browser Use cannot open http://127.0.0.1:60097/workbench/engagement/summary in tab 2. Browser reported: net::ERR_BLOCKED_BY_CLIENT",
+  "expected": "Authenticated Engagement summary rendered for inspection",
+  "server_observation": "GET /workbench/engagement/summary 401 Unauthorized",
+  "cause": "Not established. Browser navigation did not supply the fictional HTTP Basic credentials.",
+  "action": "Stopped browser verification under the approved stop rule; no bypass, alternate browser or authentication change attempted.",
+  "screenshots": "None: application page was not reached",
+  "console_health": "Not inspected",
+  "interaction_proof": "Not inspected"
+}

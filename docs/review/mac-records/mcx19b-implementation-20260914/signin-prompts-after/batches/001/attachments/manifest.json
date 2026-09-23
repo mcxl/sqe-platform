@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "B248CA0E-9DBC-43D7-8B16-AFCCA5922254.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Coverage diagnostic-prompt-correction.iPhone-17-Pro-Max.signIn.dark.large.portrait.0.0.0 viewport control-Sign in_0_84CC5180-31B9-40A0-84B0-633206214ABC.png",
+        "timestamp" : 1789376629.495
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "F121D7DE-D1FF-41A3-9283-DD92ED49074E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Coverage diagnostic-prompt-correction.iPhone-17-Pro-Max.signIn.dark.large.portrait.0.0.0 viewport initial_0_31013DA9-EA48-4495-BF17-928134D36C16.png",
+        "timestamp" : 1789376622.555
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testCoverageBatch()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch"
+  }
+]

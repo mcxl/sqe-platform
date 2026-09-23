@@ -1,0 +1,12 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index e1e2317..aca017f 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -213,6 +213,7 @@ struct ReleaseView: View {
+             .frame(maxWidth: .infinity, alignment: .leading)
+             .padding()
+         }
++        .clipped()
+         .tint(.primary)
+     }
+ }

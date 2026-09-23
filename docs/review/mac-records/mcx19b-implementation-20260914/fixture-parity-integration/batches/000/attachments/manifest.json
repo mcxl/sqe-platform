@@ -1,0 +1,80 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "7C0C18AF-82A2-4ABA-9111-B823D8EEE539.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.example_0_E911773A-44E5-4D4A-81DE-79F44FAF5D6A.aceclientapp",
+        "timestamp" : 1789378638.273
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "B5E48AA8-737C-4328-85EA-3FC20675D165",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-09-14 at 07.37.18 pm",
+        "timestamp" : 1789378638.273
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "321F1924-FC96-4E7D-A2C1-C7EEC32B1683.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Loading current release\" ProgressIndicator`_0_6CC8EEB0-F70F-479A-A07E-D8312A5A698E.txt",
+        "timestamp" : 1789378638.184
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "F428AA1F-042C-4FAB-932F-BA45EC5437A8.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Loading current release\" ProgressIndicator`_0_EC6DE03E-826D-44BC-953A-06282E75E20C.txt",
+        "timestamp" : 1789378637.173
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "6DC5415B-5912-47E1-B335-855C053D4C3F.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Loading current release\" ProgressIndicator`_0_D4303E08-2302-4711-A070-EAD4756232D8.txt",
+        "timestamp" : 1789378636.266
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "E261CA8C-D0A0-487F-9676-2AD32DB726AC.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Loading current release\" ProgressIndicator`_0_D0000EB6-6FE1-4121-9DC3-BD593B28B371.txt",
+        "timestamp" : 1789378635.264
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "804F2618-F285-4AAA-8C04-2F0DBD71BFD6.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"Loading current release\" ProgressIndicator`_0_7CA68812-E2FB-4879-A4DA-CD345FF23555.txt",
+        "timestamp" : 1789378634.433
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "1E5B982E-4FF3-47BB-8391-81216A870A02.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-14 at 07.37.02 pm.mp4",
+        "timestamp" : 1789378622.832
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testCoverageBatch()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch"
+  }
+]

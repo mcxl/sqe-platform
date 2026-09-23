@@ -1,0 +1,320 @@
+diff --git a/tools/ace_ios_local.py b/tools/ace_ios_local.py
+index 17c4683..a31950b 100644
+--- a/tools/ace_ios_local.py
++++ b/tools/ace_ios_local.py
+@@ -20,6 +20,7 @@ import shutil
+ import subprocess
+ import sys
+ import time
++import zlib
+ from datetime import datetime, timezone
+ from collections import defaultdict
+ from dataclasses import asdict, dataclass
+@@ -600,7 +601,114 @@ def native_flags(identifier: str, template: Path, evidence: Path, label: str, re
+     return {key: observed[key] for key in fields}
+ 
+ 
+-def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Case, ...], build_record: dict[str, object], evidence: Path, index: int) -> dict[str, object]:
++def verify_discovery_screenshots(names: list[str], attachments: Path) -> None:
++    """Validate retained PNG contents as well as their native attachment names."""
++    for exported in screenshot_exports(names, attachments):
++        try:
++            data = (attachments / exported).read_bytes()
++            if not data.startswith(b"\x89PNG\r\n\x1a\n"):
++                raise ValueError("PNG signature")
++            offset, kinds, compressed = 8, [], bytearray()
++            while offset < len(data):
++                size = int.from_bytes(data[offset:offset + 4], "big")
++                end = offset + size + 12
++                if end > len(data) or end - offset < 12:
++                    raise ValueError("PNG chunk length")
++                kind = data[offset + 4:offset + 8]
++                content = data[offset + 8:end - 4]
++                if zlib.crc32(kind + content) != int.from_bytes(data[end - 4:end], "big"):
++                    raise ValueError("PNG checksum")
++                kinds.append(kind)
++                if kind == b"IHDR":
++                    if size != 13:
++                        raise ValueError("PNG header")
++                    width, height = int.from_bytes(content[:4], "big"), int.from_bytes(content[4:8], "big")
++                    depth, colour, compression, filtering, interlace = content[8:]
++                    if (width == 0 or height == 0 or depth != 8 or colour not in (2, 6)
++                            or compression != 0 or filtering != 0 or interlace != 0):
++                        raise ValueError("unsupported native screenshot PNG header")
++                    row_bytes = width * (3 if colour == 2 else 4) + 1
++                    expected_bytes = height * row_bytes
++                if kind == b"IDAT":
++                    compressed.extend(content)
++                offset = end
++            if not kinds or kinds[0] != b"IHDR" or kinds[-1] != b"IEND" or kinds.count(b"IHDR") != 1 or kinds.count(b"IEND") != 1:
++                raise ValueError("PNG structure")
++            decoder = zlib.decompressobj()
++            pixels = decoder.decompress(bytes(compressed), expected_bytes + 1)
++            if (len(pixels) != expected_bytes or not decoder.eof or decoder.unused_data or decoder.unconsumed_tail
++                    or any(pixels[offset] > 4 for offset in range(0, expected_bytes, row_bytes))):
++                raise ValueError("PNG image scanlines")
++        except (OSError, ValueError, zlib.error) as error:
++            raise RunnerError("discovery screenshot is unreadable or corrupt") from error
++
++
++def discovery_native_result(bundle: Path, summary_path: Path, log: Path, attachments: Path,
++                            case: Case, process: dict[str, object]) -> dict[str, object]:
++    """Continue only positively evidenced audit assertions; ambiguous faults block."""
++    response = checked(["xcrun", "xcresulttool", "get", "test-results", "summary", "--path", str(bundle)], timeout=120)
++    try:
++        payload = json.loads(str(response["stdout"]))
++    except json.JSONDecodeError as error:
++        raise RunnerError("discovery native result summary is invalid") from error
++    summary_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
++    fields = ("totalTestCount", "passedTests", "failedTests", "skippedTests", "expectedFailures")
++    if (not isinstance(payload, dict) or any(type(payload.get(key)) is not int for key in fields)
++            or payload["totalTestCount"] != 1 or payload["skippedTests"] != 0 or payload["expectedFailures"] != 0
++            or (payload["passedTests"], payload["failedTests"], payload.get("result")) not in ((1, 0, "Passed"), (0, 1, "Failed"))):
++        raise RunnerError("discovery native counts are incomplete, skipped or unexpected")
++    if process.get("timedOut") is not False or process.get("error") or process.get("exit") != (0 if payload["result"] == "Passed" else 65):
++        raise RunnerError("discovery native process outcome is ambiguous")
++    try:
++        text = log.read_text(encoding="utf-8")
++    except (OSError, UnicodeError) as error:
++        raise RunnerError("discovery native log is unreadable or corrupt") from error
++    records = marker_records(log, CASE_MARKER)
++    if payload["result"] == "Passed":
++        verify_case_markers((case,), records)
++        verify_screenshot_attachments(records, attachments)
++        if payload.get("testFailures") not in (None, []):
++            raise RunnerError("passed discovery summary contains unexpected failures")
++        verify_discovery_screenshots(records[0]["screenshots"], attachments)
++        return {"status": "passed", "classification": "complete-pass", "nativeSummary": payload,
++                "caseRecords": records, "auditFindings": []}
++    if records:
++        raise RunnerError("failed discovery test contains unexpected completion markers")
++    failures = payload.get("testFailures")
++    findings = marker_records(log, "ACE_A11Y_ISSUE ")
++    if (not case.audit or not isinstance(failures, list) or not failures or not findings
++            or any(not isinstance(failure, dict) or failure.get("targetName") != "ACEClientAppUITests"
++                   or failure.get("testIdentifierString") != "ACEClientAppUITests/testCoverageBatch()"
++                   or not isinstance(failure.get("failureText"), str) or not failure["failureText"] for failure in failures)
++            or any(not isinstance(finding.get("scenario"), str) or not finding["scenario"].startswith(case.scenario + "-")
++                   or not isinstance(finding.get("compactDescription"), str) or not finding["compactDescription"]
++                   or not isinstance(finding.get("detailedDescription"), str) or not finding["detailedDescription"]
++                   or not isinstance(finding.get("auditType"), str) or not isinstance(finding.get("element"), dict) for finding in findings)
++            or {failure["failureText"] for failure in failures} != {finding["compactDescription"] for finding in findings}):
++        raise RunnerError("native assertion cannot be distinguished from a launch, test-service or environment fault")
++    # Require the native assertion location and test completion, not exit 65 alone.
++    assertion_pattern = r"^.+/ACEClientAppUITests[.]swift:[0-9]+: error: -\[ACEClientAppUITests[.]ACEClientAppUITests testCoverageBatch\] : (.+)$"
++    assertions = re.findall(assertion_pattern, text, flags=re.MULTILINE)
++    error_lines = [line for line in text.splitlines() if "error:" in line]
++    if (sorted(assertions) != sorted(failure["failureText"] for failure in failures)
++            or len(error_lines) != len(assertions)
++            or len(re.findall(r"Test Case '-\[ACEClientAppUITests[.]ACEClientAppUITests testCoverageBatch\]' failed \([0-9.]+ seconds\)[.]", text)) != 1
++            or re.search(r"Testing failed:|Failed to launch|failed to launch|Early unexpected exit|Lost connection|lost connection|crashed|timed out|TEST EXECUTE INTERRUPTED", text)):
++        raise RunnerError("discovery native log does not prove an isolated audit assertion")
++    # This capture occurs only after launch, state and observed-settings checks.
++    screenshot_names = sorted({f"Coverage {case.id} viewport initial", *(
++        f"Coverage {case.id} viewport {finding['scenario'][len(case.scenario) + 1:]}" for finding in findings)})
++    verify_discovery_screenshots(screenshot_names, attachments)
++    return {"status": "failed", "classification": "native-accessibility-assertion", "nativeSummary": payload,
++            "caseRecords": [], "auditFindings": findings, "nativeAssertions": error_lines,
++            "screenshots": screenshot_names, "auditInvocationCount": None,
++            "auditCompletion": "interrupted-by-native-assertion"}
++
++
++def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Case, ...], build_record: dict[str, object], evidence: Path, index: int,
++              discovery: bool = False) -> dict[str, object]:
++    if discovery and len(cases) != 1:
++        raise RunnerError("discovery requires one independent native case")
+     for setting in setting_commands(identifier, settings):
+         checked(setting, timeout=60)
+     payload = json.dumps([case.payload() for case in cases], separators=(",", ":"))
+@@ -621,31 +729,40 @@ def run_batch(device: str, identifier: str, settings: Settings, cases: tuple[Cas
+     (batch_root / "native-command.json").write_text(json.dumps(process, indent=2, sort_keys=True), encoding="utf-8")
+     summary = batch_root / "native-summary.json"
+     attachments = batch_root / "attachments"
++    outcome: dict[str, object] = {}
+     failures: list[str] = []
+     count = 0
+     if not result_bundle.is_dir():
+         failures.append("result bundle missing")
+     else:
+-        try:
+-            count = native_summary(result_bundle, summary, 1)
+-        except RunnerError as error:
+-            failures.append(str(error))
++        if not discovery:
++            try:
++                count = native_summary(result_bundle, summary, 1)
++            except RunnerError as error:
++                failures.append(str(error))
+         try:
+             _export_attachments(result_bundle, attachments)
+         except RunnerError as error:
+             failures.append(str(error))
+-    if process.get("exit") != 0:
++        if discovery:
++            try:
++                outcome = discovery_native_result(result_bundle, summary, log, attachments, cases[0], process)
++                count = 1
++            except RunnerError as error:
++                failures.append(str(error))
++    if not discovery and process.get("exit") != 0:
+         failures.append("native process failed")
+     if failures:
+         raise RunnerError(f"native batch {index} failed after evidence collection: {'; '.join(failures)}")
+-    records = marker_records(log, CASE_MARKER)
+-    verify_case_markers(cases, records)
+-    verify_screenshot_attachments(records, attachments)
++    records = outcome["caseRecords"] if discovery else marker_records(log, CASE_MARKER)
++    if not discovery:
++        verify_case_markers(cases, records)
++        verify_screenshot_attachments(records, attachments)
+     return {"device": device, "settings": settings.payload(), "caseCount": len(cases), "auditCount": sum(case.audit for case in cases),
+             "nativeTestCount": count, "runfileSha256": sha256(runfile), "resultBundle": str(result_bundle),
+             "resultBundleSha256": directory_hash(result_bundle), "attachmentDirectory": str(attachments),
+             "attachmentSha256": directory_hash(attachments), "summarySha256": sha256(summary),
+-            "logSha256": sha256(log), "command": process["command"], "exit": process["exit"], "caseRecords": records}
++            "logSha256": sha256(log), "command": process["command"], "exit": process["exit"], "caseRecords": records, **outcome}
+ 
+ 
+ def directory_hash(path: Path) -> str:
+@@ -817,7 +934,9 @@ def validate_review_projection(resources: dict[str, object], ledger: dict[str, o
+ 
+ 
+ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[str, object] | None = None,
+-                 frozen_candidate: dict[str, object] | None = None) -> dict[str, object]:
++                 frozen_candidate: dict[str, object] | None = None, discovery: bool = False) -> dict[str, object]:
++    if discovery and retained_pilot is not None:
++        raise RunnerError("discovery does not reuse acceptance cases")
+     environment = preflight()
+     candidate_record = candidate() if frozen_candidate is None else frozen_candidate
+     if candidate() != candidate_record:
+@@ -829,7 +948,8 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+     assert isinstance(devices, dict)
+     reused = set() if retained_pilot is None else eligible_pilot_cases(retained_pilot)
+     execution_cases = tuple(case for case in cases if canonical_case(case.device, case.scenario, case.settings.payload()) not in reused)
+-    unordered_batch_plan = coverage_batches(execution_cases)
++    unordered_batch_plan = (tuple((case.device, case.settings, (case,)) for case in execution_cases)
++                            if discovery else coverage_batches(execution_cases))
+     batch_plan = tuple(batch for device in DEVICES for batch in unordered_batch_plan if batch[0] == device)
+     final_batch_index = {device: index for index, (device, _settings, _cases) in enumerate(batch_plan, 1)}
+     previous: dict[str, dict[str, str]] = {}
+@@ -874,9 +994,15 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+                 "mode": "set", "boldText": settings.boldText, "reduceMotion": settings.reduceMotion,
+                 "increaseContrast": settings.increaseContrast, "orientation": settings.orientation,
+             })
+-            records.append(run_batch(device, identifier, settings, batch_cases, build_record, evidence, index))
++            record = (run_batch(device, identifier, settings, batch_cases, build_record, evidence, index, discovery=True)
++                      if discovery else run_batch(device, identifier, settings, batch_cases, build_record, evidence, index))
++            if discovery:
++                if record.get("status") not in {"passed", "failed"}:
++                    raise RunnerError("discovery native outcome is unsupported")
++                record["case"] = batch_cases[0].payload()
++            records.append(record)
+             (evidence / "batches" / f"{index:03d}" / "checkpoint.json").write_text(
+-                json.dumps({"status": "passed", "record": records[-1]}, indent=2, sort_keys=True), encoding="utf-8")
++                json.dumps({"status": record.get("status", "passed"), "record": record}, indent=2, sort_keys=True), encoding="utf-8")
+             if candidate() != candidate_record:
+                 raise RunnerError("candidate identity changed after native batch")
+             if index == final_batch_index[device]:
+@@ -892,8 +1018,10 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+                     post_boot_restored_devices.add(device)
+                 if initial_boot_states[device] == "Shutdown" or index != len(batch_plan):
+                     checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
+-    except RunnerError as error:
+-        primary_error = error
++    except (RunnerError, OSError, UnicodeError) as error:
++        if not discovery and not isinstance(error, RunnerError):
++            raise
++        primary_error = error if isinstance(error, RunnerError) else RunnerError(f"discovery evidence is unreadable: {error}")
+         (evidence / "coverage-checkpoint.json").write_text(json.dumps({"status": "failed", "candidate": candidate_record,
+             "completedBatches": records, "error": str(error)}, indent=2, sort_keys=True), encoding="utf-8")
+     finally:
+@@ -940,6 +1068,10 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+             indent=2, sort_keys=True), encoding="utf-8")
+         raise RunnerError("simulator setting restoration failed: " + ", ".join(restoration_failures))
+     if candidate() != candidate_record:
++        if discovery:
++            (evidence / "coverage-final-failure.json").write_text(json.dumps({"candidate": candidate_record,
++                "primaryError": "candidate identity changed before final report", "restorationFailures": [],
++                "completedBatches": records}, indent=2, sort_keys=True), encoding="utf-8")
+         raise RunnerError("candidate identity changed before final report")
+     result = {"candidate": candidate_record, "environment": environment, "build": build_record, "batches": records,
+               "caseCount": len(cases), "auditCount": sum(case.audit for case in cases), "layoutCount": sum(not case.audit for case in cases),
+@@ -949,6 +1081,35 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+     return result
+ 
+ 
++def discovery_summary(cases: tuple[Case, ...], candidate_record: object, records: list[dict[str, object]],
++                      error: str | None = None) -> dict[str, object]:
++    passed = sum(record.get("status") == "passed" for record in records)
++    failed = sum(record.get("status") == "failed" for record in records)
++    return {"mode": "pilot-discovery", "status": "blocked" if error else ("completed-with-failures" if failed else "completed"),
++            "acceptanceEligible": False, "candidate": candidate_record, "caseCount": len(cases),
++            "completedCaseCount": passed + failed, "passedCaseCount": passed, "failedCaseCount": failed,
++            "remainingCaseCount": len(cases) - passed - failed, "cases": records, "error": error}
++
++
++def run_discovery(cases: tuple[Case, ...], evidence: Path, frozen_candidate: dict[str, object] | None = None) -> dict[str, object]:
++    """Build once, execute independent cases, and retain blocked or completed outcomes."""
++    try:
++        result = run_coverage(cases, evidence, frozen_candidate=frozen_candidate, discovery=True)
++    except RunnerError as error:
++        records: list[dict[str, object]] = []
++        failure = evidence / "coverage-final-failure.json"
++        if failure.is_file():
++            records = _load_object(failure, "discovery failure").get("completedBatches", [])
++        summary = discovery_summary(cases, frozen_candidate, records, str(error))
++        (evidence / "discovery-summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
++        raise
++    summary = {**result, **discovery_summary(cases, result["candidate"], result["batches"])}
++    summary["completedAuditInvocationCount"] = summary.pop("auditInvocationCount")
++    summary["auditInvocationCount"] = None if summary["failedCaseCount"] else summary["completedAuditInvocationCount"]
++    (evidence / "discovery-summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
++    return summary
++
++
+ def validate_pilot_result(result: dict[str, object]) -> None:
+     if result.get("caseCount") != 22 or result.get("auditCount") != 20 or result.get("layoutCount") != 2:
+         raise RunnerError("pilot counts are incomplete")
+@@ -1257,6 +1418,7 @@ def main(argv: list[str] | None = None) -> int:
+     selected_parser.add_argument("--device", choices=DEVICES, default="iPhone 17")
+     selected_parser.add_argument("--test-env-json", type=Path)
+     pilot_parser = sub.add_parser("pilot")
++    pilot_parser.add_argument("--discovery", action="store_true")
+     pilot_parser.add_argument("--pocock-evidence", type=Path, required=True)
+     pilot_parser.add_argument("--functional-evidence", type=Path, required=True)
+     pilot_parser.add_argument("--evidence-gate", type=Path, required=True)
+@@ -1279,11 +1441,13 @@ def main(argv: list[str] | None = None) -> int:
+             readiness_paths = {"pocock": args.pocock_evidence, "functional": args.functional_evidence,
+                                "evidence-gate": args.evidence_gate, "private-input": args.private_input_record}
+             readiness = pilot_readiness(frozen_candidate, readiness_paths)
+-            result = run_coverage(pilot_cases(), evidence, frozen_candidate=frozen_candidate)
++            result = (run_discovery(pilot_cases(), evidence, frozen_candidate=frozen_candidate)
++                      if args.discovery else run_coverage(pilot_cases(), evidence, frozen_candidate=frozen_candidate))
+             if pilot_readiness(frozen_candidate, readiness_paths) != readiness or candidate() != frozen_candidate:
+                 raise RunnerError("pilot candidate or readiness evidence changed before manifest")
+             result["readinessEvidence"] = readiness
+-            validate_pilot_result(result)
++            if not args.discovery:
++                validate_pilot_result(result)
+         else:
+             current_candidate = candidate()
+             pilot = validate_full_gate(args.pilot_manifest, args.review_ledger, current_candidate)
+@@ -1293,9 +1457,18 @@ def main(argv: list[str] | None = None) -> int:
+             result["reviewLedger"] = str(args.review_ledger.resolve())
+             result["reviewLedgerSha256"] = sha256(args.review_ledger)
+         manifest = write_manifest(evidence, result, args.mode)
++        if args.mode == "pilot" and args.discovery:
++            print(json.dumps({"result": result["status"], "acceptanceEligible": False, "manifest": str(manifest)}, sort_keys=True))
++            return 1 if result["failedCaseCount"] else 0
+         print(json.dumps({"result": "passed", "manifest": str(manifest)}, sort_keys=True))
+         return 0
+     except RunnerError as error:
++        if args.mode == "pilot" and args.discovery:
++            summary_path = evidence / "discovery-summary.json"
++            summary = (_load_object(summary_path, "discovery summary") if summary_path.is_file()
++                       else discovery_summary(pilot_cases(), None, [], str(error)))
++            summary.update(status="blocked", error=str(error), acceptanceEligible=False)
++            summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
+         failure = evidence / "failure.json"
+         failure.write_text(json.dumps({"mode": args.mode, "error": str(error)}, indent=2, sort_keys=True), encoding="utf-8")
+         print(json.dumps({"result": "blocked", "error": str(error), "evidence": str(failure)}, sort_keys=True), file=sys.stderr)

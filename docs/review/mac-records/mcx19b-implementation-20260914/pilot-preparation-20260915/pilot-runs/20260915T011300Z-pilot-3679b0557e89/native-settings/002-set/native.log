@@ -1,0 +1,202 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/result.xcresult
+
+2026-09-15 11:26:29.014657+1000 ACEClientAppUITests-Runner[91045:3628164] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 11:26:34.270.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 11:26:34.289.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 11:26:34.290.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.02s Start Test at 2026-09-15 11:26:34.307
+    t =     0.26s Set Up
+    t =     0.29s Open com.example.aceclientapp
+    t =     0.30s     Launch com.example.aceclientapp
+    t =     2.89s         Setting up automation session
+    t =     9.02s         Wait for com.example.aceclientapp to idle
+    t =    12.45s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    13.50s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    13.50s         Checking existence of `"Effective interface style" Any`
+    t =    14.79s Find the "Effective interface style" Any
+    t =    14.86s Find the "Effective interface style" ScrollView
+    t =    14.92s Terminate com.example.aceclientapp:91068
+    t =    15.97s Open com.apple.Preferences
+    t =    15.97s     Launch com.apple.Preferences
+    t =    16.81s         Setting up automation session
+    t =    22.67s         Wait for com.apple.Preferences to idle
+    t =    36.01s Wait for com.apple.Preferences to become Running Foreground
+    t =    36.01s Checking existence of `"Settings" NavigationBar`
+    t =    37.84s Checking existence of `"Accessibility" Cell`
+    t =    38.30s Checking existence of `"Accessibility" StaticText`
+    t =    38.89s Find the "Accessibility" StaticText
+    t =    39.59s Tap "Accessibility" StaticText
+    t =    39.59s     Wait for com.apple.Preferences to idle
+    t =    39.61s     Find the "Accessibility" StaticText
+    t =    39.98s     Check for interrupting elements affecting "Accessibility" StaticText
+    t =    40.32s     Synthesize event
+    t =    40.69s     Wait for com.apple.Preferences to idle
+    t =    48.81s Checking existence of `"Display & Text Size" Cell`
+    t =    50.15s Find the "Display & Text Size" Cell
+    t =    51.02s Tap "DISPLAY_AND_TEXT" Cell
+    t =    51.02s     Wait for com.apple.Preferences to idle
+    t =    51.54s     Find the "DISPLAY_AND_TEXT" Cell
+    t =    51.99s     Check for interrupting elements affecting "DISPLAY_AND_TEXT" Cell
+    t =    52.45s     Synthesize event
+    t =    52.86s     Wait for com.apple.Preferences to idle
+    t =    54.72s Waiting 5.0s for "Bold Text" Switch to exist
+    t =    55.81s     Checking `Expect predicate `existsNoRetry == 1` for object "Bold Text" Switch`
+    t =    55.81s         Checking existence of `"Bold Text" Switch`
+    t =    57.11s Find the "Bold Text" Switch
+    t =    57.74s Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+ACE_NATIVE_SWITCH Bold Text before=false expected=true frame=(36.0, 146.3333282470703, 330.0, 28.0)
+    t =    58.25s Tap "ENHANCE_TEXT_LEGIBILITY" Switch[0.90, 0.50]
+    t =    58.25s     Wait for com.apple.Preferences to idle
+    t =    58.27s     Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    58.70s     Check for interrupting elements affecting "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    59.15s     Synthesize event
+    t =    59.15s         Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    59.45s         Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    59.92s         Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    60.57s     Wait for com.apple.Preferences to idle
+    t =    75.73s Find the "ENHANCE_TEXT_LEGIBILITY" Switch
+    t =    76.14s Checking existence of `"Settings" NavigationBar`
+    t =    76.40s Checking existence of `Button (First Match)`
+    t =    76.48s Find the Button (First Match)
+    t =    76.70s Tap "BackButton" Button
+    t =    76.70s     Wait for com.apple.Preferences to idle
+    t =    76.75s     Find the "BackButton" Button
+    t =    76.87s     Check for interrupting elements affecting "BackButton" Button
+    t =   104.75s     Synthesize event
+    t =   105.16s     Wait for com.apple.Preferences to idle
+    t =   106.25s Checking existence of `"Settings" NavigationBar`
+    t =   107.27s Checking existence of `Button (First Match)`
+    t =   107.36s Find the Button (First Match)
+    t =   107.60s Tap "BackButton" Button
+    t =   107.60s     Wait for com.apple.Preferences to idle
+    t =   107.62s     Find the "BackButton" Button
+    t =   107.75s     Check for interrupting elements affecting "BackButton" Button
+    t =   108.04s     Synthesize event
+    t =   108.42s     Wait for com.apple.Preferences to idle
+    t =   110.35s Checking existence of `"Settings" NavigationBar`
+    t =   110.80s Checking existence of `"Accessibility" Cell`
+    t =   111.19s Checking existence of `"Accessibility" StaticText`
+    t =   111.49s Find the "Accessibility" StaticText
+    t =   111.78s Tap "Accessibility" StaticText
+    t =   111.78s     Wait for com.apple.Preferences to idle
+    t =   111.80s     Find the "Accessibility" StaticText
+    t =   112.14s     Check for interrupting elements affecting "Accessibility" StaticText
+    t =   112.51s     Synthesize event
+    t =   112.90s     Wait for com.apple.Preferences to idle
+    t =   113.76s Checking existence of `"Motion" Cell`
+    t =   115.02s Find the "Motion" Cell
+    t =   116.09s Tap "MOTION_TITLE" Cell
+    t =   116.09s     Wait for com.apple.Preferences to idle
+    t =   116.10s     Find the "MOTION_TITLE" Cell
+    t =   116.56s     Check for interrupting elements affecting "MOTION_TITLE" Cell
+    t =   116.91s     Synthesize event
+    t =   117.27s     Wait for com.apple.Preferences to idle
+    t =   117.63s Waiting 5.0s for "Reduce Motion" Switch to exist
+    t =   118.70s     Checking `Expect predicate `existsNoRetry == 1` for object "Reduce Motion" Switch`
+    t =   118.70s         Checking existence of `"Reduce Motion" Switch`
+    t =   118.98s Find the "Reduce Motion" Switch
+    t =   119.23s Find the "REDUCE_MOTION" Switch
+ACE_NATIVE_SWITCH Reduce Motion before=false expected=true frame=(36.0, 146.3333282470703, 330.0, 28.0)
+    t =   119.47s Tap "REDUCE_MOTION" Switch[0.90, 0.50]
+    t =   119.47s     Wait for com.apple.Preferences to idle
+    t =   119.48s     Find the "REDUCE_MOTION" Switch
+    t =   119.70s     Check for interrupting elements affecting "REDUCE_MOTION" Switch
+    t =   119.89s     Synthesize event
+    t =   119.90s         Find the "REDUCE_MOTION" Switch
+    t =   120.16s         Find the "REDUCE_MOTION" Switch
+    t =   120.40s         Find the "REDUCE_MOTION" Switch
+    t =   120.91s     Wait for com.apple.Preferences to idle
+    t =   135.89s Find the "REDUCE_MOTION" Switch
+    t =   136.18s Checking existence of `"Settings" NavigationBar`
+    t =   136.38s Checking existence of `Button (First Match)`
+    t =   136.46s Find the Button (First Match)
+    t =   136.65s Tap "BackButton" Button
+    t =   136.66s     Wait for com.apple.Preferences to idle
+    t =   136.67s     Find the "BackButton" Button
+    t =   136.79s     Check for interrupting elements affecting "BackButton" Button
+    t =   137.08s     Synthesize event
+    t =   137.50s     Wait for com.apple.Preferences to idle
+    t =   138.06s Checking existence of `"Settings" NavigationBar`
+    t =   138.55s Checking existence of `Button (First Match)`
+    t =   138.62s Find the Button (First Match)
+    t =   138.89s Tap "BackButton" Button
+    t =   138.89s     Wait for com.apple.Preferences to idle
+    t =   138.90s     Find the "BackButton" Button
+    t =   139.04s     Check for interrupting elements affecting "BackButton" Button
+    t =   139.31s     Synthesize event
+    t =   139.71s     Wait for com.apple.Preferences to idle
+    t =   140.83s Checking existence of `"Settings" NavigationBar`
+    t =   142.73s Checking existence of `"Accessibility" Cell`
+    t =   142.98s Checking existence of `"Accessibility" StaticText`
+    t =   143.35s Find the "Accessibility" StaticText
+    t =   143.78s Tap "Accessibility" StaticText
+    t =   143.78s     Wait for com.apple.Preferences to idle
+    t =   143.80s     Find the "Accessibility" StaticText
+    t =   144.11s     Check for interrupting elements affecting "Accessibility" StaticText
+    t =   144.52s     Synthesize event
+    t =   144.89s     Wait for com.apple.Preferences to idle
+    t =   145.72s Checking existence of `"Display & Text Size" Cell`
+    t =   146.76s Find the "Display & Text Size" Cell
+    t =   147.82s Tap "DISPLAY_AND_TEXT" Cell
+    t =   147.83s     Wait for com.apple.Preferences to idle
+    t =   147.85s     Find the "DISPLAY_AND_TEXT" Cell
+    t =   148.40s     Check for interrupting elements affecting "DISPLAY_AND_TEXT" Cell
+    t =   148.76s     Synthesize event
+    t =   149.16s     Wait for com.apple.Preferences to idle
+    t =   149.88s Waiting 5.0s for "Increase Contrast" Switch to exist
+    t =   150.90s     Checking `Expect predicate `existsNoRetry == 1` for object "Increase Contrast" Switch`
+    t =   150.90s         Checking existence of `"Increase Contrast" Switch`
+    t =   151.66s Find the "Increase Contrast" Switch
+    t =   152.16s Find the "TEXT_COLORS_DARKEN" Switch
+ACE_NATIVE_SWITCH Increase Contrast before=false expected=true frame=(36.0, 535.6666870117188, 330.0, 28.0)
+    t =   152.67s Tap "TEXT_COLORS_DARKEN" Switch[0.90, 0.50]
+    t =   152.67s     Wait for com.apple.Preferences to idle
+    t =   152.69s     Find the "TEXT_COLORS_DARKEN" Switch
+    t =   153.44s     Check for interrupting elements affecting "TEXT_COLORS_DARKEN" Switch
+    t =   153.97s     Synthesize event
+    t =   153.98s         Find the "TEXT_COLORS_DARKEN" Switch
+    t =   154.68s         Find the "TEXT_COLORS_DARKEN" Switch
+    t =   155.60s         Find the "TEXT_COLORS_DARKEN" Switch
+    t =   157.05s     Wait for com.apple.Preferences to idle
+    t =   159.07s Find the "TEXT_COLORS_DARKEN" Switch
+    t =   162.55s Find the Application 'com.apple.Preferences'
+    t =   164.76s Added attachment named 'Accessibility settings Increase Contrast did not change'
+    t =   164.77s Find the "TEXT_COLORS_DARKEN" Switch
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:405: error: -[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings] : failed - Settings control Increase Contrast: expected true, actual Optional(true)
+    t =   171.33s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' failed (177.929 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 11:29:32.236.
+	 Executed 1 test, with 1 failure (0 unexpected) in 177.929 (177.946) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 11:29:32.238.
+	 Executed 1 test, with 1 failure (0 unexpected) in 177.929 (177.949) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 11:29:32.240.
+	 Executed 1 test, with 1 failure (0 unexpected) in 177.929 (177.970) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/result.xcresult
+
+Testing started
+2026-09-15 11:26:18.494 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:26:18.531 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:26:20.233 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:26:20.631 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:26:34.854 xcodebuild[91000:3627430] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 11:26:34.855 xcodebuild[91000:3627430] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 11:26:46.004 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:09.455 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:09.778 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:12.743 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:18.895 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:19.573 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:28:20.792 xcodebuild[91000:3627430] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:31:04.559 xcodebuild[91000:3627430] [MT] IDETestOperationsObserverDebug: 283.910 elapsed -- Testing started completed.
+2026-09-15 11:31:04.559 xcodebuild[91000:3627430] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 11:31:04.559 xcodebuild[91000:3627430] [MT] IDETestOperationsObserverDebug: 283.910 sec, +283.910 sec -- end
+** TEST EXECUTE FAILED **
+

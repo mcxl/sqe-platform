@@ -1,0 +1,18 @@
+{
+  "recordedAtUTC": "2026-09-14T12:27:49.356207+00:00",
+  "commit": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "worktreeStatus": "",
+  "rawEvidenceDirectory": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914",
+  "privateDirectoryMode": "0o700",
+  "macFreeGiB": 232.7,
+  "windowsFreeGiB": 0.96,
+  "requiredRetentionDays": 30,
+  "retainThrough": "2026-10-14",
+  "nativeJobsRunning": false,
+  "nativeProcesses": [],
+  "noFinalAcceptanceClaim": true,
+  "newCommitEvidence": "NATIVE_CLIPBOARD_COMMIT.json",
+  "review": "SOL_NATIVE_CLIPBOARD_REVIEW.json",
+  "acceptedPilotCases": 0,
+  "acceptedFullCoverageCases": 0
+}

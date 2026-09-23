@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACE / SQE Progress Guide</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: #d9e2ec;
+      --paper: #f7f9fb;
+      --panel: #ffffff;
+      --blue: #0b5cab;
+      --blue-soft: #e8f1fb;
+      --green: #18794e;
+      --green-soft: #e9f7ef;
+      --amber: #9a6700;
+      --amber-soft: #fff6d8;
+      --red: #b42318;
+      --red-soft: #fff0ee;
+      --shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: var(--blue); }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 52px;
+    }
+
+    .hero {
+      padding: 28px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #123b63, #0b5cab);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow { color: #cfe3f8; }
+
+    h1, h2, h3 { margin: 0; line-height: 1.2; }
+    h1 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    h2 { font-size: 1.35rem; }
+    h3 { font-size: 1rem; }
+
+    .hero p:last-child { max-width: 780px; margin: 12px 0 0; color: #e6f0fa; }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.16);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .status::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .status.hold { color: #ffe08a; }
+    .status.now { color: #9ef0c5; }
+
+    .notice {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border: 1px solid #f0d98c;
+      border-left: 5px solid var(--amber);
+      border-radius: 10px;
+      color: #5f4500;
+      background: var(--amber-soft);
+    }
+
+    .current-position {
+      margin-top: 20px;
+      padding: 22px;
+      border: 2px solid var(--blue);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .current-position .section-head { margin-bottom: 14px; }
+
+    .position-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .position-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-left-width: 6px;
+      border-radius: 10px;
+    }
+
+    .position-card.open {
+      border-left-color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .position-card.waiting {
+      border-left-color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .position-card h3 { font-size: 1.1rem; }
+    .position-card p { margin: 8px 0 0; }
+    .position-card ul { margin: 10px 0 0; padding-left: 20px; }
+    .position-card li + li { margin-top: 5px; }
+
+    .section {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: 0 3px 12px rgba(31, 41, 51, 0.04);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head p { margin: 7px 0 0; color: var(--muted); }
+
+    .count {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      flex: 1 1 145px;
+      min-width: 135px;
+      padding: 15px 13px;
+      border: 1px solid #c7d8ea;
+      border-radius: 10px;
+      background: var(--blue-soft);
+      text-align: center;
+    }
+
+    .flow-step strong { display: block; color: #123b63; }
+    .flow-step span { display: block; margin-top: 5px; color: var(--muted); font-size: 0.86rem; }
+
+    .flow-arrow {
+      align-self: center;
+      color: var(--blue);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .plain-panel {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fbfcfe;
+    }
+
+    .plain-panel p { margin: 7px 0 0; color: var(--muted); }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .role {
+      min-height: 130px;
+      padding: 14px;
+      border-top: 4px solid var(--blue);
+      border-radius: 9px;
+      background: #f7fbff;
+    }
+
+    .role p { margin: 7px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .diagram-card {
+      margin: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .diagram-card h3 { margin-bottom: 10px; }
+
+    .diagram-card img {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .diagram-card figcaption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .phase-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .phase.current { border-color: #8bb9e5; background: #f2f8fe; }
+    .phase.held { border-color: #f0d98c; background: #fffdf4; }
+
+    .phase-number {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: #ffffff;
+      background: var(--blue);
+      font-weight: 700;
+    }
+
+    .phase.held .phase-number { background: var(--amber); }
+    .phase p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.now { color: var(--blue); background: var(--blue-soft); }
+    .tag.next { color: var(--green); background: var(--green-soft); }
+    .tag.later { color: var(--muted); background: #eef1f4; }
+    .tag.held { color: var(--amber); background: var(--amber-soft); }
+
+    .gate-table { width: 100%; border-collapse: collapse; }
+    .gate-table th, .gate-table td { padding: 11px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .gate-table th { color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .gate-table tr:last-child td { border-bottom: 0; }
+    .table-responsive { overflow-x: auto; }
+
+    .zone-list { display: grid; gap: 9px; }
+
+    .zone {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .zone:last-child { border-bottom: 0; }
+    .zone strong { color: #123b63; }
+    .zone span { color: var(--muted); }
+
+    .task-list { display: grid; gap: 8px; }
+
+    .task {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .task input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--green); }
+    .task span { flex: 1; }
+    .task input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: 1px solid #a9bfd5;
+      border-radius: 7px;
+      color: var(--blue);
+      background: #ffffff;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:hover, button:focus-visible { border-color: var(--blue); outline: 3px solid #c7dff5; }
+    .small { color: var(--muted); font-size: 0.86rem; }
+
+    .progress-wrap { margin-top: 14px; }
+    .progress-label { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 0.88rem; }
+    progress { width: 100%; height: 12px; accent-color: var(--green); }
+
+    .footer { margin-top: 22px; color: var(--muted); font-size: 0.86rem; text-align: center; }
+
+    @media (max-width: 820px) {
+      .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .diagram-grid { grid-template-columns: 1fr; }
+      .three { grid-template-columns: 1fr; }
+      .position-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 20px, 1180px); padding-top: 10px; }
+      .hero, .section { padding: 17px; border-radius: 12px; }
+      .section-head { flex-direction: column; }
+      .diagram-section { padding-right: 8px; padding-left: 8px; }
+      .diagram-card { padding: 8px; }
+      .split, .role-grid { grid-template-columns: 1fr; }
+      .phase { grid-template-columns: 44px minmax(0, 1fr); }
+      .phase .tag { grid-column: 2; justify-self: start; }
+      .zone { grid-template-columns: 1fr; gap: 3px; }
+      .flow-arrow { width: 100%; transform: rotate(90deg); text-align: center; }
+      .gate-table { font-size: 0.9rem; }
+      .gate-table th, .gate-table td { padding: 9px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell" id="ace-guide">
+    <header class="hero">
+      <p class="eyebrow">Private Auditor Workbench</p>
+      <h1>ACE / SQE Progress Guide</h1>
+      <p>Use this page to see what is ready, what comes next, and what must wait.</p>
+      <div class="status-row" aria-label="Current status">
+        <span class="status hold">Client acceptance: not received</span>
+        <span class="status now">Phase 6B1 complete</span>
+        <span class="status">PR #52: 762 tests and 27 API and HTML checks passed</span>
+      </div>
+    </header>
+
+    <div class="notice">
+      <strong>Data rule:</strong> Use fictional, public or AuditCo-owned material until the client accepts the review and the data rules are approved.
+    </div>
+
+    <section class="current-position" aria-labelledby="current-position-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Current Position</p>
+          <h2 id="current-position-title">Phase 6B1 is complete. One decision controls Phase 6B2.</h2>
+        </div>
+        <span class="count">Action Required</span>
+      </div>
+      <div class="position-grid">
+        <article class="position-card open">
+          <h3>Phase 6B1 Is Complete</h3>
+          <ul>
+            <li>Pull request 52 merged on 23 August 2026.</li>
+            <li>The exact head was <code>1d832a5</code>.</li>
+            <li>The merge commit was <code>1898e34</code>.</li>
+            <li>All 31 review threads are closed.</li>
+            <li>G0 still blocks real client information.</li>
+          </ul>
+        </article>
+        <article class="position-card waiting">
+          <h3>Phase 6B2 Needs An Architecture Decision</h3>
+          <p>Compare the current engine, a refactor and an existing platform.</p>
+          <p><strong>Next action:</strong> Approve one option before Phase 6B2 implementation starts.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="goal-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Approved Build Goal</p>
+          <h2 id="goal-title">Build ACE as the auditor's private workbench.</h2>
+          <p>ACE must help the auditor capture evidence, understand relationships and reach approved, traceable conclusions.</p>
+        </div>
+        <span class="count">Goal Approved</span>
+      </div>
+      <div class="role-grid">
+        <article class="role"><h3>Completion Test</h3><p>Complete one fictional review with ten evidence items. Every conclusion must show its source, relationships and approval decisions.</p></article>
+        <article class="role"><h3>Current Proof</h3><p><a href="https://github.com/mcxl/agentic-os-workspace/pull/52">Pull request 52</a> merged with exact head <code>1d832a5</code>. The full suite passed 762 tests. API and HTML checks passed 27 tests.</p></article>
+        <article class="role"><h3>Current Build</h3><p>The client release engine shows fixed snapshots of approved conclusions and actions. It protects published and withdrawn history.</p></article>
+        <article class="role"><h3>Held Work</h3><p>Do not use client evidence, unprotected hosting, Production, extraction or graph tools yet.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="north-star-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">North Star</p>
+          <h2 id="north-star-title">Every approved conclusion must lead back to reviewed source evidence.</h2>
+          <p>The approval record must show who accepted each relationship and conclusion. The auditor decides.</p>
+        </div>
+        <span class="count">One clear path</span>
+      </div>
+      <div class="flow" aria-label="Evidence to conclusion flow">
+        <div class="flow-step"><strong>Source</strong><span>Document or record</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Candidate Fact</strong><span>Possible meaning</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Auditor Review</strong><span>Check the source</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Risk Links</strong><span>Check relationships</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>MATE / CONTRA</strong><span>Apply the method</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Approved View</strong><span>Auditor or client</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="domain-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Domain Model</p>
+          <h2 id="domain-title">Use one clear name for each audit concept.</h2>
+          <p>The canonical terms are recorded in <a href="CONTEXT.md">the ACE domain glossary</a>.</p>
+        </div>
+        <span class="count">Ten Rules Approved</span>
+      </div>
+      <div class="flow" aria-label="Typical governance relationship path">
+        <div class="flow-step"><strong>Engagement</strong><span>Agreed review scope</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Binding Obligation</strong><span>Applicable requirement</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Risk</strong><span>Defined safety risk</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Control</strong><span>Risk measure</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Accountable Role</strong><span>Control accountability</span></div>
+      </div>
+      <div class="flow" aria-label="Evidence approval chain">
+        <div class="flow-step"><strong>Audit Question</strong><span>Question for one control</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Evidence Review</strong><span>Support, gaps and conflicts</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Auditor Decision</strong><span>Accept, reject or change</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>MATE Assessment</strong><span>Four control checks</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Approved Conclusion</strong><span>Traceable judgement</span></div>
+      </div>
+      <div class="notice">
+        <strong>Approved domain rules:</strong><br>
+        1. The evidence provider and accountable role are separate. One evidence item can support several audit questions through independently approved relationships.<br>
+        2. Accountability stays with a stable job role. A dated role assignment records the named role-holder.<br>
+        3. One risk can have several controls. One control can manage several risks. The auditor decides on each relationship separately.<br>
+        4. Evidence can support, weaken or contradict an audit question. The auditor records a rationale for each classification.<br>
+        5. Missing, unavailable, stale or inadequate evidence is an evidence gap. A gap is not automatically a finding.<br>
+        6. Implementation and effectiveness conclusions are separate. A control can be implemented without being effective.<br>
+        7. MATE assesses control design only. Separate evidence reviews support implementation and effectiveness conclusions.<br>
+        8. ACE never overwrites an approved relationship. A change creates a new version and preserves previous decisions.<br>
+        9. A revised conclusion becomes a new proposal version. Earlier conclusions and auditor decisions remain visible.<br>
+        10. An unresolved contradiction or open material gap blocks a substantive conclusion. The auditor can approve Not Determined with an explicit limitation.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tools-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Plain-English Tool Roles</p>
+          <h2 id="tools-title">Each tool has one job.</h2>
+          <p>These tools support the method. They do not replace the auditor.</p>
+        </div>
+      </div>
+      <div class="role-grid">
+        <article class="role"><h3>Codex</h3><p>Leads the local build, review and checks.</p></article>
+        <article class="role"><h3>Pocock Skills</h3><p>Give Codex a repeatable way to plan, build and test.</p></article>
+        <article class="role"><h3>ACE / MATE / CONTRA</h3><p>Control the assurance method and approval rules.</p></article>
+        <article class="role"><h3>Auditor</h3><p>Makes the professional decision.</p></article>
+        <article class="role"><h3>LangExtract</h3><p>Suggests facts, source locations and possible conflicts.</p></article>
+        <article class="role"><h3>Risk Register Engine</h3><p>Checks and displays proposed links.</p></article>
+        <article class="role"><h3>Mermaid CLI</h3><p>Renders the controlled local diagram source as SVG files.</p></article>
+        <article class="role"><h3>Diagram Design</h3><p>Creates faithful presentation copies for auditor guidance only.</p></article>
+        <article class="role"><h3>Neo4j</h3><p>Shows approved relationships as a map.</p></article>
+        <article class="role"><h3>Semantica</h3><p>May provide a later relationship and provenance view built from approved records only.</p></article>
+        <article class="role"><h3>LangGraph</h3><p>May guide a later pause-and-resume workflow.</p></article>
+        <article class="role"><h3>Vorflux</h3><p>Challenges an important design before Codex builds it. Use only a small, sanitised pack.</p></article>
+        <article class="role"><h3>Client View</h3><p>Shows approved information only.</p></article>
+      </div>
+    </section>
+
+    <section class="section diagram-section" aria-labelledby="diagram-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Controlled And Presentation Diagrams</p>
+          <h2 id="diagram-title">See the approved workflow and relationships.</h2>
+          <p>Mermaid files control the diagram content. These pictures use fictional labels. ACE records remain the source of truth.</p>
+        </div>
+        <span class="count">Auditor Guide Only</span>
+      </div>
+      <div class="diagram-grid">
+        <figure class="diagram-card">
+          <h3>How The Earlier Build Supports The Workbench</h3>
+          <img src="docs/diagrams/controlled/svg/superpowers-build-foundation.svg" alt="Superpowers Sprints 1 to 4 remain the tested ACE decision core. Workflow Designer converts those rules into auditor steps. The next build connects the workbench to the existing approval gates." loading="lazy">
+          <figcaption>The earlier build remains in ACE. The workbench connection is incomplete. <a href="docs/diagrams/controlled/svg/superpowers-build-foundation.svg">Open full diagram</a> · <a href="docs/diagrams/controlled/mermaid/superpowers-build-foundation.mmd">Controlled source</a></figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <h3>Auditor Workflow</h3>
+          <img src="docs/diagrams/presentation/svg/auditor-workflow.svg" alt="Engagement Setup, Field Evidence Capture, Evidence Review, Relationship Review, MATE Assessment and Conclusion Review in sequence." loading="lazy">
+          <figcaption>The auditor controls each step. <a href="docs/diagrams/presentation/svg/auditor-workflow.svg">Open full diagram</a> · <a href="docs/diagrams/controlled/mermaid/auditor-workflow.mmd">Controlled source</a> · <a href="docs/diagrams/presentation/fidelity/auditor-workflow.md">Fidelity report</a></figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <h3>Evidence Relationship Map</h3>
+          <img src="docs/diagrams/presentation/svg/evidence-relationship-map.svg" alt="Governance, evidence provenance, evidence review and proposed relationship records, with Evidence Provider separate from Accountable Role." loading="lazy">
+          <figcaption>Evidence Provider and Accountable Role remain separate. <a href="docs/diagrams/presentation/svg/evidence-relationship-map.svg">Open full diagram</a> · <a href="docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd">Controlled source</a> · <a href="docs/diagrams/presentation/fidelity/evidence-relationship-map.md">Fidelity report</a></figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <h3>Approval And Review States</h3>
+          <img src="docs/diagrams/presentation/svg/approval-review-states.svg" alt="Separate state paths for Evidence Item review, relationship approval and conclusion approval." loading="lazy">
+          <figcaption>REVIEWED is not approval. <a href="docs/diagrams/presentation/svg/approval-review-states.svg">Open full diagram</a> · <a href="docs/diagrams/controlled/mermaid/approval-review-states.mmd">Controlled source</a> · <a href="docs/diagrams/presentation/fidelity/approval-review-states.md">Fidelity report</a></figcaption>
+        </figure>
+      </div>
+      <div class="notice">
+        <strong>Tool limit:</strong> Mermaid CLI and Diagram Design do not store evidence, approve relationships, apply MATE or control conclusions.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="workflow-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workflow Design</p>
+          <h2 id="workflow-title">Split the auditor journey into six controlled jobs.</h2>
+          <p><a href="workflows/engagement-setup.md">Engagement Setup</a>, <a href="workflows/field-evidence-capture.md">Field Evidence Capture</a>, <a href="workflows/evidence-review.md">Evidence Review</a>, <a href="workflows/relationship-review.md">Relationship Review</a>, <a href="workflows/mate-assessment.md">MATE Assessment</a> and <a href="workflows/conclusion-review.md">Conclusion Review</a> are approved.</p>
+        </div>
+        <span class="count">Six Workflows Approved</span>
+      </div>
+      <div class="flow" aria-label="ACE auditor workflow map">
+        <div class="flow-step"><strong>Engagement Setup</strong><span>Approved workflow</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Field Capture</strong><span>Approved workflow</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Evidence Review</strong><span>Approved workflow</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Relationship Review</strong><span>Approved workflow</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>MATE</strong><span>Approved workflow</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Conclusion Review</strong><span>Approved workflow</span></div>
+      </div>
+      <div class="role-grid">
+        <article class="role"><h3>Manual Trigger</h3><p>The auditor starts capture. ACE does not collect evidence automatically.</p></article>
+        <article class="role"><h3>Fast Capture</h3><p>Capture creates an Evidence ID and sends the item to an Evidence Inbox.</p></article>
+        <article class="role"><h3>Later Classification</h3><p>The auditor links evidence to questions and relationships during Evidence Review.</p></article>
+        <article class="role"><h3>Failure Control</h3><p>An attempt key prevents duplicate evidence when a connection fails or retries.</p></article>
+      </div>
+      <div class="notice">
+        <strong>Approved trigger:</strong> The auditor must select an active Engagement before capture. Detailed relationships are added during Evidence Review.
+      </div>
+      <div class="notice">
+        <strong>Approved Engagement rule:</strong> Several Engagements can remain open, but each auditor session has one selected capture context.
+      </div>
+      <div class="notice">
+        <strong>Approved scope rule:</strong> Scope can be edited while Draft. After activation, a change creates a new approved version before more capture.
+      </div>
+      <div class="notice">
+        <strong>Approved Evidence Review rules:</strong> Reviewed evidence can remain in a visible Unlinked queue. Completed corrections create new review versions.
+      </div>
+      <div class="notice">
+        <strong>Approved Relationship Review rules:</strong> Use a visible queue ordered by material risk, then oldest waiting proposal. The auditor can select another proposal. Show one Proposed Relationship at a time. Show both linked records, the relationship type, source support, auditor rationale and version history together. Warn when two proposals link the same records with the same relationship type. Do not merge or delete possible duplicates automatically. Show open Evidence Gaps and unresolved contradictions before the decision. The auditor can save a draft, but a draft makes no Auditor Decision and creates no Approved Relationship. The auditor selects Approved, Rejected or Changes Required and records a written reason. Warnings do not decide automatically. Changes Required creates a new Relationship Version and preserves the previous version and decision. Only approval of the current Relationship Version creates an Approved Relationship. A decision for an earlier version cannot approve a later version. Each decision creates an immutable audit event with the auditor, date, time, Relationship Version, decision and reason. A failed save leaves the proposal undecided. A retry creates no duplicate decision or event.
+      </div>
+      <div class="notice">
+        <strong>Approved MATE rules:</strong> Assess one Control at a time. Start only after its links to the Binding Obligation, Risk and Accountable Role are approved. Show all four records together before the assessment. MATE does not approve these relationships. Show one check at a time in the fixed order Mandate, Accountability, Trigger and Escalation. Show progress, such as Check 2 of 4. The auditor can return to an incomplete check. An approved decision stays fixed. Each check shows its controlled question, proposed Yes or No answer, rationale, supporting evidence, weakening evidence, contradictory evidence, gaps, limitations, unresolved conflicts, source status and passage references. ACE does not select the answer. For each check, the auditor selects Approved, Rejected or Changes Required and records a written note. Approval requires sufficient evidence. The approved answer must match the current proposal. A different answer requires Changes Required and a new proposal version. ACE blocks completion when a check has no current source, evidence is insufficient, a conflict remains unresolved, a check is missing or records do not match. The auditor can save incomplete work as a draft. Missing evidence does not automatically mean No. After all four checks are approved, ACE uses the existing evaluator. All Yes answers produce Adequate. Mandate or Accountability as No produces Inadequate. Two or more No answers produce Inadequate. Only Trigger or Escalation as No produces Partially Adequate. The auditor cannot edit the rating. ACE creates one frozen Approved MATE Assessment. It records the Control, decisions, answers, rating, evidence references, auditor and review times. ACE links it to the approved Control trace. It does not create an audit conclusion. ACE never edits an approved assessment. Changes to the Control, evidence or answers start a new draft assessment version. ACE preserves all earlier assessments, ratings and decisions. Each MATE decision creates an immutable audit event. A failed save creates no partial decision. A retry creates no duplicate decision or event. A visible MATE queue shows ready, draft, blocked and approved assessments. ACE orders active work by material risk, then waiting time. The auditor can select another Control. Only the authenticated auditor makes MATE decisions. Real client information remains blocked at G0. AI can organise evidence and propose answers. AI cannot approve answers, change rating rules or approve conclusions.
+      </div>
+      <div class="notice">
+        <strong>Approved Conclusion Review rules:</strong> Start from one Accepted Planning Trace with its Approved MATE Assessment and rating. Require one approved Main, Implementation and Effectiveness Question for the same Control. Show the full trace, MATE rating and three questions before review. MATE provides context but does not decide implementation or effectiveness. Keep Implementation Review separate from Effectiveness Review. Each review has its own question, evidence matrix, classifications, gaps, contradictions, proposal and Auditor Decision. Evidence used in both reviews needs separate matrix entries and rationales. Each matrix shows the Evidence ID, precise source, origin, collection date, validity period, freshness, relevance reason, assumptions and limitations. Classify origin as Raw, Derived or Auditor Authored. Classify freshness as Current, Stale, Superseded or Uncertain. Classify relevance as Supports, Weakens or Contradicts. Derived evidence links to its raw source. Origin does not decide weight or sufficiency. Show every Evidence Gap and contradiction. Record each gap's explanation, materiality and disposition. Resolved and Accepted Limitation gaps require an auditor rationale. An open material gap or unresolved contradiction blocks a substantive conclusion. Neither automatically creates a negative conclusion. Implementation outcomes are Implemented, Partially Implemented, Not Implemented and Not Determined. Effectiveness outcomes are Effective, Partially Effective, Ineffective and Not Determined. Not Determined states the evidence limitation. It is not a pass or failure. Show one exact Conclusion Proposal version with its outcome, evidence, gaps, reasoning, assumptions and limitations. The auditor selects Approved, Rejected or Changes Required. Record a review note and final evidence-sufficiency decision. Approval must match the current proposal. A different outcome requires a new proposal version. Implementation and Effectiveness need separate decisions. Effectiveness depends on Implementation. Implemented or Partially Implemented can proceed to a substantive Effectiveness conclusion. Not Implemented or Not Determined requires Effectiveness to be Not Determined. ACE blocks inconsistent pairs. The auditor still approves Effectiveness separately. A substantive conclusion requires sufficient evidence, current relied-upon evidence, no unresolved contradiction and no open material gap. Not Determined requires insufficient or unresolved evidence and an explicit limitation. ACE creates no final record until both conclusions are approved. It returns no partly accepted record. After all gates pass, ACE creates one frozen Accepted Evidence-to-Conclusion Record. It contains the trace, MATE rating, questions, matrices, evidence, gaps, contradictions, limitations, proposal versions, decisions and outcomes. A later change creates new versions. ACE preserves the earlier record. A visible queue shows ready, draft, blocked, awaiting-one-decision and accepted records. ACE orders active work by material risk, then waiting time. Each final decision creates one immutable audit event. A failed save creates no partial decision. A retry creates no duplicate decision or event.
+      </div>
+      <div class="notice">
+        <strong>Approved reasoning method:</strong> Use the Requirement-Evidence-Reasoning Chain. Record the Requirement, Question, Claim, Evidence, Reasoning Link, Alternative, Challenge, Limits and Auditor Decision. For material fictional cases, pilot separate AI guidance roles for requirement interpretation, evidence analysis, alternative outcomes, operational context and traceability. AI role agreement gives no approval or independent assurance. When legal applicability is disputed, specialist competence is required or consequences are high, pilot a Human Review Council chaired by the Accountable Auditor. Record views before discussion and keep disagreement visible. Ordinary challenge stays inside Conclusion Review. Formal CONTRA remains separate until SQE approves it.
+      </div>
+      <div class="notice">
+        <strong>Approved Conclusion authority:</strong> AI can reference approved requirements and provide traceable guidance, reasoning and alternatives. Human specialists can advise. The Accountable Auditor decides applicability, evidence sufficiency and every conclusion. AI agreement and council votes cannot approve records. Real client information remains blocked at G0.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="vorflux-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Automated Engineering Control</p>
+          <h2 id="vorflux-title">Use Vorflux before and during an important build.</h2>
+          <p>Vorflux applies Codex tokens before human bottlenecks. Humans approve architecture, risk and merge decisions.</p>
+        </div>
+        <span class="count">Required For Phase 6B2</span>
+      </div>
+      <div class="role-grid">
+        <article class="role"><h3>New Sprint</h3><p>Fix the goal, state matrix, scope, controls and test gates before work starts.</p></article>
+        <article class="role"><h3>Relationship View</h3><p>Challenge how obligations, risks, controls, accountable roles, evidence and MATE connect.</p></article>
+        <article class="role"><h3>Extraction Rules</h3><p>Check what LangExtract can suggest and what the auditor must decide.</p></article>
+        <article class="role"><h3>Graph Design</h3><p>Test the graph questions, node types, links and approval limits before tool selection.</p></article>
+        <article class="role"><h3>Access Design</h3><p>Challenge hosted, offline and client-view rules before data leaves the local workbench.</p></article>
+        <article class="role"><h3>Review Control</h3><p>Use reviews to verify requirements. Do not use review rounds to discover the basic design.</p></article>
+      </div>
+      <div class="flow" aria-label="Vorflux review flow">
+        <div class="flow-step"><strong>Decision</strong><span>Identify the hard question</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Safe Pack</strong><span>Use selected, sanitised material</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Vorflux</strong><span>Challenge the design</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Auditor</strong><span>Accept or reject advice</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Pocock Skills</strong><span>Make the specification</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Codex</strong><span>Build and test</span></div>
+      </div>
+      <div class="notice">
+        <strong>Vorflux data rule:</strong> Do not send the whole SQE repository, client evidence, personal information, passwords, temporary folders or superseded files.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="phase6b2-decision-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Phase 6B2 Architecture Gate</p>
+          <h2 id="phase6b2-decision-title">Select the release-engine design before more code work.</h2>
+          <p>This review is a decision gate. It does not approve a rewrite or a new platform.</p>
+        </div>
+        <span class="count">Decision Required</span>
+      </div>
+      <div class="role-grid">
+        <article class="role"><h3>Keep The Current Engine</h3><p>Keep the SQLite triggers. This has the smallest first change and the highest maintenance cost.</p></article>
+        <article class="role"><h3>Refactor The Current Engine</h3><p>Move workflow rules into one <code>ClientReleaseService</code>. Keep essential data rules in the database.</p></article>
+        <article class="role"><h3>Adopt A Platform</h3><p>Compare Payload, Directus and other platforms. Check audit history, release snapshots and data control.</p></article>
+        <article class="role"><h3>Recommended Option</h3><p>Refactor the current engine. Use the same service for web and mobile clients.</p></article>
+      </div>
+      <div class="notice">
+        <strong>Planning estimate:</strong> Allow 30 to 45 engineering hours, four to six working days and about three million Codex tokens.
+      </div>
+      <div class="notice">
+        <strong>Phase 6B1 lesson:</strong> Fix the complete state matrix before code work. Separate seed, migration and normal release work.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="roadmap-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Build Roadmap</p>
+          <h2 id="roadmap-title">Build in this order.</h2>
+          <p>Do not add extraction, graph or workflow complexity before the method works.</p>
+        </div>
+        <span class="count">Phase 6B1 complete; Phase 6B2 held</span>
+      </div>
+      <div class="phase-list">
+        <article class="phase"><span class="phase-number">0</span><div><h3>Keep The Method Safe</h3><p>Sprint 4 uses fictional data and visible approval gates.</p></div><span class="tag next">Verified</span></article>
+        <article class="phase current"><span class="phase-number">1</span><div><h3>Build The Auditor Workbench</h3><p>Automated tests passed. Protected offline drafts and full record review passed. Physical iPhone capture, preview and review are excluded from this Phase 1 completion.</p></div><span class="tag now">Complete Within Scope</span></article>
+        <article class="phase"><span class="phase-number">2</span><div><h3>Build The Relationship View And Control Summary</h3><p>Relationship Details and the Engagement Control Summary are complete. PR #39 merged with head <code>a4fd72e</code> and merge commit <code>bcc5db6</code>. The full suite passed 378 of 378 tests.</p></div><span class="tag next">Complete</span></article>
+        <article class="phase current"><span class="phase-number">3</span><div><h3>Review The Control Summary</h3><p>Propose one controlled, read-only review slice for recommendation precedence, conflict visibility and empty recent activity. Keep G0 and Production exclusions active.</p></div><span class="tag now">Proposed Next</span></article>
+        <article class="phase"><span class="phase-number">4</span><div><h3>Add LangExtract Review Help</h3><p>Suggest facts and warnings through the same auditor review screen.</p></div><span class="tag later">Later</span></article>
+        <article class="phase"><span class="phase-number">5</span><div><h3>Add A Rebuildable Graph View</h3><p>Compare Neo4j, Semantica or another graph using approved fictional records only.</p></div><span class="tag later">Later</span></article>
+        <article class="phase current"><span class="phase-number">6</span><div><h3>Build The Controlled Client View</h3><p>Phase 6A and Phase 6B1 are complete. Approve the engine design before Phase 6B2 starts.</p></div><span class="tag now">Architecture Gate</span></article>
+        <article class="phase current"><span class="phase-number">7</span><div><h3>Build The Native SwiftUI Read-Only App</h3><p>Candidate head <code>cdc4f45</code> passed 65 Release tests, both Pocock reviews and Fresh Sol review. Forty-four approved runtime or controlled evidence items remain pending.</p></div><span class="tag now">Candidate Verified; Evidence Held</span></article>
+        <article class="phase"><span class="phase-number">8</span><div><h3>Use LangGraph Only If Needed</h3><p>Coordinate durable work steps after the core process is stable.</p></div><span class="tag later">Optional</span></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ios-development-path-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Phase 7 Native iOS Development</p>
+          <h2 id="ios-development-path-title">Build and verify the read-only iOS client through Codemagic and Revyl.</h2>
+          <p>The automated candidate is verified. Complete the approved external evidence before release.</p>
+        </div>
+        <span class="count">Phase 6.1 Conditional Hold</span>
+      </div>
+      <div class="role-grid">
+        <article class="role">
+          <h3>Codex</h3>
+          <p>Implement the approved Swift and SwiftUI specification. Keep changes on the approved feature branch and run focused checks.</p>
+          <p>Apply <code>$swiftui-pro</code> to SwiftUI work. Check APIs, data flow, navigation, accessibility and performance.</p>
+          <p><a href="docs/agents/swiftui-skill.md">SwiftUI Pro Usage And Installation Record</a>. Keep approved platform versions and existing review checks.</p>
+        </article>
+        <article class="role">
+          <h3>Codemagic</h3>
+          <p>Use Xcode 26 to compile the private source, run automated tests and produce the iOS Simulator <code>.app</code> bundle.</p>
+        </article>
+        <article class="role">
+          <h3>Revyl</h3>
+          <p>Receive the compiled simulator bundle only. Run the approved cloud-simulator flows and retain logs, screenshots and video evidence.</p>
+        </article>
+        <article class="role">
+          <h3>Physical iPhone</h3>
+          <p>Use the approved Mac and an iPhone 15 Pro or later model for final Keychain, application-switcher and device-behaviour evidence.</p>
+        </article>
+      </div>
+      <div class="flow" aria-label="Native iOS development and verification path">
+        <div class="flow-step"><strong>Approved Specification</strong><span>Fix scope, bundle identity and security rules</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Codex</strong><span>Implement Swift code and apply SwiftUI Pro</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Codemagic</strong><span>Build and run automated tests</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Revyl</strong><span>Run simulator flows and record evidence</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Security Review</strong><span>Resolve findings and verify the final candidate</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Physical iPhone</strong><span>Complete final device checks</span></div>
+      </div>
+      <div class="notice">
+        <strong>Entry rule:</strong> Start only after the specification, bundle identifier, Keychain access settings, provider approvals and fictional test data are fixed.
+      </div>
+      <div class="notice">
+        <strong>Verified candidate:</strong> Pull request 1 remains a draft at exact head <code>cdc4f458bfd3ede385844b31eed117d3c06e854d</code>. Codemagic passed 65 of 65 Release tests. Both Pocock reviews approved the head. Fresh Sol returned <code>ship</code> with no findings.
+      </div>
+      <div class="notice">
+        <strong>Evidence state:</strong> All 197 identifiers have unique mappings. The matrix records 153 complete and 44 pending identifiers. Twenty-two pending identifiers have partial automated evidence. No identifier is uncovered. <a href="https://github.com/mcxl/ace-iphone-fictional-test/blob/cdc4f458bfd3ede385844b31eed117d3c06e854d/sqe/ios/ACEClientApp/evidence-matrix-audit.md">Open The Evidence Matrix</a>.
+      </div>
+      <div class="notice">
+        <strong>Release hold:</strong> Complete the 44 approved runtime or controlled checks. Obtain human approval for the exact head before merge. Do not merge or use Production yet.
+      </div>
+      <div class="notice">
+        <strong>Data rule:</strong> Codemagic can receive the approved private source. Revyl receives the compiled simulator bundle only. Do not send client evidence, personal information, passwords, certificates, production credentials or usable tokens.
+      </div>
+      <div class="notice">
+        <strong>Signing rule:</strong> The Revyl simulator bundle does not need device signing. Configure Apple signing only for the physical-iPhone or TestFlight build.
+      </div>
+      <div class="notice">
+        <strong>Tool boundary:</strong> Sift-KG and OpenViking remain separate fictional-data pilots. They do not block this build and do not run inside the iOS application.
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sift-openviking-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Parallel Fictional-Data Pilots</p>
+          <h2 id="sift-openviking-title">Keep Sift-KG and OpenViking outside the numbered delivery phases.</h2>
+          <p>These are separate investigation tracks. Neither pilot has implementation approval.</p>
+        </div>
+        <span class="count">Separate Approval Required</span>
+      </div>
+      <div class="role-grid">
+        <article class="role">
+          <h3>Sift-KG</h3>
+          <p>Test source-linked proposals and a disposable exploratory graph. Keep every output unapproved.</p>
+          <p><a href="docs/specs/2026-08-23-sift-kg-fictional-data-pilot.md">Open The Sift-KG Pilot</a></p>
+        </article>
+        <article class="role">
+          <h3>OpenViking</h3>
+          <p>Test source-linked context search only. Keep session memory disabled for the complete pilot.</p>
+          <p><a href="docs/specs/2026-08-23-openviking-fictional-data-pilot.md">Open The OpenViking Pilot</a></p>
+        </article>
+        <article class="role">
+          <h3>OpenViking Entry Gates</h3>
+          <p>Complete legal, privacy, architecture, dependency and session-memory checks before installation.</p>
+        </article>
+        <article class="role">
+          <h3>ACE And Mobile Boundary</h3>
+          <p>ACE keeps the audit record and approval gates. A mobile app calls the ACE API only.</p>
+        </article>
+      </div>
+      <div class="flow" aria-label="Recommended Sift-KG and OpenViking pilot order">
+        <div class="flow-step"><strong>Phase 6B2</strong><span>Complete the read-only projection</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Sift-KG Pilot</strong><span>Use approved fictional sources</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>OpenViking Gates</strong><span>Complete legal and privacy review</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>OpenViking Pilot</strong><span>Retrieve context without memory</span></div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step"><strong>Phase 7</strong><span>Use results in native-app planning</span></div>
+      </div>
+      <div class="notice">
+        <strong>Data rule:</strong> Use fictional information only. Treat each remote model or embedding call as an external data transfer.
+      </div>
+      <div class="notice">
+        <strong>Approval rule:</strong> Sift-KG proposes and OpenViking retrieves context. Neither tool approves records or becomes authoritative.
+      </div>
+      <p><a href="ACE_SIFT_KG_OPENVIKING_INVESTIGATION_VORFLUX.md">Open The Combined Investigation Instruction</a></p>
+    </section>
+
+    <section class="section" aria-labelledby="gates-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Decision Gates</p>
+          <h2 id="gates-title">A gate stops the next step until it is safe.</h2>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="gate-table">
+          <thead><tr><th>Gate</th><th>Question</th><th>Current State</th></tr></thead>
+          <tbody>
+            <tr><td><strong>G0</strong> Client And Data</td><td>Has the client accepted the review and are the data rules approved?</td><td><span class="tag held">Held</span></td></tr>
+            <tr><td><strong>G1</strong> Method</td><td>Does the build follow the EOI, MATE and CONTRA method?</td><td><span class="tag now">Current Check</span></td></tr>
+            <tr><td><strong>G2</strong> Evidence</td><td>Can each item keep its source, version and status?</td><td><span class="tag next">Automated Pilot Passed</span></td></tr>
+            <tr><td><strong>G3</strong> Relationships</td><td>Can the auditor approve or reject each proposed link?</td><td><span class="tag now">Controlled Baseline And Pilot Verified</span></td></tr>
+            <tr><td><strong>G4</strong> Graph</td><td>Can the graph rebuild from approved records only?</td><td><span class="tag later">Not Started</span></td></tr>
+            <tr><td><strong>G5</strong> Client View</td><td>Can the client see approved information only?</td><td><span class="tag now">Phase 6B1 Verified; Architecture Review Next</span></td></tr>
+            <tr><td><strong>G6</strong> Native App</td><td>Does the app use ACE records and gates without a second source of truth?</td><td><span class="tag held">Candidate Verified; 44 Evidence Items Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="zones-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workspace Map</p>
+          <h2 id="zones-title">Know where each type of material belongs.</h2>
+        </div>
+      </div>
+      <div class="zone-list">
+        <div class="zone"><strong>Active Workspace</strong><span><code>src</code>, <code>tests</code>, <code>apps/relationship-review-pilot</code>, current method documents, the roadmap and this guide.</span></div>
+        <div class="zone"><strong>Quarantine</strong><span>Temporary output moved to <code>sqe-quarantine-2026-08-12</code>. Nothing was deleted.</span></div>
+        <div class="zone"><strong>Controlled Evidence Store</strong><span>Separate location to be selected after client acceptance and data approval.</span></div>
+        <div class="zone"><strong>External Handoff</strong><span>Small, reviewed and sanitised pack only. Never the whole repository.</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tasks-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Working Checklist</p>
+          <h2 id="tasks-title">Mark the work as it is completed.</h2>
+          <p>The checklist saves its state in this browser only.</p>
+        </div>
+        <span class="count" aria-live="polite" data-task-count>0 of 20</span>
+      </div>
+      <div class="task-list">
+        <label class="task"><input type="checkbox" data-task="goal"><span>The auditor-workbench goal and completion test are approved.</span></label>
+        <label class="task"><input type="checkbox" data-task="iphone-physical-required"><span>Physical iPhone Safari capture, preview, touch position and safe-area behaviour are confirmed.</span></label>
+        <label class="task"><input type="checkbox" data-task="workflow"><span>The Field Evidence Capture workflow and trigger are approved.</span></label>
+        <label class="task"><input type="checkbox" data-task="engagement"><span>The Engagement Setup workflow and scope controls are approved.</span></label>
+        <label class="task"><input type="checkbox" data-task="roadmap"><span>Roadmap includes Codex, Pocock Skills and Vorflux roles.</span></label>
+        <label class="task"><input type="checkbox" data-task="handoff"><span>Whole-repository Vorflux transfer is prohibited.</span></label>
+        <label class="task"><input type="checkbox" data-task="cleanup"><span>Generated folders are outside the active workspace.</span></label>
+        <label class="task"><input type="checkbox" data-task="sprint4"><span>Sprint 4 method and approval tests are verified.</span></label>
+        <label class="task"><input type="checkbox" data-task="workbench"><span>Workbench domain terms and records are defined for manual entry.</span></label>
+        <label class="task"><input type="checkbox" data-task="relationships"><span>The Relationship Review and fictional read-only pilot are verified.</span></label>
+        <label class="task"><input type="checkbox" data-task="evidence_review"><span>The Evidence Review workflow and correction controls are approved.</span></label>
+        <label class="task"><input type="checkbox" data-task="evidence"><span>Controlled evidence store and real-client data rules are approved.</span></label>
+        <label class="task"><input type="checkbox" data-task="client"><span>Client view shows approved information only.</span></label>
+        <label class="task"><input type="checkbox" data-task="phase6b2_architecture"><span>The Phase 6B2 release-engine design is approved before implementation.</span></label>
+        <label class="task"><input type="checkbox" data-task="ios_provider_approval"><span>Codemagic and Revyl provider use and data transfers have human approval.</span></label>
+        <label class="task"><input type="checkbox" data-task="ios_codemagic_build"><span>Codemagic built exact head cdc4f45 and all 65 Release tests passed.</span></label>
+        <label class="task"><input type="checkbox" data-task="ios_revyl_evidence"><span>Revyl simulator flows pass and retain logs, screenshots and video evidence.</span></label>
+        <label class="task"><input type="checkbox" data-task="ios_physical_device"><span>The final candidate passes the approved physical-iPhone checks.</span></label>
+        <label class="task"><input type="checkbox" data-task="sift_kg_pilot"><span>The separate Sift-KG fictional-data pilot has human approval before implementation.</span></label>
+        <label class="task"><input type="checkbox" data-task="openviking_gates"><span>OpenViking legal, privacy, architecture, dependency and session-memory gates are complete.</span></label>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Checklist progress</span><strong data-progress-label>0%</strong></div>
+        <progress max="100" value="0" data-progress-bar aria-label="Checklist progress"></progress>
+      </div>
+      <div class="controls">
+        <span class="small" data-save-state>Ready.</span>
+        <button type="button" data-reset>Reset checklist</button>
+      </div>
+    </section>
+
+    <p class="footer">Authority: current EOI, MATE, CONTRA and ACE Sprint 4 design. The auditor remains the decision maker.</p>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.getElementById('ace-guide');
+      const checks = Array.from(root.querySelectorAll('[data-task]'));
+      const count = root.querySelector('[data-task-count]');
+      const label = root.querySelector('[data-progress-label]');
+      const bar = root.querySelector('[data-progress-bar]');
+      const saveState = root.querySelector('[data-save-state]');
+      const reset = root.querySelector('[data-reset]');
+      const storageKey = 'ace-sqe-progress-guide-2026-08-12';
+
+      function loadState() {
+        try {
+          const saved = JSON.parse(window.localStorage.getItem(storageKey) || '{}');
+          checks.forEach(function (check) { check.checked = saved[check.dataset.task] === true; });
+        } catch (error) {
+          saveState.textContent = 'Browser saving is not available.';
+        }
+      }
+
+      function updateState() {
+        const completed = checks.filter(function (check) { return check.checked; }).length;
+        const percent = Math.round((completed / checks.length) * 100);
+        count.textContent = completed + ' of ' + checks.length;
+        label.textContent = percent + '%';
+        bar.value = percent;
+        try {
+          const saved = {};
+          checks.forEach(function (check) { saved[check.dataset.task] = check.checked; });
+          window.localStorage.setItem(storageKey, JSON.stringify(saved));
+          saveState.textContent = 'Saved in this browser.';
+        } catch (error) {
+          saveState.textContent = 'Browser saving is not available.';
+        }
+      }
+
+      checks.forEach(function (check) { check.addEventListener('change', updateState); });
+      reset.addEventListener('click', function () {
+        checks.forEach(function (check) { check.checked = false; });
+        updateState();
+      });
+      loadState();
+      updateState();
+    }());
+  </script>
+</body>
+</html>

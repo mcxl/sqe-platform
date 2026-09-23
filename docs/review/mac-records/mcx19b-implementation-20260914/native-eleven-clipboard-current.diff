@@ -1,0 +1,89 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 7020e07..d557585 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -497,6 +497,84 @@ final class ACEClientAppUITests: XCTestCase {
+         return contentSize
+     }
+ 
++    func testAllReleaseClipboardValuesPasteExactly() {
++        continueAfterFailure = false
++        let fields = releaseFields
++        let sentinel = "FictionalClipboardSentinelMustBeReplaced"
++        XCTAssertEqual(Set(fields.map(\.1)).count, fields.count, "Release clipboard values must be unique")
++        XCTAssertFalse(fields.map(\.1).contains(sentinel), "Clipboard sentinel must differ from every release value")
++
++        var activeApp: XCUIApplication?
++        defer { activeApp?.terminate() }
++
++        let seedApp = launch("signIn")
++        activeApp = seedApp
++        seedNativeClipboard(with: sentinel, in: seedApp)
++        seedApp.terminate()
++        activeApp = nil
++
++        for (field, expectedValue) in fields {
++            let release = launch("release")
++            activeApp = release
++            let copy = release.buttons["Copy \(field)"]
++            scrollUntilVisible(copy, in: release, field: "Copy \(field)")
++            XCTAssertTrue(copy.isHittable, "Copy \(field) must be tappable")
++            copy.tap()
++
++            let confirmation = release.staticTexts["Copied \(field)."]
++            XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "Copy \(field) must show its confirmation")
++            if field == "Engagement name" {
++                let displayedValue = release.descendants(matching: .any)
++                    .matching(NSPredicate(format: "label == %@", "\(field): \(expectedValue)"))
++                    .firstMatch
++                XCTAssertEqual(displayedValue.label, "\(field): \(expectedValue)", "First copy must preserve Engagement name")
++                copy.tap()
++                XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "Repeated Copy Engagement name must show its confirmation")
++                XCTAssertEqual(displayedValue.label, "\(field): \(expectedValue)", "Repeated copy must preserve Engagement name")
++            }
++            addScreenshot(of: release, named: "Native copy — \(field)")
++            release.terminate()
++            activeApp = nil
++
++            let destination = launch("signIn")
++            activeApp = destination
++            let username = destination.textFields["Username"]
++            XCTAssertTrue(username.waitForExistence(timeout: 5), "Username destination must exist for \(field)")
++            username.tap()
++            username.press(forDuration: 1)
++            addScreenshot(of: destination, named: "Native Paste menu — \(field)")
++            let paste = destination.descendants(matching: .any)
++                .matching(NSPredicate(format: "label == %@", "Paste"))
++                .firstMatch
++            XCTAssertTrue(paste.waitForExistence(timeout: 5), "Native Paste command must be available for \(field)")
++            paste.tap()
++            XCTAssertEqual(
++                username.value as? String,
++                expectedValue,
++                "Native paste must reproduce the copied \(field) value"
++            )
++            addScreenshot(of: destination, named: "Native paste value — \(field)")
++            destination.terminate()
++            activeApp = nil
++        }
++    }
++
++    private func seedNativeClipboard(with sentinel: String, in app: XCUIApplication) {
++        let username = app.textFields["Username"]
++        XCTAssertTrue(username.waitForExistence(timeout: 5), "Username field must exist to seed the native clipboard")
++        username.tap()
++        username.typeText(sentinel)
++        username.doubleTap()
++        addScreenshot(of: app, named: "Native clipboard sentinel selection")
++        let copy = app.descendants(matching: .any)
++            .matching(NSPredicate(format: "label == %@", "Copy"))
++            .firstMatch
++        XCTAssertTrue(copy.waitForExistence(timeout: 5), "Native Copy command must be available for clipboard seeding")
++        addScreenshot(of: app, named: "Native clipboard sentinel selected")
++        copy.tap()
++        addScreenshot(of: app, named: "Native clipboard sentinel copied")
++    }
++
+     func testBothAppearances() {
+         for appearance in ["light", "dark"] {
+             let app = launch("release", appearance: appearance)

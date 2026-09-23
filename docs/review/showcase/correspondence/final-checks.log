@@ -1,0 +1,19 @@
+PASS public model validates
+PASS report findings and detail text preserved
+PASS standards filters retain counts 2 / 1 / 5
+PASS six unique findings and correct selection
+PASS no local source metadata or file links
+PASS no external assets, forms, network requests or storage
+PASS public label and source-report limitation present
+PASS six views render through application handlers
+PASS filter and finding handlers update rendered markup
+PASS all evidence story handlers render
+PASS rendered views contain no broken report hyperlinks
+PASS register has unique items/events and valid item links
+PASS correspondence order is chronological
+PASS receipt bounds retain their evidence and do not claim exact timestamps
+PASS structural-steel trail preserves repeated requests and response sequence
+PASS partial closure and separate NCR remain unresolved
+PASS register selection exposes full history and requested/received columns
+PASS public correspondence contains no personal contact details or mailbox URLs
+18 checks passed. DOM stubs exercise render logic, not browser layout or accessibility.

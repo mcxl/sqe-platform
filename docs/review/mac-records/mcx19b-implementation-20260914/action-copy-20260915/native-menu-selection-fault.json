@@ -1,0 +1,18 @@
+{
+  "category": "test menu selection/query fault",
+  "test": "testCompleteActionClipboardPastesExactly",
+  "sourceLine": 512,
+  "expected": "select and copy second unique sentinel through native edit menu",
+  "actual": "Failed to not hittable: Image, {{46.0, 402.0}, {17.0, 21.0}}, label: 'Copy'",
+  "observedMenu": [
+    "Paste",
+    "Select",
+    "Select All",
+    "AutoFill"
+  ],
+  "wrongMatch": "background doc.on.doc Image labelled Copy",
+  "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f",
+  "correctiveAttempt": 1,
+  "nextScope": "same one selector; MenuItem-only queries and native Select All when Copy unavailable",
+  "productionUnchanged": true
+}

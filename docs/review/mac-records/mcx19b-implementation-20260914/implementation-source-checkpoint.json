@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-09-14T07:48:02.285925+00:00",
+  "specSHA256": "b4f2dd2aa2af6a6e24cccd34d05288bc45d481672c4174488a136134b0106552",
+  "contractSHA256": "da620eef3fd66d7717d1cf3d40622701d0266a0a9bc9c70c383b2f6fe2e6c847",
+  "requirementIdentifiersPreserved": 197,
+  "sourceTestCount": 66,
+  "contractSubsetSourceCount": 43,
+  "nativeVerificationOfNewTests": "pending",
+  "baseline": "reference found; direct required ancestry failed; approval-dependent acceptance blocked",
+  "appCorrectionsForNativeAudit": "none; no proven product defect",
+  "sourceCountFiles": [
+    "AcceptanceEvidenceContractTests.swift",
+    "ACEClientAppTests.swift",
+    "AcceptanceEvidenceCatalogue.swift"
+  ],
+  "countCorrection": "Includes three catalogue tests in AcceptanceEvidenceCatalogue.swift; an earlier count omitted that file.",
+  "startingNativeInventory": {
+    "total": 65,
+    "byClass": {
+      "ACEClientAppTests": 20,
+      "AcceptanceEvidenceCatalogueTests": 3,
+      "AcceptanceEvidenceContractTests": 42
+    },
+    "execution": "enumeration only; no test run",
+    "source": "functional-inventory-before.json"
+  }
+}
