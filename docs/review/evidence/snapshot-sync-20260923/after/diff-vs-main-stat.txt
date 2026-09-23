@@ -1,0 +1,12 @@
+ .github/workflows/quality-gates.yml    |  203 -----
+ .github/workflows/release-quality.yml  |   44 -
+ quality/test-groups.json               |   25 -
+ tests/test_g0_snapshot_metadata.py     |   44 +
+ tests/test_ios_accessibility_layout.py |   55 ++
+ tests/test_ios_action_targets.py       |   74 ++
+ tests/test_quality_gates_workflow.py   |   17 -
+ tests/test_run_tests.py                |  575 -------------
+ tools/ace_ios_local.py                 | 1479 ++++++++++++++++++++++++++++++++
+ tools/run_tests.py                     |  955 ---------------------
+ tools/tests/test_ace_ios_local.py      | 1032 ++++++++++++++++++++++
+ 11 files changed, 2684 insertions(+), 1819 deletions(-)
