@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Work only in `C:\Users\AlanRichardson\Documents\agentic-os-workspace\sqe`.
+- Work only in `LOCAL_HOME\Documents\agentic-os-workspace\sqe`.
 - Keep all execution local and private.
 - Use fictional source material only.
 - Do not add telemetry, analytics, network clients or external API calls.
@@ -372,9 +372,9 @@ Expected: the Task 1 tests pass.
 - [ ] **Step 6: Commit the controlled vocabulary and basic records**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py tests/test_approval_gate.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add controlled MATE assessment records"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py tests/test_approval_gate.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add controlled MATE assessment records"
 ```
 
 ---
@@ -790,9 +790,9 @@ visible.
 - [ ] **Step 7: Commit the evidence and decision validation**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py tests/test_approval_gate.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: validate evidence reviews and auditor decisions"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py tests/test_approval_gate.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: validate evidence reviews and auditor decisions"
 ```
 
 ---
@@ -1453,9 +1453,9 @@ warning still visible.
 - [ ] **Step 9: Commit the approval gate**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: require auditor approval for MATE inputs"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/assessment.py src/ace/domain/__init__.py src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: require auditor approval for MATE inputs"
 ```
 
 ---
@@ -1642,9 +1642,9 @@ Expected: all tests pass and the known dependency warning remains visible.
 - [ ] **Step 8: Commit evaluator integration**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: evaluate approved MATE assessments"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: evaluate approved MATE assessments"
 ```
 
 ---
@@ -1755,9 +1755,9 @@ fails, stop the recorded process before investigating.
 Run:
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace status --short --branch
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 750f47ecd905f92827fd2018d16944013f829560 -- src/ace/domain/assessment.py src/ace/domain/__init__.py src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 750f47ecd905f92827fd2018d16944013f829560 --exit-code -- src/ace/engine/evaluator.py src/ace/app.py tests/test_rating_engine.py tests/test_app.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace status --short --branch
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 750f47ecd905f92827fd2018d16944013f829560 -- src/ace/domain/assessment.py src/ace/domain/__init__.py src/ace/engine/approval.py src/ace/engine/__init__.py tests/test_approval_gate.py docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 750f47ecd905f92827fd2018d16944013f829560 --exit-code -- src/ace/engine/evaluator.py src/ace/app.py tests/test_rating_engine.py tests/test_app.py
 ```
 
 Expected:

@@ -34,6 +34,38 @@ final class ACEClientAppTests: XCTestCase {
         XCTAssertEqual(try release.validated(), .release(release))
     }
 
+    func testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators() {
+        let action = ClientAction(
+            description: "Fictional action",
+            owner: "Fictional owner",
+            targetDate: "2026-08-25",
+            status: "OPEN"
+        )
+        let expected = "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"
+        let payload = ActionClipboardPayload.value(for: action, index: 0)
+
+        XCTAssertEqual(payload, expected)
+        XCTAssertFalse(payload.hasSuffix("\n"))
+        XCTAssertEqual(ClipboardWriteContract.item(visibleValue: payload)["public.utf8-plain-text"] as? String, expected)
+
+        let secondAction = ClientAction(
+            description: "  Café\n第二行  ",
+            owner: "  Zoë  ",
+            targetDate: " 2026-08-26 ",
+            status: " COMPLETE "
+        )
+        let secondExpected = "Action 2\nDescription:   Café\n第二行  \nOwner:   Zoë  \nTarget date:  2026-08-26 \nStatus:  COMPLETE "
+        XCTAssertEqual(ActionClipboardPayload.value(for: secondAction, index: 1), secondExpected)
+    }
+
+    func testClipboardWriteOptionsRemainLocalForFiveMinutes() {
+        let writtenAt = Date(timeIntervalSinceReferenceDate: 123)
+        let options = ClipboardWriteContract.options(writtenAt: writtenAt)
+
+        XCTAssertEqual(options[.localOnly] as? Bool, true)
+        XCTAssertEqual(options[.expirationDate] as? Date, writtenAt.addingTimeInterval(300))
+    }
+
     func testInvalidReleaseValuesFailClosed() {
         let invalids = [
             ClientReleaseResponse(engagementName: "Fictional", reviewStatus: "RELEASED", releaseVersion: 0, publishedAt: "2026-08-24T10:15:30Z", conclusion: nil, actions: []),

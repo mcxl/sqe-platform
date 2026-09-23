@@ -1,0 +1,2653 @@
+{
+  "reason": "Absent endpoint in raw extraction; excluded by native builder. No fabricated nodes.",
+  "count": 264,
+  "edges": [
+    {
+      "source": "apps_relationship_review_pilot_app_layout",
+      "target": "ref_next",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/app/layout.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_app_layout",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_app_globals_css",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/app/layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_convex_client_provider",
+      "target": "ref_convex_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_convex_client_provider",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_relationship_review_workbench",
+      "target": "ref_convex_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_relationship_review_workbench",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_relationship_review_workbench",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_alert",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_card",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_skeleton",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_table",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_utils",
+      "target": "ref_clsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_components_ui_utils",
+      "target": "ref_tailwind_merge",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_api_d",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_api",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_datamodel_d",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_datamodel_d",
+      "target": "ref_convex_values",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_server_d",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_server_d",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_server_d",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel_datamodel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_generated_server",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_relationships",
+      "target": "ref_convex_values",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/relationships.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_schema",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/schema.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_schema",
+      "target": "ref_convex_values",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/schema.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_seed",
+      "target": "ref_convex_server",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/seed.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_seed",
+      "target": "ref_convex_values",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/seed.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_seed",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/seed.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_convex_seed",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel_datamodel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/convex/seed.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_eslint_config",
+      "target": "ref_eslint_config",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/eslint.config.mjs",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_eslint_config",
+      "target": "ref_eslint_config_next_core_web_vitals",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/eslint.config.mjs",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_next_config",
+      "target": "ref_next",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/next.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationship_review_workbench_test",
+      "target": "ref_testing_library_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationship_review_workbench_test",
+      "target": "ref_vitest",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationship_review_workbench_test",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationship_review_workbench_test",
+      "target": "c_users_alanrichardson_documents_sqe_platform_apps_relationship_review_pilot_convex_generated_datamodel_id",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationships_test",
+      "target": "ref_convex_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_tests_relationships_test",
+      "target": "ref_vitest",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_vitest_config",
+      "target": "ref_node_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/vitest.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_vitest_config",
+      "target": "ref_node_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/vitest.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_vitest_config",
+      "target": "ref_vitejs_plugin_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/vitest.config.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_vitest_config",
+      "target": "ref_vitest_config",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/vitest.config.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_relationship_review_pilot_vitest_setup",
+      "target": "ref_testing_library_jest_dom_vitest",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/relationship-review-pilot/vitest.setup.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_fastapi",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_openpyxl",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_pillow",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_pydantic",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_python_docx",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_reportlab",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pkg_assurance_compass_engine",
+      "target": "pkg_uvicorn",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_app",
+      "target": "uvicorn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/app.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_app",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/app.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_assessment",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/assessment.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_assessment",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/assessment.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_assessment",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/assessment.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_models",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/models.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_models",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/models.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_models",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/models.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_release",
+      "target": "enum",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/release.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_release",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/release.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_release",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/release.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_trace",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/trace.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_trace",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/trace.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_domain_trace",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/domain/trace.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_engine_approval",
+      "target": "collections_abc",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/engine/approval.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_engine_approval",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/engine/approval.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_engine_tracing",
+      "target": "collections_abc",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/engine/tracing.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_engine_tracing",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/engine/tracing.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_action_result",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/action_result.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_action_result",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/action_result.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_change_record",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/change_record.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_change_record",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/change_record.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_change_record",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/change_record.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_auth",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_auth.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_auth",
+      "target": "secrets",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_auth.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_auth",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_auth.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_auth",
+      "target": "fastapi_security",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_auth.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_release_projection",
+      "target": "collections_abc",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_release_projection.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_release_service",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_release_service.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_release_service",
+      "target": "itertools",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_release_service.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_release_service",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_release_service.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_release_service",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_release_service.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_routes",
+      "target": "html",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_routes.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_routes",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_routes.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_client_routes",
+      "target": "fastapi_responses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/client_routes.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_document_toolchain_doctor",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/document_toolchain_doctor.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_document_toolchain_doctor",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/document_toolchain_doctor.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_document_toolchain_doctor",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/document_toolchain_doctor.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_document_toolchain_doctor",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/document_toolchain_doctor.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_document_toolchain_doctor",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/document_toolchain_doctor.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_engagement",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/engagement.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_engagement",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/engagement.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_evidence_review",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/evidence_review.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "csv",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "tempfile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "zipfile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "io",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "docx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "docx_enum_text",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "docx_shared",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "openpyxl",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "openpyxl_styles",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_export_builder",
+      "target": "openpyxl_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/export_builder.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_extraction",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/extraction.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_extraction",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/extraction.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_notion_publisher",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/notion_publisher.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_notion_publisher",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/notion_publisher.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_notion_publisher",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/notion_publisher.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "uuid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_relationship_review_storage",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/relationship_review_storage.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_release_storage",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/release_storage.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "base64",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "binascii",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "html",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "secrets",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "io",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "urllib_parse",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "fastapi_responses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "fastapi_security",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "pil",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_routes",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/routes.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "uuid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_ace_workbench_storage",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ace/workbench/storage.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_action_result",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_action_result.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_app",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_app.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_app",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_app.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_app",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_app.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_app",
+      "target": "src_ace_workbench",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_app.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_approval_gate",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_approval_gate.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_approval_gate",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_approval_gate.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_approval_gate",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_approval_gate.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_capture",
+      "target": "base64",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_capture.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_capture",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_capture.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_capture",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_capture.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_capture",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_capture.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_capture",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_capture.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "csv",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "uuid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "zipfile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "io",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_change_export",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_change_export.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "hashlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "queue",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "threading",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release_projection",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release_projection.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_client_release_projection",
+      "target": "src_ace_workbench",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_client_release_projection.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "base64",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "threading",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_setup",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_setup.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_summary",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_summary.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_summary",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_summary.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engagement_summary",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_engagement_summary.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "base64",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "inspect",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_evidence_review",
+      "target": "httpx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_evidence_review.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_extraction",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extraction.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_extraction",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extraction.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_extraction",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extraction.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_extraction",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extraction.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_extraction",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extraction.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_graph_projection",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_graph_projection.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_graph_projection",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_graph_projection.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_graph_projection",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_graph_projection.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_graph_projection",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_graph_projection.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_graph_projection",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_graph_projection.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_ios_accessibility_layout",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_ios_accessibility_layout.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_ios_action_targets",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_ios_action_targets.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_ios_action_targets",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_ios_action_targets.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_offline_drafts",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_offline_drafts.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_offline_drafts",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_offline_drafts.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_offline_drafts",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_offline_drafts.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_planning_trace",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_planning_trace.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_planning_trace",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_planning_trace.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_planning_trace",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_planning_trace.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_rating_engine",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_rating_engine.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_rating_engine",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_rating_engine.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_relationship_review",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_relationship_review.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_relationship_review",
+      "target": "sqlite3",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_relationship_review.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_relationship_review",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_relationship_review.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_relationship_review",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_relationship_review.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "base64",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "html",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "io",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "pytest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "fastapi_testclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "pil",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_workbench",
+      "target": "src_ace_workbench",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_workbench.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "argparse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "hashlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "plistlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "zlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "collections",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "dataclasses",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_ace_ios_local",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/ace_ios_local.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "copy",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "contextlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "io",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "struct",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "zlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "importlib_util",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "plistlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "tempfile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "unittest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "unittest_mock",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_tests_test_ace_ios_local",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/tests/test_ace_ios_local.py",
+      "source_location": "L14",
+      "weight": 1.0
+    }
+  ]
+}

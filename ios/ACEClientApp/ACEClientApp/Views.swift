@@ -7,7 +7,13 @@ struct RootView: View {
 
     var body: some View {
         #if DEBUG
-        if let scenario = UITestScenario.current { ScenarioRootView(scenario: scenario) }
+        if let scenario = UITestScenario.current {
+            if scenario.usesReleaseScroll {
+                ScenarioRootView(scenario: scenario)
+            } else {
+                ScenarioRootView(scenario: scenario).padding()
+            }
+        }
         else { content }
         #else
         content
@@ -28,15 +34,20 @@ struct RootView: View {
             case .release(let release, let notices):
                 ReleaseView(release: release, notices: notices, refresh: state.refresh, signOut: state.signOut)
             case .empty(let message):
-                CurrentReleaseMessageView(message: message, retry: .refresh, state: state)
+                CurrentReleaseMessageView(message: message, retry: .refresh, retryAction: state.refresh, signOutAction: state.signOut)
             case .failure(let message, let retry):
-                CurrentReleaseMessageView(message: message, retry: retry, state: state)
+                CurrentReleaseMessageView(message: message, retry: retry, retryAction: { state.retry(retry) }, signOutAction: retry == .refresh ? { state.signOut() } : nil)
             case .deletionPending(let message, let deletionOnlyRecovery):
                 SafeMessageView(message: message, action: (deletionOnlyRecovery ? "Reset saved sign-in" : "Try again", deletionOnlyRecovery ? state.resetSavedSignIn : { state.retry(.deletion) }))
             }
         }
-        .padding()
+        .padding(isReleasePresentation(presentation) ? Edge.Set() : .all)
         .modifier(ErrorAnnouncement(message: presentation.errorMessage, event: state.errorAnnouncementEvent))
+    }
+
+    private func isReleasePresentation(_ presentation: ScreenState.Presentation) -> Bool {
+        if case .release = presentation { return true }
+        return false
     }
 }
 
@@ -64,20 +75,30 @@ struct SignInView: View {
 
     var body: some View {
         Form {
-            Section("Sign In") {
-                TextField("Username", text: $username)
+            Text("Sign In")
+                .font(.title2)
+                .bold()
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("Sign In heading")
+            Section {
+                TextField("Username", text: $username, prompt: Text("Username").foregroundColor(Color(uiColor: .label)))
                     .textInputAutocapitalization(.never)
                     .accessibilityLabel("Username")
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $password, prompt: Text("Password").foregroundColor(Color(uiColor: .label)))
                     .textInputAutocapitalization(.never)
                     .accessibilityLabel("Password")
                 if let message { Text(message) }
-                Button("Sign in") {
+                Button {
                     let enteredUsername = username
                     let enteredPassword = password
                     username = ""
                     password = ""
                     submit(enteredUsername, enteredPassword)
+                } label: {
+                    Text("Sign in")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
                 }
                 .accessibilityLabel("Sign in")
             }
@@ -88,15 +109,27 @@ struct SignInView: View {
 struct CurrentReleaseMessageView: View {
     let message: String
     let retry: RetryAction
-    @ObservedObject var state: SessionState
+    let retryAction: () -> Void
+    let signOutAction: (() -> Void)?
 
     var body: some View {
         VStack(spacing: 20) {
             HandlingLabel()
             Text(message).multilineTextAlignment(.center)
-            Button(retry == .keychainRead ? "Try again" : "Refresh") { state.retry(retry) }
-                .accessibilityLabel(retry == .keychainRead ? "Retry saved sign-in read" : "Refresh current release")
-            if retry == .refresh { Button("Sign out") { state.signOut() }.accessibilityLabel("Sign out") }
+            Button { retryAction() } label: {
+                Text(retry == .keychainRead ? "Try again" : "Refresh")
+                    .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                    .contentShape(Rectangle())
+            }
+            .accessibilityLabel(retry == .keychainRead ? "Retry saved sign-in read" : "Refresh current release")
+            if let signOutAction {
+                Button { signOutAction() } label: {
+                    Text("Sign out")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Sign out")
+            }
         }
     }
 }
@@ -107,7 +140,14 @@ struct SafeMessageView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text(message).multilineTextAlignment(.center)
-            if let action { Button(action.0, action: action.1).accessibilityLabel(action.0) }
+            if let action {
+                Button { action.1() } label: {
+                    Text(action.0)
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel(action.0)
+            }
         }
     }
 }
@@ -120,37 +160,78 @@ struct ReleaseView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 20) {
+                SectionHeader("Current Release")
                 HandlingLabel()
-                ValueRow(field: .engagementName, value: release.engagementName)
-                ValueRow(field: .reviewStatus, value: release.reviewStatus)
-                ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
-                ValueRow(field: .publishedAt, value: release.publishedAt)
+                ReleaseCard {
+                    Text("Release Details")
+                        .font(.headline)
+                        .accessibilityAddTraits(.isHeader)
+                    ValueRow(field: .engagementName, value: release.engagementName)
+                    ValueRow(field: .reviewStatus, value: release.reviewStatus)
+                    ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
+                    ValueRow(field: .publishedAt, value: release.publishedAt)
+                }
                 if let conclusion = release.conclusion {
-                    SectionHeader("Conclusion")
-                    ValueRow(field: .conclusionTitle, value: conclusion.title)
-                    ValueRow(field: .conclusionSummary, value: conclusion.summary)
-                    ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
+                    ReleaseCard {
+                        SectionHeader("Conclusion")
+                        ValueRow(field: .conclusionTitle, value: conclusion.title)
+                        ValueRow(field: .conclusionSummary, value: conclusion.summary)
+                        ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
+                    }
                 }
                 if !release.actions.isEmpty {
                     SectionHeader("Actions")
                     ForEach(Array(release.actions.enumerated()), id: \.offset) { index, action in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Action \(index + 1)").font(.headline)
+                        ReleaseCard {
+                            Text("Action \(index + 1)")
+                                .font(.headline)
+                                .accessibilityAddTraits(.isHeader)
                             ValueRow(field: .actionDescription, value: action.description)
                             ValueRow(field: .actionOwner, value: action.owner)
                             ValueRow(field: .actionTargetDate, value: action.targetDate)
                             ValueRow(field: .actionStatus, value: action.status)
+                            ActionCopyControl(action: action, index: index)
                         }
                         .accessibilityElement(children: .contain)
                     }
                 }
                 ForEach(notices, id: \.self) { notice in Text(notice) }
-                Button("Refresh", action: refresh).accessibilityLabel("Refresh current release")
-                Button("Sign out", action: signOut).accessibilityLabel("Sign out")
+                Button { refresh() } label: {
+                    Text("Refresh")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Refresh current release")
+                Button { signOut() } label: {
+                    Text("Sign out")
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel("Sign out")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
+        .clipped()
+        .tint(.primary)
+    }
+}
+
+private struct ReleaseCard<Content: View>: View {
+    let content: Content
+
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            content
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(uiColor: .secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -182,21 +263,57 @@ enum CopyableReleaseField: CaseIterable {
 struct ValueRow: View {
     let field: CopyableReleaseField
     let value: String
+
+    var body: some View {
+        Text("\(field.label)\n\(value)")
+            .font(.body)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityLabel("\(field.label): \(value)")
+    }
+}
+
+enum ActionClipboardPayload {
+    static func value(for action: ClientAction, index: Int) -> String {
+        [
+            "Action \(index + 1)",
+            "Description: \(action.description)",
+            "Owner: \(action.owner)",
+            "Target date: \(action.targetDate)",
+            "Status: \(action.status)"
+        ].joined(separator: "\n")
+    }
+}
+
+struct ActionCopyControl: View {
+    let action: ClientAction
+    let index: Int
     @State private var confirmation: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(field.label).font(.headline)
-            Text(value).accessibilityLabel("\(field.label): \(value)")
-            Button("Copy \(field.label)") {
-                ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
-                let announcement = "Copied \(field.label)."
-                confirmation = announcement
-                UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
+        VStack(alignment: .leading, spacing: 8) {
+            Button(action: copyAction) {
+                Label("Copy action", systemImage: "doc.on.doc")
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
             }
-            .accessibilityLabel("Copy \(field.label)")
-            if let confirmation { Text(confirmation) }
+            .buttonStyle(.bordered)
+            .tint(.primary)
+            .accessibilityLabel("Copy action \(index + 1)")
+            if let confirmation {
+                Text(confirmation)
+                    .font(.body)
+                    .foregroundStyle(.primary)
+            }
         }
+    }
+
+    private func copyAction() {
+        ClipboardWriteContract.write(visibleValue: ActionClipboardPayload.value(for: action, index: index), writtenAt: Date())
+        let announcement = "Copied Action \(index + 1)."
+        confirmation = announcement
+        UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
     }
 }
 

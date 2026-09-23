@@ -419,8 +419,8 @@ Expected: all Task 1 tests pass.
 - [ ] **Step 5: Commit Task 1**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add controlled audit question records"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add controlled audit question records"
 ```
 
 ---
@@ -819,8 +819,8 @@ Expected: all Task 1 and Task 2 tests pass.
 - [ ] **Step 6: Commit Task 2**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add evidence matrix records"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add evidence matrix records"
 ```
 
 ---
@@ -1184,8 +1184,8 @@ Expected: all Tasks 1-3 tests pass.
 - [ ] **Step 6: Commit Task 3**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add controlled conclusion records"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/domain/conclusion.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add controlled conclusion records"
 ```
 
 ---
@@ -1814,8 +1814,8 @@ Expected: all Task 1-4 tests pass.
 - [ ] **Step 6: Commit Task 4**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/engine/conclusion.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add evidence conclusion approval gate"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/engine/conclusion.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add evidence conclusion approval gate"
 ```
 
 ---
@@ -2113,8 +2113,8 @@ weaken a test or add a default approval.
 - [ ] **Step 6: Commit Task 5**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/engine/conclusion.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "test: harden evidence conclusion approvals"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/engine/conclusion.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "test: harden evidence conclusion approvals"
 ```
 
 ---
@@ -2320,8 +2320,8 @@ known dependency warning remains visible.
 - [ ] **Step 6: Commit Task 6**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add -- src/ace/domain/__init__.py src/ace/engine/__init__.py tests/test_evidence_to_conclusion.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: expose evidence conclusion workflow"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add -- src/ace/domain/__init__.py src/ace/engine/__init__.py tests/test_evidence_to_conclusion.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: expose evidence conclusion workflow"
 ```
 
 ---
@@ -2446,9 +2446,9 @@ Expected: no remaining listener.
 Run:
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace status --short --branch
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 11a38954b6762283d0923382e99560508e770fde -- src/ace/domain/conclusion.py src/ace/engine/conclusion.py src/ace/domain/__init__.py src/ace/engine/__init__.py tests/test_evidence_to_conclusion.py docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 11a38954b6762283d0923382e99560508e770fde --exit-code -- src/ace/domain/assessment.py src/ace/domain/trace.py src/ace/domain/models.py src/ace/engine/approval.py src/ace/engine/tracing.py src/ace/engine/evaluator.py src/ace/app.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace status --short --branch
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 11a38954b6762283d0923382e99560508e770fde -- src/ace/domain/conclusion.py src/ace/engine/conclusion.py src/ace/domain/__init__.py src/ace/engine/__init__.py tests/test_evidence_to_conclusion.py docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 11a38954b6762283d0923382e99560508e770fde --exit-code -- src/ace/domain/assessment.py src/ace/domain/trace.py src/ace/domain/models.py src/ace/engine/approval.py src/ace/engine/tracing.py src/ace/engine/evaluator.py src/ace/app.py
 ```
 
 Expected:

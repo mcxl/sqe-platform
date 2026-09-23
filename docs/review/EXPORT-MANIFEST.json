@@ -1,0 +1,1381 @@
+{
+  "prepared_at": "2026-09-23T05:00:23.425458+00:00",
+  "local_head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+  "github_publication_parent": "7da6228dc87ad970aa8d44365fbc3823c58020da",
+  "branch": "codex/vorflux-review-20260923",
+  "omissions": [
+    {
+      "path": "apps/relationship-review-pilot/.env.example",
+      "reason": "Environment-file exclusion; this existing example contains only an empty public Convex URL setting."
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "category": "working-source",
+      "original_sha256": "1f90252a3578f140325405c592d56634e94fba592400578f14de7973a03b1df4",
+      "export_sha256": "1f90252a3578f140325405c592d56634e94fba592400578f14de7973a03b1df4",
+      "bytes": 77,
+      "sanitised": false
+    },
+    {
+      "path": ".graphifyignore",
+      "category": "working-source",
+      "original_sha256": "15cd5c629636e1377b04e92a0175aee9ed0612dfba6f55d009497848c135a59f",
+      "export_sha256": "15cd5c629636e1377b04e92a0175aee9ed0612dfba6f55d009497848c135a59f",
+      "bytes": 332,
+      "sanitised": false
+    },
+    {
+      "path": ".understandignore",
+      "category": "working-source",
+      "original_sha256": "15cd5c629636e1377b04e92a0175aee9ed0612dfba6f55d009497848c135a59f",
+      "export_sha256": "15cd5c629636e1377b04e92a0175aee9ed0612dfba6f55d009497848c135a59f",
+      "bytes": 332,
+      "sanitised": false
+    },
+    {
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "category": "working-source",
+      "original_sha256": "cfec39b52f7b15d99d363085a713615ebd2cf5615e37f477fadcce30fd4576ff",
+      "export_sha256": "1d3cedd9d5fe7ecb566ed84f2c5aa410f71663b032b16f8cbe317499ac93e6b2",
+      "bytes": 28079,
+      "sanitised": true
+    },
+    {
+      "path": "AGENTS.md",
+      "category": "working-source",
+      "original_sha256": "0ef8b2ccfae725808f966e18b246f677579675b8dffa985e230600eb89315ffa",
+      "export_sha256": "0ef8b2ccfae725808f966e18b246f677579675b8dffa985e230600eb89315ffa",
+      "bytes": 6163,
+      "sanitised": false
+    },
+    {
+      "path": "DEV_STATE.md",
+      "category": "working-source",
+      "original_sha256": "0c767720cc110e8f621ca972fff5eeaf340265ee8aa727741d74f2101f895881",
+      "export_sha256": "6f2b1347aa4ff7cf268b0d20385bd94d7743e91efc192893c636f4ae2483d778",
+      "bytes": 40986,
+      "sanitised": true
+    },
+    {
+      "path": "README.md",
+      "category": "working-source",
+      "original_sha256": "1483584a5b3d50a8d952d5951e342a0b138e1e24f6dc1796636df9353394a816",
+      "export_sha256": "0521a03b627ebc5013dbc3a2a856a431ad383f245b780bc0f4c7adc68029caeb",
+      "bytes": 2338,
+      "sanitised": true
+    },
+    {
+      "path": "SQE_DEVELOPER_HUB.html",
+      "category": "working-source",
+      "original_sha256": "6e527f403c6deed13986b57a1f1b919d3c014eea52453eee994b33c0987b9a86",
+      "export_sha256": "0eb1370a497ebde9da71a7de0db04601c1cd118962b300eda0d0435bc6164ff4",
+      "bytes": 13251,
+      "sanitised": true
+    },
+    {
+      "path": "WORKSPACE-GUIDE.md",
+      "category": "working-source",
+      "original_sha256": "ddb7b9587f744e03de64fa9c5fc5be9be5de49a58c0b3b1c28b89f420ebbf2c0",
+      "export_sha256": "11b4cbf059a5abd2bb6509d36af028de6eecf918b7b4a1dc1bf2129978564e02",
+      "bytes": 7098,
+      "sanitised": true
+    },
+    {
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "category": "working-source",
+      "original_sha256": "f8d5ffe8887620a60efedad375e52b1b8a6ac6d39d3892bb751d18d162a1a474",
+      "export_sha256": "f8d5ffe8887620a60efedad375e52b1b8a6ac6d39d3892bb751d18d162a1a474",
+      "bytes": 46,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/README.md",
+      "category": "working-source",
+      "original_sha256": "289e62234a8155ca8907c984953f3bf2c56138693b9a926f6b222f52c1705549",
+      "export_sha256": "289e62234a8155ca8907c984953f3bf2c56138693b9a926f6b222f52c1705549",
+      "bytes": 482,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "category": "working-source",
+      "original_sha256": "99cbb245a7b55d49b524155ce0e5e43b9fb54d977d27a90b728ebcf815255dcd",
+      "export_sha256": "99cbb245a7b55d49b524155ce0e5e43b9fb54d977d27a90b728ebcf815255dcd",
+      "bytes": 474,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "category": "working-source",
+      "original_sha256": "be3e3bdadfcb7b709ea2ebeae2d66e4ef86c66d91f816c81edc99847d46dc3de",
+      "export_sha256": "be3e3bdadfcb7b709ea2ebeae2d66e4ef86c66d91f816c81edc99847d46dc3de",
+      "bytes": 187,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "category": "working-source",
+      "original_sha256": "c07d9e6ae5c214ea0abe8ecf2e75a931a4e393ae504b3d0a6b627d45e599c1a0",
+      "export_sha256": "c07d9e6ae5c214ea0abe8ecf2e75a931a4e393ae504b3d0a6b627d45e599c1a0",
+      "bytes": 397,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "category": "working-source",
+      "original_sha256": "ae2155b612231cb8701fb3b0c6590390451bf66ad14c91342a799e4ab073a1d8",
+      "export_sha256": "ae2155b612231cb8701fb3b0c6590390451bf66ad14c91342a799e4ab073a1d8",
+      "bytes": 1158,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components.json",
+      "category": "working-source",
+      "original_sha256": "c3e91b4ab640333e9ed9ea8fbabe0009385117b9343b538b3daed9abbe164122",
+      "export_sha256": "c3e91b4ab640333e9ed9ea8fbabe0009385117b9343b538b3daed9abbe164122",
+      "bytes": 428,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "category": "working-source",
+      "original_sha256": "5f41346add3e2e9ff5c1ff74dd721e61498afd944be9305c2c526a982ff2bb08",
+      "export_sha256": "5f41346add3e2e9ff5c1ff74dd721e61498afd944be9305c2c526a982ff2bb08",
+      "bytes": 390,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "category": "working-source",
+      "original_sha256": "064f8aee1684823e93ab4827ce96bf2918a584f631c5dc76a5c036ab55ec1b03",
+      "export_sha256": "064f8aee1684823e93ab4827ce96bf2918a584f631c5dc76a5c036ab55ec1b03",
+      "bytes": 8120,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "category": "working-source",
+      "original_sha256": "c883faa9b22ff1506209c6578a84bcee9aeede0500d34cb23dcdc2969f883511",
+      "export_sha256": "c883faa9b22ff1506209c6578a84bcee9aeede0500d34cb23dcdc2969f883511",
+      "bytes": 682,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "category": "working-source",
+      "original_sha256": "e60c6aa75616e21b76f5ddb18e8dc9b786242d151a8b5499098862c5c18047b2",
+      "export_sha256": "e60c6aa75616e21b76f5ddb18e8dc9b786242d151a8b5499098862c5c18047b2",
+      "bytes": 837,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "category": "working-source",
+      "original_sha256": "5ed67915985ae90110f2d417e1d737ac86da99cdd46f42a6a0cbb3bc6a7acbda",
+      "export_sha256": "5ed67915985ae90110f2d417e1d737ac86da99cdd46f42a6a0cbb3bc6a7acbda",
+      "bytes": 323,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "category": "working-source",
+      "original_sha256": "f6bc35e6130b058ebef3622e5304d891162b7c26dd7a376ed011092672652539",
+      "export_sha256": "f6bc35e6130b058ebef3622e5304d891162b7c26dd7a376ed011092672652539",
+      "bytes": 1192,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "category": "working-source",
+      "original_sha256": "c0adf27efbfa148d5abcf99e860f8e3e6c8fc77a1f99e023c08ef4f12e6ece29",
+      "export_sha256": "c0adf27efbfa148d5abcf99e860f8e3e6c8fc77a1f99e023c08ef4f12e6ece29",
+      "bytes": 175,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "category": "working-source",
+      "original_sha256": "fc180f2ccf3b258dcb9f75d11b3738b2a33314b61795ddfb96129a3b4a0a0b3d",
+      "export_sha256": "fc180f2ccf3b258dcb9f75d11b3738b2a33314b61795ddfb96129a3b4a0a0b3d",
+      "bytes": 1073,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "category": "working-source",
+      "original_sha256": "fbe8bcf881ddae62c14ae6e6fe286cae256714b761dfa0682958e7fb0e4d8940",
+      "export_sha256": "fbe8bcf881ddae62c14ae6e6fe286cae256714b761dfa0682958e7fb0e4d8940",
+      "bytes": 503,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "category": "working-source",
+      "original_sha256": "5df8434fdc274c6421f16b2db48b54eeba1781929298cee95424fd4b03cd2f87",
+      "export_sha256": "5df8434fdc274c6421f16b2db48b54eeba1781929298cee95424fd4b03cd2f87",
+      "bytes": 1796,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "category": "working-source",
+      "original_sha256": "1da230ff2fbae6a7f7a40e373a0fc7492b3ca3159e54fb81dcfa224ba210816c",
+      "export_sha256": "1da230ff2fbae6a7f7a40e373a0fc7492b3ca3159e54fb81dcfa224ba210816c",
+      "bytes": 6170,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "category": "working-source",
+      "original_sha256": "71f80aeb307b3d20c55aee732a4c8fdc23641d50c080661dcdc8ca6ccf16a9f7",
+      "export_sha256": "71f80aeb307b3d20c55aee732a4c8fdc23641d50c080661dcdc8ca6ccf16a9f7",
+      "bytes": 3973,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "category": "working-source",
+      "original_sha256": "9b287e111a3b71e9a0969404f98c52525766265a8289c8da15ef19c60fd76af3",
+      "export_sha256": "9b287e111a3b71e9a0969404f98c52525766265a8289c8da15ef19c60fd76af3",
+      "bytes": 5453,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "category": "working-source",
+      "original_sha256": "95438847698afd4340df709ff914e4692dc598680788c9e683a429d33ae0f563",
+      "export_sha256": "95438847698afd4340df709ff914e4692dc598680788c9e683a429d33ae0f563",
+      "bytes": 1936,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "category": "working-source",
+      "original_sha256": "1becf6067c3bc8a58924821c543bc45da4a521aff13ef324d1c31c4dc0ef3d7e",
+      "export_sha256": "1becf6067c3bc8a58924821c543bc45da4a521aff13ef324d1c31c4dc0ef3d7e",
+      "bytes": 6575,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "category": "working-source",
+      "original_sha256": "6a961eb26dfe68b53804569b58d92ab0bfb4adf8ee5d9f418dd13119c317bb70",
+      "export_sha256": "6a961eb26dfe68b53804569b58d92ab0bfb4adf8ee5d9f418dd13119c317bb70",
+      "bytes": 240,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "category": "working-source",
+      "original_sha256": "3352be307044d091ad31bfe77bdf1d144825b52b424f7c759b143407ab5d5c5b",
+      "export_sha256": "3352be307044d091ad31bfe77bdf1d144825b52b424f7c759b143407ab5d5c5b",
+      "bytes": 246,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "category": "working-source",
+      "original_sha256": "0d2c2c17415e048e032a0fb477db9a9857af9e66da2be6ed4cceb51497b37581",
+      "export_sha256": "0d2c2c17415e048e032a0fb477db9a9857af9e66da2be6ed4cceb51497b37581",
+      "bytes": 156,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "category": "working-source",
+      "original_sha256": "2530fde99f735a7a52404eb7632bb471925c2e16930a88140faf8ebdb5f6832f",
+      "export_sha256": "2530fde99f735a7a52404eb7632bb471925c2e16930a88140faf8ebdb5f6832f",
+      "bytes": 109,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "category": "working-source",
+      "original_sha256": "b6cb41a29b2ae8b259aeae7e9305de4c1db9379c9acab5be0e7d58bb65ba3b9f",
+      "export_sha256": "b6cb41a29b2ae8b259aeae7e9305de4c1db9379c9acab5be0e7d58bb65ba3b9f",
+      "bytes": 329539,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/package.json",
+      "category": "working-source",
+      "original_sha256": "414cf5dfc2d0f710b14c09da3e22940675a80cd041fe752d74308741bafe7dad",
+      "export_sha256": "414cf5dfc2d0f710b14c09da3e22940675a80cd041fe752d74308741bafe7dad",
+      "bytes": 956,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "category": "working-source",
+      "original_sha256": "8c8f7393ac19372ce0f496da88ab4a9ca56f9823185dcc964d9281f19c0fc942",
+      "export_sha256": "8c8f7393ac19372ce0f496da88ab4a9ca56f9823185dcc964d9281f19c0fc942",
+      "bytes": 115,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "category": "working-source",
+      "original_sha256": "310c3d019f7925703764bba42316258613da5f6a1fcd813ae0fdfdf949c56e89",
+      "export_sha256": "310c3d019f7925703764bba42316258613da5f6a1fcd813ae0fdfdf949c56e89",
+      "bytes": 8425,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "category": "working-source",
+      "original_sha256": "3edc779a1ea0bc526bdb4473f13178771c9447047ae7e59df1884a217773e927",
+      "export_sha256": "3edc779a1ea0bc526bdb4473f13178771c9447047ae7e59df1884a217773e927",
+      "bytes": 4631,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "category": "working-source",
+      "original_sha256": "64633472b43e82c042820efec292a0e19a6e112382a6986fb79b799ee5aad21f",
+      "export_sha256": "64633472b43e82c042820efec292a0e19a6e112382a6986fb79b799ee5aad21f",
+      "bytes": 597,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "category": "working-source",
+      "original_sha256": "a122c41f5e443de55f40e0b6d5c6fe9d7f7770542c67c562c96ff45160e2a645",
+      "export_sha256": "a122c41f5e443de55f40e0b6d5c6fe9d7f7770542c67c562c96ff45160e2a645",
+      "bytes": 535,
+      "sanitised": false
+    },
+    {
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "category": "working-source",
+      "original_sha256": "60aa525f7ffa6bfd3045d22710d4eeef3a5ff2074ecc3dbcef99374badebad17",
+      "export_sha256": "60aa525f7ffa6bfd3045d22710d4eeef3a5ff2074ecc3dbcef99374badebad17",
+      "bytes": 44,
+      "sanitised": false
+    },
+    {
+      "path": "docs/ace/2026-09-16-ace-ios-swift-completion-instruction.md",
+      "category": "working-source",
+      "original_sha256": "252aab6ba1115b72f1fcbd84c3d49f3429550c0845d96c2008088d15bdbbe629",
+      "export_sha256": "11e7f653d44e677472ab0d910c0bd6453cecabeddd0b8a474420066982862147",
+      "bytes": 26886,
+      "sanitised": true
+    },
+    {
+      "path": "docs/ace/2026-09-17-ace-ios-copy-reflow-check-instruction.md",
+      "category": "working-source",
+      "original_sha256": "f7147730b09e0b4daf5d18090abc29d38f780962479dc55a49631af20c1f2179",
+      "export_sha256": "874714e4b31dcbd7182fa1516b9b7e0f553cfaa4ef26b3b4072e14c49c17ef79",
+      "bytes": 18884,
+      "sanitised": true
+    },
+    {
+      "path": "docs/ace/CODE-AND-EVIDENCE-INDEX.md",
+      "category": "working-source",
+      "original_sha256": "395b996e9db2527a00cca1644599bb3aa18d21b63a258928a21403a6fbb01d5d",
+      "export_sha256": "403e710d8531c5d1786fb4ac948a2a94c5f2a82d545d3e786182d3ce94a786b7",
+      "bytes": 9428,
+      "sanitised": true
+    },
+    {
+      "path": "docs/ace/REPOSITORY-MAP-SETUP.md",
+      "category": "working-source",
+      "original_sha256": "eae7be288cf19a970c3dc60c0db3307656addeb39fdebce0b8afcac5798bd299",
+      "export_sha256": "a41286509d52ce885d7df9d9fc30e1c8c20f923dd3165de46afe8b77ee066cc2",
+      "bytes": 8188,
+      "sanitised": true
+    },
+    {
+      "path": "docs/agents/agent-permissions.md",
+      "category": "working-source",
+      "original_sha256": "e7760d353b3d87351c319563590ff3e896f2a4d7a674f7ff4c063a7f3532b6a2",
+      "export_sha256": "e7760d353b3d87351c319563590ff3e896f2a4d7a674f7ff4c063a7f3532b6a2",
+      "bytes": 626,
+      "sanitised": false
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "category": "working-source",
+      "original_sha256": "631dfc12a81ca1370ebe64e88cea3fafb6f64b2ed687dfa89460c6580744b5a2",
+      "export_sha256": "631dfc12a81ca1370ebe64e88cea3fafb6f64b2ed687dfa89460c6580744b5a2",
+      "bytes": 967,
+      "sanitised": false
+    },
+    {
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "category": "working-source",
+      "original_sha256": "82ed627b02513b6b52c90244cb93d9a2dcc8738a8f06ec8cbb899255423156f4",
+      "export_sha256": "82ed627b02513b6b52c90244cb93d9a2dcc8738a8f06ec8cbb899255423156f4",
+      "bytes": 9731,
+      "sanitised": false
+    },
+    {
+      "path": "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+      "category": "working-source",
+      "original_sha256": "9228d23e71fbd649ffe6dd23cbbe416d71f75e7fc127f6c6d1f231eda5a54dfd",
+      "export_sha256": "9f16e6716bd7782a52c66e8ae74f04d315b7adac0e39befa08e52c87d2d9daa3",
+      "bytes": 4622,
+      "sanitised": true
+    },
+    {
+      "path": "docs/plans/2026-09-18-sqe-consolidation-web-showcase-plan.md",
+      "category": "working-source",
+      "original_sha256": "652096c5829970b747e58e9db3a52426bdf0d692293676bbc7062760760bc6be",
+      "export_sha256": "0e5b2136ebaba0eed6274c2d37d0b7817c9a7d944f43a0aee8191a2376e208cb",
+      "bytes": 60057,
+      "sanitised": true
+    },
+    {
+      "path": "docs/plans/2026-09-18-sqe-stage-3-execution-proposal.md",
+      "category": "working-source",
+      "original_sha256": "e3003ce2da0fc22503b5b3afc8b38c5781526ef97b9d7616b41b685f1cfa9372",
+      "export_sha256": "c13c33e02bb4d21b576068a067adc2bf2326e39581162135e2dce2b8ed5c17d4",
+      "bytes": 11807,
+      "sanitised": true
+    },
+    {
+      "path": "docs/plans/2026-09-18-sqe-stage-4-execution-proposal.md",
+      "category": "working-source",
+      "original_sha256": "c0d296c1f295f2473dcb69cf281ab4e9b12bc6911e1ffe3e1cb54cf88aae8db0",
+      "export_sha256": "dd3081c8d8b3b27c066f28055d4f5d02bf6cebc3582752db53ae0282de274c46",
+      "bytes": 8300,
+      "sanitised": true
+    },
+    {
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "category": "working-source",
+      "original_sha256": "3ac56988d48275947cadf0a69e15fd9ddb160eb524174e7a0acef9a47f20b1c9",
+      "export_sha256": "3ac56988d48275947cadf0a69e15fd9ddb160eb524174e7a0acef9a47f20b1c9",
+      "bytes": 86223,
+      "sanitised": false
+    },
+    {
+      "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+      "category": "working-source",
+      "original_sha256": "41bbb91076bfff2258a75ad53b724662460aea7594761706240c5e687cf7a0e2",
+      "export_sha256": "41bbb91076bfff2258a75ad53b724662460aea7594761706240c5e687cf7a0e2",
+      "bytes": 1253,
+      "sanitised": false
+    },
+    {
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "category": "working-source",
+      "original_sha256": "8507666ee4d04e512279cd4e1867ad26dd1a5634ed15e5190d9b00bd491e9510",
+      "export_sha256": "8507666ee4d04e512279cd4e1867ad26dd1a5634ed15e5190d9b00bd491e9510",
+      "bytes": 16606,
+      "sanitised": false
+    },
+    {
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "category": "working-source",
+      "original_sha256": "f0575cbfba982201be440cdbfd517de69a6852f9b6942330487e309775adf279",
+      "export_sha256": "f0575cbfba982201be440cdbfd517de69a6852f9b6942330487e309775adf279",
+      "bytes": 6342,
+      "sanitised": false
+    },
+    {
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "category": "working-source",
+      "original_sha256": "8e3ed212a71f19ec0a21bb63163224d21d7089e2f0a51f6d3eb4d06bf1057d07",
+      "export_sha256": "8e3ed212a71f19ec0a21bb63163224d21d7089e2f0a51f6d3eb4d06bf1057d07",
+      "bytes": 11378,
+      "sanitised": false
+    },
+    {
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "category": "working-source",
+      "original_sha256": "dbc852acf81e16d5d87276c7517c5ef13faf89ab881bb644d31b8132dbff52cb",
+      "export_sha256": "dbc852acf81e16d5d87276c7517c5ef13faf89ab881bb644d31b8132dbff52cb",
+      "bytes": 11098,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+      "category": "working-source",
+      "original_sha256": "94feea419d7142861636b9de40063d45ca131ed72e61095ba73da813fd678820",
+      "export_sha256": "94feea419d7142861636b9de40063d45ca131ed72e61095ba73da813fd678820",
+      "bytes": 33887,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+      "category": "working-source",
+      "original_sha256": "0c4f0a9f1e7cbd34a1ad35fddcb6803ff8ad890cbbaa5e61f03dcfd2bcf824f5",
+      "export_sha256": "ce7b29316e74b2c3982ae92bca2fd44af81e32348ee6aefb214a6bb0703ba95d",
+      "bytes": 58420,
+      "sanitised": true
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "category": "working-source",
+      "original_sha256": "3de5bc7219fdec4e700a3b8bb030eb24492b8e33b7493a9551933c31a6f6535c",
+      "export_sha256": "7475b5d506eddb837ce345ce2255a695053430fe0b0ea4a5ed30f4fb96d9f48b",
+      "bytes": 65458,
+      "sanitised": true
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+      "category": "working-source",
+      "original_sha256": "5d48d2ee191f99836f994303b7c94cd0a34e903ef0d7619238b5850f31638e59",
+      "export_sha256": "1b0745f9219c1414c70aa8564bf2aeac6e443e972bd93801bda8267a798dfaa0",
+      "bytes": 88928,
+      "sanitised": true
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "category": "working-source",
+      "original_sha256": "b3b05b3612315717fd05349e60145c360976587b07eaeff3c900937d3b91f9f9",
+      "export_sha256": "b3b05b3612315717fd05349e60145c360976587b07eaeff3c900937d3b91f9f9",
+      "bytes": 11095,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+      "category": "working-source",
+      "original_sha256": "36cfc1f89ce5abf8ff69bf90dc7735ec38c68d17ed6fb8d9682100e448e59fc8",
+      "export_sha256": "36cfc1f89ce5abf8ff69bf90dc7735ec38c68d17ed6fb8d9682100e448e59fc8",
+      "bytes": 21783,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "category": "working-source",
+      "original_sha256": "e781d5533df5877900236974d54307ce148bbec0e4cb3f7d38f4984f7042ff65",
+      "export_sha256": "e781d5533df5877900236974d54307ce148bbec0e4cb3f7d38f4984f7042ff65",
+      "bytes": 26588,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+      "category": "working-source",
+      "original_sha256": "3ebe9ffc036fe128681bb67727a453ca5bfb6192721b5ef2f2699a96a2968bb2",
+      "export_sha256": "3ebe9ffc036fe128681bb67727a453ca5bfb6192721b5ef2f2699a96a2968bb2",
+      "bytes": 33813,
+      "sanitised": false
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "category": "working-source",
+      "original_sha256": "96e1c0e85791c5956d78c851e1913db3d924acf3777228b6a3cb6119b2f9e23b",
+      "export_sha256": "96e1c0e85791c5956d78c851e1913db3d924acf3777228b6a3cb6119b2f9e23b",
+      "bytes": 13918,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+      "category": "working-source",
+      "original_sha256": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+      "export_sha256": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+      "bytes": 14409,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+      "category": "working-source",
+      "original_sha256": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+      "export_sha256": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+      "bytes": 1580,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "category": "working-source",
+      "original_sha256": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+      "export_sha256": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+      "bytes": 1964,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "category": "working-source",
+      "original_sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "export_sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "bytes": 5242,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+      "category": "working-source",
+      "original_sha256": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+      "export_sha256": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+      "bytes": 2500,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "category": "working-source",
+      "original_sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+      "export_sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+      "bytes": 6761,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+      "category": "working-source",
+      "original_sha256": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+      "export_sha256": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+      "bytes": 917,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "category": "working-source",
+      "original_sha256": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+      "export_sha256": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+      "bytes": 8714,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+      "category": "working-source",
+      "original_sha256": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+      "export_sha256": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+      "bytes": 4415,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+      "category": "working-source",
+      "original_sha256": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+      "export_sha256": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+      "bytes": 3137,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+      "category": "working-source",
+      "original_sha256": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+      "export_sha256": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+      "bytes": 10382,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "category": "working-source",
+      "original_sha256": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd",
+      "export_sha256": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd",
+      "bytes": 13305,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "category": "working-source",
+      "original_sha256": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+      "export_sha256": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+      "bytes": 28636,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+      "category": "working-source",
+      "original_sha256": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+      "export_sha256": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+      "bytes": 17495,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "category": "working-source",
+      "original_sha256": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+      "export_sha256": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+      "bytes": 124519,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "category": "working-source",
+      "original_sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d",
+      "export_sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d",
+      "bytes": 61477,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "category": "working-source",
+      "original_sha256": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+      "export_sha256": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+      "bytes": 22358,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "category": "working-source",
+      "original_sha256": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+      "export_sha256": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+      "bytes": 5342,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "category": "working-source",
+      "original_sha256": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+      "export_sha256": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+      "bytes": 14690,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "category": "working-source",
+      "original_sha256": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+      "export_sha256": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+      "bytes": 7541,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+      "category": "working-source",
+      "original_sha256": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+      "export_sha256": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+      "bytes": 447,
+      "sanitised": false
+    },
+    {
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "category": "working-source",
+      "original_sha256": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+      "export_sha256": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+      "bytes": 28593,
+      "sanitised": false
+    },
+    {
+      "path": "pyproject.toml",
+      "category": "working-source",
+      "original_sha256": "18494500291ea662c95776dcb6798222f434c15d540192cd7ea4473d1b8d59bc",
+      "export_sha256": "18494500291ea662c95776dcb6798222f434c15d540192cd7ea4473d1b8d59bc",
+      "bytes": 729,
+      "sanitised": false
+    },
+    {
+      "path": "security/deepsec/deepsec-residual-risk.yaml",
+      "category": "working-source",
+      "original_sha256": "03a2819f26dfaf578012bd9066d41d07d82969f1885c6f5883633b7dc62f7a30",
+      "export_sha256": "03a2819f26dfaf578012bd9066d41d07d82969f1885c6f5883633b7dc62f7a30",
+      "bytes": 748,
+      "sanitised": false
+    },
+    {
+      "path": "security/deepsec/results/pr-26/PILOT_RESULT.json",
+      "category": "working-source",
+      "original_sha256": "e7a07ac1b0844f34506e797b37b879774041d3263318ea5c1b9cbaab9bdaf27a",
+      "export_sha256": "e7a07ac1b0844f34506e797b37b879774041d3263318ea5c1b9cbaab9bdaf27a",
+      "bytes": 339,
+      "sanitised": false
+    },
+    {
+      "path": "security/deepsec/results/pr-26/SUMMARY.md",
+      "category": "working-source",
+      "original_sha256": "8d485ab624f8539d20b8d323810a01b91286534261a7d8ff3b258b8e0cd90bdf",
+      "export_sha256": "8d485ab624f8539d20b8d323810a01b91286534261a7d8ff3b258b8e0cd90bdf",
+      "bytes": 362,
+      "sanitised": false
+    },
+    {
+      "path": "security/deepsec/results/pr-26/findings.json",
+      "category": "working-source",
+      "original_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "export_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "bytes": 4,
+      "sanitised": false
+    },
+    {
+      "path": "src/__init__.py",
+      "category": "working-source",
+      "original_sha256": "c1374ed203c5fb351b43679b8e8099756fc2f2d0b1a420d15fc9460a57b90fd6",
+      "export_sha256": "c1374ed203c5fb351b43679b8e8099756fc2f2d0b1a420d15fc9460a57b90fd6",
+      "bytes": 83,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/__init__.py",
+      "category": "working-source",
+      "original_sha256": "ff725b2c00dee17e74cba18978fa928735b2b119abe9fb5ea2270ee0aa4dd5a0",
+      "export_sha256": "ff725b2c00dee17e74cba18978fa928735b2b119abe9fb5ea2270ee0aa4dd5a0",
+      "bytes": 58,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/app.py",
+      "category": "working-source",
+      "original_sha256": "7fb3fa94bd09c0d8650e7d05361a3975343403d46272296acb729dc28a6e846e",
+      "export_sha256": "7fb3fa94bd09c0d8650e7d05361a3975343403d46272296acb729dc28a6e846e",
+      "bytes": 3242,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/__init__.py",
+      "category": "working-source",
+      "original_sha256": "e8d3be06d5e18c9066db51f28fc50b8e0194b3f56106ab80e69e689f7a19c0c4",
+      "export_sha256": "e8d3be06d5e18c9066db51f28fc50b8e0194b3f56106ab80e69e689f7a19c0c4",
+      "bytes": 1582,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/assessment.py",
+      "category": "working-source",
+      "original_sha256": "009f2b4f49940529a0180711479fb04cef1ab0fbbcf04bc7c110949351681819",
+      "export_sha256": "009f2b4f49940529a0180711479fb04cef1ab0fbbcf04bc7c110949351681819",
+      "bytes": 8883,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/enums.py",
+      "category": "working-source",
+      "original_sha256": "1a77127a426344628c5dff51367e272e6611ef7ff4af053a4a227bde870053fa",
+      "export_sha256": "1a77127a426344628c5dff51367e272e6611ef7ff4af053a4a227bde870053fa",
+      "bytes": 688,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/models.py",
+      "category": "working-source",
+      "original_sha256": "2fe5bd2ac582ef7e291b52dbc1db7098dd276daf90f7c297d2e3c057b6f5c25d",
+      "export_sha256": "2fe5bd2ac582ef7e291b52dbc1db7098dd276daf90f7c297d2e3c057b6f5c25d",
+      "bytes": 3986,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/release.py",
+      "category": "working-source",
+      "original_sha256": "3e99149f7a1878db19d7c0c292a27abe686b2abe957a384763bbc2d6e16473e6",
+      "export_sha256": "3e99149f7a1878db19d7c0c292a27abe686b2abe957a384763bbc2d6e16473e6",
+      "bytes": 4283,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/domain/trace.py",
+      "category": "working-source",
+      "original_sha256": "68e3248691f15e66cc185271be5c13a4d72f25625354df5c7c389199ae333af5",
+      "export_sha256": "68e3248691f15e66cc185271be5c13a4d72f25625354df5c7c389199ae333af5",
+      "bytes": 7033,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/engine/__init__.py",
+      "category": "working-source",
+      "original_sha256": "61bffca0cc6f36119bcd6b075130f3773859813b92dab982c6e945f5b8ace302",
+      "export_sha256": "61bffca0cc6f36119bcd6b075130f3773859813b92dab982c6e945f5b8ace302",
+      "bytes": 633,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/engine/approval.py",
+      "category": "working-source",
+      "original_sha256": "59a655711d77020a5755ae65168454bf6dc8d055af4788c07de51fd14dd316c6",
+      "export_sha256": "59a655711d77020a5755ae65168454bf6dc8d055af4788c07de51fd14dd316c6",
+      "bytes": 8848,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/engine/evaluator.py",
+      "category": "working-source",
+      "original_sha256": "4173ef5cfb8674fe4ec1fdc7c15efdba849d5e1476457447c9aad728b35dc0ec",
+      "export_sha256": "4173ef5cfb8674fe4ec1fdc7c15efdba849d5e1476457447c9aad728b35dc0ec",
+      "bytes": 2570,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/engine/tracing.py",
+      "category": "working-source",
+      "original_sha256": "19445e32d44449df3e838eb971633b26e7f5b055ec8ff403e4bc8f268368004d",
+      "export_sha256": "19445e32d44449df3e838eb971633b26e7f5b055ec8ff403e4bc8f268368004d",
+      "bytes": 13779,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/__init__.py",
+      "category": "working-source",
+      "original_sha256": "d461947895533b254be097ae26c203a82428c1e4ac45c167b9b1d0fc0f5ed5b5",
+      "export_sha256": "d461947895533b254be097ae26c203a82428c1e4ac45c167b9b1d0fc0f5ed5b5",
+      "bytes": 368,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/action_result.py",
+      "category": "working-source",
+      "original_sha256": "d92b004c835f2fa0a1647e02570ba7d4c155784372b703661caccf8e7849bd03",
+      "export_sha256": "d92b004c835f2fa0a1647e02570ba7d4c155784372b703661caccf8e7849bd03",
+      "bytes": 2163,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/change_record.py",
+      "category": "working-source",
+      "original_sha256": "ab07a6ebdcf415c45fa91d673537c76894341e40a19a3df9372079154c6563c8",
+      "export_sha256": "ab07a6ebdcf415c45fa91d673537c76894341e40a19a3df9372079154c6563c8",
+      "bytes": 2542,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/client_auth.py",
+      "category": "working-source",
+      "original_sha256": "f88f8de8c8f7f28483fdd2925e9422c762ef0236f4e6028542db6a97bd9a4f90",
+      "export_sha256": "f88f8de8c8f7f28483fdd2925e9422c762ef0236f4e6028542db6a97bd9a4f90",
+      "bytes": 1953,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/client_release_projection.py",
+      "category": "working-source",
+      "original_sha256": "53f6f95eb88911d22694c631687120d2ebf6aecba508a24465071118c55e5046",
+      "export_sha256": "53f6f95eb88911d22694c631687120d2ebf6aecba508a24465071118c55e5046",
+      "bytes": 3099,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/client_release_service.py",
+      "category": "working-source",
+      "original_sha256": "ff7423d93a91c480a1fa55b19950fff31911751147f1395bf4c51ac8aca628db",
+      "export_sha256": "ff7423d93a91c480a1fa55b19950fff31911751147f1395bf4c51ac8aca628db",
+      "bytes": 12601,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/client_routes.py",
+      "category": "working-source",
+      "original_sha256": "029e2cfb7316021e42f8006bdacc7e591a61f4738232ee7106ec07692fb1f884",
+      "export_sha256": "029e2cfb7316021e42f8006bdacc7e591a61f4738232ee7106ec07692fb1f884",
+      "bytes": 7571,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "category": "working-source",
+      "original_sha256": "fa76c7062286915bedbd4877d8670c66a8a93521a4419e3391e73033a720de32",
+      "export_sha256": "fa76c7062286915bedbd4877d8670c66a8a93521a4419e3391e73033a720de32",
+      "bytes": 3411,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/engagement.py",
+      "category": "working-source",
+      "original_sha256": "5c04dffe7bde01538e8b613d29822fac538c334dcf7ece32e15840c8e966214b",
+      "export_sha256": "5c04dffe7bde01538e8b613d29822fac538c334dcf7ece32e15840c8e966214b",
+      "bytes": 9241,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/evidence_review.py",
+      "category": "working-source",
+      "original_sha256": "49ca955e804a6e601dc264ce387e1ad915c47f5120880bb37119bda581a4e30e",
+      "export_sha256": "49ca955e804a6e601dc264ce387e1ad915c47f5120880bb37119bda581a4e30e",
+      "bytes": 4009,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/export_builder.py",
+      "category": "working-source",
+      "original_sha256": "29a76206052853628a78991224bd36d751ce9f368d400a9bda0f9f14da8f6479",
+      "export_sha256": "29a76206052853628a78991224bd36d751ce9f368d400a9bda0f9f14da8f6479",
+      "bytes": 24338,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/extraction.py",
+      "category": "working-source",
+      "original_sha256": "46c1e5e5b15ee8fd53fecff57523a6482c43f8500bde83be90e4bcaebf769c11",
+      "export_sha256": "46c1e5e5b15ee8fd53fecff57523a6482c43f8500bde83be90e4bcaebf769c11",
+      "bytes": 6868,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/notion_publisher.py",
+      "category": "working-source",
+      "original_sha256": "7ab5982bc74a74ea49f11e1824d9f908193685fb81c2af3c81ac585684667797",
+      "export_sha256": "7ab5982bc74a74ea49f11e1824d9f908193685fb81c2af3c81ac585684667797",
+      "bytes": 3498,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/relationship_review.py",
+      "category": "working-source",
+      "original_sha256": "9441de0056be78f51e120e504dd5eaf5a38547955654939769cbd6f46ed6d6ad",
+      "export_sha256": "9441de0056be78f51e120e504dd5eaf5a38547955654939769cbd6f46ed6d6ad",
+      "bytes": 19725,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "category": "working-source",
+      "original_sha256": "0fdb60bd9605d9583e5527fd9b5867ce333a0010dd27c23abecc0934e6fe32c1",
+      "export_sha256": "0fdb60bd9605d9583e5527fd9b5867ce333a0010dd27c23abecc0934e6fe32c1",
+      "bytes": 51940,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/release_storage.py",
+      "category": "working-source",
+      "original_sha256": "94974a68e250593394d985f4982a96085c223747bbe90e5cbfa5a7e0d74204a4",
+      "export_sha256": "94974a68e250593394d985f4982a96085c223747bbe90e5cbfa5a7e0d74204a4",
+      "bytes": 6639,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/routes.py",
+      "category": "working-source",
+      "original_sha256": "ad05d4fb9010ad3ea41149baa3ceafebb68cd824f9ef53762726b228d142810b",
+      "export_sha256": "ad05d4fb9010ad3ea41149baa3ceafebb68cd824f9ef53762726b228d142810b",
+      "bytes": 99887,
+      "sanitised": false
+    },
+    {
+      "path": "src/ace/workbench/storage.py",
+      "category": "working-source",
+      "original_sha256": "a71edc92f08345391d9a459bc43c4353fd71de3ea0e0fe6fb4e3ab42f0d52c14",
+      "export_sha256": "a71edc92f08345391d9a459bc43c4353fd71de3ea0e0fe6fb4e3ab42f0d52c14",
+      "bytes": 216315,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_action_result.py",
+      "category": "working-source",
+      "original_sha256": "ef41657f03a914825d27a99b1e8cdcf25814ed18dc249a9c20a9b17ba4f328c3",
+      "export_sha256": "ef41657f03a914825d27a99b1e8cdcf25814ed18dc249a9c20a9b17ba4f328c3",
+      "bytes": 2051,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_app.py",
+      "category": "working-source",
+      "original_sha256": "6269a8cff411ee49c7991b92afb9964a2939b7860fbf6c40b5b87c6be4f9bd2e",
+      "export_sha256": "6269a8cff411ee49c7991b92afb9964a2939b7860fbf6c40b5b87c6be4f9bd2e",
+      "bytes": 9906,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_approval_gate.py",
+      "category": "working-source",
+      "original_sha256": "724ef467fd4b30365062dec408344af50f13965d9a48d9d6f3c0963acc2884bf",
+      "export_sha256": "724ef467fd4b30365062dec408344af50f13965d9a48d9d6f3c0963acc2884bf",
+      "bytes": 25636,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_capture.py",
+      "category": "working-source",
+      "original_sha256": "56530fafa68901d0d944ea874f6b9c3e388b4939d96383c092fb788f61434b10",
+      "export_sha256": "56530fafa68901d0d944ea874f6b9c3e388b4939d96383c092fb788f61434b10",
+      "bytes": 10188,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_change_export.py",
+      "category": "working-source",
+      "original_sha256": "cd3870109f9a1b21c4f3e1dfb3c79d95fccf2023c7702bf1efe7b62d70f22cbd",
+      "export_sha256": "cd3870109f9a1b21c4f3e1dfb3c79d95fccf2023c7702bf1efe7b62d70f22cbd",
+      "bytes": 28813,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_client_release.py",
+      "category": "working-source",
+      "original_sha256": "f9ea6d4411d9f7ae6c56a42c85d788fc491b4d4c9acf61fc78e3ec62c6c9347b",
+      "export_sha256": "f9ea6d4411d9f7ae6c56a42c85d788fc491b4d4c9acf61fc78e3ec62c6c9347b",
+      "bytes": 394917,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_client_release_projection.py",
+      "category": "working-source",
+      "original_sha256": "d53e7652eda5a4ca057c41b8428904ca69fe811656ae9f7609c5190d1b7d4251",
+      "export_sha256": "d53e7652eda5a4ca057c41b8428904ca69fe811656ae9f7609c5190d1b7d4251",
+      "bytes": 7293,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_engagement_setup.py",
+      "category": "working-source",
+      "original_sha256": "aa143e6548ad2ce3c797c934be3b40db4b11a9e571c5726d5d858ffab271db18",
+      "export_sha256": "aa143e6548ad2ce3c797c934be3b40db4b11a9e571c5726d5d858ffab271db18",
+      "bytes": 31117,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_engagement_summary.py",
+      "category": "working-source",
+      "original_sha256": "8f69ccb834d4557d9ad47dc618bf1b5b3ee56750e28e10f6092fdd92a4e588b8",
+      "export_sha256": "8f69ccb834d4557d9ad47dc618bf1b5b3ee56750e28e10f6092fdd92a4e588b8",
+      "bytes": 12720,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_evidence_review.py",
+      "category": "working-source",
+      "original_sha256": "859cac9569e59524270a39b360a1e292bef73dbb48d53e450a38939e6f0ba3ed",
+      "export_sha256": "859cac9569e59524270a39b360a1e292bef73dbb48d53e450a38939e6f0ba3ed",
+      "bytes": 53070,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_extraction.py",
+      "category": "working-source",
+      "original_sha256": "41df2984b5f9be35eff2aa0671a040bc6a2af7d3ed155f5a61e27cd2a42da7a8",
+      "export_sha256": "41df2984b5f9be35eff2aa0671a040bc6a2af7d3ed155f5a61e27cd2a42da7a8",
+      "bytes": 11120,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_graph_projection.py",
+      "category": "working-source",
+      "original_sha256": "f44dd6b4eb0eac66c3640676b5d86575d34ac805f217d199ceb430de6db630c3",
+      "export_sha256": "f44dd6b4eb0eac66c3640676b5d86575d34ac805f217d199ceb430de6db630c3",
+      "bytes": 19561,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_ios_accessibility_layout.py",
+      "category": "working-source",
+      "original_sha256": "c2431a64a423d1a93bb0174b6bc4a94267c303f51474eaab6b845ce55be42761",
+      "export_sha256": "c2431a64a423d1a93bb0174b6bc4a94267c303f51474eaab6b845ce55be42761",
+      "bytes": 2476,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_ios_action_targets.py",
+      "category": "working-source",
+      "original_sha256": "c5e989b26d2d32fce76e0f5d740e8c905100f52743fbc3564b2004c0a7478bd8",
+      "export_sha256": "c5e989b26d2d32fce76e0f5d740e8c905100f52743fbc3564b2004c0a7478bd8",
+      "bytes": 4081,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_offline_drafts.py",
+      "category": "working-source",
+      "original_sha256": "2e6d2b856b4a377d6671268fa20db715fabfd5d8bb51687d1b064d8dd33cc1bd",
+      "export_sha256": "2e6d2b856b4a377d6671268fa20db715fabfd5d8bb51687d1b064d8dd33cc1bd",
+      "bytes": 5620,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_planning_trace.py",
+      "category": "working-source",
+      "original_sha256": "7ea0535389057550539c48b7aaedb8294d3ccdd1ef5abea25c3d580d0286d849",
+      "export_sha256": "7ea0535389057550539c48b7aaedb8294d3ccdd1ef5abea25c3d580d0286d849",
+      "bytes": 39186,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_rating_engine.py",
+      "category": "working-source",
+      "original_sha256": "d6b421d2c62c38ef661333537d0628d69970dd16e701ae20e8c8b986886ca34d",
+      "export_sha256": "d6b421d2c62c38ef661333537d0628d69970dd16e701ae20e8c8b986886ca34d",
+      "bytes": 10531,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_relationship_review.py",
+      "category": "working-source",
+      "original_sha256": "021dc35b8b300244d2160b5beec575ef056e21582d5082547ddd1246134960d8",
+      "export_sha256": "021dc35b8b300244d2160b5beec575ef056e21582d5082547ddd1246134960d8",
+      "bytes": 55402,
+      "sanitised": false
+    },
+    {
+      "path": "tests/test_workbench.py",
+      "category": "working-source",
+      "original_sha256": "0aefaaf1e108b90cc4e8739db73324118f2e04e1e0b14968ded0e2a55a642cfe",
+      "export_sha256": "0aefaaf1e108b90cc4e8739db73324118f2e04e1e0b14968ded0e2a55a642cfe",
+      "bytes": 23818,
+      "sanitised": false
+    },
+    {
+      "path": "tools/ace_ios_local.py",
+      "category": "working-source",
+      "original_sha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+      "export_sha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+      "bytes": 88874,
+      "sanitised": false
+    },
+    {
+      "path": "tools/tests/test_ace_ios_local.py",
+      "category": "working-source",
+      "original_sha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+      "export_sha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+      "bytes": 64974,
+      "sanitised": false
+    },
+    {
+      "path": "uv.lock",
+      "category": "working-source",
+      "original_sha256": "1ee546742a8658ae6e32380997e6922731cec0617cd374d9b1b3917cc7c44393",
+      "export_sha256": "1ee546742a8658ae6e32380997e6922731cec0617cd374d9b1b3917cc7c44393",
+      "bytes": 72449,
+      "sanitised": false
+    },
+    {
+      "path": "workflows/codex-autonomous-delivery.md",
+      "category": "working-source",
+      "original_sha256": "47ebf3b851be73c612b8a2248836c06a97b6ff89fd651b2f27b4ecddbb8b877c",
+      "export_sha256": "47ebf3b851be73c612b8a2248836c06a97b6ff89fd651b2f27b4ecddbb8b877c",
+      "bytes": 9408,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/VORFLUX-FULL-REVIEW-BRIEF.md",
+      "category": "review-record",
+      "original_sha256": "f6b58e674f2e8197c80e52411ee6e7282ce1a06af66336dac92ecbce291a05ef",
+      "export_sha256": "07b6977d8e806365205ed18af1a0e866c343ad52168fedbeb49a262c98f8bdc0",
+      "bytes": 32498,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/SQE-OPTIONS-AND-IOS-REVIEW.md",
+      "category": "review-record",
+      "original_sha256": "ef18e32b81d043a00f09a0353f41cd48e4c0647260efda9ef3239f906a4057b1",
+      "export_sha256": "0d2b074746574014bbc6522e7f9f87932dfc469af656af39df69f792463c052e",
+      "bytes": 20655,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/evidence/STAGE-3-EXECUTION-REPORT.md",
+      "category": "review-record",
+      "original_sha256": "3b1cef8a3a780369dc524818645ec950bf844414deb84411eb43e065fd09e27e",
+      "export_sha256": "5fe3fd4bb3b5c5057d49ff93d91befed350f9f200741f2e2d5089150f17f42e7",
+      "bytes": 8117,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/evidence/STAGE-4-VERIFICATION-REPORT.md",
+      "category": "review-record",
+      "original_sha256": "7a0f36ad7849ce4f808dba01718098939364dd260785de103926f9a84d525cce",
+      "export_sha256": "f837b204e48767203e531ef8f6764dabcc5aacf454b21f61927ffdd40f30e4e5",
+      "bytes": 5825,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/evidence/STAGE-4-FOLLOWUP-REPORT.md",
+      "category": "review-record",
+      "original_sha256": "42040fd441074c428432af2758bc5db63cb3fb61b0125a37f5ae045ffa16f4c0",
+      "export_sha256": "5e77d68207f1a4786c506159a2972b40721b634cff655a983bfe139dfb6edb75",
+      "bytes": 3417,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/evidence/MAP-FINAL-CHECK.json",
+      "category": "review-record",
+      "original_sha256": "706f6c24571543c52332f205df7e0aa0b43a56e90a84096c1ebd6db770957b0c",
+      "export_sha256": "706f6c24571543c52332f205df7e0aa0b43a56e90a84096c1ebd6db770957b0c",
+      "bytes": 343,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/evidence/MAP-SOURCE-MANIFEST.json",
+      "category": "review-record",
+      "original_sha256": "f0f0cf80c8b6ffc2e9791e9c7629c872635bc40d312819fc07330ca34de57b2d",
+      "export_sha256": "f0f0cf80c8b6ffc2e9791e9c7629c872635bc40d312819fc07330ca34de57b2d",
+      "bytes": 22133,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/maps/codegraph/source-hashes.json",
+      "category": "review-record",
+      "original_sha256": "0f141820cf757fdaa9c7aea6c6b4aa8bfea6379647dae9a476be1e2affe0469e",
+      "export_sha256": "0f141820cf757fdaa9c7aea6c6b4aa8bfea6379647dae9a476be1e2affe0469e",
+      "bytes": 13637,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/maps/codegraph/status.json",
+      "category": "review-record",
+      "original_sha256": "24c5ab4674648c1661f16d82324a84a2daeb385bee0a5c8d33bc40743de6640b",
+      "export_sha256": "10fbc8d12d113cec33d407bfb0c7acd66de42b873a1a99384df3882bb8d7fb82",
+      "bytes": 1057,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/understand-anything/knowledge-graph.json",
+      "category": "saved-map",
+      "original_sha256": "163560beba6ccc783f797ab6b5e14acbb4911b610ab81d32f001b8145e98b166",
+      "export_sha256": "163560beba6ccc783f797ab6b5e14acbb4911b610ab81d32f001b8145e98b166",
+      "bytes": 1304579,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/maps/understand-anything/meta.json",
+      "category": "saved-map",
+      "original_sha256": "5f943d03e83b605d00b77fbc0146131feec6cbbce65f3c27369e33fe74cde6c6",
+      "export_sha256": "eca2cdd348d037113fc3bacfaaa06a3217b534787a2825ce97141362f2ccb77e",
+      "bytes": 589,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/understand-anything/review.json",
+      "category": "saved-map",
+      "original_sha256": "73e3849fa2398b4c1af641b88bc0df1008bed3d3fcf7d89d19799d57eed2f38d",
+      "export_sha256": "73e3849fa2398b4c1af641b88bc0df1008bed3d3fcf7d89d19799d57eed2f38d",
+      "bytes": 460,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/maps/understand-anything/assemble-review.json",
+      "category": "saved-map",
+      "original_sha256": "6019d42c28c37c0eaf8ee4d145a24ecbe8e9625189a31c127384209d1a3e00df",
+      "export_sha256": "bac36acc46f1284e5cb3602872288558932402ab2b4dde7ce602c59eeefc2f30",
+      "bytes": 1222,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/graph.json",
+      "category": "saved-map",
+      "original_sha256": "12a889a04fc12d28405dba13a66726cbe292a36f3e2e6109ad79bf128334838e",
+      "export_sha256": "0436f623e555f3b6619f2bee51964914e90cb50ac2bfca447e69cfd92eb1ee61",
+      "bytes": 4801173,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/graph.html",
+      "category": "saved-map",
+      "original_sha256": "226729337f44884d4a43a5b6311d273c950a88ce5ca83cdb0dd0dfc45b8bc342",
+      "export_sha256": "b78efe36c44702542c383b2be923ea6ff45290a743fce64b728159f70700f04e",
+      "bytes": 3948617,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/GRAPH_REPORT.md",
+      "category": "saved-map",
+      "original_sha256": "a3f6bfd9d18596b2ab1a859e3f1141c64c38d99925180d78e6b99ce113e50762",
+      "export_sha256": "96b4d1c6cb2d14cb1e79d4c801a9942e12df0bcd2c808875277d90182ea38d72",
+      "bytes": 39088,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/coverage-audit.json",
+      "category": "saved-map",
+      "original_sha256": "d4ac717ea5c568c150f632f5a4b1e407c0de47e05975671f4be22bf23a0eb603",
+      "export_sha256": "43f5e46c96e1c914905a2549e85dad1f87931937092126ac1dc64a8f7e6e439a",
+      "bytes": 17789,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/validation-summary.json",
+      "category": "saved-map",
+      "original_sha256": "27cb2ff304cbfc5d027cab1e88f26f4cf7f34b378be6b92bdc4523996b240ab5",
+      "export_sha256": "447457eec934721ba2ec3de4963e89672c663538a2d2fc84ff0c37eb44e032d4",
+      "bytes": 1933,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/maps/graphify/manifest.json",
+      "category": "saved-map",
+      "original_sha256": "137ad7970546315c633ce1758d983eec0124e3a3ffd4d4e8c295b0bfc59ae3ad",
+      "export_sha256": "137ad7970546315c633ce1758d983eec0124e3a3ffd4d4e8c295b0bfc59ae3ad",
+      "bytes": 27923,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/maps/graphify/quarantined-edges.json",
+      "category": "saved-map",
+      "original_sha256": "4c0674452df678bce3beab94d778a4afe1d9b6d8bc3a1d0a08a756750b31a8f0",
+      "export_sha256": "4c0674452df678bce3beab94d778a4afe1d9b6d8bc3a1d0a08a756750b31a8f0",
+      "bytes": 81443,
+      "sanitised": false
+    }
+  ],
+  "generated_export_files": [
+    "VORFLUX_START_HERE.md",
+    "docs/review/RECONCILIATION.md",
+    "docs/review/maps/codegraph/index.json",
+    "docs/review/EXPORT-MANIFEST.json"
+  ],
+  "standing": "Source and evidence navigation snapshot; no runtime acceptance or verified ancestry claimed."
+}

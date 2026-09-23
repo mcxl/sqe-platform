@@ -1,20 +1,16 @@
-# SQE Platform
+> **Review snapshot, 23 September 2026.** Read [VORFLUX_START_HERE.md](VORFLUX_START_HERE.md) first. This branch is not a verified release or an approved merge.
 
-SQE Platform is a controlled, fictional-data platform for auditor review work.
+# Assurance Compass Engine
 
-The accountable auditor makes all final professional decisions.
-Do not add client data, credentials, evidence files, scan results, or generated output.
+Current project navigation: [Development Hub](SQE_DEVELOPER_HUB.html), [Development State](DEV_STATE.md), and [Code And Evidence Index](docs/ace/CODE-AND-EVIDENCE-INDEX.md).
 
-## Documentation
+As of 23 September 2026, mobile alternatives are under independent review. The consolidated repository contains uncommitted imports. The Sprint 1 instructions below describe the original fictional demonstration, not the complete current delivery state.
 
-- [System Context](CONTEXT.md)
-- [Development State](DEV_STATE.md)
-- [Workflow Notes](WORKFLOW-NOTES.md)
-- [Vision And Roadmap](ACE_VISION_AND_ROADMAP.md)
-- [Architecture Decisions](docs/adr/)
-- [Approved Specifications](docs/specs/)
-- [Approved Workflows](workflows/)
-- [Agent Controls](docs/agents/)
+ACE Sprint 1 is a private-by-default, deterministic demonstration of WHS
+governance control evaluation for the Squadron Energy engagement.
+
+The included controls are fictional. Do not add real audit evidence to this
+Sprint 1 demonstration.
 
 ## Requirements
 
@@ -56,4 +52,19 @@ Open:
 
 The server listens only on this computer.
 
-The service listens only on this computer.
+## Share The Fictional Demonstration
+
+Start ACE first. In a second terminal, deliberately create a temporary
+Cloudflare Quick Tunnel:
+
+```powershell
+cloudflared tunnel --url http://127.0.0.1:8000
+```
+
+A Quick Tunnel address is public to anyone who has the link. Use it only for
+the fictional Sprint 1 examples. Never expose real audit evidence through a
+Quick Tunnel. A production release requires authenticated Cloudflare Access
+and an approved data-handling design.
+
+ACE does not start Cloudflare, store Cloudflare credentials, call external
+APIs or include telemetry.

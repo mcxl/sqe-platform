@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "nodes": 2894,
+  "edges": 8951,
+  "communities": 128,
+  "represented_files": 135,
+  "detected_files": 139,
+  "changed_document_count": 2,
+  "all_source_hashes_current": true,
+  "incremental_remaining_changes": 0,
+  "unchanged_ast_reused": true,
+  "changed_nodes_line_bounds_valid": true,
+  "all_40_docs_and_ios_ui_tests_represented": true,
+  "july_august_september_docs_represented": true,
+  "published_dangling_edges": 0,
+  "raw_excluded_edges": 264,
+  "artifact_sha256": {
+    "graph.json": "12a889a04fc12d28405dba13a66726cbe292a36f3e2e6109ad79bf128334838e",
+    "graph.html": "226729337f44884d4a43a5b6311d273c950a88ce5ca83cdb0dd0dfc45b8bc342",
+    "GRAPH_REPORT.md": "a3f6bfd9d18596b2ab1a859e3f1141c64c38d99925180d78e6b99ce113e50762",
+    "manifest.json": "137ad7970546315c633ce1758d983eec0124e3a3ffd4d4e8c295b0bfc59ae3ad",
+    "cost.json": "f0cf72e9f4de8066df0d2f5e79c05028b68aeac0f370e84fe0677e41044abb4b",
+    "coverage-audit.json": "d4ac717ea5c568c150f632f5a4b1e407c0de47e05975671f4be22bf23a0eb603",
+    "graph-health.json": "fb71fe1eff20ceb6eeea9da2383091f02deae7138018ff6786585ed1c8462253",
+    "graph-health.txt": "3afd6ab46a2b9fee2e437e53491b120d68c15e660942336432b1250f36d9672b",
+    "quarantined-edges.json": "4c0674452df678bce3beab94d778a4afe1d9b6d8bc3a1d0a08a756750b31a8f0"
+  },
+  "changed_source_sha256": {
+    "SQE_DEVELOPER_HUB.html": "6e527f403c6deed13986b57a1f1b919d3c014eea52453eee994b33c0987b9a86",
+    "docs/ace/REPOSITORY-MAP-SETUP.md": "eae7be288cf19a970c3dc60c0db3307656addeb39fdebce0b8afcac5798bd299"
+  },
+  "semantic_token_usage": "UNKNOWN",
+  "application_tests": "NOT RUN",
+  "html_validation": "mechanical native bootstrap check, no visual acceptance",
+  "frozen_manifest_match": true,
+  "query_smoke": {
+    "query": "local viewer access",
+    "exit_code": 0,
+    "bfs_nodes_found": 144,
+    "evidence": "LOCAL_HOME/sqe-private/map-filepaths-20260923/graphify/query.log"
+  }
+}

@@ -461,11 +461,7 @@ def docx_to_pdf(docx_bytes: BytesIO, toolchain_doctor_result: bool = True) -> By
             "document-toolchain-doctor -Probe reported missing tools — PDF rendering unavailable"
         )
 
-    candidates = ("libreoffice", "soffice.com") if os.name == "nt" else ("libreoffice",)
-    libreoffice = next(
-        (shutil.which(candidate) for candidate in candidates if shutil.which(candidate)),
-        None,
-    )
+    libreoffice = shutil.which("libreoffice")
     if libreoffice is None:
         raise RuntimeError("LibreOffice not found on PATH — PDF rendering unavailable")
 

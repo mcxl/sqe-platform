@@ -1,0 +1,51 @@
+{
+  "initialized": true,
+  "version": "1.1.1",
+  "projectPath": "LOCAL_HOME\\Documents\\sqe-platform",
+  "indexPath": "LOCAL_HOME\\Documents\\sqe-platform\\.codegraph",
+  "lastIndexed": "2026-09-23T04:11:02.414Z",
+  "fileCount": 91,
+  "nodeCount": 2728,
+  "edgeCount": 8627,
+  "dbSizeBytes": 8437760,
+  "backend": "node-sqlite",
+  "journalMode": "wal",
+  "nodesByKind": {
+    "class": 209,
+    "component": 17,
+    "constant": 60,
+    "enum": 22,
+    "enum_member": 42,
+    "field": 144,
+    "file": 90,
+    "function": 572,
+    "import": 429,
+    "interface": 4,
+    "method": 922,
+    "property": 13,
+    "route": 39,
+    "struct": 32,
+    "type_alias": 12,
+    "variable": 121
+  },
+  "languages": [
+    "javascript",
+    "python",
+    "swift",
+    "tsx",
+    "typescript",
+    "yaml"
+  ],
+  "pendingChanges": {
+    "added": 0,
+    "modified": 0,
+    "removed": 0
+  },
+  "worktreeMismatch": null,
+  "index": {
+    "builtWithVersion": "1.1.1",
+    "builtWithExtractionVersion": 24,
+    "currentExtractionVersion": 24,
+    "reindexRecommended": false
+  }
+}

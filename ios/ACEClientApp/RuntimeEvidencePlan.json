@@ -41,12 +41,12 @@
     "simulatorProvisioning": {
       "status": "pending",
       "exactTargets": [
-        "iPhone SE (3rd generation)",
-        "iPhone 16 Pro Max"
+        "iPhone 17",
+        "iPhone 17 Pro Max"
       ],
       "runtime": "the highest available iOS 26.x simulator runtime",
-      "procedure": "Resolve one exact device type before device selection. Existing and created devices must have that type identifier and a canonical 36-character hyphenated hexadecimal UUID. Ignore a same-name wrong-type device. Select one highest available iOS 26.x runtime before target resolution. Ignore exact targets in older runtimes. Accept one exact available target only in the selected runtime. Fail when that runtime has more than one exact available target. Otherwise, create the target once from the exact device type in the selected runtime. Then poll unfiltered simctl list devices -j snapshots for no more than 30 seconds at one-second intervals. Give each poll subprocess only the remaining verification time. On a poll timeout, save the partial snapshot and final verification log, then fail closed. Locate the returned canonical UUID across all runtime records. Accept one available record only when it has the selected runtime key, exact target name, and exact device type. Save device-type, runtime, pre-creation device, creation, poll snapshot, final verification, and resolution logs below the controlled artifact root.",
-      "failure": "Fail when the exact device type is absent or ambiguous, a matching device UUID is invalid, no available iOS 26.x runtime exists, highest-version selection is invalid or ambiguous, the selected runtime has multiple exact available targets, creation fails, a poll subprocess exceeds its remaining verification time, the returned UUID appears more than once, its record has a wrong runtime, name, or device type, it never appears, it remains unavailable at the 30-second deadline, or exact device resolution is ambiguous within the selected highest runtime. Do not create the target again."
+      "procedure": "Use only the manual ace-ios-live-evidence-manual workflow after approval. Immediately before a separately approved API start, an authorised operator sets ACE_LIVE_EVIDENCE_APPROVED_COMMIT in the dedicated mcx19_live_evidence Codemagic variable group to the exact approved lower-case SHA. The group supplies this value at run time. The repository must not store or hard-code the SHA. The operator removes the group value after the build completes or stops. Pass the separately approved SHA from ACE_LIVE_EVIDENCE_APPROVED_COMMIT as --expected-commit. Require it to equal CM_COMMIT and Git HEAD. Require CM_BRANCH equal to codex/mcx-19-live-evidence-harness, CM_BUILD_ID and CM_BUILD_DIR for the current Codemagic build, CM_TRIGGER_SOURCE equal to api, a non-empty CM_BUILD_STARTED_BY operator, and ACE_LIVE_EVIDENCE_WORKFLOW equal to ace-ios-live-evidence-manual. Bind the approved remote repository, clean Git tree, baseline ancestry, and exact executing Git head. Resolve one exact existing device type before device selection. Require one exact existing available target in that runtime with a canonical 36-character hyphenated hexadecimal UUID. Do not create a simulator in the normal workflow. Select the highest available iOS 26.x runtime before target resolution. Use one 360-second monotonic deadline for inventory and readiness checks. Save only controlled simulator metadata, result bundles, summaries, logs, and checksums below the absolute external artifact root /private/tmp/mcx-19-live-evidence. Do not write raw artifacts or result claims to the repository. For approved fictional MCX19-B tests only, a separate private-record procedure requires verified authenticated storage, authorised project-operator retrieval, 30-day expiry, and proof of authorised retrieval and unauthorised denial before a paid suite. Generate the private inventory exactly from the planned command set. Do not publish an unrestricted directory glob. Each started XCTest command has one generated .xcresult, with complete or incomplete state recorded. Retain exported summaries, individual failures, and attachment inventories. Retain compiler, test, simulator-setting, export, and packaging output only from approved commands. Retain candidate and build identity, relative path, producing command, size, SHA-256, and collection state. Existing checked JSON and allowed fictional PNG images remain controlled review records, separately. Public artifacts still prohibit raw Xcode logs and result bundles. Keep raw records out of Git, PR comments, public links, and public artifact downloads. Do not put temporary authenticated download URLs in reports, logs, commits, or messages. Do not use public bearer-link access. Do not retain confirmed credentials or real client information. For planned .xcresult/Data/* members from approved fictional XCTest commands only, permit unresolved credential-prefix byte matches with neighbourhoodShape=non-utf8 in the existing authenticated private storage. Preserve exact bytes, provenance and hashes. Record quarantined-pending-review. The match can be a real credential. This status does not establish scanner clearance, collection acceptance or release acceptance. Keep all other matchers and all text, decoded-data, metadata and path checks unchanged. Resolve a record only after mapping the match to its object and reading and classifying all required children. Missing mapping, read errors or partial coverage remain pending. Keep raw matched bytes, object identifiers and command errors private. Stop collection if a genuine credential or real client information is confirmed. Before the next paid run, verify authenticated retrieval of an existing approved fictional artifact, unauthorised denial and effective 30-day retention. The first focused run must then prove original-bundle retrieval before the corrected case or complete suite. Do not bypass a blocked download. Keep the candidate unverified while any record is unresolved. All original-bundle, approved-Mac, provider-retention, provider-interruption, retrieval, and denial checks remain PENDING.",
+      "failure": "Fail when the approved commit is absent, invalid, or does not equal CM_COMMIT and the executing Git head; CM_BRANCH, trigger source, operator, required Codemagic build context, workflow, or exact external artifact root is invalid; the repository, baseline, or clean tree is invalid; the artifact root exists, is in the Git tree, uses a symlink, or escapes its root; the exact device type is absent or ambiguous; a matching device UUID is invalid; no available iOS 26.x runtime exists; highest-version selection is invalid or ambiguous; the selected runtime has multiple exact available targets; normal-path simulator creation is attempted; a poll subprocess exceeds its remaining verification time; a UUID is duplicated; a result is non-zero, missing, skipped, failed, or has a wrong count; an artifact is missing; a checksum changes; or a secret or redaction check fails."
     },
     "historicalCommitChain": {
       "status": "quarantined",
@@ -60,8 +60,8 @@
       ],
       "stage": "Approved repository ancestry validation",
       "device": "Approved Git repository mcxl/sqe-platform",
-      "procedure": "Validate the executing Git head and the approved sanitized manifest. Record mcxl/sqe-platform and the executing Git head in a reviewed result.",
-      "expectedResult": "The executing Git head is approved and the sanitized manifest matches the reviewed record.",
+      "procedure": "Validate the approved remote, clean Git tree, baseline ancestry, and exact executing Git head. Write the identity only to the external controlled manifest.",
+      "expectedResult": "The external manifest binds the approved repository and exact executing Git head. Repository records remain pending.",
       "status": "pending"
     },
     {
@@ -103,10 +103,10 @@
         "IOS-ACC-018",
         "IOS-ACC-019"
       ],
-      "stage": "Approved macOS with Xcode 26 and iOS 26 simulator runtime",
-      "device": "iPhone SE (3rd generation) with iOS 26; iPhone 16 Pro Max with iOS 26",
-      "procedure": "Run the existing controlled-scenario UI tests in light and dark appearance on both specified simulators. The tests run accessibility audits and the release orientation hook. An approved operator must run the pending orientation matrix for every other listed screen and state on both simulators. Run Dynamic Type, Bold Text, Reduce Motion, and Increase Contrast.",
-      "expectedResult": "The approved records must show the accessibility audit and release orientation hook. The manual orientation matrix remains pending until separately recorded.",
+      "stage": "Approved local Xcode 26.4.1 verification on iOS 26.4.1",
+      "device": "iPhone 17 and iPhone 17 Pro Max simulators with iOS 26.4.1",
+      "procedure": "Use the approved local runner for 836 unique state-and-setting cases. Run unrestricted native accessibility audits for 512 cases and layout checks for 324 intermediate-size cases. Cover all twelve text sizes and the approved orientation, appearance and accessibility-setting groups. Confirm settings inside the app. Retain all nine existing UI regression selectors as separate counts. Inspect every distinct required image at full resolution.",
+      "expectedResult": "All required automated checks pass on one clean unchanged candidate. Native failures remain visible and block acceptance. Record each case, observed settings, native counts, images and review result. Manual VoiceOver and physical checks remain separate requirements.",
       "status": "pending"
     },
     {
@@ -118,8 +118,8 @@
         "IOS-SHOT-007"
       ],
       "stage": "Approved physical pilot validation after signing, device, and Security approvals",
-      "device": "Approved iPhone 15 Pro or later with iOS 26",
-      "procedure": "Run the locked-device, VoiceOver, and app-switcher journeys with fictional data only.",
+      "device": "Approved iPhone 15 Pro Max with its recorded iOS version and valid free signing profile",
+      "procedure": "Complete the eight approved physical VoiceOver journeys. Verify locked-device Keychain behaviour and app-switcher privacy with fictional data. Give one manual instruction at a time and restore original settings.",
       "expectedResult": "Keychain access is unavailable while locked. VoiceOver order is correct. The app-switcher image contains no release information.",
       "status": "pending"
     },
@@ -143,7 +143,7 @@
         "IOS-STATE-018"
       ],
       "stage": "Approved macOS network validation after ACE operations and Security approve the Preview endpoint and certificate",
-      "device": "iPhone SE (3rd generation) with iOS 26",
+      "device": "iPhone 17 with iOS 26",
       "procedure": "Run controlled trust and hostname failure cases. Capture no credentials and make no bypass attempt.",
       "expectedResult": "The secure-connection message appears. No request or authorization value reaches a rejected endpoint.",
       "status": "pending"
@@ -166,7 +166,7 @@
       ],
       "stage": "Approved macOS simulator screenshot validation",
       "device": "Approved iPhone simulator with iOS 26",
-      "procedure": "Run make ui-test on the approved simulator. Capture normal screenshots with fictional release and sign-in values only. Review the captured images.",
+      "procedure": "Use the local selected-test runner on an approved simulator. Capture normal screenshots with fictional release and sign-in values only. Retain and inspect the native images at full resolution. Keep physical screenshot checks separate.",
       "expectedResult": "Normal screenshots remain available. The sign-in screenshot shows only the permitted visible username field and no password.",
       "status": "pending"
     },
@@ -183,23 +183,107 @@
         "IOS-BOUND-006"
       ],
       "stage": "Approved macOS simulator and server-record review after Security and Pocock approval",
-      "device": "iPhone 16 Pro Max with iOS 26",
+      "device": "iPhone 17 Pro Max with iOS 26",
       "procedure": "Verify active and inactive callbacks, app-switcher cover timing, and the separate unchanged server compatibility record.",
       "expectedResult": "SwiftUI content remains visible while active. The cover installs before inactive return and removes after activation. Server compatibility evidence remains separate and unchanged.",
       "status": "pending"
     }
   ],
   "packageMappings": [
-    {"package": "P01", "identifiers": ["IOS-BASE-001"]},
-    {"package": "P02", "identifiers": ["IOS-AUTH-038"]},
-    {"package": "P03", "identifiers": ["IOS-AUTH-053"]},
-    {"package": "P04", "identifiers": ["IOS-ACC-001", "IOS-ACC-002", "IOS-ACC-003", "IOS-ACC-004", "IOS-ACC-005", "IOS-ACC-006", "IOS-ACC-007", "IOS-ACC-008", "IOS-ACC-010", "IOS-ACC-011", "IOS-ACC-012", "IOS-ACC-013", "IOS-ACC-014", "IOS-ACC-015", "IOS-ACC-018", "IOS-ACC-019"]},
-    {"package": "P05", "identifiers": ["IOS-AUTH-023", "IOS-ACC-009", "IOS-ACC-016", "IOS-ACC-017", "IOS-SHOT-007"]},
-    {"package": "P06", "identifiers": ["IOS-AUTH-036", "IOS-AUTH-037"]},
-    {"package": "P07", "identifiers": ["IOS-NET-007", "IOS-NET-008", "IOS-NET-028", "IOS-STATE-017", "IOS-STATE-018"]},
-    {"package": "P08", "identifiers": ["IOS-NET-015", "IOS-NET-016"]},
-    {"package": "P09", "identifiers": ["IOS-SHOT-001", "IOS-SHOT-010"]},
-    {"package": "P10", "identifiers": ["IOS-STATE-009", "IOS-STATE-010", "IOS-SHOT-003", "IOS-SHOT-004", "IOS-SHOT-005", "IOS-SHOT-006", "IOS-SHOT-008", "IOS-SHOT-009", "IOS-BOUND-006"]}
+    {
+      "package": "P01",
+      "identifiers": [
+        "IOS-BASE-001"
+      ]
+    },
+    {
+      "package": "P02",
+      "identifiers": [
+        "IOS-AUTH-038"
+      ]
+    },
+    {
+      "package": "P03",
+      "identifiers": [
+        "IOS-AUTH-053"
+      ]
+    },
+    {
+      "package": "P04",
+      "identifiers": [
+        "IOS-ACC-001",
+        "IOS-ACC-002",
+        "IOS-ACC-003",
+        "IOS-ACC-004",
+        "IOS-ACC-005",
+        "IOS-ACC-006",
+        "IOS-ACC-007",
+        "IOS-ACC-008",
+        "IOS-ACC-010",
+        "IOS-ACC-011",
+        "IOS-ACC-012",
+        "IOS-ACC-013",
+        "IOS-ACC-014",
+        "IOS-ACC-015",
+        "IOS-ACC-018",
+        "IOS-ACC-019"
+      ]
+    },
+    {
+      "package": "P05",
+      "identifiers": [
+        "IOS-AUTH-023",
+        "IOS-ACC-009",
+        "IOS-ACC-016",
+        "IOS-ACC-017",
+        "IOS-SHOT-007"
+      ]
+    },
+    {
+      "package": "P06",
+      "identifiers": [
+        "IOS-AUTH-036",
+        "IOS-AUTH-037"
+      ]
+    },
+    {
+      "package": "P07",
+      "identifiers": [
+        "IOS-NET-007",
+        "IOS-NET-008",
+        "IOS-NET-028",
+        "IOS-STATE-017",
+        "IOS-STATE-018"
+      ]
+    },
+    {
+      "package": "P08",
+      "identifiers": [
+        "IOS-NET-015",
+        "IOS-NET-016"
+      ]
+    },
+    {
+      "package": "P09",
+      "identifiers": [
+        "IOS-SHOT-001",
+        "IOS-SHOT-010"
+      ]
+    },
+    {
+      "package": "P10",
+      "identifiers": [
+        "IOS-STATE-009",
+        "IOS-STATE-010",
+        "IOS-SHOT-003",
+        "IOS-SHOT-004",
+        "IOS-SHOT-005",
+        "IOS-SHOT-006",
+        "IOS-SHOT-008",
+        "IOS-SHOT-009",
+        "IOS-BOUND-006"
+      ]
+    }
   ],
   "repository": "mcxl/sqe-platform"
 }

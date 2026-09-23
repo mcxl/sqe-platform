@@ -1,8 +1,0 @@
-stateDiagram-v2
-    [*] --> Draft
-    Draft --> Approved: Auditor approves current version
-    Draft --> Rejected: Auditor rejects current version
-    Draft --> ChangesRequired: Auditor requests changes
-    ChangesRequired --> Draft: New version
-    Approved --> [*]
-    Rejected --> [*]

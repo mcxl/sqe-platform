@@ -1,0 +1,15 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Two-document filepath refresh reviewed under the previously read official assemble-reviewer procedure. Merge report: LOCAL_HOME/sqe-private/map-filepaths-20260923/ua-merge.log.",
+    "The 55 tested_by direction corrections and one path-convention supplement remain reasonable. No Could not fix issues reported; no unknown node types or complexity values.",
+    "All 131 import relationships across 145 importMap entries have file-to-file imports edges. No dangling edges or duplicate node IDs. Candidate remains 1100 nodes and 2854 edges; no assembled graph corrections required.",
+    "SQE_DEVELOPER_HUB.html and docs/ace/REPOSITORY-MAP-SETUP.md summaries accurately describe visible absolute filepaths and local viewer access information. Archify remains distinct from historical Atlas; source map navigation does not establish application acceptance.",
+    "143 unchanged cached analyses reused as instructed. Source files, applications and viewer runtime not tested or edited in this bounded graph review. Copy root cause remains unresolved."
+  ]
+}

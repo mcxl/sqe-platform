@@ -1,0 +1,21 @@
+{
+  "method": "full-snapshot-with-cached-unchanged-analysis",
+  "dirtyTree": true,
+  "refreshedFiles": 2,
+  "reusedHashIdenticalFiles": 143,
+  "validatedAt": "2026-09-23T04:41:10.933Z",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "18 nodes have no edges."
+  ],
+  "filesInventoried": 145,
+  "filesRepresented": 145,
+  "missing": [],
+  "nodes": 1100,
+  "edges": 2854,
+  "layers": 10,
+  "tourSteps": 10,
+  "orphanNodes": 18,
+  "changedSourceFiles": []
+}

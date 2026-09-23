@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Work only in `C:\Users\AlanRichardson\Documents\agentic-os-workspace\sqe`.
+- Work only in `LOCAL_HOME\Documents\agentic-os-workspace\sqe`.
 - Keep execution local and private.
 - Use fictional records and source wording only.
 - MATE means only Mandate, Accountability, Trigger and Escalation.
@@ -344,9 +344,9 @@ suite.
 - [ ] **Step 6: Commit Task 1**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py tests/test_planning_trace.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add Connected Assurance planning facts"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py tests/test_planning_trace.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add Connected Assurance planning facts"
 ```
 
 ---
@@ -670,9 +670,9 @@ Expected: all tests pass with the known warning visible in the complete suite.
 - [ ] **Step 7: Commit Task 2**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py tests/test_planning_trace.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add trace relationship decisions"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py tests/test_planning_trace.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add trace relationship decisions"
 ```
 
 ---
@@ -1559,9 +1559,9 @@ Expected: all tests pass with the known warning visible.
 - [ ] **Step 10: Commit Task 3**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: approve one Connected Assurance trace"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/domain/trace.py src/ace/domain/__init__.py src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: approve one Connected Assurance trace"
 ```
 
 ---
@@ -1708,9 +1708,9 @@ Expected: all tests pass with the one known warning visible.
 - [ ] **Step 7: Commit Task 4**
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace add src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff --cached --check
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace commit -m "feat: add deterministic assurance trace views"
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace add src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff --cached --check
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace commit -m "feat: add deterministic assurance trace views"
 ```
 
 ---
@@ -1840,9 +1840,9 @@ Expected: no remaining listener.
 Run:
 
 ```powershell
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace status --short --branch
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 2cab623 -- src/ace/domain/trace.py src/ace/domain/__init__.py src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md
-git -c safe.directory=C:/Users/AlanRichardson/Documents/agentic-os-workspace diff 2cab623 --exit-code -- src/ace/domain/assessment.py src/ace/engine/approval.py src/ace/engine/evaluator.py src/ace/app.py tests/test_approval_gate.py tests/test_rating_engine.py tests/test_app.py
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace status --short --branch
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 2cab623 -- src/ace/domain/trace.py src/ace/domain/__init__.py src/ace/engine/tracing.py src/ace/engine/__init__.py tests/test_planning_trace.py docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md
+git -c safe.directory=LOCAL_HOME/Documents/agentic-os-workspace diff 2cab623 --exit-code -- src/ace/domain/assessment.py src/ace/engine/approval.py src/ace/engine/evaluator.py src/ace/app.py tests/test_approval_gate.py tests/test_rating_engine.py tests/test_app.py
 ```
 
 Expected:

@@ -112,3 +112,15 @@ When work stops:
 - Use `docs/agents/issue-tracker.md` for issue-tracker rules.
 - Use `docs/agents/triage-labels.md` for triage labels.
 - Use `docs/agents/domain.md` for domain-document locations.
+
+## Repository Maps
+
+Graphify and Understand Anything are installed for this repository. Installation does not establish an analysed or current graph.
+
+- Use Graphify for focused relationships and Understand Anything for architecture explanations.
+- Check graph scope and source identity before relying on either map. Source and retained tests remain authoritative.
+- Follow applicable CodeGraph-first instructions when a CodeGraph index exists.
+- Run extraction or updates only within the requested task. Automatic hooks and rebuilding are disabled by default.
+- Include application code, tests and development records when a complete repository map is requested.
+- Keep generated outputs, credentials, snapshots and dependency directories outside the analysis scope.
+- See `docs/ace/REPOSITORY-MAP-SETUP.md` for installation identities, coverage and invocation.

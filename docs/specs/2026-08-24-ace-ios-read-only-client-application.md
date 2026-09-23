@@ -2,27 +2,49 @@
 
 ## Document Status
 
-Status: Draft Revised From Security Findings
+Status: Active Verification Specification
 
 Date: 24 August 2026
 
-Controlled baseline branch: `origin/codex/ace-sprint-1`
+Historical baseline branch: `origin/codex/ace-sprint-1`
 
-Controlled baseline commit: `6b0160befc9191dbccd527bdd385b891782ddad8`
+Historical baseline commit: `6b0160befc9191dbccd527bdd385b891782ddad8`
 
-Phase 6B2 implementation merge: `a1d52c6148b64106ed1a4516aec8e72aea4ef666`
+The historical commit is unavailable on the Mac and separate clones. It was located in the original Windows repository.
+
+It has parents `a1d52c6148b64106ed1a4516aec8e72aea4ef666` and `759cfa0fab3b8cb423bc0f2808f4f2289710c54b`. Its date is `2026-08-23T20:21:22Z`. It is merge PR 60, `dev-state-sync`.
+
+It has no `ios` directory.
+
+All 23 iOS files at imported-harness commit `91818a476c7ddb81c48aba63c76b11cfbcb70df4` match the Git blob identifiers at Mac controlled-source-import commit `d1507336ca6be5f6ae5f90227a66f10dffa83728`.
+
+Commit `d1507336ca6be5f6ae5f90227a66f10dffa83728` is an ancestor of current task base `7dc7cee7654ae8cc002da54324c3d1475a8494e6`.
+
+Direct ancestry from historical commit `6b0160befc9191dbccd527bdd385b891782ddad8` to imported-harness commit `91818a476c7ddb81c48aba63c76b11cfbcb70df4` fails. `git merge-base` returned exit 1 with no common ancestor. The roots are `f6656799...` and `f0ca3f958334af7b6727742460ed060cf9c077aa` (`Import MCX-15 Vorflux harness`).
+
+The historical reference is located and the source import is proven. Direct required ancestry is not proven and fails. Baseline-dependent acceptance remains BLOCKED for review.
+
+Do not transfer source history, infer ancestry, or treat the required baseline as waived.
+
+Current verified worktree base: `7dc7cee7654ae8cc002da54324c3d1475a8494e6`.
+
+Historical Phase 6B2 implementation merge: `a1d52c6148b64106ed1a4516aec8e72aea4ef666`.
 
 Linear implementation issue: [MCX-15](https://linear.app/mcxi-co/issue/MCX-15/sqe-implement-ace-ios-read-only-client-application)
 
-This specification does not authorise implementation.
+The approved implementation plan dated 14 September 2026 authorises the current work.
 
-Pocock must approve this revised specification and its acceptance-test catalogue before coding starts.
+The user authority quote is `proceed unbounded with all approvals`.
 
-The user must approve the reviewed specification before coding starts.
+The user already approved the iPhone 15 Pro Max for physical verification.
 
-Security must approve the Keychain, clipboard, app-switcher, and network controls before implementation starts.
+This specification retains the product, security, and verification requirements.
 
-A separately authorised commit and push must track this specification before final exact-commit review.
+Pocock, Security, service, signing, native, manual, and exact-head review gates remain active.
+
+Security approvals, CI checks, conflict checks, Pocock review, and native evidence are UNKNOWN until their required records exist.
+
+Historical results remain evidence for their tested candidate only.
 
 ## Approved Product Decisions
 
@@ -39,10 +61,12 @@ The user selected these product decisions:
 - Classify all release information as `FICTIONAL PILOT — CONTROLLED`.
 - Allow normal iPhone screenshots.
 - Hide release information in the app-switcher preview.
-- Provide copy buttons for visible release information.
+- Provide one Copy action button for each complete visible action record.
 - Never copy credentials or technical details.
 - Show `No current release is available.` for all empty results.
-- Use a ten-working-day active implementation hard limit.
+- Use the current verification authority in the approved 14 September 2026 plan.
+- The earlier ten-working-day limit is a historical task control.
+- It does not limit the currently approved task.
 
 ## Problem Statement
 
@@ -82,11 +106,11 @@ It sends no write request and contains no write transport method.
 6. As a fictional pilot client, I want the release version, so that I can identify the displayed release.
 7. As a fictional pilot client, I want the publication time, so that I know when ACE published it.
 8. As a fictional pilot client, I want the conclusion title and summary, so that I can understand the approved conclusion.
-9. As a fictional pilot client, I want the evidence reference, so that I can copy its visible value.
+9. As a fictional pilot client, I want the evidence reference, so that I can read its visible value.
 10. As a fictional pilot client, I want ordered actions, so that I see the ACE order without client sorting.
 11. As a fictional pilot client, I want action owners and dates, so that responsibilities are clear.
 12. As a fictional pilot client, I want action status, so that I can distinguish open and complete work.
-13. As a fictional pilot client, I want copy buttons, so that I can copy visible release information.
+13. As a fictional pilot client, I want one Copy action button, so that I can copy a complete visible action record.
 14. As a fictional pilot client, I want normal screenshots, so that I can use standard iPhone capture.
 15. As a fictional pilot client, I want a hidden app-switcher preview, so that background previews do not show release information.
 16. As a fictional pilot client, I want a clear empty message, so that missing information does not look like an error.
@@ -240,7 +264,7 @@ The current release screen contains:
 - Ordered action description, owner, target date, and status.
 - Refresh control.
 - Sign-out control.
-- Copy controls for visible release values.
+- One Copy action control for each complete visible action record.
 - A visible fictional pilot notice.
 
 Evidence references remain text.
@@ -333,10 +357,10 @@ The deletion-only reset state also blocks network access until deletion succeeds
 38. Remove the cover only after the scene becomes active.
 39. Allow normal iPhone screenshots.
 40. Do not detect, block, warn about, upload, share, or force an exit because of screenshots.
-41. Add explicit copy controls for the approved visible release values.
+41. Add one explicit Copy action control for each complete visible action record.
 42. Use the exact clipboard contract in this specification.
 43. Copy no password, authorization value, host, error trace, or other technical detail.
-44. Keep evidence references inert and copyable only as visible text.
+44. Keep evidence references visible and inert, with no copy control or link.
 45. Show a short confirmation after a copy operation.
 46. Use structured allow-list logging with no release values, usernames, passwords, or authorization values.
 47. Add no analytics, tracking, advertising, or crash-reporting service.
@@ -680,25 +704,27 @@ The application then uses the exact trust-failure state in the state matrix.
 
 ### Exact Clipboard Contract
 
-Each copy control copies one visible value only.
+The user approved one Copy action button per complete action record on 15 September 2026.
 
-The approved copyable values are:
+This replaces the earlier eleven individual-field Copy controls. All eleven field types remain displayed. Release details, conclusion fields and individual action fields have no Copy control.
 
-- Engagement name.
-- Review status.
-- Release version.
-- Published date and time.
-- Conclusion title.
-- Conclusion summary.
-- Conclusion evidence reference identifier.
-- Action description.
-- Action owner.
-- Action target date.
-- Action status.
+Each action card shows its four fields, followed by one `Copy action` button. Its accessibility label is `Copy action N`, where N is the visible one-based action number. Copy shows and announces `Copied Action N.`. Confirmation duration remains unchanged.
 
-`conclusion.evidence_reference_id` is an approved visible reference.
+Each copy operation writes UTF-8 plain text with this exact structure:
 
-No other internal identifier is visible or copyable.
+```text
+Action 1
+Description: Fictional action
+Owner: Fictional owner
+Target date: 2026-08-25
+Status: OPEN
+```
+
+Use the selected action's visible number and actual displayed values. Separate these five lines with LF. Add no trailing LF. Preserve the displayed values without trimming or replacing their content. A value that already contains line breaks retains those line breaks.
+
+Do not include another action, release metadata, conclusion content, credentials, errors, hosts or internal identifiers. The visible action number is a display position, not an internal identifier. No Copy action control appears when there are no actions.
+
+`conclusion.evidence_reference_id` remains an approved visible reference. It is inert text with no copy control or link. No other internal identifier is visible or copyable.
 
 Each copy operation uses `localOnly = true`.
 
@@ -732,9 +758,17 @@ Server source, Python tests, database files, migrations, and existing web routes
 
 Documentation can change only for the approved specification and required delivery records.
 
-Implementation requires an approved macOS host with Xcode 26.
+Implementation requires the approved macOS host.
 
-The host must provide an iOS 26 simulator before implementation tests start.
+Observed toolchain: Xcode 26.4.1 (`17E202`) and iOS 26.4.1 runtime (`23E254a`).
+
+The required simulator destinations are iPhone 17 and iPhone 17 Pro Max on iOS 26.4.1.
+
+The approved physical device is iPhone 15 Pro Max.
+
+The iPhone 16e simulator is an optional compatibility check.
+
+It is outside the required coverage matrix.
 
 The current Windows workspace cannot provide the required Xcode build evidence.
 
@@ -757,7 +791,7 @@ The exact private test-server address and certificate must be approved before ne
 11. Normal user-created iPhone screenshots are allowed.
 12. The application does not detect, block, warn about, upload, share, or force an exit because of screenshots.
 13. The app-switcher preview hides release content.
-14. Copy controls include visible release information only.
+14. Copy action controls include only the visible action number, description, owner, target date and status with their approved labels.
 15. Use `localOnly = true` for each clipboard write.
 16. Remove copied values after five minutes with `expirationDate`.
 17. Security must approve these exact clipboard values.
@@ -791,7 +825,7 @@ The exact private test-server address and certificate must be approved before ne
 7. Bold Text does not hide or clip information.
 8. Reduce Motion removes nonessential movement.
 9. Errors receive one useful announcement without repeated interruption.
-10. Copy controls state the copied field in their label.
+10. Each Copy action control identifies its action number in its accessibility label.
 11. Portrait and landscape work on the approved iPhone matrix.
 12. iPad behaviour is outside this specification.
 
@@ -799,18 +833,49 @@ The exact private test-server address and certificate must be approved before ne
 
 The required simulator devices are:
 
-- iPhone SE (3rd generation) with iOS 26.
-- iPhone 16 Pro Max with iOS 26.
+- iPhone 17 with iOS 26.4.1.
+- iPhone 17 Pro Max with iOS 26.4.1.
 
-The approved Xcode 26 host must contain both simulator destinations.
+The approved physical device is iPhone 15 Pro Max.
+
+The iPhone 16e simulator is optional compatibility evidence.
+
+It does not change the required matrix or acceptance count.
 
 Run each screen and state in portrait and landscape.
 
 Run each screen and state in light and dark appearance.
 
-Run Dynamic Type at default, extra large, and accessibility extra-extra-extra large.
+Run all twelve iOS 26 system text sizes.
 
-The automated layout suite also checks every iOS 26 Dynamic Type size.
+Use `DEFAULT` for default text, `EXL` for extra-large text, and `MAX` for accessibility extra-extra-extra-large text.
+
+The matrix contains 18 states, including sign-in, release, no conclusion, no actions, and copy confirmation.
+
+| Group | Configuration And Deduplication | Native Audit Cases | Layout-Only Cases | Unique Cases |
+| --- | --- | ---: | ---: | ---: |
+| Standard | 18 states; two devices; portrait and landscape; light and dark; default text; all toggles off | 144 | 0 | 144 |
+| Text sweep | 18 states; twelve text sizes; two devices; portrait; light; all toggles off; remove 36 default-text overlaps from Standard | 72 for `EXL` and `MAX`; `DEFAULT` is audited in Standard | 324 at the other nine sizes | 396 |
+| Difficult layouts | Five complex states; `EXL` and `MAX`; two devices; both orientations; both appearances; remove 20 portrait-light overlaps from Text sweep | 60 | 0 | 60 |
+| Individual settings | 18 states; each of Bold Text, Reduce Motion, and Increase Contrast on separately; two devices; portrait; default text; both appearances | 216 | 0 | 216 |
+| Combined settings | Five complex states; all three settings on; `MAX`; landscape; two devices; both appearances | 20 | 0 | 20 |
+| Total coverage |  | 512 | 324 | 836 |
+
+Run unrestricted native accessibility audits for 512 cases.
+
+Run layout-only checks for the other 324 cases at nine intermediate text sizes.
+
+Every required automated check must pass. No native audit exception is assumed. A proposed proven tool-defect exception requires the user's specific decision. Never convert a failed native result into a pass.
+
+Retain the nine existing UI regression selectors and record their overlap.
+
+The five complex states are sign-in, release, no conclusion, no actions, and copy confirmation.
+
+Use `EXL` and `MAX` for difficult-layout coverage.
+
+The current local verification record gives the complete matrix, pilot, resource, runner, diagnostic, and renewal controls: [ACE iOS Local Verification](../plans/2026-09-14-ace-ios-local-verification.md).
+
+The approved [Discovery Candidate](../plans/2026-09-17-ace-ios-discovery-candidate.md) adds a diagnostic pilot execution mode. Failed cases stay failed. This mode cannot satisfy the acceptance pilot or waive any accessibility requirement. The 836-case coverage and final acceptance gates remain unchanged.
 
 Run Bold Text off and on.
 
@@ -847,20 +912,20 @@ The matrix covers these screens and states:
 - Copy confirmation.
 - Privacy cover.
 
-Run `performAccessibilityAudit` for every listed screen and state.
+Run `performAccessibilityAudit` for all 512 required audit cases.
 
 No unresolved automated accessibility audit failure is permitted.
 
 ### Manual VoiceOver Journeys
 
-Run these journeys on the approved physical pilot iPhone:
+Run these journeys on the approved iPhone 15 Pro Max:
 
 1. Sign in, correct a validation error, and open a valid release.
 2. Read metadata, conclusion, actions, copy controls, refresh, and sign-out in that order.
 3. Read both empty sentinels and their common message.
 4. Read the no-conclusion and no-actions states.
 5. Read each safe failure message and use its permitted retry control.
-6. Copy each approved field and hear one field-specific confirmation.
+6. Copy each complete action and hear one action-specific confirmation. Confirm that no individual field has a Copy control.
 7. Enter the app switcher, confirm the cover, return, and continue reading.
 8. Cause a Keychain deletion failure and confirm that sign-out does not report success.
 
@@ -894,11 +959,13 @@ Every fixture uses fictional names and values.
 
 Each network test uses a controlled transport or approved private test server.
 
+The approved starting inventory contained 65 unit and contract tests, including 42 contract tests. One new composed credential-lifecycle test raises the source inventory to 66, including 43 contract tests. Verify actual executed counts in each native bundle. A passing pending-record check does not establish runtime acceptance. The earlier one-command-per-unit retention workflow is historical only.
+
 ### Acceptance-Test Catalogue
 
 #### Baseline And Project
 
-- `IOS-BASE-001`: The branch starts at `6b0160befc9191dbccd527bdd385b891782ddad8`.
+- `IOS-BASE-001`: The required branch ancestry starts at `6b0160befc9191dbccd527bdd385b891782ddad8`. The object is located in the original Windows repository but unavailable on the Mac and separate clones. The 23-file controlled source import from `91818a476c7ddb81c48aba63c76b11cfbcb70df4` to `d1507336ca6be5f6ae5f90227a66f10dffa83728` is proven by matching Git blob identifiers. Direct ancestry from `6b0160befc9191dbccd527bdd385b891782ddad8` to `91818a476c7ddb81c48aba63c76b11cfbcb70df4` fails with no common ancestor. Its status is BLOCKED for baseline-dependent acceptance. Do not transfer history, infer ancestry, or waive the requirement. The user-approved current task execution base is `7dc7cee7654ae8cc002da54324c3d1475a8494e6`; it does not replace the required historical baseline.
 - `IOS-BASE-002`: The project targets iPhone and iOS 26 or later.
 - `IOS-BASE-003`: The application uses SwiftUI and Apple frameworks only.
 - `IOS-BASE-004`: The dependency graph contains no third-party runtime package.
@@ -1055,12 +1122,12 @@ Each network test uses a controlled transport or approved private test server.
 
 #### Copy And Screenshot Behaviour
 
-- `IOS-COPY-001`: Each approved visible value has a labelled copy control.
-- `IOS-COPY-002`: A copy control copies only its visible value.
+- `IOS-COPY-001`: Each visible action record has one Copy action control with an action-specific accessibility label.
+- `IOS-COPY-002`: Copy action copies only that complete visible action record in the exact approved text format.
 - `IOS-COPY-003`: No copy control exposes credentials or technical details.
-- `IOS-COPY-004`: Evidence references copy as text and never open as links.
-- `IOS-COPY-005`: A copy action gives accessible confirmation.
-- `IOS-COPY-006`: Only the eleven named field types have copy controls.
+- `IOS-COPY-004`: Evidence references remain visible text, without a Copy control or link.
+- `IOS-COPY-005`: Copy action shows and announces Copied Action N. for the selected one-based action number.
+- `IOS-COPY-006`: Only complete action records have Copy controls. Individual fields, release details and conclusion fields have none.
 - `IOS-COPY-007`: No unapproved internal identifier has a copy control.
 - `IOS-COPY-008`: Every clipboard write uses `localOnly = true`.
 - `IOS-COPY-009`: Every clipboard write expires five minutes after the write.
@@ -1095,12 +1162,12 @@ Each network test uses a controlled transport or approved private test server.
 - `IOS-ACC-004`: Bold Text causes no clipping.
 - `IOS-ACC-005`: Reduce Motion retains clear loading feedback.
 - `IOS-ACC-006`: Light and dark appearances meet approved contrast rules.
-- `IOS-ACC-007`: Portrait and landscape pass on the smallest approved iPhone.
+- `IOS-ACC-007`: Portrait and landscape pass on both required simulator devices.
 - `IOS-ACC-008`: The automated accessibility audit reports no unresolved failure.
-- `IOS-ACC-009`: Manual VoiceOver checks pass on the approved pilot device.
-- `IOS-ACC-010`: Both named iOS 26 simulator devices pass the matrix.
-- `IOS-ACC-011`: Every listed screen and state passes an automated accessibility audit.
-- `IOS-ACC-012`: Default, extra-large, and accessibility XXXL text pass the full matrix.
+- `IOS-ACC-009`: Manual VoiceOver checks pass on the approved iPhone 15 Pro Max.
+- `IOS-ACC-010`: iPhone 17 and iPhone 17 Pro Max on iOS 26.4.1 pass the required matrix.
+- `IOS-ACC-011`: All 512 required native audit cases pass with no unresolved failure.
+- `IOS-ACC-012`: All twelve iOS 26 system text sizes pass the required matrix.
 - `IOS-ACC-013`: Increase Contrast passes in light and dark appearance.
 - `IOS-ACC-014`: Text through 17 points has at least `4.5:1` contrast.
 - `IOS-ACC-015`: Text from 18 points has at least `3:1` contrast.
@@ -1122,52 +1189,22 @@ Each network test uses a controlled transport or approved private test server.
 
 ### Verification Sequence
 
-1. Pocock approves this catalogue.
-2. Security approves the Keychain, clipboard, app-switcher, and network controls.
-3. Confirm an approved macOS and Xcode 26 environment.
-4. Confirm the exact private server address and certificate.
-5. Confirm the exact bundle identifier and simulator destination.
-6. Create the project from the approved Xcode template.
-7. Write model, repository, transport, Keychain, and state tests first.
-8. Confirm new behaviour tests fail for the expected missing implementation.
-9. Implement the smallest passing code.
-10. Run focused tests after each safe fix.
-11. Run simulator UI and accessibility checks.
-12. Before draft pull request creation, verify that Greptile automatic reviews are manual-only. Verify that review retriggers are off.
-13. Inspect the task diff before the initial commit. Confirm that it contains only the approved task.
-14. Make the initial normal task commit and push.
-15. Create the draft pull request for that head.
-16. Complete CI and conflict checks before Greptile.
-17. Start one controlled Greptile review with one manual `@greptileai` pull request comment.
-18. Use official `check-pr` to inspect the Greptile result.
-19. Apply permitted Greptile fixes and run focused tests.
-20. Commit and push the changed head. Update the draft pull request.
-21. After a permitted Greptile fix, use current-head `check-pr` to confirm resolution and current checks.
-22. Run final Pocock review on the current head.
-23. Apply permitted Pocock fixes and run focused tests.
-24. Commit and push that changed head. Update the draft pull request.
-25. Return to step 22 after a Pocock-driven head change.
-26. Run the complete suite once on the unchanged Pocock-approved head.
-27. The primary session inspects the complete diff and all evidence.
-28. Run one Fresh Sol review on that exact head.
+1. Confirm required access before dependent checks. For the simulator fixture programme, confirm the required simulators, built-in fictional inputs, storage, and private evidence retrieval. Confirm the approved iPhone 15 Pro Max, signing, Keychain access group, private service, certificate, and fictional account before their dependent checks. Missing service or phone access does not prevent independent simulator work, as authorised in the approved plan. All these inputs remain mandatory for final delivery.
+2. Run focused functional checks and the local runner evidence gate. Retain the deliberate failure assertion and its corrected passing result.
+3. Freeze a clean candidate at one exact commit.
+4. Obtain Pocock review for that clean candidate.
+5. Run the 22-case pilot on the unchanged Pocock-reviewed candidate.
+6. Expand only after every pilot gate passes. Run the complete 836-case programme on that same unchanged candidate.
+7. Complete the required manual and physical-device checks on iPhone 15 Pro Max.
+8. The primary session inspects the complete candidate diff, native results, images, and evidence.
+9. Obtain a fresh Sol review on that inspected unchanged head.
+10. Reconcile every requirement as passed, failed, pending, or blocked. Install and launch the verified signed build. Obtain exact-head merge approval only before any later merge. Do not merge automatically.
 
-If Fresh Sol needs no fix, the candidate can proceed to exact-head merge approval.
+Renew steps 3 through 10 after a relevant application, test, runner, workflow, or documentation change.
 
-One permitted Fresh Sol fix changes the candidate head.
+The earlier Greptile result is historical evidence for its reviewed commit only.
 
-After that fix, use this exact sequence:
-
-1. Run focused tests for the fix.
-2. Commit and push the changed head.
-3. Update the draft pull request.
-4. Run Pocock review on the changed head.
-5. Run the complete suite on the unchanged Pocock-approved head.
-6. The primary session inspects the complete diff and all evidence.
-7. Run one new Fresh Sol review on that exact head.
-
-Do not run Greptile again after the permitted Fresh Sol fix.
-
-Record the earlier Greptile review as historical evidence under the controlled workflow.
+Do not treat it as review evidence for the current candidate.
 
 ## Failure Rules
 
@@ -1181,7 +1218,7 @@ Record the earlier Greptile review as historical evidence under the controlled w
 8. A copy operation cannot include a hidden field.
 9. A Keychain failure uses the exact safe state in the state matrix.
 10. A test failure blocks the candidate.
-11. A baseline mismatch stops implementation.
+11. A baseline mismatch blocks baseline-dependent acceptance. The approved current task may continue independent work. It cannot claim ancestry or waive this gate.
 12. A required Security decision blocks the affected implementation.
 13. A redirect target receives no request and no authorization value.
 14. A Keychain deletion failure blocks successful sign-out.
@@ -1218,45 +1255,50 @@ Record the earlier Greptile review as historical evidence under the controlled w
 
 ## Delivery Gates
 
-1. The user authorises one specification-only commit and push.
-2. That commit tracks this specification and no unrelated file.
-3. Pocock approves the exact specification commit and every acceptance-test identifier.
-4. Security approves the exact specification commit and Keychain policy.
-5. Security approves clipboard behaviour and the app-switcher cover.
-6. Security and ACE operations approve the exact private test server and certificate.
-7. The user approves the Pocock-reviewed specification.
-8. A Linear implementation issue records the approved baseline, scope, tests, limit, and exclusions.
-9. The issue receives the correct approval state under repository rules.
-10. A fresh Codex task invokes `$sol-advisor:orchestration`.
-11. The implementation task uses an isolated worktree at the approved baseline.
-12. The implementation task records the allowed iOS module and tests.
-13. The implementation task confirms an approved Mac, Xcode 26, and iOS 26 simulator.
-14. The implementation task records high-cost build, simulator, UI, and device commands.
-15. The implementation task stops before any architecture, security, API, dependency, or Production expansion.
-16. CI and conflict checks pass.
-17. One controlled Greptile review runs under the approved delivery workflow.
-18. Permitted Greptile fixes pass focused tests.
-19. Pocock approves the unchanged implementation head.
-20. The complete suite passes on that unchanged head.
-21. The primary session inspects the complete diff and all evidence.
-22. A Fresh Sol review approves that exact head.
-23. A permitted Sol fix renews the gates in the stated post-fix sequence.
-24. The exact pull request head receives separate merge approval.
-25. No automatic merge or Production deployment occurs.
+1. Preserve the approved plan, product scope, security controls, and 197 requirement identifiers.
+2. Resolve the required historical baseline ancestry. Its status is BLOCKED because the located historical baseline and source import have no common ancestor. The current task base does not replace it.
+3. Confirm the observed Xcode 26.4.1 and iOS 26.4.1 environments.
+4. Confirm both required simulators and the approved iPhone 15 Pro Max.
+5. Security must approve the Keychain, clipboard, app-switcher, and network controls. Their current status is UNKNOWN until recorded.
+6. Security and ACE operations must approve the private test service and certificate. Their current status is UNKNOWN until recorded.
+7. Confirm private service access, fictional account, signing, Keychain access group, storage, and private evidence retrieval.
+8. Complete focused functional checks, including GET-only requests, Keychain lifecycle, complete-action Copy values, and rejected configuration.
+9. Retain the deliberate runner failure assertion and its corrected passing result.
+10. CI and conflict checks must pass on the current candidate. Their status is UNKNOWN until recorded.
+11. Create a clean exact candidate commit and obtain Pocock review.
+12. Complete the 22-case pilot and complete programme on that unchanged candidate.
+13. Complete required manual and physical-device evidence on iPhone 15 Pro Max.
+14. The primary session inspects the complete candidate diff and evidence. Then obtain a fresh Sol review on that unchanged head.
+15. Retain the earlier Greptile record as historical evidence for its reviewed commit only.
+16. Renew candidate, Pocock, programme, inspection, and Sol gates after each relevant change.
+17. Reconcile every requirement as passed, failed, pending, or blocked. Install and launch the verified signed build.
+18. Obtain exact-head merge approval only before any later merge. Do not merge automatically or deploy to Production.
+
+These are required gates. This specification does not claim that any gate has completed.
 
 ## Bounded Implementation
 
-The active implementation and verification hard limit is ten working days.
+The approved plan dated 14 September 2026 controls current task duration.
 
-Waiting for Security, Legal, device, certificate, environment, or human decisions does not count.
+The earlier ten-working-day limit is historical.
 
-Blocked time must be visible in status reports.
+It does not apply to the current approved task.
 
-Stop at the hard limit and return a variance report.
+The 22-case pilot controls expansion into the complete programme.
 
 Do not add dependencies, reduce controls, widen the API, or increase scope to meet the limit.
 
-The pilot covers simulator verification and one separately approved physical iPhone.
+The pilot uses five complex states on both required simulators.
+
+For each complex state, run A at default text, portrait, light appearance, and all toggles off. Run B at maximum text, landscape, dark appearance, and all toggles on.
+
+Also run release at medium text, portrait, and light appearance on both simulators without a full audit.
+
+Expand only when all 22 cases pass with expected counts, observed settings, complete and inspected retrievable artifacts, private access, and retention evidence. The current local verification record defines the resource gates.
+
+The iPhone 15 Pro Max is approved for required physical verification.
+
+The iPhone 16e simulator remains optional compatibility evidence.
 
 Production hardening is a separate phase.
 
@@ -1289,6 +1331,101 @@ High-cost operations include:
 - Controlled Greptile record.
 - Fresh Sol record.
 - Exact-head human merge approval.
+
+## MCX19-B Candidate Verification
+
+Historical MCX19-A records a focused diagnostic at `3259048186916941bf3557d55503e7375e432c57`.
+It does not establish complete candidate evidence.
+Bind each new run and its retained artifacts to the exact tested commit.
+A change to a test, runner, workflow, or application creates a new verification candidate.
+
+### Acceptance Matrix
+
+| Check | Required Evidence | Acceptance Condition |
+| --- | --- | --- |
+| Candidate identity | Repository, branch, baseline, exact commit, changed files, and platform | The approved candidate matches the clean native checkout. |
+| Automated checks | Separate unit, UI, evidence-contract, and negative-configuration results | Every required check completes with the expected result and test count. |
+| Native result integrity | Process exit, passed tests, failed tests, and skipped tests | Process success alone cannot establish a test pass. Required tests cannot be skipped. |
+| Forced appearance | Named screenshots and native assertions for both appearances on both specified devices | The displayed appearance matches the test setting. |
+| Normal device settings | Simulator setting values, separate results, and screenshots without the app appearance override | The app follows the verified system setting. Record restoration of changed simulator settings. |
+| Screens and states | Named screenshots for every screen and state in the Accessibility Test Matrix | Inspect the actual images. Reject missing or unmatched images. |
+| Orientation | Portrait and landscape evidence for every required screen and state | Information remains readable and required controls remain reachable. |
+| Dynamic Type | Evidence for all twelve iOS 26 system text sizes | Complete information remains available at every required size. Record the tested setting with each result. |
+| Additional accessibility settings | Bold Text, Reduce Motion, and Increase Contrast checks in the required combinations | Each setting meets the Accessibility Decisions and Accessibility Test Matrix. |
+| Accessibility audits | Full native audit results for 512 required cases and the manual checklist | Do not hide elements, filter failures, or weaken assertions to obtain a pass. |
+| Retained artifacts | Sanitised result manifest, named fictional screenshots, and hashes | Validate the required artifact set before publication. Keep raw logs and result bundles private. |
+| Manual inspection | An inspection record linked to the exact commit and image hashes | A screenshot file alone does not establish a visual pass. |
+| Other delivery gates | The Required Delivery Evidence listed above | Simulator fixtures do not prove a live server connection or replace physical-device evidence. |
+
+### Evidence Collection Limits
+
+The manual workflow may publish only the explicitly allowed, checked review artifacts.
+Do not publish raw Xcode logs, raw result bundles, credentials, or real client information.
+Controlled screenshots must use fictional scenarios and contain no entered credentials.
+An artifact export failure or a missing required image must fail its collection check.
+Keep collection results separate from visual inspection and release acceptance.
+
+### MCX19-B Private Diagnostic Records Exception
+
+For approved fictional MCX19-B tests only, retain original diagnostic records in verified
+authenticated storage. Restrict retrieval to authorised project operators. Retain records
+for 30 days, then expire them. Verify authorised retrieval and unauthorised denial before
+a paid test suite.
+
+Do not publish raw Xcode logs or raw result bundles in public artifacts. Do not collect
+confirmed credentials or real client information. Unresolved matches follow the narrow
+quarantine rule below. Keep raw records out of Git, PR comments, public
+links, and public artifact downloads. Do not put temporary authenticated download URLs in
+reports, logs, commits, or messages. Do not use a public bearer link that bypasses the
+approved access boundary.
+
+Generate the private inventory exactly from the planned command set. Do not publish an
+unrestricted directory glob. For each started XCTest command, retain one generated
+`.xcresult` and record its complete or incomplete state. Retain exported summaries,
+individual failures, and attachment inventories from those bundles. Retain compiler, test,
+simulator-setting, export, and packaging output only from the approved commands. Retain a
+collection inventory with candidate and build identity, relative path, producing command,
+size, SHA-256, and collection state. Retain existing checked JSON and allowed fictional PNG
+images as controlled review records, separately.
+
+Exclude environment dumps, credential files, Keychain contents, signing material, caches,
+source exports, and unrelated machine files. Check paths, links, file types, size limits,
+and the exact producing command before upload. Reject unexpected files. Stop collection if
+a confirmed secret or real client information is detected. Apply only the narrow unresolved
+match exception below. Do not silently remove evidence or report
+collection success.
+
+For planned `.xcresult/Data/*` members from approved fictional XCTest commands only,
+permit unresolved `credential-prefix` byte matches with `neighbourhoodShape=non-utf8`
+in the existing authenticated private storage. Preserve exact bytes, provenance and
+hashes. Record `quarantined-pending-review`. The match can be a real credential. This
+status does not establish scanner clearance, collection acceptance or release acceptance.
+Keep all other matchers and all text, decoded-data, metadata and path checks unchanged.
+Resolve a record only after mapping the match to its object and reading and classifying
+all required children. Missing mapping, read errors or partial coverage remain pending.
+Keep raw matched bytes, object identifiers and command errors private. Stop collection
+if a genuine credential or real client information is confirmed.
+
+Before the next paid run, verify authenticated retrieval of an existing approved fictional
+artifact, unauthorised denial and effective 30-day retention. The first focused run must
+then prove original-bundle retrieval before the corrected case or complete suite. Do not
+bypass a blocked download. Keep the candidate unverified while any record is unresolved.
+
+Historical collection planning used 136 commands, 135 XCTest cases, and 200 named fictional
+review images. These are historical planning counts only. They do not replace the current
+836-case coverage requirement, 512 native audit requirement, or 324 layout-only requirement.
+The historical plan required one unit or contract test per command with verified private
+retention before the next command. It does not control current execution. Original bundle access,
+approved Mac access, provider retention, provider interruption, authorised retrieval, and
+unauthorised denial remain PENDING.
+
+Record unavailable or untested settings as pending.
+Do not infer Dynamic Type support from appearance evidence.
+Do not infer normal device-setting behaviour from an app launch override.
+Do not infer normal screenshot behaviour from an XCTest attachment alone.
+Retain `releaseEvidence: false` for collection output.
+An incomplete progress record cannot satisfy this matrix.
+Keep `UNVERIFIED — UI QA INCOMPLETE` until all required native and manual checks pass.
 
 ## Further Notes
 
@@ -1325,8 +1462,10 @@ No unresolved Apple evidence gap prevents this specification from defining a tes
 
 ## Evidence Sources
 
-- `DEV_STATE.md` at controlled target `6b0160befc9191dbccd527bdd385b891782ddad8`.
-- `ACE_PROGRESS_GUIDE.html` at the same controlled target.
+- Historical `DEV_STATE.md` reference at `6b0160befc9191dbccd527bdd385b891782ddad8`.
+- Historical `ACE_PROGRESS_GUIDE.html` reference at the same commit.
+- The historical commit was located in the original Windows repository. It has no common ancestor with the proven iOS import source. See the private baseline-provenance.json record. Baseline-dependent acceptance remains blocked.
+- Approved implementation plan dated 14 September 2026.
 - Existing `ClientReleaseResponse`, client route, authentication, projection, and storage-order contracts.
 - Existing release-focused tests and Phase 6B2 compatibility records.
 - Apple SwiftUI documentation: <https://developer.apple.com/swiftui/>.

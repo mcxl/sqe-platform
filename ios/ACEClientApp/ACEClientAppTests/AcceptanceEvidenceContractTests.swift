@@ -24,7 +24,10 @@ struct RuntimePlan: Decodable {
 extension AcceptanceEvidenceContractTests {
 
     private var approvedSanitizedBaseManifest: [String: String] {
-        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "46c262ebd0c781f83fa19b556f67d69a8ef3791d6062e2266c2ebaaa526536ff"]
+        // This digest verifies approved document content. It does not prove direct ancestry.
+        // Commit 6b exists in the original Windows repository, but import history differs.
+        // Baseline acceptance remains blocked.
+        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b"]
     }
 
     func testProjectConfiguration() throws {
@@ -497,6 +500,50 @@ extension AcceptanceEvidenceContractTests {
         XCTAssertEqual(addFailureResult, .saveFailure)
         XCTAssertEqual(addFailureAdapter.deleteQueries.count, 1)
         XCTAssertEqual(addFailureAdapter.addAttributes.count, 1)
+    }
+
+    @MainActor
+    func testComposedCredentialStoreSessionLifecycle() async throws {
+        // This is a component-composition test. It uses no system Keychain item,
+        // network service, or private input.
+        let origin = try PreviewOrigin(rawValue: "https://preview.example.invalid")
+        let credential = Credential(username: "fictional-user", password: "fictional-password")
+        let adapter = StatefulSecItemFake(items: [])
+        let store = CredentialStore(adapter: adapter)
+        let configuration = AppConfiguration(origin: .success(origin))
+
+        let firstState = SessionState(
+            configuration: configuration,
+            store: store,
+            repository: ControlledRepository(result: .success(.empty))
+        )
+        firstState.start()
+        try await waitUntil("initial sign-in", state: firstState) { $0 == .signIn(message: nil) }
+        firstState.signIn(username: credential.username, password: credential.password)
+        try await waitUntil("saved sign-in release", state: firstState) { $0 == .empty }
+        XCTAssertEqual(adapter.items.count, 1)
+        let savedItem = try XCTUnwrap(adapter.items.first)
+        XCTAssertEqual(savedItem[kSecAttrAccount as String] as? String, credential.username)
+
+        let relaunchedState = SessionState(
+            configuration: configuration,
+            store: store,
+            repository: ControlledRepository(result: .success(.empty))
+        )
+        relaunchedState.start()
+        try await waitUntil("relaunch release", state: relaunchedState) { $0 == .empty }
+
+        relaunchedState.signOut()
+        try await waitUntil("sign-out completion", state: relaunchedState) { $0 == .signIn(message: nil) }
+        XCTAssertTrue(adapter.items.isEmpty)
+
+        let signedOutRelaunchState = SessionState(
+            configuration: configuration,
+            store: store,
+            repository: ControlledRepository(result: .success(.empty))
+        )
+        signedOutRelaunchState.start()
+        try await waitUntil("sign-out relaunch", state: signedOutRelaunchState) { $0 == .signIn(message: nil) }
     }
 
     @MainActor
@@ -1322,52 +1369,57 @@ extension AcceptanceEvidenceContractTests {
 extension AcceptanceEvidenceContractTests {
 
     func testCopyControlsUITest() throws {
-        // IOS-COPY-001: Each visible value has labelled copy control
-        // IOS-COPY-004: Evidence references copy as text, never open as links
-        // IOS-COPY-005: Copy action gives accessible confirmation
-        // IOS-COPY-006: Only eleven named field types have copy controls
-        // IOS-COPY-007: No unapproved internal identifier has copy control
+        // This test inspects source. It does not perform a runtime UI interaction.
+        // IOS-COPY-001: Each complete action has one labelled copy control.
+        // IOS-COPY-004: Evidence references remain visible and do not have copy controls.
+        // IOS-COPY-005: Copy action gives accessible confirmation.
+        // IOS-COPY-006: Only action cards have grouped copy controls.
+        // IOS-COPY-007: No unapproved internal identifier has copy control.
         XCTAssertEqual(CopyableReleaseField.allCases.count, 11)
         let labels = CopyableReleaseField.allCases.map(\.label)
-        XCTAssertTrue(labels.contains("Engagement name"))
-        XCTAssertTrue(labels.contains("Review status"))
-        XCTAssertTrue(labels.contains("Release version"))
-        XCTAssertTrue(labels.contains("Published date and time"))
-        XCTAssertTrue(labels.contains("Conclusion title"))
-        XCTAssertTrue(labels.contains("Conclusion summary"))
-        XCTAssertTrue(labels.contains("Evidence reference"))
-        XCTAssertTrue(labels.contains("Action description"))
-        XCTAssertTrue(labels.contains("Action owner"))
-        XCTAssertTrue(labels.contains("Action target date"))
-        XCTAssertTrue(labels.contains("Action status"))
+        XCTAssertEqual(labels, [
+            "Engagement name", "Review status", "Release version", "Published date and time",
+            "Conclusion title", "Conclusion summary", "Evidence reference", "Action description",
+            "Action owner", "Action target date", "Action status"
+        ])
         let viewSource = try sourceText("Views.swift")
-        XCTAssertTrue(viewSource.contains("let field: CopyableReleaseField"), "Copy controls must take an approved field type")
-        XCTAssertEqual(viewSource.components(separatedBy: "Button(\"Copy ").count - 1, 1, "ValueRow must contain one copy-control implementation")
+        let valueRowSource = (viewSource.components(separatedBy: "struct ValueRow: View {").last ?? "")
+            .components(separatedBy: "enum ActionClipboardPayload").first ?? ""
+        XCTAssertFalse(valueRowSource.contains("ClipboardWriteContract.write("), "Value rows must not copy individual values")
+        XCTAssertFalse(valueRowSource.contains("Label(\"Copy"), "Value rows must not contain Copy buttons")
+        XCTAssertEqual(viewSource.components(separatedBy: "struct ActionCopyControl: View {").count - 1, 1, "One grouped action-copy control type is required")
+        XCTAssertTrue(viewSource.contains("ActionCopyControl(action: action, index: index)"), "Each action card must use its grouped copy control")
+        XCTAssertTrue(viewSource.contains("Label(\"Copy action\""), "The copy control must have a visible Copy action label")
+        XCTAssertTrue(viewSource.contains(".accessibilityLabel(\"Copy action \\(index + 1)\")"), "The copy button must retain its numbered accessible name")
         XCTAssertFalse(viewSource.contains(".textSelection("), "Native selection must not bypass ClipboardWriteContract")
-        XCTAssertTrue(viewSource.contains("let announcement = \"Copied \\(field.label).\""), "Copy confirmation must be accessible text")
-        XCTAssertTrue(viewSource.contains("if let confirmation { Text(confirmation) }"), "Copy confirmation must remain visible to accessibility services")
+        XCTAssertTrue(viewSource.contains("let announcement = \"Copied Action \\(index + 1).\""), "Copy confirmation must be accessible text")
+        XCTAssertTrue(viewSource.contains("if let confirmation"), "ActionCopyControl must show the copy confirmation")
+        XCTAssertTrue(viewSource.contains("Text(confirmation)"), "Copy confirmation must remain visible to accessibility services")
         XCTAssertFalse(viewSource.contains("Link("), "Production source must not use Link-based external navigation")
     }
 
     func testClipboardContract() throws {
-        // IOS-COPY-002: Copy control copies only its visible value
-        // IOS-COPY-003: No copy control exposes credentials or technical details
-        // IOS-COPY-008: Every clipboard write uses localOnly = true
-        // IOS-COPY-009: Every clipboard write expires 5 minutes after write
-        let visibleValue = "Visible release value"
+        // IOS-COPY-002: Copy action contains only its displayed action values.
+        // IOS-COPY-003: No copy control exposes credentials or technical details.
+        // IOS-COPY-008: Every clipboard write uses localOnly = true.
+        // IOS-COPY-009: Every clipboard write expires 5 minutes after write.
+        let action = ClientAction(description: "Fictional action", owner: "Fictional owner", targetDate: "2026-08-25", status: "OPEN")
+        let expected = "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"
+        let payload = ActionClipboardPayload.value(for: action, index: 0)
+        XCTAssertEqual(payload, expected)
+        XCTAssertFalse(payload.hasSuffix("\n"))
         let writtenAt = Date(timeIntervalSinceReferenceDate: 123_456)
-        let item = ClipboardWriteContract.item(visibleValue: visibleValue)
+        let item = ClipboardWriteContract.item(visibleValue: payload)
         XCTAssertEqual(item.count, 1)
-        XCTAssertEqual(item["public.utf8-plain-text"] as? String, visibleValue)
+        XCTAssertEqual(item["public.utf8-plain-text"] as? String, expected)
         let options = ClipboardWriteContract.options(writtenAt: writtenAt)
         XCTAssertEqual(options[.localOnly] as? Bool, true)
         XCTAssertEqual(options[.expirationDate] as? Date, writtenAt.addingTimeInterval(300))
         let viewText = try sourceText("Views.swift")
-        XCTAssertTrue(viewText.contains("ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())"))
+        XCTAssertTrue(viewText.contains("ClipboardWriteContract.write(visibleValue: ActionClipboardPayload.value(for: action, index: index), writtenAt: Date())"))
         let productionSourceText = try allSourceText()
         XCTAssertFalse(productionSourceText.contains("UIPasteboard.general.setItems"))
         XCTAssertEqual(productionSourceText.components(separatedBy: ".setItems(").count - 1, 1, "Only ClipboardWriteContract may write to the pasteboard")
-        // No credential fields in CopyableReleaseField
         let fieldLabels = CopyableReleaseField.allCases.map(\.label)
         XCTAssertFalse(fieldLabels.contains(where: { $0.lowercased().contains("password") || $0.lowercased().contains("credential") || $0.lowercased().contains("authorization") }))
     }
@@ -1516,13 +1568,16 @@ extension AcceptanceEvidenceContractTests {
         let scenarioSource = try sourceText("DebugScenario.swift")
         XCTAssertTrue(scenarioSource.hasPrefix("#if DEBUG"), "Controlled scenarios must not ship in Release")
         let approvedLiterals: Set<String> = [
-            "2026-08-24T10:15:30Z", "2026-08-25", "Access denied. Sign in again.",
+            "", "2026-08-24T10:15:30Z", "2026-08-25", "2026-08-26", "Access denied. Sign in again.",
             "ACE could not be reached. Check your connection and try again.",
             "ACE could not establish a secure connection. Try again later.", "ACE is unavailable. Try again later.",
-            "ACE_UI_TEST_SCENARIO", "Fictional action", "Fictional conclusion", "Fictional Engagement",
-            "Fictional owner", "Fictional summary", "FICTIONAL-REF-001", "Loading",
-            "No actions are available.", "No conclusion is available.", "No current release is available.",
-            "OPEN", "Refresh", "RELEASED", "Reset saved sign-in", "Saved sign-in could not be read. Try again.",
+            "ACE_UI_TEST_SCENARIO", "Clipboard paste destination", "Clipboard test destination", "Close",
+            "Close clipboard test destination", "COMPLETE", "Fictional action",
+            "Fictional conclusion", "Fictional Engagement", "Fictional owner", "Fictional summary",
+            "FICTIONAL-REF-001", "Loading", "Loading current release", "No actions are available.",
+            "No conclusion is available.", "No current release is available.", "OPEN", "RELEASED",
+            "Reset saved sign-in", "Saved sign-in could not be read. Try again.", "Second fictional action",
+            "Second fictional owner",
             "Saved sign-in could not be removed. Try again.", "Saved sign-in must be reset before access.",
             "Sign-in could not be saved. Try again.", "Sign-out could not be completed. Try again.",
             "The request timed out. Try again.", "This app is not configured for access.", "Try again"

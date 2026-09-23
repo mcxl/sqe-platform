@@ -46,20 +46,6 @@ def validated_copy(model: Any, **changes: object) -> Any:
     return type(model).model_validate(values)
 
 
-def adversarial_mate_assessment(
-    mate: ApprovedMATEAssessment,
-    **changes: object,
-) -> ApprovedMATEAssessment:
-    """Construct invalid MATE input so downstream trace gates can reject it."""
-
-    values = {
-        field: getattr(mate, field)
-        for field in ApprovedMATEAssessment.model_fields
-    }
-    values.update(changes)
-    return ApprovedMATEAssessment.model_construct(**values)
-
-
 def make_source(
     source_id: str,
     *,
@@ -1035,7 +1021,7 @@ def test_gate_blocks_a_mate_assessment_with_an_unapproved_decision() -> None:
         decision_status=AuditorDecisionStatus.REJECTED,
         approved_answer=None,
     )
-    mate = adversarial_mate_assessment(
+    mate = validated_copy(
         mate,
         decisions=(rejected, *mate.decisions[1:]),
     )
@@ -1064,7 +1050,7 @@ def test_gate_checks_relationship_approval_before_mate_assessment() -> None:
         mate.decisions[1],
         decision_id=mate.decisions[0].decision_id,
     )
-    mate = adversarial_mate_assessment(
+    mate = validated_copy(
         mate,
         decisions=(
             mate.decisions[0],
@@ -1090,7 +1076,7 @@ def test_gate_checks_relationship_approval_before_mate_assessment() -> None:
 
 def test_gate_blocks_mate_dimensions_that_disagree_with_decisions() -> None:
     mate = make_mate_assessment()
-    mate = adversarial_mate_assessment(
+    mate = validated_copy(
         mate,
         dimensions=AssuranceDimensions(
             mandate=False,
@@ -1113,7 +1099,7 @@ def test_gate_blocks_duplicate_mate_decision_identifiers() -> None:
         mate.decisions[1],
         decision_id=mate.decisions[0].decision_id,
     )
-    mate = adversarial_mate_assessment(
+    mate = validated_copy(
         mate,
         decisions=(mate.decisions[0], duplicate, *mate.decisions[2:]),
     )

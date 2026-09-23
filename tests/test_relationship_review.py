@@ -30,12 +30,10 @@ from src.ace.workbench.action_result import ActionResultState
 from src.ace.workbench.storage import WorkbenchStore
 
 
-def service(tmp_path: Path, trace_input_provider=None):
+def service(tmp_path: Path):
     from src.ace.workbench.relationship_review import RelationshipReviewService
 
-    return RelationshipReviewService(
-        WorkbenchStore(tmp_path / "local-data"), trace_input_provider=trace_input_provider
-    )
+    return RelationshipReviewService(WorkbenchStore(tmp_path / "local-data"))
 
 
 def auditor():
@@ -192,7 +190,7 @@ def approve_all_current_relationships(service_object) -> dict[str, object]:
 
 
 def test_queue_and_item_show_current_fictional_relationship_state(tmp_path: Path) -> None:
-    review = service(tmp_path, trace_input_values)
+    review = service(tmp_path)
 
     queue = review.get_queue(agent())
     item = review.get_item("REL-FIC-0001", agent())
@@ -240,7 +238,7 @@ def test_fictional_trace_input_snapshot_is_valid_and_immutable(tmp_path: Path) -
     review = service(tmp_path)
     store = WorkbenchStore(tmp_path / "local-data")
 
-    trace_inputs = trace_input_values()
+    trace_inputs = review._storage.trace_inputs()
     with store.connect() as connection:
         snapshot = connection.execute(
             """SELECT engagement_id, snapshot_json FROM relationship_trace_input_snapshots
@@ -271,7 +269,7 @@ def test_fictional_trace_input_snapshot_is_valid_and_immutable(tmp_path: Path) -
 
 
 def test_default_service_creates_one_trace_from_fictional_snapshot(tmp_path: Path) -> None:
-    review = service(tmp_path, trace_input_values)
+    review = service(tmp_path)
     result = approve_all_current_relationships(review)
 
     with WorkbenchStore(tmp_path / "local-data").connect() as connection:
@@ -282,15 +280,6 @@ def test_default_service_creates_one_trace_from_fictional_snapshot(tmp_path: Pat
     assert result["result"]["code"] == "RELATIONSHIP_DECISION_RECORDED"
     assert result["trace_created"] is True
     assert trace_count == 1
-
-
-def test_persisted_mate_snapshot_completes_fourth_approval(tmp_path: Path) -> None:
-    review = service(tmp_path)
-
-    result = approve_all_current_relationships(review)
-
-    assert result["result"]["code"] == "RELATIONSHIP_DECISION_RECORDED"
-    assert result["trace_created"] is True
 
 
 @pytest.mark.parametrize("snapshot_json", [None, "{}"])

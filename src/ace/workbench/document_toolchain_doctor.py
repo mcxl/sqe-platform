@@ -48,8 +48,7 @@ class DoctorReport:
 
 
 def _probe_libreoffice() -> ProbeResult:
-    candidates = ("libreoffice", "soffice.com") if sys.platform == "win32" else ("libreoffice",)
-    path = next((shutil.which(candidate) for candidate in candidates if shutil.which(candidate)), None)
+    path = shutil.which("libreoffice")
     if path is None:
         return ProbeResult(tool="LibreOffice", available=False, notes="not found on PATH")
     try:
