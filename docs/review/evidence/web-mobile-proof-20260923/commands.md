@@ -14,3 +14,5 @@
 | 2026-09-23T07:53:29Z | curl checks through public preview https://p8nkikhn9jtm.preview.us1.vorflux.com | 0 | after/curl-public-preview.txt |
 | 2026-09-23T07:54:56Z | curl checks through plain exposed port 8002 preview | 0 | after/curl-public-preview.txt; session preview route on 8000 dropped Authorization |
 | 2026-09-23T08:02:55Z | `uv run pytest tests/test_client_release.py tests/test_client_release_projection.py tests/test_app.py -q -p no:cacheprovider` | 0 | final run on rebuilt head (CRLF preserved) |
+| 2026-09-23T09:15:50Z | `uv run pytest tests/test_client_release.py tests/test_client_release_projection.py tests/test_app.py -q -p no:cacheprovider` | 1 | after review fixes (auth order, no trim, CSS, 2 tests) |
+| 2026-09-23T09:19:23Z | `uv run pytest tests/test_client_release.py tests/test_client_release_projection.py tests/test_app.py -q -p no:cacheprovider` | 0 | after narrowing the new trim assertion |
