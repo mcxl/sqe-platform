@@ -28,7 +28,7 @@ One product file and two test files (commit `cba3db3`, review fixes in `75e6a14`
 | File | Change |
 |---|---|
 | `src/ace/workbench/client_routes.py` | `require_client_page` returns 401 with `WWW-Authenticate: Basic realm="ACE Client Release"` when no credentials arrive, so browsers can sign in. Wrong credentials keep 403. New `GET /client/signout` always answers 401 with a Signed Out page. Page gains `main`, `header`, `nav` landmarks, Refresh and Sign out links, one Copy button per action with a polite status line, 44px tap targets, and a `<script type="module">` that uses `navigator.clipboard` in secure contexts and selects the text as a fallback. |
-| `tests/test_client_release.py` | 401 challenge test, no-edit-controls test allows only `type="button"` copy buttons, HTML byte pin re-recorded (5990 bytes, `fd7fb658…cb4b`; API pin 599 bytes, `5e19bc98…6856af`, unchanged), new `TestMobileClientPage` (8 tests). |
+| `tests/test_client_release.py` | 401 challenge test, no-edit-controls test allows only `type="button"` copy buttons, HTML byte pin re-recorded (5990 bytes, `fd7fb658…cb4b` in `cba3db3`; 6003 bytes, `f9bd4509…b180a` after the review fixes in `75e6a14`; API pin 599 bytes, `5e19bc98…6856af`, unchanged), new `TestMobileClientPage` (8 tests). |
 | `tests/test_app.py` | Route inventory gains `/client/signout`. Deviation from the plan, which listed two files: the inventory test enumerates every route. |
 
 ## Results
@@ -65,7 +65,7 @@ One product file and two test files (commit `cba3db3`, review fixes in `75e6a14`
 
 The history was rebuilt once before the first push: the first Group B commit converted the
 three CRLF code files to LF and rewrote about 19,000 lines. The commits were recreated with
-CRLF preserved (313 code lines changed). The earlier hashes (`c627704`, `4c5c40c`, `e206255`)
+CRLF preserved (313 code lines changed at that point, before the review fixes). The earlier hashes (`c627704`, `4c5c40c`, `e206255`)
 exist only on a stale local branch and are not part of this branch.
 
 ## Review Record
@@ -77,7 +77,7 @@ Roles per AGENTS.md "Implementation And Review Roles":
 | Implementation owner | Vorflux agent, session `fcbc5fd9-1849-448d-bad3-98848678b555` | Change plus focused tests |
 | Independent standards reviewer | Vorflux review subagent (same session) | No blocker; six should-fix items on README honesty and one on auth order, all addressed in `75e6a14` and this README |
 | Code reviewer with risk assessment | Vorflux review subagent (same session) | Risk 3/10, Low; "ship with mitigations"; mitigations applied in `75e6a14` |
-| Exact-candidate final reviewer | Not yet run on the final head | Pending |
+| Exact-candidate final reviewer | Vorflux review subagent (same session), reviewed head `8b55f09` | `fix-first` for one stale pin figure in this README (fixed here); code ships as-is; focused subset 13 passed |
 
 No Greptile configuration exists in this repository. A Greptile review, if wanted, runs on a
 pull request by one manual `@greptileai` comment with user approval (delivery workflow step 4).
