@@ -1,7 +1,17 @@
 # Web Mobile Proof For The Client Release Page
 
 Date: 2026-09-23 (UTC). Branch: `vorflux/client-mobile-proof` from review commit
-`cc05ca085e2b3d1e374c13f503bd35e280ba859f`. Main is untouched. Nothing is pushed.
+`cc05ca085e2b3d1e374c13f503bd35e280ba859f`. Main is untouched. The branch was pushed to
+`origin/vorflux/client-mobile-proof` on 2026-09-23 after user approval. No pull request exists
+unless a later record says so.
+
+## Outcome
+
+**Inconclusive** by the plan's outcome table: the public preview proxy replaces the
+`Authorization` header, so the user could not test on an iPhone within the session. Local
+evidence is complete and passes every local rule (focused tests green, browser sign-in, copy,
+zero axe violations, API bytes unchanged, diff limited to the allowed files plus one
+recorded deviation). The iPhone step is pending on the user's own network.
 
 Fictional data only (G0). No credentials are stored in this folder.
 
@@ -13,7 +23,7 @@ out. The Swift app is frozen for this round. The JSON API is unchanged.
 
 ## What Changed
 
-One product file and two test files (commit `c627704`):
+One product file and two test files (commit `cba3db3`, review fixes in `75e6a14`):
 
 | File | Change |
 |---|---|
@@ -27,9 +37,11 @@ One product file and two test files (commit `c627704`):
 |---|---|---|
 | Focused pytest before change | 325 passed (plan estimated 266; the real count is recorded) | `baseline/pytest-baseline.txt` |
 | Focused pytest after change (plus `tests/test_app.py`) | 342 passed | `after/pytest-after.txt` |
+| Focused pytest after review fixes | 344 passed | `after/pytest-final.txt` |
 | Unauthenticated `/client` before | 403, no `WWW-Authenticate`; headless Chromium with credentials configured never signed in | `baseline/curl-client-noauth.txt`, `baseline/*-browser-denied.*` |
 | Unauthenticated `/client` after | 401 with `WWW-Authenticate`; browser signed in on the retry | `after/snapshot-mobile-native-auth.txt`, `after/mobile-390x844-signed-in.png` |
-| Wrong credentials | 403, no challenge (local) | `after/curl-public-preview.txt` (local block), tests |
+| Wrong credentials | 403, no challenge | `test_page_requires_auth` (no separate curl capture was kept) |
+| Unconfigured server, no credentials | 503, no challenge (fail-closed check runs first) | `test_page_unconfigured_server_fails_closed_before_challenge` |
 | API without credentials | 403 unchanged | tests, curl |
 | Copy action 1 (headless Chromium, secure context) | status line `Copied action 1.` | `after/copy-status-after-click.txt`, `after/mobile-390x844-after-copy.png` |
 | Tap targets at 390x844 | Refresh 175x44, Sign out 179x44, Copy 139x44 | `after/tap-targets-mobile.json` |
@@ -38,6 +50,37 @@ One product file and two test files (commit `c627704`):
 | Sign-out page body in headless Chromium | Inconclusive: Chromium reports `ERR_INVALID_AUTH_CREDENTIALS` on any 401 and does not render the body | `after/snapshot-signout.txt` |
 | Public preview URL sign-in | Blocked: the Vorflux proxy replaces `Authorization` with a fixed value | `after/preview-proxy-finding.md` |
 | iPhone test | Pending: see "iPhone Test On Your Own Network" | `iphone/` (empty) |
+
+## Branch And Commits
+
+| Commit | Content |
+|---|---|
+| `a35b988` | Group A baseline evidence |
+| `cba3db3` | Group B product and test change |
+| `59a01f2` | Group B after-change evidence |
+| `0814718` | This README (first version) |
+| `3b1b1db`, `404f0df`, `2a39964`, `3b1d846` | Group D instruction edits (5, 3, 21, 13 lines) |
+| `43fa11d` | Final focused test run record |
+| `75e6a14` | Review fixes: auth order, exact copy text, CSS, two tests |
+
+The history was rebuilt once before the first push: the first Group B commit converted the
+three CRLF code files to LF and rewrote about 19,000 lines. The commits were recreated with
+CRLF preserved (313 code lines changed). The earlier hashes (`c627704`, `4c5c40c`, `e206255`)
+exist only on a stale local branch and are not part of this branch.
+
+## Review Record
+
+Roles per AGENTS.md "Implementation And Review Roles":
+
+| Role | Identity | Outcome |
+|---|---|---|
+| Implementation owner | Vorflux agent, session `fcbc5fd9-1849-448d-bad3-98848678b555` | Change plus focused tests |
+| Independent standards reviewer | Vorflux review subagent (same session) | No blocker; six should-fix items on README honesty and one on auth order, all addressed in `75e6a14` and this README |
+| Code reviewer with risk assessment | Vorflux review subagent (same session) | Risk 3/10, Low; "ship with mitigations"; mitigations applied in `75e6a14` |
+| Exact-candidate final reviewer | Not yet run on the final head | Pending |
+
+No Greptile configuration exists in this repository. A Greptile review, if wanted, runs on a
+pull request by one manual `@greptileai` comment with user approval (delivery workflow step 4).
 
 ## Human Decisions Recorded
 
@@ -67,7 +110,9 @@ On the iPhone open `http://<mac-ip>:8000/client` in Safari.
 
 Tester script (one screenshot per step, save as `iphone/step-1.png` to `step-5.png`):
 
-1. Sign in when Safari asks. Confirm the engagement name and `Release: v2` appear.
+1. Sign in when Safari asks. Confirm the engagement name and `Release: v2` appear. (The sandbox
+   screenshots show `v4` because the proof published a new release there; a fresh data directory
+   seeds `v2`.)
 2. Scroll the whole page. Confirm the conclusion and the agreed action read fully with no clipped text.
 3. Tap `Copy action 1`. Over plain `http` the clipboard is unavailable, so the expected status is
    `Copy is unavailable here. The action text is selected — use Copy from the menu.` Use Copy from the
@@ -85,6 +130,21 @@ Write observations to `iphone/tester-notes.md`. Do not write credentials.
   server-side signal available without changing the auth model.
 - Clipboard write needs a secure context (`https` or `localhost`). Over LAN `http` the fallback path runs.
 - The proof used one agreed action. `test_copy_buttons_are_indexed_per_action` covers three.
+
+## What This Does Not Prove
+
+- Behaviour on a real iPhone or in Safari (pending).
+- Hosting with HTTPS, or any credential handling beyond the single environment identity.
+- Real client data or a real engagement (fictional data only).
+- VoiceOver, other screen readers, or browsers other than headless Chromium.
+- That Safari drops Basic credentials on sign-out.
+
+## Retained Evidence Naming
+
+File names differ from the plan's list: `curl-client-noauth.txt` replaces
+`unauth-response-baseline.txt`; axe results are `a11y-*.json` only; no `group-b.diff` was
+kept (the commit is the record); no iPhone emulation screenshot beyond the 390x844 viewport
+captures; `iphone/` is empty and therefore untracked.
 
 ## Cleanup
 
