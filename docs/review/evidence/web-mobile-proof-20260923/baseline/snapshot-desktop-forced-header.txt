@@ -1,0 +1,26 @@
+- heading "Fictional Mobile Field Capture Engagement" [level=1, ref=e2]
+- StaticText "Status: READY_FOR_CAPTURE"
+- StaticText "Release: v2"
+- StaticText "Published: 2026-08-19T10:00:00Z"
+- heading "Approved Conclusion" [level=2, ref=e3]
+- paragraph
+  - StaticText "TITLE"
+- paragraph
+  - StaticText "Approved field capture conclusion"
+- paragraph
+  - StaticText "SUMMARY"
+- paragraph
+  - StaticText "The field capture control is suitably designed for fictional mobile evidence collection under the pilot scope."
+- paragraph
+  - StaticText "EVIDENCE REFERENCE"
+- paragraph
+  - StaticText "EVD-FIC-0001"
+- heading "Agreed Actions" [level=2, ref=e4]
+- paragraph
+  - StaticText "DESCRIPTION"
+- paragraph
+  - StaticText "Review and update the mobile field capture process to reduce photo upload errors observed during the inspection."
+- StaticText "Owner: Fictional Safety Manager"
+- StaticText "Target: 2026-09-30"
+- StaticText "Status: OPEN"
+- StaticText "Fictional pilot information only. This view is not a client audit report."

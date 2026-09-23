@@ -1,0 +1,17 @@
+public preview (plain exposed port 8002): https://6r2q64ahbswb.preview.us1.vorflux.com
+--- no creds
+HTTP/2 401 
+www-authenticate: Basic realm="ACE Client Release"
+--- wrong creds
+status=401
+--- right creds
+status=401 type=application/json bytes=29
+--- signout
+HTTP/2 401 
+www-authenticate: Basic realm="ACE Client Release"
+--- api no creds
+status=403
+--- api right creds
+status=403
+
+registered session preview route (port 8000) https://p8nkikhn9jtm.preview.us1.vorflux.com strips Authorization: right creds -> 401 (see earlier block)
