@@ -25,6 +25,7 @@ from fastapi.testclient import TestClient
 from src.ace.app import app
 from src.ace.workbench.change_record import ChangeRecord
 from src.ace.workbench.document_toolchain_doctor import probe as doctor_probe
+from src.ace.workbench import document_toolchain_doctor
 from src.ace.workbench.export_builder import (
     build_change_log_docx,
     build_change_log_xlsx,
@@ -547,6 +548,24 @@ class TestFictionalDataProtection:
 # ── Document Toolchain Doctor ──────────────────────────────────
 
 class TestDocumentToolchainDoctor:
+    def test_probe_accepts_windows_soffice_com(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        seen: list[str] = []
+
+        def which(candidate: str) -> str | None:
+            seen.append(candidate)
+            return "C:/tools/soffice.com" if candidate == "soffice.com" else None
+
+        completed = __import__("subprocess").CompletedProcess([], 0, "LibreOffice 25", "")
+        monkeypatch.setattr(document_toolchain_doctor.sys, "platform", "win32")
+        monkeypatch.setattr(document_toolchain_doctor.shutil, "which", which)
+        monkeypatch.setattr(document_toolchain_doctor.subprocess, "run", lambda *args, **kwargs: completed)
+
+        result = document_toolchain_doctor._probe_libreoffice()
+
+        assert result.available
+        assert result.version == "LibreOffice 25"
+        assert seen == ["libreoffice", "soffice.com", "soffice.com"]
+
     def test_probe_all_tools_available(self) -> None:
         report = doctor_probe()
         report.print()
