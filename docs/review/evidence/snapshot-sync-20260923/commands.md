@@ -1,7 +1,10 @@
 # Commands And Exit Codes
 
 All commands ran in `/code/mcxl/sqe-platform-sync` unless noted. `$PY` is
-`/code/mcxl/sqe-platform/.venv/bin/python`. `uv sync` was never run.
+`/code/mcxl/sqe-platform/.venv/bin/python`. `uv sync` was never run. Times are approximate
+(start of the command, to the minute). Before every commit, `git status --short` and
+`git diff --cached --name-only` were run and the staged list was checked against the plan's
+file sets; the lists are in the session record and match the commit contents shown by `git show --stat`.
 
 | Time (UTC) | Command | Exit | Note |
 |---|---|---|---|
@@ -26,3 +29,11 @@ All commands ran in `/code/mcxl/sqe-platform-sync` unless noted. `$PY` is
 | 10:47 | `file <each changed src/tests file>` | 0 | CRLF on the 10 replaced files; new test LF |
 | 10:48 | `$PY -m pytest -q -p no:cacheprovider tests/test_approval_gate.py` | 0 | 80 passed |
 | 10:48 | `rm -rf /var/tmp/snapbase` | 0 | Cleanup |
+| 10:49 | `git commit -m "Record snapshot sync evidence and review roles"` | 0 | `40b1b5f` |
+| 10:50 | Two review subagents dispatched on `cc05ca0..40b1b5f` (standards; final with risk) | | Both: fit to push / `ship`, risk 2/10 |
+| 10:56 | Edit `tests/test_g0_snapshot_metadata.py` (public `trace_inputs()`, positive control); `$PY -m pytest -q -p no:cacheprovider tests/test_g0_snapshot_metadata.py` | 0 | 2 passed |
+| 10:56 | Same file against a fresh `cc05ca0` export | 1 | 2 failed (excerpt retained); export deleted |
+| 10:57 | `git commit -m "Use the public loader path and a positive control in the G0 metadata tests"` | 0 | `07e6c79` |
+| 10:57 | `$PY -m pytest -q -p no:cacheprovider` on `07e6c79` | 1 | See `after/pytest-after.txt`; expected same four iOS failures |
+| 11:00 | `$PY -m pytest -q -p no:cacheprovider tests/test_g0_snapshot_metadata.py tests/test_approval_gate.py` | 0 | 82 passed |
+| 11:02 | README and `commands.md` corrections from both reviews; `git commit -m "Record review verdicts and correct the snapshot sync README"` | 0 | Final head |
