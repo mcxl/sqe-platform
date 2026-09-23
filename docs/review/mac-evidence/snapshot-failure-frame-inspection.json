@@ -1,0 +1,59 @@
+{
+  "durationSeconds": 415.0516666666667,
+  "frames": [
+    {
+      "actualSeconds": 0,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frames/frame-001.00.png",
+      "requestedSeconds": 1,
+      "width": 1206,
+      "sha256": "26e0251fe6dba68655f937909d52d2eea1de96fc37821490a93cd82e7cf43976",
+      "bytes": 2778956,
+      "inspection": "Viewed at original 1206 x 2622 resolution by primary agent",
+      "observation": "SpringBoard in portrait. App icons are visible. Wallpaper contains horizontal streaks and block artefacts outside the ACE app."
+    },
+    {
+      "actualSeconds": 107.16333333333333,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frames/frame-166.02.png",
+      "requestedSeconds": 166.02066666666667,
+      "width": 1206,
+      "sha256": "aafe3a6df9cf8e6c869015f63bc0f4ae4577e35a18be06f79eb115c333fd2603",
+      "bytes": 66912,
+      "inspection": "Viewed at original 1206 x 2622 resolution by primary agent",
+      "observation": "Portrait white content area and status bar. No release content is visible in this sampled frame."
+    },
+    {
+      "actualSeconds": 286.32,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frames/frame-332.04.png",
+      "requestedSeconds": 332.04133333333334,
+      "width": 1206,
+      "sha256": "ff9f8efc99d5e29873e997c6c368e069253bc1d6020998af8ba4c14cf702f44e",
+      "bytes": 402423,
+      "inspection": "Viewed at original 1206 x 2622 resolution by primary agent",
+      "observation": "Current Release is visible in portrait/light. Release Details and Conclusion text are clean. Actions begin at the normal lower viewport boundary."
+    },
+    {
+      "actualSeconds": 407.235,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frames/frame-414.95.png",
+      "requestedSeconds": 414.95166666666665,
+      "width": 1206,
+      "sha256": "6c88a7b3ca67b11436b8fe9eef71e607f1be29ed2d32f5ca72d5a443a2ec7657",
+      "bytes": 403420,
+      "inspection": "Viewed at original 1206 x 2622 resolution by primary agent",
+      "observation": "Current Release remains visible. Some glyph distortion appears in the Published label/date and Conclusion title in the decoded frame."
+    }
+  ],
+  "video": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/001-set/attachments/C3324EB2-F330-4F90-AD74-AB8E0742C987.mp4",
+  "recordedAt": "2026-09-15T07:25:22.398820+00:00",
+  "kind": "diagnostic frame inspection; not pilot acceptance",
+  "pilotCasesCredited": 0,
+  "limitations": [
+    "Four sampled frames were inspected; the complete video was not played.",
+    "Actual sample times differ from requested times.",
+    "Frame artefacts occur on SpringBoard as well as ACE. No independent screenshot establishes whether these artefacts came from rendering, recording or decoding.",
+    "A clean frame does not establish a successful accessibility snapshot or audit."
+  ]
+}

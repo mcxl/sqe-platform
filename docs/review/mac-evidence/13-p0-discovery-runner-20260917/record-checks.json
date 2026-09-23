@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": [
+    "HTML parsed with standard library",
+    "Internal HTML links exist",
+    "New plan Markdown links exist",
+    "512/324/836 coverage unchanged"
+  ],
+  "claims": "Record structure and links only; no app or acceptance verification"
+}

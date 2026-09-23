@@ -1,0 +1,28 @@
+{
+  "recordedUTC": "2026-09-15T07:44:10.677664+00:00",
+  "files": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/02-native-orientation-proof/result.json",
+      "sha256": "91adc53c631d024e9229b6de2facc3559e24fedb53628c412701bfe280725724",
+      "bytes": 48840
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/04-pro-max-restore-recovery/result.json",
+      "sha256": "ebf1b557a568c5de958759b4116188062eda868c392faa0d365df2ad7d215270",
+      "bytes": 5625
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/RUN2_FINAL_RECORD.json",
+      "sha256": "4f7c5ad1591643ae63e75588f8bb3425cd40e4d772fba349a9e8f7cfbb2b24c7",
+      "bytes": 3768
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/snapshot-failure-frame-inspection.json",
+      "sha256": "ebfb6d5be8db8b97845f0dae663ff25a2d8a9273d8e17060486f47754aedff9b",
+      "bytes": 3202
+    }
+  ],
+  "retention": "Keep private Mac evidence for at least30days. Final archive verification pending.",
+  "candidate": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "pilot": "failed; no pilot case credit"
+}

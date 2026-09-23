@@ -1,0 +1,38 @@
+{
+  "status": "image inspection complete; Arm A repetition 1 only",
+  "source": {
+    "attachmentsDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-1/batches/001/attachments",
+    "manifest": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-1/batches/001/attachments/manifest.json",
+    "testIdentifier": "ACEClientAppUITests/testCoverageBatch()",
+    "manifestValidated": true
+  },
+  "deduplication": {
+    "pngAttachmentCount": 2,
+    "distinctPNGCount": 2,
+    "duplicates": []
+  },
+  "inspectedAtOriginalResolution": true,
+  "images": [
+    {
+      "exportedFileName": "75609C29-6720-4D54-B074-B4BE189F9DDE.png",
+      "sha256": "98c7bed0c2b01065f5031b5776c23e6978fef949481ec236387cd86e63c94a86",
+      "bytes": 193382,
+      "timestamp": 1789559912.287,
+      "suggestedHumanReadableName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_D1699209-7E2A-4601-9C3F-1669FEFB3D81.png",
+      "observation": "Portrait light screen at the initial Release position. Release Details and Conclusion are readable. The Actions heading and upper Action 1 card are visible; the Copy control is below this viewport. No overlap or clipping is visible in the displayed content."
+    },
+    {
+      "exportedFileName": "921034D5-1545-41DB-88A7-5C4844E425F3.png",
+      "sha256": "70d94689ec2bde6f649ade8e29d894f84b991b058744363a4dbe4c7b5f21ea65",
+      "bytes": 188793,
+      "timestamp": 1789559926.357,
+      "suggestedHumanReadableName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_A96EBB7A-C39D-467A-9A07-F51484535553.png",
+      "observation": "Scrolled Action 1 view. Copy action and Copied Action 1. are fully visible inside the card. Refresh is visible and Sign out begins below it. No overlap or clipping is visible in the displayed Action card."
+    }
+  ],
+  "limitations": [
+    "This record inspects only the two retained PNG attachments for Arm A repetition 1. It does not inspect later repetitions or determine the Arm A outcome.",
+    "The images record two retained screen states. They do not establish an accessibility-audit sample time, contrast measurement, or fault cause.",
+    "No callback-time screenshot exists in this Arm A pass attachment set."
+  ]
+}

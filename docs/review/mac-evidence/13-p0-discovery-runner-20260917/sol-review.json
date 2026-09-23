@@ -1,0 +1,45 @@
+{
+  "verdict": "SHIP",
+  "reviewedAtUTC": "2026-09-16T21:23:51.639Z",
+  "scope": "Fresh read-only Sol implementation review; not native verification or final application acceptance",
+  "branch": "codex/mcx19b-release-layout",
+  "baseline": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "candidateDiff": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/candidate-final.diff",
+    "sha256": "0700282b817ef24e7d21324c21c0c858c1bd82d5011f4e3afc5d3224fa23fcdd",
+    "files": 7,
+    "planSha256": "9228d23e71fbd649ffe6dd23cbbe416d71f75e7fc127f6c6d1f231eda5a54dfd"
+  },
+  "runnerSha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+  "testSha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d",
+  "findings": [],
+  "rationale": [
+    "Singleton discovery cases share one preflight and build; the native summary must report exactly one complete test with matching process exit.",
+    "Failed cases continue only when audit issue markers, exact native failure texts and source assertion lines correlate; other failures block. Native screenshot names and RGB/RGBA8 PNG scanlines are checked.",
+    "Case checkpoints and a discovery summary preserve passed, failed and blocked progress; restoration errors stop remaining cases.",
+    "Acceptance remains separate: a discovery manifest has mode pilot-discovery and acceptanceEligible false; validate_full_gate requires mode pilot. Default acceptance run path is unchanged.",
+    "The 7-file candidate record keeps the Copy contrast issue, baseline ancestry and full 836-case acceptance programme open."
+  ],
+  "reviewedEvidence": [
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/primary-review.json",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/primary-runner-tests.log",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/astra-png-red.json",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/astra-png-green.json",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/astra-retained-png-validation.json",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/historical-replay.json",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/primary-review.json"
+  ],
+  "verification": "Primary independently ran 59/59 Python runner tests and diff check on these hashes. Reviewer checked the complete diff, current file hashes, pertinent runner/Swift source and a real historical native audit log. Native execution of this candidate was not performed by reviewer.",
+  "limits": [
+    "Generic/non-audit assertion cannot safely continue; blocks by design.",
+    "Only noninterlaced native RGB/RGBA 8-bit PNGs are supported; other screenshot formats block."
+  ],
+  "pending": [
+    "Task-only clean commit and final candidate identity.",
+    "Required 68 native unit/contract tests, including 43 contract tests.",
+    "Changed discovery flow deliberate native failure and corrected-pass evidence before pilot.",
+    "22-case discovery pilot and classification of outcomes.",
+    "Pocock review, final acceptance pilot, 836-case programme, device/service/signing/baseline and remaining review gates."
+  ],
+  "documentationFollowUp": "Reviewed the precise Required Verification reorder in docs/plans/2026-09-17-ace-ios-discovery-candidate.md: task commit precedes 68 native unit/contract tests; changed-discovery deliberate failure/pass evidence follows those tests and remains required before the 22-case pilot. No runner/test/source change; previous 59/59 runner test evidence remains applicable."
+}

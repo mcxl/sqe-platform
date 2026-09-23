@@ -5,7 +5,7 @@ Select branch `codex/vorflux-review-20260923`, not `main`.
 
 ## What To Review
 
-Read [the complete review brief](docs/review/VORFLUX-FULL-REVIEW-BRIEF.md), then [development state](DEV_STATE.md) and [code and evidence index](docs/ace/CODE-AND-EVIDENCE-INDEX.md).
+Read [the Mac evidence update](docs/review/MAC-UPDATE.md) first; it supersedes earlier Mac-unavailable statements. Then read [the complete review brief](docs/review/VORFLUX-FULL-REVIEW-BRIEF.md), then [development state](DEV_STATE.md) and [code and evidence index](docs/ace/CODE-AND-EVIDENCE-INDEX.md).
 The separate [SQE options brief](docs/review/SQE-OPTIONS-AND-IOS-REVIEW.md) is also included. Its local reference in older records refers to this copy.
 
 Recommend how to complete the existing work and which mobile delivery route to pursue. Compare Swift, Expo/React Native, mobile web/PWA and justified alternatives. Reuse the existing service and approval model where appropriate. Review only; do not implement, purchase, deploy or change acceptance rules without a further decision. The owner's later permission to publish this review snapshot supersedes the historical brief's prohibition on this upload only.
@@ -49,10 +49,10 @@ In particular, Windows Python approval/G0 and toolchain choices remain held diff
 
 This is not 100% of every device, private record or historical dirty worktree. It is the current Windows review snapshot and selected retained verification summaries.
 
-- Mac SSH timed out during this preparation. Current Mac HEAD, uncommitted work and final D2 outcome could not be verified or exported.
-- Raw native result bundles, screenshots, video and logs remain on the Mac. Linked local evidence paths are identifiers, not remotely accessible attachments.
+- Mac access was restored after resolving a stale address. The clean delivery HEAD, tracked-source comparison and 45 retained diagnostic records are now included; see the Mac update.
+- Selected native logs and machine summaries are included. Raw result bundles, screenshots and video remain on the Mac. Unexported local evidence paths are identifiers, not remote attachments.
 - Real client records, signing material, service credentials, local viewer tokens, database contents and environment files are excluded.
-- Other dirty worktrees and historical repository variants have not been consolidated here. Main and other public branches remain separate comparison sources.
+- Current Mac variants are included as references. Other dirty worktrees and historical repository variants have not been consolidated here. Main and other public branches remain separate comparison sources.
 - The public showcase is a separate presentation. Its source and original client correspondence are not included in this code-review snapshot.
 
 Report these limits explicitly. Do not infer a root cause, test pass or product readiness from inaccessible evidence.

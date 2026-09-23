@@ -1,0 +1,345 @@
+{
+  "arm": "Y",
+  "attachments": {
+    "command": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "export",
+        "attachments",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult",
+        "--output-path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/attachments"
+      ],
+      "end": "2026-09-17T02:23:21.963257+00:00",
+      "exit": 0,
+      "seconds": 0.227,
+      "start": "2026-09-17T02:23:21.736552+00:00",
+      "timedOut": false
+    },
+    "inventory": [],
+    "manifest": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/attachments/manifest.json",
+    "manifestExactMethod": false,
+    "manifestMethodCount": 0,
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/attachments"
+  },
+  "boot": {
+    "boot": {
+      "command": [
+        "xcrun",
+        "simctl",
+        "boot",
+        "2EB0863C-470E-467D-A0C6-CD216DA70C67"
+      ],
+      "end": "2026-09-17T02:16:39.043556+00:00",
+      "exit": 0,
+      "output": "",
+      "seconds": 2.937,
+      "start": "2026-09-17T02:16:36.106671+00:00",
+      "timedOut": false
+    },
+    "bootstatus": {
+      "command": [
+        "xcrun",
+        "simctl",
+        "bootstatus",
+        "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "-b"
+      ],
+      "end": "2026-09-17T02:17:28.323316+00:00",
+      "exit": 0,
+      "output": "Monitoring boot status for iPhone 17 (2EB0863C-470E-467D-A0C6-CD216DA70C67).\n[2026-09-17 02:16:45 +0000] Status=1, isTerminal=NO, Elapsed=00:07.\n\tWaiting on BackBoard\n\n[2026-09-17 02:17:04 +0000] Status=4, isTerminal=NO, Elapsed=00:27.\n\tWaiting on System App\n\n[2026-09-17 02:17:05 +0000] Status=4, isTerminal=NO, Elapsed=00:27.\n\tWaiting on System App\n\n[2026-09-17 02:17:05 +0000] Status=4, isTerminal=NO, Elapsed=00:27.\n\tWaiting on System App\n\n[2026-09-17 02:17:06 +0000] Status=4, isTerminal=NO, Elapsed=00:28.\n\tWaiting on System App\n\n[2026-09-17 02:17:07 +0000] Status=4, isTerminal=NO, Elapsed=00:29.\n\tWaiting on System App\n\n[2026-09-17 02:17:08 +0000] Status=4, isTerminal=NO, Elapsed=00:31.\n\tWaiting on System App\n\n[2026-09-17 02:17:09 +0000] Status=4, isTerminal=NO, Elapsed=00:31.\n\tWaiting on System App\n\n[2026-09-17 02:17:10 +0000] Status=4, isTerminal=NO, Elapsed=00:33.\n\tWaiting on System App\n\n[2026-09-17 02:17:11 +0000] Status=4, isTerminal=NO, Elapsed=00:34.\n\tWaiting on System App\n\n[2026-09-17 02:17:13 +0000] Status=4, isTerminal=NO, Elapsed=00:35.\n\tWaiting on System App\n\n[2026-09-17 02:17:13 +0000] Status=4, isTerminal=NO, Elapsed=00:36.\n\tWaiting on System App\n\n[2026-09-17 02:17:14 +0000] Status=4, isTerminal=NO, Elapsed=00:37.\n\tWaiting on System App\n\n[2026-09-17 02:17:15 +0000] Status=4, isTerminal=NO, Elapsed=00:38.\n\tWaiting on System App\n\n[2026-09-17 02:17:16 +0000] Status=4, isTerminal=NO, Elapsed=00:39.\n\tWaiting on System App\n\n[2026-09-17 02:17:17 +0000] Status=4, isTerminal=NO, Elapsed=00:40.\n\tWaiting on System App\n\n[2026-09-17 02:17:18 +0000] Status=4, isTerminal=NO, Elapsed=00:41.\n\tWaiting on System App\n\n[2026-09-17 02:17:19 +0000] Status=4, isTerminal=NO, Elapsed=00:42.\n\tWaiting on System App\n\n[2026-09-17 02:17:20 +0000] Status=4, isTerminal=NO, Elapsed=00:43.\n\tWaiting on System App\n\n[2026-09-17 02:17:23 +0000] Status=4, isTerminal=NO, Elapsed=00:45.\n\tWaiting on System App\n\n[2026-09-17 02:17:23 +0000] Status=4, isTerminal=NO, Elapsed=00:46.\n\tWaiting on System App\n\n[2026-09-17 02:17:24 +0000] Status=4, isTerminal=NO, Elapsed=00:47.\n\tWaiting on System App\n\n[2026-09-17 02:17:25 +0000] Status=4, isTerminal=NO, Elapsed=00:48.\n\tWaiting on System App\n\n[2026-09-17 02:17:26 +0000] Status=4, isTerminal=NO, Elapsed=00:49.\n\tWaiting on System App\n\n[2026-09-17 02:17:27 +0000] Status=4, isTerminal=NO, Elapsed=00:49.\n\tWaiting on System App\n\n[2026-09-17 02:17:28 +0000] Status=4294967295, isTerminal=YES, Elapsed=00:50.\n\tFinished\n\n",
+      "seconds": 49.279,
+      "start": "2026-09-17T02:16:39.043719+00:00",
+      "timedOut": false
+    }
+  },
+  "build": {
+    "appBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app",
+      "sha256": "4bdd678c942b0d6a177bd11ae1e6ad234c8500e6efc7fb0549b9e21fb5b2b1a4"
+    },
+    "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+    "recordPath": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build-record.json",
+    "recordSha256": "72b2bbd4b360c49c99ca4ef2e189e5e50d6b00786b5d3a611ff63c477039273a",
+    "runnerPath": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/tools/ace_ios_local.py",
+    "runnerSha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+    "source": {
+      "appSources": {
+        "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+        "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+        "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+        "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+        "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+        "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+        "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+        "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+        "ios/ACEClientApp/ACEClientApp/Views.swift": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd"
+      },
+      "call0EvidenceDesign": "Unchanged helper emits ACE_A11Y_ISSUE; raw call0 record explicitly leaves issues unresolved; execution collector joins retained issue lines between call start/end markers. No loss, filtering, or fabricated empty issue list.",
+      "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+      "testSourceSha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082"
+    },
+    "template": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "templateSha256": "f17d8a4e4c7b62e4b060915f61703c3a1ee297348aefe207edc3e5e080af125e",
+    "testBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest",
+      "sha256": "6616d8f2c770d57862b419cc55692edbf646951bfc0d626d8dadaaf8edd7b9a2"
+    }
+  },
+  "callCount": 0,
+  "calls": [],
+  "execution": "01-harness-failure",
+  "forceFail": true,
+  "gateChecks": {
+    "artifacts": false,
+    "call0Returned": false,
+    "contiguous": false,
+    "copyStop": false,
+    "fullCount": false,
+    "native": true,
+    "noErrors": true,
+    "settings": false
+  },
+  "initialBootStates": {
+    "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+    "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+    "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+    "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+    "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+    "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+    "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+    "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+    "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+    "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+    "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown",
+    "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+    "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown"
+  },
+  "maxCalls": 2,
+  "mechanicalGateSuccess": false,
+  "method": "ACEClientAppUITests/testCopyReflowCheck()",
+  "methodProof": {
+    "command": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "get",
+        "test-results",
+        "tests",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult"
+      ],
+      "end": "2026-09-17T02:23:21.735404+00:00",
+      "exit": 0,
+      "seconds": 0.172,
+      "start": "2026-09-17T02:23:21.563709+00:00",
+      "timedOut": false
+    },
+    "exactlyOne": false,
+    "matchingLeaves": [],
+    "method": "ACEClientAppUITests/testCopyReflowCheck()",
+    "testCaseCount": 1
+  },
+  "native": {
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult"
+    ],
+    "end": "2026-09-17T02:23:20.835197+00:00",
+    "exit": 65,
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult",
+    "seconds": 348.53,
+    "start": "2026-09-17T02:17:32.302872+00:00",
+    "timedOut": false
+  },
+  "nativeOutcome": "FAIL",
+  "originalSimctlSettings": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  },
+  "rawMarkerLines": [],
+  "restoration": {
+    "actions": [
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "appearance",
+          "light"
+        ],
+        "end": "2026-09-17T02:23:23.007233+00:00",
+        "exit": 0,
+        "seconds": 1.043,
+        "start": "2026-09-17T02:23:21.964791+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "content_size",
+          "large"
+        ],
+        "end": "2026-09-17T02:23:23.601742+00:00",
+        "exit": 0,
+        "seconds": 0.594,
+        "start": "2026-09-17T02:23:23.007419+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "increase_contrast",
+          "disabled"
+        ],
+        "end": "2026-09-17T02:23:24.431340+00:00",
+        "exit": 0,
+        "seconds": 0.83,
+        "start": "2026-09-17T02:23:23.601910+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "shutdown",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67"
+        ],
+        "end": "2026-09-17T02:23:32.166303+00:00",
+        "exit": 0,
+        "seconds": 4.539,
+        "start": "2026-09-17T02:23:27.627369+00:00",
+        "timedOut": false
+      }
+    ],
+    "allActionExit0": true,
+    "bootStatesMatch": true,
+    "finalBootStates": {
+      "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+      "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+      "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+      "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+      "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+      "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+      "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+      "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+      "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+      "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown",
+      "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+      "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown"
+    },
+    "otherBootStatesUntouched": true,
+    "readback": {
+      "appearance": "light",
+      "content_size": "large",
+      "increase_contrast": "disabled"
+    },
+    "readbackError": null,
+    "settingsReadbackExact": true
+  },
+  "resultBundle": {
+    "exists": true,
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult"
+  },
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+  "settingsRecords": [],
+  "startedUTC": "2026-09-17T02:16:35.023066+00:00",
+  "status": "completed",
+  "stopRecords": [],
+  "summary": {
+    "command": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "get",
+        "test-results",
+        "summary",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult"
+      ],
+      "end": "2026-09-17T02:23:21.562355+00:00",
+      "exit": 0,
+      "seconds": 0.723,
+      "start": "2026-09-17T02:23:20.839426+00:00",
+      "timedOut": false
+    },
+    "payload": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "x86_64",
+            "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+            "deviceName": "iPhone 17",
+            "modelName": "iPhone 17",
+            "osBuildNumber": "23E254a",
+            "osVersion": "26.4.1",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 1,
+          "passedTests": 0,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "ACEClientAppUITests · Built with macOS 26.6.2",
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "finishTime": 1789611795.697,
+      "passedTests": 0,
+      "result": "Failed",
+      "skippedTests": 0,
+      "startTime": 1789611466.063,
+      "statistics": [],
+      "testFailures": [
+        {
+          "failureText": "The test runner failed to initialize for UI testing. (Underlying Error: Timed out while loading Accessibility.)",
+          "targetName": "ACEClientAppUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ACEClientAppUITests-Runner (73015) encountered an error",
+          "testName": "ACEClientAppUITests-Runner (73015) encountered an error"
+        }
+      ],
+      "title": "Test - ACEClientAppUITests",
+      "topInsights": [],
+      "totalTestCount": 1
+    }
+  },
+  "xctestrun": {
+    "environment": {
+      "ACE_D2_ARM": "Y",
+      "ACE_D2_FORCE_FAIL": "1",
+      "ACE_D2_MAX_CALLS": "2"
+    },
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/ACEClientAppUITests.xctestrun",
+    "sha256": "02fcb2cab8b219749c004119ba42822ad02ad8c9a810cb8c331b4b122f6e1a07"
+  }
+}

@@ -1,0 +1,543 @@
+{
+  "approval": "free space available proceed",
+  "build": {
+    "appBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app",
+      "sha256": "4bdd678c942b0d6a177bd11ae1e6ad234c8500e6efc7fb0549b9e21fb5b2b1a4"
+    },
+    "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+    "recordPath": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build-record.json",
+    "recordSha256": "72b2bbd4b360c49c99ca4ef2e189e5e50d6b00786b5d3a611ff63c477039273a",
+    "runnerPath": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/tools/ace_ios_local.py",
+    "runnerSha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+    "source": {
+      "appSources": {
+        "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+        "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+        "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+        "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+        "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+        "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+        "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+        "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+        "ios/ACEClientApp/ACEClientApp/Views.swift": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd"
+      },
+      "call0EvidenceDesign": "Unchanged helper emits ACE_A11Y_ISSUE; raw call0 record explicitly leaves issues unresolved; execution collector joins retained issue lines between call start/end markers. No loss, filtering, or fabricated empty issue list.",
+      "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+      "testSourceSha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082"
+    },
+    "template": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "templateSha256": "f17d8a4e4c7b62e4b060915f61703c3a1ee297348aefe207edc3e5e080af125e",
+    "testBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest",
+      "sha256": "6616d8f2c770d57862b419cc55692edbf646951bfc0d626d8dadaaf8edd7b9a2"
+    }
+  },
+  "callCount": 2,
+  "calls": [
+    {
+      "arm": "Y",
+      "call": 0,
+      "comparative": false,
+      "deltaY": 0,
+      "durationSeconds": 12.867727053991985,
+      "endUptime": 367136.121966561,
+      "errorSource": "Unchanged helper retains thrown error in native assertion and log",
+      "frameEvidence": "Settled positions only; not audit sample positions",
+      "helperReturned": true,
+      "issueCount": null,
+      "issueResolution": "Join unchanged helper issue lines between this call's start/end markers in retained native.log",
+      "issueSourceMarker": "ACE_A11Y_ISSUE",
+      "issues": null,
+      "nativeFailureCountDelta": 0,
+      "postFrame": {
+        "height": 58,
+        "width": 144,
+        "x": 32,
+        "y": 996
+      },
+      "preFrame": {
+        "height": 58,
+        "width": 144,
+        "x": 32,
+        "y": 996
+      },
+      "rawIssueLines": [],
+      "requestedAuditName": "all",
+      "resolvedIssueCount": 0,
+      "resolvedIssues": [],
+      "scrollPostFrame": {
+        "height": 874,
+        "width": 402,
+        "x": 0,
+        "y": 0
+      },
+      "scrollPreFrame": {
+        "height": 874,
+        "width": 402,
+        "x": 0,
+        "y": 0
+      },
+      "startUptime": 367123.254239507
+    },
+    {
+      "addedDragAndHalfSecondDelay": false,
+      "arm": "Y",
+      "call": 1,
+      "comparative": true,
+      "deltaY": 63.66666666666663,
+      "diagnosticOnly": true,
+      "durationSeconds": 14.931170879979618,
+      "endUptime": 367165.878543123,
+      "frameEvidence": "Settled positions only; not audit sample positions",
+      "issueCount": 1,
+      "issues": [
+        {
+          "arm": "Y",
+          "auditStartUptimeSeconds": 367150.94737224304,
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "auditTypeRawValue": 1,
+          "call": 1,
+          "callbackElapsedSeconds": 8.468704687955324,
+          "callbackEvidence": "XCUIScreen screenshot observed when the callback ran; not the audit sample rendering",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 144,
+              "x": 32,
+              "y": 685.6666666666666
+            },
+            "identifier": "",
+            "label": "Copy action",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "isCopyContrast": true,
+          "repetition": "one-launch",
+          "requestedAuditName": "all-minus-dynamicType",
+          "viewport": "copy-confirmation"
+        }
+      ],
+      "postFrame": {
+        "height": 58,
+        "width": 144,
+        "x": 32,
+        "y": 685.6666666666666
+      },
+      "preFrame": {
+        "height": 58,
+        "width": 144,
+        "x": 32,
+        "y": 622
+      },
+      "requestedAuditName": "all-minus-dynamicType",
+      "resolvedIssues": [
+        {
+          "arm": "Y",
+          "auditStartUptimeSeconds": 367150.94737224304,
+          "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+          "auditTypeRawValue": 1,
+          "call": 1,
+          "callbackElapsedSeconds": 8.468704687955324,
+          "callbackEvidence": "XCUIScreen screenshot observed when the callback ran; not the audit sample rendering",
+          "compactDescription": "Contrast failed",
+          "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+          "element": {
+            "frame": {
+              "height": 58,
+              "width": 144,
+              "x": 32,
+              "y": 685.6666666666666
+            },
+            "identifier": "",
+            "label": "Copy action",
+            "type": "XCUIElementType(rawValue: 48)"
+          },
+          "isCopyContrast": true,
+          "repetition": "one-launch",
+          "requestedAuditName": "all-minus-dynamicType",
+          "viewport": "copy-confirmation"
+        }
+      ],
+      "scrollPostFrame": {
+        "height": 873.9999999999999,
+        "width": 402,
+        "x": 0,
+        "y": -2.842170943040401e-14
+      },
+      "scrollPreFrame": {
+        "height": 874,
+        "width": 402,
+        "x": 0,
+        "y": 0
+      },
+      "startUptime": 367150.94737224304
+    }
+  ],
+  "deadlineUTC": "2026-09-17T14:23:27+00:00",
+  "existingBootStates": {
+    "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+    "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+    "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+    "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+    "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+    "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+    "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+    "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+    "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+    "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+    "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown",
+    "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+    "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown"
+  },
+  "exports": {
+    "attachments": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "export",
+        "attachments",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult",
+        "--output-path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/attachments"
+      ],
+      "end": "2026-09-17T14:18:24.795102+00:00",
+      "exit": 0,
+      "seconds": 0.393,
+      "start": "2026-09-17T14:18:24.401796+00:00",
+      "timedOut": false
+    },
+    "summary": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "get",
+        "test-results",
+        "summary",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult"
+      ],
+      "end": "2026-09-17T14:18:24.190409+00:00",
+      "exit": 0,
+      "seconds": 0.776,
+      "start": "2026-09-17T14:18:23.414644+00:00",
+      "timedOut": false
+    },
+    "tests": {
+      "command": [
+        "xcrun",
+        "xcresulttool",
+        "get",
+        "test-results",
+        "tests",
+        "--path",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult"
+      ],
+      "end": "2026-09-17T14:18:24.399032+00:00",
+      "exit": 0,
+      "seconds": 0.207,
+      "start": "2026-09-17T14:18:24.192265+00:00",
+      "timedOut": false
+    }
+  },
+  "failures": [
+    "Contrast failed"
+  ],
+  "finishedUTC": "2026-09-17T14:18:34.859668+00:00",
+  "mechanicalGateSuccess": false,
+  "native": {
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult"
+    ],
+    "end": "2026-09-17T14:18:23.390394+00:00",
+    "exit": 65,
+    "seconds": 399.778,
+    "start": "2026-09-17T14:11:43.607937+00:00",
+    "timedOut": false
+  },
+  "originalSettings": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  },
+  "rawMarkerLines": [
+    "ACE_D2_CALL_STARTED {\"arm\":\"Y\",\"call\":0,\"uptime\":367123.25423950702}",
+    "ACE_D2_CALL {\"arm\":\"Y\",\"call\":0,\"comparative\":false,\"deltaY\":0,\"durationSeconds\":12.867727053991985,\"endUptime\":367136.12196656101,\"errorSource\":\"Unchanged helper retains thrown error in native assertion and log\",\"frameEvidence\":\"Settled positions only; not audit sample positions\",\"helperReturned\":true,\"issueCount\":null,\"issueResolution\":\"Join unchanged helper issue lines between this call's start\\/end markers in retained native.log\",\"issues\":null,\"issueSourceMarker\":\"ACE_A11Y_ISSUE\",\"nativeFailureCountDelta\":0,\"postFrame\":{\"height\":58,\"width\":144,\"x\":32,\"y\":996},\"preFrame\":{\"height\":58,\"width\":144,\"x\":32,\"y\":996},\"requestedAuditName\":\"all\",\"scrollPostFrame\":{\"height\":874,\"width\":402,\"x\":0,\"y\":0},\"scrollPreFrame\":{\"height\":874,\"width\":402,\"x\":0,\"y\":0},\"startUptime\":367123.25423950702}",
+    "ACE_D2_CALL_STARTED {\"arm\":\"Y\",\"call\":1,\"uptime\":367150.94737224304}",
+    "ACE_D2_CALL {\"addedDragAndHalfSecondDelay\":false,\"arm\":\"Y\",\"call\":1,\"comparative\":true,\"deltaY\":63.666666666666629,\"diagnosticOnly\":true,\"durationSeconds\":14.931170879979618,\"endUptime\":367165.87854312302,\"frameEvidence\":\"Settled positions only; not audit sample positions\",\"issueCount\":1,\"issues\":[{\"arm\":\"Y\",\"auditStartUptimeSeconds\":367150.94737224304,\"auditType\":\"XCUIAccessibilityAuditType(rawValue: 1)\",\"auditTypeRawValue\":1,\"call\":1,\"callbackElapsedSeconds\":8.4687046879553236,\"callbackEvidence\":\"XCUIScreen screenshot observed when the callback ran; not the audit sample rendering\",\"compactDescription\":\"Contrast failed\",\"detailedDescription\":\"Contrast failed for SwiftUI.AccessibilityNode\",\"element\":{\"frame\":{\"height\":58,\"width\":144,\"x\":32,\"y\":685.66666666666663},\"identifier\":\"\",\"label\":\"Copy action\",\"type\":\"XCUIElementType(rawValue: 48)\"},\"isCopyContrast\":true,\"repetition\":\"one-launch\",\"requestedAuditName\":\"all-minus-dynamicType\",\"viewport\":\"copy-confirmation\"}],\"postFrame\":{\"height\":58,\"width\":144,\"x\":32,\"y\":685.66666666666663},\"preFrame\":{\"height\":58,\"width\":144,\"x\":32,\"y\":622},\"requestedAuditName\":\"all-minus-dynamicType\",\"scrollPostFrame\":{\"height\":873.99999999999989,\"width\":402,\"x\":0,\"y\":-2.8421709430404007e-14},\"scrollPreFrame\":{\"height\":874,\"width\":402,\"x\":0,\"y\":0},\"startUptime\":367150.94737224304}",
+    "ACE_D2_STOP {\"arm\":\"Y\",\"call\":1,\"reason\":\"Copy contrast finding\"}"
+  ],
+  "restoration": {
+    "actions": [
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+          "appearance",
+          "light"
+        ],
+        "end": "2026-09-17T14:18:25.604630+00:00",
+        "exit": 0,
+        "seconds": 0.806,
+        "start": "2026-09-17T14:18:24.798932+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+          "content_size",
+          "large"
+        ],
+        "end": "2026-09-17T14:18:26.268702+00:00",
+        "exit": 0,
+        "seconds": 0.664,
+        "start": "2026-09-17T14:18:25.604773+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+          "increase_contrast",
+          "disabled"
+        ],
+        "end": "2026-09-17T14:18:26.954011+00:00",
+        "exit": 0,
+        "seconds": 0.685,
+        "start": "2026-09-17T14:18:26.268843+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "shutdown",
+          "7D5FC194-1F43-41DA-94B8-6A32FCD9F584"
+        ],
+        "end": "2026-09-17T14:18:34.102118+00:00",
+        "exit": 0,
+        "seconds": 4.012,
+        "start": "2026-09-17T14:18:30.090242+00:00",
+        "timedOut": false
+      }
+    ],
+    "allActionExit0": true,
+    "bootStatesMatch": true,
+    "finalBootStates": {
+      "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+      "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+      "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+      "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+      "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+      "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+      "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+      "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+      "7D5FC194-1F43-41DA-94B8-6A32FCD9F584": "Shutdown",
+      "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+      "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown",
+      "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+      "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown"
+    },
+    "otherBootStatesUntouched": true,
+    "readback": {
+      "appearance": "light",
+      "content_size": "large",
+      "increase_contrast": "disabled"
+    },
+    "readbackError": null,
+    "settingsReadbackExact": true
+  },
+  "scope": "One fresh simulator recovery; one native invocation; no rebuild or retry",
+  "setupCommands": [
+    {
+      "command": [
+        "xcrun",
+        "simctl",
+        "create",
+        "ACE D2 Recovery 20260918",
+        "com.apple.CoreSimulator.SimDeviceType.iPhone-17",
+        "com.apple.CoreSimulator.SimRuntime.iOS-26-4"
+      ],
+      "end": "2026-09-17T14:08:05.237687+00:00",
+      "exit": 0,
+      "output": "7D5FC194-1F43-41DA-94B8-6A32FCD9F584\n",
+      "seconds": 1.21,
+      "start": "2026-09-17T14:08:04.027360+00:00",
+      "timedOut": false
+    },
+    {
+      "command": [
+        "xcrun",
+        "simctl",
+        "boot",
+        "7D5FC194-1F43-41DA-94B8-6A32FCD9F584"
+      ],
+      "end": "2026-09-17T14:08:08.245101+00:00",
+      "exit": 0,
+      "output": "",
+      "seconds": 3.006,
+      "start": "2026-09-17T14:08:05.239627+00:00",
+      "timedOut": false
+    },
+    {
+      "command": [
+        "xcrun",
+        "simctl",
+        "bootstatus",
+        "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+        "-b"
+      ],
+      "end": "2026-09-17T14:11:35.669541+00:00",
+      "exit": 0,
+      "output": "Monitoring boot status for ACE D2 Recovery 20260918 (7D5FC194-1F43-41DA-94B8-6A32FCD9F584).\n[2026-09-17 14:08:14 +0000] Status=1, isTerminal=NO, Elapsed=00:07.\n\tWaiting on BackBoard\n\n[2026-09-17 14:10:53 +0000] Status=2, isTerminal=NO, Elapsed=02:46.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.securityd.KeychainMigrator (KeychainMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:00 seconds\n\n[2026-09-17 14:10:54 +0000] Status=2, isTerminal=NO, Elapsed=02:47.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.securityd.KeychainMigrator (KeychainMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:01 seconds\n\n[2026-09-17 14:10:55 +0000] Status=2, isTerminal=NO, Elapsed=02:48.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.addressbook.migrator (AddressBookLegacy.migrator)\n\t\tMigration Elapsed:00:02 seconds\n\n[2026-09-17 14:10:55 +0000] Status=2, isTerminal=NO, Elapsed=02:48.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.WebBookmarks.migrator (WebBookmarks.migrator)\n\t\tMigration Elapsed:00:03 seconds\n\n[2026-09-17 14:10:56 +0000] Status=2, isTerminal=NO, Elapsed=02:49.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:04 seconds\n\n[2026-09-17 14:10:57 +0000] Status=2, isTerminal=NO, Elapsed=02:50.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:05 seconds\n\n[2026-09-17 14:10:58 +0000] Status=2, isTerminal=NO, Elapsed=02:51.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:06 seconds\n\n[2026-09-17 14:10:59 +0000] Status=2, isTerminal=NO, Elapsed=02:53.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:07 seconds\n\n[2026-09-17 14:11:00 +0000] Status=2, isTerminal=NO, Elapsed=02:53.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:08 seconds\n\n[2026-09-17 14:11:01 +0000] Status=2, isTerminal=NO, Elapsed=02:55.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.cloudrecents.migrator (CloudRecentsMigrator.migrator)\n\t\tMigration Elapsed:00:09 seconds\n\n[2026-09-17 14:11:02 +0000] Status=2, isTerminal=NO, Elapsed=02:55.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.keyboards.migrator (KeyboardMigrator.migrator)\n\t\tMigration Elapsed:00:10 seconds\n\n[2026-09-17 14:11:03 +0000] Status=2, isTerminal=NO, Elapsed=02:57.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.PreferencesMigrator (PreferencesMigrator.migrator)\n\t\tMigration Elapsed:00:11 seconds\n\n[2026-09-17 14:11:04 +0000] Status=2, isTerminal=NO, Elapsed=02:57.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.tone.migrator (Tones.migrator)\n\t\tMigration Elapsed:00:12 seconds\n\n[2026-09-17 14:11:05 +0000] Status=2, isTerminal=NO, Elapsed=02:58.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.tone.migrator (Tones.migrator)\n\t\tMigration Elapsed:00:13 seconds\n\n[2026-09-17 14:11:06 +0000] Status=2, isTerminal=NO, Elapsed=02:59.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.tone.migrator (Tones.migrator)\n\t\tMigration Elapsed:00:14 seconds\n\n[2026-09-17 14:11:07 +0000] Status=2, isTerminal=NO, Elapsed=03:01.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.VideosMigrator (TVMigrator.migrator)\n\t\tMigration Elapsed:00:15 seconds\n\n[2026-09-17 14:11:08 +0000] Status=4, isTerminal=NO, Elapsed=03:01.\n\tWaiting on System App\n\n[2026-09-17 14:11:09 +0000] Status=4, isTerminal=NO, Elapsed=03:03.\n\tWaiting on System App\n\n[2026-09-17 14:11:10 +0000] Status=4, isTerminal=NO, Elapsed=03:04.\n\tWaiting on System App\n\n[2026-09-17 14:11:11 +0000] Status=4, isTerminal=NO, Elapsed=03:04.\n\tWaiting on System App\n\n[2026-09-17 14:11:12 +0000] Status=4, isTerminal=NO, Elapsed=03:05.\n\tWaiting on System App\n\n[2026-09-17 14:11:13 +0000] Status=4, isTerminal=NO, Elapsed=03:06.\n\tWaiting on System App\n\n[2026-09-17 14:11:14 +0000] Status=4, isTerminal=NO, Elapsed=03:07.\n\tWaiting on System App\n\n[2026-09-17 14:11:15 +0000] Status=4, isTerminal=NO, Elapsed=03:08.\n\tWaiting on System App\n\n[2026-09-17 14:11:16 +0000] Status=4, isTerminal=NO, Elapsed=03:09.\n\tWaiting on System App\n\n[2026-09-17 14:11:17 +0000] Status=4, isTerminal=NO, Elapsed=03:10.\n\tWaiting on System App\n\n[2026-09-17 14:11:18 +0000] Status=4, isTerminal=NO, Elapsed=03:11.\n\tWaiting on System App\n\n[2026-09-17 14:11:19 +0000] Status=4, isTerminal=NO, Elapsed=03:12.\n\tWaiting on System App\n\n[2026-09-17 14:11:20 +0000] Status=4, isTerminal=NO, Elapsed=03:13.\n\tWaiting on System App\n\n[2026-09-17 14:11:21 +0000] Status=4, isTerminal=NO, Elapsed=03:14.\n\tWaiting on System App\n\n[2026-09-17 14:11:22 +0000] Status=4, isTerminal=NO, Elapsed=03:15.\n\tWaiting on System App\n\n[2026-09-17 14:11:24 +0000] Status=4, isTerminal=NO, Elapsed=03:18.\n\tWaiting on System App\n\n[2026-09-17 14:11:25 +0000] Status=4, isTerminal=NO, Elapsed=03:18.\n\tWaiting on System App\n\n[2026-09-17 14:11:25 +0000] Status=4, isTerminal=NO, Elapsed=03:19.\n\tWaiting on System App\n\n[2026-09-17 14:11:26 +0000] Status=4, isTerminal=NO, Elapsed=03:19.\n\tWaiting on System App\n\n[2026-09-17 14:11:27 +0000] Status=4, isTerminal=NO, Elapsed=03:20.\n\tWaiting on System App\n\n[2026-09-17 14:11:28 +0000] Status=4, isTerminal=NO, Elapsed=03:21.\n\tWaiting on System App\n\n[2026-09-17 14:11:29 +0000] Status=4, isTerminal=NO, Elapsed=03:22.\n\tWaiting on System App\n\n[2026-09-17 14:11:30 +0000] Status=4, isTerminal=NO, Elapsed=03:23.\n\tWaiting on System App\n\n[2026-09-17 14:11:31 +0000] Status=4, isTerminal=NO, Elapsed=03:24.\n\tWaiting on System App\n\n[2026-09-17 14:11:32 +0000] Status=4, isTerminal=NO, Elapsed=03:25.\n\tWaiting on System App\n\n[2026-09-17 14:11:33 +0000] Status=4, isTerminal=NO, Elapsed=03:26.\n\tWaiting on System App\n\n[2026-09-17 14:11:34 +0000] Status=4, isTerminal=NO, Elapsed=03:27.\n\tWaiting on System App\n\n[2026-09-17 14:11:35 +0000] Status=4294967295, isTerminal=YES, Elapsed=03:28.\n\tFinished\n\n",
+      "seconds": 207.42,
+      "start": "2026-09-17T14:08:08.246782+00:00",
+      "timedOut": false
+    }
+  ],
+  "startedUTC": "2026-09-17T14:08:02.688403+00:00",
+  "status": "native execution finished; review pending",
+  "summary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "x86_64",
+          "deviceId": "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+          "deviceName": "ACE D2 Recovery 20260918",
+          "modelName": "iPhone 17",
+          "osBuildNumber": "23E254a",
+          "osVersion": "26.4.1",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "passedTests": 0,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "ACEClientAppUITests · Built with macOS 26.6.2",
+    "expectedFailures": 0,
+    "failedTests": 1,
+    "finishTime": 1789654697.637,
+    "passedTests": 0,
+    "result": "Failed",
+    "skippedTests": 0,
+    "startTime": 1789654316.351,
+    "statistics": [],
+    "testFailures": [
+      {
+        "failureText": "Contrast failed",
+        "targetName": "ACEClientAppUITests",
+        "testIdentifier": 1,
+        "testIdentifierString": "ACEClientAppUITests/testCopyReflowCheck()",
+        "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+        "testName": "testCopyReflowCheck()"
+      }
+    ],
+    "title": "Test - ACEClientAppUITests",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "target": "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+  "testSettings": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  },
+  "tests": {
+    "devices": [
+      {
+        "architecture": "x86_64",
+        "deviceId": "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+        "deviceName": "ACE D2 Recovery 20260918",
+        "modelName": "iPhone 17",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      }
+    ],
+    "testNodes": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "ACEClientAppUITests.swift:94: Contrast failed",
+                        "nodeType": "Failure Message"
+                      }
+                    ],
+                    "duration": "1m 21s",
+                    "durationInSeconds": 81.0872620344162,
+                    "name": "testCopyReflowCheck()",
+                    "nodeIdentifier": "ACEClientAppUITests/testCopyReflowCheck()",
+                    "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+                    "nodeType": "Test Case",
+                    "result": "Failed"
+                  }
+                ],
+                "name": "ACEClientAppUITests",
+                "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests",
+                "nodeType": "Test Suite",
+                "result": "Failed"
+              }
+            ],
+            "name": "ACEClientAppUITests",
+            "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests",
+            "nodeType": "UI test bundle",
+            "result": "Failed"
+          }
+        ],
+        "name": "ACEClientAppUITests",
+        "nodeType": "Test Plan",
+        "result": "Failed"
+      }
+    ],
+    "testPlanConfigurations": [
+      {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    ]
+  },
+  "xctestrun": {
+    "environment": {
+      "ACE_D2_ARM": "Y",
+      "ACE_D2_FORCE_FAIL": "1",
+      "ACE_D2_MAX_CALLS": "2"
+    },
+    "sha256": "02fcb2cab8b219749c004119ba42822ad02ad8c9a810cb8c331b4b122f6e1a07"
+  }
+}

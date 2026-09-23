@@ -1369,13 +1369,758 @@
       "export_sha256": "4c0674452df678bce3beab94d778a4afe1d9b6d8bc3a1d0a08a756750b31a8f0",
       "bytes": 81443,
       "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/08-copy-confirmation-diagnosis/discriminating-diagnostic-result.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "1218cdde8ae15b6216344d2033c53ecb0e86342f832b1320b492512affcbc6c1",
+      "export_sha256": "e366b58c09a6aa4dc497244ef7511f3c2481606f597a2218900259509179b475",
+      "bytes": 12164,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-1/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "17b4482cc4e81525681ed97e8e06fa7208899262179def88a7cc2a89bc3a2b13",
+      "export_sha256": "e4bb18b532d4ee15734e5d41faa5984802acdd3995321aa79e3115f3161260b3",
+      "bytes": 9784,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-1/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "9d15cb21bfed486a2fcd9f2bd264ff6827894ae550d29282c7215e50604d0a41",
+      "export_sha256": "aa253e17ff5b8174eaa693da29e4755a027a4edf2bd8db9057d3b8c3386089bc",
+      "bytes": 2401,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-2/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "6d485adc6e03cf59b2af5ce67219956153cb340047b3d22ecb65cc59ba10dbc2",
+      "export_sha256": "5c632208bdd90309b6972fc48c8d1ae8858fd60dde5841323e22431c5a2154aa",
+      "bytes": 9784,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-2/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "3c15a0d4237dcb4700fe6fcb414a59dfe2dbafda00cb210aa16bb778a308751e",
+      "export_sha256": "f49ca415fd7e2b174b1adc39663a99d831fe9c4c9cca7eab0777720b475e426c",
+      "bytes": 3094,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-3/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "02a13cab9e8a26b2701d02a625d2252db85f9bd02ccafae46153d774c1460292",
+      "export_sha256": "da31bb9556e10a723b3ec35875c378fa05b69346f8926816951556e86c5536d1",
+      "bytes": 9784,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-3/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "9f0b85a4bb9032ca8c926e927ee200e6ae71aa96d9e177d5f9bf9e6703aa2f32",
+      "export_sha256": "84fecdaff123c11415fbb3d3d2e7d993aabd7e6693bbed5faa423aec7359f6a1",
+      "bytes": 3326,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-4/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "0f008442e309ae5ad8be5da56144a21e9aed648e88669303a234da9dd281600c",
+      "export_sha256": "a3a329536dafc48e25c7b2aa1bcb6ba625fa71799c1747257e14f22c36caee54",
+      "bytes": 9784,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-4/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "5837c9171ea6fc76d8a6f3f3bdf2193d6b6145826393748bddebfebdbab2d136",
+      "export_sha256": "11cc2f507378e4de930e48b152fce3439fc8edb28750130ad37d9001626a597f",
+      "bytes": 3215,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-5/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "b929f83ac6d8465c19f58f38cf56c0fb32d9369f462b99a0ac77f6dce61a739a",
+      "export_sha256": "b0ca4a161a03b9bd97f58cc28d4bab297090a8b98dba1b5e17d9c2e853327ffe",
+      "bytes": 9785,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-A/repetition-5/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "f9fe4b8b2841af8254382ea2bafab8c8d3d31e15656b3f7ecceb56e6c2387a75",
+      "export_sha256": "0a3ad3915e8e3c37c6866c2a9c602c70ffac5f7048204949f06183121992a791",
+      "bytes": 1594,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-1/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "bd7a4a8da7e733080f9adacc305222251ad772871fa4644b0cd51f16a7d01f09",
+      "export_sha256": "0dd603b707d7c0077084e842d04d667351e07341cb89b64d88b37dd69681dfff",
+      "bytes": 15505,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-1/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "047e4abba7d471ab21182e24627ec6a2d4c66c94a45962c0b6f94bade5ba0c16",
+      "export_sha256": "8e0b72d12e9cfede19cbdbb14e56ca6ae187a6637d133f406df9acd6a4b53063",
+      "bytes": 470,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-2/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "3de03f30f18780a61781f8ce8a2c6bb4a206ac6a4be6fdee0750b164d1cc9a02",
+      "export_sha256": "a4d849ed25dfab22735ae8806798c4c2df8250d1513257638d4b2e5ff19d7ba5",
+      "bytes": 15505,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-2/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "2b3efd30eb6f24a2b925693d726934d2063718c03612c76e08f237a96b4ba0ad",
+      "export_sha256": "9f4937858020aed0daad1604feed3bde2bd219c1eb7b8dde8da416d7a4c91046",
+      "bytes": 506,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-3/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "171ff78b9033e9aa381af2d6abec8bf82e2cdb310a4e7a94add438870dd806cc",
+      "export_sha256": "9ffed76a2905a71190db61c316bdee86abb19c3445f1568fc0da339cafa78498",
+      "bytes": 15505,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-3/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "513056f4bb0aef3bc5af0558d0333e6414c5b458c6546d3b2ed611c7be23e785",
+      "export_sha256": "1b5efab105fe347f5364db0d81cb4a5bad7168d69785d662c3319fdfaffa192b",
+      "bytes": 1446,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-4/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "70ad9f631839442e944df41c65406b9858db285baf9c29f54dc04eb097e49b45",
+      "export_sha256": "c75580ef856627254342097970875246c314d8e40e922ad6d6a68a1c13aaade9",
+      "bytes": 15505,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-4/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "c88c1cc12e78832efacb6118b83a4b4e6d7bff65a5cbe2b8838115b9d17b1c14",
+      "export_sha256": "58920a9005cb3eddebcb1fb7f0cd72a377ecdba34fb3d493f993ed4c2fec4924",
+      "bytes": 1430,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-5/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "b765adb468f83a75bc55fdbaab54f836551f010db1ade77a1aaeb1c1b0774232",
+      "export_sha256": "d5f1e0e1570d85ff362eade9ecce88b81972da197e5b22ebab50de73aa94a8a2",
+      "bytes": 15505,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-B/repetition-5/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "e0eee0b7d68844bc85bf64df5ff31a4d0371f3511c1e0c959029720a74332fc3",
+      "export_sha256": "e29c8b05dfd60158c71fb3fb563cc6981f6d3e1ed658da6ef64e31f9837f69be",
+      "bytes": 1424,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-C/repetition-1/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "6372da02723f3ab87254077272167c6fcdd517f84a99b2d1f07f82f832477e41",
+      "export_sha256": "f136c83178b23985238c6be155020ad6d8dd38567a9da37d254bb23a59d87a4b",
+      "bytes": 10171,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/12-revision5-discriminating-diagnosis/arm-C/repetition-1/image-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "702ca6170461408b46867e1136c25753bb5151ef24641540c8454299f1766cec",
+      "export_sha256": "ac84dbc3dfc005299c842e7aff5ff845b52f2e48052f67419f246530fb7d0a06",
+      "bytes": 1477,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/13-p0-discovery-runner-20260917/clean-candidate.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "e728ac298904abd8443571b16bc42230c475090cb0cc2bcc4eced2ceda7f61bf",
+      "export_sha256": "e728ac298904abd8443571b16bc42230c475090cb0cc2bcc4eced2ceda7f61bf",
+      "bytes": 4792,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/13-p0-discovery-runner-20260917/functional-selector-record.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "8aef3f607f5b45c53d99041242cc8acce5cca962ed56afc399c023a8a2240b57",
+      "export_sha256": "fadf01a7c57c4f60556cae3df4194b46076a8e0988c5fe13993effd28cb00d5a",
+      "bytes": 11060,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/13-p0-discovery-runner-20260917/record-checks.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "854b12f8528c8ee46ec538263de5f25250df7dc8125f2de8a3ae81864672531e",
+      "export_sha256": "854b12f8528c8ee46ec538263de5f25250df7dc8125f2de8a3ae81864672531e",
+      "bytes": 274,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/13-p0-discovery-runner-20260917/sol-review.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "dc199434d4d7020a2e0dbedb8acd8f67204f9dedc1fd9d342c3bfcc9de7cfad2",
+      "export_sha256": "e62a41290480466cd1c833e81df060b279d6489801668806744a5f93cef2d131",
+      "bytes": 3847,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/01-harness-failure/artifact-manifest.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "ad8b3f38de06a31c29a08ad59210004d2f5b321d576ca8febc51b1b6effca209",
+      "export_sha256": "7bcc6433517252d7637b23dc924a022dfb48f84381c135c7231b53552fb95074",
+      "bytes": 179420,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/01-harness-failure/execution.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "905fc382aa4a9b9006c20b304b1e15fe6164c77c2438cc4d1301f858013e6b52",
+      "export_sha256": "2d1534f90a4bf69966f2e4454e043517c4f927993c909847577a8194e1332c5b",
+      "bytes": 15896,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/01-harness-failure/native-summary.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "be18f778eb93755242366773204e1fc1dd63efbc55650a715e01e71c6a37e01f",
+      "export_sha256": "482c9a71db3d73705f08c9949674aefc3c28b07dc8bfee6a617bdb5c990e6152",
+      "bytes": 1332,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/01-harness-failure/native-tests.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "fb6aabec31dc864b6d6ccc343b76c6d0eb92022c6a94a2157756dd6459d1cd98",
+      "export_sha256": "fb6aabec31dc864b6d6ccc343b76c6d0eb92022c6a94a2157756dd6459d1cd98",
+      "bytes": 1602,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/01-harness-failure/native.log",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "0fbd0b2f11187b65baa361bd58815082b1009a70e6ee33def853942cbf75a725",
+      "export_sha256": "8092dee5a52a14dce902e69b2a82f38c32c8a95f7fd60a165742f33695790c5e",
+      "bytes": 2525,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/D2-method.swift",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "82545913c95024ba1836bfd1f2a5c8bb230c8f813439e9ec471a4e3b2faad400",
+      "export_sha256": "82545913c95024ba1836bfd1f2a5c8bb230c8f813439e9ec471a4e3b2faad400",
+      "bytes": 11205,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/D2-test.patch",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "export_sha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "bytes": 12164,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/candidate-source.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "83a37a1defbf554d0de94af6b9f04b6361bf0b24a2df190d3251711b2f32e2be",
+      "export_sha256": "11cd9c438e83a1e592769f73ceb783bb2934d5c48b927c02b687a41191d94a7e",
+      "bytes": 1697,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/14-copy-reflow-check-20260917/d2-result.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "5856820bdba421e954115d9a667307f2ac35dd52410505b5292ce9b02e6b94d9",
+      "export_sha256": "5f9f156ab42217750f8026e9ec4ccbd11b6042f131fe2f955ca91425260faf2f",
+      "bytes": 9065,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/ACE-IOS-FRESH-SIM-RESULT-20260918.md",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "3eeb29a370dc0e646a97092630aec2b6a8e33c0bf2957c456c08135b8566d3cc",
+      "export_sha256": "4b746de407bc557cc6231b14feb0057685e602fd6699bd76ba3999abe0341124",
+      "bytes": 4163,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/native-summary.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "8328fcf68708f7d4bfb232f60848eb38aa59819536933c37a6c0e1885469f421",
+      "export_sha256": "b3ef3927fa432f67d98042c3ead6f915fcdcd427554f1312e35e0aefabfc0fab",
+      "bytes": 1329,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/native-tests.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "8a6301d9db76c9967e2226f7af09e33ca06f7fa53a0b3f10e7aff2274907dcf7",
+      "export_sha256": "8a6301d9db76c9967e2226f7af09e33ca06f7fa53a0b3f10e7aff2274907dcf7",
+      "bytes": 1856,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/native.log",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "f2496ce27b0d46c3732d17df44459f5df265e963b7c932f3a06f6f4d9410f837",
+      "export_sha256": "dd22b29cae4c58ab3fe26e05e9143b0796417673ede5d24e6ec7872775ce2a0d",
+      "bytes": 13949,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/recovery.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "70e361dc25c4379182554d6ed78f0d6c46f3bcaebf5a09a8fecea58bef1a43ed",
+      "export_sha256": "6fcff07bcd2007381d26cc51238aa58d90a1b093f6730080f7bbc03d4a17d8eb",
+      "bytes": 27857,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/15-fresh-simulator-recovery-20260918/review.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "16836471d82ba9a14e70a38270bacf514d9f01ff107e2e6fc1944537bd4d2a9f",
+      "export_sha256": "f8ef98d4d78772f14e3144f2c6066db5361aaa9b4f5933a4b9b3343f5c4cd7c7",
+      "bytes": 7951,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/CURRENT_EVIDENCE_INDEX.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "5ac2523c8c2d6f3884c0bf3c43886921aab03fb8a791e3683250881a7c1fecbd",
+      "export_sha256": "fefad2c303748402d727b62557801650bdad52aa5fb59a1bb37ec4ef3f1abc8b",
+      "bytes": 1186,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/RUN2_FINAL_RECORD.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "4f7c5ad1591643ae63e75588f8bb3425cd40e4d772fba349a9e8f7cfbb2b24c7",
+      "export_sha256": "130041b61fa24eb8bd58944d949f8759831bc3a1f464a3291c6348c6d3da0648",
+      "bytes": 3757,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-evidence/snapshot-failure-frame-inspection.json",
+      "category": "retained-mac-diagnostic",
+      "original_sha256": "ebfb6d5be8db8b97845f0dae663ff25a2d8a9273d8e17060486f47754aedff9b",
+      "export_sha256": "e62937ef7cb67576e6496fc01029e9e5b5a6d8efd74c2983590652b2fa8a1f01",
+      "bytes": 3147,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-variants/.github/workflows/quality-gates.yml",
+      "category": "mac-source-variant",
+      "original_sha256": "e355647b003fc350688fb7ca30463e8c8b0418a52104c9f4306b40ae3281d12a",
+      "export_sha256": "e355647b003fc350688fb7ca30463e8c8b0418a52104c9f4306b40ae3281d12a",
+      "bytes": 6984,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/.github/workflows/release-quality.yml",
+      "category": "mac-source-variant",
+      "original_sha256": "a63051f3adf56037a398c2d155ad9a92bd33bdd365b759047c5462478e0d506a",
+      "export_sha256": "a63051f3adf56037a398c2d155ad9a92bd33bdd365b759047c5462478e0d506a",
+      "bytes": 1381,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/.gitignore",
+      "category": "mac-source-variant",
+      "original_sha256": "55d86a676bd9e3b6146b99da24b832b11c62c22934402df999469a0a9d2751d0",
+      "export_sha256": "55d86a676bd9e3b6146b99da24b832b11c62c22934402df999469a0a9d2751d0",
+      "bytes": 88,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/ACE_PROGRESS_GUIDE.html",
+      "category": "mac-source-variant",
+      "original_sha256": "aeac192a65e19a02de9571fc8e92f0a2ac6dd04ae3e41cd8d534485594b7c98f",
+      "export_sha256": "aeac192a65e19a02de9571fc8e92f0a2ac6dd04ae3e41cd8d534485594b7c98f",
+      "bytes": 27950,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/ACE_VISION_AND_ROADMAP.md",
+      "category": "mac-source-variant",
+      "original_sha256": "e526ec4206ba474c9b0a257e8b74f68886c61d2b4be62a65795ef156f0b20891",
+      "export_sha256": "e526ec4206ba474c9b0a257e8b74f68886c61d2b4be62a65795ef156f0b20891",
+      "bytes": 912,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/AGENTS.md",
+      "category": "mac-source-variant",
+      "original_sha256": "c9295a4409608948b343d5ef7a9a1ea2d9640656dc9e308b71cfa31f4412dbd4",
+      "export_sha256": "c9295a4409608948b343d5ef7a9a1ea2d9640656dc9e308b71cfa31f4412dbd4",
+      "bytes": 6661,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/CONTEXT.md",
+      "category": "mac-source-variant",
+      "original_sha256": "032fc036e03b6418f4a95bb3194e05c334a210489229fbd4b5dfbd1421ae1945",
+      "export_sha256": "032fc036e03b6418f4a95bb3194e05c334a210489229fbd4b5dfbd1421ae1945",
+      "bytes": 1469,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/DEV_STATE.md",
+      "category": "mac-source-variant",
+      "original_sha256": "60a4dd815df828f9881403a436d6f8e01a67f1b589a0dbfff358ccd9edbd59d7",
+      "export_sha256": "60a4dd815df828f9881403a436d6f8e01a67f1b589a0dbfff358ccd9edbd59d7",
+      "bytes": 2039,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/README.md",
+      "category": "mac-source-variant",
+      "original_sha256": "648c6992511c45e0d44744e921af8608fae1ac09ee016ee80c6f6af7ad9011e5",
+      "export_sha256": "648c6992511c45e0d44744e921af8608fae1ac09ee016ee80c6f6af7ad9011e5",
+      "bytes": 1457,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/WORKFLOW-NOTES.md",
+      "category": "mac-source-variant",
+      "original_sha256": "89e9ef5d3d70a2de51efaec186b2abfdc261d3cdf7032ee5dcd40e81d2ee61d2",
+      "export_sha256": "89e9ef5d3d70a2de51efaec186b2abfdc261d3cdf7032ee5dcd40e81d2ee61d2",
+      "bytes": 887,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/codemagic.yaml",
+      "category": "mac-source-variant",
+      "original_sha256": "5293c79c96e722d7cc3b4d425a579dc7eeefca0d684c74fc1eec6f35995a6b0e",
+      "export_sha256": "5293c79c96e722d7cc3b4d425a579dc7eeefca0d684c74fc1eec6f35995a6b0e",
+      "bytes": 6972,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/DOCUMENTATION-INVENTORY.md",
+      "category": "mac-source-variant",
+      "original_sha256": "4119092016080bc0884de9c32ecf478f6f9378091124c09891fa87c833c52089",
+      "export_sha256": "4119092016080bc0884de9c32ecf478f6f9378091124c09891fa87c833c52089",
+      "bytes": 1183,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/adr/0001-human-auditor-controls-final-decisions.md",
+      "category": "mac-source-variant",
+      "original_sha256": "e2191dee894d1d6fc0ba6a43054727d91aec14b8f5e282bc6a943796798a37b5",
+      "export_sha256": "e2191dee894d1d6fc0ba6a43054727d91aec14b8f5e282bc6a943796798a37b5",
+      "bytes": 426,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/adr/0002-g0-protects-the-data-boundary.md",
+      "category": "mac-source-variant",
+      "original_sha256": "62be8ccfd0c90bbd68ef81251d3f913399167708b31a0079cc519b287357ebaa",
+      "export_sha256": "62be8ccfd0c90bbd68ef81251d3f913399167708b31a0079cc519b287357ebaa",
+      "bytes": 381,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/adr/0003-approved-records-use-versioned-history.md",
+      "category": "mac-source-variant",
+      "original_sha256": "8cd09b484cb8dce17bef357619d5924643888c6e0fb559b50cd254881a4b384d",
+      "export_sha256": "8cd09b484cb8dce17bef357619d5924643888c6e0fb559b50cd254881a4b384d",
+      "bytes": 368,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/adr/0004-release-projection-is-read-only.md",
+      "category": "mac-source-variant",
+      "original_sha256": "6c4fd0562070735cccb76c9cdbc355886f8aa1fc638b24da945a6c14aaeb8ba4",
+      "export_sha256": "6c4fd0562070735cccb76c9cdbc355886f8aa1fc638b24da945a6c14aaeb8ba4",
+      "bytes": 374,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/agents/domain.md",
+      "category": "mac-source-variant",
+      "original_sha256": "f4b31388d6ef7eccaab47886ffe145de036a80bdc97584c05b319d47760d2f0a",
+      "export_sha256": "f4b31388d6ef7eccaab47886ffe145de036a80bdc97584c05b319d47760d2f0a",
+      "bytes": 226,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/agents/triage-labels.md",
+      "category": "mac-source-variant",
+      "original_sha256": "668e5486f1a08d6dcae9b207194eeb63e758d7b1f42e6cfa102b19ec6f0936e5",
+      "export_sha256": "668e5486f1a08d6dcae9b207194eeb63e758d7b1f42e6cfa102b19ec6f0936e5",
+      "bytes": 215,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/diagrams/README.md",
+      "category": "mac-source-variant",
+      "original_sha256": "faf99455897a2c3697045354e139012536b1c353937394b1382bc457ce611962",
+      "export_sha256": "faf99455897a2c3697045354e139012536b1c353937394b1382bc457ce611962",
+      "bytes": 225,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+      "category": "mac-source-variant",
+      "original_sha256": "c0175f267c41b5dffe072ed9b71db84183e6a115e394c7a5bc85362d28d5dce2",
+      "export_sha256": "c0175f267c41b5dffe072ed9b71db84183e6a115e394c7a5bc85362d28d5dce2",
+      "bytes": 288,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+      "category": "mac-source-variant",
+      "original_sha256": "0326f05014934c2c4212ba3994fbf00e25c279c3cd2c28622905f06c2c2ac61c",
+      "export_sha256": "0326f05014934c2c4212ba3994fbf00e25c279c3cd2c28622905f06c2c2ac61c",
+      "bytes": 183,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+      "category": "mac-source-variant",
+      "original_sha256": "0139708148de126f1134bb6693ece8aa1c294d20da067ccc2435193e8939a37f",
+      "export_sha256": "0139708148de126f1134bb6693ece8aa1c294d20da067ccc2435193e8939a37f",
+      "bytes": 202,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/diagrams/diagram-manifest.json",
+      "category": "mac-source-variant",
+      "original_sha256": "73d66a3dd24271744636e600a641ed538a8467c6206e1b532af9d40baa3778aa",
+      "export_sha256": "73d66a3dd24271744636e600a641ed538a8467c6206e1b532af9d40baa3778aa",
+      "bytes": 223,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/docs/specs/documentation-control.md",
+      "category": "mac-source-variant",
+      "original_sha256": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+      "export_sha256": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+      "bytes": 670,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/ios/ACEClientApp/Makefile",
+      "category": "mac-source-variant",
+      "original_sha256": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+      "export_sha256": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+      "bytes": 2080,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/quality/test-groups.json",
+      "category": "mac-source-variant",
+      "original_sha256": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+      "export_sha256": "456c838b08fcdebc7bc011a49b2c14d6390d633794dabd52dae747206b952af5",
+      "bytes": 1760,
+      "sanitised": true
+    },
+    {
+      "path": "docs/review/mac-variants/src/ace/domain/assessment.py",
+      "category": "mac-source-variant",
+      "original_sha256": "bf714e4102d3484434b354a6074e9f905f2c553a35efa8be32b9b7cd356cc1aa",
+      "export_sha256": "bf714e4102d3484434b354a6074e9f905f2c553a35efa8be32b9b7cd356cc1aa",
+      "bytes": 11079,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/src/ace/engine/approval.py",
+      "category": "mac-source-variant",
+      "original_sha256": "08ff57a2e77fc71fcc2d0968fdc9f133b1896611cbe7fb7037895f20ac8797e8",
+      "export_sha256": "08ff57a2e77fc71fcc2d0968fdc9f133b1896611cbe7fb7037895f20ac8797e8",
+      "bytes": 13252,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/src/ace/workbench/document_toolchain_doctor.py",
+      "category": "mac-source-variant",
+      "original_sha256": "db064f75ae8f9e99a94fa8679a51437c73b7e5bdb96b55133352bc1500535793",
+      "export_sha256": "db064f75ae8f9e99a94fa8679a51437c73b7e5bdb96b55133352bc1500535793",
+      "bytes": 3458,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/src/ace/workbench/export_builder.py",
+      "category": "mac-source-variant",
+      "original_sha256": "cdf4ee85a139370c003e9ba3317de6aa9769e498c750c952187a8a53f8eabc4a",
+      "export_sha256": "cdf4ee85a139370c003e9ba3317de6aa9769e498c750c952187a8a53f8eabc4a",
+      "bytes": 23844,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/src/ace/workbench/relationship_review_storage.py",
+      "category": "mac-source-variant",
+      "original_sha256": "da3c74a6feb0809905ebe450aafc638e06e3e3dcbdb6817981877975ffadc0bf",
+      "export_sha256": "da3c74a6feb0809905ebe450aafc638e06e3e3dcbdb6817981877975ffadc0bf",
+      "bytes": 51376,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_approval_gate.py",
+      "category": "mac-source-variant",
+      "original_sha256": "67c8c56769558820060b973b490ad83c6f5a0c3d1fa3b9487c39a954fd27b037",
+      "export_sha256": "67c8c56769558820060b973b490ad83c6f5a0c3d1fa3b9487c39a954fd27b037",
+      "bytes": 36577,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_change_export.py",
+      "category": "mac-source-variant",
+      "original_sha256": "2c7d7ece11896ffce9dc44a811d58718a3ad916096c20272910255dca6a664d3",
+      "export_sha256": "2c7d7ece11896ffce9dc44a811d58718a3ad916096c20272910255dca6a664d3",
+      "bytes": 29072,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_diagnose_ios.py",
+      "category": "mac-source-variant",
+      "original_sha256": "b15f216590bf44892d45d2baca77a171ba5890536e4bac5ae481f7b80d9a06b1",
+      "export_sha256": "b15f216590bf44892d45d2baca77a171ba5890536e4bac5ae481f7b80d9a06b1",
+      "bytes": 81389,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_planning_trace.py",
+      "category": "mac-source-variant",
+      "original_sha256": "64b8ca47b1fb5fdda887d092048aee85c58b85febe517026b11c7487d5932ebc",
+      "export_sha256": "64b8ca47b1fb5fdda887d092048aee85c58b85febe517026b11c7487d5932ebc",
+      "bytes": 38436,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_quality_gates_workflow.py",
+      "category": "mac-source-variant",
+      "original_sha256": "6d1ec5d84c41f8b406d85c1f96f52abe68383016584e0b8e15e839ef2a182a42",
+      "export_sha256": "6d1ec5d84c41f8b406d85c1f96f52abe68383016584e0b8e15e839ef2a182a42",
+      "bytes": 735,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_relationship_review.py",
+      "category": "mac-source-variant",
+      "original_sha256": "a30f5329e54ab5f9b7fc32d779c3eb4a646d8d238dbf3151827bc977d183bb3d",
+      "export_sha256": "a30f5329e54ab5f9b7fc32d779c3eb4a646d8d238dbf3151827bc977d183bb3d",
+      "bytes": 54425,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_run_tests.py",
+      "category": "mac-source-variant",
+      "original_sha256": "f9c63b54853368ae08faf52450ffc2ae3914cf4b524d49e23e97fded4ca44dc8",
+      "export_sha256": "f9c63b54853368ae08faf52450ffc2ae3914cf4b524d49e23e97fded4ca44dc8",
+      "bytes": 240294,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tests/test_workbench.py",
+      "category": "mac-source-variant",
+      "original_sha256": "c91de4dedb150d42f19770605fbda3b7de2a7c17c1fb57f007c12430f2677a1c",
+      "export_sha256": "c91de4dedb150d42f19770605fbda3b7de2a7c17c1fb57f007c12430f2677a1c",
+      "bytes": 23581,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tools/diagnose_ios.py",
+      "category": "mac-source-variant",
+      "original_sha256": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+      "export_sha256": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+      "bytes": 76422,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/tools/run_tests.py",
+      "category": "mac-source-variant",
+      "original_sha256": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+      "export_sha256": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+      "bytes": 282873,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/conclusion-review.md",
+      "category": "mac-source-variant",
+      "original_sha256": "5a7985cf152b6e18caafa0572c7fe3b71926f0e508768b41b1d1f93b2fadf49e",
+      "export_sha256": "5a7985cf152b6e18caafa0572c7fe3b71926f0e508768b41b1d1f93b2fadf49e",
+      "bytes": 943,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/engagement-setup.md",
+      "category": "mac-source-variant",
+      "original_sha256": "471d3d8c622b27997b566a035bbcef0190cbbdbeb4f34f976e923bf4811b317b",
+      "export_sha256": "471d3d8c622b27997b566a035bbcef0190cbbdbeb4f34f976e923bf4811b317b",
+      "bytes": 707,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/evidence-review.md",
+      "category": "mac-source-variant",
+      "original_sha256": "fa9116a4f8bb91f3b24fa42d77dfb6f9443dc63ce4187fff63261c75a68c1641",
+      "export_sha256": "fa9116a4f8bb91f3b24fa42d77dfb6f9443dc63ce4187fff63261c75a68c1641",
+      "bytes": 734,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/field-evidence-capture.md",
+      "category": "mac-source-variant",
+      "original_sha256": "a3a50542e4844b9a0de7527d713feb5bffccd010a9307b1dd879aa098890de1d",
+      "export_sha256": "a3a50542e4844b9a0de7527d713feb5bffccd010a9307b1dd879aa098890de1d",
+      "bytes": 699,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/mate-assessment.md",
+      "category": "mac-source-variant",
+      "original_sha256": "43a7394e9e9a512e994685afd8f9bb198d267c309267bec13f3244c38c79fe5b",
+      "export_sha256": "43a7394e9e9a512e994685afd8f9bb198d267c309267bec13f3244c38c79fe5b",
+      "bytes": 888,
+      "sanitised": false
+    },
+    {
+      "path": "docs/review/mac-variants/workflows/relationship-review.md",
+      "category": "mac-source-variant",
+      "original_sha256": "ee1a05e03d85929d18a1a98d71baa65714599cab688b163f803b5e98d6d20034",
+      "export_sha256": "ee1a05e03d85929d18a1a98d71baa65714599cab688b163f803b5e98d6d20034",
+      "bytes": 819,
+      "sanitised": false
     }
   ],
   "generated_export_files": [
     "VORFLUX_START_HERE.md",
     "docs/review/RECONCILIATION.md",
     "docs/review/maps/codegraph/index.json",
-    "docs/review/EXPORT-MANIFEST.json"
+    "docs/review/EXPORT-MANIFEST.json",
+    "docs/review/MAC-SOURCE-MANIFEST.json",
+    "docs/review/MAC-UPDATE.md"
   ],
-  "standing": "Source and evidence navigation snapshot; no runtime acceptance or verified ancestry claimed."
+  "standing": "Source and evidence navigation snapshot; no runtime acceptance or verified ancestry claimed.",
+  "mac_addendum": {
+    "mac_head": "40bae2640b23eb05496a093d09a4c20186403879",
+    "clean": true,
+    "retrieved_at": "2026-09-23T05:10:55.697472+00:00",
+    "records": 45,
+    "tracked_files_accounted_for": 169
+  }
 }

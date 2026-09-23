@@ -1,0 +1,210 @@
+{
+  "status": "stopped: environment startup failure before D2 method; harness gate incomplete",
+  "instructionSha256": "f7147730b09e0b4daf5d18090abc29d38f780962479dc55a49631af20c1f2179",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+  "launcherSha256": "2586a3709923d4935ff5ee3dfaab3c1e4aaf6be6f7c3b83cf15dffdf3b2bd148",
+  "build": {
+    "status": "passed",
+    "exit": 0,
+    "seconds": 87.08568798698252,
+    "appBundleSha256": "4bdd678c942b0d6a177bd11ae1e6ad234c8500e6efc7fb0549b9e21fb5b2b1a4",
+    "testBundleSha256": "6616d8f2c770d57862b419cc55692edbf646951bfc0d626d8dadaaf8edd7b9a2",
+    "sourceAppHashesEqualFailedCandidate": true
+  },
+  "executions": [
+    {
+      "name": "01-harness-failure",
+      "status": "native startup failure; demonstration not achieved",
+      "record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/execution.json",
+      "recordSha256": "905fc382aa4a9b9006c20b304b1e15fe6164c77c2438cc4d1301f858013e6b52",
+      "nativeExit": 65,
+      "selectedMethod": "ACEClientAppUITests/testCopyReflowCheck()",
+      "selectedMethodExecuted": false,
+      "actualNativeFailureIdentifier": "ACEClientAppUITests-Runner (73015) encountered an error",
+      "expected": "Selected D2 method fails only with D2 deliberate harness failure and exactly call records 0,1,2",
+      "actual": "The test runner failed to initialize for UI testing. (Underlying Error: Timed out while loading Accessibility.)",
+      "auditCallCount": 0,
+      "sourceLine": null,
+      "sourceLineReason": "XCTest failed before the UI-test method entered; no Swift test assertion ran",
+      "nativeLogFailureLines": [
+        {
+          "line": 11,
+          "text": "2026-09-17 12:21:32.020517+1000 ACEClientAppUITests-Runner[73015:8787367] [Default] Failed to initialize for UI testing: Error Domain=com.apple.dt.XCTest.XCTFuture Code=1000 \"Timed out while loading Accessibility.\" UserInfo={NSLocalizedDescription=Timed out while loading Accessibility.}"
+        },
+        {
+          "line": 24,
+          "text": "\tACEClientAppUITests-Runner (73015) encountered an error (The test runner failed to initialize for UI testing. (Underlying Error: Timed out while loading Accessibility.))"
+        }
+      ]
+    },
+    {
+      "name": "02-harness-pass",
+      "status": "not executed: first gate incomplete"
+    },
+    {
+      "name": "03-arm-X",
+      "status": "not executed: harness gate incomplete",
+      "comparativeCalls": 0
+    },
+    {
+      "name": "04-arm-Y",
+      "status": "not executed: harness gate incomplete",
+      "comparativeCalls": 0
+    }
+  ],
+  "nativeExecutionCount": 1,
+  "nativeRetryCount": 0,
+  "harnessGate": "incomplete",
+  "findings": [],
+  "thrownAuditErrors": [],
+  "copyContrastFindingCount": 0,
+  "copyContrastNotObservedReason": "No audit ran; not a non-reproduction result",
+  "classification": {
+    "immediateFailure": "XCTest UI-testing initialization failed while loading Accessibility, XCTFuture Code1000",
+    "category": "environment/test-service startup failure",
+    "underlyingStartupCause": "unresolved",
+    "copyRootCause": "unresolved",
+    "hypothesisResult": "D2 question not tested"
+  },
+  "restoration": {
+    "actions": [
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "appearance",
+          "light"
+        ],
+        "end": "2026-09-17T02:23:23.007233+00:00",
+        "exit": 0,
+        "seconds": 1.043,
+        "start": "2026-09-17T02:23:21.964791+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "content_size",
+          "large"
+        ],
+        "end": "2026-09-17T02:23:23.601742+00:00",
+        "exit": 0,
+        "seconds": 0.594,
+        "start": "2026-09-17T02:23:23.007419+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "ui",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "increase_contrast",
+          "disabled"
+        ],
+        "end": "2026-09-17T02:23:24.431340+00:00",
+        "exit": 0,
+        "seconds": 0.83,
+        "start": "2026-09-17T02:23:23.601910+00:00",
+        "timedOut": false
+      },
+      {
+        "command": [
+          "xcrun",
+          "simctl",
+          "shutdown",
+          "2EB0863C-470E-467D-A0C6-CD216DA70C67"
+        ],
+        "end": "2026-09-17T02:23:32.166303+00:00",
+        "exit": 0,
+        "seconds": 4.539,
+        "start": "2026-09-17T02:23:27.627369+00:00",
+        "timedOut": false
+      }
+    ],
+    "allActionExit0": true,
+    "bootStatesMatch": true,
+    "finalBootStates": {
+      "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+      "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+      "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+      "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+      "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+      "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+      "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+      "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+      "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+      "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+      "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown",
+      "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+      "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown"
+    },
+    "otherBootStatesUntouched": true,
+    "readback": {
+      "appearance": "light",
+      "content_size": "large",
+      "increase_contrast": "disabled"
+    },
+    "readbackError": null,
+    "settingsReadbackExact": true
+  },
+  "delivery": {
+    "head": "40bae2640b23eb05496a093d09a4c20186403879",
+    "clean": true,
+    "appAndCommittedUITestsUnchanged": true,
+    "commitOrPush": false
+  },
+  "retention": {
+    "evidenceRoot": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917",
+    "nativeLog": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/native.log",
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult",
+    "summary": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/native-summary.json",
+    "methodProof": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/native-tests.json",
+    "artifactManifest": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/artifact-manifest.json",
+    "callbackImages": 0,
+    "imageInspection": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/image-inspection.json"
+  },
+  "timing": {
+    "startedUTC": "2026-09-17T01:52:02Z",
+    "recordedUTC": "2026-09-17T02:25:29.102524+00:00",
+    "hardDeadlineUTC": "2026-09-17T04:22:02Z",
+    "buildSeconds": 87.08568798698252,
+    "nativeCommandSeconds": 348.53,
+    "nativeSummarySessionSeconds": 329.6340000629425,
+    "nativeTestMethodSeconds": 0,
+    "bootAndReadySeconds": 52.216,
+    "activeHumanModelWorkSeconds": null,
+    "activeWorkTimingNote": "Not independently instrumented; do not equate elapsed time with active work"
+  },
+  "cancellation": {
+    "signalSent": false,
+    "explanation": "Cancellation was considered after startup error; process had already exited65 before signal lookup. Native result is not a cancellation result."
+  },
+  "preExecutionImplementationIssues": [
+    "Nullable XCTAttachment.name corrected before single compile",
+    "Launcher schema, hash algorithm, streaming log, settings timing, gates and export validation repaired before first invocation",
+    "Read-only import check found dataclass import registration error; fixed once then read-only identity check passed",
+    "Call0 offscreen frame availability was a review observation risk; it was not reached and did not cause this startup failure"
+  ],
+  "recommendation": "Keep app and compiled D2 variant unchanged. Authorise a separate bounded investigation of simulator Accessibility startup before any D2 rerun. No retry or P0 resumption under this instruction.",
+  "stopRule": "Sections6 and7: an execution cannot complete => stop; no retry exists in budget",
+  "claimLimits": [
+    "No acceptance credit",
+    "No pilot credit",
+    "ArmY diagnostic only",
+    "Repeated calls within one launch are not independent",
+    "No test of DynamicType dependence occurred",
+    "No non-reproduction claim",
+    "No root cause or Apple defect established",
+    "Control colours remain unresolved",
+    "P0 documentation failures and expired block untouched",
+    "Discovery pilot not ready"
+  ],
+  "activeProcesses": []
+}

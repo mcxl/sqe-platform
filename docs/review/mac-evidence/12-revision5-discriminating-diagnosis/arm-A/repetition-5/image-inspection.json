@@ -1,0 +1,33 @@
+{
+  "status": "image inspection complete; Arm A repetition 5 only",
+  "source": {
+    "attachmentsDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-5/batches/001/attachments",
+    "manifestValidated": true,
+    "testIdentifier": "ACEClientAppUITests/testCoverageBatch()"
+  },
+  "deduplication": {
+    "pngAttachmentCount": 2,
+    "distinctPNGCount": 2,
+    "comparedAgainst": "Arm A repetitions 1 through 4 attachment hashes",
+    "byteIdenticalWithPriorRepetitions": []
+  },
+  "inspectedAtOriginalResolution": true,
+  "images": [
+    {
+      "exportedFileName": "442E65C8-1B4F-4B31-88E5-72DAD6A3B2C4.png",
+      "sha256": "c7027410dd145dccb5e1bfd1c35698a4bcf60867bfd390e948aa8188654b8adb",
+      "bytes": 193083,
+      "observation": "Portrait light initial Release view. Release Details, Conclusion and the upper Action 1 card are readable; Copy is below the viewport. No overlap or clipping is visible."
+    },
+    {
+      "exportedFileName": "F09A5969-F68A-457B-A935-786533BFFAA4.png",
+      "sha256": "f67cc32e79c38a0d768a2f2801f346f69ff76cd09efa4cd6be6d0a17d140646a",
+      "bytes": 188535,
+      "observation": "Scrolled Action 1 view. Copy action and Copied Action 1. are fully visible inside the card; Refresh is visible and Sign out begins below. No overlap or clipping is visible."
+    }
+  ],
+  "limitations": [
+    "These two retained screen states do not establish audit sample time, contrast measurement or fault cause.",
+    "No callback-time screenshot exists in this Arm A pass attachment set."
+  ]
+}

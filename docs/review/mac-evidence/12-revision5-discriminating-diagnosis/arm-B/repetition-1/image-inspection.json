@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "arm": "B",
+  "repetition": 1,
+  "pngCount": 2,
+  "distinctPNGCount": 2,
+  "inspectedAtOriginalResolution": true,
+  "observations": [
+    "Initial release view readable with Copy below viewport; no overlap or clipping.",
+    "Scrolled Action 1 view shows Copy action and Copied Action 1 fully visible; no overlap or clipping."
+  ],
+  "limitations": [
+    "Screenshots do not establish audit sample time, contrast measurement or cause."
+  ]
+}

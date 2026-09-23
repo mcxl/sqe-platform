@@ -1,0 +1,59 @@
+{
+  "devices": [
+    {
+      "architecture": "x86_64",
+      "deviceId": "7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+      "deviceName": "ACE D2 Recovery 20260918",
+      "modelName": "iPhone 17",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "ACEClientAppUITests.swift:94: Contrast failed",
+                      "nodeType": "Failure Message"
+                    }
+                  ],
+                  "duration": "1m 21s",
+                  "durationInSeconds": 81.0872620344162,
+                  "name": "testCopyReflowCheck()",
+                  "nodeIdentifier": "ACEClientAppUITests/testCopyReflowCheck()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+                  "nodeType": "Test Case",
+                  "result": "Failed"
+                }
+              ],
+              "name": "ACEClientAppUITests",
+              "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests",
+              "nodeType": "Test Suite",
+              "result": "Failed"
+            }
+          ],
+          "name": "ACEClientAppUITests",
+          "nodeIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests",
+          "nodeType": "UI test bundle",
+          "result": "Failed"
+        }
+      ],
+      "name": "ACEClientAppUITests",
+      "nodeType": "Test Plan",
+      "result": "Failed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

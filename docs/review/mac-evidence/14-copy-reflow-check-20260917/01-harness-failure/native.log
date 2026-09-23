@@ -1,0 +1,28 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult
+
+2026-09-17 12:17:45.944 xcodebuild[72723:8781056] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult
+
+2026-09-17 12:17:45.997 xcodebuild[72723:8781056] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-17 12:17:46.012 xcodebuild[72723:8781056] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-17 12:20:15.941249+1000 ACEClientAppUITests-Runner[73015:8787367] [Default] Running tests...
+2026-09-17 12:21:32.020517+1000 ACEClientAppUITests-Runner[73015:8787367] [Default] Failed to initialize for UI testing: Error Domain=com.apple.dt.XCTest.XCTFuture Code=1000 "Timed out while loading Accessibility." UserInfo={NSLocalizedDescription=Timed out while loading Accessibility.}
+
+
+*** If you believe this error represents a bug, please attach the result bundle at LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult
+
+2026-09-17 12:23:15.621 xcodebuild[72723:8781056] [MT] IDETestOperationsObserverDebug: 326.166 elapsed -- Testing started completed.
+2026-09-17 12:23:15.621 xcodebuild[72723:8781056] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-17 12:23:15.621 xcodebuild[72723:8781056] [MT] IDETestOperationsObserverDebug: 326.166 sec, +326.166 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult
+
+Testing failed:
+	ACEClientAppUITests-Runner (73015) encountered an error (The test runner failed to initialize for UI testing. (Underlying Error: Timed out while loading Accessibility.))
+
+** TEST EXECUTE FAILED **
+
+Testing started

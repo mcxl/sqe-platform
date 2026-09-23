@@ -1,0 +1,368 @@
+{
+  "arm": "B",
+  "repetition": 1,
+  "case": {
+    "id": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+    "scenario": "copyConfirmation",
+    "settings": {
+      "appearance": "light",
+      "contentSize": "large",
+      "orientation": "portrait",
+      "boldText": false,
+      "reduceMotion": false,
+      "increaseContrast": false
+    },
+    "audit": true
+  },
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "sourceHashes": {
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "b5f6b0783f4de206b205928dd46b846ceb2c4499b72653e30c151d8da96e843c",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b",
+    "docs/specs/autonomous-delivery-workflow-repair.md": "c45ba49f914f3842d5fd19a6577b542fee240a6850f570a6ccbb957d6949c8d4",
+    "docs/specs/documentation-control.md": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+    "docs/specs/phase6-stage1-release-service-boundary.md": "ab25e6321d7fdfacfeec2a256f9b1c3a1b637840da4e548ee0f7e969a202dfa6",
+    "docs/specs/phase6-stage2-release-workflow.md": "0afaad9be9771951c116aa90b1de6315aef1f63964aba8528c0f75edca3ca68c",
+    "docs/specs/phase6-stage3-release-trigger-decisions.md": "f8b7952280e1e5edb3709c1a104e780342f447ebc4479774c8ec669673d0aabd",
+    "docs/specs/phase6b2-read-only-client-release-projection.md": "18a69b1b0608460dd4aface9ec32b5b9421f961726392bbf8e7a7373165f8a10",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+    "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+    "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+    "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+    "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+    "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+    "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+    "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d",
+    "ios/ACEClientApp/Makefile": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.json": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+    "ios/ACEClientApp/Phase6_1EvidenceRegister.md": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+    "ios/ACEClientApp/RuntimeEvidencePlan.md": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+    "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+    "ios/ACEClientApp/evidence-matrix-audit.md": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+    "quality/test-groups.json": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+    "tools/ace_ios_local.py": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+    "tools/diagnose_ios.py": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+    "tools/run_tests.py": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+    "tools/tests/test_ace_ios_local.py": "b50c74ebbf5f7d59fe1985ad37745db4dae1a2f2c1f97f3a70b781ea7f3f62f5"
+  },
+  "startedUTC": "2026-09-16T12:49:24.886850+00:00",
+  "status": "native-pass; image inspection pending",
+  "pilotCredit": 0,
+  "acceptanceCredit": 0,
+  "buildTemplate": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B.xctestrun",
+  "settingsTemplate": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/final-candidate-build/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+  "scriptSha256": "59c7e84749db1dd308cf1482d2b4c469f17e17ddc426ecd93d4e65f3a31af64f",
+  "patchSha256": "41a4aa36b13b93ee65011ef8590d9aed0cdf69eac11cbde765c34942a6aca9f1",
+  "findings": [],
+  "settingsHelperExecutions": 2,
+  "initialBootStates": {
+    "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+    "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+    "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+    "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+    "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+    "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+    "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+    "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+    "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown",
+    "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+    "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+    "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+    "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown"
+  },
+  "originalSimctlSettings": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  },
+  "originalNativeSettings": {
+    "boldText": false,
+    "reduceMotion": false,
+    "increaseContrast": false,
+    "orientation": "portrait"
+  },
+  "batch": {
+    "device": "iPhone 17",
+    "settings": {
+      "appearance": "light",
+      "contentSize": "large",
+      "orientation": "portrait",
+      "boldText": false,
+      "reduceMotion": false,
+      "increaseContrast": false
+    },
+    "caseCount": 1,
+    "auditCount": 1,
+    "nativeTestCount": 1,
+    "runfileSha256": "8a1bb1ffdff29417458aab890dba98e7e22765d36ca2dc2fb038cab713499845",
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-1/batches/001/result.xcresult",
+    "resultBundleSha256": "15ec41b7d9c8323df62758d866eb4ecb7392237592a59e4ae97494ecf74b8252",
+    "attachmentDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-1/batches/001/attachments",
+    "attachmentSha256": "3ad98518f87232a5c53dfb702283a8b423214fa5603ad1514485c255ea5218d8",
+    "summarySha256": "e31801d9e88064d8ae164776b7e5e3eb8c528b01905fe42d1be077e49f228cce",
+    "logSha256": "351e26664bc4ad86e1593208382e0b33b86310b7d2ef90c3968ce74465b8f095",
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-1/batches/001/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-1/batches/001/result.xcresult"
+    ],
+    "exit": 0,
+    "caseRecords": [
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "copyConfirmation",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation"
+        ]
+      }
+    ]
+  },
+  "nativeExit": 0,
+  "nativeSummary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "x86_64",
+          "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+          "deviceName": "iPhone 17",
+          "modelName": "iPhone 17",
+          "osBuildNumber": "23E254a",
+          "osVersion": "26.4.1",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "ACEClientAppUITests · Built with macOS 26.6.2",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1789563242.466,
+    "passedTests": 1,
+    "result": "Passed",
+    "skippedTests": 0,
+    "startTime": 1789563169.569,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - ACEClientAppUITests",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "nativeOutcome": "PASSED",
+  "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-1/batches/001/result.xcresult",
+  "auditCalls": [
+    {
+      "arm": "B",
+      "auditName": "contrast",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "elementDetection",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "hitRegion",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "sufficientElementDescription",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "dynamicType",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "textClipped",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "trait",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "initial"
+    },
+    {
+      "arm": "B",
+      "auditName": "contrast",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "elementDetection",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "hitRegion",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "sufficientElementDescription",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "dynamicType",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "textClipped",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    },
+    {
+      "arm": "B",
+      "auditName": "trait",
+      "error": null,
+      "issueObserved": false,
+      "repetition": "1",
+      "returnedNormally": true,
+      "viewport": "copy-confirmation"
+    }
+  ],
+  "diagnosticCompletions": [
+    {
+      "allAuditCallsReturnedNormally": true,
+      "allAuditTypesAttempted": true,
+      "arm": "B",
+      "attemptedAuditCalls": 14,
+      "auditErrors": [],
+      "bothViewportAuditGroupsCompleted": true,
+      "callbackIssueCount": 0,
+      "completedViewports": [
+        "copy-confirmation",
+        "initial"
+      ],
+      "expectedAuditCalls": 14,
+      "repetition": "1",
+      "returnedNormallyAuditCalls": 14
+    }
+  ],
+  "auditErrors": [],
+  "placements": [],
+  "imageFiles": {
+    "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial": [
+      "237AB132-2D19-48DB-8912-812DA8B5B299.png"
+    ],
+    "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation": [
+      "9706D7C6-509D-4F61-AA17-F6DDE5840163.png"
+    ]
+  },
+  "resultBundleSha256": "15ec41b7d9c8323df62758d866eb4ecb7392237592a59e4ae97494ecf74b8252",
+  "attachmentSha256": "3ad98518f87232a5c53dfb702283a8b423214fa5603ad1514485c255ea5218d8",
+  "logSha256": "351e26664bc4ad86e1593208382e0b33b86310b7d2ef90c3968ce74465b8f095",
+  "summarySha256": "e31801d9e88064d8ae164776b7e5e3eb8c528b01905fe42d1be077e49f228cce",
+  "runfileSha256": "8a1bb1ffdff29417458aab890dba98e7e22765d36ca2dc2fb038cab713499845",
+  "collectionComplete": true,
+  "stopRequired": false,
+  "finalBootStates": {
+    "1B679010-6F5A-4D97-A181-3968B3830434": "Shutdown",
+    "D1BAA05C-52DD-4E57-832F-C0A75718E085": "Booted",
+    "74B884BD-A3B2-477E-8920-809C3D1A84EF": "Shutdown",
+    "6D4CC394-ED5F-4F3B-82EE-1978AAD6A09A": "Shutdown",
+    "2EB0863C-470E-467D-A0C6-CD216DA70C67": "Shutdown",
+    "6D2FD18F-22B3-4403-ADFA-A5FB76F3C874": "Shutdown",
+    "3BF9AAA5-33AA-4EF3-BFEC-65C83DF5D79F": "Booted",
+    "66B17C2B-8BF1-425D-85B8-B82725CC75B2": "Shutdown",
+    "FD4742B6-DE2A-4F17-B056-086A0E90C1C0": "Shutdown",
+    "16B7A51F-D11A-4EF8-B20B-E462425D5ED8": "Shutdown",
+    "7726EF6F-8629-4BCB-8A2C-95C9B16159F3": "Shutdown",
+    "8DF2E182-D0AE-487C-8C08-3EE8586EFE84": "Shutdown",
+    "C062EF0D-0B36-4B64-BC49-EF6C9DA9F658": "Shutdown"
+  },
+  "candidateUnchanged": true,
+  "restorationFailures": [],
+  "finishedUTC": "2026-09-16T12:55:12.998508+00:00",
+  "orchestrationExit": 0
+}

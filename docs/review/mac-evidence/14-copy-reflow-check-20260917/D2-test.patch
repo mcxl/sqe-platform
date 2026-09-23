@@ -1,0 +1,202 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 54db2a6..5a2446b 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -1,6 +1,7 @@
+ import Foundation
+ import CoreGraphics
+ import XCTest
++import Synchronization
+ 
+ final class ACEClientAppUITests: XCTestCase {
+     private struct CoverageSettings: Codable, Hashable {
+@@ -32,6 +33,189 @@ final class ACEClientAppUITests: XCTestCase {
+         let increaseContrast: Bool?
+     }
+ 
++    // Temporary D2 diagnostic. Never part of an acceptance candidate.
++    private final class D2Issues: Sendable {
++        private let records = Mutex<[Data]>([])
++        func append(_ data: Data) { records.withLock { $0.append(data) } }
++        var snapshot: [Data] { records.withLock { $0 } }
++    }
++
++    func testCopyReflowCheck() {
++        let environment = ProcessInfo.processInfo.environment
++        guard let arm = environment["ACE_D2_ARM"], ["X", "Y"].contains(arm),
++              let countText = environment["ACE_D2_MAX_CALLS"], let maxCalls = Int(countText),
++              [2, 30].contains(maxCalls), environment["ACE_UI_TEST_APPEARANCE"] == nil else {
++            XCTFail("D2 requires arm X/Y, 2/30 post-copy calls, and no appearance override")
++            return
++        }
++        let forceFailure = environment["ACE_D2_FORCE_FAIL"] == "1"
++        guard !forceFailure || (arm == "Y" && maxCalls == 2) else {
++            XCTFail("D2 deliberate failure is permitted only in the two-call Y harness")
++            return
++        }
++        let previousContinue = continueAfterFailure
++        continueAfterFailure = true
++        let previousOrientation = XCUIDevice.shared.orientation
++        defer {
++            XCUIDevice.shared.orientation = previousOrientation
++            continueAfterFailure = previousContinue
++        }
++        let expected = CoverageSettings(appearance: "light", contentSize: "large", orientation: "portrait",
++                                        boldText: false, reduceMotion: false, increaseContrast: false)
++        XCUIDevice.shared.orientation = .portrait
++        let app = launchForCoverageObservation(scenario: "copyConfirmation")
++        defer { app.terminate() }
++        guard waitForCoverageState(in: app, scenario: "copyConfirmation"),
++              assertRequestedOrientation(in: app, requested: "portrait"),
++              let observed = observedSettings(in: app),
++              requireCoverage(observed == expected, "D2 observed settings differ: \(observed.payload)") else { return }
++        emitJSON(marker: "ACE_D2_SETTINGS", payload: ["observed": observed.payload, "arm": arm])
++        let caseID = "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0"
++        var screenshots: [String] = []
++        captureCoverageViewport(in: app, caseID: caseID, viewport: "initial", screenshots: &screenshots)
++        let copy = app.buttons["Copy action 1"]
++        let scroll = app.scrollViews.firstMatch
++        d2InitialAudit(in: app, copy: copy, scroll: scroll, arm: arm)
++
++        scrollUntilVisible(copy, in: app, field: "Copy action 1")
++        guard verifyActionTarget(copy, name: "Copy action 1") else { return }
++        copy.tap()
++        let confirmation = coverageElement(in: app, labeled: "Copied Action 1.")
++        guard requireCoverage(confirmation.waitForExistence(timeout: 5), "Copy confirmation is missing") else { return }
++        scrollUntilVisible(confirmation, in: app, field: "Copy confirmation")
++        guard requireCoverage(isFullyVisible(confirmation, in: scroll), "Copy confirmation must be visible") else { return }
++        captureCoverageViewport(in: app, caseID: caseID, viewport: "copy-confirmation", screenshots: &screenshots)
++
++        for call in 1...maxCalls {
++            if call >= 2 {
++                drag(scroll, upward: true)
++                Thread.sleep(forTimeInterval: 0.5)
++            }
++            if d2PostCopyAudit(in: app, copy: copy, scroll: scroll, arm: arm, call: call) { return }
++            if forceFailure && call == 2 { XCTFail("D2 deliberate harness failure") }
++        }
++    }
++
++    private func d2InitialAudit(in app: XCUIApplication, copy: XCUIElement, scroll: XCUIElement, arm: String) {
++        let before = copy.frame
++        let scrollBefore = scroll.frame
++        let failuresBefore = testRun?.failureCount ?? 0
++        let start = ProcessInfo.processInfo.systemUptime
++        var helperReturned = false
++        emitJSON(marker: "ACE_D2_CALL_STARTED", payload: ["arm": arm, "call": 0, "uptime": start])
++        defer {
++            let end = ProcessInfo.processInfo.systemUptime
++            let after = copy.frame
++            emitJSON(marker: "ACE_D2_CALL", payload: [
++                "arm": arm, "call": 0, "requestedAuditName": "all", "comparative": false,
++                "preFrame": Self.frameJSON(before), "postFrame": Self.frameJSON(after),
++                "scrollPreFrame": Self.frameJSON(scrollBefore), "scrollPostFrame": Self.frameJSON(scroll.frame),
++                "deltaY": Double(after.minY - before.minY), "startUptime": start, "endUptime": end,
++                "durationSeconds": end - start, "helperReturned": helperReturned,
++                "nativeFailureCountDelta": (testRun?.failureCount ?? 0) - failuresBefore,
++                "issueSourceMarker": "ACE_A11Y_ISSUE", "issues": NSNull(), "issueCount": NSNull(),
++                "issueResolution": "Join unchanged helper issue lines between this call's start/end markers in retained native.log",
++                "errorSource": "Unchanged helper retains thrown error in native assertion and log",
++                "frameEvidence": "Settled positions only; not audit sample positions"
++            ])
++        }
++        // Keep the committed initial audit helper unchanged. Its issue JSON is joined externally.
++        helperReturned = runCoverageAudit(in: app, scenario: "copyConfirmation", viewport: "initial")
++    }
++
++    private func d2PostCopyAudit(in app: XCUIApplication, copy: XCUIElement, scroll: XCUIElement,
++                               arm: String, call: Int) -> Bool {
++        let before = copy.frame
++        let scrollBefore = scroll.frame
++        let start = ProcessInfo.processInfo.systemUptime
++        let collector = D2Issues()
++        var errorText: String?
++        var stopReason: String?
++        var shouldStop = false
++        let auditName = arm == "X" ? "all" : "all-minus-dynamicType"
++        emitJSON(marker: "ACE_D2_CALL_STARTED", payload: ["arm": arm, "call": call, "uptime": start])
++        do {
++        defer {
++            let end = ProcessInfo.processInfo.systemUptime
++            let after = copy.frame
++            var issues: [[String: Any]] = []
++            for data in collector.snapshot {
++                do {
++                    guard let issue = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
++                        XCTFail("D2 issue payload is not an object")
++                        continue
++                    }
++                    issues.append(issue)
++                } catch { XCTFail("D2 issue decoding failed: \(error.localizedDescription)") }
++            }
++            let delta = Double(after.minY - before.minY)
++            if issues.contains(where: { issue in
++                let element = issue["element"] as? [String: Any]
++                return (issue["isCopyContrast"] as? Bool) == true
++                    && ["Copy action", "Copy action 1"].contains(element?["label"] as? String ?? "")
++            }) { stopReason = "Copy contrast finding" }
++            if arm == "Y" && delta != 0 { stopReason = stopReason ?? "Y settled delta is non-zero" }
++            if errorText != nil { stopReason = stopReason ?? "Thrown audit error" }
++            shouldStop = stopReason != nil
++            var record: [String: Any] = [
++                "arm": arm, "call": call, "requestedAuditName": auditName, "comparative": true,
++                "preFrame": Self.frameJSON(before), "postFrame": Self.frameJSON(after),
++                "scrollPreFrame": Self.frameJSON(scrollBefore), "scrollPostFrame": Self.frameJSON(scroll.frame),
++                "deltaY": delta, "startUptime": start, "endUptime": end, "durationSeconds": end - start,
++                "issueCount": issues.count, "issues": issues, "addedDragAndHalfSecondDelay": call >= 2,
++                "diagnosticOnly": true, "frameEvidence": "Settled positions only; not audit sample positions"
++            ]
++            if let errorText { record["error"] = errorText }
++            emitJSON(marker: "ACE_D2_CALL", payload: record)
++            if let stopReason { emitJSON(marker: "ACE_D2_STOP", payload: ["arm": arm, "call": call, "reason": stopReason]) }
++        }
++        let handler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
++            var payload = Self.d2IssuePayload(issue, auditName: auditName, auditStart: start,
++                                              callbackElapsedSeconds: ProcessInfo.processInfo.systemUptime - start,
++                                              repetition: "one-launch", viewport: "copy-confirmation", arm: arm)
++            payload["call"] = call
++            payload["isCopyContrast"] = issue.auditType.contains(.contrast)
++                && ["Copy action", "Copy action 1"].contains(issue.element?.label ?? "")
++            do { collector.append(try JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys])) }
++            catch { XCTFail("D2 issue encoding failed: \(error.localizedDescription)") }
++            let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
++            let attachmentName = "D2 \(arm) call \(call) callback"
++            attachment.name = attachmentName
++            attachment.lifetime = .keepAlways
++            XCTContext.runActivity(named: attachmentName) { $0.add(attachment) }
++            return false
++        }
++        do {
++            let types: XCUIAccessibilityAuditType = arm == "X" ? .all : XCUIAccessibilityAuditType.all.subtracting(.dynamicType)
++            try app.performAccessibilityAudit(for: types, handler)
++        } catch {
++            errorText = error.localizedDescription
++            XCTFail("D2 audit threw at call \(call): \(error.localizedDescription)")
++        }
++        }
++        return shouldStop
++    }
++
++    private static func d2IssuePayload(_ issue: XCUIAccessibilityAuditIssue, auditName: String,
++                                       auditStart: TimeInterval, callbackElapsedSeconds: TimeInterval,
++                                       repetition: String, viewport: String, arm: String) -> [String: Any] {
++        var element: [String: Any] = ["identifier": "", "label": "", "type": "unavailable"]
++        if let auditedElement = issue.element {
++            element["identifier"] = limitedAuditText(auditedElement.identifier)
++            element["label"] = limitedAuditText(auditedElement.label)
++            element["type"] = limitedAuditText(String(describing: auditedElement.elementType))
++            element["frame"] = frameJSON(auditedElement.frame)
++        }
++        return ["arm": arm, "auditStartUptimeSeconds": auditStart,
++                "auditType": limitedAuditText(String(describing: issue.auditType)),
++                "callbackElapsedSeconds": callbackElapsedSeconds,
++                "callbackEvidence": "XCUIScreen screenshot observed when the callback ran; not the audit sample rendering",
++                "compactDescription": limitedAuditText(issue.compactDescription),
++                "detailedDescription": limitedAuditText(issue.detailedDescription),
++                "auditTypeRawValue": NSNumber(value: issue.auditType.rawValue), "element": element,
++                "requestedAuditName": auditName, "repetition": repetition, "viewport": viewport]
++    }
++
+     func testCoverageBatch() {
+         continueAfterFailure = false
+         guard let cases = decodedCoverageCases(), !cases.isEmpty else { return }

@@ -1,0 +1,44 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName": "iPhone 17",
+        "modelName": "iPhone 17",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientAppUITests · Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1789611795.697,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789611466.063,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "The test runner failed to initialize for UI testing. (Underlying Error: Timed out while loading Accessibility.)",
+      "targetName": "ACEClientAppUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppUITests-Runner (73015) encountered an error",
+      "testName": "ACEClientAppUITests-Runner (73015) encountered an error"
+    }
+  ],
+  "title": "Test - ACEClientAppUITests",
+  "topInsights": [],
+  "totalTestCount": 1
+}

@@ -1,0 +1,50 @@
+{
+  "status": "image inspection complete; Arm A repetition 4 only",
+  "source": {
+    "attachmentsDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/attachments",
+    "manifest": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/attachments/manifest.json",
+    "testIdentifier": "ACEClientAppUITests/testCoverageBatch()",
+    "manifestValidated": true
+  },
+  "deduplication": {
+    "pngAttachmentCount": 2,
+    "distinctPNGCount": 2,
+    "comparedAgainst": "Arm A repetitions 1 through 3 attachment hashes",
+    "byteIdenticalWithPriorRepetitions": [],
+    "priorHashes": [
+      "70d94689ec2bde6f649ade8e29d894f84b991b058744363a4dbe4c7b5f21ea65",
+      "98c7bed0c2b01065f5031b5776c23e6978fef949481ec236387cd86e63c94a86",
+      "53193a962449b733a80112dacec3c41b0ada81c771b80b54d6d40cc200b1a948",
+      "b35c9b85fdc476576a511d3e1df66306308a33ee93f660c7b98ca4c6608c6ade",
+      "f69cb5a47242ebb0c6ec08523c8fae5e628738c0cc9472df1916a81d8b068828",
+      "8737d10d74375b06ceca1cea1c23f7987437e9e38464c5d4f9dadada592f7a22"
+    ]
+  },
+  "inspectedAtOriginalResolution": true,
+  "images": [
+    {
+      "exportedFileName": "EDEF2324-EDE2-47EE-A850-90DBAF1A7E98.png",
+      "sha256": "ef1b75b593ead13fa1d0fce5da4c4f2599ca73780ff945b812d2352d152dec4b",
+      "bytes": 192319,
+      "timestamp": 1789560771.117,
+      "suggestedHumanReadableName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_4B75DBBD-EE30-44ED-93DF-9A9C62D3B7BC.png",
+      "byteIdenticalSource": null,
+      "observation": "Portrait light screen at the initial Release position. Release Details and Conclusion are readable. The Actions heading and upper Action 1 card are visible; the Copy control is below this viewport. No overlap or clipping is visible in the displayed content."
+    },
+    {
+      "exportedFileName": "E60141D7-1573-4660-8227-924CF997FC10.png",
+      "sha256": "ce41ac2363b59bd63d280f722e29d8f8327ab4f91527fb6c5fdd5ca53fb526bd",
+      "bytes": 188048,
+      "timestamp": 1789560785.051,
+      "suggestedHumanReadableName": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_3CDBE931-8A93-481D-856F-E62E88D31ECE.png",
+      "byteIdenticalSource": null,
+      "observation": "Scrolled Action 1 view. Copy action and Copied Action 1. are fully visible inside the card. Refresh is visible and Sign out begins below it. No overlap or clipping is visible in the displayed Action card."
+    }
+  ],
+  "limitations": [
+    "This record inspects only the two retained PNG attachments for Arm A repetition 4. It does not inspect later repetitions or determine the Arm A outcome.",
+    "Although the displayed states resemble prior repetitions, neither PNG is byte-identical to any inspected prior PNG. Both repetition 4 PNGs were inspected independently.",
+    "The images record two retained screen states. They do not establish an accessibility-audit sample time, contrast measurement, or fault cause.",
+    "No callback-time screenshot exists in this Arm A pass attachment set."
+  ]
+}

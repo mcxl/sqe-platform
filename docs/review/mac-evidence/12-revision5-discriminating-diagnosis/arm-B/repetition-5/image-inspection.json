@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "recordedUTC": "2026-09-16T20:55:29.939913+00:00",
+  "reviewer": "primary agent",
+  "method": "Full-resolution PNGs streamed from Mac storage into image inspection; no Windows evidence files exported",
+  "inspectedAtOriginalResolution": true,
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-5/batches/001/attachments/978EABF8-C9B6-4667-84B6-D8209FF8BC3C.png",
+      "sha256": "61085bbbbb55a4fa8a93a7722fe19f5bbe028d40200e7a2fb42ef55d3bd340ee",
+      "bytes": 193312,
+      "observation": "Initial release: details and conclusion readable; Action 1 continues below viewport. No visible text overlap."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-B/repetition-5/batches/001/attachments/E3AB4243-B126-4221-8C79-BA6665B40EE5.png",
+      "sha256": "211fc45228fdac1a6c73df3b235ecfbb5aabee39a8054065c9f140f2649c7e29",
+      "bytes": 191014,
+      "observation": "Scrolled Action 1: Copy and confirmation readable in lower half; Refresh and Sign out readable beneath."
+    }
+  ],
+  "distinctPNGCount": 2,
+  "limitations": [
+    "Still images do not establish audit sampling appearance, measured contrast, root cause or acceptance.",
+    "C1 post-copy audit did not execute. No final placement frame record exists."
+  ]
+}

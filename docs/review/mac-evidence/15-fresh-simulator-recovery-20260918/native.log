@@ -1,0 +1,154 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/ACEClientAppUITests.xctestrun -destination id=7D5FC194-1F43-41DA-94B8-6A32FCD9F584 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult
+
+2026-09-18 00:11:56.168 xcodebuild[31522:9852385] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult
+
+2026-09-18 00:11:56.247 xcodebuild[31522:9852385] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-18 00:11:56.299 xcodebuild[31522:9852385] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-18 00:15:00.212992+1000 ACEClientAppUITests-Runner[31841:9859515] [Default] Running tests...
+2026-09-18 00:15:00.644763+1000 ACEClientAppUITests-Runner[31841:9859964] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-18 00:15:00.809969+1000 ACEClientAppUITests-Runner[31841:9859968] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-09-18 00:15:36.338.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-18 00:15:36.340.
+Test Suite 'ACEClientAppUITests' started at 2026-09-18 00:15:36.342.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCopyReflowCheck]' started.
+    t =     0.02s Start Test at 2026-09-18 00:15:36.361
+    t =     1.68s Set Up
+    t =     1.69s Getting device orientation
+    t =     1.69s Setting device orientation to Portrait
+    t =     1.72s     Device orientation changed to Portrait
+    t =     1.81s     Wait for com.apple.springboard to idle
+    t =     2.14s Open com.example.aceclientapp
+    t =     2.14s     Launch com.example.aceclientapp
+2026-09-18 00:15:40.603 xcodebuild[31522:9852385] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-18 00:15:40.603 xcodebuild[31522:9852385] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     7.62s         Setting up automation session
+    t =    15.84s         Wait for com.example.aceclientapp to idle
+    t =    19.72s Waiting 5.0s for "Current Release" StaticText to exist
+    t =    20.81s     Checking `Expect predicate `existsNoRetry == 1` for object "Current Release" StaticText`
+    t =    20.81s         Checking existence of `"Current Release" StaticText`
+    t =    21.33s Checking existence of `"Current Release" StaticText`
+    t =    21.46s Find the "Current Release" StaticText
+    t =    21.62s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    21.69s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.07749851600965485,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+    t =    21.77s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    22.86s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    22.86s         Checking existence of `"Effective interface style" Any`
+    t =    24.00s Find the "Effective interface style" Any
+    t =    24.09s Find the "Effective interface style" ScrollView
+ACE_D2_SETTINGS {"arm":"Y","observed":{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false}}
+    t =    25.89s Added attachment named 'Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial'
+    t =    25.90s Find the "Copy action 1" Button
+    t =    26.04s Find the ScrollView (First Match)
+ACE_D2_CALL_STARTED {"arm":"Y","call":0,"uptime":367123.25423950702}
+    t =    38.97s Find the "Copy action 1" Button
+    t =    39.14s Find the "Effective interface style" ScrollView
+ACE_D2_CALL {"arm":"Y","call":0,"comparative":false,"deltaY":0,"durationSeconds":12.867727053991985,"endUptime":367136.12196656101,"errorSource":"Unchanged helper retains thrown error in native assertion and log","frameEvidence":"Settled positions only; not audit sample positions","helperReturned":true,"issueCount":null,"issueResolution":"Join unchanged helper issue lines between this call's start\/end markers in retained native.log","issues":null,"issueSourceMarker":"ACE_A11Y_ISSUE","nativeFailureCountDelta":0,"postFrame":{"height":58,"width":144,"x":32,"y":996},"preFrame":{"height":58,"width":144,"x":32,"y":996},"requestedAuditName":"all","scrollPostFrame":{"height":874,"width":402,"x":0,"y":0},"scrollPreFrame":{"height":874,"width":402,"x":0,"y":0},"startUptime":367123.25423950702}
+    t =    39.19s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    40.27s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    40.27s         Checking existence of `ScrollView (First Match)`
+    t =    40.39s Checking existence of `"Copy action 1" Button`
+    t =    40.50s Find the "Copy action 1" Button
+    t =    40.66s Find the ScrollView (First Match)
+    t =    40.75s Checking existence of `"Copy action 1" Button`
+    t =    40.90s Find the "Copy action 1" Button
+    t =    41.13s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    41.13s     Wait for com.example.aceclientapp to idle
+    t =    41.15s     Find the "Effective interface style" ScrollView
+    t =    41.21s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    41.35s     Synthesize event
+    t =    41.36s         Find the "Effective interface style" ScrollView
+    t =    41.45s         Find the "Effective interface style" ScrollView
+    t =    41.55s         Find the "Effective interface style" ScrollView
+    t =    41.70s         Find the "Effective interface style" ScrollView
+    t =    41.92s         Find the "Effective interface style" ScrollView
+    t =    43.23s     Wait for com.example.aceclientapp to idle
+    t =    43.26s Checking existence of `"Copy action 1" Button`
+    t =    43.38s Find the "Copy action 1" Button
+    t =    43.60s Find the "Effective interface style" ScrollView
+    t =    43.68s Checking existence of `"Copy action 1" Button`
+    t =    43.82s Find the "Copy action 1" Button
+    t =    44.06s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    44.07s     Wait for com.example.aceclientapp to idle
+    t =    44.08s     Find the "Effective interface style" ScrollView
+    t =    44.15s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    44.27s     Synthesize event
+    t =    44.28s         Find the "Effective interface style" ScrollView
+    t =    44.40s         Find the "Effective interface style" ScrollView
+    t =    44.60s         Find the "Effective interface style" ScrollView
+    t =    44.69s         Find the "Effective interface style" ScrollView
+    t =    44.79s         Find the "Effective interface style" ScrollView
+    t =    45.95s     Wait for com.example.aceclientapp to idle
+    t =    46.30s Checking existence of `"Copy action 1" Button`
+    t =    46.41s Find the "Copy action 1" Button
+    t =    46.58s Find the "Copy action 1" Button
+    t =    46.85s Find the "Effective interface style" ScrollView
+    t =    46.93s Checking existence of `"Copy action 1" Button`
+    t =    47.14s Find the "Copy action 1" Button
+    t =    47.41s Find the "Copy action 1" Button
+    t =    47.68s Tap "Copy action 1" Button
+    t =    47.68s     Wait for com.example.aceclientapp to idle
+    t =    47.69s     Find the "Copy action 1" Button
+    t =    47.83s     Check for interrupting elements affecting "Copy action 1" Button
+    t =    47.96s     Synthesize event
+    t =    48.36s     Wait for com.example.aceclientapp to idle
+    t =    48.40s Waiting 5.0s for Any (First Match) to exist
+    t =    49.46s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    49.46s         Checking existence of `Any (First Match)`
+    t =    49.65s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    50.73s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    50.73s         Checking existence of `ScrollView (First Match)`
+    t =    50.76s Checking existence of `Any (First Match)`
+    t =    50.92s Find the Any (First Match)
+    t =    51.27s Find the "Copied Action 1." StaticText
+    t =    51.55s Find the ScrollView (First Match)
+    t =    51.67s Checking existence of `"Copied Action 1." StaticText`
+    t =    51.90s Find the "Copied Action 1." StaticText
+    t =    52.15s Find the "Copied Action 1." StaticText
+    t =    52.39s Find the "Effective interface style" ScrollView
+    t =    53.54s Added attachment named 'Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation'
+    t =    53.55s Find the "Copy action 1" Button
+    t =    53.72s Find the "Effective interface style" ScrollView
+ACE_D2_CALL_STARTED {"arm":"Y","call":1,"uptime":367150.94737224304}
+    t =    62.25s Find the Any (Descendant with identity binding to AX element pid: 31957, elementOrHash.elementID: 4397813680.34)
+    t =    62.33s Find the "Copy action" StaticText
+    t =    62.42s Find the "Copy action" StaticText
+    t =    62.50s Find the "Copy action" StaticText
+    t =    62.62s Find the "Copy action" StaticText
+    t =    62.95s Find the Any (Descendant with identity binding to AX element pid: 31957, elementOrHash.elementID: 4397813680.34)
+    t =    63.04s Find the "Copy action" StaticText
+    t =    64.55s D2 Y call 1 callback
+    t =    64.56s Find the Any (Descendant with identity binding to AX element pid: 31957, elementOrHash.elementID: 4397813680.34)
+    t =    64.65s Checking existence of `"Copy action" StaticText`
+    t =    64.71s Find the "Copy action" StaticText
+LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:94: error: -[ACEClientAppUITests.ACEClientAppUITests testCopyReflowCheck] : Contrast failed
+    t =    68.74s Find the "Copy action 1" Button
+    t =    68.90s Find the "Effective interface style" ScrollView
+ACE_D2_CALL {"addedDragAndHalfSecondDelay":false,"arm":"Y","call":1,"comparative":true,"deltaY":63.666666666666629,"diagnosticOnly":true,"durationSeconds":14.931170879979618,"endUptime":367165.87854312302,"frameEvidence":"Settled positions only; not audit sample positions","issueCount":1,"issues":[{"arm":"Y","auditStartUptimeSeconds":367150.94737224304,"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","auditTypeRawValue":1,"call":1,"callbackElapsedSeconds":8.4687046879553236,"callbackEvidence":"XCUIScreen screenshot observed when the callback ran; not the audit sample rendering","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":144,"x":32,"y":685.66666666666663},"identifier":"","label":"Copy action","type":"XCUIElementType(rawValue: 48)"},"isCopyContrast":true,"repetition":"one-launch","requestedAuditName":"all-minus-dynamicType","viewport":"copy-confirmation"}],"postFrame":{"height":58,"width":144,"x":32,"y":685.66666666666663},"preFrame":{"height":58,"width":144,"x":32,"y":622},"requestedAuditName":"all-minus-dynamicType","scrollPostFrame":{"height":873.99999999999989,"width":402,"x":0,"y":-2.8421709430404007e-14},"scrollPreFrame":{"height":874,"width":402,"x":0,"y":0},"startUptime":367150.94737224304}
+ACE_D2_STOP {"arm":"Y","call":1,"reason":"Copy contrast finding"}
+    t =    68.94s Terminate com.example.aceclientapp:31957
+    t =    70.01s Setting device orientation to Unknown
+    t =    70.02s     Device orientation changed to Unknown
+    t =    70.90s     Wait for com.apple.springboard to idle
+    t =    70.93s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCopyReflowCheck]' failed (81.087 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-18 00:16:57.449.
+	 Executed 1 test, with 1 failure (0 unexpected) in 81.087 (81.107) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-18 00:16:57.451.
+	 Executed 1 test, with 1 failure (0 unexpected) in 81.087 (81.111) seconds
+Test Suite 'Selected tests' failed at 2026-09-18 00:16:57.453.
+	 Executed 1 test, with 1 failure (0 unexpected) in 81.087 (81.115) seconds
+2026-09-18 00:18:17.548 xcodebuild[31522:9852385] [MT] IDETestOperationsObserverDebug: 376.218 elapsed -- Testing started completed.
+2026-09-18 00:18:17.548 xcodebuild[31522:9852385] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-18 00:18:17.548 xcodebuild[31522:9852385] [MT] IDETestOperationsObserverDebug: 376.218 sec, +376.218 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

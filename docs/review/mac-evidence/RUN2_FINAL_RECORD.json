@@ -1,0 +1,103 @@
+{
+  "timeUTC": "2026-09-15T07:41:14.293712+00:00",
+  "candidate": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "pilotStatus": "failed",
+  "pilotExit": 2,
+  "pilotScreenCasesCompleted": 0,
+  "nativeAuditInvocationsCompleted": 0,
+  "pilotStartedUTC": "2026-09-15T06:44:40.593901+00:00",
+  "pilotFinishedUTC": "2026-09-15T07:34:12.650740+00:00",
+  "candidateUnchanged": true,
+  "nativeSettingsCommands": {
+    "001-set": {
+      "exit": 65,
+      "seconds": 1100.877,
+      "result": "Failed",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "testFailures": [
+        {
+          "failureText": "Failed to get matching snapshots: Timed out while fetching snapshot from testmanagerd..",
+          "targetName": "ACEClientAppUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+          "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+          "testName": "testConfigureAccessibilitySettings()"
+        }
+      ],
+      "summarySha256": "570783aa844a059878245e52c98498aaada9da440614595e06b4d4705ee34065"
+    },
+    "iPhone 17 Pro Max-read": {
+      "exit": 0,
+      "seconds": 107.402,
+      "result": "Passed",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": [],
+      "summarySha256": "bdc2298819ce74e92c4e8bdb75fd8d3777663e6a1d6f899cdc49a135bfd51616"
+    },
+    "iPhone 17 Pro Max-restore": {
+      "exit": 65,
+      "seconds": 1140.162,
+      "result": "Failed",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "testFailures": [
+        {
+          "failureText": "Failed to get matching snapshots: Error getting main window kAXErrorServerNotFound",
+          "targetName": "ACEClientAppUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+          "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+          "testName": "testConfigureAccessibilitySettings()"
+        }
+      ],
+      "summarySha256": "e350a687cc0c4218b6fecdaf530d104b46672abd20b3d80a39ca445b48345869"
+    },
+    "iPhone 17-read": {
+      "exit": 0,
+      "seconds": 281.199,
+      "result": "Passed",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": [],
+      "summarySha256": "b583f76898e7f1b9786500799d679bf4e44644bc83b41fe0dd31d0102d290062"
+    },
+    "iPhone 17-restore": {
+      "exit": 0,
+      "seconds": 110.1,
+      "result": "Passed",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": [],
+      "summarySha256": "99e2682984b14fa8aae86e6d3a1024091b852dad0f5dfc19efccb1451f42f809"
+    }
+  },
+  "finalRestoration": {
+    "status": "passed after separate recovery",
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/04-pro-max-restore-recovery/result.json",
+    "sha256": "ebf1b557a568c5de958759b4116188062eda868c392faa0d365df2ad7d215270",
+    "observedNativeFlags": {
+      "boldText": false,
+      "reduceMotion": false,
+      "increaseContrast": false,
+      "orientation": "portrait"
+    },
+    "observedSimctlSettings": {
+      "appearance": "light",
+      "content_size": "large",
+      "increase_contrast": "disabled"
+    },
+    "finalBootStates": {
+      "iPhone 17": "Shutdown",
+      "iPhone 17 Pro Max": "Booted",
+      "unrelated iPhone 16 Pro Max": "Booted"
+    },
+    "limitation": "The original pilot restoration failure remains a failure; this later recovery does not turn the pilot into a pass."
+  }
+}

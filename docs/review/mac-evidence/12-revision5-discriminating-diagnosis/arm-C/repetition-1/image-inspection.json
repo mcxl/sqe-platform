@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "recordedUTC": "2026-09-16T20:55:29.939913+00:00",
+  "reviewer": "primary agent",
+  "method": "Full-resolution PNGs streamed from Mac storage into image inspection; no Windows evidence files exported",
+  "inspectedAtOriginalResolution": true,
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-C/repetition-1/batches/001/attachments/D2129B60-A41F-4391-8A2B-264910CBEA1C.png",
+      "sha256": "86149f3642bd8cbdfbb6433b0e97978d95eb959af6d6f92c76527928d75294b2",
+      "bytes": 192033,
+      "observation": "C1 initial release state: details and conclusion readable; Action 1 starts near the viewport bottom."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-C/repetition-1/batches/001/attachments/FFF1AE2D-A636-40B1-982D-DC9055290044.png",
+      "sha256": "95abec6bd25ef556356a46bb70b373e42464abd5d006b6e4e66485b3ef7fc940",
+      "bytes": 189791,
+      "observation": "C1 retained scrolled state: Copy and confirmation visible in lower half; Refresh and Sign out beneath. This capture does not establish the final attempted placement."
+    }
+  ],
+  "distinctPNGCount": 2,
+  "limitations": [
+    "Still images do not establish audit sampling appearance, measured contrast, root cause or acceptance.",
+    "C1 post-copy audit did not execute. No final placement frame record exists."
+  ]
+}

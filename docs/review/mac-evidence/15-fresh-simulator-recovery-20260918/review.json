@@ -1,0 +1,137 @@
+{
+  "attachments": [
+    {
+      "bytes": 203544,
+      "file": "92019EDE-118E-411C-BED7-A6892BF07D59.png",
+      "name": "D2 Y call 1 callback_0_D0383284-0D25-4895-930C-53A46AD7EBE9.png",
+      "sha256": "02bf9e461cc996570ccf387db87cfd5ed386f4c7b6ae0119877f4b8d4a023d7b"
+    },
+    {
+      "bytes": 190535,
+      "file": "80187066-4DC3-42D8-B100-032FD6AB5C49.png",
+      "name": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_AFA2BE97-5BEA-4185-8C1B-4B972645B605.png",
+      "sha256": "48cdd107b9618b02a21fac95a74d525f88b5b565b41494083d40d64d092590cd"
+    },
+    {
+      "bytes": 1211,
+      "file": "74BAE8FC-BA07-40CD-BE5F-7F0FEB1F48BF",
+      "name": "UI Snapshot 2026-09-18 at 12.16.24 am",
+      "sha256": "554f53c70ac0846edc0ef3f2119f81076aa0326901054c9e4f5562ff040a4f20"
+    },
+    {
+      "bytes": 1879,
+      "file": "FEF4EDA2-FFD9-4E35-AAB2-4EF465B86081",
+      "name": "Synthesized Event 2026-09-18 at 12.16.24 am",
+      "sha256": "bec2839c87d2e645fa2d5bb33605a2b2b9ac213a4bf156ee89d30ee3cc88cad0"
+    },
+    {
+      "bytes": 1211,
+      "file": "865808C3-5296-424E-99F4-E5B4ECF81AEC",
+      "name": "UI Snapshot 2026-09-18 at 12.16.20 am",
+      "sha256": "554f53c70ac0846edc0ef3f2119f81076aa0326901054c9e4f5562ff040a4f20"
+    },
+    {
+      "bytes": 2280,
+      "file": "0F8D5A81-05AE-468B-AD08-15E86AA064EA",
+      "name": "Synthesized Event 2026-09-18 at 12.16.22 am",
+      "sha256": "14780e624bf762d6afee4b7c38b3a1508427fcc9b2fa85410e212c1a2efeaabc"
+    },
+    {
+      "bytes": 1211,
+      "file": "2585B1F5-B7C1-4065-8180-C5926E9B6A70",
+      "name": "UI Snapshot 2026-09-18 at 12.16.17 am",
+      "sha256": "554f53c70ac0846edc0ef3f2119f81076aa0326901054c9e4f5562ff040a4f20"
+    },
+    {
+      "bytes": 2280,
+      "file": "CB0AAA1A-ADC3-4957-9430-47A505E1C093",
+      "name": "Synthesized Event 2026-09-18 at 12.16.19 am",
+      "sha256": "14780e624bf762d6afee4b7c38b3a1508427fcc9b2fa85410e212c1a2efeaabc"
+    },
+    {
+      "bytes": 192542,
+      "file": "7F8EACF4-5F8D-460B-86E2-E8C46E46813D.png",
+      "name": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_AA82422A-9D6C-4CB5-850B-90BBB8A43E81.png",
+      "sha256": "4d53277847554f8aa66a19595772a9e56c2f39a8c15393306f6c9de35a71918b"
+    },
+    {
+      "bytes": 7512570,
+      "file": "A66F6D6B-DCED-4D3B-86CB-C5083E1FDD7B.mp4",
+      "name": "Screen Recording 2026-09-18 at 12.15.38 am.mp4",
+      "sha256": "d5c1d9a31ecd4ad75dc80c91fdddd610a55958f80778690d5f66aefc1ff33758"
+    },
+    {
+      "bytes": 45,
+      "file": "71865114-6CB0-4A01-9BA7-425831973361.txt",
+      "name": "Complete Issue Description.txt",
+      "sha256": "750caeaf494995db0894f4ca89fc118f4ac317e388ae2f72f09d741e4f5233e3"
+    },
+    {
+      "bytes": 203544,
+      "file": "1BBB88DE-CC6C-4446-A3A9-3137D7EE690A.png",
+      "name": "App Screenshot_0_A82A91DB-8B81-4C32-8CA2-95BBDBB545F5.png",
+      "sha256": "02bf9e461cc996570ccf387db87cfd5ed386f4c7b6ae0119877f4b8d4a023d7b"
+    },
+    {
+      "bytes": 12885,
+      "file": "5CF7178E-B411-42BA-A23D-D5E6D768AA3E.png",
+      "name": "Element Screenshot_1_A1AAFF15-32FD-40FB-886F-7EDC1209C28B.png",
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd"
+    }
+  ],
+  "buildReverified": {
+    "appBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app",
+      "sha256": "4bdd678c942b0d6a177bd11ae1e6ad234c8500e6efc7fb0549b9e21fb5b2b1a4"
+    },
+    "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+    "recordPath": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build-record.json",
+    "recordSha256": "72b2bbd4b360c49c99ca4ef2e189e5e50d6b00786b5d3a611ff63c477039273a",
+    "runnerPath": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/tools/ace_ios_local.py",
+    "runnerSha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+    "source": {
+      "appSources": {
+        "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+        "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+        "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+        "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+        "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+        "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+        "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+        "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+        "ios/ACEClientApp/ACEClientApp/Views.swift": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd"
+      },
+      "call0EvidenceDesign": "Unchanged helper emits ACE_A11Y_ISSUE; raw call0 record explicitly leaves issues unresolved; execution collector joins retained issue lines between call start/end markers. No loss, filtering, or fabricated empty issue list.",
+      "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+      "testSourceSha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082"
+    },
+    "template": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "templateSha256": "f17d8a4e4c7b62e4b060915f61703c3a1ee297348aefe207edc3e5e080af125e",
+    "testBundle": {
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256",
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest",
+      "sha256": "6616d8f2c770d57862b419cc55692edbf646951bfc0d626d8dadaaf8edd7b9a2"
+    }
+  },
+  "calls": [
+    0,
+    1
+  ],
+  "failure": "Contrast failed",
+  "gateComplete": false,
+  "imageInspection": "Four distinct retained PNG images viewed; callback and native app screenshot byte-identical. Full Copy label visible in element crop. Pre-audit and callback views show changed scroll position. No contrast ratio measured in this recovery.",
+  "interpretation": "Fresh simulator reached test method once; startup timeout did not recur, original cause unresolved. Y call 1 excludes Dynamic Type but follows unrestricted call 0, so prior-call effects are not excluded. Position delta and finding coexist; no causal conclusion or Apple-defect claim.",
+  "method": "ACEClientAppUITests/testCopyReflowCheck()",
+  "nativeExit": 65,
+  "nativeTimedOut": false,
+  "restorationVerified": true,
+  "result": "Native FAIL; genuine finding blocks deliberate-failure gate",
+  "reviewedUTC": "2026-09-17T14:20:34.365006+00:00",
+  "source": "LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:94",
+  "stop": "No corrected-pass, arm X, full arm Y, P0 or pilot execution authorised by this recovery.",
+  "videoInspection": "Video retained, not inspected continuously; no claim about audit sampling window."
+}
