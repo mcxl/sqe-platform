@@ -1,3 +1,13 @@
->           assert storage._trace_inputs_for_engagement(connection, "ENG-FIC-0001") is None
-E           AssertionError: assert RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) is None
-2 failed in 1.37s
+>       assert RelationshipReviewStorage(store).trace_inputs() is None
+E       AssertionError: assert RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) is None
+E        +  where RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) = trace_inputs()
+E        +    where trace_inputs = <src.ace.workbench.relationship_review_storage.RelationshipReviewStorage object at 0x7447047524b0>.trace_inputs
+E        +      where <src.ace.workbench.relationship_review_storage.RelationshipReviewStorage object at 0x7447047524b0> = <class 'src.ace.workbench.relationship_review_storage.RelationshipReviewStorage'>(<src.ace.workbench.storage.WorkbenchStore object at 0x744704767020>)
+>       assert RelationshipReviewStorage(store).trace_inputs() is None
+E       AssertionError: assert RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) is None
+E        +  where RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) = trace_inputs()
+E        +    where trace_inputs = <src.ace.workbench.relationship_review_storage.RelationshipReviewStorage object at 0x74470478ea50>.trace_inputs
+E        +      where <src.ace.workbench.relationship_review_storage.RelationshipReviewStorage object at 0x74470478ea50> = <class 'src.ace.workbench.relationship_review_storage.RelationshipReviewStorage'>(<src.ace.workbench.storage.WorkbenchStore object at 0x744704751850>)
+FAILED tests/test_g0_snapshot_metadata.py::test_altered_seed_metadata_is_not_loaded_and_blocks_completing_approval[created_at-2031-01-01T00:00:00Z]
+FAILED tests/test_g0_snapshot_metadata.py::test_altered_seed_metadata_is_not_loaded_and_blocks_completing_approval[created_by-intruder]
+2 failed in 1.41s

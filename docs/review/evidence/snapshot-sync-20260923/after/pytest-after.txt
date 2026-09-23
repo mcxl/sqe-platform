@@ -64,4 +64,4 @@ FAILED tests/test_ios_accessibility_layout.py::test_value_row_groups_label_and_w
 FAILED tests/test_ios_accessibility_layout.py::test_appearance_indicator_uses_visible_safe_area_inset_during_ui_scenarios
 FAILED tests/test_ios_action_targets.py::test_each_shared_action_sizes_its_label_inside_the_button
 FAILED tests/test_ios_action_targets.py::test_ui_checks_measure_action_targets_without_suppressing_audits
-4 failed, 820 passed, 1 warning in 322.41s (0:05:22)
+4 failed, 820 passed, 1 warning in 321.79s (0:05:21)
