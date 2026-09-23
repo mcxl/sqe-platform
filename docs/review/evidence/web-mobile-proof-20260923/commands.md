@@ -10,3 +10,6 @@
 | 2026-09-23T07:42:14Z | agent-browser baseline: set credentials → browser stayed on 403 JSON (no WWW-Authenticate challenge); rendered page captured with forced Authorization header | 0 | baseline/*-browser-denied.*, baseline/*-forced-header.* |
 | 2026-09-23T07:43:36Z | `uv run python docs/review/evidence/web-mobile-proof-20260923/scripts/publish_fictional_release_webproof.py` | 1 | attempt 1 |
 | 2026-09-23T07:43:49Z | `uv run python docs/review/evidence/web-mobile-proof-20260923/scripts/publish_fictional_release_webproof.py` | 0 | attempt 2 after dict-access fix |
+| 2026-09-23T07:52:31Z | `uv run pytest tests/test_client_release.py tests/test_client_release_projection.py tests/test_app.py -q -p no:cacheprovider -x` | 0 | after Group B changes |
+| 2026-09-23T07:53:29Z | curl checks through public preview https://p8nkikhn9jtm.preview.us1.vorflux.com | 0 | after/curl-public-preview.txt |
+| 2026-09-23T07:54:56Z | curl checks through plain exposed port 8002 preview | 0 | after/curl-public-preview.txt; session preview route on 8000 dropped Authorization |
