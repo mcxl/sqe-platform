@@ -22,8 +22,10 @@ def test_altered_seed_metadata_is_not_loaded_and_blocks_completing_approval(
     from src.ace.workbench.relationship_review import RelationshipReviewService
     from src.ace.workbench.relationship_review_storage import RelationshipReviewStorage
 
+    # WorkbenchStore initialisation seeds the fictional G0 snapshot for ENG-FIC-0001.
     store = WorkbenchStore(tmp_path / "local-data")
-    RelationshipReviewService(store)  # seeds the fictional G0 snapshot
+    assert RelationshipReviewStorage(store).trace_inputs() is not None  # positive control
+
     with store.connect() as connection:
         connection.execute("DROP TRIGGER relationship_trace_input_snapshots_no_update")
         altered = connection.execute(
@@ -34,10 +36,9 @@ def test_altered_seed_metadata_is_not_loaded_and_blocks_completing_approval(
         connection.commit()
     assert altered == 1
 
+    # Stop the seed from re-inserting a clean row; mirrors main's own tampering test.
     monkeypatch.setattr(RelationshipReviewStorage, "_seed", staticmethod(lambda connection: None))
-    storage = RelationshipReviewStorage(store)
-    with store.connect() as connection:
-        assert storage._trace_inputs_for_engagement(connection, "ENG-FIC-0001") is None
+    assert RelationshipReviewStorage(store).trace_inputs() is None
 
     review = RelationshipReviewService(store)
     result = approve_all_current_relationships(review)
