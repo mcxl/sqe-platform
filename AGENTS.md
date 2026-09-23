@@ -34,6 +34,9 @@ Before work that can take more than 30 minutes:
 - Separate pilot work from production hardening.
 - Wait for user approval before execution.
 
+A detailed Autonomous Delivery Workflow approval that states these items also satisfies this
+approval.
+
 Use 60 minutes as the default hard limit when the user gives no limit.
 
 During the work:
