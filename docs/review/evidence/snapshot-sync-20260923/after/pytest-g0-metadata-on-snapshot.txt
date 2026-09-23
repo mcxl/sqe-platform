@@ -1,0 +1,3 @@
+>           assert storage._trace_inputs_for_engagement(connection, "ENG-FIC-0001") is None
+E           AssertionError: assert RelationshipTraceInputs(obligation=BindingObligationRecord(obligation_id='OBL-FIC-0001', title='Fictional obligation',...-08-01T00:00:00Z')), dimensions=AssuranceDimensions(mandate=True, accountability=True, trigger=True, escalation=True))) is None
+2 failed in 1.37s

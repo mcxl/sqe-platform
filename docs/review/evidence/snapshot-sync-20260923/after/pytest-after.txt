@@ -1,0 +1,67 @@
+........................................................................ [  8%]
+........................................................................ [ 17%]
+........................................................................ [ 26%]
+........................................................................ [ 34%]
+........................................................................ [ 43%]
+........................................................................ [ 52%]
+........................................................................ [ 61%]
+........................................................................ [ 69%]
+...........................FFFF......................................... [ 78%]
+........................................................................ [ 87%]
+........................................................................ [ 96%]
+................................                                         [100%]
+=================================== FAILURES ===================================
+__ test_value_row_groups_label_and_wrapping_value_for_accessibility_geometry ___
+
+    def test_value_row_groups_label_and_wrapping_value_for_accessibility_geometry():
+        source = VIEWS.read_text(encoding="utf-8")
+        value_row = source.split("struct ValueRow: View {", 1)[1]
+    
+>       assert "VStack(alignment: .leading, spacing: 4) {\n            VStack(alignment: .leading, spacing: 4)" in value_row
+E       assert 'VStack(alignment: .leading, spacing: 4) {\n            VStack(alignment: .leading, spacing: 4)' in '\n    let field: CopyableReleaseField\n    let value: String\n\n    var body: some View {\n        Text("\\(field.lab... .frame(maxWidth: .infinity, maxHeight: .infinity)\n        .background(Color(uiColor: .systemBackground))\n    }\n}\n'
+
+tests/test_ios_accessibility_layout.py:33: AssertionError
+__ test_appearance_indicator_uses_visible_safe_area_inset_during_ui_scenarios __
+
+    def test_appearance_indicator_uses_visible_safe_area_inset_during_ui_scenarios():
+        source = APP.read_text(encoding="utf-8")
+>       app, indicator = source.split("private struct EffectiveInterfaceStyleIndicator: View {", 1)
+        ^^^^^^^^^^^^^^
+E       ValueError: not enough values to unpack (expected 2, got 1)
+
+tests/test_ios_accessibility_layout.py:45: ValueError
+__________ test_each_shared_action_sizes_its_label_inside_the_button ___________
+
+    def test_each_shared_action_sizes_its_label_inside_the_button():
+        source = VIEWS.read_text(encoding="utf-8")
+        # Keep native Button behaviour. Size the label, not an inert outer wrapper.
+        labels = re.findall(r"\} label: \{\s*Text\([^\n]+\)\s*"
+                            r"\.frame\(minWidth: 44, minHeight: 44, alignment: \.leading\)\s*"
+                            r"\.contentShape\(Rectangle\(\)\)\s*\}", source)
+>       assert len(labels) == 7
+E       assert 6 == 7
+E        +  where 6 = len(['} label: {\n                    Text("Sign in")\n                        .frame(minWidth: 44, minHeight: 44, alignme...Width: 44, minHeight: 44, alignment: .leading)\n                        .contentShape(Rectangle())\n                }'])
+
+tests/test_ios_action_targets.py:18: AssertionError
+_______ test_ui_checks_measure_action_targets_without_suppressing_audits _______
+
+    def test_ui_checks_measure_action_targets_without_suppressing_audits():
+        source = UI_TESTS.read_text(encoding="utf-8")
+        assert "private func assertMinimumActionTargets" in source
+        assert "button.isHittable" in source
+>       assert "isAtLeast44Points(button.frame.width)" in source
+E       AssertionError: assert 'isAtLeast44Points(button.frame.width)' in 'import Foundation\nimport CoreGraphics\nimport XCTest\n\nfinal class ACEClientAppUITests: XCTestCase {\n    private s...\n    private static func limitedAuditText(_ value: String) -> String {\n        String(value.prefix(256))\n    }\n}\n'
+
+tests/test_ios_action_targets.py:27: AssertionError
+=============================== warnings summary ===============================
+../sqe-platform/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /code/mcxl/sqe-platform/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_ios_accessibility_layout.py::test_value_row_groups_label_and_wrapping_value_for_accessibility_geometry
+FAILED tests/test_ios_accessibility_layout.py::test_appearance_indicator_uses_visible_safe_area_inset_during_ui_scenarios
+FAILED tests/test_ios_action_targets.py::test_each_shared_action_sizes_its_label_inside_the_button
+FAILED tests/test_ios_action_targets.py::test_ui_checks_measure_action_targets_without_suppressing_audits
+4 failed, 820 passed, 1 warning in 322.41s (0:05:22)
