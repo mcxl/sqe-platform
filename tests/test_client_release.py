@@ -7,6 +7,7 @@ client auth boundary, API response shape, and HTML page content.
 
 from __future__ import annotations
 
+import html
 import os
 import re
 import sqlite3
@@ -1698,10 +1699,11 @@ class TestClientApi:
         assert page.status_code == 200
         assert page.headers["content-type"] == "text/html; charset=utf-8"
         # Mobile web proof (2026-09-23) re-pinned the page bytes; the previous
-        # pin was 3156 bytes / 017f19c4…788e3d.
-        assert len(page.content) == 5990
+        # pin was 3156 bytes / 017f19c4…788e3d, then 5990 bytes / fd7fb658…cb4b
+        # before the review fixes.
+        assert len(page.content) == 6003
         assert sha256(page.content).hexdigest() == (
-            "fd7fb658c7777c63411ad91a912ca58473d02154e78af89bc8cf05ebcab2cb4b"
+            "f9bd45095462b2fc3eb1bbc891ef19f879c2b6c59ccda9ce5544d5b7777b180a"
         )
 
     def test_client_get_endpoints_leave_release_rows_unchanged(
@@ -2112,6 +2114,42 @@ class TestMobileClientPage:
         assert "--tap: 44px;" in html_text
         assert html_text.count("min-height: var(--tap);") == 2
         assert '<meta name="viewport" content="width=device-width, initial-scale=1">' in html_text
+
+    def test_page_unconfigured_server_fails_closed_before_challenge(
+        self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    ) -> None:
+        _set_client_env(monkeypatch, tmp_path / "m-unconfigured")
+        monkeypatch.delenv("ACE_CLIENT_PASSWORD")
+        client = TestClient(app)
+        resp = client.get("/client")
+        assert resp.status_code == 503
+        assert "www-authenticate" not in resp.headers
+
+    def test_copy_target_holds_exact_escaped_text(self) -> None:
+        from src.ace.domain.release import ClientActionEntry, ClientReleaseResponse
+        from src.ace.workbench.client_routes import _render_page
+
+        description = """Fix <a> & "b" 'c' > d"""
+        data = ClientReleaseResponse(
+            engagement_name="Fictional",
+            review_status="READY_FOR_CAPTURE",
+            release_version=1,
+            published_at="2026-08-19T10:00:00Z",
+            actions=[
+                ClientActionEntry(
+                    description=description, owner="Owner",
+                    target_date="2026-09-30", status="OPEN",
+                )
+            ],
+        )
+        html_text = _render_page(data)
+        expected = f'<p id="action-desc-1">{html.escape(description)}</p>'
+        assert expected in html_text
+        assert "<a>" not in html_text
+        # The script copies textContent without trimming, so the copied
+        # text equals the rendered text exactly.
+        assert "target.textContent;" in html_text
+        assert "target.textContent.trim()" not in html_text
 
     def test_signout_always_401_with_challenge(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path

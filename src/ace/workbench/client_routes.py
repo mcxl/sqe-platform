@@ -33,18 +33,22 @@ def require_client_page(
 ) -> str:
     """Page variant of ``require_client`` for browsers.
 
-    A browser only sends Basic credentials after a 401 challenge, so a
-    request with no credentials receives 401 plus ``WWW-Authenticate``.
-    Wrong credentials keep the generic 403 from ``require_client``.
+    ``require_client`` runs first, so an unconfigured server still fails
+    closed with 503. A browser only sends Basic credentials after a 401
+    challenge, so only the missing-credentials 403 becomes 401 plus
+    ``WWW-Authenticate``. Wrong credentials keep the generic 403.
     The JSON API keeps ``require_client`` unchanged.
     """
-    if credentials is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Sign in required",
-            headers=AUTH_REALM_HEADER,
-        )
-    return require_client(credentials)
+    try:
+        return require_client(credentials)
+    except HTTPException as exc:
+        if exc.status_code == status.HTTP_403_FORBIDDEN and credentials is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Sign in required",
+                headers=AUTH_REALM_HEADER,
+            ) from exc
+        raise
 
 
 # ── Storage helpers ────────────────────────────────────────────
@@ -214,7 +218,8 @@ CLIENT_PAGE_HTML = """\
     .container {{ padding: 1rem 0.75rem; }}
     .meta {{ gap: 0.75rem; }}
     .action-meta {{ gap: 0.5rem; flex-direction: column; }}
-    .page-actions a, .copy-button {{ flex: 1 1 auto; }}
+    .page-actions a {{ flex: 1 1 auto; }}
+    .copy-button {{ width: 100%; }}
   }}
 </style>
 </head>
@@ -267,7 +272,7 @@ for (const button of document.querySelectorAll("button.copy-button")) {
     if (!target || !statusEl) {
       return;
     }
-    const text = target.textContent.trim();
+    const text = target.textContent;
     const doneMessage = button.textContent.trim().replace("Copy", "Copied") + ".";
     if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(
