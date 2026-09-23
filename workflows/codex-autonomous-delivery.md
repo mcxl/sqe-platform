@@ -45,6 +45,19 @@ Record these items in the implementation issue:
 - Greptile result and `check-pr` result.
 - Fresh Sol review.
 
+## Review Adapters
+
+Each review tool is an adapter to a named review outcome. The outcome is the record; the tool
+is replaceable.
+
+- Pocock code review is the adapter for the independent standards review outcome.
+- Fresh Sol review is the adapter for the exact-candidate final review outcome
+  (`ship`, `fix-first`, `rethink`).
+- `matt-skills-curated:diagnosing-bugs` is the adapter for diagnostic probes.
+- Every recorded outcome names the reviewer identity (a person, or a tool and version).
+- A manual review by a named person fulfils the same outcome and is labelled `manual` in the
+  record.
+
 ## Delivery Sequence
 
 ### 1. Intake And Isolation
