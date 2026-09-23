@@ -1,0 +1,16 @@
+ .../0001-human-auditor-controls-final-decisions.md |  15 +
+ docs/adr/0002-g0-protects-the-data-boundary.md     |  15 +
+ .../0003-approved-records-use-versioned-history.md |  16 +
+ docs/adr/0004-release-projection-is-read-only.md   |  15 +
+ src/ace/domain/assessment.py                       |  56 +++-
+ src/ace/engine/approval.py                         | 180 ++++++++--
+ src/ace/workbench/document_toolchain_doctor.py     |   3 +-
+ src/ace/workbench/export_builder.py                |   6 +-
+ src/ace/workbench/relationship_review_storage.py   |  17 +-
+ tests/test_approval_gate.py                        | 371 +++++++++++++++++++++
+ tests/test_change_export.py                        |  19 ++
+ tests/test_g0_snapshot_metadata.py                 |  44 +++
+ tests/test_planning_trace.py                       |  22 +-
+ tests/test_relationship_review.py                  |  21 +-
+ tests/test_workbench.py                            |  11 +-
+ 15 files changed, 770 insertions(+), 41 deletions(-)
