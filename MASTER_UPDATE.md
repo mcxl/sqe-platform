@@ -142,17 +142,19 @@ Code Atlas is preserved under the historical Windows records and remains histori
 
 | Gap | Effect | Required Resolution |
 |---|---|---|
-| Vorflux workspace requires sign-in | The supplied `https://us1.vorflux.com/mcxicom/agent-sessions` redirects to sign-in in the inspected browser | Sign in, then check connector, branch selection and sample code, JSON, PNG and video access |
+| Vorflux session checkout remains unverified | Signed-in inspection confirms an active GitHub App connection listing `mcxl/sqe-platform`; this is configured access, not a demonstrated checkout | Select the review branch and verify its commit plus sample code, JSON, PNG and video access |
 | No Vorflux-side acknowledgement | Anonymous GitHub retrieval does not prove Vorflux has ingested the repository | Vorflux reports commit, inspected paths and unreadable items |
 | Remaining native bundles and historical media | Logs do not replace original `.xcresult` and recordings | Use an authenticated evidence transfer or approved execution connection; map requested assets to inventory hashes |
 | Opaque archives and generated/compiled output | Some historical material may be inside archives; inventory does not expose their contents | Inspect archive manifests and recover any unique required evidence before claiming completeness |
 | Windows enumeration warnings | Some legacy artifacts exceeded path limits; three temporary test directories denied access | Resolve those specific paths without deleting or replacing originals |
 | Private operational inputs | Service credentials, signing keys, databases and original correspondence are not public | Connect authorised services privately when required; never put secrets in this public branch |
-| Mac execution | A web link does not run Xcode, simulators or phone checks | Verify a supported private execution connection inside the chosen service |
+| Mac execution | Vorflux Machine Setup shows Ubuntu 22.04 LTS; no connection to the owner's Mac was demonstrated | Verify a supported private Mac execution connection before native work |
 | Full Git history import | Fifteen worktree baselines are supplied as file trees; history indexes are not complete Git object bundles | Use supplied baseline trees for source review; reconcile history import separately before ancestry or merge claims |
 | Main reconciliation | Snapshot differs from main and unrelated local history | Review held differences before an exact-head merge decision |
 
 The Mac inventory covers regular, non-symlink files beneath the known `ace-private` root, plus registered worktree changes. It is not a scan of every account, disconnected disk, deleted file or chat transcript. Other repositories and unregistered worktrees may contain additional material. This boundary is a known limit, not a claim that no other work exists.
+
+The [Vorflux access check](docs/review/VORFLUX-ACCESS-CHECK.md) records the actual website observations. No new permission grant was required to see SQE in the existing repository-access list. Session checkout, ingestion and Mac execution still require verification.
 
 ## What Vorflux Should Deliver
 

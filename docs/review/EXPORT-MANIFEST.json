@@ -30865,10 +30865,12 @@
     "docs/review/EXPORT-MANIFEST.json",
     "docs/review/LOCAL-ACCESS-INVENTORY.json",
     "docs/review/MAC-ACCESS-INVENTORY.json",
+    "docs/review/MAC-HISTORICAL-SOURCES.json",
     "docs/review/MAC-RECORD-INDEX.json",
     "docs/review/MAC-SOURCE-MANIFEST.json",
     "docs/review/MAC-UPDATE.md",
     "docs/review/RECONCILIATION.md",
+    "docs/review/VORFLUX-ACCESS-CHECK.md",
     "docs/review/access-inventory/mac-000.json",
     "docs/review/access-inventory/mac-001.json",
     "docs/review/access-inventory/mac-002.json",
@@ -30996,8 +30998,7 @@
     "docs/review/access-inventory/mac-124.json",
     "docs/review/access-inventory/mac-125.json",
     "docs/review/access-inventory/mac-126.json",
-    "docs/review/maps/codegraph/index.json",
-    "docs/review/MAC-HISTORICAL-SOURCES.json"
+    "docs/review/maps/codegraph/index.json"
   ],
   "standing": "Source and evidence navigation snapshot; no runtime acceptance or verified ancestry claimed.",
   "mac_addendum": {
