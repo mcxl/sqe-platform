@@ -2163,6 +2163,7 @@ class TestMobileClientPage:
             assert resp.headers["content-type"] == "text/html; charset=utf-8"
             assert "Signed Out" in resp.text
             assert '<a href="/client">Sign in again</a>' in resp.text
+            assert "close all browser windows" in resp.text
 
     def test_signout_does_not_touch_release_rows(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path

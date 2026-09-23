@@ -306,7 +306,8 @@ SIGNOUT_PAGE_HTML = """\
 <body>
 <main id="main">
   <h1>Signed Out</h1>
-  <p>Your browser session for the client release view has ended. Close this tab to finish.</p>
+  <p>The server asked your browser to forget the sign-in for the client release view.</p>
+  <p>Some browsers keep the sign-in until every window closes. To finish signing out, close all browser windows.</p>
   <a href="/client">Sign in again</a>
 </main>
 </body>
