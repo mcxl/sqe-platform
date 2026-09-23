@@ -24,6 +24,7 @@ from src.ace.domain.trace import (
     RiskRecord,
     TraceRelationshipType,
 )
+from src.ace.engine.approval import rehydrate_verified_g0_mate
 from src.ace.engine.tracing import build_accepted_planning_trace
 
 if TYPE_CHECKING:
@@ -480,13 +481,21 @@ class RelationshipReviewStorage:
         self, connection: sqlite3.Connection, engagement_id: str
     ) -> RelationshipTraceInputs | None:
         row = connection.execute(
-            """SELECT snapshot_json FROM relationship_trace_input_snapshots
+            """SELECT snapshot_json, created_at, created_by FROM relationship_trace_input_snapshots
                WHERE engagement_id = ?""",
             (engagement_id,),
         ).fetchone()
         if row is None:
             return None
         try:
+            # This public G0 store contains one immutable, controlled fixture only.
+            # Do not treat a changed SQLite row as trusted persistence.
+            if (
+                row["created_at"] != "2026-08-01T00:00:00Z"
+                or row["created_by"] != "seed"
+                or row["snapshot_json"] != _json(self._fictional_trace_input_snapshot())
+            ):
+                return None
             snapshot = _loads(row["snapshot_json"])
             from src.ace.workbench.relationship_review import RelationshipTraceInputs
 
@@ -497,8 +506,10 @@ class RelationshipReviewStorage:
                 accountable_role=AccountableRoleRecord.model_validate(
                     snapshot["accountable_role"]
                 ),
-                mate_assessment=ApprovedMATEAssessment.model_validate(
-                    snapshot["mate_assessment"]
+                mate_assessment=rehydrate_verified_g0_mate(
+                    snapshot["mate_assessment"],
+                    row["created_at"],
+                    row["created_by"],
                 ),
             )
         except (KeyError, TypeError, ValueError):

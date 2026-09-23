@@ -1,0 +1,11 @@
+src/ace/domain/assessment.py: Python script, ASCII text executable, with CRLF line terminators
+src/ace/engine/approval.py: Python script, ASCII text executable, with CRLF line terminators
+src/ace/workbench/document_toolchain_doctor.py: Python script, Unicode text, UTF-8 text executable, with CRLF line terminators
+src/ace/workbench/export_builder.py: Python script, Unicode text, UTF-8 text executable, with CRLF line terminators
+src/ace/workbench/relationship_review_storage.py: Python script, ASCII text executable, with CRLF line terminators
+tests/test_approval_gate.py: Python script, ASCII text executable, with CRLF line terminators
+tests/test_change_export.py: Python script, Unicode text, UTF-8 text executable, with CRLF line terminators
+tests/test_g0_snapshot_metadata.py: Python script, ASCII text executable
+tests/test_planning_trace.py: Python script, ASCII text executable, with CRLF line terminators
+tests/test_relationship_review.py: Python script, ASCII text executable, with very long lines (401), with CRLF line terminators
+tests/test_workbench.py: Python script, ASCII text executable, with CRLF line terminators
