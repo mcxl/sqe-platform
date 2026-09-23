@@ -1,0 +1,5 @@
+- StaticText "{\"detail\":\"Access denied\"}"
+- form
+  - LabelText
+    - StaticText "Pretty-print"
+    - checkbox "Pretty-print" [checked=false, ref=e1]
