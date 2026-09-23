@@ -1,0 +1,151 @@
+{
+  "recordedUTC": "2026-09-15T19:54:36.664696+00:00",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+  "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:386",
+  "case": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+  "expected": "Unrestricted native accessibility audit reports no issue",
+  "actual": "Contrast failed for SwiftUI.AccessibilityNode",
+  "label": "Copy action",
+  "frame": {
+    "x": 32,
+    "y": 685.6666666666666,
+    "width": 144,
+    "height": 58
+  },
+  "nativeExit": 65,
+  "pilotExit": 2,
+  "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6",
+  "passedCaseMarkers": [
+    {
+      "auditInvocations": 1,
+      "id": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+      "observed": {
+        "appearance": "light",
+        "boldText": false,
+        "contentSize": "large",
+        "increaseContrast": false,
+        "orientation": "portrait",
+        "reduceMotion": false
+      },
+      "result": "passed",
+      "scenario": "signIn",
+      "screenshots": [
+        "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport initial",
+        "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in"
+      ]
+    },
+    {
+      "auditInvocations": 2,
+      "id": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+      "observed": {
+        "appearance": "light",
+        "boldText": false,
+        "contentSize": "large",
+        "increaseContrast": false,
+        "orientation": "portrait",
+        "reduceMotion": false
+      },
+      "result": "passed",
+      "scenario": "release",
+      "screenshots": [
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Engagement name",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Review status",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Release version",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Published date and time",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion summary",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Evidence reference",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action description",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action status",
+        "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport release-final"
+      ]
+    },
+    {
+      "auditInvocations": 2,
+      "id": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+      "observed": {
+        "appearance": "light",
+        "boldText": false,
+        "contentSize": "large",
+        "increaseContrast": false,
+        "orientation": "portrait",
+        "reduceMotion": false
+      },
+      "result": "passed",
+      "scenario": "noConclusion",
+      "screenshots": [
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport initial",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Engagement name",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Review status",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Release version",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action description",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action target date",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action status",
+        "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice"
+      ]
+    },
+    {
+      "auditInvocations": 2,
+      "id": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+      "observed": {
+        "appearance": "light",
+        "boldText": false,
+        "contentSize": "large",
+        "increaseContrast": false,
+        "orientation": "portrait",
+        "reduceMotion": false
+      },
+      "result": "passed",
+      "scenario": "noActions",
+      "screenshots": [
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport initial",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Engagement name",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Review status",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Release version",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion title",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion summary",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Evidence reference",
+        "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport no-actions-notice"
+      ]
+    }
+  ],
+  "passedCaseCount": 4,
+  "auditInvocationsInPassedCaseMarkers": 7,
+  "failedCases": 1,
+  "notReachedCases": 17,
+  "acceptedPilotCases": 0,
+  "wholePilot": "failed",
+  "candidateUnchanged": true,
+  "restoration": "Original settings and boot states restored according to retained native results and execution record",
+  "imagesInspected": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/EA6E58A8-70B9-41A7-B81B-9543768B3CE6.png",
+      "sha256": "5cbd1124eeb137ddecf71855e5b7852cae34cd28d6a18e0b0798bcbd2e86f3b9",
+      "bytes": 203175,
+      "inspection": "Viewed at original resolution. Copy action text is visible and not clipped. Images do not establish the audit sampling mechanism."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/64C73E33-5B7D-437C-BCB3-EC9DF2299FE1.png",
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd",
+      "bytes": 12885,
+      "inspection": "Viewed at original resolution. Copy action text is visible and not clipped. Images do not establish the audit sampling mechanism."
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B7DDE42E-CF5F-4777-885D-B89C8D3135BC.png",
+      "sha256": "f804c0342d887185e4af84ae48fa22887b132146cc05d00a031466c865759f0a",
+      "bytes": 190171,
+      "inspection": "Viewed at original resolution. Copy action text is visible and not clipped. Images do not establish the audit sampling mechanism."
+    }
+  ],
+  "completeImageInspection": "Pending for remaining captures from this failed batch",
+  "classification": "Unresolved accessibility finding; application versus Apple checker cause not established",
+  "historicalComparison": "Same label, scenario, callback frame and contrast issue as the earlier Copy failure. Earlier 12.34:1 measurement is historical, not a fresh measurement of these images.",
+  "next": "Do not repeat the whole pilot as a diagnostic. User decision pending on collecting all case results despite isolated case failures."
+}

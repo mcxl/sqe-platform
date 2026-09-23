@@ -1,0 +1,7468 @@
+{
+  "source": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+  "selected_ref": "refs/heads/main",
+  "head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+  "captured_at": "2026-09-18T12:53:23.415997+10:00",
+  "commands": [
+    {
+      "args": [
+        "rev-list",
+        "--objects",
+        "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a"
+      ],
+      "exit_code": 0,
+      "seconds": 0.689
+    },
+    {
+      "args": [
+        "cat-file",
+        "--batch-check=%(objectname) %(objecttype) %(objectsize)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.517
+    }
+  ],
+  "working_status": "?? .snapshots/\u0000?? docs/plans/\u0000",
+  "objects": [
+    {
+      "oid": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 273
+    },
+    {
+      "oid": "f47edc2e34cc012d0c052d5c4f752d348699105b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "60e9932fdc45a3981c348c36c92d1e4ed97a9ad6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "975d3f714ad58044668d31e7e79ebff4a918aae2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "7eeb24666df9e9f7543761667a5b463fe023df57",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "ccc9ae6c38d91d996d0d0e33374546a21c8b2132",
+      "path": "",
+      "kind": "commit",
+      "bytes": 266
+    },
+    {
+      "oid": "758eb93ea2feaf033b0f9f94926cc7a98980ba91",
+      "path": "",
+      "kind": "commit",
+      "bytes": 268
+    },
+    {
+      "oid": "8916e3f889f5a16363cc1e517df172ad0b880f55",
+      "path": "",
+      "kind": "commit",
+      "bytes": 271
+    },
+    {
+      "oid": "7da83f4bd317b0c556c3ad7d21a2dccafe69eec0",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "019d49bdbe5e27c1a6f25b6a39e5b5c25b7662c2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "12d008288bcd0416a5b642d2feaf37b053f27f1b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 270
+    },
+    {
+      "oid": "f8caea91aab5eaa9ab9d859d6a72997d0320d889",
+      "path": "",
+      "kind": "commit",
+      "bytes": 268
+    },
+    {
+      "oid": "3917874ec73248ed73dbaaffce62dbc3d2696138",
+      "path": "",
+      "kind": "commit",
+      "bytes": 266
+    },
+    {
+      "oid": "85d7d7f4d94aedf593db9097886fa8fa79a83f19",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "99f8d09c7b2323863db1f6f729c1a2ceb789c219",
+      "path": "",
+      "kind": "commit",
+      "bytes": 271
+    },
+    {
+      "oid": "f24874892cc7c66a79dca27c8f80c1d9727895ca",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "ccea33bc913aea7d9664fcd14a02379e4114cbe5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 268
+    },
+    {
+      "oid": "a8d5b0b0b1418e649f4f42f2feca5408cf2b8133",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "c17fd961bab099b511eb4a0efe4f43d11ee18f20",
+      "path": "",
+      "kind": "commit",
+      "bytes": 266
+    },
+    {
+      "oid": "093494cd415800528ab680d655b541081b59cfb6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 268
+    },
+    {
+      "oid": "346d43d01690aec5919ca700a2d3a20d4a3eda8c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "c61f17b802d2a192754a3388fe56cfb5b1cac7e7",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "46d774cb9be49840fff38a8654635c9dafaa5861",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "6f6f12c0572ce9fc2cfbb6745d6e818d52a4a623",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "e3fc4094ce38d3ebadd49744f6cdc4b3cdd8b706",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "dc56caafcb0986482d7c8117f72b02cb48c0fe70",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "f606508749f377334be4c52c3725a32356d456fb",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "58d4dced38d41132f215210a6bd07f47ac171c3d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "08a2f203870ee977be9340462990308b24148b63",
+      "path": "",
+      "kind": "commit",
+      "bytes": 286
+    },
+    {
+      "oid": "496a62902947919b068bec94eedeead5e21891f3",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "bf089ccc6ed7f81031c385d3842ca170bcae5554",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "95969f70b8a3b096a154241a8ea5b6b092e2b7b0",
+      "path": "",
+      "kind": "commit",
+      "bytes": 269
+    },
+    {
+      "oid": "4648c9178ccb784650f1d85a2b866b7f225cbb87",
+      "path": "",
+      "kind": "commit",
+      "bytes": 273
+    },
+    {
+      "oid": "7ab6c0148a381fe1d5ca314289e34bf46011b50c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "7f30332309eb8f19a79fdb47539287b9f0905d36",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "4ba1435b675f5a2368ac8b9a3addfaea4e7f5702",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "900c5b08dc2c12baeaf884278910d159df963036",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "f74aca96973ce2f185630d9b8cddea6e2c100f90",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "f264bbcf3b119f3b8961a0d4ea4948c1a592cb9d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "94eafac217b64136075f9a53e8f9d55d55a0a74d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "8e1cf4cae5ca5077210dc76f4c87f4bba6ec8155",
+      "path": "",
+      "kind": "commit",
+      "bytes": 936
+    },
+    {
+      "oid": "00d5f9cd14d075ad5cffd67a125ca7b9ad9e43d7",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "b2e891118db939658f59caaf0ede88a911464ce8",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "56eb01dcc0d2d2ee17b584bc50dc608142e3abaa",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1147
+    },
+    {
+      "oid": "bd336f8c076ebab6c01ac5ffcf9d65c2b34f1f2e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 311
+    },
+    {
+      "oid": "25688d99b63e99af5311566d1a0df16292601e4e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1370
+    },
+    {
+      "oid": "17efec48665de16ddc5d5c503c6ed75f7587b9fa",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1633
+    },
+    {
+      "oid": "ef65d322f137ddc7f73f4baf028ed1b2249e3f2f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1025
+    },
+    {
+      "oid": "3c1999a2ada6daec72f086b274ffbe414b5511e2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 839
+    },
+    {
+      "oid": "602c4830d7f4f42a0952ee197ab550dfeab8245d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 685
+    },
+    {
+      "oid": "69c13092dba31a79027c832161e37ab66d02a557",
+      "path": "",
+      "kind": "commit",
+      "bytes": 944
+    },
+    {
+      "oid": "fe325ce302d3d8b14765e62921955bd749b4c76b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1578
+    },
+    {
+      "oid": "72068e296c835da0e5c3852d64cab03c2724cf6c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 839
+    },
+    {
+      "oid": "a3f11953686942b4ace1e30152180a68807f0bc4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 967
+    },
+    {
+      "oid": "93c7badad5cb0f9959acb6b636f0b5e3ed8b134d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1442
+    },
+    {
+      "oid": "af17d9b98367e04406c221aa3087eb2e27c24d4e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "74389e167d77df1c1425df059eb8e48c665c6047",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1042
+    },
+    {
+      "oid": "98d3658c31803526d08531957a1ef25a6fa9db2b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1111
+    },
+    {
+      "oid": "6ba5944fa647c1583a39ec509fe4a6fd97102b2e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1120
+    },
+    {
+      "oid": "db997b08df01f6c4c9bd459e3c75f03b97dd9f1d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 305
+    },
+    {
+      "oid": "e7f0ae718e560ef437728bada7e7a7d0ee76b14a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 541
+    },
+    {
+      "oid": "1064f8203b59b3d370b0709f7ae628e246f607f4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 452
+    },
+    {
+      "oid": "6218f57ffd3af7fd699c426c48c526f063d36d02",
+      "path": "",
+      "kind": "commit",
+      "bytes": 495
+    },
+    {
+      "oid": "c9f6b775f599cce924bf87501a655c7b7a385adb",
+      "path": "",
+      "kind": "commit",
+      "bytes": 430
+    },
+    {
+      "oid": "ddc1111b12c4aa9823d7f7a4e9b1b94fe117b0cf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 562
+    },
+    {
+      "oid": "cc773049cc5f8c0b9821d8f36dc402cdc36b8bbd",
+      "path": "",
+      "kind": "commit",
+      "bytes": 482
+    },
+    {
+      "oid": "46caa14794ab9ed94942b761b5dc6a13b88181e5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 510
+    },
+    {
+      "oid": "e6f851e68f64630d91f4a537f3b3a7cd8e696838",
+      "path": "",
+      "kind": "commit",
+      "bytes": 2636
+    },
+    {
+      "oid": "09755a7ad93975682faaf0d53e3d20a25c5ce331",
+      "path": "",
+      "kind": "commit",
+      "bytes": 2646
+    },
+    {
+      "oid": "cd2dce6486f68668757768769e61951c87867ccc",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1303
+    },
+    {
+      "oid": "41a8bcb9d98346670c7f2e66d0e2a87f69c0e1c8",
+      "path": "",
+      "kind": "commit",
+      "bytes": 609
+    },
+    {
+      "oid": "f336d210846619a29a467fb3cf831433d7a4b611",
+      "path": "",
+      "kind": "commit",
+      "bytes": 536
+    },
+    {
+      "oid": "b1a06cd65f91ef29e10ceafd1268131553f686f1",
+      "path": "",
+      "kind": "commit",
+      "bytes": 301
+    },
+    {
+      "oid": "81207cd0a07919be6f505cc9878e8430ef567c9d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "5c4c632ec9122ba7096b6ce860307e33516f37df",
+      "path": "",
+      "kind": "commit",
+      "bytes": 654
+    },
+    {
+      "oid": "d2ad0bde71fe2d17f116f2e276e97fb0a6264f49",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "74a96e0f2056abe7c9e808306938b941726ae411",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "9389b4bfe7648d6866e7cf1cd059f30683d93a9f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 311
+    },
+    {
+      "oid": "b7f716771b3a0b35c5497a439d1c9931bdda5de5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "a6c54f664c7b96acf738cc858a35a5280db90920",
+      "path": "",
+      "kind": "commit",
+      "bytes": 744
+    },
+    {
+      "oid": "b031bcd0913c87587ccbb1fc6fb57a29ceddbc9b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 315
+    },
+    {
+      "oid": "c344bdcc337927143b27956cac43922ab29ddb6d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 873
+    },
+    {
+      "oid": "1fe869b8dd251bae65a7de6376c0f50568be54fe",
+      "path": "",
+      "kind": "commit",
+      "bytes": 631
+    },
+    {
+      "oid": "733024707d0c0b0154fc07db7250a716be9e93b8",
+      "path": "",
+      "kind": "commit",
+      "bytes": 765
+    },
+    {
+      "oid": "e09f0c6e7801f4539b7299fb1371dcd8a77f7dcf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 516
+    },
+    {
+      "oid": "a8bfbf2857707197c2ce24c7e41a1580b01ba197",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "26a5fed7aa36f417f9c7382dffaf0869a9f00e13",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "de7aba181f3e56cbc9e5ed8be8c761ceff040f6c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "ed9730c4dc96dbcced6dda28a120898e26b340f1",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "8046144ba66b800294c8832e166390b533bcac1f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "9e784acdbea517fc7e60fbfcee7271c3ed79a9fc",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "141345fc13a487bb28f055a704ea8076e9d7782e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "0cf74baa8ed562f553f91c7c113a25f21df202bf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 286
+    },
+    {
+      "oid": "df2f95c91682954faa573063a9e1e15d1453057f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "e151b56ae18fb660022267731631e79fcac6b78a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "59bf5e02651dc9e498efd6601e38c0605ab1dc4c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 273
+    },
+    {
+      "oid": "df2bca56f268810d55b8555d96c6b3ed58f2455f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "f24988f19f517942fe6c84fd6d30f12137ea1341",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "9fd81d8038ac920eaf3deae23058b08fc157658c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "a8893e570c5460d98e941d8838438dd6413b2bac",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "93a7352c72319a432d2ef8024195dbdac6a7d415",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "dae9ac94e330bd2d1b59422e75cf94567a4299ad",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "856dbe3e7e21e43ac36014de5d523ad6ea04d9d5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 273
+    },
+    {
+      "oid": "ee5df39c59be1babd5bcc18932cde2763819f4db",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "aab831c17632e3f89555747511ea6df0f67572a3",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "9e2d57e747959dc829b75061a15606a287b6cdff",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "e171e19d3afa6284befe4e5cb320082c4aaed1ca",
+      "path": "",
+      "kind": "commit",
+      "bytes": 266
+    },
+    {
+      "oid": "a1110498ee6c441819a5f37af5c02e15994b472d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "ecd7e43465431104f5c6af53bf8260560baa54c9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "681821698a1a9c36c0dd1f92df9952c0005f8d3e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "d586fd0583a84a8b7403d5039087ed12d82af7f8",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "c0eb111f5eb4c056d055867b0e38cf78773652c3",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "65ee3b444cbe5895bb05eaafd41ac97e60b2c55d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "1f4ac7df4d6075f7294abb5d75e84fd65590edfd",
+      "path": "",
+      "kind": "commit",
+      "bytes": 270
+    },
+    {
+      "oid": "8f7fa22484dfc0c0d3aaa75ca46d6754b019e90a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "4f4ee9ff84c8dadc1137cd7f2093d9539da93d33",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "42e634031c00aa36fec2c3a239fb419754789737",
+      "path": "",
+      "kind": "commit",
+      "bytes": 282
+    },
+    {
+      "oid": "f4c0a290094a2ed0fbe83dd5383234affebf8975",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "265180e0f0880727958d116cbacd7fc54c7e1653",
+      "path": "",
+      "kind": "commit",
+      "bytes": 282
+    },
+    {
+      "oid": "2274c3e9c2365ebde1ecef81cbb3b548ea992908",
+      "path": "",
+      "kind": "commit",
+      "bytes": 287
+    },
+    {
+      "oid": "1eef4982af377c60d02979d46bcea8f0a60acde9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "7e4ab22ce80b40968bb4fab55899d7957a49859e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "f599a0c89710c6c24663416920947b55adf5147e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "dd44f7badfb69558efcbdd9ba79c3edb8a5fdbbd",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "f0cac0bac942d104bde078dda526ca8f7039b338",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "ef6c24a3d114c0640af07cb358a7150427a17723",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "f53e714dd59f5aa26c610f979bb0ff34fd0c75bc",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "07bf3ccac275925dee87a5a5cd33b50b07917f58",
+      "path": "",
+      "kind": "commit",
+      "bytes": 282
+    },
+    {
+      "oid": "e5144a8dbe7834e0e39d619cde2589239ea388d4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "9de40d818815b38d66261cf6cfbdddfd262c88ca",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "9bde806ca52b80dece1c01e6b4ae0a1d0ad666ee",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "3a2bdf5b24ba2944d6633b1c9dd76026fc5cb3d3",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "836fe7a23da5f13924cb7eaf880a3e3e47fbddce",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "448a6fac8b32bec6332deaf57846c33d54a0a328",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "b23c3efc7873949b98155d32442d6c6506a58d50",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "8276d92b74445e7d8aadfd82aeaff9a19593161b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "a34ab5ba2949eb9fa712f57cbd880635e62a3e21",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "805abbcf0528245b48aad1c68b161809c97462ca",
+      "path": "",
+      "kind": "commit",
+      "bytes": 292
+    },
+    {
+      "oid": "3aa5df11ae841fcfe2d7c85282fa085b5e9988d0",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "36cfd723a739bcfd37ee962af92cdd4f5293305e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "c3573104f7d041417148eab1a297f20cd25668f3",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "751ef2901810814bf36c6396a206b3d0c6fcc7f0",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "1e05fe1aee6ea55358b439aa518501cc97f2c16b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "0c872f0da9a1c9778ef69dc4d0ccefae570d6fa0",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "246d1aeb669d7317d7d5875778a44afbcf09f17f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "8a10846b7ba88938dfebb7e9db361d2ecf6fb47a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "8e9b3e55c29f17e9c6766014fa6746dda1264a13",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "d63fef43ccb01a9e23873b2118a70c6894c62424",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "e6404301fb50ea7c75d9de1a14c28070c68a1303",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "df543c02c9bc69651b90f38ac84b77bcc05faee2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "4759596cc41a38f6590e62a7fe52abe94137b260",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "ac4afeb22087a76e25a4f0882e1371f47ab51540",
+      "path": "",
+      "kind": "commit",
+      "bytes": 223
+    },
+    {
+      "oid": "930ddafd53cc808ddff6f6066188978e0ea24a35",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "a43af230e5a8d207ef09a9fef4ceb0af3becea16",
+      "path": ".gitignore",
+      "kind": "blob",
+      "bytes": 70
+    },
+    {
+      "oid": "deb5dce8eb457b73244df2a22c8edbf929b68126",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 27068
+    },
+    {
+      "oid": "865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 5184
+    },
+    {
+      "oid": "67e1a1c66f4c48bee1c6faf5baf5390680fae1df",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 34769
+    },
+    {
+      "oid": "1dcf1584e2acd898986553fccfc73db812994714",
+      "path": "README.md",
+      "kind": "blob",
+      "bytes": 1684
+    },
+    {
+      "oid": "246848fa1da8a77b6c836ae91b3e773594684d36",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "8b947e2b5356188dd837e17d3d87f6977610eb85",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163",
+      "path": "apps/relationship-review-pilot/.env.example",
+      "kind": "blob",
+      "bytes": 90
+    },
+    {
+      "oid": "830932714370a9751e228be3aa1d9ea1177177df",
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "kind": "blob",
+      "bytes": 42
+    },
+    {
+      "oid": "9ce958e3e4c536fa65ab53cd9424dbe462b2b208",
+      "path": "apps/relationship-review-pilot/README.md",
+      "kind": "blob",
+      "bytes": 469
+    },
+    {
+      "oid": "044847aa771ec066f138b81cab89f9dbf9c56ace",
+      "path": "apps/relationship-review-pilot/app",
+      "kind": "tree",
+      "bytes": 150
+    },
+    {
+      "oid": "661243a5c37be5f34414e17c5b764f1d84072869",
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "kind": "blob",
+      "bytes": 458
+    },
+    {
+      "oid": "08d5ca0c046f8832984e609959bb13999b054275",
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "kind": "blob",
+      "bytes": 171
+    },
+    {
+      "oid": "8ad36db97cfc844408ceca643c58de4181bdb4c2",
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "kind": "blob",
+      "bytes": 382
+    },
+    {
+      "oid": "b7fe1709c171c5122d71476fc3b8913e33b92842",
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "kind": "blob",
+      "bytes": 1128
+    },
+    {
+      "oid": "d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9",
+      "path": "apps/relationship-review-pilot/components.json",
+      "kind": "blob",
+      "bytes": 408
+    },
+    {
+      "oid": "922d1cfb60c0f0bfda576c71876c0fc7483f1490",
+      "path": "apps/relationship-review-pilot/components",
+      "kind": "tree",
+      "bytes": 144
+    },
+    {
+      "oid": "17e0fddebdf56b3fe2b26dc9c78276b52300b5bc",
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "kind": "blob",
+      "bytes": 374
+    },
+    {
+      "oid": "04fc774ed5e59f587636417a528bbd5234bcd045",
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "kind": "blob",
+      "bytes": 7961
+    },
+    {
+      "oid": "d80b121b72ac257c642ad0968137bc90c945b615",
+      "path": "apps/relationship-review-pilot/components/ui",
+      "kind": "tree",
+      "bytes": 186
+    },
+    {
+      "oid": "f4c0ff7be212c0a96e925282a75f13798359059d",
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "kind": "blob",
+      "bytes": 662
+    },
+    {
+      "oid": "302196895e4b92ca76ea4ab7a8a899ecc0760c30",
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "kind": "blob",
+      "bytes": 813
+    },
+    {
+      "oid": "8b52a14188fcbf7c18a5393aac47453894365699",
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "kind": "blob",
+      "bytes": 311
+    },
+    {
+      "oid": "df98f6b72a7967e91b95939590c877ce72f798d8",
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "kind": "blob",
+      "bytes": 1166
+    },
+    {
+      "oid": "a5ef193506d07d0459fec4f187af08283094d7c8",
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "kind": "blob",
+      "bytes": 169
+    },
+    {
+      "oid": "445100e4e26865fbfc4af84ca93f117931d70c33",
+      "path": "apps/relationship-review-pilot/convex",
+      "kind": "tree",
+      "bytes": 194
+    },
+    {
+      "oid": "39425ad8470feb4466818eb3ed41d2cf5d4f138a",
+      "path": "apps/relationship-review-pilot/convex/_generated",
+      "kind": "tree",
+      "bytes": 188
+    },
+    {
+      "oid": "c049816b49eb290630ffeed9abb27776c05dc1f5",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "kind": "blob",
+      "bytes": 1022
+    },
+    {
+      "oid": "44bf98583204c1f9474b38f84b48659b192eea8b",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "kind": "blob",
+      "bytes": 480
+    },
+    {
+      "oid": "f97fd1942151eef5b818c0679f7a12f2c22557b5",
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "kind": "blob",
+      "bytes": 1736
+    },
+    {
+      "oid": "f235db4a112ece75f7698b191532048a98270c21",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "kind": "blob",
+      "bytes": 6008
+    },
+    {
+      "oid": "2dbe0dbd475de29f550f222942597ef9f5dc8654",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "kind": "blob",
+      "bytes": 3872
+    },
+    {
+      "oid": "ef4cf74f8dcc9f7413c1516e81368048a1234cf1",
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "kind": "blob",
+      "bytes": 5278
+    },
+    {
+      "oid": "8351fca4541f2ca58c8851c79c64fe93407eb6a2",
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "kind": "blob",
+      "bytes": 1871
+    },
+    {
+      "oid": "fa69fa296c815263b1a7bd9f761c992e74860e4c",
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "kind": "blob",
+      "bytes": 6374
+    },
+    {
+      "oid": "73649cf0b74e85f4b015115564c41397fb5bd92a",
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "kind": "blob",
+      "bytes": 228
+    },
+    {
+      "oid": "fe04c1f8ad833e39504ba140c495f3c5246ca44f",
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "kind": "blob",
+      "bytes": 239
+    },
+    {
+      "oid": "428f5ce1e15d8f5364679a301a1bbbed7ebdd86a",
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "kind": "blob",
+      "bytes": 152
+    },
+    {
+      "oid": "cb651cdc007c4c5087ea7b4e61981bb2733f7d92",
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "kind": "blob",
+      "bytes": 104
+    },
+    {
+      "oid": "134c3e8e9d9e27b17c850cab9285e72bcea99f4a",
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "kind": "blob",
+      "bytes": 320120
+    },
+    {
+      "oid": "ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b",
+      "path": "apps/relationship-review-pilot/package.json",
+      "kind": "blob",
+      "bytes": 918
+    },
+    {
+      "oid": "999cd7b9d2cd26ba7b02c69c272868b39bea0674",
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "kind": "blob",
+      "bytes": 108
+    },
+    {
+      "oid": "e3193a0241ac59904ae480b987a565e4e243a12f",
+      "path": "apps/relationship-review-pilot/tests",
+      "kind": "tree",
+      "bytes": 115
+    },
+    {
+      "oid": "6d61af4e7cd5de8a51826f5246c7eb346e2de888",
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "kind": "blob",
+      "bytes": 8223
+    },
+    {
+      "oid": "85ff3f3796415d3470f7fccb52b9e3bfb10df425",
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "kind": "blob",
+      "bytes": 4513
+    },
+    {
+      "oid": "b456a6eb10ddb1e591185f66b20379c7a022f55b",
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "kind": "blob",
+      "bytes": 574
+    },
+    {
+      "oid": "d9481977b149f5238f1810595402583135c18f1c",
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "kind": "blob",
+      "bytes": 515
+    },
+    {
+      "oid": "f149f27ae4bbd7cc4f6253570176a4fce144ef95",
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "kind": "blob",
+      "bytes": 43
+    },
+    {
+      "oid": "4af328ef250db7fc0bcbf2618df530b115a718c3",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "2c2d520b486042915bde9492481412f1f8d971f3",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "a2ae1946089598f970d8929dec6e2ff912ed0db0",
+      "path": "docs/agents/agent-permissions.md",
+      "kind": "blob",
+      "bytes": 611
+    },
+    {
+      "oid": "908b1896120f4280ab1e73f661dbe6801c1a5ca2",
+      "path": "docs/agents/issue-tracker.md",
+      "kind": "blob",
+      "bytes": 943
+    },
+    {
+      "oid": "09a92316ead61413421b053574347025b6e5d5f6",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 419
+    },
+    {
+      "oid": "a60efb08bdf4056bddab837f1e0f831fe8f273c6",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 71691
+    },
+    {
+      "oid": "d8ca7db85bbb8f8bda10295369fc2a8efb2098a0",
+      "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+      "kind": "blob",
+      "bytes": 1224
+    },
+    {
+      "oid": "15d38ed62aa565365f9be1419804152b8eff4a2b",
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "kind": "blob",
+      "bytes": 16508
+    },
+    {
+      "oid": "43f3a2141f1836d7d281e84e99dfc8c5d2eab56a",
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "kind": "blob",
+      "bytes": 6271
+    },
+    {
+      "oid": "1be8f9466a3891af465a387d555c8b55b0708a35",
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "kind": "blob",
+      "bytes": 11276
+    },
+    {
+      "oid": "96d281352a47b8cc976d709d6cea4d5b09700c26",
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "kind": "blob",
+      "bytes": 10972
+    },
+    {
+      "oid": "8531a9fe84ee1e1b7f141f6d7ecc6a37d9d9e808",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "eacb229f7cc9639197648786fbf564e65bf48bb0",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 285
+    },
+    {
+      "oid": "e3bcef77922f4885bb0385b816e93bf2442b7153",
+      "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+      "kind": "blob",
+      "bytes": 32718
+    },
+    {
+      "oid": "346121bc97971423554ed9b833902bcc901269c4",
+      "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+      "kind": "blob",
+      "bytes": 56812
+    },
+    {
+      "oid": "027237e08feeec1b8213e2e5ca30dbc7f627da9f",
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "kind": "blob",
+      "bytes": 63684
+    },
+    {
+      "oid": "b5b37978b25914f1abdfe07f82569f0ed800ccab",
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+      "kind": "blob",
+      "bytes": 86584
+    },
+    {
+      "oid": "0ec5f7f856d99d9fdee818ed2b1791e789b4512c",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 391
+    },
+    {
+      "oid": "f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5",
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "kind": "blob",
+      "bytes": 10820
+    },
+    {
+      "oid": "70fbf6cd959aa03867c89d33ec5c1c2acb0573dc",
+      "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+      "kind": "blob",
+      "bytes": 21139
+    },
+    {
+      "oid": "c887e61e1bb3f53649c84b9fc2e26d5a2789460b",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "kind": "blob",
+      "bytes": 25784
+    },
+    {
+      "oid": "cd729d22a55808e3d07d1257bbc31af7a90e486b",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+      "kind": "blob",
+      "bytes": 32848
+    },
+    {
+      "oid": "8fb6ba4b4a23167c25376caf50fa8121f4e191f9",
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "kind": "blob",
+      "bytes": 13664
+    },
+    {
+      "oid": "f78980429b5792417de0217fcd65226aa2fdbfd3",
+      "path": "pyproject.toml",
+      "kind": "blob",
+      "bytes": 696
+    },
+    {
+      "oid": "ae81f70bed3d136ebb8e5d675a6664136ca8b53a",
+      "path": "security",
+      "kind": "tree",
+      "bytes": 34
+    },
+    {
+      "oid": "70807219193221f83785fafc690253c7393d4695",
+      "path": "security/deepsec",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e",
+      "path": "security/deepsec/deepsec-residual-risk.yaml",
+      "kind": "blob",
+      "bytes": 728
+    },
+    {
+      "oid": "69736b0493eb8ca0d1dff4a24289863a425a7c0c",
+      "path": "security/deepsec/results",
+      "kind": "tree",
+      "bytes": 32
+    },
+    {
+      "oid": "e188b723787e6063697d020404b6cf644b62e685",
+      "path": "security/deepsec/results/pr-26",
+      "kind": "tree",
+      "bytes": 124
+    },
+    {
+      "oid": "ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46",
+      "path": "security/deepsec/results/pr-26/PILOT_RESULT.json",
+      "kind": "blob",
+      "bytes": 331
+    },
+    {
+      "oid": "92a0079a2ca3831b91f097f5ab7de38694c759ce",
+      "path": "security/deepsec/results/pr-26/SUMMARY.md",
+      "kind": "blob",
+      "bytes": 350
+    },
+    {
+      "oid": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "path": "security/deepsec/results/pr-26/findings.json",
+      "kind": "blob",
+      "bytes": 3
+    },
+    {
+      "oid": "586a41c85ddd54bf123b5e1ad2480949244a7c0f",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "1e81120586fb5e0e92fbd1ca4a8c6789470d32eb",
+      "path": "src/__init__.py",
+      "kind": "blob",
+      "bytes": 82
+    },
+    {
+      "oid": "05dd4173de21b35d9d7256173f2d6d79733fb944",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "af245d52ea1b3f9a9728cc3198e42f6f09f23c19",
+      "path": "src/ace/__init__.py",
+      "kind": "blob",
+      "bytes": 55
+    },
+    {
+      "oid": "a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7",
+      "path": "src/ace/app.py",
+      "kind": "blob",
+      "bytes": 3139
+    },
+    {
+      "oid": "4ed3bbb995336f3df0b86abee3a6548c223efc55",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 1518
+    },
+    {
+      "oid": "23c00ad0252331dd523f79b8c724e5fedef7404f",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 8619
+    },
+    {
+      "oid": "5e4c7a3b8aaaedde1e7034b3f614a3298935c741",
+      "path": "src/ace/domain/enums.py",
+      "kind": "blob",
+      "bytes": 666
+    },
+    {
+      "oid": "9b7332ae80cea46c4e0c2e13408a879194639958",
+      "path": "src/ace/domain/models.py",
+      "kind": "blob",
+      "bytes": 3865
+    },
+    {
+      "oid": "d3052b39d92d500bcea16a1938822162f9c6e784",
+      "path": "src/ace/domain/release.py",
+      "kind": "blob",
+      "bytes": 4136
+    },
+    {
+      "oid": "24c035f305bd307a12e3a012f8e67693f01931b2",
+      "path": "src/ace/domain/trace.py",
+      "kind": "blob",
+      "bytes": 6814
+    },
+    {
+      "oid": "ea59b297ad6dd1b7ab3c03966627010f45891f3e",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "a6a85eba2c2881370e265f55374ed5fd029ba40c",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 608
+    },
+    {
+      "oid": "5a4e723461d6cf5f72842c62492f17eb13348a2d",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 8610
+    },
+    {
+      "oid": "6f734719daf96ce5620a52de31d5ee6a8c82ebc9",
+      "path": "src/ace/engine/evaluator.py",
+      "kind": "blob",
+      "bytes": 2493
+    },
+    {
+      "oid": "b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9",
+      "path": "src/ace/engine/tracing.py",
+      "kind": "blob",
+      "bytes": 13396
+    },
+    {
+      "oid": "e66a3f855a0ea79a370dabdcbd12933a3d9eee97",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 827
+    },
+    {
+      "oid": "c2421621a45852c1edd4e893d8f31c542df829e4",
+      "path": "src/ace/workbench/__init__.py",
+      "kind": "blob",
+      "bytes": 353
+    },
+    {
+      "oid": "009b7ce18c8073cdbf68d0641ede1837f68167f5",
+      "path": "src/ace/workbench/action_result.py",
+      "kind": "blob",
+      "bytes": 2106
+    },
+    {
+      "oid": "3a46f45a5f21d53ea229e0476148d751e21d15bf",
+      "path": "src/ace/workbench/change_record.py",
+      "kind": "blob",
+      "bytes": 2459
+    },
+    {
+      "oid": "fc15024e81ebe5d8311b1700216856c62deaf24b",
+      "path": "src/ace/workbench/client_auth.py",
+      "kind": "blob",
+      "bytes": 1896
+    },
+    {
+      "oid": "50c3e8ea5a72d622a314ff4c234182fffe5661bc",
+      "path": "src/ace/workbench/client_release_projection.py",
+      "kind": "blob",
+      "bytes": 3016
+    },
+    {
+      "oid": "152da398adbed0554046cbef1ca5d1bd620a25ef",
+      "path": "src/ace/workbench/client_release_service.py",
+      "kind": "blob",
+      "bytes": 12258
+    },
+    {
+      "oid": "fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 7353
+    },
+    {
+      "oid": "bb70fa5b69c6e7267000cf295c3d38009c00a73e",
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "kind": "blob",
+      "bytes": 3296
+    },
+    {
+      "oid": "1efc7f447dc242e84db7496dc43261e7a3d5f244",
+      "path": "src/ace/workbench/engagement.py",
+      "kind": "blob",
+      "bytes": 9010
+    },
+    {
+      "oid": "7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7",
+      "path": "src/ace/workbench/evidence_review.py",
+      "kind": "blob",
+      "bytes": 3913
+    },
+    {
+      "oid": "e65b9dba49512ce16311137575826ddc1ee5d6c8",
+      "path": "src/ace/workbench/export_builder.py",
+      "kind": "blob",
+      "bytes": 23667
+    },
+    {
+      "oid": "a3ddfe4931417f5d942b26c148ddf1ef5b3d9058",
+      "path": "src/ace/workbench/extraction.py",
+      "kind": "blob",
+      "bytes": 6668
+    },
+    {
+      "oid": "c281f9ed242707201c160379b741cc1559120833",
+      "path": "src/ace/workbench/notion_publisher.py",
+      "kind": "blob",
+      "bytes": 3404
+    },
+    {
+      "oid": "a054b5838083ca6c5290786a3d8ee65f422c55e3",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 19216
+    },
+    {
+      "oid": "ca55b5f8eee6923c0c3f1728f22077d04ac5b174",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 50809
+    },
+    {
+      "oid": "44632c998c369086d7886668e67086b48ba33c39",
+      "path": "src/ace/workbench/release_storage.py",
+      "kind": "blob",
+      "bytes": 6443
+    },
+    {
+      "oid": "4e69f1d29d95914ecfac3b29511aa66063707ce2",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 97944
+    },
+    {
+      "oid": "9f310dfbeeeb128ce4c30fb152027ac9cf15df4a",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 211912
+    },
+    {
+      "oid": "17edc4d9306f2841a800e2453ac539fd3beac682",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "f102e61d370776570f1c6a6d02237463cec87a0e",
+      "path": "tests/test_action_result.py",
+      "kind": "blob",
+      "bytes": 1998
+    },
+    {
+      "oid": "8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9672
+    },
+    {
+      "oid": "06d504606e7b262b3ed5014d9903cf7c5c81181b",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 24806
+    },
+    {
+      "oid": "41f3ba179143ba75ecb3151341527a2c11e11653",
+      "path": "tests/test_capture.py",
+      "kind": "blob",
+      "bytes": 9943
+    },
+    {
+      "oid": "0fc7d84aff5f7120039f8e5083999358ea53e7d7",
+      "path": "tests/test_change_export.py",
+      "kind": "blob",
+      "bytes": 28149
+    },
+    {
+      "oid": "b79457826591c81352c0eeeb1888240bf30856bd",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 386057
+    },
+    {
+      "oid": "16d8e3b5cc936a501f31980d36004aef86f70c07",
+      "path": "tests/test_client_release_projection.py",
+      "kind": "blob",
+      "bytes": 7081
+    },
+    {
+      "oid": "c5b215a4274be1856365f5f3835fdd0a88f7c4e4",
+      "path": "tests/test_engagement_setup.py",
+      "kind": "blob",
+      "bytes": 30318
+    },
+    {
+      "oid": "b6c8b0cf9fe636ced590ba82c19908bc93f2d328",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 12378
+    },
+    {
+      "oid": "16e51f95bdb3f7a89c7c27aa02f38e09bc08c925",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 51803
+    },
+    {
+      "oid": "47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0",
+      "path": "tests/test_extraction.py",
+      "kind": "blob",
+      "bytes": 10846
+    },
+    {
+      "oid": "920fe93267ae8072a95d2d847967959c75ccbe3c",
+      "path": "tests/test_graph_projection.py",
+      "kind": "blob",
+      "bytes": 19136
+    },
+    {
+      "oid": "aedfe16bbd3c28d1e8cf790eaed715205f9c232d",
+      "path": "tests/test_offline_drafts.py",
+      "kind": "blob",
+      "bytes": 5481
+    },
+    {
+      "oid": "3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 37981
+    },
+    {
+      "oid": "58fba2594c184ad4adcad05ec22677168115da08",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 10190
+    },
+    {
+      "oid": "c3fdcdc54e02cdffc63f7aa6064b206c21952ff0",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 54022
+    },
+    {
+      "oid": "ef468f24f98f0cf80aed282549d0a6e2f9bee452",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 23172
+    },
+    {
+      "oid": "3151880ae3453321bfc19ad1be84ac2376606886",
+      "path": "uv.lock",
+      "kind": "blob",
+      "bytes": 71994
+    },
+    {
+      "oid": "86e1215fe308e06fb5c3477c69633375edd2807c",
+      "path": "workflows",
+      "kind": "tree",
+      "bytes": 56
+    },
+    {
+      "oid": "d336ae5ee0724121cef0662d5dc37f3d7b242ee2",
+      "path": "workflows/codex-autonomous-delivery.md",
+      "kind": "blob",
+      "bytes": 9175
+    },
+    {
+      "oid": "3c01edf3306efcb3a2c46e389d5746e8fcba116d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "93972c3fcd1a21f6b3b1a90552c6ee7c92712831",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 26710
+    },
+    {
+      "oid": "eb80b508d584d07a9ffd0ec193486948257662a2",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 34604
+    },
+    {
+      "oid": "d16e41e701308c43fda4c971d938a2d88427d380",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "bef43c347e5faf2e7e960585d12977c4adbf4383",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 24579
+    },
+    {
+      "oid": "82ee3a6ccee26c13f8ee400826f08149a5412ab7",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 32164
+    },
+    {
+      "oid": "f9ba59a1991e2879be12abeeee438ec539dd2db6",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "232cd114cb639b19ec839d0660e249738907c026",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 419
+    },
+    {
+      "oid": "5e0df37037aef24bb55ef9cbafd670d601410de0",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 71285
+    },
+    {
+      "oid": "3899d087fd377b50204de072a315b33b3243cdad",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "bfbe6720bfdf38d9f365aedac27d3397fe491573",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 23088
+    },
+    {
+      "oid": "ba7b1a78793abead3e2a6f511a6fde06f04d5c58",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 30566
+    },
+    {
+      "oid": "ba3dc03b1005810ab890bff6de959341305ec86a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e5ed80398f4c9f08a9a79a2f01593729e977fb46",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "d07a9e0b4e8a897dac0c59aba3c00d4a91c82233",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 419
+    },
+    {
+      "oid": "df689c075f76e0d16cb777e35dede6d6c0956037",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 59374
+    },
+    {
+      "oid": "2dcabe36836ed1ab60f6512fb4b198100bd32643",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "1c4e794179e1347318191fdef2c1270e6e3cbdc3",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "d6f72b9d354b357fb686808ba853a27f51122901",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 341
+    },
+    {
+      "oid": "4c8a8c271db3cf757ad6ebf57e500ec02be54617",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "5f5a7518e3ae624efe6e103c969a466dfe1acf92",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 21549
+    },
+    {
+      "oid": "b8845505e383f5f3591f75318bc70583bbdaaea9",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 28807
+    },
+    {
+      "oid": "d85803f323b1fb8f47d0474a394128873f642668",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "8183cdb25878a2cb478687ff596ec92b57d61160",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "2f376d933bc4eb48515e94cb78b370278c0e588b",
+      "path": "tests/test_client_release_projection.py",
+      "kind": "blob",
+      "bytes": 6734
+    },
+    {
+      "oid": "bb302babf53c545a30c9ff3d073595c0db50a1f5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c3e9ae2bb71e81ffa453e960102dccd10b6853a0",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "55a5af5e25c83d92be7b750cd123bb22a0eb773c",
+      "path": "tests/test_client_release_projection.py",
+      "kind": "blob",
+      "bytes": 5601
+    },
+    {
+      "oid": "9a8887a4bdc2ad70975e010cf60c049bebee91b0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "0d55e260007cf7ab64b6975c424b2309c127106b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "9447734d47ae7f64ccf2adc042a13af1da9e716f",
+      "path": "tests/test_client_release_projection.py",
+      "kind": "blob",
+      "bytes": 4007
+    },
+    {
+      "oid": "60656fbb8cd6d018e98cc54517ca4d83030b2e2d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "612be23c7ab73062c4fa0cbf6595c504a308e1ed",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "6777c1db15e33d91ea30dd688e271f6ed10d0505",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 341
+    },
+    {
+      "oid": "1ec33962caaba92856d5089ff2b7be7a313b70b9",
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "kind": "blob",
+      "bytes": 10232
+    },
+    {
+      "oid": "5e3bc9397b9ae13896eff373838066a086ca2417",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "030f362f048bfdb367bfaefd4be3873befe0d4cc",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "e9edf98d70b3633ea5abcb4b6fa6536d1b0a88b9",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 266
+    },
+    {
+      "oid": "8997d66ca0dd726d2a272bf4737e28a4e366af26",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3ef6af0554c1e42ae6fdc93035f0d8c74963f7f1",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "dd9ab4b796922426f6ffc54b7dccd6bb4eaf6ce8",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 771
+    },
+    {
+      "oid": "84229e3976f12ecb51145905ab78690b9c85169d",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 9950
+    },
+    {
+      "oid": "122bdd2d3ac3f46da17d2b2cec65e7257a2fc5d3",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "9f7a94a03966875b21c358e03900746c957e61d9",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 381102
+    },
+    {
+      "oid": "e5bbb20740201776eff51d30ee0a4b3e5c102f9c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "caab32de7bfec80c064f92fae9b4dd080d0826b7",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 21318
+    },
+    {
+      "oid": "2c118474c5b60ebae4cad9c9a478d31e05029bda",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 24861
+    },
+    {
+      "oid": "486198c99d74e94316729ae71eafde8447bee343",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "d9c2116f57404679926e2af5989764ae0f63c1da",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 16622
+    },
+    {
+      "oid": "ef6f954ac71de9f17fd4fd4c60a9d66399376557",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "2f6f8db56e2ff2036394e6e384558dd1a667d712",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "2766bc32f58958566512c22d93ee37744ab295a7",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 266
+    },
+    {
+      "oid": "7011e6a411555997022375680cff068beba73120",
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "kind": "blob",
+      "bytes": 10536
+    },
+    {
+      "oid": "48bfecb820831d87fe15790b5a22c979ac733ae6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "58967157ed316afea77e3a84749f11c6e3c1767d",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 374595
+    },
+    {
+      "oid": "582f3b8461019bc4ef2dc3cd512388ca4b3bdb67",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "9da04cc6c8be5be0557ad1b469f3b88aee77f365",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 24417
+    },
+    {
+      "oid": "6d58d4d19d9271cc966414f6ee937166625a16fa",
+      "path": "README.md",
+      "kind": "blob",
+      "bytes": 1381
+    },
+    {
+      "oid": "8c34f042c56ca1010f3537fddd4e7810acdbdedb",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "ae5a00e395539c2b2c1d4b6230d6483c5b1e2842",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 196
+    },
+    {
+      "oid": "411b71458141958a8af562232751b178f3354eeb",
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "kind": "blob",
+      "bytes": 6108
+    },
+    {
+      "oid": "78cef86ed598a756cf1f7df72280ee16b58d014e",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "f3b53c193c08f20a7faaf580de568ee315979e03",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 369218
+    },
+    {
+      "oid": "7843fa0cb84c97f51cce3a48ee2216fdee65b9ac",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "60c2b940bb034d6bd0b171281807c70508a5b1b6",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "a9907576782b72fd9373473193a4edce72460e9a",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 135
+    },
+    {
+      "oid": "f8d60d6431a9d433222dc05f4c79478aabb48ea1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "12be24a6158b0121cdbe8e5fa702132810cc9a7a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "b8f7ef355f7e6f10c79b524398c3a6e65089c778",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 771
+    },
+    {
+      "oid": "73ead907490ca3f760cefcbf5587221a23131a0e",
+      "path": "src/ace/workbench/client_release_service.py",
+      "kind": "blob",
+      "bytes": 8750
+    },
+    {
+      "oid": "bbd42f35a38c52ca1a6e83f7d295ffb8709a5030",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10093
+    },
+    {
+      "oid": "f85fc6e2124e2fcb278cfff19202d1f4ae570a22",
+      "path": "src/ace/workbench/release_storage.py",
+      "kind": "blob",
+      "bytes": 4894
+    },
+    {
+      "oid": "7e142d6060b82c62b752cdc0382cf1b9097c0f29",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e274d9c677507d8da026d7e026c215fd21d2991e",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 350609
+    },
+    {
+      "oid": "6aecca2427952fe7a06e40aef3e17fa91e88dcb2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c342eff02ea17d2a9128aadc40e19d54f33a1166",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "aeb6f4b957541e463ce995b8bec620d8327f684e",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 135
+    },
+    {
+      "oid": "c2795cf2862ca413e3abc75f1d7a6ed98b821f28",
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "kind": "blob",
+      "bytes": 9471
+    },
+    {
+      "oid": "0ead0fdbf9cdac44e3de67edcfc35f1a6e720a6f",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "a7ffb56188d6dc6d10479acf173b5f311aa81a67",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "3488827742cad5fe23d3926db6c4eec1bb43a85e",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 771
+    },
+    {
+      "oid": "2698a6fe8af2b5e057297748436021fce6ed29a8",
+      "path": "src/ace/workbench/client_release_service.py",
+      "kind": "blob",
+      "bytes": 7681
+    },
+    {
+      "oid": "fd0a36ba64b7769dd9d548952dc9a4cb8c4bbccb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "0d6fa730370e115c53f10b2a2c35943db6836a6a",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 349399
+    },
+    {
+      "oid": "42f6dfe99aee29965add31726cf319d8759f371f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "373c794f3f39331ac5ee6a979bdec3193fb977a7",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "b6d1ced6743395103d5b287d85c800dc1356475a",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 66
+    },
+    {
+      "oid": "0e5448435d999abe98784218533e90887a3734cb",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ac52ffc57d9a8ca81c6704de8a15d8e3adb9928c",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "25fe0ddc1aaeaa1c6f843794e49807b843cfc63e",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "2eeaddd6eb3924eff21866fbeff23801e5ee2a95",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10702
+    },
+    {
+      "oid": "02ba3948492949418f78ea0deab572fb4e5d5915",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "448ecb164fa9e5477a126a3a5058c851b8b99341",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 333774
+    },
+    {
+      "oid": "b80f7a63d4bc928036329d6d28cd2212eba265d2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "7f4abf10167d31bbf34fc3a20f80d20f66ad96c3",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 14455
+    },
+    {
+      "oid": "66c3946cfddb501d9f432139c923d6028dc0c9ef",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 20730
+    },
+    {
+      "oid": "04291593ab264f317205b31005b4f7e150427709",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "d89498a43de271eda5cfce42e223a57ec014ea58",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7edcf909a22af004b9152afffcde5e2a7347480a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "9e3d50be0e44d3e18172b576e1a933db1b716955",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "da0f1ddf517db8909f0f79bb78c4576efea52e6f",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 210328
+    },
+    {
+      "oid": "c331839318e7620ada677b1a2a54b235e531f87f",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a99bda14a10d240b75b73bb0452628c8b3556c62",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 324158
+    },
+    {
+      "oid": "ab0580cef03cf7f2be8e601c339d2f2ca28b18c0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e42529f6c832231ad3b8d226e807eed634c05b77",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "543d9931b3effc9a8731bb981314082210cee8b8",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "99844545f89002b92cd2e2cc2af3d3dcfec53cb1",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "796bfb66f650de82f885ae8df6aa3b49e14b7a87",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 210113
+    },
+    {
+      "oid": "157a18c47cc2c3d9062893f58883749ce680ebc3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e4ccbe8dbca7753e30856cb7e971a815b3205a6c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f191989cd705fbc79a5ea4d30a31edca7bfbfd59",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "f1763fca7c2ecba2e61756d7a9ceec50ec2d5fcd",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "43b1a7a608ed2a8843ed74f2bfec58bbf9db6ce2",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 209404
+    },
+    {
+      "oid": "9d42ecc08b777edcd5ef03a69956e0eedd5d3b58",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "991148a1b0127609b64c34a479bb9d688f72528f",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 318128
+    },
+    {
+      "oid": "40ad2fb827b339f123366009d2d0cd2a3e5dbfb6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "04426f221027bebbbf57eb67d19a5591d3434634",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "4787ce4c05ce59903148ce9d2cc403c35859cdb5",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "c054397cb1d3f94a4b07b2e992892241af2ee10d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "9518f436c9074a72973a66f904564a90a9a6d956",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 209182
+    },
+    {
+      "oid": "b32ddaeb440fd5e1daf9eb967df62450e974b7ec",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1676359d413e6e3db27c2e0207e7b7a3c2d2706c",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 315304
+    },
+    {
+      "oid": "34784643c02268dd73730ec96f087c70896c79b4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "0d7337551a1cbb62796598d6c4dfd47945045f8c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "c41dce5bcf4b7451157a8ad8e0dcaed1c140ba76",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "aa6cc6bf0b523bd63b55c91da0514f4546cf74e7",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "d074d2bb57661e84b6cdfceb2a41dcc5f22f32f3",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 209170
+    },
+    {
+      "oid": "35a597d716594445378557e8924be169b3726ddb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "8022ec08020a63497e406aa95bfee581d467d2e9",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 312354
+    },
+    {
+      "oid": "655bddd417b4a3d326d98d03acf2e0a41a49ac5a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "f93e166166e66c610f8d708bf992dd613a54dad0",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "0dc6de105e3dd684535d738c09d86a379ced3b6f",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "22e6f2542e686a23e827175c6304f949230bc0bb",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "e937e7d0a67f92c66dc7c53cc67c8f9e1c5a943c",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 208855
+    },
+    {
+      "oid": "bbe022560a849edb35f50e1ce415472daa795c5c",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "c20dd6a7b6ab6b34d5645a333187d01d3e26d025",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 308576
+    },
+    {
+      "oid": "e09d093d58fe42522399fd315b3256d17ab9de84",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "fea218874ec727e2834e8268826d57fc25fa3016",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "923a7c459723481f4bf7fc1db3ec5060dbb06ce8",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "a91b7306361a34a89f8452f1859c827d4070a453",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "603428cf428058cf6a5cfbe61a28b05dc607b79b",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 208683
+    },
+    {
+      "oid": "786b54a276c24bf8ec8d6dc612e2213b5940eb0d",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "6ebfbd6c1792d444a4491be0e059f62e95ceab45",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 306512
+    },
+    {
+      "oid": "23c9b5633492f803d0185c081eda178fe1b86413",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "adec64f182f97cf9d8ec9b47cd9c427fe57581af",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "c635f069ea997ebf09f6568ca493868a001f934e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "3a3f4862b02f6997a052bf3b29a8b78fab9a8318",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "cd0ba3486cd323c1efbb7985218a66fa16da409e",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 208355
+    },
+    {
+      "oid": "95f1eaff75e817668caf538f47c073a2e76bd450",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e188ce2e5d84b042c44461a7a25479215168a7ed",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 304193
+    },
+    {
+      "oid": "e0dac4ba1716101bc70214fd7f5b060e31148d06",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "04af2374fb8ffc7c6c7e720bc6d617df5edcae26",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "a5de31d491b0d2e92e255796b6e63975bced917e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "3658fe218b637eb42b29bf4cabf88a5218127c7c",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "7137f79bfeff31a935ea98bbd12b9e6bd115b633",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 207870
+    },
+    {
+      "oid": "788adda5e6e01bd43e48c3e5729d672e01f43864",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "65582b10e33dd9fb91013027cda23ebf8c9489c5",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 302606
+    },
+    {
+      "oid": "42cbc56b24091d8d8eb1069d8dc42cf4b4e3144c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "826a78184f86e8bca6f8abebcde467a72e511ba1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "84b16ea2948918137b239ee73249b84c6671aeda",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "2cb7b6844615c6afd6e859e187c835a734d0ffb7",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "bbfc035d4b159e392452045fd97f6d8edf8cf111",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 206711
+    },
+    {
+      "oid": "094f041f0630a38b322014276c605d0214e7f283",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e99875664276861ce25b3d4863221965b19bfd46",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 297733
+    },
+    {
+      "oid": "04061df91f555c86bec86c9d7fb87eead78a1484",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "7bc1df16ab5ac9748d785a8a33ab3389e26a14c0",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "8c1a5272162cf0ba0a37b14477ced7531d3de09f",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "ae1a703ec13948bc8985d635b2864794e9e29bd6",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "6d6f76eb873974c8bd7de76673a49efab548bef2",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 203447
+    },
+    {
+      "oid": "660363b3dc9345b7d429cc636e8e0846a118553e",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d914f8d60e7f26f2c402793eca2ed21504ecd20f",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 294975
+    },
+    {
+      "oid": "e6760f73069ac774e33b045b0ac0f2ab3f7ca5d4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "fde98bbc141b641f7d142b795ab64ca91750b495",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "82ec194b0d0b4afc38ec42309cf642ba8cc18292",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "b421f273de1df482c1e1db545c21a01e211d8ad2",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "d3b9c70a91c7d0e09d2bfc623e0f229714886ab9",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 201105
+    },
+    {
+      "oid": "95a290c1f2ab85c5f8e2931fb8a7a5ab058eb900",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "eb09b4837d9954bd69028ff4460310863e92915b",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 284549
+    },
+    {
+      "oid": "ac7aac98863284ae7bedeb217bcfbbecd073127c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e76ac399e902ecaab59286e47e98164c91336088",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "5bc6c5a68eece77fb875c0d435c4b68b5080dca3",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "45b6e0cdaa9eb2b63ba2294e9bce7d3df40aad45",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "a5608df192fd27773a0f01a4db64de12b0279480",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 194693
+    },
+    {
+      "oid": "3ea30e4038137c34598000daf9dfb32485668907",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "3633155bed0c0ac37859e976cbffd2e462179ea8",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 272329
+    },
+    {
+      "oid": "f6b4c831f17ee7f81bba73928f2e93f2c6a81373",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "eff1322287f86dc9e95c3002dd8013fc4e40fdd5",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f51a0fec0fb562aff24913e37dc0dd16dd8a7741",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "dd1a8cc6f742e7acdc657501fa0e27cab2bb55fe",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "1162ef15554a5b6e19b6f83813d7df9bb9845fa9",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 192011
+    },
+    {
+      "oid": "7bb0a38850c62b52463038aee3a09867acde25ca",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "29e8f22296b2458510224bb2aa36f578044d9b77",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 268393
+    },
+    {
+      "oid": "e096732a044bfe7c16af8b749cd0e09ff0ad1416",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "d8c203db04e57db8e09df4bfe0b030604d1cd0dc",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "d698ac0da21574ba748c98654d0848927ebc0ab6",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "9c816f4d2fa239175ef5a2eb65450a6aa5addae7",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "2889ed2a204dedb16b7edeec08aceceeab7c5e86",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 189781
+    },
+    {
+      "oid": "f876ad0a2b8f23e80180e7fd89453b4bbd2ca512",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1d967f30f7395e7dba64975b6b5b1561bf9566d0",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 254518
+    },
+    {
+      "oid": "d23ad20f4bd652cbf05fa83da4e02e20508f1e6a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "d79ceba27a35fec4ec3cd2161e21ae1452cb348d",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "602d71a56953802b0ee1d553db125c44c4465a12",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "4d35b63fada66aa420b20e152f2d5a249d40ae0a",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "455f0f0ac530c6a924370288b5d480381de4ca6e",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 187470
+    },
+    {
+      "oid": "395914b40350fcdf522f5868426b46e835dbfc22",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "13df7b677e8fa266b949dc366e1ba6d788a883e2",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 247194
+    },
+    {
+      "oid": "4aa97dc83444febb9e3331f07bc227e9af0d5841",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "92e3c1b12380b1daee684bcc25324261a1f19141",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "4b810668b441e623ee853d1f2ec864960dc41949",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "44fa191f79bea99436b0488741053c37e5d5ce6c",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "071f04a18181288a6a8e6c42ff06abf291636c61",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 180788
+    },
+    {
+      "oid": "8c9ef3c5fa9a547aba2d03a708a9e9967a058024",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ab6c8cb033724a6089a3c76201128c7b9f46cc58",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 233393
+    },
+    {
+      "oid": "1c5e694ff02ba9eaff5371771ee7f310cdd6a7ed",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "15cf3446cacf172f6ef1cdf8c8df804040b65b56",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "9b14be1b0c616ec1a80284dbeb98b4ae5a01f442",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "945f7d5abe90003b76185b8ff81e15cb3a71b7c0",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "9ac1f2d9fbf97ea122c1128ecee2e4f5141a58a3",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 180465
+    },
+    {
+      "oid": "a2a32a09b8973294ca664e4e8954f21a78a39837",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "18e97c414f822c733151d77bb790ca72af0474c8",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 232483
+    },
+    {
+      "oid": "3c4274d174cb138fd66f31bad812aa51fe7e033b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "4986af7f0ee9ac39d8845a921329833e42d031d7",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "54ee92ffbf3164d0cc2f3456e52b4138b2427893",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "95c55a8aef05bf3bca5b397b7f889a108fbfaa76",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "5a22bae869425474217e0998ddd1a6cf1eeaa730",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 174891
+    },
+    {
+      "oid": "47232fc5f86163a327c723786679ea0b4a1ce651",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2b3bb5080d42ed9abbbb703b8b4f6774a57581ab",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 214519
+    },
+    {
+      "oid": "fdc963f7fd99d1772143273e072738a73a9b493f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "abacd0d3f9a091927fadc4b255524289c589e49e",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "b2aee2ecbf40a3adcb721f292ff2b9768779c009",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "8f5e5dc24145991edac7ca8aa0e6fd2ed3e5aaa3",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "026aaa9c7cf08f14c84d35e005461b7ab4a9e8e1",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 172987
+    },
+    {
+      "oid": "1fdd9e37061e04d4a66b95db70f0db7d74fb68f6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d7f15e1ccbaf9c0fae5810cc2638bf816038d8c9",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 206519
+    },
+    {
+      "oid": "447ad1af471cfb6f1d66b691b8fdeabe9445e822",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "bdb8b72a02035f8e4be275a0d8d62a0bc66e761c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "146da39f70fb18b8011d0145ebeb9aeff7182f33",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "0c19f99cfdd9b935cdcbbec74fd72582e92c32c1",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "22490ec75eae16ec84bdc7e757aa565700c988dc",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 172867
+    },
+    {
+      "oid": "a7bcd955a20cac72c4a407f07c250bfbcdd1a6b9",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "573761bd217756df22587e1495e6b2f24e2cd463",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 198249
+    },
+    {
+      "oid": "f9947a4614e6cd7c080a4876abea9dffa107610b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "de6ef6d3ac9d2ca9e33e6baabf4c9c855f92adc1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7685edbacd68bd7681985a0be9cf86e240900aad",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "1624a9659dc0c7a6db5a53b11d5a083c46e3c7ea",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "330bcc0b380a5543e642efa178b00df3952df8eb",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 171812
+    },
+    {
+      "oid": "8fd7b4ce79dc2f0aded99bfb306dfe8d64879949",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2de73357b4e1e2f3daef73842b5c51a6fd75272f",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 189141
+    },
+    {
+      "oid": "6c6950349f94f47bfbc5a91a4f95635b5c8a8c26",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "5fc1d3792adb8e47186c99206bdb6d9e843e6f61",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "dda665b71404873b3da7c396ebea788d245b3cc7",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "2ff63df525fd1a6d18a0d86448dc6bd180fbc5fa",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "d82c7345f9950086f21dd547414ac8d76117459f",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 171454
+    },
+    {
+      "oid": "a5914dfe5726004a324e3519c5a754da2a85ff96",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a9766deecaeb4e2dbe9bec53ab8f87c0e63b2b26",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 188478
+    },
+    {
+      "oid": "d6688f3df2956160a4f7b3af588362e044df18cb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "b3d229ac35b432f5f8ccf78d412ccb1ed3a4c426",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "6514048e93eac7d74a5ea341c0d4af617a8815a8",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "877687e5a00686215e8f14d3ced96428a771d07e",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "a6004ba9efcd923c7eb6795a38e13d5c4d8d5f3d",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 163184
+    },
+    {
+      "oid": "904e23477ca2d9469342b2638eea8144911f2ede",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a2e00f877b2be5358d3befa684be4e85a9630d37",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 163122
+    },
+    {
+      "oid": "25d5ed200a72ca30bf93923b03adf1dcb892c5ab",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "14baa08b9c6ff99176dff55a24ee640a93c95e57",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "16527a25759115208122adda3a214f25402257e6",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "fe3587546385a59d82674faecc03f1affa7b283d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "553cb10786ee415cc0300055ccbf26ad0c5d95ad",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 162854
+    },
+    {
+      "oid": "7c82cc5140aa65f8f9368c07535525f569d639b7",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "4caedb98095213fb71e2032df3fd3461d244285d",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 151166
+    },
+    {
+      "oid": "73e5a3bba0f7d1d1d18b4ede948f08dca6c6c75f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "cd81423af7e17a966808f27d5f0328751a36098e",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "487c60efec33fbb70d85da5cb8c45d29b14b4e40",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "d7460c478bfb63cd98246c0ea72fb1bc6b50e280",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "61620264e33d875fa705d8a91ad80755cfa97922",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 162858
+    },
+    {
+      "oid": "5f8e7e0e486876deac0efc1a7923eb7e53a442af",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c9900eceb3d5c8a49ea73a2662034cb84c0c22b4",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "d61bc3f39415526db8e6a48b3560f8b45988887d",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "7ca09ecab04fdf07f4dfc6cf1b7fbd6860953135",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "b086921c88cefc63998ff84e54dceb8a41d69e95",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 166931
+    },
+    {
+      "oid": "99e23c0d871d8fe0ae08f8945b768bf60dc97def",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "cb03fabbd48f89b4a6abec49fba85c51c50f7b56",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 98524
+    },
+    {
+      "oid": "c434135fb1875aa01371006b63ad1075509cdb41",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "8b769b163fbcd31dfc10b070f1f4b9a29dee5dc5",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3e4d7f944a8d1dd2df3cac4d77961107e2bd6ac2",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "45b69d452bf99c3e270b33db41d4904a6c8eda06",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "95e08c1884fe99bc604e89abf032d9889c132349",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 162181
+    },
+    {
+      "oid": "2da331e0db97683b72be83f8d8638026c3b4f980",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "db5e0c0651613ac28c4f4964548f014f65c4db50",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 100247
+    },
+    {
+      "oid": "10a93b0e7f9806ce8f4c284ee26178da83c34980",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "09df3e44ea097ba513cf94847db3b8d93b387ec5",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f457d83e6fdb08d540584aa9f9ecc50a08aecf97",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "43152465afba883915932b37b0019c674dbd4700",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "fc3285254c7e97c857f3c65e94666fe84a82197d",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 159878
+    },
+    {
+      "oid": "94728333cec26addd57c5d60bf8b96319fb2244d",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b19bbabc47fd1b97266982f573f02dbe44346a11",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 90281
+    },
+    {
+      "oid": "2e3ad8f2f3da60150e5522430e4c678fd0f6f101",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "98523dfdc7c946b205556dc49f47708fa55c74ba",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "2d725f370b53736a8a11eb52302f7a64b1e0d937",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "d6302f08021a67b1912c5e189e074c5e3c0aa9c6",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "c00c2b286e3abf9f66995fd73324695a79419ece",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 159934
+    },
+    {
+      "oid": "082a06920d1bd6ea77d46ca4cd718f82ee188123",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "bccd21da20befd0147e02c3bddaa557f87c1284c",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 85920
+    },
+    {
+      "oid": "b0bae8632a0654ac44c94dbfe33e203429330c97",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e5efdd4a6b80bce015fd82314f06192a9e33b0b4",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "34f533caffdd35db8ded96c3f13dbdf9100d6fb1",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "3247f02bcfc508f58b555f3aca96f6087d31f0cd",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "f93efd7807c79a290c82eadc097c866eb64c56cc",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 159845
+    },
+    {
+      "oid": "221488040f9407d1961747c411b9207ca1446358",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "f79f213ae59f8cdee30dc284273ee3b5823dace1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f2f60c113bb69b4ff460c04049ea1f0142e0bd08",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "abb5a9074408236e809609af68e00df6ba824ad4",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "fd9857755229d59e8630a8dfd29761fef5fad2e0",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 156692
+    },
+    {
+      "oid": "e5ac6a7529238019d2152a899551dffe1e6ed707",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d44e9da871afeda1d44886794c3d003900a1edcd",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 87376
+    },
+    {
+      "oid": "130da3824c5068b1ee24304ea2b564e9f8e3504a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c1218d4817b2bfe4ed96a22df368883b13df51d3",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "0ada15a847667ebf8ea399add962004c6e3142d8",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "dd3217d7956f101296378f59cf00316dc758a436",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "5cf87cbdc6c7d7a3a6ade7b0df694a7e57a66e6a",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 155002
+    },
+    {
+      "oid": "024563386f2cedf1b4eec3d953d92c8ebf221756",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "97a97d446ad33153b17ceb29e8df8d145c432c74",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 72116
+    },
+    {
+      "oid": "8fcb33edfb6fd744e606cdc7f56792aaa70f15d7",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "7b38ed01b3a2bbb385f40af79e8f7f9d8125be76",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "a58a578845617cc45a26b2a0b0ee82a018f652a3",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "4b066b87f8df4c82f59c7d68ecbc7d10df01390d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "1bc847382e4e3a7733aded2bd14f5806feb96dee",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10610
+    },
+    {
+      "oid": "a4ffd2f051f92952a640e88cd92903f3eeb5a3f7",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 150907
+    },
+    {
+      "oid": "891c0b2641649ef1b99ad663b4636eb304c409ac",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "0f804ae3aff3224b2048e83161c718c403841114",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 68059
+    },
+    {
+      "oid": "ef2bf38a88cb8b9484c5cd9cf7aea97ebf35ee60",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "1258b911ec879750ec0b6b1e4cffb9cfdb2ba671",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3e1c8fa6a1d66f028a33ccc123b98a929266b110",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "56ec5145436162302b6fdfdd147ee876648ffc89",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "bbafd5fed8f3901c283a0c2c9eb83a046e493e90",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10448
+    },
+    {
+      "oid": "284b0191d4f605de1fc52814a142ba715c5bb565",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 150267
+    },
+    {
+      "oid": "6aa168bb2f27936628a2d6fad90824baebe9a40f",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "bcb126cd862fa8c64e0d7779a1313e03b43abed9",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 64273
+    },
+    {
+      "oid": "20f9885f8a7b560056353ca2e9796ed927c32c64",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "f3d2f719c8d57bbc24c767839bea176de4cfb878",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "9626026e1116e3692b1aaaf175d4aa2fb1da0025",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "e0729fc7a47371ecc160932894fe760d3fafe62b",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "dc29db151085b79dc1b574dd3ebecd5846698c86",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10362
+    },
+    {
+      "oid": "16e3ebdd72586706965ed11de3e842c1402d48a8",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 150090
+    },
+    {
+      "oid": "ebbd15c4f76b222eebff37074c673fb2f5eaa30f",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "5ab7f18747ccae49d796b9e9f2c927b602559f43",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 54135
+    },
+    {
+      "oid": "511e3751201dfc10e5b40785c1a2a1bea3de71fc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "0252516ea9bf8cba04b8893892b51dc6de98489e",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7425bd79e6d455016f110f7ef2c2287b041ebf3a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "63599c3ec7d4294735b2616eddd338f8ae9af1a2",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "ece1daea1f9e84dbe61fd51e22703f42bf10ed9d",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10490
+    },
+    {
+      "oid": "a049486e152e69b0d808e72e54bd01f97f0b7526",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a16b9ab4c5cd85900f53d28423db1f50963426ca",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 54136
+    },
+    {
+      "oid": "5e4f3faba63589477ba2979c7f1bd81e6c1080b1",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "dfe433ca5534fa4f0ff782c74f1c51117a5468c1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "be610772f1bdc01df602e5058f129be390379084",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "1a5958ec221bd0199fba610f697816db1b36975b",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "8e70a66ebd2d188b09fdc1a31f4ef15d8d90a63f",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 11046
+    },
+    {
+      "oid": "da2ffdb6ccb26dda70ae911bf5e3c89ee83a890a",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "c1de8fee75b0a16f94e8f6ee30435aec05e57829",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 52649
+    },
+    {
+      "oid": "057dcff381e482afc25f0216855c168bf936d5bc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "9b748e69e4040bed6d54e63038c288a6ca95e0f0",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3ecdf1bb1fcc6bbd497d77dfd05563a3110a886d",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "f52ba4692e8d50cf88a727808c8bd847e70e15cf",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "fd9fcb1ff8021dfd1cfff6135c8fbc16e331520f",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 10671
+    },
+    {
+      "oid": "aa085e507e295fdb28e6c61d74af8097d9ce5202",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 148881
+    },
+    {
+      "oid": "ce75025c72d5dacf06c09a4f021182fa06c9d63a",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d0d9ec8c6fc76074160b93c03a8b16cd7f8b2fd8",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 42018
+    },
+    {
+      "oid": "73deccb127b486ad25d1a8b96f49356d7f3ac81d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "a6ea372f1da1fd2d1f21cc8ff663625ed73027f1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3c17b648f762999a93e88de626d55291fb9ff571",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "9c5b4fd0b2bc49a2f362227046357be95e4fbc94",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "3f266cc1f1a33d3f3d1ef571bc546a891318ce18",
+      "path": "src/ace/domain/release.py",
+      "kind": "blob",
+      "bytes": 2972
+    },
+    {
+      "oid": "2c03d8500317575d6d7de1bf2dd0c7a16721bf8d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "4114766956715bbf80b6834b650626367fd4044e",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 8018
+    },
+    {
+      "oid": "698937eb6d77444862c4fd7b199e58940208315f",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 139156
+    },
+    {
+      "oid": "0dde97706ce006dfad3ecb911c7c3dbf44022a40",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "826f26bfcd9c39bc17eaecf5b196e45fd80d0ca9",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 23566
+    },
+    {
+      "oid": "ff65c426b3409b793c5261f49b3f5035972a3eac",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "6b5790f6f318356880653fe116e704fafe35ccdf",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 20501
+    },
+    {
+      "oid": "db0cdd83f087e236daf33700f706c8dd712c17b3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "8d6888b006bac14fd21b585b732cf7076d555fea",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 20213
+    },
+    {
+      "oid": "715c95fce190cdc03d92b9a70575c7ecc8e495bc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "132821d9f48323500d13d3bcf29476caedc946ca",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 14153
+    },
+    {
+      "oid": "6cf2650506c32fe9cf25196b5ac94cb01b2fac7e",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 19829
+    },
+    {
+      "oid": "33639c8a66a5f7b765a279e35d4917593e540297",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "460c086d94a3a03bc6ad44e0addb134e02290dbc",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "4f2e05d247ec8652cf62547aa9a4ac66e8742f3e",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 23501
+    },
+    {
+      "oid": "bb142c55d5915cc2a1e083a3583b843b7c379854",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "da63a2af146390f56b62fb10042f7436c2649fb5",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7e5c46b2a2d3430cccd5638060a43c490d43adc4",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "2eeb95dd68fe9f36fdc0146be94c85fab0ba46cb",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 672
+    },
+    {
+      "oid": "6cc5432aaa2d9ce0f49dae932245f9a84ab07893",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 7639
+    },
+    {
+      "oid": "c814bf17bb27b3fa1ea78d9b2ad939ed64c718c8",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 136779
+    },
+    {
+      "oid": "f8ae4c0e17d80852a7edd838b53200333354a68c",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d2f23bcc4409b575b145a3564dfe58a819e8be39",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 19254
+    },
+    {
+      "oid": "cf158ca171f91d1fb9002f8bed7b6f3273af0d87",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "4510a96cf8ff2966667e09b19bf41d2e839c2847",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 12098
+    },
+    {
+      "oid": "3e44034b1fbc424bbec3850c5537caa2ca91fffd",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 16521
+    },
+    {
+      "oid": "99c68a26b43113d62788760e230331fe5975a452",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f3d2572162c13ca1c3a8b27cb64d4c81efb8264b",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "9f5560f2b2e0facc1bfdbf57a2e92adb1a8bb2d0",
+      "path": "src/ace/app.py",
+      "kind": "blob",
+      "bytes": 3037
+    },
+    {
+      "oid": "9f039a145d68ab30d58840e9865bd392c1e0aa84",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 189
+    },
+    {
+      "oid": "fe41d1eb56b30b2f344ad852a66f493932829006",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "0c843f8e45af12013f7370d4b2248d825a13feea",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 120599
+    },
+    {
+      "oid": "dd9e1cd473d76e6365e877c24648b48e95d25863",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 733
+    },
+    {
+      "oid": "c488cce558f9ebdd5b26cd73981f4596b601a2cd",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9593
+    },
+    {
+      "oid": "a3af896eed4b852ca47cc1e69d3e5996586e13e5",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 12419
+    },
+    {
+      "oid": "6c30597905441b62aba13a0340eb352d5130dec6",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 54012
+    },
+    {
+      "oid": "8057070d06ae7d3ed0937ec529f6b05cb062c2dd",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "66cef2f64c813fc3f8aaf348a2f41e17dc38fc6d",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 12101
+    },
+    {
+      "oid": "0467688e6a9a363201e546bfc8d1191de61b53f8",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 16486
+    },
+    {
+      "oid": "98148761b33a7c7392961eb78fa0d9ce931bf8a6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "2580fb072fab92b19efe3dfe0d6ece69d11eba9f",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 10948
+    },
+    {
+      "oid": "c90954da7c60acb51d271e7198599790d23b0668",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 13401
+    },
+    {
+      "oid": "d764323e3a59d5cd6e7c578f5e3437a2879ae920",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "d1e14497dc747be449519cccfa82fa415d962c0a",
+      "path": "pyproject.toml",
+      "kind": "blob",
+      "bytes": 640
+    },
+    {
+      "oid": "9a5801020f97fa286c7ca64b4db7338bc9e87873",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "207cd0e9cc640147dc9c66abf43a714830424390",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "ec12ab9e7dc13d26fa4281999790295e00bd027e",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 394
+    },
+    {
+      "oid": "817b30705f5587049329946f1b8ae06c0e18e5f2",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 91070
+    },
+    {
+      "oid": "2ffb6cf8e537158118534e4fcaf8f3ea44015cc4",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 99475
+    },
+    {
+      "oid": "358681e27e7a4377af8e8506c73b7b64cb4e180e",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 684
+    },
+    {
+      "oid": "20d105992378a4c4998b69e397cec3c1fac10ccf",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9466
+    },
+    {
+      "oid": "978aea6472864165f94208317023049c068a7f27",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "3c02e4d02a5cf3da68e10f7557a89620fba8e6a5",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 9455
+    },
+    {
+      "oid": "df07be57a3b943b7b720de6bfe4427b6cc52c2cd",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 11042
+    },
+    {
+      "oid": "18e42975546cd8bdad94243788e32dbdf270f4aa",
+      "path": "pyproject.toml",
+      "kind": "blob",
+      "bytes": 614
+    },
+    {
+      "oid": "69327f273d0da75b5f53d70857b144e83b5f974b",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "4f27a764e0f6c5440875cbbf7414bb9e43e2e490",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "cd9e61a22b42c1ecd0d50795026789c378a4f9f6",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 394
+    },
+    {
+      "oid": "674a9f7b006afa67d1eb6db7f4dd8abb2d947f4d",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 78009
+    },
+    {
+      "oid": "eb645200a5a35d781b55ddc76eead62693e25d55",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 91315
+    },
+    {
+      "oid": "739f524a90346f5397295d41061ab18804b63108",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 632
+    },
+    {
+      "oid": "029b67cd36ba2559a94262ad63797045a5ff569a",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9363
+    },
+    {
+      "oid": "bd27bd8f72eec557209c868540b5180f08e915b8",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c4541dd7ceb5ed55073102ed9e89f001e2049549",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 8037
+    },
+    {
+      "oid": "705bfd7b0c56691e8ed99b9c9d32cd0a26ad3bc4",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 9201
+    },
+    {
+      "oid": "2b6b08e68c5251dfd58eafeb420b4aac03f8d702",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "646d43764606167b05d27000ab6a164bd396fb03",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "257526eda575a2d409427c912ce7e160d6402610",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 394
+    },
+    {
+      "oid": "f1ce1ae843e71d335652217fca700297c02ee737",
+      "path": "src/ace/workbench/extraction.py",
+      "kind": "blob",
+      "bytes": 5774
+    },
+    {
+      "oid": "6918b077c8bf7309a610efd8f4f749d9093dd579",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 77606
+    },
+    {
+      "oid": "1b74f9f2ab28dd57adacf53551c4ebb8ba04d3e4",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 90865
+    },
+    {
+      "oid": "9d9d9ad8483412939f2e45a0e8f337335d094730",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "9507c5b668b868e32b1da2d055296d17e3f24c7a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "afa93c18b535702ed7e658c5eac2328ca41be94d",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "79906b33e50d0f6d5c69fecaf69818c084434256",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "6e3c7735a14394fd6c60cc8bebf4e8a09c92bba8",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 394
+    },
+    {
+      "oid": "576e80f97bda33578e3fcdd0f62794c8aa07d1ad",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 75964
+    },
+    {
+      "oid": "8f12c37f57af6f0f03e87cd82330ddf0e7cbe275",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 89424
+    },
+    {
+      "oid": "409d6fb1216b9101c1ba64258839920a6378bf4f",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "6c118a1ab1cae9807a1f3984ed9363881e259bd2",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9290
+    },
+    {
+      "oid": "d81ffec4bbbec5c4053228721dd611aaf3d462f4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "8dd78539705fecfbfb16fe26948c6c1935ed3d82",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "38a73850df4f288b38c2f6d62ff7013622402adc",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "f51a13274497bb47f201ca8dadaf7d9a4b9ca1e8",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "b8894ebb6f7ff0cd4cfe212a82f6cfb24d61b8d0",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 88669
+    },
+    {
+      "oid": "32ddf657cd94d8ecf6b38a4a5022b1c6c0c6208a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "e212631596e1a8d6dd97d1e0eb33f8be177cd0eb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "7804c07d8a1a58292141462886dae773261b972d",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 11562
+    },
+    {
+      "oid": "3c14f54284af49cad528e3843fa98973ea9f0114",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "c7e421d9f51c38ce66c259350bb72451f9500cf8",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 7230
+    },
+    {
+      "oid": "50ab50fce3fc6279d6e2f521938af6f031d5edb1",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 8524
+    },
+    {
+      "oid": "5b976a6310914da3fb9c89d9fe5eda8ba053feb7",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "de3560c3f04f358ad462a29d9529b9f193cd56ec",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "040906a49d65ab0ff5e984ecff7e935da6c7bec5",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "7705dbf8f1466bd3778acddb328fe1af2044020a",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "d8ccf9476873b601fb79865fd0c0147e36a3f0f7",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 74329
+    },
+    {
+      "oid": "15c3bfd7a57c90d9a9e16090962a25aecb33d330",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 88192
+    },
+    {
+      "oid": "e91f31240e86b00350ee892f5125bdf8285c124b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "ce8848f1d14c6b61992e0a87de49bc196d2fd51c",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 8928
+    },
+    {
+      "oid": "6c970509d3933ca57b54ad718f54a3a27d94f4a3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "9d33266439ef94dc558d3d146af7c35e64250e38",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 7087
+    },
+    {
+      "oid": "53994546779bad494b716ad0482c84073e161544",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 8452
+    },
+    {
+      "oid": "709222bb9cd47ab7376dc9c60b221730247dd4e8",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "0dea50dd6c6403c29aed1b0079536d2bbb733af0",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 8061
+    },
+    {
+      "oid": "282b7e7f25b3846ff6cc9e3fe3f2626a020e34c8",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "0690d9d81a463778c5736e0063ae47b4b5d5b096",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ace665ba06b9a982d3c38f46309a11659a5931c1",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "de05cebaac717fdc266db141a7a3a6f7d8c081e0",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "76be61f6c12f6950df2279b1001fe550ebf3fd28",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 74280
+    },
+    {
+      "oid": "b5ef27ed5f0c7d20ba3aac38b0cf088bfd3221ff",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 586
+    },
+    {
+      "oid": "eccd9c93e32055c0220b24dc89e98773e1bdc857",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 8744
+    },
+    {
+      "oid": "f93c3d5444e4c43d3cf53842e7e81ddff8a996b5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "74d50c5b6faa502872813f80606ae59311031650",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 8044
+    },
+    {
+      "oid": "cfc8538356d749b595d106794e076f0f8e0a6593",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    },
+    {
+      "oid": "73ad16c1567df6e3ce0c8ba8b1eee023bb986614",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 5483
+    },
+    {
+      "oid": "b9a9867dc1c4bb5fd5ba0c108d00e61c002366e6",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 5460
+    },
+    {
+      "oid": "117196a82dd8b6403cccefcd8f46bfa6297ecf99",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "e8d6c6ead981ec96f46b7b7b0aee21275a4230f8",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "7d3cf4f32677ad6399141446f26dd9ea2037bbf8",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "8775b370d63673aa8a70a47ae59ea0ae02c7e8b7",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 68712
+    },
+    {
+      "oid": "4ac7bc8fa648708f63d2d0833f957908a61f42fa",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 84026
+    },
+    {
+      "oid": "1c2a6de56c6b067d59d2f8e5b6139b2961996184",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 532
+    },
+    {
+      "oid": "cc5b18cb2c46ca757e9ed6d6f9d16a92d998af35",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9240
+    },
+    {
+      "oid": "fdc42d8c0f0d63ca3bee8410eb39cf843c82d69c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "df340dc57988b7fe7122ed25ff2a6312a5f5dfe2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "d483a0d027c5a0b2866cbaa21f7754bd65ae4f62",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "fa1422b01ddef78e1ae5dd3263543ba818ce3c18",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "68e3d48edd45eb947bc6bbc4c7537e96f26bc794",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "1736b799730b3a557d66d929ebad10dd4dd56d29",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 68162
+    },
+    {
+      "oid": "0ca147a57afeb655146e598d90172a768dc8e3f8",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 532
+    },
+    {
+      "oid": "e352e1bfe3252faaea233f2634327220420db4d8",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 48624
+    },
+    {
+      "oid": "e5fb07e9f3aa247a9c556e80c15f934f7516652f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "e0ad9ee7d6ee2a460eb3d0db56742e3da4a8afac",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ac2cf5ad6e84534d2e40992a6c73d790742cc5ea",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "d4eceab5331e337b7a06eb3d1a2038e8e4a3f723",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "81fde42b8952888a28ef99b3da86e3331e9d85d8",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 67721
+    },
+    {
+      "oid": "a792f21f893c9e6e5689aedbec586de46f416644",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "1ac98168269026144176619ae75149f4e35703e7",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "8c18b37f33785f41f484ccd4b8aa73c464424dd7",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "2293a322b613af67df6b287caa21cc118d154511",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "c7d8d70e899a9d42e907a0929a273eee2624b4ed",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 61146
+    },
+    {
+      "oid": "eb35f8221f750c01fe3a4f238e96b8a4e6509ee6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "f5458527934a9b9deceac581e0ef42158c82a75a",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9184
+    },
+    {
+      "oid": "9569d8cc72386210fa885b45af9f2965016db465",
+      "path": "tests/test_engagement_setup.py",
+      "kind": "blob",
+      "bytes": 30281
+    },
+    {
+      "oid": "ce45347889c4988da9b7a3ddeb195542fc06e758",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "b8c58283c03604b429ae97073b6c1e028a293860",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "0badf97ff9074b7fb187862711f31aa567f7f1d8",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "d0f7fe62211238ee96ff8da3fb416cb53ba781d1",
+      "path": "apps/relationship-review-pilot/components",
+      "kind": "tree",
+      "bytes": 144
+    },
+    {
+      "oid": "44e6c2b950d4d2bc7e8ffe20461c3c85af6a68a3",
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "kind": "blob",
+      "bytes": 7768
+    },
+    {
+      "oid": "f553e215fc0f657f8fb6d9a18188f9475bb73160",
+      "path": "apps/relationship-review-pilot/tests",
+      "kind": "tree",
+      "bytes": 115
+    },
+    {
+      "oid": "6284df9817e3e6d0cb90aa897fac82eeb0ef89a4",
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "kind": "blob",
+      "bytes": 7008
+    },
+    {
+      "oid": "7959d47875091133e9853c6c44e058572c39513e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "f98c974a7a1dc0015fa87eea0b4206ae1ab72800",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "165b1c97338c7f15fe0b6a337163b2ea76dec71d",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "064589056042e4660f6b10a6c4edc19937ab83d8",
+      "path": "apps/relationship-review-pilot/components",
+      "kind": "tree",
+      "bytes": 144
+    },
+    {
+      "oid": "9bfc5fcd64f32988f6e31468a32f35ac2b95d562",
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "kind": "blob",
+      "bytes": 7419
+    },
+    {
+      "oid": "413e2166777419326d4386e132bc26dea3af0c80",
+      "path": "apps/relationship-review-pilot/tests",
+      "kind": "tree",
+      "bytes": 115
+    },
+    {
+      "oid": "288f857d0b2a69080da8c97cb737173024e4cdef",
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "kind": "blob",
+      "bytes": 6463
+    },
+    {
+      "oid": "7b452710ce01e535e2417945a639a4f968f9bd8a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "7cfacbaf82cc29fffad34160cba05b2b479f0319",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "64b947414bac06d0d310227a2f303b156f81947f",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "0453fe7968428f7e9c9f360d4f1155432f219842",
+      "path": "apps/relationship-review-pilot/convex",
+      "kind": "tree",
+      "bytes": 194
+    },
+    {
+      "oid": "2af972518c18681808a54e2f78c69df98d4f8ea2",
+      "path": "apps/relationship-review-pilot/convex/_generated",
+      "kind": "tree",
+      "bytes": 188
+    },
+    {
+      "oid": "4ae4a88da344e9263d2116eeb6f5e5faa894ad5f",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "kind": "blob",
+      "bytes": 476
+    },
+    {
+      "oid": "ccc0e103cf7f6fd3407a2a5724a584f011627171",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "kind": "blob",
+      "bytes": 100
+    },
+    {
+      "oid": "cc3626f76d6b5802d24bb2bcaf82a35e202b1348",
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "kind": "blob",
+      "bytes": 482
+    },
+    {
+      "oid": "8ae8024794e9006adf7aa54b9db457b2cb2aba10",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "kind": "blob",
+      "bytes": 564
+    },
+    {
+      "oid": "5261e32d314d961bc27ec9fa3b4e50d0d1efbc4c",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "kind": "blob",
+      "bytes": 247
+    },
+    {
+      "oid": "1d2f41826ec96b504eac0a2e5404246d758e34f4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 384
+    },
+    {
+      "oid": "4bb021956ed92a02a2ce0f2c1b4664fbe00388a5",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "108958074b962824e33eacf2ffcde552f7a101d9",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "4cfa7399fa2aec0690a71a19d9327525949fe1c8",
+      "path": "apps/relationship-review-pilot/components",
+      "kind": "tree",
+      "bytes": 144
+    },
+    {
+      "oid": "5f816ce85844296c9109abd2f58052ec419544f1",
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "kind": "blob",
+      "bytes": 7174
+    },
+    {
+      "oid": "982fb5199e4eae9d4c99708af311286cdfbe26a2",
+      "path": "apps/relationship-review-pilot/tests",
+      "kind": "tree",
+      "bytes": 115
+    },
+    {
+      "oid": "a425da5c3fb5ac3b751a82fb5d1eb13b0a794c64",
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "kind": "blob",
+      "bytes": 5865
+    },
+    {
+      "oid": "27f8c7ef3d01717ad5ab4f9ec5e6cd72c11d5739",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "45f77b874245588cf2d298707c9242940f6f867e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "927e4c047d4f1fdd3c0006797545fc7805c3a458",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "dc91ff0c5db408d038c350e3d7c9124756fc77d3",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "cc32d55dfcabfab2c8f35608790c4be688b6f87d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "ab7582188e5da26d6ee54d4096deab627bd2416d",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 61023
+    },
+    {
+      "oid": "3c1e70f64ed122692283dc5896e6ac4bdc384eae",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "b906f81757695f2bc851ef347c099fb2f1db385c",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9025
+    },
+    {
+      "oid": "8ad40f899bbee4cd0a2c14a095a3501b80311f26",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "8bfc84b4dc22a69a81d1cecef7cf7dc987a1a67a",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "b38838141d32d2fdee3370b60810eee499cd5086",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "b6c14ed1cffe9fd90dd74cdc4cbd864d96e0172f",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "557ddc394480ac2f8df050cdd2543546fe20abeb",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 58695
+    },
+    {
+      "oid": "f3c73a068ceb5b94b12ef72b117b981d0f0d2ed6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "a5eb65cd054747619888fde41a1deb59782360da",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 4406
+    },
+    {
+      "oid": "102a1e324d9a2884de7ab7f739b78199e70bc2f5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "3a97ac02f07a602ddc907c9d45210c1d3afa6816",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "75164686a8d0c187b5e6d9ea5d1034531ca01092",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "adaefbaeb433159003c7b8a8233df55e4b05c6da",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "035f14879bf1e84be62b25c092b97e41e9403fcb",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 19237
+    },
+    {
+      "oid": "dc0a50e200d14c6163da98e22a492b664ed08cd9",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 46800
+    },
+    {
+      "oid": "00e6993db16a63f6edbda178394425c99d916f6b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "4a7052adc33c1a90e451b0d63e76310b74c0f28d",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 51920
+    },
+    {
+      "oid": "1cb5fa4a171b72bf9ccd4dd55ba0bee0e68b9d8f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "8b9f801f6905832a8010afad003d1ab5226a3606",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "423edb337b9d6dcdd317e0f75e17c51c68bf7adb",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "ceb524621920399437053d38386c32cb377ee66d",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "e9e95765bcb3ca7ac08875c555c84bf62419ae3a",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 19103
+    },
+    {
+      "oid": "dac0ccf7e246c90b713d685e40ad3a309d0b6dc0",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 39842
+    },
+    {
+      "oid": "47de533be23e3d49b0a99c938b4b0c9a7f2efb82",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "f3e0a32b0d515df59b2581ad7959815c18874833",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 45098
+    },
+    {
+      "oid": "57ac1db8995ab3e680aba0701b63030f8bc65716",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 21804
+    },
+    {
+      "oid": "beb7e1d4aa27b9e66f981a2ab6d36a6a6dcf1dd1",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "fcd9eee5454eb5f3e2fc5e507c620d7fda2465f7",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "9dd440b12fcc2a25087f1daca729970f93c5e194",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "c0491d9489df2aae4326ff0ad754130d8513b444",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "ddef964ba86c16f01be48e3c2bc7376a262f2932",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 18713
+    },
+    {
+      "oid": "af38f83df206d34bc12749159ce07d22228d9ff8",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 38894
+    },
+    {
+      "oid": "8cf03a7135f6fac8af30e970db0571301f52af6b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "bd681477fa8745a597b1700ea5af474f69c77ca3",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 42439
+    },
+    {
+      "oid": "9f086081eb2f042f2cdb6f7952cc90765ee41a31",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "daa38f82d56be1ea1b85e2eca72ab6a280d650ad",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "c18e7773351bb0bd2b45253fe21efbb507b9d797",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "16e0c3ba9f22204d7108011d0c5b98051475e7a2",
+      "path": "docs/agents/agent-permissions.md",
+      "kind": "blob",
+      "bytes": 511
+    },
+    {
+      "oid": "cdc4f24fd2a1378946112034ca900ed09f058d8b",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "c268b2be3ef00093c8f2190220dce86cb839c52a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "feacf1b23f12f47a580183c2ea30d8ef335981ae",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "f8e1b64fc1fddd748e29ce79950c827923b9486b",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 13821
+    },
+    {
+      "oid": "60a05404738ae028c4001de455260d8a02aa993c",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 34372
+    },
+    {
+      "oid": "646bd9c56114210e8256ffe640a38579179e7fad",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 57147
+    },
+    {
+      "oid": "68124fc6936359f9b7e91ad70bb4a20b2b539c03",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 482
+    },
+    {
+      "oid": "e9736f3c28af168aa1e78028222bd195d9751180",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 4318
+    },
+    {
+      "oid": "734c595c1b2c672976abfd8d52c3320974d79c29",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 36502
+    },
+    {
+      "oid": "b76c4007d3ab31d6e5476530fe7f79c40a4f4574",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 21196
+    },
+    {
+      "oid": "104b31476ace0c598670f04d81a4e7a003ee151f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "1da5a196255ca3358656103b7fe06429f9c98b0e",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "91fc699b82b7d502ae91f53079dd422210939037",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 44
+    },
+    {
+      "oid": "22731e64bff6235659af8518d82932da7181fa0e",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "86ad735574f5a5fd8ba11f4b1235389274bfbb43",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "531e75ed60b2ac9c5f59706ec8946d1a84c3d780",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "f517f2d29e5c30977dd10008227c50dc0c9b6d4e",
+      "path": "src/ace/workbench/__init__.py",
+      "kind": "blob",
+      "bytes": 48
+    },
+    {
+      "oid": "22730f1e1c972d2d92f7eda745ebd1c68a1a002f",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 49583
+    },
+    {
+      "oid": "2a2e66ae5efb6fa849d8d5cbcac8bea7f9a0f028",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 83829
+    },
+    {
+      "oid": "486758bd4c06428d824bb19497b981e227d41392",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "d6b02a06e46049ba7ea31b069e2c8ab28ff6aa10",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 3847
+    },
+    {
+      "oid": "5469af17890e340fffbff896ff22729860c995c4",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 17779
+    },
+    {
+      "oid": "bdaa2396f1fe21ca2bcda37053ec54fa2097e531",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "d271cb861be8d37f2140e092d9c6b9473e562385",
+      "path": "workflows",
+      "kind": "tree",
+      "bytes": 56
+    },
+    {
+      "oid": "9c348d56468a4ed7e7b82cbbc6f60d101d9c9f14",
+      "path": "workflows/codex-autonomous-delivery.md",
+      "kind": "blob",
+      "bytes": 8936
+    },
+    {
+      "oid": "4be85356c18a8691927f7cf85bfca2cbb5c66c57",
+      "path": "",
+      "kind": "tree",
+      "bytes": 353
+    },
+    {
+      "oid": "3e6a9621b58f65a42388a7c24f1fbe1eea37c17e",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "e1d50eecc1336aed1a67c131e75c199b33aee2b8",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 44
+    },
+    {
+      "oid": "ae7503c0ed5548bac326d6ad374ffb11fd67df4a",
+      "path": "docs/agents/issue-tracker.md",
+      "kind": "blob",
+      "bytes": 756
+    },
+    {
+      "oid": "373b1b1b139016197dcab3946b5f628cef228f95",
+      "path": "workflows",
+      "kind": "tree",
+      "bytes": 56
+    },
+    {
+      "oid": "14b221f82fcc633ea382e23563c673eaa2f11e7b",
+      "path": "workflows/codex-autonomous-delivery.md",
+      "kind": "blob",
+      "bytes": 8097
+    },
+    {
+      "oid": "de98b8799b179468655158618b71906fc953307a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 317
+    },
+    {
+      "oid": "0487be15385960cbc833a0e7d7c94fb31f452369",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 4384
+    },
+    {
+      "oid": "b8a12c40831cd87a551cc1b95500cccc907baa5a",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "cb5d1895e4b2a6a9864b01e991777ba0a52bc23a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 317
+    },
+    {
+      "oid": "8098e942f4ec87ebad6def808834f8264a7f0dde",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 4213
+    },
+    {
+      "oid": "8488a20a66de3438f3522d5c1a7475f273200d93",
+      "path": "",
+      "kind": "tree",
+      "bytes": 317
+    },
+    {
+      "oid": "0f806665c79bfcbca6eb6a33481ba8e3050ae41f",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 3335
+    },
+    {
+      "oid": "382a84ef672b2915178ac9b027b6a49d39bf1f58",
+      "path": "",
+      "kind": "tree",
+      "bytes": 282
+    },
+    {
+      "oid": "12485675cf3181f389c79c1876cc24042ffc3e5d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "94e95aba143d7c8f6ad3097d05d2120df170c2a2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "a4de7c40b5e647b3aaf14130de07995f45ffa804",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ad712044e675fd6a9de1e0f2531d64e451c1ec92",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "61f4c4757427b27eedbc8a43c3ea6cd3be41ad11",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "5b8700e6357606e74ca9cc6e5447b27afd265953",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 83537
+    },
+    {
+      "oid": "b2b0cfd0d439039cec33445fd2b57fc738ae07b6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "83e7ff2418aaa81af6e6428912b103275bbb643e",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 46893
+    },
+    {
+      "oid": "13beeeee13a5feb5971da518e2915b6f57a33f0b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "b69dc2d061a2498a2bac00749a919822981a0149",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "6f3a79ff4a182cd3f89cfbea19947ffa73c1f272",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "a5b84de52706bbda1005a31f470bc0a5aa58c725",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "a904ba5d354cd91c0fa63b5d6f305977078eca32",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 83053
+    },
+    {
+      "oid": "fc70e22550041efe8a1755e35bfa7240e20bf780",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "eeb71386618932d1268370a157c7b17b825da6f9",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 45800
+    },
+    {
+      "oid": "d6bb3456bb6c6a2fac89631d5b82c8e725b20f3d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "4c0c144d8489739d66b6845ef188b25db847d240",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "64d738c7ba4d3a12ea45532128e23f04a4190846",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "da6c3b3171e575b0f743231c4af6bda26c98d891",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "410d4f717a252c7ea6284c3bb61b832536024c96",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 82528
+    },
+    {
+      "oid": "0f393ee44a634db91d8a7275fca6a710f0e0786c",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "463ca4a71be294ef622d611629ef430dc3f4cba0",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 44707
+    },
+    {
+      "oid": "b33840d0a0c641d07d774cd8f5e1d95219ee4c5b",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 16383
+    },
+    {
+      "oid": "9b635c5279a72999a1eb82cec1e0b9e313ceabbd",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "dbdb40a32d9750f6946308e574aad332dc0a6de6",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "4681ea015bb0de9410ff71ace6e772ce8ee1266a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "c813fc0f08ff240b4fbda06b6232efd6cec29948",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "5d9b1424b8b58c2c9c199aac58b41b2df5f61a1e",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 49571
+    },
+    {
+      "oid": "5e07ae3d1d5a857ec33dd5bba2fc934f4a1af2b3",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "918b94f1f029ab530855cc3ff99e66208ed2dd60",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 43699
+    },
+    {
+      "oid": "5689f1f7ec210f8909c64cc294e32f74c528301e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "88af28b26d233585967b0baff825222070d4024d",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "aed0ad987e2aaea31ba8a88efc29b76dcbc242e9",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "8e6b05a9658490dc1f9443b457ab2ccf6d86f591",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "11d57a90ae8f97a3af62361a5190bfad28ef777f",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 81199
+    },
+    {
+      "oid": "75cbbaa407f05550ad259e4e3db80a51ccd0de6b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "70eae44def13b137fbf26f925209ec37ae733735",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 39332
+    },
+    {
+      "oid": "5b7208254e22ab8820b708972338e59ec6381223",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "828602b9518ec71c8c4db9ddda40d60309d61e5e",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7e89d534b40968a83fdd9519ca4c62e1a73eb690",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "c9ed2fec2cc21b515d63d30be14f5317ea831945",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "9ce26f8a745d10859b80b46ae2d43d2e292a9dd0",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 78607
+    },
+    {
+      "oid": "1bac43ad6baf3d432b2a285dd20b2851c78c1556",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "0c264ed51fe322f4eb10a7cc1076c0ed9a650993",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 36461
+    },
+    {
+      "oid": "138e3c025e197944d71a4dbbb78db291271cd546",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "06549229cd1581ddc98fdeb00e89b31fd1be272a",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "683e9c4c3eee1eef3ee2162c1aceb08732746903",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "b9c6e19d3d4c01523f56b018063db302a1189175",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "7b6eb4b39f7121270a3ca4f9803030ec421f385c",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 77540
+    },
+    {
+      "oid": "80e991be1bb011d35043f2f35ee4179637135f89",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "6093dddabb29fd83be790784521417cd8dba9e9b",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 34050
+    },
+    {
+      "oid": "61fefaec2953e4fc6cceaf24b1662c1c535ff1a4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "94eddc6ac5de4818e3e8876f2df6681db63599bc",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7b5ea87a8a93f6e83da01f3beac4ab1c7f1396f4",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "a01ff1155af76f37cc9275218d3ea0732d7bd4b7",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "15e2aead2a1ee13b917b34af12324cdfd89d4ea7",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 49304
+    },
+    {
+      "oid": "52b4f3008dcb585de73af9e39f5ae06f9ca3bc22",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 74411
+    },
+    {
+      "oid": "a3d0af4cee5305ef9dc9ac7a84264a0151c176eb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "f6212f745532ea9d20fd464109b18cae48816108",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 29981
+    },
+    {
+      "oid": "6cf7204257e2bd425ea1c0319dc0b29f1d986ea9",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "fd294bc387944dbe7d27f1334ae89a422e3f3c64",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "d78636ac4a7083fe7a43aaa8196f7925deacf497",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "8efcce48c68fa766fc9828528705355f96ae1c31",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "8a747ed8082f1e1830e70fa064a4123d5211484f",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 73519
+    },
+    {
+      "oid": "ff97416a022c7384a52e2375d38698bf1fd06d4e",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "80460a89766be876ac5184b26c337411f21a2b17",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 13995
+    },
+    {
+      "oid": "dcb8555c4533501798d2df31b336719ad2eec4f3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "1bcd4a0d53e935628fe5c39ae54bd364047f1863",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "1e521346b68e3b8e6e72dfdf2a0b4f90dccb64f9",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "232d53dacd19d5a5fd652fab81be6cd63e1e689e",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "771c15799865ac5a24a119aef78ff4f219a664b7",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 73289
+    },
+    {
+      "oid": "04570d9fd6b63e9345aede0b7e4d406945b80267",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "f9100fca580fa13b635634ca37cbf18feed302d4",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 27681
+    },
+    {
+      "oid": "96e3bfc2c891aa0fdb1236dac8885a52fd95708d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "3a2c6eb05c37e96b57d0faeb55e3495e91f5fd7a",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "fe4ddf1c8d1417a40bea91e95e5df960aec0e8aa",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "604dd4394dc334cb2b01fb43daf98a6babc9226a",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "87cdb442821fe6d44fadd93367dd597e508bc351",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 73183
+    },
+    {
+      "oid": "c42815b8a0655c03835f7b0347ed145e125cffc1",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "7bc47b07ed579b0df6c9ed16f560352b7f115d7c",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 25133
+    },
+    {
+      "oid": "f41ae7515a4ed198b5d6cfe30c9bff7b2223fb60",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "f326db5b24cfbe6a2c728cbed329903f5fc5e0d4",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ee626149c88bf9e5082d7d30c35cdfc942fa9784",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "cff37d8563bde1e9517578c892771de503d05508",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "98f0d9a64ea3a23b03ed879c72f576b6d2fdf3f6",
+      "path": "src/ace/workbench/evidence_review.py",
+      "kind": "blob",
+      "bytes": 4366
+    },
+    {
+      "oid": "80d5e0db5bb7ed4a04ddcbf22bb30877c760264d",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 48882
+    },
+    {
+      "oid": "669c32d6ee25418da4cf8517c0ad94ef43c88d42",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 73152
+    },
+    {
+      "oid": "853f9aabdc99265e3a5e57a6337f7217d1595687",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "e7aaead5ee22d89b2e9a5a9b0276974a917eb4b6",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 22028
+    },
+    {
+      "oid": "b86f7b7a20a219ce2e805dd1ccaf7e7ea8a6d71d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "1f5993f7621da4b4d46bb5a54bc666605d986707",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "99ef4d96461c008e4dcecee5a64bcd651a5b612c",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "33d50ca793ec974e67376f4ac3f47a21c8d850c3",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "ef18bf3d9780a425637c34b24bcbf9778954966c",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 46931
+    },
+    {
+      "oid": "6410eb8df0b9005938c74b4d47382e453636a0b1",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 72618
+    },
+    {
+      "oid": "739f49a70bbc26325e17e3e6925f3afc284d4fb5",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "a17db1f1560ed41cc481e6f7f757714662748101",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 18534
+    },
+    {
+      "oid": "d398b515bff619c689660751992abe5aec9dafe3",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 13556
+    },
+    {
+      "oid": "a3a1857dca4412443b4abfdc8457660c4fa529d6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "ec24e8a362f555af75b5f27c1a6558730c84b73a",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "8a1fba5a32afe34b55247b75167acfe5b8cc630b",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "5b1ac61e34fe297b333701987e3c5fd79b8211f6",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 201
+    },
+    {
+      "oid": "38a3b5fa4793c73d2ce0ec85e3aede083003ec7d",
+      "path": "src/ace/workbench/evidence_review.py",
+      "kind": "blob",
+      "bytes": 4435
+    },
+    {
+      "oid": "8c07fa19f9f2d00620c3576a1f87e344fb92d3e8",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 47175
+    },
+    {
+      "oid": "61bc9f22bae918abfee35b3fc53b9f6fc8780622",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 72699
+    },
+    {
+      "oid": "6b80be2e69cf64a9b0bdf3234cc84525da649aca",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 378
+    },
+    {
+      "oid": "77277d93137974670962dcf05d3bec4dbc490b2c",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 17804
+    },
+    {
+      "oid": "97cb025aaef5974147bec950ed65f55bd593ce68",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 12460
+    },
+    {
+      "oid": "f46e02eb7afa0ee1b060e6f9471b6aa3ee97b607",
+      "path": "",
+      "kind": "tree",
+      "bytes": 245
+    },
+    {
+      "oid": "36ed7c750fa42d6cbc45585cae90307031db968c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "967b3ed2af77115ab88ab68ba39e78ca456dbc0a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "a6c0b82ea79fd3a81c3af93b1952587fe76d6235",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 155
+    },
+    {
+      "oid": "42105aac293df528291c77aecfa420a1a5623901",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 28482
+    },
+    {
+      "oid": "921250361c46d19173ca1f6590cf683a924d65f7",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 37782
+    },
+    {
+      "oid": "68e9c0f6476cc329f5c95084c870936fa1559471",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 327
+    },
+    {
+      "oid": "5eb1abf6bed2c9c37aac41b9239aa94190cd70c8",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 3305
+    },
+    {
+      "oid": "23df0e07473c3215cf1f56416e18106846581a71",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "66f5de7ec071b20bad7be02cb0c5d1999ee7b4c4",
+      "path": "pyproject.toml",
+      "kind": "blob",
+      "bytes": 588
+    },
+    {
+      "oid": "f6421e1f6a917bdd7f1661372502363ca9db559d",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "38fd5f7d85bdde71faa77b0265f3ff807df39d4c",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "f63f5213e2eef336202ef7e7526d0732e19178b6",
+      "path": "src/ace/app.py",
+      "kind": "blob",
+      "bytes": 2936
+    },
+    {
+      "oid": "a8ac3556f5da0738bd8c2ca64cbd7bf80c9a3b86",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 116
+    },
+    {
+      "oid": "763c9a54726a72c12bd89d8ac4ccd83c5bf59748",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 282
+    },
+    {
+      "oid": "c1261c65c846dc347c0f7587f1003da2d8484b1d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "23fe3562ac794a7ff29597f5c8e6dbfb84c9bb0c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "d3e54b05ce68f1591c037e80000050bbd7b4d1b2",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "d6444832986f5436cc2c0253fa19a2beea1e9be7",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 116
+    },
+    {
+      "oid": "15ca483a97b552a26813dcac1563dacd251b3bc1",
+      "path": "src/ace/workbench/engagement.py",
+      "kind": "blob",
+      "bytes": 8896
+    },
+    {
+      "oid": "567cb356f0b39af8a5479ebd17de7fd09199ebfd",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 25294
+    },
+    {
+      "oid": "9ac75d300b10e18d51e1bc04b137ab99af988c0e",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 32264
+    },
+    {
+      "oid": "39096e95d03f3dc78bb6ed4e3a2f66832a941476",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 239
+    },
+    {
+      "oid": "85217c40dc157e427be00a0684c5d20f77a2bd60",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 3257
+    },
+    {
+      "oid": "836c55fb6ee2012745f4262357575dc9f1a01a2f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "9851d79f831bd39d740d8255347bdda379849f47",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "443a01fe7008f58fa6250efb29261e1804aeeb3e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "96bed6a4d0037eac8a3c8fe119c9eef625ad7a4b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 187
+    },
+    {
+      "oid": "a446d095f07b9ebe77c9025752de12329cba2903",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 2237
+    },
+    {
+      "oid": "0917cf8e4b11899564a91ab283f121e21d9c3278",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "a2d6cd72f939792e6ce6b2b4af63d3fb93a70622",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "140943d43a1c17fd6249b0c5909724a3ecee2863",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "8ead5b34d38d58b3afa7c5d5603e2273f16b38fa",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 208
+    },
+    {
+      "oid": "383fa8a7d52fd8ad9aa9dd593611d48c28f64fa3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "ed0427cbb7234402883f6a45712b6322e0eee3c5",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "8937961a4ad7bc268e8af332d34b869a67718d42",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "b5d66879deb727c4de5107929651407aa4e5f0a8",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 307
+    },
+    {
+      "oid": "a054a1cf4e4e8bcf0394c4cdf05a1f15078368f6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "3907ed20aefeee5d3863b191bc4d972f6de01ab3",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "118b2e838a6fee20f43a0c8b52080efa32087a4d",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "ef8c0e93fb11242f5479577bf9806999f4ccdbc0",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 307
+    },
+    {
+      "oid": "2bbce41e08387ec25138bb8350cebbea8bcda0ba",
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "kind": "blob",
+      "bytes": 13618
+    },
+    {
+      "oid": "d52138d084c985111a8b5d463ea897659219b95f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "c2eca4f33312aa1a79c9f78bbf1ac0a35053140b",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "93403e50b76a84ea2a52e3f31d6bc1459226dbeb",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "d7fe0f6d71e8cb7392e0cc6c683aeea51b3e05cd",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 229
+    },
+    {
+      "oid": "32e2139ba9baf9e11793067c96f9a3bd81499bc2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "99c64cca1fd43062abaf74bc153d91a8390b1b22",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "9f3c09d9d7bb0cbbfe9b18487c58ab5efba71ccb",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "f5a9b70131db200d369383e50e4ddffd89e05c97",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 208
+    },
+    {
+      "oid": "be7846bd1c67346ad5229a6678f4d17eb357ba82",
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "kind": "blob",
+      "bytes": 60795
+    },
+    {
+      "oid": "59be4a87ff3d25927218f1fde0cd523671fa6ab8",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "a3ed411e4a78760d217a0a3e5f5c2a7c21df09a2",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "da43334e7215925fc0465503597de3ba6ff95f0b",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 189
+    },
+    {
+      "oid": "4fc42b2886c4cc8c8aeb2531270238fec1719c85",
+      "path": "src/ace/domain/trace.py",
+      "kind": "blob",
+      "bytes": 5813
+    },
+    {
+      "oid": "c4e5c8faba5cef936bca2fc61a41732c37d5b802",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "9dc8f7900d3cd40f3b3c22b29e03fa4d32550824",
+      "path": "src/ace/engine/tracing.py",
+      "kind": "blob",
+      "bytes": 11205
+    },
+    {
+      "oid": "3252c524e9756108c653a886c91f1244dab43986",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 187
+    },
+    {
+      "oid": "b1011c1679e68d3aa4980bba663122fa2869a42b",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 24617
+    },
+    {
+      "oid": "e356aefde934cae37a2c918d0f7f11998f423aea",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "c723d979e166b865fb1716ca9ced2299cdf6a277",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "7715ace194170a008e5f85b4ab7787027abe7cc9",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "949f2d6c0abd70ff7ac958db8a1f96b85f47c4d7",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "59e7d4d1140ca8490bc00f15076402bd5a44ad18",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 484
+    },
+    {
+      "oid": "bfd2833888892c5bb99b7a1c45a853da4c19f381",
+      "path": "src/ace/engine/tracing.py",
+      "kind": "blob",
+      "bytes": 10501
+    },
+    {
+      "oid": "d846329060db7dd1cfe4609bc0116e92546c4de9",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 187
+    },
+    {
+      "oid": "575a80f46c215ce4c5157d5d4a2bd407e0dbaab9",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 23433
+    },
+    {
+      "oid": "2374551db14eb5c5e4f491d00a04dff233167db0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "d9816dc49d8bd0ff8fe112abfdc116800f949ab6",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "b137a8bed8ce19838310ec7d688995932d97ad65",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "dc3dbb55d976b34335ecc5e3f0ec36a670bfc7b5",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 189
+    },
+    {
+      "oid": "f69371a56af47efdef87769dfcfe83a0cca23e8a",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 1462
+    },
+    {
+      "oid": "0428701e3ecc35f6997d8d492b3e1c209e8cc212",
+      "path": "src/ace/domain/trace.py",
+      "kind": "blob",
+      "bytes": 5012
+    },
+    {
+      "oid": "2960378cbb810768274b2b9ed05b8da0cf09fe33",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 118
+    },
+    {
+      "oid": "048994b9d3e74580ec99a4776954b4304da35e25",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 323
+    },
+    {
+      "oid": "e9523f5c2c5f9e860796ca4c8f3e3efb74f1e0f7",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 187
+    },
+    {
+      "oid": "75157cf66521c8594e4e8d3d1aa0381c5be178bc",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 9090
+    },
+    {
+      "oid": "f4cb1bffecaea4b9c2b0c5eb4975a1079ff73b2e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "362a87a94ef2d8b0352384a8abd68673c31d2cf3",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "c80af7dd797800c2d7521490359707b13f3c6638",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "5bc2a23a9f03c85c3754bfc705282bcf2152c393",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 189
+    },
+    {
+      "oid": "3dfb611725ddf33b01e3b9db1f8f7c2a3ba5ac9f",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 1330
+    },
+    {
+      "oid": "dbc3b7e1ad07a3e2c778ea90c4578c659995cbf0",
+      "path": "src/ace/domain/trace.py",
+      "kind": "blob",
+      "bytes": 2353
+    },
+    {
+      "oid": "580a87e9db36f641fd7e9ef898132070a7b8bf2b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 187
+    },
+    {
+      "oid": "4bdc1f90880d56ef49d54142e37c936b3ea6960e",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 4372
+    },
+    {
+      "oid": "0a13026ffb82b528ada3774a4044e430679b7004",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "57dbbfc88aeebdd2f5ceaf6af62208a83d1bfbac",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "e06d80c5b1c41dac390d3db8c18b67c600346577",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "2fb22973a85560c7de77df816dd54ca1c3d42f0b",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 153
+    },
+    {
+      "oid": "b0bd865b8b98535ab67ea1ff076673a3fa202cc4",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 981
+    },
+    {
+      "oid": "cd83d1e9df5f687b02cf7e1f48d73c64715b8214",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "20bda61ae21b4c2f991923cb63df65f65e56c429",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "a15697811e0a4281b8c2c10667333f7e8dc580d7",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "1be8228246fdd85ebee9bfb406165e3c6a4bcf50",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "356227f8883e68c053a0c61d85a62bcfc51756f3",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 128
+    },
+    {
+      "oid": "087380620890f808dc3684076f26858231cc9f92",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "57a775018f82b703b2fb055a92d8d938adb5cafb",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "8c544c3c2b5f1efcab50d86cf2fce23a1be9f49c",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "ffd389014b96658e574e24d6138a10d5a865b2ef",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 229
+    },
+    {
+      "oid": "1efb4d1a2cfa9090605fc6023e501513bf4d470f",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "kind": "blob",
+      "bytes": 25784
+    },
+    {
+      "oid": "48e6b9dd2d70761c9ac21e9ad8e39aa2b5a65572",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "1f47a4667a51b9da3a69d1f68e6f86c54690ec81",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "1a97e4820dd89ffb4096495c2f532c365c1e3577",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "c4f182883cf3dc6ab5a1ca0fb29dd8fa0265672a",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 229
+    },
+    {
+      "oid": "b272668520dbe712c021d3c603df53e9dbc05c9e",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "kind": "blob",
+      "bytes": 24790
+    },
+    {
+      "oid": "c6953853320285d6fa47b16b9d0dbc93231ffc8d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "592f5fc472e075e7dff26417373fe44d553e6d19",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "e940bea8b7a0fd14511d684dfd9c212919864950",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "8a488fc624948597d6ccbf5ac3b623c59789bec8",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 142
+    },
+    {
+      "oid": "15452650dd3a73194bb6715939b92cf66ebeaa0c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "fda62673102ee6bc891fa6de433795c47f49c75a",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "837962ae7236251bafdf6a52f9581fd4c7c5c340",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "4784f8c6aa70d96024cc72fd3fe6f66db6b89f81",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 153
+    },
+    {
+      "oid": "f440b58f8d9c5ab02b9b285a319bf8bdd45b0d07",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 8180
+    },
+    {
+      "oid": "a84b4ad97b90d7127a45f997790b748ec3eb594e",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 118
+    },
+    {
+      "oid": "20e7115d4fb0a610e53c21474ae0d45638fe3acb",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 6973
+    },
+    {
+      "oid": "4e5c54c59bdb554cc673d3fad853590c121698f6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "7da7be3bcc881c0345477f58d197bee528bbd931",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 22088
+    },
+    {
+      "oid": "83754427d58fe2182c1653563070a23fd492b217",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "5cd0e4cca02f2ea3f833f36d3185c8cfda6bb26f",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "76f295040fe1b65688055f993f3f6adbb6209080",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "85843989a48ea5d6a56f270130a8946c46dee279",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 118
+    },
+    {
+      "oid": "c1ffa7cf67012fd9d11268cf52752c240c0955ad",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 240
+    },
+    {
+      "oid": "e66d2bab9d29de880c9bf1471e214a98a4c857dc",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 6331
+    },
+    {
+      "oid": "f8d57791d2f153e1bb92783a186130a608181531",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "94bf2aaab1814d59b7d7cce60acd14d8e1322372",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 20703
+    },
+    {
+      "oid": "2b011042b91898a9ba61d77dddb61976f70a22a0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "096ad7ef5f913a9a24ec44d4a37df2889b2cfe57",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f3af3b2d2f3e0dc09877040f94a0a9a88b19373e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "26ba2ea3749ce9a625060fdb728dd76f19df15a5",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 153
+    },
+    {
+      "oid": "f57215f33579e69ead4420744d8edcc1d117681f",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 923
+    },
+    {
+      "oid": "2ff0763311e769114c77fc2a31f7f55f4a586160",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 7601
+    },
+    {
+      "oid": "1d25c9af1438c61f93912f6f98ad76da601013b8",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 79
+    },
+    {
+      "oid": "568c9b853b396694d569ab697f5afcbacdcc7371",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 102
+    },
+    {
+      "oid": "b920ad10a20c77fc2fdc0a3dee53c6ed9e4cc2e0",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "6787a76a3e3f017780aa407b9c84671ea3649dcf",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 10641
+    },
+    {
+      "oid": "de96c03811c8724d00dc9b99229a6cd4dfd850c6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "5c052b7baa1d32668d0127220f99ee47a75e0b5b",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "04bc2ac13c373e65314c0278ac537782072ddf7e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "99f44e9f0a69168a445abac0b3719a35079ca7b4",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 153
+    },
+    {
+      "oid": "57b485a7a96d144f24203c3ce8cfa665af0e8314",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 825
+    },
+    {
+      "oid": "d1f10b30c80f1448718334e2ffe7b1f4d5d6a446",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 2882
+    },
+    {
+      "oid": "533871da31448b888f707abbfde1ba58ba2d8a24",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "5ae1051ed42607b5dfc588a57119ebb82c35bad0",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 3930
+    },
+    {
+      "oid": "e27c249ebbeefab3cb9400eef2481041668cb721",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "bbd4445afbf228525e23a049bdc4563fa5349a96",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "884a8731510ea9e5d1db98a95b37d0143e3bd08d",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "fb00a8db672417a6f772268e0c194a19df2b5e84",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 112
+    },
+    {
+      "oid": "1b59096f20e303988ef44a19b27dfe888c8c8f85",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 351
+    },
+    {
+      "oid": "fc4b7058de5be5c6da8c7f6065e848f87fde0dd2",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "803a5a87e3ed4e3cbcaed1a4544dda4196a74ed3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "0f6b53bd76d78d1cc8af8aec0699368aa127629c",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "c497020125c6a008f61a374d7484ed83c18b2441",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "2696e9c6debbc095927aa44ad0ff3b894f07cfc8",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 54
+    },
+    {
+      "oid": "437bed31e71b785de8a103a8229564612bc76e65",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "ee6eec947f07cd65a474ddcd582eb42c24ecc7e9",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "b20c308e7481fc2c19d2a4109a9118c4f961037b",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "5121c589b28dd7dfef5ac92d5a83c33fd02b88eb",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 61
+    },
+    {
+      "oid": "444718ede7d005676a9edf87d7a9ff345ae09a2a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "3b588fd0cf84f32fdc99d523fb6565b7ffb4e662",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "2317c62165959dbde9b381d54bfbcd69489de67e",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "b9469411184fbdbec45fed839b831884d6bc3a6e",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 112
+    },
+    {
+      "oid": "968d60afc022002fa7d8c2f983d02441ef45ac2e",
+      "path": "src/ace/domain/models.py",
+      "kind": "blob",
+      "bytes": 3546
+    },
+    {
+      "oid": "7c9a9c0da9184b7b74ed5ef83666d1c6f6567a74",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "5326b04ff325af7ed1a4017d065266783643f4c6",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 9885
+    },
+    {
+      "oid": "31da783382dce5e9e7bd6bf4587bf0f14a49ad28",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "9439dd8202dd0cde53491da8027ab4a336baaf69",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "23c9aa5f828245f3977c425d618ef0cc432c199a",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "721e34166944c4a6e2620bfd7015f94ec8c364cd",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 112
+    },
+    {
+      "oid": "e44d91946f15de4c076b9a5eace3689793580e90",
+      "path": "src/ace/domain/models.py",
+      "kind": "blob",
+      "bytes": 3295
+    },
+    {
+      "oid": "94096ff67bd631d6d9cf492e00cf9debfc0d4c40",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "5c7a8614764d7d3857a7ad08f60433c6b5795aa5",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 9688
+    },
+    {
+      "oid": "a37a285f15b4a1f0b3e9d05d38ac6051c12dd9f8",
+      "path": "",
+      "kind": "tree",
+      "bytes": 210
+    },
+    {
+      "oid": "82f8c550f675071def4c1a0ee07dffd5fd1b3d02",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "d7aa0cbef78475c5a409a53809219c5238c6bd7f",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "354a7581f615120866ba6a019033fd0f83746a4d",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 61
+    },
+    {
+      "oid": "dc11453f56e890ce437915d82d0a7beb968fa10f",
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "kind": "blob",
+      "bytes": 10319
+    },
+    {
+      "oid": "04dcdd6aa8286290734754e3716377d4c76b9ed6",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "f8eeebf418b40d410c1b934d508036dcbfaf993c",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 139
+    },
+    {
+      "oid": "03c116cb9ea5ebcc8a7ef944106d087215030f39",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 112
+    },
+    {
+      "oid": "603673e64c61973379733468ae321cd56be821eb",
+      "path": "src/ace/domain/models.py",
+      "kind": "blob",
+      "bytes": 1710
+    },
+    {
+      "oid": "365c296ef8f2f277eb2ae5a4352009978cd0af52",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 79
+    },
+    {
+      "oid": "4efae662d9aa9ccea8e7c0808a7aae8d8264bd91",
+      "path": "src/ace/engine/evaluator.py",
+      "kind": "blob",
+      "bytes": 2430
+    },
+    {
+      "oid": "1a6dbd0b5f0e7112078d9e87ab376787560ca270",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "3852c2ce15b2a8773b89954217fa89452823e41e",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 7855
+    },
+    {
+      "oid": "8f008e06255eab3e9062b0ab80869cfb6f1ef58b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "2efb287c345850ca1d29673ef851711b4f82d55d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "2d095bccc220069cf17449026f1fe98a954111fc",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 88
+    },
+    {
+      "oid": "17d27782cc32f4b8316cb38a6743ef8ed1ac815a",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 2172
+    },
+    {
+      "oid": "44c6ddb652503ee8666ff0d23d40710e1f6a6603",
+      "path": "",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "a5aa8d8d6f9d877f553181421210931f2d24510c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "deafa0d0f437cdda4bd08a284783fd6100806f81",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "a8d6a6cb74bcc84b0f07d4abc50d1353f6168482",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "8b957f6f169b6acf3ba0e13a618324af5ecccb8e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "d251f29ccf1a5e78a79f763230c9a4dd8052e44b",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "5806187e56b9e445882642648f1a7516831c1c23",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "7d91b36ed8c1a0abe084628b5c9ab120a32e96f8",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "776b334950e75b651543628e2cb50a9630a84ee4",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 29
+    },
+    {
+      "oid": "9becd78e9c8d66bab4ad3f7d04da4dbf9cda2b5b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "580cd5c56d2c89bffa176d2bc87ad6c6b548b995",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 3878
+    },
+    {
+      "oid": "e3e5d919eeb1039ba8f0401e6988da514bd10fdc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "0e2af17a47fce52ac4512b2b14add6898dcbc695",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "3650ff9a93382e6b4f38de24945878d8d8cafffb",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "21522618fa35677f2dcb75e953cd9d65ac061f6e",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 75
+    },
+    {
+      "oid": "fc0f093f5ba41c57798ee702451c51daea14dec9",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 138
+    },
+    {
+      "oid": "5479d408ea66b47d2aeded6d3001bc084a209ef3",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "d7c0c4186d53c343f3fcfb8291170395ab2f7723",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 608
+    },
+    {
+      "oid": "0e2d22c4a1e7ef69a7622b1ba9bcdf1b1abc59e2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 31
+    },
+    {
+      "oid": "40db1509121d2999330691ba148df3426919750c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 31
+    },
+    {
+      "oid": "c585262fb4d2e40afd5bd6f9ce2b0dee445b7c2f",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 38
+    },
+    {
+      "oid": "6048faca6c183bf6d5187573ef592b89e77b57f4",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 32
+    }
+  ],
+  "object_counts": {
+    "commit": 152,
+    "tree": 660,
+    "blob": 427
+  },
+  "raw_object_bytes": 24524860
+}

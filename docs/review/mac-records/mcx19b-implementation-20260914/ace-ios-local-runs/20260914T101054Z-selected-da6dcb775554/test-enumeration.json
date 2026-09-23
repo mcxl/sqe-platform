@@ -1,0 +1,48 @@
+{
+  "errors" : [
+
+  ],
+  "values" : [
+    {
+      "disabledTests" : [
+
+      ],
+      "enabledTests" : [
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testAllControlledScenariosShowExpectedStateAndAudit()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testBothAppearances()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testLaunchShowsSafeConfigurationState()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testNormalDeviceSettings()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testReleaseOrientationHooks()"
+        },
+        {
+          "identifier" : "ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure()"
+        }
+      ],
+      "testPlan" : "ACEClientAppUITests"
+    }
+  ]
+}

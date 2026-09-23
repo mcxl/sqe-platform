@@ -1,0 +1,33 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/ACEClientAppUITests.xctestrun" -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult"
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult
+
+2026-09-15 16:31:49.001664+1000 ACEClientAppUITests-Runner[24555:4269581] [Default] Running tests...
+2026-09-15 16:31:49.319598+1000 ACEClientAppUITests-Runner[24555:4270192] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-15 16:31:49.358673+1000 ACEClientAppUITests-Runner[24555:4270198] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+2026-09-15 16:32:55.994915+1000 ACEClientAppUITests-Runner[24555:4269581] [Default] Failed to initialize for UI testing: Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}
+
+
+*** If you believe this error represents a bug, please attach the result bundle at LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult
+
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult
+
+Testing started
+2026-09-15 16:30:20.027 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:30:20.078 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:30:20.211 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:30:23.795 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:30:24.546 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:32:02.101 xcodebuild[24365:4265570] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 16:34:24.801 xcodebuild[24365:4265570] [MT] IDETestOperationsObserverDebug: 240.241 elapsed -- Testing started completed.
+2026-09-15 16:34:24.801 xcodebuild[24365:4265570] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 16:34:24.801 xcodebuild[24365:4265570] [MT] IDETestOperationsObserverDebug: 240.241 sec, +240.241 sec -- end
+Testing failed:
+	ACEClientAppUITests-Runner (24555) encountered an error (The test runner failed to initialize for UI testing. (Underlying Error: Timed out waiting for AX loaded notification))
+
+** TEST EXECUTE FAILED **
+

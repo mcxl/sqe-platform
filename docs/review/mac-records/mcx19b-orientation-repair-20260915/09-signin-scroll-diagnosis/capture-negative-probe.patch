@@ -1,0 +1,12 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 29f56b9..9b217b9 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -121,6 +121,7 @@ final class ACEClientAppUITests: XCTestCase {
+                               "Observed settings differ from requested settings for \(coverageCase.id): \(observed.payload)") else { return false }
+         var screenshots: [String] = []
+         captureCoverageViewport(in: app, caseID: coverageCase.id, viewport: "initial", screenshots: &screenshots)
++        XCTFail("ACE_CAPTURE_GATE_INTENTIONAL_FAILURE after retained initial viewport")
+         var audits = 0
+         if coverageCase.audit {
+             guard runCoverageAudit(in: app, scenario: coverageCase.scenario, viewport: "initial") else { return false }

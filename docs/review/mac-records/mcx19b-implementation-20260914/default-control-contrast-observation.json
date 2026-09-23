@@ -1,0 +1,53 @@
+{
+  "capturedResultRecord": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/integration.json",
+  "analysisTool": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/inspect-native-png-region.swift",
+  "analysisColourSpace": "sRGB",
+  "measurements": [
+    {
+      "image": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/07429461-D38C-46C1-88CD-8589E38D1765.png",
+      "sha256": "d63eea0963e5e8c9b02060656baf9c21b2b422f7771425d4aac8f0a2904a7b75",
+      "regionPixels": [
+        550,
+        1510,
+        235,
+        90
+      ],
+      "foregroundRGB": [
+        0,
+        136,
+        255
+      ],
+      "foregroundOpaquePixelCount": 1487,
+      "backgroundRGB": [
+        255,
+        255,
+        255
+      ],
+      "contrastRatio": 3.520144745695801
+    },
+    {
+      "image": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration-2/batches/000/attachments/619837F6-E177-4127-BEB0-22BE590159C1.png",
+      "sha256": "de53a212917714324e9eb6a7475b2ccd5d1f6d009cd43176a630e402397852dc",
+      "regionPixels": [
+        550,
+        1540,
+        230,
+        80
+      ],
+      "foregroundRGB": [
+        138,
+        138,
+        142
+      ],
+      "foregroundOpaquePixelCount": 1574,
+      "backgroundRGB": [
+        255,
+        255,
+        255
+      ],
+      "contrastRatio": 3.4388767891778884
+    }
+  ],
+  "status": "PENDING",
+  "limitation": "The rendered text size and weight were not retrieved. Ratios are below 4.5:1 and above 3:1. Do not select a threshold or call these measured pairs a confirmed defect before confirming rendered size and weight."
+}

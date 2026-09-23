@@ -1,0 +1,18 @@
+{
+  "pocock": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/pocock-readiness.json",
+    "sha256": "351bd466e9ff14919abdfdc69e120be14cbeea966df56ed19f91d62d767ce1f9"
+  },
+  "functional": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/functional-readiness.json",
+    "sha256": "8a1a9d2681b82038f7441ac3f53241302cc8c189025d7938ff166c2279e01ba1"
+  },
+  "evidence-gate": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/evidence-gate-readiness.json",
+    "sha256": "8a28862d4556a344425533f2a12856115b807f0ae0ec0286196ca819955d19d0"
+  },
+  "private-input": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/readiness/private-input-readiness.json",
+    "sha256": "87d51af670a3f1190b6e1b4951d00afd5e8e2bc001a223c19647ddb7f64efaef"
+  }
+}

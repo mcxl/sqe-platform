@@ -1,0 +1,43 @@
+{
+  "candidate": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+  "scope": "one diagnostic noConclusion case; no pilot credit",
+  "captures": 10,
+  "distinctImages": 2,
+  "images": [
+    {
+      "sha256": "328530c4b0cbb2aafb3b514878aafed1e421014544d97400073748ccd6185bc0",
+      "bytes": 201980,
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/14752140-6AD8-41F8-BE28-ADBA04F6C5C8.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/30AF1E1E-44DC-46BF-B47E-77F32BD39C02.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/4CE6DBC0-C2C8-4443-8310-5ECD1FF6D3BE.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/53FBCFB6-2584-4BA8-A27F-0C0AEA6CCF39.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/7130E559-2F4A-4F0B-8B47-2AF948894469.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/7AF4AD40-2429-4478-BF39-CDAFF06187D9.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/958E3C61-53D8-4A73-8F39-0F5431671569.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/B6DE61B2-A1FD-410B-A900-823ABAE8CA03.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/DA819C21-C8A3-4FC7-8171-4BF7E6F4FBE0.png"
+      ],
+      "status": "inspected",
+      "method": "primary viewed at original resolution",
+      "observation": "Initial viewport. Current Release,handling label,release and action cards keep prior left/top spacing. More content appears at lower screen edge. Text readable."
+    },
+    {
+      "sha256": "a348af4842bdc8bcefd9f9e44ecfe8eaea55e2b6165aacfba4b58e046c0d0995",
+      "bytes": 197068,
+      "paths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/batches/001/attachments/A66DC547-79DB-4E95-8BCA-0C0E74CE3424.png"
+      ],
+      "status": "inspected",
+      "method": "primary viewed at original resolution",
+      "observation": "FAIL: scrolled viewport draws Release Details at image top and Engagement name behind the system clock. Status-bar underlap is visible. Action values, notice, Refresh and Sign out remain readable."
+    }
+  ],
+  "updatedUTC": "2026-09-15T09:41:05.672555+00:00",
+  "status": "failed visual acceptance",
+  "nativeResult": "one case and two unrestricted native audits passed",
+  "limitation": "Passing native audits do not justify visible text overlapping system status bar. No pilot expansion.",
+  "expected": "Scrolled app content does not overlap system clock or status icons",
+  "actual": "Heading and Engagement name draw behind system status bar",
+  "next": "Inspect safe-area clipping; correction attempt2 only after source evidence"
+}

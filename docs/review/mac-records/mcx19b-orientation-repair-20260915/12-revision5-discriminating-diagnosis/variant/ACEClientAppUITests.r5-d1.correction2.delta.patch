@@ -1,0 +1,31 @@
+--- LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant/ACEClientAppUITests.r5-d1.correction1.patch	2026-09-16 22:35:38
++++ LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant/ACEClientAppUITests.r5-d1.correction2.patch	2026-09-16 22:41:41
+@@ -1,5 +1,5 @@
+ diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+-index 54db2a6..5b91c00 100644
++index 54db2a6..ebf1834 100644
+ --- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+ +++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+ @@ -1,5 +1,6 @@
+@@ -145,7 +145,7 @@
+          emitJSON(marker: "ACE_CASE_RESULT", payload: ["id": coverageCase.id, "scenario": coverageCase.scenario,
+              "observed": observed.payload, "result": "passed", "screenshots": screenshots, "auditInvocations": audits])
+          return true
+-@@ -383,10 +499,182 @@ final class ACEClientAppUITests: XCTestCase {
++@@ -383,10 +499,183 @@ final class ACEClientAppUITests: XCTestCase {
+      }
+  
+      private func runCoverageAudit(in app: XCUIApplication, scenario: String, viewport: String) -> Bool {
+@@ -209,9 +209,10 @@
+ +                issueCounter.recordIssue()
+ +                let elapsedSeconds = ProcessInfo.processInfo.systemUptime - auditStart
+ +                let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+-+                attachment.name = "D1 \(arm) repetition \(repetition) \(viewport) \(auditName) callback-time evidence"
+++                let attachmentName = "D1 \(arm) repetition \(repetition) \(viewport) \(auditName) callback-time evidence"
+++                attachment.name = attachmentName
+ +                attachment.lifetime = .keepAlways
+-+                XCTContext.runActivity(named: attachment.name) { activity in
+++                XCTContext.runActivity(named: attachmentName) { activity in
+ +                    activity.add(attachment)
+ +                }
+ +                Self.emitD1Issue(Self.d1IssuePayload(

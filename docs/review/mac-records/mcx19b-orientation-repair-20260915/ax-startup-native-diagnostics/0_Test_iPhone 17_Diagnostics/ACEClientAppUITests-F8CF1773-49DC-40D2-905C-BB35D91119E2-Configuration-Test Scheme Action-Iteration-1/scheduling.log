@@ -1,0 +1,5 @@
+2026-09-15 06:30:28 +0000: Received worker from worker provider: <XCTHTestRunner: 0x7fa00b158db0, PID: 0, device: iPhone 17 (2EB0863C-470E-467D-A0C6-CD216DA70C67)>
+2026-09-15 06:31:50 +0000: Worker <XCTHTestRunner: 0x7fa00b158db0, PID: 24555, device: iPhone 17 (2EB0863C-470E-467D-A0C6-CD216DA70C67)> finished bootstrapping
+2026-09-15 06:31:50 +0000: Parallelization disabled; test execution driven by the test process
+2026-09-15 06:32:57 +0000: Worker <XCTHTestRunner: 0x7fa00b158db0, PID: 24555, device: iPhone 17 (2EB0863C-470E-467D-A0C6-CD216DA70C67)> finished with error: Error Domain=XCTHTestOperationCoordinatorErrorDomain Code=8 "The test runner failed to initialize for UI testing" UserInfo={NSLocalizedDescription=The test runner failed to initialize for UI testing, NSUnderlyingError=0x60000174f900 {Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}}}
+2026-09-15 06:32:57 +0000: Finished executing tests (cancelled: No)

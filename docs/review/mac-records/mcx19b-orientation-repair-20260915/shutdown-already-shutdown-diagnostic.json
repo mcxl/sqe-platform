@@ -1,0 +1,17 @@
+{
+  "timeUTC": "2026-09-15T08:15:55.296124+00:00",
+  "question": "Does the runner's final shutdown reject an already Shutdown required simulator?",
+  "candidate": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "command": [
+    "xcrun",
+    "simctl",
+    "shutdown",
+    "2EB0863C-470E-467D-A0C6-CD216DA70C67"
+  ],
+  "before": "Shutdown",
+  "exit": 149,
+  "stdout": "",
+  "stderr": "An error was encountered processing the command (domain=com.apple.CoreSimulator.SimError, code=405):\nUnable to shutdown device in current state: Shutdown\n",
+  "after": "Shutdown",
+  "sourceChanges": false
+}

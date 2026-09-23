@@ -1,0 +1,14 @@
+{
+  "question": "Do single Text rows preserve light release, noActions, noConclusion and Copy confirmation unrestricted audits?",
+  "selectors": [
+    "testFictionalReleaseHasApprovedCopyControls",
+    "testClippingNoActionsStandaloneAudit",
+    "testClippingNoConclusionStandaloneAudit"
+  ],
+  "expectedTests": 3,
+  "expectedAudits": 5,
+  "candidatePatchSHA256": "73ac95cea4be82679adf297fb3e2e0b15e3a464290164aacbdd2614ebe789bf4",
+  "testAdaptation": "Probe now measures full Action status: OPEN field, not old value-only Text. No timing or audit relaxation.",
+  "settings": "large/light/portrait",
+  "stop": "No further batches after unresolved failure or missing evidence."
+}

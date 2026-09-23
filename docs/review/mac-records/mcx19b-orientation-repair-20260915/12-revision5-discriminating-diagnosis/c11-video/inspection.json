@@ -1,0 +1,97 @@
+{
+  "status": "partial inspection complete; diagnostic only",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "source": {
+    "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001",
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/result.xcresult",
+    "video": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/4EA1A109-6637-4982-8156-F5F59211EAF7.mp4",
+    "videoBytes": 33324368,
+    "videoSHA256": "6352926842bdcae868d30b703c1a69b7e1920cd713bd6e6e2ad9efb0f0d425e9",
+    "metadata": {
+      "durationSeconds": 211.44,
+      "width": 1206,
+      "height": 2622
+    }
+  },
+  "baselineVerified": {
+    "head": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "cleanWorkingTree": true,
+    "viewsSwiftSHA256": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd",
+    "uiTestsSHA256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d"
+  },
+  "activityTimes": {
+    "videoAttachmentTimestamp": 1789479801.357,
+    "copyInitialScreenshot": 1789479990.302,
+    "copyTapStart": 1789480000.208,
+    "copyConfirmationScreenshot": 1789480004.961,
+    "contrastFinding": 1789480010.481,
+    "findingText": "Contrast failed",
+    "elementLookupsAtFinding": "Copy action StaticText"
+  },
+  "timeCaution": "The video attachment time was used only to choose frames near the logged Copy sequence. No internal accessibility-audit pixel-sample time is retained. Presentation timestamps and activity times do not establish what Apple sampled.",
+  "frameInspection": {
+    "inspectedAtOriginalResolution": true,
+    "inspectedFrameCount": 9,
+    "observations": [
+      {
+        "actualVideoSeconds": 189.78,
+        "file": "sequential-frames/frame-188.95-at-189.78.png",
+        "observation": "Release screen is at the start of the Actions area; the Copy control is not yet visible."
+      },
+      {
+        "actualVideoSeconds": 196.66,
+        "file": "sequential-frames/frame-195.00-at-196.66.png",
+        "observation": "The release screen is scrolled lower through the Action card."
+      },
+      {
+        "actualVideoSeconds": 198.95166666666665,
+        "file": "sequential-frames/frame-198.50-at-198.95.png",
+        "observation": "Copy action is fully visible in the Action card; no confirmation text is visible."
+      },
+      {
+        "actualVideoSeconds": 204.33666666666667,
+        "file": "sequential-frames/frame-200.00-at-204.34.png",
+        "observation": "Copy action and Copied Action 1. are both fully visible."
+      },
+      {
+        "actualVideoSeconds": 204.51833333333335,
+        "file": "sequential-frames/frame-202.00-at-204.52.png",
+        "observation": "Copy action and Copied Action 1. remain fully visible."
+      },
+      {
+        "actualVideoSeconds": 204.68000000000001,
+        "file": "sequential-frames/frame-203.60-at-204.68.png",
+        "observation": "Copy action and Copied Action 1. remain fully visible."
+      },
+      {
+        "actualVideoSeconds": 204.845,
+        "file": "sequential-frames/frame-204.50-at-204.84.png",
+        "observation": "Copy action and Copied Action 1. remain fully visible."
+      },
+      {
+        "actualVideoSeconds": 205.55166666666668,
+        "file": "sequential-frames/frame-205.50-at-205.55.png",
+        "observation": "Text is visibly larger. The Actions heading is near the lower viewport edge and the Copy control is below the visible viewport."
+      },
+      {
+        "actualVideoSeconds": 206.45666666666668,
+        "file": "frames/frame-206.50.png",
+        "observation": "Copy action and Copied Action 1. are visible again at normal-looking text size."
+      }
+    ]
+  },
+  "extraction": {
+    "existingExtractor": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/extract-audit-video-frames.swift",
+    "sequentialManifest": "sequential-frames/manifest.json",
+    "imageGeneratorManifest": "frames/manifest.json",
+    "noNewDependencies": true
+  },
+  "limits": [
+    "The original video remains unchanged. Its nominal duration is 211.44 seconds.",
+    "The sequential AVFoundation reader completed without an error after its last accessible frame at 205.55166666666668 seconds. It returned 8 of 15 requested Copy-window frames.",
+    "The existing AVAssetImageGenerator extractor could access a frame at 206.45666666666668 seconds but clamped every request from 207.50 through 211.20 seconds to that same frame.",
+    "The retained contrast-finding activity is approximately 209.124 seconds after the recording attachment timestamp. Therefore no accessible native video frame covers the logged finding time.",
+    "The video shows a large-text rendering with Copy below the viewport and a later normal-looking rendering with Copy visible. It does not identify the audit sample time or prove the cause of the contrast finding."
+  ],
+  "conclusion": "The latest pilot video provides direct visual evidence of a visible text-size/layout transition around the Copy sequence. C11 remains incomplete for the failure moment because the retained recording has no accessible video image sample at the logged finding time."
+}

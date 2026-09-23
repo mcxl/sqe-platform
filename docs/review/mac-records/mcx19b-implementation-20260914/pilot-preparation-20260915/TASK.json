@@ -1,0 +1,77 @@
+{
+  "startedUTC": "2026-09-15T00:41:52.389180+00:00",
+  "objective": "Correct runtime usage timestamp comparison, verify runner evidence and functional prerequisites, then execute the approved 22-case simulator pilot when its gates pass.",
+  "authority": "User Proceed after explicit next steps. Existing unbounded task authority remains. Two failed corrective attempts per fault remain.",
+  "requiredResults": {
+    "runtimeIdentityRegression": "passed",
+    "runnerRegressionTests": "passed:26",
+    "nativeFailurePassRetention": "passed: deliberate POST/GET failed; restored GET passed; archive verified and retrieved",
+    "nativeFunctionalTests": "68passed on clean4646715, including43contracts;0failed0skipped",
+    "cleanCandidate": "clean4646715",
+    "PocockReviews": "Manual Standards and Specification source axes passed; final acceptance not established",
+    "privateFictionalInputsAndEvidenceRetrieval": "passed for fictional fixtures and private evidence only",
+    "pilot22": "restarted on clean4646715 at02:59:54UTC, all4readinessroles verified",
+    "pilotImagesAndResourceProjection": "pending current4646715pilot; earlier5caseimageinspectionhistorical"
+  },
+  "scope": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift"
+  ],
+  "excluded": [
+    "production",
+    "paid signing",
+    "real client data",
+    "automatic merge",
+    "new dependencies"
+  ],
+  "phone": "disconnected; not required for fixture simulator checks",
+  "service": "approved address, certificate and fictional account missing; dependent service acceptance remains blocked",
+  "estimate": "Pilot execution, artifact collection and image review duration remain unmeasured for the exact 22-case route. Do not invent a completion duration.",
+  "costlyCommands": [
+    "generic native build",
+    "native failure/pass test",
+    "native functional tests",
+    "22-case native pilot"
+  ],
+  "parentRuntime": "unobservable",
+  "atomic": "unavailable on Windows and Mac",
+  "updatedUTC": "2026-09-15T03:00:25.256324+00:00",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "scopeReason": "Synchronise the approved specification digest after the authorised plan clarification; no application behaviour change.",
+  "faults": [
+    {
+      "fault": "runtime.lastUsage changes during normal simulator use",
+      "correctionAttempts": 1,
+      "result": "26 Python tests pass"
+    },
+    {
+      "fault": "approved specification digest became stale after plan clarification",
+      "correctionAttempts": 1,
+      "result": "both focused tests passed; complete68passed"
+    },
+    {
+      "fault": "native Settings wait reports failure despite final expected value: Increase Contrast setup and Bold Text restoration",
+      "correctionAttempts": 1,
+      "result": "Native switch final values and in-app settings passed through recovery, all-on and restoration; exact original XCTest timing cause remains unknown"
+    },
+    {
+      "fault": "Settings path tap was treated as success without observing expected destination; subsequent Motion search ran on Settings root",
+      "correctionAttempts": 1,
+      "result": "All3focused native checks passed with correct navigation and final in-app settings"
+    }
+  ],
+  "activeJob": "1789441194238-ace-pilot-22-4646715-933a5a8e",
+  "originalSettingsRestoration": "iPhone17 original flags and simctl values confirmed, Shutdown restored. ProMax Booted restored. Unrelated16ProMax unchanged.",
+  "temporaryResourceControl": {
+    "requiredSimulator": "iPhone 17 Pro Max",
+    "id": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "originalState": "Booted",
+    "currentState": "Booted",
+    "restoreRequired": false,
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/inactive-simulator-restoration-pending.json",
+    "reason": "Observed simulator mediaanalysisd heavy CPU load, low available RAM and CPU speed limit39%. Cause of prior failures not established."
+  }
+}

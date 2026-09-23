@@ -1,0 +1,29 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 757be82..c55b5e2 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -253,18 +253,12 @@ struct ValueRow: View {
+     let value: String
+ 
+     var body: some View {
+-        VStack(alignment: .leading, spacing: 6) {
+-            Text(field.label)
+-                .font(.subheadline)
+-                .foregroundStyle(.primary)
+-            Text(value)
+-                .font(.body)
+-                .frame(maxWidth: .infinity, alignment: .leading)
+-                .fixedSize(horizontal: false, vertical: true)
+-        }
+-        .frame(maxWidth: .infinity, alignment: .leading)
+-        .accessibilityElement(children: .combine)
+-        .accessibilityLabel("\(field.label): \(value)")
++        Text("\(field.label)\n\(value)")
++            .font(.body)
++            .foregroundStyle(.primary)
++            .frame(maxWidth: .infinity, alignment: .leading)
++            .fixedSize(horizontal: false, vertical: true)
++            .accessibilityLabel("\(field.label): \(value)")
+     }
+ }
+ 

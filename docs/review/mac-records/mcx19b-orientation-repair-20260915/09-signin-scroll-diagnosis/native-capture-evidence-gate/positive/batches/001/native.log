@@ -1,0 +1,231 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/result.xcresult
+
+2026-09-15 22:19:43.456013+1000 ACEClientAppUITests-Runner[70548:5176688] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 22:19:46.792.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 22:19:46.794.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 22:19:46.795.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-15 22:19:46.803
+    t =     0.28s Set Up
+    t =     0.31s Setting device orientation to Portrait
+    t =     0.37s     Wait for com.apple.springboard to idle
+    t =     0.44s Open com.example.aceclientapp
+    t =     0.44s     Launch com.example.aceclientapp
+    t =     2.39s         Setting up automation session
+    t =     6.25s         Wait for com.example.aceclientapp to idle
+    t =     8.64s Waiting 5.0s for "Current Release" StaticText to exist
+    t =     9.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Current Release" StaticText`
+    t =     9.72s         Checking existence of `"Current Release" StaticText`
+    t =     9.91s Checking existence of `"Current Release" StaticText`
+    t =    10.00s Find the "Current Release" StaticText
+    t =    10.10s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    10.15s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.045490418997360393,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+    t =    10.19s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    11.27s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    11.27s         Checking existence of `"Effective interface style" Any`
+    t =    12.38s Find the "Effective interface style" Any
+    t =    12.44s Find the "Effective interface style" ScrollView
+    t =    12.95s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport initial'
+    t =    12.96s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    14.06s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    14.06s         Checking existence of `ScrollView (First Match)`
+    t =    14.09s Checking existence of `Any (First Match)`
+    t =    14.13s Find the Any (First Match)
+    t =    14.25s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    14.36s Find the ScrollView (First Match)
+    t =    14.46s Checking existence of `"Engagement name: Fictional Engagement" StaticText`
+    t =    14.59s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    14.73s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    14.81s Find the ScrollView (First Match)
+    t =    15.32s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Engagement name'
+    t =    15.32s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    16.39s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    16.39s         Checking existence of `ScrollView (First Match)`
+    t =    16.42s Checking existence of `Any (First Match)`
+    t =    16.48s Find the Any (First Match)
+    t =    16.60s Find the "Review status: RELEASED" StaticText
+    t =    16.72s Find the ScrollView (First Match)
+    t =    16.78s Checking existence of `"Review status: RELEASED" StaticText`
+    t =    16.85s Find the "Review status: RELEASED" StaticText
+    t =    16.97s Find the "Review status: RELEASED" StaticText
+    t =    17.04s Find the ScrollView (First Match)
+    t =    17.51s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Review status'
+    t =    17.52s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    18.54s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    18.54s         Checking existence of `ScrollView (First Match)`
+    t =    18.58s Checking existence of `Any (First Match)`
+    t =    18.63s Find the Any (First Match)
+    t =    18.74s Find the "Release version: 1" StaticText
+    t =    18.81s Find the ScrollView (First Match)
+    t =    18.87s Checking existence of `"Release version: 1" StaticText`
+    t =    18.95s Find the "Release version: 1" StaticText
+    t =    19.07s Find the "Release version: 1" StaticText
+    t =    19.14s Find the ScrollView (First Match)
+    t =    19.62s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Release version'
+    t =    19.62s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    20.71s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    20.71s         Checking existence of `ScrollView (First Match)`
+    t =    20.74s Checking existence of `Any (First Match)`
+    t =    20.79s Find the Any (First Match)
+    t =    20.92s Find the "Published date and time: 2026-08-24T10:15:30Z" StaticText
+    t =    21.02s Find the ScrollView (First Match)
+    t =    21.08s Checking existence of `"Published date and time: 2026-08-24T10:15:30Z" StaticText`
+    t =    21.13s Find the "Published date and time: 2026-08-24T10:15:30Z" StaticText
+    t =    21.29s Find the "Published date and time: 2026-08-24T10:15:30Z" StaticText
+    t =    21.38s Find the ScrollView (First Match)
+    t =    21.83s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Published date and time'
+    t =    21.84s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    22.90s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    22.90s         Checking existence of `ScrollView (First Match)`
+    t =    22.94s Checking existence of `Any (First Match)`
+    t =    23.00s Find the Any (First Match)
+    t =    23.19s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    23.27s Find the ScrollView (First Match)
+    t =    23.33s Checking existence of `"Conclusion title: Fictional conclusion" StaticText`
+    t =    23.39s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    23.57s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    23.66s Find the ScrollView (First Match)
+    t =    24.13s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Conclusion title'
+    t =    24.14s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    25.22s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    25.22s         Checking existence of `ScrollView (First Match)`
+    t =    25.28s Checking existence of `Any (First Match)`
+    t =    25.33s Find the Any (First Match)
+    t =    25.46s Find the "Conclusion summary: Fictional summary" StaticText
+    t =    25.54s Find the ScrollView (First Match)
+    t =    25.59s Checking existence of `"Conclusion summary: Fictional summary" StaticText`
+    t =    25.64s Find the "Conclusion summary: Fictional summary" StaticText
+    t =    25.76s Find the "Conclusion summary: Fictional summary" StaticText
+    t =    25.86s Find the ScrollView (First Match)
+    t =    26.28s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Conclusion summary'
+    t =    26.28s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    27.35s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    27.35s         Checking existence of `ScrollView (First Match)`
+    t =    27.38s Checking existence of `Any (First Match)`
+    t =    27.44s Find the Any (First Match)
+    t =    27.60s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    27.70s Find the ScrollView (First Match)
+    t =    27.76s Checking existence of `"Evidence reference: FICTIONAL-REF-001" StaticText`
+    t =    27.81s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    27.93s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    28.05s Find the ScrollView (First Match)
+    t =    28.52s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Evidence reference'
+    t =    28.52s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    29.58s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    29.58s         Checking existence of `ScrollView (First Match)`
+    t =    29.61s Checking existence of `Any (First Match)`
+    t =    29.69s Find the Any (First Match)
+    t =    29.92s Find the "Action description: Fictional action" StaticText
+    t =    30.20s Find the ScrollView (First Match)
+    t =    30.27s Checking existence of `"Action description: Fictional action" StaticText`
+    t =    30.36s Find the "Action description: Fictional action" StaticText
+    t =    30.51s Find the "Action description: Fictional action" StaticText
+    t =    30.66s Find the ScrollView (First Match)
+    t =    31.11s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action description'
+    t =    31.11s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    32.18s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    32.18s         Checking existence of `ScrollView (First Match)`
+    t =    32.21s Checking existence of `Any (First Match)`
+    t =    32.31s Find the Any (First Match)
+    t =    32.46s Find the "Action owner: Fictional owner" StaticText
+    t =    32.57s Find the ScrollView (First Match)
+    t =    32.62s Checking existence of `"Action owner: Fictional owner" StaticText`
+    t =    32.77s Find the "Action owner: Fictional owner" StaticText
+    t =    32.94s Find the "Action owner: Fictional owner" StaticText
+    t =    33.06s Find the ScrollView (First Match)
+    t =    33.51s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action owner'
+    t =    33.51s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    34.58s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    34.58s         Checking existence of `ScrollView (First Match)`
+    t =    34.61s Checking existence of `Any (First Match)`
+    t =    34.72s Find the Any (First Match)
+    t =    34.90s Find the "Action target date: 2026-08-25" StaticText
+    t =    35.01s Find the ScrollView (First Match)
+    t =    35.07s Find the "Effective interface style" ScrollView
+    t =    35.13s Checking existence of `"Action target date: 2026-08-25" StaticText`
+    t =    35.21s Find the "Action target date: 2026-08-25" StaticText
+    t =    35.36s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    35.36s     Wait for com.example.aceclientapp to idle
+    t =    35.38s     Find the "Effective interface style" ScrollView
+    t =    35.43s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    35.52s     Synthesize event
+    t =    35.53s         Find the "Effective interface style" ScrollView
+    t =    35.59s         Find the "Effective interface style" ScrollView
+    t =    35.66s         Find the "Effective interface style" ScrollView
+    t =    35.73s         Find the "Effective interface style" ScrollView
+    t =    35.80s         Find the "Effective interface style" ScrollView
+    t =    37.04s     Wait for com.example.aceclientapp to idle
+    t =    37.40s Checking existence of `"Action target date: 2026-08-25" StaticText`
+    t =    37.49s Find the "Action target date: 2026-08-25" StaticText
+    t =    37.65s Find the "Action target date: 2026-08-25" StaticText
+    t =    37.80s Find the "Effective interface style" ScrollView
+    t =    37.87s Checking existence of `"Action target date: 2026-08-25" StaticText`
+    t =    38.04s Find the "Action target date: 2026-08-25" StaticText
+    t =    38.19s Find the "Action target date: 2026-08-25" StaticText
+    t =    38.31s Find the ScrollView (First Match)
+    t =    38.74s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action target date'
+    t =    38.74s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    39.81s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    39.81s         Checking existence of `ScrollView (First Match)`
+    t =    39.84s Checking existence of `Any (First Match)`
+    t =    39.94s Find the Any (First Match)
+    t =    40.12s Find the "Action status: OPEN" StaticText
+    t =    40.23s Find the ScrollView (First Match)
+    t =    40.29s Checking existence of `"Action status: OPEN" StaticText`
+    t =    40.44s Find the "Action status: OPEN" StaticText
+    t =    40.62s Find the "Action status: OPEN" StaticText
+    t =    40.73s Find the ScrollView (First Match)
+    t =    41.22s Added attachment named 'Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action status'
+    t =    41.22s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    42.29s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    42.29s         Checking existence of `ScrollView (First Match)`
+    t =    42.35s Checking existence of `"Copy action 1" Button`
+    t =    42.42s Find the "Copy action 1" Button
+    t =    42.54s Find the "Copy action 1" Button
+    t =    42.62s Find the ScrollView (First Match)
+    t =    42.67s Checking existence of `"Copy action 1" Button`
+    t =    42.73s Find the "Copy action 1" Button
+    t =    42.86s Find the "Copy action 1" Button
+    t =    42.96s Find the "Copy action 1" Button
+    t =    43.06s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    44.13s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    44.13s         Checking existence of `ScrollView (First Match)`
+    t =    44.16s Checking existence of `"Refresh current release" Button`
+    t =    44.22s Find the "Refresh current release" Button
+    t =    44.37s Find the "Refresh current release" Button
+    t =    44.45s Find the ScrollView (First Match)
+    t =    44.51s Checking existence of `"Refresh current release" Button`
+    t =    44.57s Find the "Refresh current release" Button
+    t =    44.68s Find the "Refresh current release" Button
+    t =    44.76s Find the "Refresh current release" Button
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:390: error: -[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : failed - Refresh current release height is below 44 points
+    t =    46.11s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (46.428 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 22:20:33.231.
+	 Executed 1 test, with 1 failure (0 unexpected) in 46.428 (46.436) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 22:20:33.233.
+	 Executed 1 test, with 1 failure (0 unexpected) in 46.428 (46.439) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 22:20:33.235.
+	 Executed 1 test, with 1 failure (0 unexpected) in 46.428 (46.443) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/result.xcresult
+
+Testing started
+2026-09-15 22:19:36.337 xcodebuild[70528:5176019] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:19:36.368 xcodebuild[70528:5176019] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:19:37.493 xcodebuild[70528:5176019] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 22:19:47.397 xcodebuild[70528:5176019] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 22:19:47.397 xcodebuild[70528:5176019] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 22:21:22.719 xcodebuild[70528:5176019] [MT] IDETestOperationsObserverDebug: 105.220 elapsed -- Testing started completed.
+2026-09-15 22:21:22.719 xcodebuild[70528:5176019] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 22:21:22.719 xcodebuild[70528:5176019] [MT] IDETestOperationsObserverDebug: 105.220 sec, +105.220 sec -- end
+** TEST EXECUTE FAILED **
+

@@ -1,0 +1,21 @@
+{
+  "startedUTC": "2026-09-15T07:32:50.671038+00:00",
+  "reason": "Temporarily park the idle required ProMax during iPhone17 restoration, after its own native restore command completed. Restore original Booted state after the pilot runner exits.",
+  "device": {
+    "lastBootedAt": "2026-09-15T06:41:48Z",
+    "dataPath": "LOCAL_HOME/Library/Developer/CoreSimulator/Devices/D1BAA05C-52DD-4E57-832F-C0A75718E085/data",
+    "dataPathSize": 3451707392,
+    "logPath": "LOCAL_HOME/Library/Logs/CoreSimulator/D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "udid": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "isAvailable": true,
+    "logPathSize": 487424,
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+    "state": "Booted",
+    "name": "iPhone 17 Pro Max"
+  },
+  "activeXcodeCommand": "29935 /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17-restore/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO -only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17-restore/result.xcresult\n",
+  "unrelatedSimulatorUntouched": true,
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

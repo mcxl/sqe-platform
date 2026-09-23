@@ -1,0 +1,87 @@
+Application, 0x108e12e70, pid: 88104, label: 'ACE Client' <App element pid: 88104>
+  Window (Main), 0x108e15c50, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 88104, elementOrHash.elementID: 4500538832.3>
+    Other, 0x108e19400, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 88104, elementOrHash.elementID: 4559653392.4>
+      Other, 0x108e18350, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 88104, elementOrHash.elementID: 4596988544.5>
+        Other, 0x109638060, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 88104, elementOrHash.elementID: 4555034304.6>
+          Other, 0x109637660, {{0.0, 0.0}, {440.0, 956.0}} <AX element pid: 88104, elementOrHash.elementID: 4499659280.7>
+            ScrollView, 0x109614a50, {{16.0, 78.0}, {408.0, 828.0}} <AX element pid: 88104, elementOrHash.elementID: 4655830528.8>
+              Other, 0x109636b60, {{16.0, 78.0}, {408.0, 1222.3}} <AX element pid: 88104, elementOrHash.elementID: 4598040320.9>
+                StaticText, 0x109636080, {{16.0, 78.0}, {147.0, 24.0}}, label: 'Current Release' <AX element pid: 88104, elementOrHash.elementID: 4499635360.11>
+                StaticText, 0x10962d8d0, {{16.0, 122.0}, {218.0, 15.7}}, label: 'FICTIONAL PILOT — CONTROLLED' <AX element pid: 88104, elementOrHash.elementID: 4499636464.12>
+                StaticText, 0x10962dcf0, {{32.0, 173.7}, {121.3, 20.3}}, label: 'Release Details' <AX element pid: 88104, elementOrHash.elementID: 4499478672.13>
+                StaticText, 0x10962c0f0, {{32.0, 206.0}, {164.3, 44.3}}, label: 'Engagement name: Fictional Engagement' <AX element pid: 88104, elementOrHash.elementID: 4499483440.14>
+                  StaticText, 0x10962cd90, {{32.0, 206.0}, {128.0, 18.0}}, label: 'Engagement name' <AX element pid: 88104, elementOrHash.elementID: 4499482224.34>
+                  StaticText, 0x109615030, {{32.0, 230.0}, {164.3, 20.3}}, label: 'Fictional Engagement' <AX element pid: 88104, elementOrHash.elementID: 4499482656.35>
+                Button, 0x109638c20, {{315.0, 206.0}, {93.0, 58.0}}, label: 'Copy Engagement name' <AX element pid: 88104, elementOrHash.elementID: 4499486480.15>
+                  Image, 0x109638d40, {{329.0, 224.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499483872.36>
+                  StaticText, 0x109638e60, {{315.0, 206.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499484304.37>
+                StaticText, 0x109638f80, {{32.0, 276.0}, {95.0, 44.3}}, label: 'Review status: RELEASED' <AX element pid: 88104, elementOrHash.elementID: 4499489616.16>
+                  StaticText, 0x1096390a0, {{32.0, 276.0}, {95.0, 18.0}}, label: 'Review status' <AX element pid: 88104, elementOrHash.elementID: 4499488400.38>
+                  StaticText, 0x1096391c0, {{32.0, 300.0}, {82.3, 20.3}}, label: 'RELEASED' <AX element pid: 88104, elementOrHash.elementID: 4499488832.39>
+                Button, 0x109633440, {{315.0, 276.0}, {93.0, 58.0}}, label: 'Copy Review status' <AX element pid: 88104, elementOrHash.elementID: 4499492608.17>
+                  Image, 0x109633560, {{329.0, 294.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499491072.40>
+                  StaticText, 0x109633680, {{315.0, 276.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499492176.41>
+                StaticText, 0x1096337a0, {{32.0, 346.0}, {107.3, 44.3}}, label: 'Release version: 1' <AX element pid: 88104, elementOrHash.elementID: 4499495392.18>
+                  StaticText, 0x1096338c0, {{32.0, 346.0}, {107.3, 18.0}}, label: 'Release version' <AX element pid: 88104, elementOrHash.elementID: 4499494176.42>
+                  StaticText, 0x1096339e0, {{32.0, 370.0}, {7.7, 20.3}}, label: '1' <AX element pid: 88104, elementOrHash.elementID: 4499494608.43>
+                Button, 0x109633b00, {{315.0, 346.0}, {93.0, 58.0}}, label: 'Copy Release version' <AX element pid: 88104, elementOrHash.elementID: 4499498384.19>
+                  Image, 0x109633c20, {{329.0, 364.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499496848.44>
+                  StaticText, 0x109633d40, {{315.0, 346.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499497952.45>
+                StaticText, 0x109633e60, {{32.0, 416.0}, {182.0, 44.3}}, label: 'Published date and time: 2026-08-24T10:15:30Z' <AX element pid: 88104, elementOrHash.elementID: 4499501168.20>
+                  StaticText, 0x109633f80, {{32.0, 416.0}, {165.3, 18.0}}, label: 'Published date and time' <AX element pid: 88104, elementOrHash.elementID: 4499499952.46>
+                  StaticText, 0x1096340a0, {{32.0, 440.0}, {182.0, 20.3}}, label: '2026-08-24T10:15:30Z' <AX element pid: 88104, elementOrHash.elementID: 4499500384.47>
+                Button, 0x1096341c0, {{315.0, 416.0}, {93.0, 58.0}}, label: 'Copy Published date and time' <AX element pid: 88104, elementOrHash.elementID: 4499504160.21>
+                  Image, 0x1096342e0, {{329.0, 434.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499502624.48>
+                  StaticText, 0x109634400, {{315.0, 416.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499503728.49>
+                StaticText, 0x109634520, {{32.0, 526.0}, {102.7, 24.0}}, label: 'Conclusion' <AX element pid: 88104, elementOrHash.elementID: 4499505728.22>
+                StaticText, 0x1096393e0, {{32.0, 562.0}, {150.3, 44.3}}, label: 'Conclusion title: Fictional conclusion' <AX element pid: 88104, elementOrHash.elementID: 4499508048.23>
+                  StaticText, 0x109639500, {{32.0, 562.0}, {106.0, 18.0}}, label: 'Conclusion title' <AX element pid: 88104, elementOrHash.elementID: 4499506832.50>
+                  StaticText, 0x109639620, {{32.0, 586.0}, {150.3, 20.3}}, label: 'Fictional conclusion' <AX element pid: 88104, elementOrHash.elementID: 4499507264.51>
+                Button, 0x109639740, {{315.0, 562.0}, {93.0, 58.0}}, label: 'Copy Conclusion title' <AX element pid: 88104, elementOrHash.elementID: 4499511040.24>
+                  Image, 0x109639860, {{329.0, 580.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499509504.52>
+                  StaticText, 0x109639980, {{315.0, 562.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499510608.53>
+                StaticText, 0x109639aa0, {{32.0, 632.0}, {143.7, 44.3}}, label: 'Conclusion summary: Fictional summary' <AX element pid: 88104, elementOrHash.elementID: 4499513824.25>
+                  StaticText, 0x109639bc0, {{32.0, 632.0}, {143.7, 18.0}}, label: 'Conclusion summary' <AX element pid: 88104, elementOrHash.elementID: 4499512608.54>
+                  StaticText, 0x109639ce0, {{32.0, 656.0}, {138.7, 20.3}}, label: 'Fictional summary' <AX element pid: 88104, elementOrHash.elementID: 4499513040.55>
+                Button, 0x109639e00, {{315.0, 632.0}, {93.0, 58.0}}, label: 'Copy Conclusion summary' <AX element pid: 88104, elementOrHash.elementID: 4499516816.26>
+                  Image, 0x109639f20, {{329.0, 650.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499515280.56>
+                  StaticText, 0x10963a040, {{315.0, 632.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499516384.57>
+                StaticText, 0x10963a160, {{32.0, 702.0}, {156.0, 44.3}}, label: 'Evidence reference: FICTIONAL-REF-001' <AX element pid: 88104, elementOrHash.elementID: 4499519600.27>
+                  StaticText, 0x10963a280, {{32.0, 702.0}, {132.0, 18.0}}, label: 'Evidence reference' <AX element pid: 88104, elementOrHash.elementID: 4499518384.58>
+                  StaticText, 0x10963a3a0, {{32.0, 726.0}, {156.0, 20.3}}, label: 'FICTIONAL-REF-001' <AX element pid: 88104, elementOrHash.elementID: 4499518816.59>
+                Button, 0x10963a4c0, {{315.0, 702.0}, {93.0, 58.0}}, label: 'Copy Evidence reference' <AX element pid: 88104, elementOrHash.elementID: 4499522592.28>
+                  Image, 0x10963a5e0, {{329.0, 720.7}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499521056.60>
+                  StaticText, 0x10963a700, {{315.0, 702.0}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499522160.61>
+                StaticText, 0x10963a820, {{16.0, 796.0}, {69.3, 24.0}}, label: 'Actions' <AX element pid: 88104, elementOrHash.elementID: 4499524160.29>
+                Other, 0x10963a940, {{16.0, 840.0}, {408.0, 332.3}} <AX element pid: 88104, elementOrHash.elementID: 4499549472.30>
+                  StaticText, 0x10963aa60, {{32.0, 856.0}, {63.3, 20.3}}, label: 'Action 1' <AX element pid: 88104, elementOrHash.elementID: 4499525264.62>
+                  StaticText, 0x10963ab80, {{32.0, 888.3}, {124.7, 44.3}}, label: 'Action description: Fictional action' <AX element pid: 88104, elementOrHash.elementID: 4499527584.63>
+                    StaticText, 0x10963aca0, {{32.0, 888.3}, {124.7, 18.0}}, label: 'Action description' <AX element pid: 88104, elementOrHash.elementID: 4499526368.71>
+                    StaticText, 0x10963adc0, {{32.0, 912.3}, {115.0, 20.3}}, label: 'Fictional action' <AX element pid: 88104, elementOrHash.elementID: 4499526800.72>
+                  Button, 0x10963aee0, {{315.0, 888.3}, {93.0, 58.0}}, label: 'Copy Action description' <AX element pid: 88104, elementOrHash.elementID: 4499530576.64>
+                    Image, 0x10963b000, {{329.0, 907.0}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499529040.73>
+                    StaticText, 0x10963b120, {{315.0, 888.3}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499530144.74>
+                  StaticText, 0x10963b240, {{32.0, 958.3}, {115.0, 44.3}}, label: 'Action owner: Fictional owner' <AX element pid: 88104, elementOrHash.elementID: 4499533360.65>
+                    StaticText, 0x10963b360, {{32.0, 958.3}, {89.7, 18.0}}, label: 'Action owner' <AX element pid: 88104, elementOrHash.elementID: 4499532144.75>
+                    StaticText, 0x10963b480, {{32.0, 982.3}, {115.0, 20.3}}, label: 'Fictional owner' <AX element pid: 88104, elementOrHash.elementID: 4499532576.76>
+                  Button, 0x10963b5a0, {{315.0, 958.3}, {93.0, 58.0}}, label: 'Copy Action owner' <AX element pid: 88104, elementOrHash.elementID: 4499536352.66>
+                    Image, 0x10963b6c0, {{329.0, 977.0}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499534816.77>
+                    StaticText, 0x10963b7e0, {{315.0, 958.3}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499535920.78>
+                  StaticText, 0x10963b900, {{32.0, 1028.3}, {123.0, 44.3}}, label: 'Action target date: 2026-08-25' <AX element pid: 88104, elementOrHash.elementID: 4499539136.67>
+                    StaticText, 0x10963ba20, {{32.0, 1028.3}, {123.0, 18.0}}, label: 'Action target date' <AX element pid: 88104, elementOrHash.elementID: 4499537920.79>
+                    StaticText, 0x10963bb40, {{32.0, 1052.3}, {96.3, 20.3}}, label: '2026-08-25' <AX element pid: 88104, elementOrHash.elementID: 4499538352.80>
+                  Button, 0x10963bc60, {{315.0, 1028.3}, {93.0, 58.0}}, label: 'Copy Action target date' <AX element pid: 88104, elementOrHash.elementID: 4499542128.68>
+                    Image, 0x10963bd80, {{329.0, 1047.0}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499540592.81>
+                    StaticText, 0x10963bea0, {{315.0, 1028.3}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499541696.82>
+                  StaticText, 0x10963bfc0, {{32.0, 1098.3}, {90.0, 44.3}}, label: 'Action status: OPEN' <AX element pid: 88104, elementOrHash.elementID: 4499544912.69>
+                    StaticText, 0x10963c0e0, {{32.0, 1098.3}, {90.0, 18.0}}, label: 'Action status' <AX element pid: 88104, elementOrHash.elementID: 4499543696.83>
+                    StaticText, 0x10963c200, {{32.0, 1122.3}, {45.0, 20.3}}, label: 'OPEN' <AX element pid: 88104, elementOrHash.elementID: 4499544128.84>
+                  Button, 0x10963c320, {{315.0, 1098.3}, {93.0, 58.0}}, label: 'Copy Action status' <AX element pid: 88104, elementOrHash.elementID: 4499547904.70>
+                    Image, 0x10963c440, {{329.0, 1117.0}, {17.0, 21.0}}, identifier: 'doc.on.doc', label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499546368.85>
+                    StaticText, 0x10963c560, {{315.0, 1098.3}, {93.0, 58.0}}, label: 'Copy' <AX element pid: 88104, elementOrHash.elementID: 4499547472.86>
+                Button, 0x10963c680, {{16.0, 1192.3}, {58.7, 44.0}}, label: 'Refresh current release' <AX element pid: 88104, elementOrHash.elementID: 4499553824.31>
+                Button, 0x10963c7a0, {{16.0, 1256.3}, {63.0, 44.0}}, label: 'Sign out' <AX element pid: 88104, elementOrHash.elementID: 4499556560.32>
+              Other, 0x10963c8c0, {{391.0, 78.0}, {30.0, 816.0}}, label: 'Vertical scroll bar, 2 pages', value: 0% <AX element pid: 88104, elementOrHash.elementID: 4561345264.10>
+                Other, 0x10963c9e0, {{418.0, 884.0}, {3.0, 7.0}} <AX element pid: 88104, elementOrHash.elementID: 4561323536.33>
+              Other, 0x10963cb00, {{391.0, 78.0}, {30.0, 816.0}}, label: 'Vertical scroll bar, 2 pages', value: 0% <AX element pid: 88104, elementOrHash.elementID: 4561345264.10>
+                Other, 0x10963cc20, {{418.0, 884.0}, {3.0, 7.0}} <AX element pid: 88104, elementOrHash.elementID: 4561323536.33>

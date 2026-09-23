@@ -1,0 +1,43 @@
+{
+  "check": "check_build",
+  "result": {
+    "recordPath": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build-record.json",
+    "recordSha256": "72b2bbd4b360c49c99ca4ef2e189e5e50d6b00786b5d3a611ff63c477039273a",
+    "template": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "templateSha256": "f17d8a4e4c7b62e4b060915f61703c3a1ee297348aefe207edc3e5e080af125e",
+    "appBundle": {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app",
+      "sha256": "4bdd678c942b0d6a177bd11ae1e6ad234c8500e6efc7fb0549b9e21fb5b2b1a4",
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256"
+    },
+    "testBundle": {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest",
+      "sha256": "6616d8f2c770d57862b419cc55692edbf646951bfc0d626d8dadaaf8edd7b9a2",
+      "hashMethod": "SHA256 of compact sorted JSON mapping relative paths to file SHA256"
+    },
+    "source": {
+      "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "appSources": {
+        "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+        "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+        "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a",
+        "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+        "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+        "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+        "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+        "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+        "ios/ACEClientApp/ACEClientApp/Views.swift": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd"
+      },
+      "testSourceSha256": "daf34264ebc02ffaf2fb1b2a3822b1fb0e0b0e16f200a9a90d2a633e7c844082",
+      "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n",
+      "call0EvidenceDesign": "Unchanged helper emits ACE_A11Y_ISSUE; raw call0 record explicitly leaves issues unresolved; execution collector joins retained issue lines between call start/end markers. No loss, filtering, or fabricated empty issue list."
+    },
+    "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+    "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "runnerPath": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic/tools/ace_ios_local.py",
+    "runnerSha256": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3"
+  },
+  "nativeTestsStarted": 0,
+  "launcherSha256": "412c4ab02c5a94f01eeb700d597c3470b1081a8acd409cd443ae2579e40c532e"
+}

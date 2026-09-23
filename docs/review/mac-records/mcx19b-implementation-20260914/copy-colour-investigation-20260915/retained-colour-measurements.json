@@ -1,0 +1,88 @@
+{
+  "createdUTC": "2026-09-14T23:03:34.877446+00:00",
+  "method": "Windows System.Drawing decoded SSH-read PNG bytes in memory. Every pixel in each recorded region counted; no image files exported to Windows. sRGB relative luminance formula applied to observed solid foreground and background colors.",
+  "observations": [
+    {
+      "file": "C3BDC69B-DEEB-4BFD-BB3F-C0C64A60E1D9.png",
+      "region": [
+        0,
+        0,
+        432,
+        174
+      ],
+      "label": "Copy action",
+      "foreground": [
+        0,
+        0,
+        0
+      ],
+      "background": [
+        198,
+        198,
+        203
+      ],
+      "counts": {
+        "background": 62989,
+        "black": 2860
+      },
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected-attachments/C3BDC69B-DEEB-4BFD-BB3F-C0C64A60E1D9.png",
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd",
+      "contrastRatio": 12.341146082257941
+    },
+    {
+      "file": "C2BE399B-A626-4ADB-83B7-E7551B6E722E.png",
+      "region": [
+        0,
+        0,
+        368,
+        60
+      ],
+      "label": "Copied Action 1.",
+      "foreground": [
+        0,
+        0,
+        0
+      ],
+      "background": [
+        242,
+        242,
+        247
+      ],
+      "counts": {
+        "background": 17455,
+        "black": 2632
+      },
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected-attachments/C2BE399B-A626-4ADB-83B7-E7551B6E722E.png",
+      "sha256": "d1645e22166670c06b3956b1c404d66c20ee806636c138567ef3dd0accd9a038",
+      "contrastRatio": 18.819381454911877
+    },
+    {
+      "file": "132BA2A8-7952-41AD-9763-BB95C0299DD5.png",
+      "region": [
+        0,
+        2300,
+        550,
+        2868
+      ],
+      "label": "Refresh and Sign out screenshot region",
+      "foreground": [
+        0,
+        136,
+        255
+      ],
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "counts": {
+        "background": 290444,
+        "blue": 2957
+      },
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected-attachments/132BA2A8-7952-41AD-9763-BB95C0299DD5.png",
+      "sha256": "d2e1b710c9699ace66829cee0651cc31a4aee15b4e4476103f59854728c1bca5",
+      "contrastRatio": 3.5201447456958013
+    }
+  ],
+  "limits": "These are retained screenshot colors. No claim that they equal the native audit internal sample. Text size/weight and sample-time crop mechanism remain separate questions."
+}

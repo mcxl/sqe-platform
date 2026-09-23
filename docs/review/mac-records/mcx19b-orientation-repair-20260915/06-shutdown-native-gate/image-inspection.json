@@ -1,0 +1,119 @@
+{
+  "candidate": {
+    "commit": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+    "status": "clean",
+    "statusDetail": "",
+    "workingTreeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sourceHashes": {
+      "docs/plans/2026-09-14-ace-ios-local-verification.md": "b5f6b0783f4de206b205928dd46b846ceb2c4499b72653e30c151d8da96e843c",
+      "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "eee4f88249520b111c452c12b5f5f51526ecb25502a2a69045c317a9e95c067b",
+      "docs/specs/autonomous-delivery-workflow-repair.md": "c45ba49f914f3842d5fd19a6577b542fee240a6850f570a6ccbb957d6949c8d4",
+      "docs/specs/documentation-control.md": "31fbccd24fcb6ac7a3491b58fdee83fdd9e5b1e89f2149407fc0cb770293f33c",
+      "docs/specs/phase6-stage1-release-service-boundary.md": "ab25e6321d7fdfacfeec2a256f9b1c3a1b637840da4e548ee0f7e969a202dfa6",
+      "docs/specs/phase6-stage2-release-workflow.md": "0afaad9be9771951c116aa90b1de6315aef1f63964aba8528c0f75edca3ca68c",
+      "docs/specs/phase6-stage3-release-trigger-decisions.md": "f8b7952280e1e5edb3709c1a104e780342f447ebc4479774c8ec669673d0aabd",
+      "docs/specs/phase6b2-read-only-client-release-projection.md": "18a69b1b0608460dd4aface9ec32b5b9421f961726392bbf8e7a7373165f8a10",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549",
+      "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490",
+      "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+      "ios/ACEClientApp/ACEClientApp/Configuration.swift": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9",
+      "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "4fb5f44d88a34db25879ba2aeea6ab3b3f7edb4f6ffa0a2ca079e6320d541915",
+      "ios/ACEClientApp/ACEClientApp/Info.plist": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315",
+      "ios/ACEClientApp/ACEClientApp/KeychainStore.swift": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226",
+      "ios/ACEClientApp/ACEClientApp/Network.swift": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809",
+      "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486",
+      "ios/ACEClientApp/ACEClientApp/SessionState.swift": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908",
+      "ios/ACEClientApp/ACEClientApp/Views.swift": "080d3967b9b5f5cd4a9fde9b01f69883ee5b1099bdd13b4fe30dd47945447425",
+      "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+      "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75",
+      "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37",
+      "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "290ae78003a6e06057756e89097771796ca3a6bbc4d0b5eeb64af78198717341",
+      "ios/ACEClientApp/Makefile": "24faee353228ca2507829990548a26d3a9d2ee95557caf82fec50b7fc08c5b8d",
+      "ios/ACEClientApp/Phase6_1EvidenceRegister.json": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b",
+      "ios/ACEClientApp/Phase6_1EvidenceRegister.md": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754",
+      "ios/ACEClientApp/RuntimeEvidencePlan.json": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+      "ios/ACEClientApp/RuntimeEvidencePlan.md": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4",
+      "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb",
+      "ios/ACEClientApp/evidence-matrix-audit.md": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88",
+      "quality/test-groups.json": "46a3e48d42ecae6facf91904aba3040c896d24de95c9d2196f7ffce962a2904d",
+      "tools/ace_ios_local.py": "22b7a6e7dcd7b632dc3b117bdfe5b1972ba7ddf54dc657465020767c97d17de3",
+      "tools/diagnose_ios.py": "8690d9c0739e917a29ba8aa15332e38cbf8cb5c3d771b02766d433beb03dcb4d",
+      "tools/run_tests.py": "6de7c748843048d8cdcf47876becead531741f378e80f7776ba2541da974959d",
+      "tools/tests/test_ace_ios_local.py": "b50c74ebbf5f7d59fe1985ad37745db4dae1a2f2c1f97f3a70b781ea7f3f62f5"
+    }
+  },
+  "status": "passed",
+  "inspectedAtUTC": "2026-09-15T08:50:24.165926+00:00",
+  "positiveNativeCaptureCount": 13,
+  "positiveUniqueImageCount": 3,
+  "images": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/0CB15C76-619D-4C5E-9DC3-EC01D31038DF.png",
+      "bytes": 189090,
+      "sha256": "117d5a1dad7f76eb9797830f5b5ac1e1b6d914c3735efd0e0cf4697c93da2fa6",
+      "dimensions": [
+        1206,
+        2622
+      ],
+      "inspection": "Viewed at original1206x2622resolution by primary agent",
+      "observation": "Portrait Current Release screen. Release Details and Conclusion are readable. Action1 continues below the normal scroll viewport. No visible text overlap or glyph corruption.",
+      "identicalCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/0CB15C76-619D-4C5E-9DC3-EC01D31038DF.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/22175C28-105E-4735-9755-F7521BFF4CFC.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/8D85F8A5-F42B-4194-8C91-B76FA25C4859.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/97781289-4849-4887-8AAE-6840BA7A6C13.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/A47CA529-05B9-45E0-B730-F58B501FBC36.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/AA4A3E89-852D-4705-99DE-AEBBB17400B6.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/BE04CD3D-5283-4CE5-AAD6-E78F3DF08983.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/D4E1F924-A76D-4458-9716-1E6A6150BDB6.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/F1817553-0BF3-41B1-85F4-DB8EFAB63E57.png"
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/6BB7175E-F263-4066-B8F6-5CBAB09283A1.png",
+      "bytes": 179687,
+      "sha256": "035fe7089b1efacf4a2cb29a3db79394d09986536791a44d5e3018fc7d7bcb9e",
+      "dimensions": [
+        1206,
+        2622
+      ],
+      "inspection": "Viewed at original1206x2622resolution by primary agent",
+      "observation": "Intermediate portrait scroll. Published date continues above the viewport. Conclusion and the complete Action1 card are readable. Copy action and Refresh are visible. No overlap within the visible cards.",
+      "identicalCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/6BB7175E-F263-4066-B8F6-5CBAB09283A1.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/83794A72-C61F-425D-B920-CE976191EFF3.png",
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/C1AE4235-5F2D-4276-A9CD-092906BBF66F.png"
+      ]
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/F6302F23-EC11-4DC1-8A79-0B00D879AD7F.png",
+      "bytes": 176418,
+      "sha256": "03f6672ec21e42ae5eeffe350897cc2d6fd9973da10ca1434500f40f9160acee",
+      "dimensions": [
+        1206,
+        2622
+      ],
+      "inspection": "Viewed at original1206x2622resolution by primary agent",
+      "observation": "Lower portrait scroll. Conclusion, all four action values, Copy action and Refresh are readable. Sign out appears at the lower scroll boundary. The scroll indicator remains visible. No overlap within the action card.",
+      "identicalCapturePaths": [
+        "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/batches/001/attachments/F6302F23-EC11-4DC1-8A79-0B00D879AD7F.png"
+      ]
+    },
+    {
+      "actualSeconds": 9.706666666666667,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative-frame/frame-013.59.png",
+      "requestedSeconds": 13.588333333333333,
+      "width": 1206,
+      "bytes": 407177,
+      "sha256": "2b80b8f41d987e70f700a3484265c34f79ef9cd09fc1d55407017cb88ef1d007",
+      "inspection": "Viewed at original1206x2622resolution by primary agent",
+      "observation": "Portrait Current Release. Release Details and Conclusion are readable. Action1 continues below the scroll viewport. No visible overlap or glyph corruption.",
+      "limitation": "One decoded native failure video frame, not complete video playback or an accessibility pass."
+    }
+  ],
+  "pilotCasesCredited": 0,
+  "remaining": null,
+  "completedUTC": "2026-09-15T08:54:31.470327+00:00"
+}

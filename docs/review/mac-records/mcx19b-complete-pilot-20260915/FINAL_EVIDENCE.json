@@ -1,0 +1,39 @@
+{
+  "recordedUTC": "2026-09-15T05:25:06.530145+00:00",
+  "status": "failed-prerequisite-immediate-mechanism-identified",
+  "pilotResult": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/RESULT.json",
+  "diagnosticAddendum": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/ORIENTATION_CAUSE.json",
+  "confirmedCause": "Five-second outer orientation waiter cancels native app-frame query; test reports orientation failure without completed reading.",
+  "stillUnknown": [
+    "Native query slowness cause",
+    "Earlier release-final audit timeout cause"
+  ],
+  "nativeArchive": {
+    "archive": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/native-pilot-evidence.tar.gz",
+    "bytes": 64851197,
+    "sha256": "5053ce3377f4662895102ec981331e0c340f731a08657e75b5eeebdeb85f5476",
+    "memberCount": 1077,
+    "allMemberHashesVerified": true,
+    "archiveAndVerificationSeconds": 16.658,
+    "verifiedUTC": "2026-09-15T05:21:11.361707+00:00",
+    "retainUntilAtLeastUTC": "2026-10-15T05:21:11.361707+00:00",
+    "automaticDeletion": false,
+    "protectedOriginalRun": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f",
+    "protectedBuildProducts": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/build",
+    "privateStageMode": "0o700",
+    "archiveMode": "0o600"
+  },
+  "recordHashes": {
+    "RESULT.json": "31b4ebb94203e3250f6adc0e94c1e8246d021be8c1f61bf468eb42c305403795",
+    "ORIENTATION_CAUSE.json": "8f6358e87b712c79eb61807d3f92c5672c45b6df4769f4ecb019b0d21d2a4ea8",
+    "ORIENTATION_CAUSE.md": "c399c0e364a5a58823fae81a5b8575e0a43aa422241c348df29c0d5a85926519",
+    "orientation-log-excerpt.txt": "148e6c351f54917151f488cb42ef99a21448b11f2868a735deafc863d94c43b1",
+    "final-state.json": "ffbb291950175cc40c60733d48a956f7f5978fc6832ad3d7ec917dc5bc1b974b",
+    "failure-video-inspection.json": "2ebd946bc29cde75c6038c5d565e3649c3747cca91cac49e6ad5ab2466062ac6"
+  },
+  "noAppTestRunnerChanges": true,
+  "pilotCasesExecuted": 0,
+  "pilotCasesExpected": 22,
+  "correctiveAttempts": 0,
+  "nativeProcessesRemaining": false
+}

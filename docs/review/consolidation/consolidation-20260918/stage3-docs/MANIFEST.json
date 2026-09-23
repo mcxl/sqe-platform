@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "path": "01-scope-and-backup.json",
+      "bytes": 14751,
+      "sha256": "b058d06a9113815cbc658199430bd90d2b4bfe72789d5db42c5c8fb7884eb1cf"
+    },
+    {
+      "path": "02-verification.json",
+      "bytes": 13429,
+      "sha256": "e032d4f0c28e9eeea4c37da65d96f1b72cbff57f3ee3fe7386e49ec9fb8891a6"
+    },
+    {
+      "path": "DEV_STATE.before.md",
+      "bytes": 35340,
+      "sha256": "003615091d1d1ff0c0a31bf82ce5b0caadcf9ec3d1c20aea3294acac4090ca3e"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 3288,
+      "sha256": "b700367eaadef6bb812c29f1727a47e388aef9106c589e360bdf939ab92709df"
+    },
+    {
+      "path": "SQE_DEVELOPER_HUB.before.html",
+      "bytes": 81007,
+      "sha256": "e033bb86d512ac33d021e41fb3a8aa79678dca15bacdbe85bbb249dfa33459cd"
+    },
+    {
+      "path": "WORKSPACE-GUIDE.before.md",
+      "bytes": 6270,
+      "sha256": "d2c271ccb34563c5c82d87dcc5bddf4591fdb9d9a93ec6fc606c1b3e4625220d"
+    }
+  ],
+  "report_sha256": "b700367eaadef6bb812c29f1727a47e388aef9106c589e360bdf939ab92709df"
+}

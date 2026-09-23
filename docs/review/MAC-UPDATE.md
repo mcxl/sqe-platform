@@ -31,3 +31,7 @@ Forty-five retained diagnostic records were retrieved and verified by SHA-256 be
 Raw result bundles, screenshots and recordings remain on the Mac. No continuous video inspection or new image inspection was performed during this retrieval. Other historical dirty worktrees are not automatically covered by the clean delivery-worktree check.
 
 No app source change, build, simulator run, signing renewal, service check or acceptance result followed from restoring SSH. Copy, pilot completion, full coverage and the remaining physical/service/ancestry gates remain unresolved.
+
+## Expanded Access Audit
+
+The later [master update](../../MASTER_UPDATE.md) expands the original 45-record selection to 6,328 available text records, using hash-based duplicate links. It adds 25 worktree records and latest-failure PNGs/video. Earlier statements above describe the first retrieval. Most raw bundles and historical media remain local, and Vorflux execution access is unverified.

@@ -1,0 +1,17 @@
+{
+  "recordedAtUTC": "2026-09-14T12:25:59.357525+00:00",
+  "commit": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "branch": "codex/mcx19b-release-layout",
+  "parent": "7fee853aef52e85a813368a51d833c134710186d",
+  "files": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "sourceSha256": "4d9a0f2e0cdae86c6d1397ef995674144c45e57d4a2d2d3aabd0028b38149791",
+  "diffSha256": "3efc9a245eee2843da7f11913a5a65004f5028e8330ae765188f938069cdb4b9",
+  "stagedDiffMatchesReviewedDiff": true,
+  "worktreeStatus": "",
+  "pushed": false,
+  "merged": false,
+  "finalAcceptance": false,
+  "focusedNativeEvidence": "ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79"
+}

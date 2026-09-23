@@ -1,0 +1,7 @@
+Timestamp               Ty Process[PID:TID]
+2026-09-15 12:29:53.059 A  SWBBuildService[99002:399f53] (libsystem_info.dylib) Retrieve User by ID
+2026-09-15 12:29:53.061 Df SWBBuildService[99002:399f53] [com.apple.xpc:connection] [0x7f82adb04d20] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+2026-09-15 12:29:53.061 Df SWBBuildService[99002:399f54] [com.apple.xpc:connection] [0x7f82ad905000] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.agent
+2026-09-15 12:29:53.076 A  SWBBuildService[99002:399f53] (libsystem_info.dylib) Retrieve Group by ID
+2026-09-15 12:29:55.657 A  SWBBuildService[99002:399f54] (libsystem_info.dylib) Retrieve Group by ID
+2026-09-15 12:29:57.200 A  SWBBuildService[99002:399f64] (libsystem_info.dylib) Membership API: translate identifier

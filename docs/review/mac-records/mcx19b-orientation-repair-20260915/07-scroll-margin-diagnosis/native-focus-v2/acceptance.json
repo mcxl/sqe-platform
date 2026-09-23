@@ -1,0 +1,31 @@
+{
+  "candidate": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+  "status": "failed visual acceptance",
+  "nativeCaseCount": 1,
+  "nativeAuditInvocations": 2,
+  "nativeCoverageTestsPassed": 1,
+  "nativeSettingsTestsPassed": 5,
+  "unexpectedSkips": 0,
+  "restoration": "passed",
+  "sourceUnchangedDuringRun": true,
+  "imagesInspected": 10,
+  "distinctImagesInspected": 2,
+  "imageFailure": "Scrolled text overlaps system status bar",
+  "nativeCommandSeconds": 356.019,
+  "buildCommandSeconds": 78.706,
+  "evidence": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/execution.json",
+      "sha256": "d7e6685810e01b58c22319c1b38eba1639255266e03e20381b5d9973a2695d39"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/result.json",
+      "sha256": "28cc794031aa8700c2324c57d7bfa1d3297d10497cdfbd0797b85747f9fc6634"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/image-inspection.json",
+      "sha256": "2247dab058dc917ae832378a3f43470957244fda9f52fc69336cad6bcbccd4b7"
+    }
+  ],
+  "pilotCredit": 0
+}

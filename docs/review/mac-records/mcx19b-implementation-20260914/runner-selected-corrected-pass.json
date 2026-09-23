@@ -1,0 +1,16 @@
+{
+  "question": "Does the same native GET test pass after restoring the deliberate POST expectation?",
+  "started": 1789380030.2998478,
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache"
+  ],
+  "exit": 0,
+  "finished": 1789380181.9062662
+}

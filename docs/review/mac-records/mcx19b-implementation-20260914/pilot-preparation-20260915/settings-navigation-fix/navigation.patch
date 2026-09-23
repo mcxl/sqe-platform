@@ -1,0 +1,38 @@
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -383,8 +383,10 @@
+             return false
+         }
+         for item in path where !tapSettingsItem(item, in: settings) {
++            let message = "Missing Settings control or destination: \(item)"
++            print("ACE_NATIVE_SETTINGS_FAILURE \(message)")
+             addScreenshot(of: settings, named: "Accessibility settings missing \(item)")
+-            XCTFail("Missing Settings control: \(item)")
++            XCTFail(message)
+             return false
+         }
+         let toggle = settings.switches[label]
+@@ -424,10 +426,19 @@
+     }
+ 
+     private func tapSettingsItem(_ label: String, in settings: XCUIApplication) -> Bool {
+-        for _ in 0..<12 {
+-            let candidates = [settings.cells[label], settings.staticTexts[label], settings.buttons[label]]
+-            if let candidate = candidates.first(where: { $0.exists && $0.isHittable }) { candidate.tap(); return true }
+-            settings.swipeUp()
++        // Settings retains its scroll position. Search above and below that position.
++        for step in 0...24 {
++            let candidates = [settings.cells[label],
++                              settings.cells.containing(.staticText, identifier: label).firstMatch,
++                              settings.buttons[label], settings.staticTexts[label]]
++            if let candidate = candidates.first(where: { $0.exists && $0.isHittable }) {
++                candidate.tap()
++                let opened = settings.navigationBars[label].waitForExistence(timeout: 5)
++                print("ACE_NATIVE_SETTINGS_NAVIGATION \(label) destinationOpened=\(opened)")
++                return opened
++            }
++            if step == 24 { break }
++            if step < 12 { settings.swipeDown() } else { settings.swipeUp() }
+         }
+         return false
+     }

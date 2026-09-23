@@ -1,0 +1,69 @@
+{
+  "record": {
+    "attachmentDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/attachments",
+    "attachmentSha256": "6ea224e508c21fadb48cec4f94fba5863381be76e06854cc64a778b4f92b0fd1",
+    "auditCount": 0,
+    "caseCount": 1,
+    "caseRecords": [
+      {
+        "auditInvocations": 0,
+        "id": "pilot.iPhone-17.release.light.medium.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "medium",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "release",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Engagement name",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Review status",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Release version",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Published date and time",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Conclusion title",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Conclusion summary",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Evidence reference",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action description",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action owner",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action target date",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport value-Action status",
+          "Coverage pilot.iPhone-17.release.light.medium.portrait.0.0.0 viewport release-final"
+        ]
+      }
+    ],
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/result.xcresult"
+    ],
+    "device": "iPhone 17",
+    "exit": 0,
+    "logSha256": "8362fcc1e7c678b5c02fdbed4aff881b099d696e2287ea031fe9529ccca22878",
+    "nativeTestCount": 1,
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/batches/001/result.xcresult",
+    "resultBundleSha256": "e9c0889a893db5c4375b81f6b76ffbc666b682ae0a6f11af79d7314142b13fc8",
+    "runfileSha256": "1e243e77dca5a61976834ee2149aeb69518bd6c9bc3583d8e8923baac1da70ae",
+    "settings": {
+      "appearance": "light",
+      "boldText": false,
+      "contentSize": "medium",
+      "increaseContrast": false,
+      "orientation": "portrait",
+      "reduceMotion": false
+    },
+    "summarySha256": "8b6863ce1e1b5427a1fc74b08b8099563e3fdf0fdb874a34263da59dceda9306"
+  },
+  "status": "passed"
+}

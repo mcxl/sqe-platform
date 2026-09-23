@@ -1,0 +1,97 @@
+{
+  "status": "failed-prerequisite",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "run": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f",
+  "runnerExit": 2,
+  "expectedPilotCases": 22,
+  "executedPilotCases": 0,
+  "passedPilotCases": 0,
+  "unexecutedPilotCases": 22,
+  "nativeAuditInvocations": 0,
+  "nativeSettingsTests": {
+    "passed": 4,
+    "failed": 1,
+    "skipped": 0
+  },
+  "build": {
+    "exit": 0,
+    "seconds": 91.377
+  },
+  "failure": {
+    "test": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+    "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "assertionLine": 352,
+    "predicateLines": [
+      165,
+      171
+    ],
+    "expected": "App frame height exceeds width and the five-second orientation expectation completes for portrait. The independent in-app flags and orientation equality must also pass.",
+    "actual": "App frame did not reach requested portrait orientation",
+    "nativeExit": 65,
+    "classification": "Native test settings/frame-observation failure. Application orientation defect is not demonstrated.",
+    "cause": "Unresolved. Logs show repeated target-application lookup while the recording shows portrait. Numeric frame and XCTWaiter result are not retained.",
+    "nativeEvidence": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/native-settings/001-set"
+  },
+  "timing": {
+    "startUTC": "2026-09-15T04:59:46.995580+00:00",
+    "endUTC": "2026-09-15T05:14:51.275939+00:00",
+    "runnerElapsedSeconds": 904.280359,
+    "nativeSettingsCommands": [
+      {
+        "label": "001-set",
+        "start": "2026-09-15T05:09:22.059888+00:00",
+        "end": "2026-09-15T05:12:29.833550+00:00",
+        "seconds": 187.775,
+        "exit": 65
+      },
+      {
+        "label": "iPhone 17 Pro Max-read",
+        "start": "2026-09-15T05:01:26.027149+00:00",
+        "end": "2026-09-15T05:02:21.065642+00:00",
+        "seconds": 55.039,
+        "exit": 0
+      },
+      {
+        "label": "iPhone 17 Pro Max-restore",
+        "start": "2026-09-15T05:12:35.970430+00:00",
+        "end": "2026-09-15T05:13:40.142168+00:00",
+        "seconds": 64.172,
+        "exit": 0
+      },
+      {
+        "label": "iPhone 17-read",
+        "start": "2026-09-15T05:03:29.407094+00:00",
+        "end": "2026-09-15T05:09:20.357121+00:00",
+        "seconds": 350.953,
+        "exit": 0
+      },
+      {
+        "label": "iPhone 17-restore",
+        "start": "2026-09-15T05:13:46.579993+00:00",
+        "end": "2026-09-15T05:14:45.974348+00:00",
+        "seconds": 59.395,
+        "exit": 0
+      }
+    ],
+    "nativeCommandSeconds": 717.334,
+    "note": "Native command durations include XCTest startup and waiting. Pure active inspection time and collection time were not separately instrumented; no review forecast is claimed."
+  },
+  "checks": {
+    "sourceUnchanged": true,
+    "restorationFailures": [],
+    "noRemainingXcodebuild": true,
+    "evidenceRetained": true,
+    "pilotImageInspection": "Not applicable: no pilot screen cases executed. All three distinct postmortem video frames inspected.",
+    "fullExpansion": "Blocked. No valid 22-case pilot or storage/image projection."
+  },
+  "correctiveChanges": 0,
+  "diagnosticReruns": 0,
+  "originalTimeout": "Earlier release-final audit timeout remains unresolved and the earlier pilot remains failed. No native audit was invoked by this run.",
+  "remaining": [
+    "Diagnose the smallest orientation/frame-observation settings check from retained evidence.",
+    "Prove any correction with focused native checks; a changed test creates a new candidate.",
+    "Re-establish affected readiness gates and run the approved complete pilot.",
+    "Keep the 836-case programme, physical phone, private service and final delivery checks pending."
+  ],
+  "recordedUTC": "2026-09-15T05:20:29.298940+00:00"
+}

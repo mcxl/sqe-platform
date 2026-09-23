@@ -1,0 +1,68 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/native-settings/iPhone 17 Pro Max-restore-post-boot/ACEClientAppUITests.xctestrun" -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult"
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult
+
+2026-09-15 19:41:25.016685+1000 ACEClientAppUITests-Runner[47846:4734822] [Default] Running tests...
+2026-09-15 19:41:25.174688+1000 ACEClientAppUITests-Runner[47846:4735106] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-15 19:41:25.217050+1000 ACEClientAppUITests-Runner[47846:4735106] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 19:41:38.201.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 19:41:38.203.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 19:41:38.203.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.01s Start Test at 2026-09-15 19:41:38.211
+    t =     0.73s Set Up
+    t =     0.76s Open com.example.aceclientapp
+    t =     0.76s     Launch com.example.aceclientapp
+    t =     3.76s         Setting up automation session
+    t =     7.68s         Wait for com.example.aceclientapp to idle
+    t =    10.10s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    11.17s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    11.17s         Checking existence of `"Effective interface style" Any`
+    t =    12.35s Find the "Effective interface style" Any
+    t =    12.44s Find the "Effective interface style" ScrollView
+    t =    12.49s Terminate com.example.aceclientapp:47911
+    t =    13.55s Setting device orientation to Portrait
+    t =    13.56s     Device orientation changed to Portrait
+    t =    13.61s     Wait for com.apple.springboard to idle
+    t =    13.78s Open com.example.aceclientapp
+    t =    13.78s     Launch com.example.aceclientapp
+    t =    14.45s         Setting up automation session
+    t =    18.96s         Wait for com.example.aceclientapp to idle
+    t =    21.91s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    22.97s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    22.97s         Checking existence of `"Effective interface style" Any`
+    t =    24.26s Find the "Effective interface style" Any
+    t =    24.33s Find the "Effective interface style" ScrollView
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    24.41s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.08502283101552166,"frame":{"height":"956.0","width":"440.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+ACE_SETTINGS_RESULT {"mode":"set","observed":{"boldText":false,"increaseContrast":false,"orientation":"portrait","reduceMotion":false}}
+    t =    24.50s Terminate com.example.aceclientapp:47946
+    t =    25.51s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' passed (25.828 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 19:42:04.039.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.828 (25.835) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 19:42:04.041.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.828 (25.838) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 19:42:04.043.
+	 Executed 1 test, with 0 failures (0 unexpected) in 25.828 (25.842) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v2/native-settings/iPhone 17 Pro Max-restore-post-boot/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 19:40:56.779 xcodebuild[47734:4732985] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 19:40:56.811 xcodebuild[47734:4732985] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 19:40:58.572 xcodebuild[47734:4732985] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 19:41:39.165 xcodebuild[47734:4732985] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 19:41:39.165 xcodebuild[47734:4732985] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 19:41:51.993 xcodebuild[47734:4732985] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 19:41:51.993 xcodebuild[47734:4732985] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 19:42:04.443 xcodebuild[47734:4732985] [MT] IDETestOperationsObserverDebug: 65.850 elapsed -- Testing started completed.
+2026-09-15 19:42:04.443 xcodebuild[47734:4732985] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 19:42:04.443 xcodebuild[47734:4732985] [MT] IDETestOperationsObserverDebug: 65.850 sec, +65.850 sec -- end

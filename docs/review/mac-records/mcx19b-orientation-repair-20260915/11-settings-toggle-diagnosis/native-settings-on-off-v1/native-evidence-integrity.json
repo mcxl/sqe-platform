@@ -1,0 +1,273 @@
+{
+  "status": "passed native integrity; inspect retained PNGs if any",
+  "verifiedUTC": "2026-09-15T13:36:46.304890+00:00",
+  "candidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "checks": 6,
+  "unexpectedSkips": 0,
+  "coverageCases": 0,
+  "audits": 0,
+  "pilotCredit": 0,
+  "nativeSeconds": 492.897,
+  "restoration": "passed",
+  "settings": [
+    {
+      "phase": "001-on",
+      "observed": {
+        "mode": "set",
+        "observed": {
+          "boldText": true,
+          "increaseContrast": true,
+          "orientation": "portrait",
+          "reduceMotion": true
+        }
+      },
+      "attempts": [
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": false,
+          "expected": true,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 146.3333282470703
+          },
+          "label": "Bold Text"
+        },
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": false,
+          "expected": true,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 146.3333282470703
+          },
+          "label": "Reduce Motion"
+        },
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": false,
+          "expected": true,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 535.6666870117188
+          },
+          "label": "Increase Contrast"
+        }
+      ],
+      "results": [
+        {
+          "actual": true,
+          "attempt": 1,
+          "expected": true,
+          "label": "Bold Text",
+          "seconds": 1.7475539410079364,
+          "wait": 1
+        },
+        {
+          "actual": true,
+          "attempt": 1,
+          "expected": true,
+          "label": "Reduce Motion",
+          "seconds": 1.6875154169974849,
+          "wait": 1
+        },
+        {
+          "actual": true,
+          "attempt": 1,
+          "expected": true,
+          "label": "Increase Contrast",
+          "seconds": 3.4586003600270487,
+          "wait": 1
+        }
+      ],
+      "seconds": 120.279,
+      "bundleSha256": "b01393cfbf97eba47c37d5a8c8498e607add52776f8e60cd1945e6a76d0e2f86",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "05fdc0751a05001c081b05a348d3f21d63f38a2e42753e9c2c085f0eae327456",
+      "summarySha256": "084556dcee1116f6824047955409713bdda4750bb3eb96037ec749c83372c3ce",
+      "logSha256": "6de747558fb8816ce38c23882ba75d2db213e29bd0b04ef5bf1bd7b3f6447d17",
+      "runfileSha256": "d6690a43fc545b3b3342ad388ebb4e4e0e1f8163b3f7d4a3219e9672f3f743cf"
+    },
+    {
+      "phase": "002-off",
+      "observed": {
+        "mode": "set",
+        "observed": {
+          "boldText": false,
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        }
+      },
+      "attempts": [
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": true,
+          "expected": false,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 146.3333282470703
+          },
+          "label": "Bold Text"
+        },
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": true,
+          "expected": false,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 146.3333282470703
+          },
+          "label": "Reduce Motion"
+        },
+        {
+          "action": "tap",
+          "attempt": 1,
+          "before": true,
+          "expected": false,
+          "frame": {
+            "height": 28,
+            "width": 330,
+            "x": 36,
+            "y": 535.6666870117188
+          },
+          "label": "Increase Contrast"
+        }
+      ],
+      "results": [
+        {
+          "actual": false,
+          "attempt": 1,
+          "expected": false,
+          "label": "Bold Text",
+          "seconds": 1.7975730510079302,
+          "wait": 1
+        },
+        {
+          "actual": false,
+          "attempt": 1,
+          "expected": false,
+          "label": "Reduce Motion",
+          "seconds": 1.46543789099087,
+          "wait": 1
+        },
+        {
+          "actual": false,
+          "attempt": 1,
+          "expected": false,
+          "label": "Increase Contrast",
+          "seconds": 2.1074067750014365,
+          "wait": 1
+        }
+      ],
+      "seconds": 134.105,
+      "bundleSha256": "ee0aa3b24052c89481962200977b200ed724c891efe934788214bad7ac41fbf9",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "0acadfe5be61c0fee5381bfbb72e10a04aad29448b40adea83f9bf8bc171039d",
+      "summarySha256": "847e98564ec70d4b7d64109896f47a6b65e94f3b7d583d5b77ad516c9d094165",
+      "logSha256": "e8487884164eb2d6b0d52044e7fd5ee29348db653a056933629bd223164b9349",
+      "runfileSha256": "23775d56e4832305ea18c426555365379b2c90ec1b2245f82aedba790c1ea79d"
+    },
+    {
+      "phase": "iPhone 17 Pro Max-read",
+      "observed": {
+        "mode": "read",
+        "observed": {
+          "boldText": false,
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        }
+      },
+      "attempts": [],
+      "results": [],
+      "seconds": 46.434,
+      "bundleSha256": "0256485c6d7523c6db3d74ca54fe5f2ab88bc8712a1d977be2fe7a324b193183",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "1134d894d55548a500523ea95c1855f8358806b6ffe4393cbf0eb71710f1c2a7",
+      "summarySha256": "0b503ec6dd9db7c5ea678c5390e096d21f29d8a82fc467cbb1820f930b773fab",
+      "logSha256": "3e82334379e2279ced78b78662a078c5c3bed200e3cd16b220c938c8f565363f",
+      "runfileSha256": "92b6ce63e8426d70a330f4e0e12e2c4f0fa4910251475312869ea33beea6600a"
+    },
+    {
+      "phase": "iPhone 17 Pro Max-restore-final",
+      "observed": {
+        "mode": "set",
+        "observed": {
+          "boldText": false,
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        }
+      },
+      "attempts": [],
+      "results": [],
+      "seconds": 70.289,
+      "bundleSha256": "3499d328fc88d561fa8c7c2812f966bb06c8307067a7b06b230055d56afebbb5",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "1903a517bc03e3442140fdb945be0824ac285249fe04e80cfc20575c33b5b439",
+      "summarySha256": "6e55a50a28b174f0866627ea26ef59840c29bb419944898b2b45d58ac6e0db93",
+      "logSha256": "44889435231f0f38f963cc927ae7b3ee3704a24fea013ce0ebf305601a6428c0",
+      "runfileSha256": "23775d56e4832305ea18c426555365379b2c90ec1b2245f82aedba790c1ea79d"
+    },
+    {
+      "phase": "iPhone 17-read",
+      "observed": {
+        "mode": "read",
+        "observed": {
+          "boldText": false,
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        }
+      },
+      "attempts": [],
+      "results": [],
+      "seconds": 72.938,
+      "bundleSha256": "ff0a7e38c81a86753a33371c378655fe21ba83fcf40f9e6b26306635d746f728",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "d11ac283f7aa8e286caf42048caebae68b7440b4ba93c6daae64e61ab5792122",
+      "summarySha256": "7f91f68ad5e0b626ba8388e86c056f14bae2feeb172c0310519f79c0fc0fd294",
+      "logSha256": "814202c30c77dc5945800a1539f0ab28aa6d40a70d44814190512667b27ec858",
+      "runfileSha256": "92b6ce63e8426d70a330f4e0e12e2c4f0fa4910251475312869ea33beea6600a"
+    },
+    {
+      "phase": "iPhone 17-restore-final",
+      "observed": {
+        "mode": "set",
+        "observed": {
+          "boldText": false,
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        }
+      },
+      "attempts": [],
+      "results": [],
+      "seconds": 48.852,
+      "bundleSha256": "9dca2dbcd7434993980db3a4a4a7d6f26bbe4622b7e18a1750aa6adf81465441",
+      "attachmentsSha256": "f1534fb9e91d995218d4652870a92c269680566ce80fc43733d16fb5f56efefd",
+      "commandSha256": "cae7c5642a7798625163ae867a9ffd744fa2d203a82d878e8346cf51d34f5375",
+      "summarySha256": "8ddf9f92d1339d8cfc4bf1f5218ffc60c88d5d90adb66127837182c90c117121",
+      "logSha256": "73214f73021599a43a5d5ebbfbc989dfd6401dd90f8682b5ce7bdd5502b1127b",
+      "runfileSha256": "23775d56e4832305ea18c426555365379b2c90ec1b2245f82aedba790c1ea79d"
+    }
+  ],
+  "images": [],
+  "sourceUnchangedDuringRun": true,
+  "limitation": "Native pass confirms requested on/off states. Retry decisions are checked separately. A first-attempt success does not prove recovery of Apple lost input."
+}

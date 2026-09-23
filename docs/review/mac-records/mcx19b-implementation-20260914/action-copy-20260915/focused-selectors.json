@@ -1,0 +1,9 @@
+[
+  "ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection",
+  "ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration",
+  "ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection",
+  "ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest",
+  "ACEClientAppTests/AcceptanceEvidenceContractTests/testClipboardContract",
+  "ACEClientAppTests/ACEClientAppTests/testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators",
+  "ACEClientAppTests/ACEClientAppTests/testClipboardWriteOptionsRemainLocalForFiveMinutes"
+]

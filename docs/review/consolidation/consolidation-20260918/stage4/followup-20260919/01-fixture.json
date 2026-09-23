@@ -1,0 +1,72 @@
+{
+  "user_authority": "User proceeded after the remaining authenticated browser and populated source-version checks were identified.",
+  "started": "2026-09-19T06:18:11+10:00",
+  "hard_stop": "2026-09-19T06:38:11+10:00",
+  "fixture_reference": "tests/test_evidence_review.py:context",
+  "setup_method": "EvidenceReviewService.save_context on a NEW private fictional store; not a write-workflow acceptance test",
+  "source_context": {
+    "provider": "Fictional field team",
+    "origin": "RAW",
+    "source_date": "2026-08-12",
+    "source_version": "1.0",
+    "source_location": "Fictional local store",
+    "description": "Fictional source context",
+    "freshness": "CURRENT",
+    "limitations": "Fictional placeholder; no captured media",
+    "duplicate_evidence_id": null,
+    "source_evidence_ids": [],
+    "gap_status": "NOT_REQUESTED",
+    "gap_explanation": null,
+    "gap_materiality": null
+  },
+  "state": {
+    "evidence_id": "EVD-FIC-0001",
+    "evidence": {
+      "evidence_id": "EVD-FIC-0001",
+      "engagement_id": "ENG-FIC-0001",
+      "filename": "Fictional evidence placeholder",
+      "media_type": null,
+      "status": "PENDING_REVIEW",
+      "captured_at": "2026-08-12T00:00:00Z",
+      "media_url": null
+    },
+    "original_media_url": null,
+    "engagement": {
+      "engagement_id": "ENG-FIC-0001",
+      "title": "Fictional Mobile Field Capture Engagement",
+      "reference": "ENG-FIC-0001",
+      "state": "READY_FOR_CAPTURE",
+      "data_classification": "FICTIONAL"
+    },
+    "source_context": {
+      "evidence_id": "EVD-FIC-0001",
+      "provider": "Fictional field team",
+      "origin": "RAW",
+      "source_date": "2026-08-12",
+      "source_version": "1.0",
+      "source_location": "Fictional local store",
+      "description": "Fictional source context",
+      "freshness": "CURRENT",
+      "limitations": "Fictional placeholder; no captured media",
+      "duplicate_evidence_id": null,
+      "source_evidence_ids": [],
+      "gap_status": "NOT_REQUESTED",
+      "gap_explanation": null,
+      "gap_materiality": null,
+      "updated_at": "2026-09-18T20:19:34Z",
+      "updated_by": "Fictional Stage 4 fixture setup"
+    },
+    "available_controls": [
+      {
+        "control_id": "CTL-FIC-0001",
+        "title": "Fictional capture control"
+      }
+    ],
+    "question_versions": [],
+    "decisions": [],
+    "proposed_links": [],
+    "completion": null,
+    "completion_state": "PENDING_REVIEW"
+  },
+  "source_files_unchanged": 150
+}

@@ -1,0 +1,436 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult
+
+2026-09-15 07:03:58.949780+1000 ACEClientAppUITests-Runner[56137:3139452] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 07:04:03.198.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 07:04:03.201.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 07:04:03.202.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls]' started.
+    t =     0.04s Start Test at 2026-09-15 07:04:03.250
+    t =     0.31s Set Up
+    t =     0.33s Open com.example.aceclientapp
+    t =     0.33s     Launch com.example.aceclientapp
+    t =     2.49s         Setting up automation session
+    t =     6.82s         Wait for com.example.aceclientapp to idle
+    t =     9.93s Get all elements bound by index for: Descendants matching type Button
+    t =    10.15s Find the Button (Element at index 0)
+    t =    10.35s Find the Button (Element at index 1)
+    t =    10.56s Find the Button (Element at index 2)
+    t =    10.73s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    11.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    11.82s         Checking existence of `"Effective interface style" StaticText`
+    t =    13.08s Checking `Expect predicate `label == "light"` for object "Effective interface style" StaticText`
+    t =    13.08s     Find the "Effective interface style" StaticText
+    t =    13.20s Find the Target Application 'com.example.aceclientapp'
+    t =    13.93s Added attachment named 'Fictional release — initial-audit — light'
+    t =    20.82s Checking existence of `ScrollView (First Match)`
+    t =    20.85s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    21.93s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    21.94s         Checking existence of `ScrollView (First Match)`
+    t =    22.04s Checking existence of `Any (First Match)`
+    t =    22.10s Find the Any (First Match)
+    t =    22.22s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    22.29s Find the ScrollView (First Match)
+    t =    22.35s Get all elements bound by index for: Descendants matching type Button
+    t =    22.44s Find the Button (Element at index 0)
+    t =    22.60s Find the Button (Element at index 1)
+    t =    22.72s Find the Button (Element at index 2)
+    t =    23.43s Added attachment named 'Release detail — Engagement name — light'
+    t =    23.43s Checking existence of `ScrollView (First Match)`
+    t =    23.46s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    24.54s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    24.54s         Checking existence of `ScrollView (First Match)`
+    t =    24.57s Checking existence of `Any (First Match)`
+    t =    24.63s Find the Any (First Match)
+    t =    24.75s Find the "Review status: RELEASED" StaticText
+    t =    24.85s Find the ScrollView (First Match)
+    t =    24.89s Get all elements bound by index for: Descendants matching type Button
+    t =    25.04s Find the Button (Element at index 0)
+    t =    25.14s Find the Button (Element at index 1)
+    t =    25.25s Find the Button (Element at index 2)
+    t =    25.90s Added attachment named 'Release detail — Review status — light'
+    t =    25.90s Checking existence of `ScrollView (First Match)`
+    t =    25.93s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    27.00s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    27.00s         Checking existence of `ScrollView (First Match)`
+    t =    27.03s Checking existence of `Any (First Match)`
+    t =    27.09s Find the Any (First Match)
+    t =    27.21s Find the "Release version: 1" StaticText
+    t =    27.29s Find the ScrollView (First Match)
+    t =    27.35s Get all elements bound by index for: Descendants matching type Button
+    t =    27.47s Find the Button (Element at index 0)
+    t =    27.60s Find the Button (Element at index 1)
+    t =    27.73s Find the Button (Element at index 2)
+    t =    28.57s Added attachment named 'Release detail — Release version — light'
+    t =    28.57s Checking existence of `ScrollView (First Match)`
+    t =    28.65s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    29.71s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    29.71s         Checking existence of `ScrollView (First Match)`
+    t =    29.74s Checking existence of `Any (First Match)`
+    t =    29.81s Find the Any (First Match)
+    t =    29.97s Find the "Published date and time: 2026-08-24T10:15:30Z" StaticText
+    t =    30.11s Find the ScrollView (First Match)
+    t =    30.16s Get all elements bound by index for: Descendants matching type Button
+    t =    30.23s Find the Button (Element at index 0)
+    t =    30.42s Find the Button (Element at index 1)
+    t =    30.54s Find the Button (Element at index 2)
+    t =    31.48s Added attachment named 'Release detail — Published date and time — light'
+    t =    31.49s Checking existence of `ScrollView (First Match)`
+    t =    31.52s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    32.54s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    32.54s         Checking existence of `ScrollView (First Match)`
+    t =    32.57s Checking existence of `Any (First Match)`
+    t =    32.64s Find the Any (First Match)
+    t =    32.77s Find the "Conclusion title: Fictional conclusion" StaticText
+    t =    32.87s Find the ScrollView (First Match)
+    t =    32.92s Get all elements bound by index for: Descendants matching type Button
+    t =    33.01s Find the Button (Element at index 0)
+    t =    33.17s Find the Button (Element at index 1)
+    t =    33.34s Find the Button (Element at index 2)
+    t =    34.07s Added attachment named 'Release detail — Conclusion title — light'
+    t =    34.07s Checking existence of `ScrollView (First Match)`
+    t =    34.09s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    35.19s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    35.19s         Checking existence of `ScrollView (First Match)`
+    t =    35.22s Checking existence of `Any (First Match)`
+    t =    35.31s Find the Any (First Match)
+    t =    35.44s Find the "Conclusion summary: Fictional summary" StaticText
+    t =    35.53s Find the ScrollView (First Match)
+    t =    35.57s Get all elements bound by index for: Descendants matching type Button
+    t =    35.69s Find the Button (Element at index 0)
+    t =    35.82s Find the Button (Element at index 1)
+    t =    35.93s Find the Button (Element at index 2)
+    t =    36.65s Added attachment named 'Release detail — Conclusion summary — light'
+    t =    36.65s Checking existence of `ScrollView (First Match)`
+    t =    36.68s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    37.75s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    37.75s         Checking existence of `ScrollView (First Match)`
+    t =    37.78s Checking existence of `Any (First Match)`
+    t =    37.85s Find the Any (First Match)
+    t =    37.98s Find the "Evidence reference: FICTIONAL-REF-001" StaticText
+    t =    38.07s Find the ScrollView (First Match)
+    t =    38.11s Get all elements bound by index for: Descendants matching type Button
+    t =    38.19s Find the Button (Element at index 0)
+    t =    38.32s Find the Button (Element at index 1)
+    t =    38.51s Find the Button (Element at index 2)
+    t =    39.48s Added attachment named 'Release detail — Evidence reference — light'
+    t =    39.48s Checking existence of `ScrollView (First Match)`
+    t =    39.51s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    40.58s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    40.59s         Checking existence of `ScrollView (First Match)`
+    t =    40.62s Checking existence of `Any (First Match)`
+    t =    40.77s Find the Any (First Match)
+    t =    41.02s Find the "Action description: Fictional action" StaticText
+    t =    41.18s Find the ScrollView (First Match)
+    t =    41.29s Get all elements bound by index for: Descendants matching type Button
+    t =    41.38s Find the Button (Element at index 0)
+    t =    41.51s Find the Button (Element at index 1)
+    t =    41.65s Find the Button (Element at index 2)
+    t =    42.32s Added attachment named 'Release detail — Action description — light'
+    t =    42.33s Checking existence of `ScrollView (First Match)`
+    t =    42.36s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    43.46s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    43.47s         Checking existence of `ScrollView (First Match)`
+    t =    43.52s Checking existence of `Any (First Match)`
+    t =    43.69s Find the Any (First Match)
+    t =    43.95s Find the "Action owner: Fictional owner" StaticText
+    t =    44.16s Find the ScrollView (First Match)
+    t =    44.23s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    44.29s Checking existence of `"Action owner: Fictional owner" StaticText`
+    t =    44.46s Find the "Action owner: Fictional owner" StaticText
+    t =    44.68s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    44.68s     Wait for com.example.aceclientapp to idle
+    t =    44.69s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    44.74s     Check for interrupting elements affecting ScrollView
+    t =    44.85s     Synthesize event
+    t =    44.86s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    44.92s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    44.98s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    45.08s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    45.15s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    46.22s     Wait for com.example.aceclientapp to idle
+    t =    46.62s Checking existence of `"Action owner: Fictional owner" StaticText`
+    t =    46.75s Find the "Action owner: Fictional owner" StaticText
+    t =    46.98s Find the "Action owner: Fictional owner" StaticText
+    t =    47.28s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    47.34s Get all elements bound by index for: Descendants matching type Button
+    t =    47.43s Find the Button (Element at index 0)
+    t =    47.57s Find the "Refresh current release" Button
+    t =    47.72s Find the "Refresh current release" Button
+    t =    47.81s Find the Button (Element at index 1)
+    t =    47.96s Find the "Sign out" Button
+    t =    48.07s Find the "Sign out" Button
+    t =    48.17s Find the Button (Element at index 2)
+    t =    48.37s Find the "Copy action 1" Button
+    t =    48.49s Find the "Copy action 1" Button
+    t =    49.09s Added attachment named 'Release detail — Action owner — light'
+    t =    49.10s Checking existence of `ScrollView (First Match)`
+    t =    49.12s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    50.21s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    50.22s         Checking existence of `ScrollView (First Match)`
+    t =    50.24s Checking existence of `Any (First Match)`
+    t =    50.39s Find the Any (First Match)
+    t =    50.68s Find the "Action target date: 2026-08-25" StaticText
+    t =    50.95s Find the ScrollView (First Match)
+    t =    50.99s Get all elements bound by index for: Descendants matching type Button
+    t =    51.07s Find the Button (Element at index 0)
+    t =    51.24s Find the "Refresh current release" Button
+    t =    51.37s Find the "Refresh current release" Button
+    t =    51.46s Find the Button (Element at index 1)
+    t =    51.60s Find the "Sign out" Button
+    t =    51.72s Find the "Sign out" Button
+    t =    51.81s Find the Button (Element at index 2)
+    t =    51.97s Find the "Copy action 1" Button
+    t =    52.09s Find the "Copy action 1" Button
+    t =    52.71s Added attachment named 'Release detail — Action target date — light'
+    t =    52.71s Checking existence of `ScrollView (First Match)`
+    t =    52.74s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    53.78s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    53.78s         Checking existence of `ScrollView (First Match)`
+    t =    53.81s Checking existence of `Any (First Match)`
+    t =    53.97s Find the Any (First Match)
+    t =    54.25s Find the "Action status: OPEN" StaticText
+    t =    54.45s Find the ScrollView (First Match)
+    t =    54.50s Get all elements bound by index for: Descendants matching type Button
+    t =    54.59s Find the Button (Element at index 0)
+    t =    54.73s Find the "Refresh current release" Button
+    t =    54.86s Find the "Refresh current release" Button
+    t =    54.99s Find the Button (Element at index 1)
+    t =    55.16s Find the "Sign out" Button
+    t =    55.28s Find the "Sign out" Button
+    t =    55.37s Find the Button (Element at index 2)
+    t =    55.52s Find the "Copy action 1" Button
+    t =    55.62s Find the "Copy action 1" Button
+    t =    56.30s Added attachment named 'Release detail — Action status — light'
+    t =    56.31s Checking existence of `"Copy action 1" Button`
+    t =    56.46s Checking existence of `"Copy Engagement name" Button`
+    t =    56.62s Checking existence of `"Copy Review status" Button`
+    t =    56.79s Checking existence of `"Copy Release version" Button`
+    t =    56.96s Checking existence of `"Copy Published date and time" Button`
+    t =    57.11s Checking existence of `"Copy Conclusion title" Button`
+    t =    57.25s Checking existence of `"Copy Conclusion summary" Button`
+    t =    57.40s Checking existence of `"Copy Evidence reference" Button`
+    t =    57.62s Checking existence of `"Copy Action description" Button`
+    t =    57.78s Checking existence of `"Copy Action owner" Button`
+    t =    57.93s Checking existence of `"Copy Action target date" Button`
+    t =    58.07s Checking existence of `"Copy Action status" Button`
+    t =    58.23s Get number of matches for: Elements matching predicate 'label BEGINSWITH "Copy "'
+    t =    58.38s Get all elements bound by index for: Descendants matching type Button
+    t =    58.47s Find the Button (Element at index 0)
+    t =    58.61s Find the "Refresh current release" Button
+    t =    58.73s Find the "Refresh current release" Button
+    t =    58.82s Find the Button (Element at index 1)
+    t =    59.05s Find the "Sign out" Button
+    t =    59.26s Find the "Sign out" Button
+    t =    59.37s Find the Button (Element at index 2)
+    t =    59.52s Find the "Copy action 1" Button
+    t =    59.64s Find the "Copy action 1" Button
+    t =    59.74s Find the Target Application 'com.example.aceclientapp'
+    t =    60.42s Added attachment named 'Fictional release — approved-controls — light'
+    t =    60.42s Find the "Action 1" StaticText
+    t =    60.59s Find the "OPEN" StaticText
+    t =    61.28s Find the "Action 1" StaticText
+    t =    61.45s Find the "OPEN" StaticText
+ACE_MCX19_CONTRAST_PROBE {"after":{"Action 1":{"height":20.333333333333428,"width":63.333333333333329,"x":32,"y":446.33333333333326},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":671.66666666666686}},"before":{"Action 1":{"height":20.333333333333428,"width":63.333333333333329,"x":32,"y":446.33333333333326},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":671.66666666666686}}}
+    t =    61.63s Find the "Action 1" StaticText
+    t =    61.82s Find the "OPEN" StaticText
+ACE_MCX19_ALL_AUDIT_PRE {"after":{"Action 1":{"height":20.333333333333428,"width":63.333333333333329,"x":32,"y":446.33333333333326},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":671.66666666666686}},"before":{"Action 1":{"height":20.333333333333428,"width":63.333333333333329,"x":32,"y":446.33333333333326},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":671.66666666666686}}}
+    t =    68.14s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4379946816.32)
+    t =    68.24s Find the "Release version" StaticText
+    t =    68.33s Find the "Release version" StaticText
+    t =    68.42s Find the "Release version" StaticText
+    t =    68.55s Find the "Release version" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":18,"width":107.33333333333331,"x":32,"y":103.99999999999996},"identifier":"","label":"Release version","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    68.68s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4379946816.32)
+    t =    68.79s Checking existence of `"Release version" StaticText`
+    t =    68.86s Find the "Release version" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    69.25s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4379925312.33)
+    t =    69.40s Find the "1" StaticText
+    t =    69.51s Find the "1" StaticText
+    t =    69.61s Find the "1" StaticText
+    t =    69.74s Find the "1" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":20.333333333333357,"width":7.6666666666666643,"x":32,"y":127.99999999999996},"identifier":"","label":"1","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    69.87s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4379925312.33)
+    t =    69.96s Checking existence of `"1" StaticText`
+    t =    70.03s Find the "1" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    70.17s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380091728.52)
+    t =    70.27s Find the "Action target date" StaticText
+    t =    70.37s Find the "Action target date" StaticText
+    t =    70.47s Find the "Action target date" StaticText
+    t =    70.56s Find the "Action target date" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":18,"width":123,"x":32,"y":690.66666666666663},"identifier":"","label":"Action target date","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    70.64s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380091728.52)
+    t =    70.74s Checking existence of `"Action target date" StaticText`
+    t =    70.81s Find the "Action target date" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    70.96s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380094448.54)
+    t =    71.06s Find the "Action status" StaticText
+    t =    71.16s Find the "Action status" StaticText
+    t =    71.26s Find the "Action status" StaticText
+    t =    71.37s Find the "Action status" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":18,"width":90,"x":32,"y":747.00000000000011},"identifier":"","label":"Action status","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    71.45s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380094448.54)
+    t =    71.56s Checking existence of `"Action status" StaticText`
+    t =    71.64s Find the "Action status" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    71.79s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380095952.55)
+    t =    71.89s Find the "OPEN" StaticText
+    t =    71.99s Find the "OPEN" StaticText
+    t =    72.10s Find the "OPEN" StaticText
+    t =    72.20s Find the "OPEN" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":20.333333333333258,"width":45,"x":32,"y":771.00000000000011},"identifier":"","label":"OPEN","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    72.30s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380095952.55)
+    t =    72.41s Checking existence of `"OPEN" StaticText`
+    t =    72.56s Find the "OPEN" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    72.72s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380099344.57)
+    t =    72.82s Find the "Copy action" StaticText
+    t =    72.92s Find the "Copy action" StaticText
+    t =    73.01s Find the "Copy action" StaticText
+    t =    73.10s Find the "Copy action" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast nearly passed","detailedDescription":"Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.","element":{"frame":{"height":58,"width":144,"x":32,"y":803.33333333333337},"identifier":"","label":"Copy action","type":"XCUIElementType(rawValue: 48)"},"scenario":"release"}
+    t =    73.24s Find the Any (Descendant with identity binding to AX element pid: 56161, elementOrHash.elementID: 4380099344.57)
+    t =    73.46s Checking existence of `"Copy action" StaticText`
+    t =    73.54s Find the "Copy action" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:692: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed
+    t =    73.72s Find the "Action 1" StaticText
+    t =    73.92s Find the "OPEN" StaticText
+ACE_MCX19_ALL_AUDIT_POST {"after":{"Action 1":{"height":20.333333333333485,"width":63.333333333333329,"x":32,"y":545.66666666666652},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":771.00000000000011}},"before":{"Action 1":{"height":20.333333333333485,"width":63.333333333333329,"x":32,"y":545.66666666666652},"OPEN":{"height":20.333333333333258,"width":45,"x":32,"y":771.00000000000011}}}
+    t =    74.12s Terminate com.example.aceclientapp:56161
+    t =    75.14s Open com.example.aceclientapp
+    t =    75.15s     Launch com.example.aceclientapp
+    t =    76.40s         Setting up automation session
+    t =    81.18s         Wait for com.example.aceclientapp to idle
+    t =    83.97s Checking existence of `ScrollView (First Match)`
+    t =    84.20s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    85.21s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    85.22s         Checking existence of `ScrollView (First Match)`
+    t =    85.25s Checking existence of `"Copy action 1" Button`
+    t =    85.51s Find the "Copy action 1" Button
+    t =    85.71s Find the ScrollView (First Match)
+    t =    85.76s Checking existence of `"Copy action 1" Button`
+    t =    85.88s Find the "Copy action 1" Button
+    t =    86.03s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    86.03s     Wait for com.example.aceclientapp to idle
+    t =    86.05s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.10s     Check for interrupting elements affecting ScrollView
+    t =    86.23s     Synthesize event
+    t =    86.23s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.32s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.39s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.46s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.54s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    87.65s     Wait for com.example.aceclientapp to idle
+    t =    88.02s Checking existence of `"Copy action 1" Button`
+    t =    88.12s Find the "Copy action 1" Button
+    t =    88.27s Find the "Copy action 1" Button
+    t =    88.44s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    88.50s Tap "Copy action 1" Button
+    t =    88.50s     Wait for com.example.aceclientapp to idle
+    t =    88.51s     Find the "Copy action 1" Button
+    t =    88.69s     Check for interrupting elements affecting "Copy action 1" Button
+    t =    88.80s     Synthesize event
+    t =    89.17s     Wait for com.example.aceclientapp to idle
+    t =    89.19s Checking existence of `"Copied Action 1." StaticText`
+    t =    89.33s Checking existence of `ScrollView (First Match)`
+    t =    89.36s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    90.38s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    90.38s         Checking existence of `ScrollView (First Match)`
+    t =    90.42s Checking existence of `"Copied Action 1." StaticText`
+    t =    90.51s Find the "Copied Action 1." StaticText
+    t =    90.69s Find the "Copied Action 1." StaticText
+    t =    90.81s Find the ScrollView (First Match)
+    t =    90.86s Find the Target Application 'com.example.aceclientapp'
+    t =    91.58s Added attachment named 'Controlled state — copyConfirmation — light'
+    t =    98.42s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345347104.33)
+    t =    98.53s Find the "1" StaticText
+    t =    98.63s Find the "1" StaticText
+    t =    98.74s Find the "1" StaticText
+    t =    98.91s Find the "1" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":20.333333333333371,"width":7.6666666666666643,"x":32,"y":102.99999999999996},"identifier":"","label":"1","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =    99.02s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345347104.33)
+    t =    99.12s Checking existence of `"1" StaticText`
+    t =    99.23s Find the "1" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =    99.40s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345350496.34)
+    t =    99.51s Find the "Published date and time" StaticText
+    t =    99.61s Find the "Published date and time" StaticText
+    t =    99.71s Find the "Published date and time" StaticText
+    t =    99.82s Find the "Published date and time" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":18,"width":165.33333333333334,"x":32,"y":135.33333333333326},"identifier":"","label":"Published date and time","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =    99.93s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345350496.34)
+    t =   100.04s Checking existence of `"Published date and time" StaticText`
+    t =   100.12s Find the "Published date and time" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =   100.27s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345448624.59)
+    t =   100.39s Find the "Copied Action 1." StaticText
+    t =   100.50s Find the "Copied Action 1." StaticText
+    t =   100.61s Find the "Copied Action 1." StaticText
+    t =   100.72s Find the "Copied Action 1." StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast nearly passed","detailedDescription":"Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.","element":{"frame":{"height":20.333333333333371,"width":123.33333333333331,"x":32,"y":844.33333333333348},"identifier":"","label":"Copied Action 1.","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =   100.82s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345448624.59)
+    t =   100.91s Checking existence of `"Copied Action 1." StaticText`
+    t =   100.99s Find the "Copied Action 1." StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast nearly passed
+    t =   101.21s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345387168.53)
+    t =   101.32s Find the "2026-08-25" StaticText
+    t =   101.42s Find the "2026-08-25" StaticText
+    t =   101.55s Find the "2026-08-25" StaticText
+    t =   101.66s Find the "2026-08-25" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":20.333333333333485,"width":96.333333333333314,"x":32,"y":689.66666666666663},"identifier":"","label":"2026-08-25","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =   101.77s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345387168.53)
+    t =   101.87s Checking existence of `"2026-08-25" StaticText`
+    t =   101.95s Find the "2026-08-25" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =   102.10s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345389904.55)
+    t =   102.22s Find the "OPEN" StaticText
+    t =   102.34s Find the "OPEN" StaticText
+    t =   102.44s Find the "OPEN" StaticText
+    t =   102.55s Find the "OPEN" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":20.333333333333258,"width":45,"x":32,"y":746.00000000000011},"identifier":"","label":"OPEN","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =   102.70s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345389904.55)
+    t =   102.82s Checking existence of `"OPEN" StaticText`
+    t =   102.91s Find the "OPEN" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =   103.06s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345393312.57)
+    t =   103.18s Find the "Copy action" StaticText
+    t =   103.28s Find the "Copy action" StaticText
+    t =   103.39s Find the "Copy action" StaticText
+    t =   103.54s Find the "Copy action" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":144,"x":32,"y":778.33333333333337},"identifier":"","label":"Copy action","type":"XCUIElementType(rawValue: 48)"},"scenario":"copyConfirmation-after-copy"}
+    t =   103.65s Find the Any (Descendant with identity binding to AX element pid: 56295, elementOrHash.elementID: 4345393312.57)
+    t =   103.77s Checking existence of `"Copy action" StaticText`
+    t =   103.93s Find the "Copy action" StaticText
+LOCAL_HOME/Developer/sqe-platform-native-list-control/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:703: error: -[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls] : Contrast failed
+    t =   104.10s Terminate com.example.aceclientapp:56295
+    t =   105.19s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testFictionalReleaseHasApprovedCopyControls]' failed (105.591 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 07:05:48.821.
+	 Executed 1 test, with 12 failures (0 unexpected) in 105.591 (105.619) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 07:05:48.824.
+	 Executed 1 test, with 12 failures (0 unexpected) in 105.591 (105.623) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 07:05:48.826.
+	 Executed 1 test, with 12 failures (0 unexpected) in 105.591 (105.628) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult
+
+Testing started
+2026-09-15 07:03:50.906 xcodebuild[56117:3139065] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 07:03:50.922 xcodebuild[56117:3139065] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 07:03:52.150 xcodebuild[56117:3139065] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 07:04:03.709 xcodebuild[56117:3139065] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 07:04:03.709 xcodebuild[56117:3139065] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 07:05:18.358 xcodebuild[56117:3139065] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 07:05:18.358 xcodebuild[56117:3139065] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 07:06:47.824 xcodebuild[56117:3139065] [MT] IDETestOperationsObserverDebug: 175.665 elapsed -- Testing started completed.
+2026-09-15 07:06:47.824 xcodebuild[56117:3139065] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 07:06:47.825 xcodebuild[56117:3139065] [MT] IDETestOperationsObserverDebug: 175.665 sec, +175.665 sec -- end
+** TEST EXECUTE FAILED **
+

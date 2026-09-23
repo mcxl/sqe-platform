@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-09-18T14:57:13.282854+10:00",
+  "scope": "Completed Stage 3 records and recovery, before final handover receipt. Manifest and final receipt excluded to avoid circular hashing.",
+  "root": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3",
+  "entries": [
+    {
+      "path": "01-preflight.json",
+      "bytes": 65558,
+      "sha256": "b7644a0ac68e6823b6d2e3cf8ffba48e98cf84c557fc184e7daf2f355e4d159e"
+    },
+    {
+      "path": "02-recovery-content-review.json",
+      "bytes": 418,
+      "sha256": "60341836a697ece99f0cfa203b58ceab1c5f490d69c0fec1600e60950507e918"
+    },
+    {
+      "path": "03-integrity-fail-pass.json",
+      "bytes": 1353,
+      "sha256": "51c0f963ceb585a5f8316a93836d8d73fb6f76d85a164d1f685f7892b8c4fc52"
+    },
+    {
+      "path": "04-recovery-manifest.json",
+      "bytes": 43647,
+      "sha256": "a5e912cb9911e14015e7b3ec2af0e15e70f882c7e1b543f4e788fc70fd051f60"
+    },
+    {
+      "path": "05-recovery-remote-receipt.json",
+      "bytes": 107,
+      "sha256": "2cad8cef2340288ea36d661b1e43f31439528d5f20242b25d403b7b0ff60dc37"
+    },
+    {
+      "path": "06-retrieval.json",
+      "bytes": 402,
+      "sha256": "bad9f9592759406612f45819910e59f42a2e2fe1dd25a1dd441510f5f82f3201"
+    },
+    {
+      "path": "07-git-operations.json",
+      "bytes": 710180,
+      "sha256": "f1e9d2f5038f5b3676329a3e45c5687793d33067fc4b79612bb0aecc1ca2d0f6"
+    },
+    {
+      "path": "08-repository-transition.json",
+      "bytes": 254,
+      "sha256": "175234d4f524b707b570653f83a8cd957292f15a56693ba492c2123dbee6d2bb"
+    },
+    {
+      "path": "09-import-manifest.json",
+      "bytes": 9020,
+      "sha256": "76d9b2ddd5aced4b1cb25810a8f01d4b48778c1c791dbc04dd98fad1555b18a0"
+    },
+    {
+      "path": "10-windows-verification.json",
+      "bytes": 28149,
+      "sha256": "2971024b0c44ad4e0424c893189dd913cafd8438024e1d233e82053d3bda5e40"
+    },
+    {
+      "path": "10a-verification-failure.json",
+      "bytes": 816,
+      "sha256": "70a469fd54efa60118760fa50572a5582aadb8931650b6c280ae80ca70aa056a"
+    },
+    {
+      "path": "11-mac-verification.json",
+      "bytes": 40867,
+      "sha256": "b70c4461005a79fd83c53856160a2c4ae501f035f5f7984753830fbc54910921"
+    },
+    {
+      "path": "12-primary-inspection.json",
+      "bytes": 931,
+      "sha256": "773f38ad92eadd5cea09fb9d70c33f2733cf61038e1d627003fc8356e1860f7c"
+    },
+    {
+      "path": "destination-before.zip",
+      "bytes": 2402323,
+      "sha256": "5ffd08dc8ba8444bf8f62fc7ae3895960187195e215e5e47616f19794ce68b15"
+    },
+    {
+      "path": "integrity-probe/payload.bin",
+      "bytes": 28,
+      "sha256": "71b458997eb87a3273f8d4f83b2b54bda8ad8eb479720060748b0c4fc794e4bd"
+    },
+    {
+      "path": "integrity-probe/verify_sha256.py",
+      "bytes": 234,
+      "sha256": "612ec3cef330e36a7ed484c4711cf9ce02ea61db9f5bbd7e96edfe6216696e1d"
+    },
+    {
+      "path": "mac-delivery-40bae26.bundle",
+      "bytes": 1062189,
+      "sha256": "f0e4a471530900ab29248c456f5442f16f9394c68499c84f6588bf936ebc76f7"
+    },
+    {
+      "path": "restore-check/2026-08-24-ace-ios-read-only-client-application.md",
+      "bytes": 73061,
+      "sha256": "8554f30cef98768615461af36c5798ec4b91280396fc3d685e0a7dc4ef9161a5"
+    },
+    {
+      "path": "restore-check/2026-09-18-sqe-stage-3-execution-proposal.md",
+      "bytes": 11892,
+      "sha256": "e3003ce2da0fc22503b5b3afc8b38c5781526ef97b9d7616b41b685f1cfa9372"
+    },
+    {
+      "path": "specification-import.diff",
+      "bytes": 39270,
+      "sha256": "4fa0f719ac82e1e554da4e868a5520783690ebc72bd6c71dec4c5dbf29303b13"
+    },
+    {
+      "path": "STAGE-3-EXECUTION-REPORT.md",
+      "bytes": 8191,
+      "sha256": "3b1cef8a3a780369dc524818645ec950bf844414deb84411eb43e065fd09e27e"
+    },
+    {
+      "path": "WORKSPACE-GUIDE.md",
+      "bytes": 6270,
+      "sha256": "d2c271ccb34563c5c82d87dcc5bddf4591fdb9d9a93ec6fc606c1b3e4625220d"
+    }
+  ],
+  "file_count": 22,
+  "bytes": 4505160,
+  "additional_git_object_bytes": 1100368,
+  "additional_source_bytes": 697522
+}

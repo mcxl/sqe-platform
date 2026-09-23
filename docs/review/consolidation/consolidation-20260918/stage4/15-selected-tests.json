@@ -1,0 +1,9 @@
+[
+  "tests/test_engagement_summary.py::test_summary_page_requires_auditor_authentication",
+  "tests/test_engagement_summary.py::test_summary_page_is_read_only_html",
+  "tests/test_engagement_summary.py::test_seeded_engagement_is_shown",
+  "tests/test_engagement_summary.py::test_summary_has_no_write_actions",
+  "tests/test_workbench.py::test_relationship_review_page_and_json_share_current_state",
+  "tests/test_workbench.py::test_relationship_review_page_renders_workflow_fields_as_html",
+  "tests/test_relationship_review.py::test_queue_and_item_show_current_fictional_relationship_state"
+]

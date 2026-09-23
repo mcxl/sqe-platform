@@ -1,0 +1,7 @@
+{
+  "stage": "native build",
+  "result": "failed",
+  "source": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/runs/20260914T220647Z-selected-846db1f7595a/build.log",
+  "compilerError": "ACEClientAppApp.swift:44:18: error: instance member 'task' cannot be used on type 'View'",
+  "correction": "Enclose the conditional root content in Group so .task has a concrete View receiver."
+}

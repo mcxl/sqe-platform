@@ -1,0 +1,12 @@
+{
+  "file": "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py",
+  "sha256": "144a3d6d86924b0af5394d3c8de2276e372bfd8a5a12fe263b5c556589dfb523",
+  "syntax": "passed",
+  "syntaxCommand": "compile(path.read_text(), str(path), 'exec')",
+  "diffCheckCommand": "git diff --check -- tools/ace_ios_local.py",
+  "diffCheckExit": 0,
+  "diffCheckOutput": "",
+  "nativeExecution": "not run",
+  "tests": "owned by Luna; pending",
+  "limitations": "Only positively correlated native accessibility assertions continue; other assertions block. Failed-case audit count remains unknown."
+}

@@ -1,0 +1,34 @@
+{
+  "updatedUTC": "2026-09-15T09:55:44.416306+00:00",
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "status": "passed",
+  "nativeCaseCount": 1,
+  "nativeAuditInvocations": 2,
+  "nativeCoverageTestsPassed": 1,
+  "nativeSettingsTestsPassed": 5,
+  "unexpectedSkips": 0,
+  "restoration": "passed",
+  "sourceUnchangedDuringRun": true,
+  "imagesInspected": 10,
+  "distinctImagesInspected": 3,
+  "nativeBundleAndAttachmentHashes": "verified",
+  "comparison": "Initial margins retained. Scrolled app content no longer overlaps the system clock. Both unrestricted audits passed. Earlier failures remain historical.",
+  "nativeCommandSeconds": 344.53000000000003,
+  "buildCommandSeconds": 74.773,
+  "evidence": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/execution.json",
+      "sha256": "dcc8de8ce541bb0b2f2541ad7a7b614137a6cf45444ae21a0216f7d3c2f30adb"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/result.json",
+      "sha256": "470e4c942863121eb06ec19aa22f5a450bf9d54122a3d5b458eee3090a528f92"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/image-inspection.json",
+      "sha256": "fb64c6177c67ad22661fd42f165265a3dac2c9ba231351cc2328bb6a3758b330"
+    }
+  ],
+  "pilotCredit": 0,
+  "limitation": "Focused default noConclusion only. Does not prove every historical audit mechanism."
+}

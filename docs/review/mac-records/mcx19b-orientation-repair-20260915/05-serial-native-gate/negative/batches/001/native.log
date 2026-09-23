@@ -1,0 +1,52 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/result.xcresult
+
+2026-09-15 17:58:32.017186+1000 ACEClientAppUITests-Runner[33737:4475001] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 17:58:35.381.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 17:58:35.384.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 17:58:35.393.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-15 17:58:35.406
+    t =     0.21s Set Up
+    t =     0.22s Setting device orientation to Portrait
+    t =     0.26s     Wait for com.apple.springboard to idle
+    t =     0.31s Open com.example.aceclientapp
+    t =     0.32s     Launch com.example.aceclientapp
+    t =     2.44s         Setting up automation session
+    t =     6.98s         Wait for com.example.aceclientapp to idle
+    t =     9.54s Waiting 5.0s for "Current Release" StaticText to exist
+    t =    10.62s     Checking `Expect predicate `existsNoRetry == 1` for object "Current Release" StaticText`
+    t =    10.62s         Checking existence of `"Current Release" StaticText`
+    t =    10.89s Find the "Current Release" StaticText
+    t =    10.99s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"landscape"}
+    t =    11.04s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.042872370016993955,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"mismatch","requested":"landscape"}
+LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:378: error: -[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : failed - Native app frame does not match requested landscape orientation
+    t =    13.00s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (13.495 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 17:58:48.899.
+	 Executed 1 test, with 1 failure (0 unexpected) in 13.495 (13.506) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 17:58:48.901.
+	 Executed 1 test, with 1 failure (0 unexpected) in 13.495 (13.517) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 17:58:48.903.
+	 Executed 1 test, with 1 failure (0 unexpected) in 13.495 (13.522) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/result.xcresult
+
+Testing started
+2026-09-15 17:58:24.559 xcodebuild[33718:4474425] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:58:24.593 xcodebuild[33718:4474425] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:58:25.578 xcodebuild[33718:4474425] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 17:58:35.930 xcodebuild[33718:4474425] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 17:58:35.930 xcodebuild[33718:4474425] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 17:59:39.676 xcodebuild[33718:4474425] [MT] IDETestOperationsObserverDebug: 74.089 elapsed -- Testing started completed.
+2026-09-15 17:59:39.676 xcodebuild[33718:4474425] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 17:59:39.676 xcodebuild[33718:4474425] [MT] IDETestOperationsObserverDebug: 74.089 sec, +74.089 sec -- end
+** TEST EXECUTE FAILED **
+

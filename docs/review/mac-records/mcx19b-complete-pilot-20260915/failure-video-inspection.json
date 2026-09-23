@@ -1,0 +1,53 @@
+{
+  "durationSeconds": 73.55666666666667,
+  "frames": [
+    {
+      "actualSeconds": 0,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/failure-video-frames/frame-001.00.png",
+      "requestedSeconds": 1,
+      "width": 1206,
+      "sha256": "01ce083c4763977111151a43924fd86d70cc8c3d81750e9fb2ae3511eb079e7d",
+      "inspection": "Portrait SpringBoard before app launch; recording has visible image artefacts.",
+      "inspectedAtOriginalResolution": true,
+      "duplicateOfSha256": null
+    },
+    {
+      "actualSeconds": 60.39666666666667,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/failure-video-frames/frame-064.00.png",
+      "requestedSeconds": 64,
+      "width": 1206,
+      "sha256": "8dc1ecaa3e559b0eb2ab54aabc31a5fb31eae69e65c4ef00294fbcca85ad3225",
+      "inspection": "Current Release is visibly upright in portrait. This image does not expose the XCUI app.frame value or waiter result.",
+      "inspectedAtOriginalResolution": true,
+      "duplicateOfSha256": null
+    },
+    {
+      "actualSeconds": 68.69333333333333,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/failure-video-frames/frame-069.00.png",
+      "requestedSeconds": 69,
+      "width": 1206,
+      "sha256": "883dd36440b972deb7294311b16fe2731f5818724ad841d4f321f70b74bb48b9",
+      "inspection": "Current Release is visibly upright in portrait. This image does not expose the XCUI app.frame value or waiter result.",
+      "inspectedAtOriginalResolution": true,
+      "duplicateOfSha256": null
+    },
+    {
+      "actualSeconds": 68.69333333333333,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/failure-video-frames/frame-073.00.png",
+      "requestedSeconds": 73,
+      "width": 1206,
+      "sha256": "883dd36440b972deb7294311b16fe2731f5818724ad841d4f321f70b74bb48b9",
+      "inspection": "Current Release is visibly upright in portrait. This image does not expose the XCUI app.frame value or waiter result.",
+      "inspectedAtOriginalResolution": true,
+      "duplicateOfSha256": "883dd36440b972deb7294311b16fe2731f5818724ad841d4f321f70b74bb48b9"
+    }
+  ],
+  "video": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/native-settings/001-set/attachments/9F6C2B09-6D2E-48F4-880D-1BAB117A8ECE.mp4",
+  "reviewedUTC": "2026-09-15T05:20:29.298940+00:00",
+  "reviewMethod": "Primary agent inspected all three distinct images at original 1206 by 2622 resolution. Fourth image is byte-identical to the third. Frames were extracted from the retained native recording with Apple AVFoundation; requested and actual times differ and are retained.",
+  "limitations": "Three sampled recording frames are not a complete video playback and do not prove sample-time XCUI hierarchy values."
+}

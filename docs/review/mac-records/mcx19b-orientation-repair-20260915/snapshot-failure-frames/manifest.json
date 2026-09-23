@@ -1,0 +1,34 @@
+{
+  "durationSeconds" : 415.05166666666668,
+  "frames" : [
+    {
+      "actualSeconds" : 0,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/snapshot-failure-frames\/frame-001.00.png",
+      "requestedSeconds" : 1,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 107.16333333333333,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/snapshot-failure-frames\/frame-166.02.png",
+      "requestedSeconds" : 166.02066666666667,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 286.31999999999999,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/snapshot-failure-frames\/frame-332.04.png",
+      "requestedSeconds" : 332.04133333333334,
+      "width" : 1206
+    },
+    {
+      "actualSeconds" : 407.23500000000001,
+      "height" : 2622,
+      "path" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/snapshot-failure-frames\/frame-414.95.png",
+      "requestedSeconds" : 414.95166666666665,
+      "width" : 1206
+    }
+  ],
+  "video" : "\/Users\/alanrichardson\/ace-private\/mcx19b-orientation-repair-20260915\/pilot-runs\/20260915T064440Z-pilot-478288537d90\/native-settings\/001-set\/attachments\/C3324EB2-F330-4F90-AD74-AB8E0742C987.mp4"
+}

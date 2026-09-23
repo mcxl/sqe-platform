@@ -1,0 +1,17 @@
+{
+  "launcherSha256": "2586a3709923d4935ff5ee3dfaab3c1e4aaf6be6f7c3b83cf15dffdf3b2bd148",
+  "patchSha256": "9f04805f6aea4244c53057747182087b8810b903eda5736dfe569513a6dc05a4",
+  "primaryReview": "Complete original launcher and all subsequent structured repairs inspected. Read-only build identity check passed. Python compilation passed. No native test yet.",
+  "freshSolReview": "Core fixes present; ship first harness after exact light/large/disabled preflight check. Parent applied that check.",
+  "parentAdditionalChecks": [
+    "Native failure prefix verified from retained D1 C1 native-summary: failed - <message>; accept exactly one deliberate message with or without that native prefix",
+    "Native exit and summary outcome must agree; exactly one method, zero skips",
+    "Manual evidence gate required after each execution; raw native result never converted",
+    "Call0 offscreen frame availability remains observation risk; compiled source unchanged and first harness will expose it"
+  ],
+  "knownLimitations": [
+    "Call0 frame reads and timing logs are diagnostic instrumentation",
+    "Call0 uses unchanged native helper; issue lines joined externally",
+    "No independent repeated trials, no cause established"
+  ]
+}

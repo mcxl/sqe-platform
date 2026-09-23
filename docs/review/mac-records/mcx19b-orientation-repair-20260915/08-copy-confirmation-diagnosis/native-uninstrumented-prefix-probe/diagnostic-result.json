@@ -1,0 +1,18 @@
+{
+  "verifiedUTC": "2026-09-15T11:06:15.336883+00:00",
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "nativeExit": 0,
+  "caseCount": 5,
+  "auditInvocations": 9,
+  "unexpectedSkips": 0,
+  "imageInspection": "passed",
+  "captureCount": 36,
+  "uniqueImageCount": 11,
+  "sourceUnchanged": true,
+  "originalSettingsAndBootStatesRestored": true,
+  "nativeBundleAndImageHashes": "verified",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0,
+  "conclusion": "The original clean candidate and five-case sequence passed without extra logging. Logging is not necessary for a pass. The original contrast failure is intermittent and remains unexplained.",
+  "nextExecution": "One separate full22-case run is authorized after this diagnostic. Its results cannot establish the historical cause or substitute for unresolved-finding acceptance."
+}

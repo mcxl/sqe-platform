@@ -1,0 +1,13 @@
+{
+  "commit": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "status": "clean",
+  "files": [
+    "ios/ACEClientApp/ACEClientApp/Views.swift"
+  ],
+  "patchSha256": "d3526a9c765a356885ad203acbb253d4bd7ef08b0402d26e1a6e92f27e4be839",
+  "fullDiffFromEef4b16Sha256": "3f57e1cd13b0496861254c0b64898cd2b4e4e3975fb27fb99b675779d4da254f",
+  "primaryStagedDiffInspection": "passed;one added modifier",
+  "sourceReview": "pending exact v3 fresh review",
+  "nativeAndImageChecks": "pending",
+  "push": "not performed"
+}

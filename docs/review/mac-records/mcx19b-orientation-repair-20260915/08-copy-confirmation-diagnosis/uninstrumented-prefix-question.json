@@ -1,0 +1,11 @@
+{
+  "question": "Does removing frame logging from the now-passing original prefix restore its native contrast failure?",
+  "oneChangedVariable": "Remove diagnostic frame queries by selecting original clean15e test source",
+  "unchanged": "application bytes; original five-case order; .all audits; runner; device and settings",
+  "expectedEvidence": "five case records and9 audit invocations if passed; original first native failure otherwise; complete native artifacts and original settings/boot restoration",
+  "outcomeLimits": "A failure would support an observer/timing effect without proving its mechanism. A pass would establish the unchanged original prefix can pass and would leave the historical failure unresolved. No automatic full-pilot restart follows.",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0,
+  "scriptSha256": "f6818ac50d134cf2ca710bc102a78ef62463f6d4f6ba52aa081cfc272fbc6c92",
+  "sourceDiff": " .../ACEClientAppUITests/ACEClientAppUITests.swift  | 33 ++++++++++++++++++++++\n 1 file changed, 33 insertions(+)\n"
+}

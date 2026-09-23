@@ -1,0 +1,125 @@
+"""Pure-data checks: no runner import, xcodebuild, simulator, or native execution."""
+import copy, hashlib, importlib.util, json, pathlib, tempfile, traceback
+ROOT = pathlib.Path('LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis')
+spec = importlib.util.spec_from_file_location('wrapper', ROOT / 'run-d1-bc-case.py')
+w = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(w)
+results = []
+
+def check(name, operation, reject=False):
+    try:
+        operation()
+    except ValueError as error:
+        if not reject:
+            raise
+        results.append({'name': name, 'result': 'passed', 'expected': 'rejected', 'actual': str(error)})
+    else:
+        if reject:
+            raise AssertionError(name + ': unsafe input accepted')
+        results.append({'name': name, 'result': 'passed', 'expected': 'accepted', 'actual': 'accepted'})
+
+def fixture(arm='B', issue=False, thrown=False):
+    calls = [{'arm': arm, 'repetition': '1', 'viewport': v, 'auditName': t,
+              'returnedNormally': True, 'issueObserved': False, 'error': None}
+             for v in w.VIEWPORTS for t in (w.TYPES if arm == 'B' else ('all',))]
+    issues, errors = [], []
+    if issue:
+        calls[0]['issueObserved'] = True
+        issues = [{'arm': arm, 'repetition': '1', 'viewport': 'initial', 'requestedAuditName': calls[0]['auditName'],
+                   'auditTypeRawValue': 1, 'auditType': 'XCUIAccessibilityAuditType(rawValue: 1)',
+                   'compactDescription': 'Contrast failed', 'detailedDescription': 'Contrast failed for SwiftUI.AccessibilityNode',
+                   'element': {'identifier': '', 'label': 'Copy action', 'type': '48',
+                               'frame': {'x': 32, 'y': 685.6, 'width': 144, 'height': 58}},
+                   'auditStartUptimeSeconds': 10.0, 'callbackElapsedSeconds': 1.0,
+                   'callbackEvidence': 'XCUIScreen screenshot observed when the callback ran; not the audit sample rendering'}]
+        if thrown:
+            calls[0].update(returnedNormally=False, error='Contrast failed')
+            errors = [{k: calls[0][k] for k in ('arm', 'repetition', 'viewport', 'auditName', 'error')}]
+    completed = ['copy-confirmation'] if thrown else sorted(w.VIEWPORTS)
+    complete = {'arm': arm, 'repetition': '1', 'expectedAuditCalls': len(calls), 'attemptedAuditCalls': len(calls),
+                'returnedNormallyAuditCalls': len(calls) - int(thrown), 'completedViewports': completed,
+                'bothViewportAuditGroupsCompleted': not thrown, 'allAuditTypesAttempted': True,
+                'allAuditCallsReturnedNormally': not thrown, 'callbackIssueCount': len(issues),
+                'auditErrors': ['Contrast failed'] if thrown else []}
+    placements = [] if arm == 'B' else [{'repetition': '1', 'twoFrameReadsIdentical': True,
+                'firstFrame': {'x': 10, 'y': 10, 'width': 40, 'height': 40},
+                'secondFrame': {'x': 10, 'y': 10, 'width': 40, 'height': 40},
+                'viewport': {'x': 0, 'y': 0, 'width': 200, 'height': 200}, 'midpoint': 100}]
+    return [arm, 1, calls, issues, [complete], errors, placements]
+
+def mutate_check(name, index, mutation, base=None):
+    data = copy.deepcopy(base or fixture())
+    mutation(data[index])
+    check(name, lambda: w.validate_diagnostic(*data), True)
+
+check('B fourteen normal calls', lambda: w.validate_diagnostic(*fixture()))
+check('C two unrestricted calls and placement', lambda: w.validate_diagnostic(*fixture('C')))
+check('Native findings with all calls normal', lambda: w.validate_diagnostic(*fixture(issue=True)))
+check('Native issue throw with exact matching callback evidence', lambda: w.validate_diagnostic(*fixture(issue=True, thrown=True)))
+mutate_check('Missing audit call blocked', 2, lambda a: a.pop())
+mutate_check('Duplicate audit call blocked', 2, lambda a: a.append(a[0]))
+mutate_check('Wrong repetition blocked', 2, lambda a: a[0].update(repetition='2'))
+mutate_check('Completion false success blocked', 4, lambda a: a[0].update(returnedNormallyAuditCalls=15))
+mutate_check('Missing completion blocked', 4, lambda a: a.clear())
+mutate_check('Thrown error without findings blocked', 2, lambda a: a[0].update(returnedNormally=False, error='Contrast failed'))
+mutate_check('Infrastructure error despite findings blocked', 2, lambda a: a[0].update(error='Lost AX connection'), fixture(issue=True, thrown=True))
+mutate_check('Unmatched error marker blocked', 5, lambda a: a.clear(), fixture(issue=True, thrown=True))
+mutate_check('Missing issue frame blocked', 3, lambda a: a[0]['element'].pop('frame'), fixture(issue=True))
+unavailable = fixture(issue=True)
+unavailable[3][0]['element'] = {'identifier': '', 'label': '', 'type': 'unavailable'}
+check('Native nil element preserved as unavailable evidence', lambda: w.validate_diagnostic(*unavailable))
+mutate_check('C unstable placement blocked', 6, lambda a: a[0].update(twoFrameReadsIdentical=False), fixture('C'))
+mutate_check('C wrong placement geometry blocked', 6, lambda a: a[0].update(midpoint=500), fixture('C'))
+for arm in ('B', 'C'):
+    env = w.request_environment({'ACE_COVERAGE_CASES_JSON': '[]'}, arm, 4)
+    assert env['ACE_D1_ARM'] == arm and env['ACE_D1_REPETITION'] == '4'
+results.append({'name': 'Both arms and repetition injected', 'result': 'passed'})
+assert w.request_environment({'ACE_ACCESSIBILITY_SETTINGS_JSON': '{}'}, 'B', 1) == {'ACE_ACCESSIBILITY_SETTINGS_JSON': '{}'}
+results.append({'name': 'Settings environment preserved without D1 request', 'result': 'passed'})
+check('Settings diagnostic request rejected', lambda: w.request_environment({'ACE_D1_ARM': 'B'}, 'B', 1), True)
+data = fixture(issue=True)
+failure = {'targetName': 'ACEClientAppUITests', 'testIdentifierString': 'ACEClientAppUITests/testCoverageBatch()', 'failureText': 'Contrast failed'}
+summary = {'totalTestCount': 1, 'skippedTests': 0, 'expectedFailures': 0, 'passedTests': 0,
+           'failedTests': 1, 'result': 'Failed', 'testFailures': [failure]}
+process = {'exit': 65, 'timedOut': False}
+assert w.validate_native(process, summary, data[3], data[2], []) == 'FAILED'
+results.append({'name': 'Collected native exit65 remains FAILED', 'result': 'passed'})
+check('False pass marker with finding blocked', lambda: w.validate_native(process, summary, data[3], data[2], [{'result': 'passed'}]), True)
+bad = copy.deepcopy(summary); bad['testFailures'].append({**failure, 'failureText': 'App failed to launch'})
+check('Mixed native app launch failure blocked', lambda: w.validate_native(process, bad, data[3], data[2], []), True)
+check('Timeout blocked', lambda: w.validate_native({**process, 'timedOut': True}, summary, data[3], data[2], []), True)
+clean = {**summary, 'passedTests': 1, 'failedTests': 0, 'result': 'Passed', 'testFailures': []}
+assert w.validate_native({'exit': 0}, clean, [], fixture()[2], [{'result': 'passed'}]) == 'PASSED'
+results.append({'name': 'Clean native pass recognised', 'result': 'passed'})
+with tempfile.TemporaryDirectory(prefix='ace-bc-fixture-') as temporary:
+    directory = pathlib.Path(temporary)
+    products = directory / 'Build/Products'
+    host = products / 'Debug-iphonesimulator/ACEClientAppUITests-Runner.app'
+    bundle = host / 'PlugIns/ACEClientAppUITests.xctest'
+    bundle.mkdir(parents=True)
+    template = products / 'ACEClientAppUITests_iphonesimulator.xctestrun'
+    paths = w.diagnostic_test_paths({'TestHostPath': '__TESTROOT__/Debug-iphonesimulator/ACEClientAppUITests-Runner.app',
+                                    'TestBundlePath': '__TESTHOST__/PlugIns/ACEClientAppUITests.xctest'}, template)
+    assert paths == {'TestHostPath': host.resolve(), 'TestBundlePath': bundle.resolve()}
+    assert all(p.exists() and p.is_relative_to(products.resolve()) for p in paths.values())
+    results.append({'name': 'Generated __TESTROOT__/__TESTHOST__ test bundle structure resolves correctly', 'result': 'passed'})
+    manifest = [{'testIdentifier': 'ACEClientAppUITests/testCoverageBatch()', 'attachments': []}]
+    prefixes = ['Coverage fixture viewport initial', 'Coverage fixture viewport copy-confirmation']
+    callback = 'D1 B repetition 1 initial contrast callback-time evidence'
+    prefixes += [callback, callback]
+    for n, prefix in enumerate(prefixes):
+        filename = f'00000000-0000-0000-0000-{n:012d}.png'
+        (directory / filename).write_bytes(b'\x89PNG\r\n\x1a\nfixture')
+        manifest[0]['attachments'].append({'suggestedHumanReadableName': prefix + '_native.png', 'exportedFileName': filename})
+    def save():
+        (directory / 'manifest.json').write_text(json.dumps(manifest))
+    save()
+    check('Duplicate callback names retained as separate exports', lambda: w.validate_attachments(directory, 'fixture', 'B', 1, {('initial', 'contrast'): [{}, {}]}))
+    check('Missing callback image count blocked', lambda: w.validate_attachments(directory, 'fixture', 'B', 1, {('initial', 'contrast'): [{}, {}, {}]}), True)
+    (directory / manifest[0]['attachments'][0]['exportedFileName']).unlink()
+    check('Manifest reference to missing export blocked', lambda: w.validate_attachments(directory, 'fixture', 'B', 1, {('initial', 'contrast'): [{}, {}]}), True)
+output = {'scope': 'pure-data fixtures only; no native execution', 'checkedUTC': w.now().isoformat(),
+          'wrapperSha256': hashlib.sha256((ROOT / 'run-d1-bc-case.py').read_bytes()).hexdigest(),
+          'passed': len(results), 'checks': results}
+(ROOT / 'run-d1-bc-case-verification.json').write_text(json.dumps(output, indent=2) + '\n')
+print(json.dumps(output, indent=2))

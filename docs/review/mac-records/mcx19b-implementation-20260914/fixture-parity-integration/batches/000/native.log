@@ -1,0 +1,63 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration/batches/000/ACEClientAppUITests.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration/batches/000/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration/batches/000/result.xcresult
+
+2026-09-14 19:36:57.797611+1000 ACEClientAppUITests-Runner[74403:1981439] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 19:37:02.609.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 19:37:02.611.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 19:37:02.612.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-14 19:37:02.620
+    t =     0.23s Set Up
+    t =     0.25s Setting device orientation to Portrait
+    t =     0.30s     Wait for com.apple.springboard to idle
+    t =     0.38s Open com.example.aceclientapp
+    t =     0.38s     Launch com.example.aceclientapp
+    t =     2.60s         Setting up automation session
+    t =     7.86s         Wait for com.example.aceclientapp to idle
+    t =    10.50s Waiting 5.0s for "Loading current release" ProgressIndicator to exist
+    t =    11.57s     Checking `Expect predicate `existsNoRetry == 1` for object "Loading current release" ProgressIndicator`
+    t =    11.57s         Checking existence of `"Loading current release" ProgressIndicator`
+    t =    11.82s         Capturing element debug description
+    t =    12.57s     Checking `Expect predicate `existsNoRetry == 1` for object "Loading current release" ProgressIndicator`
+    t =    12.57s         Checking existence of `"Loading current release" ProgressIndicator`
+    t =    12.65s         Capturing element debug description
+    t =    13.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Loading current release" ProgressIndicator`
+    t =    13.61s         Checking existence of `"Loading current release" ProgressIndicator`
+    t =    13.65s         Capturing element debug description
+    t =    14.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Loading current release" ProgressIndicator`
+    t =    14.52s         Checking existence of `"Loading current release" ProgressIndicator`
+    t =    14.56s         Capturing element debug description
+    t =    15.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Loading current release" ProgressIndicator`
+    t =    15.52s         Checking existence of `"Loading current release" ProgressIndicator`
+    t =    15.57s         Capturing element debug description
+    t =    15.57s     Checking existence of `"Loading current release" ProgressIndicator`
+    t =    15.61s Collecting debug information to assist test failure triage
+    t =    15.62s     Requesting snapshot of accessibility hierarchy for app with pid 74422
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:347: error: -[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : failed - Expected state is missing for loading
+    t =    16.00s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (16.343 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 19:37:18.964.
+	 Executed 1 test, with 1 failure (0 unexpected) in 16.343 (16.351) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 19:37:18.965.
+	 Executed 1 test, with 1 failure (0 unexpected) in 16.343 (16.354) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 19:37:18.967.
+	 Executed 1 test, with 1 failure (0 unexpected) in 16.343 (16.358) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration/batches/000/result.xcresult
+
+Testing started
+2026-09-14 19:36:49.165 xcodebuild[74370:1980852] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 19:36:49.190 xcodebuild[74370:1980852] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 19:36:50.674 xcodebuild[74370:1980852] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 19:37:03.197 xcodebuild[74370:1980852] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 19:37:03.197 xcodebuild[74370:1980852] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 19:38:23.333 xcodebuild[74370:1980852] [MT] IDETestOperationsObserverDebug: 92.635 elapsed -- Testing started completed.
+2026-09-14 19:38:23.333 xcodebuild[74370:1980852] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 19:38:23.333 xcodebuild[74370:1980852] [MT] IDETestOperationsObserverDebug: 92.635 sec, +92.635 sec -- end
+** TEST EXECUTE FAILED **
+

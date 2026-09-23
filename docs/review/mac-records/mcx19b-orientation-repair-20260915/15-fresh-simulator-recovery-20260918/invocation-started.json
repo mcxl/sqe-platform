@@ -1,0 +1,16 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/ACEClientAppUITests.xctestrun",
+    "-destination",
+    "id=7D5FC194-1F43-41DA-94B8-6A32FCD9F584",
+    "-parallel-testing-enabled",
+    "NO",
+    "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCopyReflowCheck",
+    "-resultBundlePath",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult"
+  ],
+  "time": "2026-09-17T14:11:43.605595+00:00"
+}

@@ -1,0 +1,56 @@
+{
+  "durationSeconds" : 193.65666666666667,
+  "frames" : [
+    {
+      "actualSeconds" : 105.11499999999999,
+      "file" : "frame-152.png",
+      "height" : 2868,
+      "requestedSeconds" : 152,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 105.11499999999999,
+      "file" : "frame-154.png",
+      "height" : 2868,
+      "requestedSeconds" : 154,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 155.83666666666667,
+      "file" : "frame-156.png",
+      "height" : 2868,
+      "requestedSeconds" : 156,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 157.98166666666665,
+      "file" : "frame-158.png",
+      "height" : 2868,
+      "requestedSeconds" : 158,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 159.96166666666667,
+      "file" : "frame-160.png",
+      "height" : 2868,
+      "requestedSeconds" : 160,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 160.20333333333335,
+      "file" : "frame-164.png",
+      "height" : 2868,
+      "requestedSeconds" : 164,
+      "width" : 1320
+    },
+    {
+      "actualSeconds" : 160.20333333333335,
+      "file" : "frame-172.png",
+      "height" : 2868,
+      "requestedSeconds" : 172,
+      "width" : 1320
+    }
+  ],
+  "limitation" : "Retained screen-recording frames do not identify the private accessibility audit sample times.",
+  "source" : "\/Users\/alanrichardson\/ace-private\/mcx19b-implementation-20260914\/release-current-build\/attachments\/E974C273-3E1E-4032-BD15-99C5F7BF0013.mp4"
+}

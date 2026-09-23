@@ -1,0 +1,11 @@
+{
+  "candidate": "6718b437b10a51eeee0e5c6b3918dc2d5e052260",
+  "base": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "scope": "Isolated diagnostic-only frame logging in ACEClientAppUITests.swift",
+  "primaryInspection": "Complete33-insertion patch inspected; no app changes, waits, filters, retries or assertion changes",
+  "freshSolSourceReview": "ship; reported by orientation_fix_design agent",
+  "patch": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/copy-confirmation-audit-v3.patch",
+  "patchSha256": "95761cb40afa70fdc57de15a0e6c6f08f906a11d9286cd5259af123ca188ee81",
+  "nativeVerification": "running; source review is not native acceptance",
+  "runtimeModel": "requestedSol/high; actual runtime model not independently observable"
+}

@@ -1,0 +1,13 @@
+{
+  "reviewed_at": "2026-09-18T14:57:13.282854+10:00",
+  "reviewer": "Primary Codex session",
+  "complete_change_list_inspected": true,
+  "specification_diff_lines_inspected": 599,
+  "specification_diff_sha256": "4fa0f719ac82e1e554da4e868a5520783690ebc72bd6c71dec4c5dbf29303b13",
+  "findings": [
+    "Specification matches the approved fixed Mac blob exactly. Imported changes preserve Copy-action scope, current matrix and unresolved gates.",
+    "Historical provider and time-authority text does not override this Stage 3 scope or its 60-minute limit.",
+    "No unauthorised source change found. No app, runtime, accessibility or security acceptance inferred."
+  ],
+  "verification_assertion_correction": "One failed assertion used RawConfigParser for a Git-escaped path. Git config --get proved the exact intended URL and fetch mapping. Native parser correction passed once; no repository correction was needed."
+}

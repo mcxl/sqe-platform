@@ -1,0 +1,75 @@
+{
+  "review_type": "Pocock specification axis — complete current goal",
+  "scope": "Specification requirements and authorised goal scope only. Naming and standards were not assessed.",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "pinned_refs": {
+    "base": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+    "head": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "diff": "git diff 464671562cfb0249e859ffc8905a8f8c5ef17e55...c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "complete_diff_record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/primary-complete-goal-diff.patch",
+    "complete_diff_sha256": "43eb801bea65e9b1a500870b43c1891e3ee28bb96237aeaa33a1f8b4b7cac5b5",
+    "changed_files": [
+      "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "tools/ace_ios_local.py",
+      "tools/tests/test_ace_ios_local.py"
+    ]
+  },
+  "inspected_sources": [
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift:1-81",
+    "ios/ACEClientApp/ACEClientApp/Views.swift:5-51,155-220",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:106-200,321-381,940-966",
+    "tools/ace_ios_local.py:401-442,819-949",
+    "tools/tests/test_ace_ios_local.py:320-500",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md:358-370,819-868,913-915,1188-1205,1277-1295,1312-1356,1335-1339,1420-1426",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md:29-33,61-65,71-102,104-128"
+  ],
+  "requirement_refs": [
+    "Spec:358-370 permits normal fictional screenshots and preserves app, dependency, service, API, and server boundaries.",
+    "Spec:819-868 requires readable, reachable content; 512 unrestricted audits; 324 layout-only checks; and no audit exception.",
+    "Spec:1190-1205 requires focused diagnostics, a clean candidate, Pocock review, one unchanged 22-case pilot, and renewed gates after relevant changes.",
+    "Spec:1285-1295 and plan:86-96 require 22 pilot cases on one unchanged candidate, observed settings, and retrievable inspected artifacts before expansion.",
+    "Spec:1347-1355 requires named screenshots, both orientations, native settings evidence and restoration, actual image inspection, and retained artifacts.",
+    "Spec:1420-1426 keeps untested settings pending and forbids inference from XCTest attachments alone.",
+    "Plan:29-33 and 104-128 retain historical failures, unrestricted audits, the 836-case decision, and final candidate gates."
+  ],
+  "assessment": [
+    {
+      "subject": "Release-scroll clipping correction",
+      "source_refs": ["ios/ACEClientApp/ACEClientApp/Views.swift:11-15", "ios/ACEClientApp/ACEClientApp/Views.swift:44-50", "ios/ACEClientApp/ACEClientApp/Views.swift:161-211", "ios/ACEClientApp/ACEClientApp/DebugScenario.swift:12-18"],
+      "result": "Pass",
+      "rationale": "Padding moves inside ReleaseView's ScrollView and the scroll view clips its own viewport. The change addresses the confirmed clipping fault for debug fixtures and live release presentation. It adds no screen, product flow, service, or storage behaviour."
+    },
+    {
+      "subject": "Orientation, control, and capture evidence",
+      "source_refs": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:106-132", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:165-200", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:321-381", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:940-966"],
+      "result": "Pass",
+      "rationale": "The native frame read records usable dimensions and match state. The test retains observed-settings equality, unrestricted audit calls, full-bounds and hittability checks, 44-point control checks, and full-screen screenshots."
+    },
+    {
+      "subject": "Serial simulators and restoration",
+      "source_refs": ["tools/ace_ios_local.py:401-442", "tools/ace_ios_local.py:819-949", "tools/tests/test_ace_ios_local.py:361-500"],
+      "result": "Pass",
+      "rationale": "The runner captures initial device state, processes required devices serially, records phase-specific restoration evidence, checks restoration readback, and fails on restoration faults. Test changes exercise sequencing and recovery without running native coverage."
+    },
+    {
+      "subject": "Scope and audit masking",
+      "source_refs": ["tools/ace_ios_local.py:944-948", "tools/tests/test_ace_ios_local.py:327-331,430-453"],
+      "result": "Pass",
+      "rationale": "The source still reports supplied case, audit, and layout counts. It does not reduce the 512-audit, 324-layout-only, or 836-case programme. Full-plan construction in a unit test does not execute an expanded native run. No test filters accessibility failures or converts a failure to a pass."
+    }
+  ],
+  "findings": [],
+  "verdict": "PASS — no actionable specification-scope leak or acceptance masking was found in the complete pinned goal diff. This verdict does not establish pilot, native, image, or final application acceptance.",
+  "current_evidence_status": "Reported focused Sign-in full-screen case passed with one audit, observed settings, five images, and restoration. The deliberate capture failure/pass gate remains running and was not assessed as complete.",
+  "retained_limitations": [
+    "Historical Copy-contrast and Settings missed-tap causes remain unresolved.",
+    "The 22-case pilot, complete 836-case programme, image inspection, and all final gates remain pending.",
+    "No native command or source change was made by this review."
+  ],
+  "requested_model": "gpt-5.6-terra",
+  "requested_effort": "medium",
+  "actual_runtime": "unobservable",
+  "reviewed_at": "2026-09-15"
+}

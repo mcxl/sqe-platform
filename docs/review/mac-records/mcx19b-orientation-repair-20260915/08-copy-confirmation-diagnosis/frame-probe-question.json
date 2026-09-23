@@ -1,0 +1,17 @@
+{
+  "question": "Does the full native audit change the app, scroll, Copy button and confirmation frames?",
+  "scope": "One iPhone17 copyConfirmation case; light,large,portrait,all flags off",
+  "expectedEvidence": [
+    "Native initial and final audit outcomes",
+    "Query-start/query-finish times and pre/post frames",
+    "Native failure callback frame if reproduced",
+    "Native images and video",
+    "Source identity and restored simulator state"
+  ],
+  "oneChangedVariable": "Diagnostic frame queries added around final audit",
+  "observerEffect": "Queries add work and time; a passing retry does not prove a cause or correction",
+  "jobId": "1789468033580-ace-copy-frame-probe-87267b28",
+  "startedUTC": "2026-09-15T10:27:13.581Z",
+  "appCorrectiveAttemptsForCopyFault": 0,
+  "pilotCredit": 0
+}

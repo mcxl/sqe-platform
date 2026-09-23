@@ -1,0 +1,1080 @@
+{
+  "worktrees": [
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform",
+      "HEAD": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+      "branch": "refs/heads/codex/mcx-19-live-evidence-harness",
+      "status": ""
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/failure-probe-source",
+      "HEAD": "493e632b2640fb12b54bf709719b0320cadd899a",
+      "detached": true,
+      "status": ""
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/copy-confirmation-audit-worktree",
+      "HEAD": "6718b437b10a51eeee0e5c6b3918dc2d5e052260",
+      "detached": true,
+      "status": ""
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree",
+      "HEAD": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-worktree",
+      "HEAD": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/implementation-worktree",
+      "HEAD": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/measurement-fix-worktree",
+      "HEAD": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/target-size-probe-worktree",
+      "HEAD": "f5bd9c43cb1bf6dfb45986b9e5df420be28ad9d2",
+      "detached": true,
+      "status": ""
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/settings-fix-worktree",
+      "HEAD": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/negative-probe-worktree",
+      "HEAD": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/release-margin-impl",
+      "HEAD": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/DebugScenario.swift\n M ios/ACEClientApp/ACEClientApp/Views.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/runner-serial-worktree",
+      "HEAD": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+      "detached": true,
+      "status": " M tools/ace_ios_local.py\n M tools/tests/test_ace_ios_local.py\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/serial-negative-probe-worktree",
+      "HEAD": "905004fc71107565abf2d68cb05fc581cf5bf310",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3",
+      "HEAD": "905004fc71107565abf2d68cb05fc581cf5bf310",
+      "detached": true,
+      "status": " M tools/ace_ios_local.py\n M tools/tests/test_ace_ios_local.py\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-negative-probe-worktree",
+      "HEAD": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-metadata",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-audit-metadata-control",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n M ios/ACEClientApp/ACEClientApp/Views.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-d2-reflow-20260917",
+      "HEAD": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-field-text-trial",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n M ios/ACEClientApp/ACEClientApp/Views.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-native-list-control",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-native-list-trial",
+      "HEAD": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientApp/Views.swift\n M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-r5-diagnostic",
+      "HEAD": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "detached": true,
+      "status": " M ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n"
+    },
+    {
+      "worktree": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+      "HEAD": "40bae2640b23eb05496a093d09a4c20186403879",
+      "branch": "refs/heads/codex/mcx19b-release-layout",
+      "status": ""
+    }
+  ],
+  "checked_at": "2026-09-23T05:23:22.174083+00:00",
+  "standing": "Inventory of ace-private regular non-symlink files. Generated files have sizes, not content hashes. This is not a complete-machine inventory. Exported text is hash-mapped; missing binaries are explicit.",
+  "total_files": 126814,
+  "categories": {
+    "archive": {
+      "files": 15,
+      "bytes": 773899120
+    },
+    "record": {
+      "files": 8807,
+      "bytes": 1836296299
+    },
+    "generated-or-repository-internals": {
+      "files": 44257,
+      "bytes": 18748796109
+    },
+    "credential-or-environment": {
+      "files": 16,
+      "bytes": 4827
+    },
+    "native-result": {
+      "files": 72335,
+      "bytes": 3461005625
+    },
+    "image-or-video": {
+      "files": 1257,
+      "bytes": 754963739
+    },
+    "compiled-product": {
+      "files": 127,
+      "bytes": 3341548
+    }
+  },
+  "chunks": [
+    {
+      "path": "docs/review/access-inventory/mac-000.json",
+      "files": 1000,
+      "sha256": "0bddaa26b35d13a47f1e2d3857dff6ac1ca03034274d42497f80bd16f9ee8685",
+      "first_path": "copy-style-diagnostic-20260914.tar.gz",
+      "last_path": "mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-uninstrumented-prefix-probe/build/Build/Intermediates.noindex/XCBuildData/0fbfa1039b73ac41c4b1f4fe44c80c4a.xcbuilddata/attachments/314448b538b11256e170deb01ca99b89"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-001.json",
+      "files": 1000,
+      "sha256": "aee96e77d5b42a9d499c96a6404bfd8883998d992830da7f56a742e58aef1024",
+      "first_path": "mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-uninstrumented-prefix-probe/build/Build/Intermediates.noindex/XCBuildData/0fbfa1039b73ac41c4b1f4fe44c80c4a.xcbuilddata/attachments/c971782841f4046f71adf41aab9392bf",
+      "last_path": "mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/native-settings/001-set/result.xcresult/Data/refs.0~pxdhv4EoYdIfDX7XgMxt7mP4k1mP7DZePDTRSvWxJcNcZ3bTappgAVJ_f6LtBYMVGq6UYkQslqtHEj71ge_eFQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-002.json",
+      "files": 1000,
+      "sha256": "92fbc7f00db9317d026d2f5979e7b096313947ae92845509b1c13cb68eb36990",
+      "first_path": "mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-prefix-probe-v2/native-settings/001-set/result.xcresult/Data/data.0~8N-jtoAWgDEC50iYpjrsJceZszLFVT8TMj6mqGqysdreJLuPCMUd9NVWNTx3QofUhIa801BoTkX1YsFMk7hd8g==",
+      "last_path": "mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult/Data/data.0~IzobWmp5UpDm3hqfaUSPKMrXmXkHrgsRQooJcosIKEm-5kAV3GmjHStOPO_RmD1Oo5KmQ-3omEpg52qvYUNd6g=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-003.json",
+      "files": 1000,
+      "sha256": "6231eed268675381383587a7db640fc9544e455a0865b555cf88a5fb3010e558",
+      "first_path": "mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult/Data/refs.0~mlCYDXfBcmzr0184B4EEkvYbqkJ-nvg6Eq5hQqFdxifg8u2HQ2z6pZhqxzwyb0l3DHmBqfa4tFxtfAOz5o_TSw==",
+      "last_path": "mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult/Data/refs.0~gxhfj9yvyUOAzV8CtV_jbHORC1jwkOt3eo3A0YXdAjCg6fO9Ov8fDSS6UETCH4PPgl5RjNif302rSSYp6ci26Q=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-004.json",
+      "files": 1000,
+      "sha256": "d978d4a15023740d1a8017c20b213f60885df1ba2808fcb4f91e151fc254f62e",
+      "first_path": "mcx19b-orientation-repair-20260915/15-fresh-simulator-recovery-20260918/result.xcresult/Data/refs.0~_I-BNC8OJeTpd6gm4eNtH2rpFkzmfBE81UCPPROYV0bIkx29NN7gOksAV-KQakEvJnEhNKlMHk3_mHHzAxK5gw==",
+      "last_path": "mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/result.xcresult/Data/data.0~AtVZewpQbgTHNaHheTqM2dz4kYjEm5SIVuv5OcG6fIFTHkEx7aW4SJtc-pCFNXmuXBcrOj8hJsC-xGgaHHNsaQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-005.json",
+      "files": 1000,
+      "sha256": "cca3884deb3cf9b14ff01e966b7c6d2f2d7bb98af352fa1cb8907725c4b835f6",
+      "first_path": "mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/result.xcresult/Data/data.0~KyFQprc-HrjUDMwt5gmTsW6W0_xkjZG8pdR8JjG1jMeDODLNzmvtBQ7hnKrMWa_wDEHGh7nnUIPioUQ73J10Ig==",
+      "last_path": "mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/native-settings-on-off-v1/build/CompilationCache.noindex/builtin/v1.1/v9.1812536.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-006.json",
+      "files": 1000,
+      "sha256": "9e1c630459764a5ac44e9d0390717c51a945636d8e5dee703c27899bf6facdd9",
+      "first_path": "mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/native-settings-on-off-v1/build/CompilationCache.noindex/builtin/v1.1/v9.1767936.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/functional-runs/20260916T212521Z-selected-961c7d33234b/selected.xcresult/Data/refs.0~snWXW3DizYbg1_W6IR23cjyjMi7aQpG01VV0QOEMfNM8KeAHfqI7U_glzkDGA5y4Gx922T8BsTYw0OQ7vMPhwQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-007.json",
+      "files": 1000,
+      "sha256": "79d59438ada70282666456d983dad4a1084b83c6fc9bd81934a3cfbfdfea25f6",
+      "first_path": "mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/functional-runs/20260916T212521Z-selected-961c7d33234b/selected.xcresult/Data/refs.0~tSuV6Kjd_ROscV4GGctnr2cViJMsG_vsBpyU9QZQrGa6PT86KJkKIjHNlt8M5XZl4ShFjBpZ3bJtDJx4fZibOg==",
+      "last_path": "mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/functional-runs/20260916T212521Z-selected-961c7d33234b/build/ModuleCache.noindex/CoreTransferable-S7MSW9442ZL1ISHSNFGMMAPY.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-008.json",
+      "files": 1000,
+      "sha256": "31ed42dec1e71511b4eec9f252d1ec3122bb1b232be2736368e0e10e242a4bbe",
+      "first_path": "mcx19b-orientation-repair-20260915/13-p0-discovery-runner-20260917/functional-runs/20260916T212521Z-selected-961c7d33234b/build/ModuleCache.noindex/ptrcheck-14QLQ8ES878P43PLFMIQ79J6G.pcm",
+      "last_path": "mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/build/CompilationCache.noindex/builtin/v1.1/v9.1705416.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-009.json",
+      "files": 1000,
+      "sha256": "36d7f0502fa7675206cca7b80a8230bc7cb85f106aac348093af7169898ab67c",
+      "first_path": "mcx19b-orientation-repair-20260915/06-shutdown-native-gate/positive/build/CompilationCache.noindex/builtin/v1.1/v9.647616.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/build/Build/Intermediates.noindex/XCBuildData/PIFCache/target/TARGET@v11_hash=a3a58e3e2205e9abd2e39319ae8c8803-json"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-010.json",
+      "files": 1000,
+      "sha256": "ee3988153539b289f3c36aec6195ec0da82fab82adc041cf7b75442ef4c175c1",
+      "first_path": "mcx19b-orientation-repair-20260915/06-shutdown-native-gate/negative/build/Build/Intermediates.noindex/XCBuildData/PIFCache/workspace/WORKSPACE@v11_hash=(null)_subobjects=5bc70a4da2cdf8e21c8542184560064a-json",
+      "last_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/capture-gate-raw-recheck.json"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-011.json",
+      "files": 1000,
+      "sha256": "af51bd0ac980ab6d022abbc88f62c36065bc9e957667978f403b4f4ad15011d8",
+      "first_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/RUN-D1-BC-WRAPPER-NOTES.md",
+      "last_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/Network.o"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-012.json",
+      "files": 1000,
+      "sha256": "f3537218ac525a5d59f9b06948f1b6e7f3ff3fd1989308b3bcb5a8c7c2b7ae96",
+      "first_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/ACEClientApp-primary.priors",
+      "last_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-C/repetition-1/batches/001/result.xcresult/Data/refs.0~C0STrIqgd2V5LsJga6AJhbb67xQrtaiIA2S664hDBlNkiGHEmjmWNFUaq9ITbDaT_O6sKOshcJ3bhHEQB3njNA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-013.json",
+      "files": 1000,
+      "sha256": "b2539493389ec25adca43baa46ac84545b40b6eb2d15d706b6c974337edf7cfe",
+      "first_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-C/repetition-1/batches/001/result.xcresult/Data/refs.0~wkuKXq8z2dw9lYU90OTzJWnH-19kLn_nyk3jG5Bfi4Jf7YPtcWNPgMTj1mOka8F0Y6XOLNSk2vXXasE8HM4SKQ==",
+      "last_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build-correction-1/build/CompilationCache.noindex/builtin/v1.1/v9.1734816.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-014.json",
+      "files": 1000,
+      "sha256": "e83b998b73962de4941f586cc9b2b72deb74654bb36ef20c8a8c67539fc74be1",
+      "first_path": "mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/variant-build-correction-1/build/CompilationCache.noindex/builtin/v1.1/v9.11936.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus/build/ModuleCache.noindex/_DarwinFoundation1-BQGU72GQLCJ3QMYA7L7EPZSIZ.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-015.json",
+      "files": 1000,
+      "sha256": "8bfcd55e2ef7f4bee6f4096e233cb1f2f359b8c36a50faaee8ac398d8c48051b",
+      "first_path": "mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus/build/ModuleCache.noindex/UIKit-6YQZ2DIKSVNG0M14A2YIXK7WE.pcm",
+      "last_path": "mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppUITests.build/.cas-config"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-016.json",
+      "files": 1000,
+      "sha256": "7401616104f038ca52792214407e9bc94881e81b0693ef3b4fc8902a639dfa3a",
+      "first_path": "mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppUITests.build/ACEClientAppUITests.DependencyStaticMetadataFileList",
+      "last_path": "mcx19b-orientation-repair-20260915/release-margin-impl/tests/test_evidence_review.py"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-017.json",
+      "files": 1000,
+      "sha256": "cf6f4cc82f48d93398884bc4315db53fecac26c93fc886bcf5b5172e5c002831",
+      "first_path": "mcx19b-orientation-repair-20260915/release-margin-impl/tests/test_ios_accessibility_layout.py",
+      "last_path": "mcx19b-orientation-repair-20260915/05-serial-native-gate/positive/build/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-PX0WDB1ZZP9H.swiftmodule"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-018.json",
+      "files": 1000,
+      "sha256": "3095014abba0757c25616dd16c5aa1a94e0d551feac591750ec3384cc7f8d40d",
+      "first_path": "mcx19b-orientation-repair-20260915/05-serial-native-gate/positive/build/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-9NEL1QWTSLVEYZDQTIX6YAWB9.pcm",
+      "last_path": "mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/result.xcresult/Data/refs.0~h1Ob4n__k4ueXnnox5ScJXaxkNfztK7RWiLMdBKIGGjdsmfNkowxEZJL28KfX6ilNfX13yRCuGQ1Q38ZrFqLqA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-019.json",
+      "files": 1000,
+      "sha256": "9c25404e6858899e32a14b9e635892fdaf6771f18caf94abace1cfeceb0a74ca",
+      "first_path": "mcx19b-orientation-repair-20260915/05-serial-native-gate/negative/batches/001/result.xcresult/Data/data.0~yYZREiMqr6g62Whet8QTC7vGIy4b7Ig2s2RdvCTGGr6Dna-LNAAgPAY5KmDaE1dzF0ptnMu5BlEY87zfzedpcw==",
+      "last_path": "mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/native-settings/iPhone 17 Pro Max-read/result.xcresult/Data/refs.0~rQmASda8Xx-Rm04hVOHHq650wgo9ZmZjfwDqIlkD5SAl8L6yy6bGK_eZyLSNhxtpQG5_bq0MUuF-CjGVSw9z1A=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-020.json",
+      "files": 1000,
+      "sha256": "5cd6b7c5bd83d669c13fd4d370bc4daa0e23fa6f0c38ad5d29f137f531d4c309",
+      "first_path": "mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/native-settings/iPhone 17 Pro Max-read/result.xcresult/Data/refs.0~CNNSOLQi7HBwHR1rrieiI_kOiq7CYv1yZ74zizsa0RIRAEEdwJRc4theOItwd6bf8IkchJcfIgGLqt_l57egDQ==",
+      "last_path": "mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/result.xcresult/Data/data.0~Y75UENrV_INfv1vP5oz8xCPxGIqYqtbihzqegMpfKoOF_QivdNeBy1rP4FczhTkXBSa-eyKhzP3WO4MVx6i2OA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-021.json",
+      "files": 1000,
+      "sha256": "10dadcfab540d00351cbeea63b503a6b816275017561fd0b3c27c204faa1be4b",
+      "first_path": "mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076/batches/001/result.xcresult/Data/refs.0~l4LgniD7-1nC_LPGrkFELT2sbAWzJD3vhXavy4xP_FVClxvYSkG0EAbRhgIk1hUObnseonaRxMrDWRntVrcpPw==",
+      "last_path": "mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/build/ModuleCache.noindex/1T1QI1RS1H4PJ/CoreVideo-1DGLWUSJV0EV.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-022.json",
+      "files": 1000,
+      "sha256": "fbe4ad3536a795d140b168b89a42ff72809047c8c418de38c1d038c57a4b7e82",
+      "first_path": "mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/build/ModuleCache.noindex/1T1QI1RS1H4PJ/_DarwinFoundation3-15DVCJU77XYIF.pcm",
+      "last_path": "mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/result.xcresult/Data/data.0~JzdJU36nTNdz3g6ThBWKEYRq20DA62SDmEuDZltLkk7OfJ5bKcFvOyBEhjKpisNF1OGC6UyfV5n9cGtU91gqHw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-023.json",
+      "files": 1000,
+      "sha256": "9fdc92103522bd9b9219a5ea035f883375a6bb19a45fea10d34ab88c10da9eb0",
+      "first_path": "mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/result.xcresult/Data/refs.0~aF0LTzPJC89M5oHkIxiryZdpPa5gRYPmYDFfUTKeoqVlNuvjxOcYk1fBNigVvX_UlgX69OGm8IdOonnjvrJF7A==",
+      "last_path": "mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/build/CompilationCache.noindex/builtin/v1.1/v9.1833256.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-024.json",
+      "files": 1000,
+      "sha256": "91e2903f2d88cf07333861490ef5b858dbd587cf7878c0aeb74f32bba2f1307a",
+      "first_path": "mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/build/CompilationCache.noindex/builtin/v1.1/v9.1725056.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/result.xcresult/Data/data.0~7gDA8r5bjVm28uhFUsRpPr9xiSmPVntnkdfHUm0uS2n0PdxuiC37HYOJKJU7bZzGfHDB2oOpEWVR4wDwLtisjQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-025.json",
+      "files": 1000,
+      "sha256": "e1669f3aff30f1178fa4cac26200ff2d3a61e7f7e78a1f6bd27b943063ae2bdb",
+      "first_path": "mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/result.xcresult/Data/refs.0~9hY8kxcHA6SNKmKKR7FfADSNROwwSTPlQHz_sYw9G77YFc3GyZP0FBZ0f7fXuUg2aDrPgJX769XVo5_jLG0ZOw==",
+      "last_path": "mcx19b-orientation-repair-20260915/02-native-orientation-proof/fixed-build/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/ReleaseModels.swiftconstvalues"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-026.json",
+      "files": 1000,
+      "sha256": "c306c95f92ea51f6020efeac25cff64873842c322e977401edc736dbd7a2e2e7",
+      "first_path": "mcx19b-orientation-repair-20260915/02-native-orientation-proof/fixed-build/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/KeychainStore.swiftconstvalues",
+      "last_path": "mcx19b-orientation-repair-20260915/02-native-orientation-proof/native-settings/negative-portrait/result.xcresult/Data/data.0~hWvUtrM8XAKzcJ2W9ExLGGXL-otxf3l6OlA6EQ6RoCsXhn9ptrJGCDiklT225NsAwfSLuQIq5MsENOq5pWCGPg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-027.json",
+      "files": 1000,
+      "sha256": "ea176c7d4d673e8fa6ab385d8b673207d3a3ac74732b4f075eddd73d14d1e267",
+      "first_path": "mcx19b-orientation-repair-20260915/02-native-orientation-proof/native-settings/negative-portrait/result.xcresult/Data/refs.0~LZfnqlHrHhVXYvLUqg49tlIkb6CCr0dFpnzM1BACdG25XarCTPqW5tDypB2cU-UmypKc3tLd9taCIPZ-leXlcQ==",
+      "last_path": "mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/read/result.xcresult/Data/data.0~0XgIbI8UN-X7HMN8tAYI8UZ9t6Lp-wAemcKBvTMH44qUyF9uSgK85-0DsZJlvfaaOsQy4yNEdafIUuwxxWvPZQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-028.json",
+      "files": 1000,
+      "sha256": "7712c4b9b11943716cf00925637cd85a390f8586fcf89cd9519c54be11bd95fb",
+      "first_path": "mcx19b-orientation-repair-20260915/01-low-power-off-unchanged/native-settings/read/result.xcresult/Data/data.0~OSy_2zhHaFxsTZScLHIjF2Go9kTzxbXbAPakK8POKaMEI3ZqP9mSmiLp1uC5aptxL4tIuxxV1Hq0r10mI6N05g==",
+      "last_path": "mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult/Data/data.0~0Tqq5eflTRyRz9IG4khca-0SVVg-eMJ0TV7nCT5DrKxCQQ-kJy1N9SvYR5OqpeWA6dS3gu4S8YfhaGYDr9pGpQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-029.json",
+      "files": 1000,
+      "sha256": "7859e15aa078bd67170bec83e2992f3cc4c7afa09dd7891a8c3fbe137cd2e7e0",
+      "first_path": "mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult/Data/data.0~_oIu1bs0MnZVye9R4PIwPboZBjR8KvQE7gi6cNK-uRbtVSoQf2CRosDzN6-rgjp5txSJ5VOoYvgW2Ilwk8idvQ==",
+      "last_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/native-settings/002-set/result.xcresult/Data/data.0~lU2PbdZiIBHgnRwN4GVMzSr0QGmnppjkFOE6_xFAtUpwJExov50zDzg1GMJDMcw7vAeJGmRlD38wcdvwXuFZcg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-030.json",
+      "files": 1000,
+      "sha256": "5d6a24aee97ad674194347bc23b005d1916052e1acae81108d2a9d3268eb7890",
+      "first_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/native-settings/002-set/result.xcresult/Data/data.0~5nGETFOSfxhlR8NDO-TXRb6cdwcOLc1tp-i7uvHvaOKo1cym_5e06B4PYgAoEiRAk0z64G9V2ayyFZ_4EjK5Pw==",
+      "last_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/native-settings/iPhone 17-restore-failure/result.xcresult/Data/data.0~4VqMqsI5lOfxRppnud6-VDWcNsU8J7VgFCJfW2dXPwOcAkvU-I8Um5yp9n0Zv6nr3VmcxYggaVMDFfR0U_vjKw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-031.json",
+      "files": 1000,
+      "sha256": "758a28889ba8999ec015b008d1d8c07ccc00f4b2146836f89ac32008b43e14c2",
+      "first_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09/native-settings/iPhone 17-restore-failure/result.xcresult/Data/data.0~ORUeygkzhF4SOndEo2g00gFrF8TKT7gUbPOCruQw_rEkbNY_qgE9BaCy2rVKLfXxTGLzCTPeZGJ4jHUxpuWTAw==",
+      "last_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/DebugScenario.d"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-032.json",
+      "files": 1000,
+      "sha256": "41752d4f82af5ea747e15c2096922dddbb53b90ace7d74f222c428de604a4177",
+      "first_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-measurement-focus-v1/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/ReleaseModels.swiftconstvalues",
+      "last_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-target-probe/batches/001/result.xcresult/Data/refs.0~HW2R2RFQ28UD8Zf67AMT9Uc7RdWcztmI2r78tkIC7Y79pNjmTSGSqHe1AbGG9pjm8_GKuBwTBClIzS9rpwCbVA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-033.json",
+      "files": 1000,
+      "sha256": "1c1d4f9ac439eb788387c2a95d1b75b854788e2e5cc265a3d0cdd6e6fed2bc36",
+      "first_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/native-target-probe/batches/001/result.xcresult/Data/data.0~8sJ1CyXBzyMlsPpR31QMRPV1tMDMGf2U5uaNbC1SRH0iO9KwrtSCsfMb0WZvLEtNUELAwFyTYv9vWc3rH130mg==",
+      "last_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/target-size-probe-worktree/ios/ACEClientApp/ACEClientApp/Network.swift"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-034.json",
+      "files": 1000,
+      "sha256": "138ee9197f14b63a1bde3f5d0f044846a6b7f9d054a908fc6d805e2fbc3684db",
+      "first_path": "mcx19b-orientation-repair-20260915/10-target-size-diagnosis/target-size-probe-worktree/ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "last_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/001-set/result.xcresult/Data/refs.0~WYFtoL9MsUO9mxizugbH8BdavWZEoMLdSljr6t_2qrEyRopSzMtljRVy44eMq-vDAJALZpbVqRgR5Vq-WFZj6A=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-035.json",
+      "files": 1000,
+      "sha256": "e602a5ed7e99870506795bdf1856b9c4eb50287915edb8e805d3d57c2799b04d",
+      "first_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/001-set/result.xcresult/Data/data.0~tEjKUkcyO6srFSqXJgfUizKAbRSuUvbND80Xspnef0c4upcONKcE413qnvuIlWkE5MtyXAxt9G4B00HgmDgGHw==",
+      "last_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/result.xcresult/Data/data.0~ypBGllx1C7xMkvoFebNvNwyI-FJxQ5NABIsXVcW7zHIJOoDN-p6rgmoFWcGrDRT8Dc0dHEacn-4Qu1jBZl_TWg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-036.json",
+      "files": 1000,
+      "sha256": "5a9f334ddba0fd1b3121cb1bf523eadf052fc11d617584453d33c644e07658b4",
+      "first_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T064440Z-pilot-478288537d90/native-settings/iPhone 17 Pro Max-restore/result.xcresult/Data/refs.0~ZLDuFusdpHS5aKlweI0hahJO8MewuWTE8Y8tr21gwXXH1DFie0ENV7pTurUySYHqZtuE6r-RAkBpP2KT1KW5Fw==",
+      "last_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult/Data/refs.0~Vnn1jpGGXHALVVzDj9ykQM56nsTvJttf7O1yUPUat6otowUrxnTwN-70MQmQ0fR5o0UOg1g9L-N_yPiKpHbCAA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-037.json",
+      "files": 1000,
+      "sha256": "0a698b39a2ada4621019be18826225ae6a36d0c75e69ab7d63bee00c5526d1d8",
+      "first_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult/Data/data.0~NVfCJ4HxreLVfSlaEJ8-yp8Hyq65ArhraQPdxZrb1JqKPFBnA-XIZptfN157b1Oo1e9CuiJriC7fcHMahrG3og==",
+      "last_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/CompilationCache.noindex/builtin/v1.1/v9.1703616.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-038.json",
+      "files": 1000,
+      "sha256": "2c27d06c26d8a3b754dc8fc25709260d0134cd513c2e7b800f061558db93a7ad",
+      "first_path": "mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/CompilationCache.noindex/builtin/v1.1/v9.1741536.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/functional-runs/20260915T061955Z-selected-6d1e36eb268b/build/CompilationCache.noindex/builtin/v1.1/v9.802536.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-039.json",
+      "files": 1000,
+      "sha256": "22e1e7c1262f271475e5cf5c5c1515982fd8920a334436bac73105872f7c043d",
+      "first_path": "mcx19b-orientation-repair-20260915/functional-runs/20260915T061955Z-selected-6d1e36eb268b/build/CompilationCache.noindex/builtin/v1.1/v9.15776.leaf",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/Frameworks/XCTestCore.framework/version.plist"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-040.json",
+      "files": 1000,
+      "sha256": "933b4b3b6ed1c3654d0592651a27f23efe123917f28ba5f9f5956abfa87c6104",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/Frameworks/XCTestCore.framework/_CodeSignature/CodeResources",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1/native-settings/001-set/result.xcresult/Data/data.0~mllsoQ02LMZQXk-vNFEC7QepTGct4Ig6CsNMd3nc1KyCygOa_xoNifNc2QdUZ6fCsDaNR55kjzXwYDFZrmOUCw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-041.json",
+      "files": 1000,
+      "sha256": "7069bb8f83a66c3fb7d5fbd61864634a2207120e2771a28a3429b55ac786635c",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1/native-settings/001-set/result.xcresult/Data/refs.0~t4ojp6zjnxgfxN8NlKjeHnH3rPlLWo8BpjYaojhscj2U7pIYQdQu37Jcx9W_tBpxOimnlLmNKZtH5RAsiaZd7g==",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree/apps/relationship-review-pilot/postcss.config.mjs"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-042.json",
+      "files": 1000,
+      "sha256": "67658f75e37f609ac685894e2ba212b3391c6c6947174526a0710b730969be29",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/capture-negative-worktree/apps/relationship-review-pilot/next-env.d.ts",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/result.xcresult/Data/refs.0~jOwjVoo5eXvJU7EDgE22uplfJpcxfjtn4oR5f1n9WOqzkvSyfFR20BmbpxSOHlIpz5LFT2QIe7NAywk3CyS8fw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-043.json",
+      "files": 1000,
+      "sha256": "d0a52449f72634186778bcbfe1c925d58bcb8e0a1e40bf22e271233f8486973e",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/positive/batches/001/result.xcresult/Data/refs.0~7z8Y6pzK8Yapa59ZLOLdbwbIM6VDx2cwqQAAOeFUlFzz89Y06kqzRAYMgI_TKgRXsgeSAO8t6fKz0PogdKyMtQ==",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/Frameworks/XCTestSupport.framework/version.plist"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-044.json",
+      "files": 1000,
+      "sha256": "43198db515f71abaf1eb9183b9fa46799984c21b85cfd2b6ad51a805878caaa0",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app/Frameworks/XCTestSupport.framework/_CodeSignature/CodeResources",
+      "last_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/native-settings/001-set/result.xcresult/Data/data.0~NJWD2Q7T08dXAlVqsTYS7ss77RaMON8KBaskdWWCN1xsQDZxuWTBx1d5Yox9fc_StABXoG9lNGUZ5EGaczQb2w=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-045.json",
+      "files": 1000,
+      "sha256": "b05e949694427a3c70bb0f432979ffd98946e50022c7fc5d864cd31ebdcc2177",
+      "first_path": "mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/native-settings/001-set/result.xcresult/Data/refs.0~EmUmltWRr8SYltp58jzmgSDpfsVRZvyXj3Hy-A4474wLdxs794uYgVfhEzP2HtR9C3FZoRALd2ezxNV2Inb0EQ==",
+      "last_path": "mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/native-settings/001-set/result.xcresult/Data/data.0~WMNmOcxkiQM47hrVCUmNDwYFP2bWWnTvSccN1veWAmUxKMVeIIUQXePvoS0oxcjbRePPD6_cV9E_VaUIkzmdYg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-046.json",
+      "files": 1000,
+      "sha256": "ccb24f369ab7b287ec69934b282bdfb1fe962b656dc960bdbdf044ae51500be0",
+      "first_path": "mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/native-settings/001-set/result.xcresult/Data/refs.0~eXeI-LL4CK2aBzGaGJbFQb8gSt7mlQ5sbiO2UTiiwbZ-C1UWbuAePnPl5YX-XAJOvylTM5NkMuywi4l3Y5-mDQ==",
+      "last_path": "mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/KeychainStore.d"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-047.json",
+      "files": 1000,
+      "sha256": "bcb2c441f5cfcb9c19d7daadec23bc003a193b39b9d87efc1e5e966854fcbf1e",
+      "first_path": "mcx19b-complete-pilot-20260915/pilot-runs/20260915T045947Z-pilot-84db4f8f536f/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/ACEClientApp-primary-emit-module.dia",
+      "last_path": "mcx19b-local-20260914/derived-debug/ModuleCache.noindex/OpenGLES-8VJCCRHHWXDCR5HA8XCO7OU79.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-048.json",
+      "files": 1000,
+      "sha256": "b05f0eaa9ca58a763be2b97a12a8ef3b45d85badfab94890280e02386f70b3f4",
+      "first_path": "mcx19b-local-20260914/derived-debug/ModuleCache.noindex/_Builtin_inttypes-7C1UK1I1U2MEVZ7PZB33EXB3T.pcm",
+      "last_path": "mcx19b-local-20260914/pilot-native-fail.xcresult/Data/data.0~TCxJ343rl-e1SwjB7Dotx1MzJPSlHscqtIoBeVGqbeLqMBS6TphpI9kMLZEBmnnoYPuMuFD90aTVOBLmhs9zKA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-049.json",
+      "files": 1000,
+      "sha256": "78759dcaee83c1b5f7866797b519441d66fdad3a02aa872e848f5e8307952a47",
+      "first_path": "mcx19b-local-20260914/pilot-native-fail.xcresult/Data/refs.0~4nPd3VM8AGsK3cpmVTocbLEw9wgKA-6EMBQtR0vvUqpla_8yT55sxGVFIwG9nFw27R2oIXYw6dSaRw50RNH0kA==",
+      "last_path": "mcx19b-layout-20260914/derived-phone/CompilationCache.noindex/builtin/v1.1/v9.1637856.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-050.json",
+      "files": 1000,
+      "sha256": "c302ed39e56df73bea0ecfd8e2d153dd579914fb2dbde36d5821fa81dd305431",
+      "first_path": "mcx19b-layout-20260914/derived-phone/CompilationCache.noindex/builtin/v1.1/v9.1656016.leaf",
+      "last_path": "mcx19b-layout-20260914/no-actions-v2.xcresult/Data/data.0~lvDX_ufG7gYnRSB5VeS9tESSKkEf33VXKo5B9cQYXkO5ds_2bVyzJRLtIhzHDwIO6U0wS3VbZINi-9e_D99DPw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-051.json",
+      "files": 1000,
+      "sha256": "113546fe223ddbf19b6885f9b9c2ca5e016d991cc40181139a0ef7a0e4818525",
+      "first_path": "mcx19b-layout-20260914/no-actions-v2.xcresult/Data/refs.0~nYoWu12bznYhRLOYSFA5yt5uBlIhCsS6JSVKLR7PHLw_bRLdWRw0N7T2A869GpsMzwz6ttxkZOQRCPwCAgo9cA==",
+      "last_path": "mcx19b-layout-20260914/no-conclusion-v2.xcresult/Data/refs.0~xsuYAUdguTK3UbYfIhbVCOKUSPWNJWbTu77UnjWHwnWrthy-Q5E9At8vdoNKj9Wr3JC41vVkmg4DE1VTNjQahQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-052.json",
+      "files": 1000,
+      "sha256": "53867790617c328b276350aac51b04afd1a9b7760403170312fc494ac9897a2e",
+      "first_path": "mcx19b-layout-20260914/no-conclusion-v2.xcresult/Data/data.0~1yJ71Q58kfyouj6iX3o_cIKc5n7fAsC7BmZgLU-Kzr4Hyn_yQv7DImMrx_qBpZHyEsT3aCFHHooKO36DccUjXQ==",
+      "last_path": "mcx19b-layout-20260914/derived/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppTests.build/Objects-normal/x86_64/Network.swiftconstvalues"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-053.json",
+      "files": 1000,
+      "sha256": "4ee5804cce42e43ca497ac770eb35a43975e648659881fb9e829250d3dd07d5e",
+      "first_path": "mcx19b-layout-20260914/derived/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppTests.build/Objects-normal/x86_64/ACEClientAppTests-OutputFileMap.json",
+      "last_path": "mcx19b-layout-20260914/release-max-text-v2.xcresult/Data/data.0~l2IKYhAbjEmCu4rS2cfoaocOE7AOFVH_LQxo__g5GTyA26pxMVWWf96xwlMOh7gm9-DmKorxL9lkp9FS8cfzBA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-054.json",
+      "files": 1000,
+      "sha256": "b1d5187e3f8d446e5d7a6382a8466e351acc733528ccbc6cf840ef403088b410",
+      "first_path": "mcx19b-layout-20260914/release-max-text-v2.xcresult/Data/data.0~eD9klOIMNHb8QIIMLSDU7C0G08TxUisKCtlhGNGDX_Fb7bnDVTGZet14D2FPejPGMnovNXe8oNEvaki7aK2RAQ==",
+      "last_path": "mcx19b-layout-20260914/release-light-audit.xcresult/Data/data.0~i_TLffTqcozleb-sEQzLjQcJm1uuf4ThXr5hUIiK5-GJT07OG9RLKV88g7hAVqGNOcg-ReN53A0jfe0LcJoYRA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-055.json",
+      "files": 1000,
+      "sha256": "e1f9d7ecccabbd7f3855fc2561bc9bcf38e42a713462e7885b803be06d835698",
+      "first_path": "mcx19b-layout-20260914/release-light-audit.xcresult/Data/refs.0~R2Uy_gJrThy9aquf9ijuC46pVgMl5Ohx2PbNFkK_7ezKBtPY0fB5V8Wn1LZvtPfT0GWDxUVOnb713HqVjn6Y_w==",
+      "last_path": "mcx19b-layout-20260914/no-conclusion-plain-probe.xcresult/Data/refs.0~ZTj3AGaWdkxvx5oAKl1zhEM2An4qvWH75txAgacVYEFypRcZRuZZJbhL4RnXIx3MoRw1caz2esYTto3_uygHDA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-056.json",
+      "files": 1000,
+      "sha256": "c9802821a46f5103104fa0c5ca75d3f88bfe0aef7c4bbea879ed775fb252e234",
+      "first_path": "mcx19b-layout-20260914/no-conclusion-plain-probe.xcresult/Data/refs.0~ROwlgyOWjegxR50XV-3qQHJwdaW52lwAWXUph6DmsVcia0vMPKoAVTckDA_fnTv2OTMdFFsY12LJmF9SPJQqLw==",
+      "last_path": "mcx19b-layout-20260914/release-light-v2.xcresult/Data/data.0~Oh7bQm5GEehkWMKslcDgTEtmTmQx600mx2TS8Q8P8c4ZwvjeAIRwbrMx2Y22Q4WKsfMdWdgly1nlg0PbNIw7mQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-057.json",
+      "files": 1000,
+      "sha256": "97074938b0b71c875a3af0908e19aa8305698297868788f594f0ef1e59e7c7e4",
+      "first_path": "mcx19b-layout-20260914/release-light-v2.xcresult/Data/refs.0~N53beA_Tw2PoF5e7DAn1PaOOVa-nlR2a1fI52qVOAQzBOXXFFQYxLRWiIdbATYnQ9Kgnfsq1QgGpeb0RxKaxHQ==",
+      "last_path": "mcx19b-implementation-20260914/pro-max-preflight.sh"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-058.json",
+      "files": 1000,
+      "sha256": "d09037e1918880277a585f9a7d211f0e02a3b611ff5e74aeeb344cdddcd222c5",
+      "first_path": "mcx19b-implementation-20260914/focused-results-index-1838.json",
+      "last_path": "mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-control-current.xcresult/Data/refs.0~kZcdvCYLAw6UFfNJamad7fHrH_dlpD88j-ApRKU1lNNNjrGKdR7z5S6kRlY68IvCzuR6jn9f58Rota_12dJ9cw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-059.json",
+      "files": 1000,
+      "sha256": "8387fdb1452e9c39c4e2edd83a4daf15eddcd0e05c9fe2144803dff948592d9d",
+      "first_path": "mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-control-current.xcresult/Data/data.0~GRxNcsKOPVILMQs4tCr99ZjZ8Qap3owtA2Sc08ul2bz9IRpLMLHfTNrJ8rCBXLfvvN1IiF6Z5BlkY4TLxk16Fw==",
+      "last_path": "mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all.xcresult/Data/data.0~SohQrYDX13bIzI4zWNc4WgmoS-vMM1mYOKo1SHC8WXl7zZtUWaC5uYrtRzIc3d_vZI7Vx_RezvYgOO85_ioXNQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-060.json",
+      "files": 1000,
+      "sha256": "6913b49751ea0cac68a1d2a1408bb4171d5bab6ced837086402dd27a5db32443",
+      "first_path": "mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all.xcresult/Data/data.0~tEjKUkcyO6srFSqXJgfUizKAbRSuUvbND80Xspnef0c4upcONKcE413qnvuIlWkE5MtyXAxt9G4B00HgmDgGHw==",
+      "last_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/trial-runs/20260914T210910Z-selected-7df45149c79d/selected.xcresult/Data/refs.0~EChXKWn5O4FVO2JPFNc9niKEoNTMFJ5N8iO-63MTG0wK_a8sIDKf_mg4QNhSxWPvIbChWwIEDkRn-zVu31xXYA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-061.json",
+      "files": 1000,
+      "sha256": "d8d238ed506dc471cb7336057bbfe08345c2c9521afd1b871b9c3ce69fc552d6",
+      "first_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/trial-runs/20260914T210910Z-selected-7df45149c79d/selected.xcresult/Data/data.0~4g5Veh3QQP79LB0U95njELh1KJBFUkv5Ax4JuaLdkkZL_F5gQtNskR81_h7mucHZr2ATGF0U8iLf3T0dtJLM8Q==",
+      "last_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/trial-runs/20260914T210910Z-selected-7df45149c79d/selected.xcresult/Data/data.0~fBcOymzQtdkQyLPmuFaNhhm81bxuiEsxB_sGRov37iKDNALGfEch0xc1kc7NgAHCpL53aeW9qTId-CltrBGRqw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-062.json",
+      "files": 1000,
+      "sha256": "a464e2adf02695d61b5fc5fa880de1202bda625c567a73ec456145a19705eb5e",
+      "first_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/trial-runs/20260914T210910Z-selected-7df45149c79d/selected.xcresult/Data/data.0~AVuk50QFVxnjP8I1BC8Oozt9szsXkX3pDxgTbwO-9yfr-MWHs2hQon5xPmFasYJS_jXCa1tTc4XVxniNgiBvOw==",
+      "last_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult/Data/refs.0~HW2R2RFQ28UD8Zf67AMT9Uc7RdWcztmI2r78tkIC7Y79pNjmTSGSqHe1AbGG9pjm8_GKuBwTBClIzS9rpwCbVA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-063.json",
+      "files": 1000,
+      "sha256": "8ae87db704574d40d4930c4e32e0355fa8534af8e81281ed981d0c7d69e4b12f",
+      "first_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult/Data/refs.0~ne5z5Vmcg2IpZDU7dhisABBKftoN0DTrn5w44B4hHyIvGRH7ETLcKCCsSbpKYo4SA1sblivMnBgsdfVlob24eQ==",
+      "last_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult/Data/refs.0~KQHHzxX9XTLdoU6flvgfThqJt-WCDttGcssXG2nC9iIMUEQoUMq2HQ_OLJjVLa_YsC-XS0SkZPALNhNwyUu8pA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-064.json",
+      "files": 1000,
+      "sha256": "cf7767af085eb56191ce15e01b62f90023c4b81a3d86110ff1f98a2e9c48161d",
+      "first_path": "mcx19b-implementation-20260914/native-list-comparison-20260915/control-runs/20260914T210217Z-selected-a41baa9745b8/selected.xcresult/Data/data.0~YsnWggUhFwymu_hUVsH3CRUuLc0WfN5OTRHfcAV0OEqgA19N2uMZtYidGZQSVmnQHKbPs3slevkL_yNnNGL0kg==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xcresult/Info.plist"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-065.json",
+      "files": 1000,
+      "sha256": "ffe70a034bd7a5a3c3a48d08fb9800f84556c8a9ef594dd987f1dc5fd3643311",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xcresult/Data/data.0~ubfhxjUUGer_AU_yIl3rMASuYXmS4bhZSQtG0lASx6b3evzWEHjRv2MECKhmH-GVBEZZaX6PG2alAYAsS4NxmQ==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/result.xcresult/Data/data.0~c-Q6C49NMpfrAIQsF3JAVcW0mFMAfmMrheSPoiwAJLFQXVKekczkaSrfnDUgBS00tRke_v_Ltov66Agv6TU1Dw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-066.json",
+      "files": 1000,
+      "sha256": "7e9c8d755be9d32aeda769c6cb0dd3c1d2117554e5299807e3286bd25fde4c1c",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/result.xcresult/Data/refs.0~-mm-AgnRbLgUGGHvFjM-CTdOleP2gU0OQ8-SBfRCz0A8La75b7W6AhU0X7Gr3Qnl9ckstzQOV7gvU4ZynW7ylg==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/build/CompilationCache.noindex/builtin/v1.1/v9.1735016.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-067.json",
+      "files": 1000,
+      "sha256": "612e02c765c4a69f79d3ae3cb72eeb569a42aea0b806cf4571f68567c6dc030e",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/build/CompilationCache.noindex/builtin/v1.1/v9.37456.leaf",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/native-settings/iPhone 17-restore/native.log"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-068.json",
+      "files": 1000,
+      "sha256": "4ef8b618bf3bff7009f689ce2418d0747d0b63b4f4336da31435ea9aeebf8c43",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/native-settings/iPhone 17-restore/command.json",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/batches/001/result.xcresult/Data/data.0~wHs03jFP-hgdvyZrb8_70sOINkn_YQxTOtNhXKy8FcEun1Bomlz4IEBXdeKwXyep9oeQjL8JH0Pt2XlMy3EjYA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-069.json",
+      "files": 1000,
+      "sha256": "e474bc9e4c6481065648c5fdb1249dcf02ea08710950b1a3893d4872198e28fb",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/batches/001/result.xcresult/Data/data.0~OJTBNx1ZiNXKWpQI4anTka-e_nESSDlcDh9LVIIfKOsHbuxPpZumFPhP-t7GFiZIorcg6imkr9FRn8bP96zoTw==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/build/ModuleCache.noindex/3KD679GGJSMXE/_SwiftConcurrencyShims-ETMZL06LU75E.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-070.json",
+      "files": 1000,
+      "sha256": "306ce3bff82aa23ef300e23369ba479d76ee3bd3b640c06a7289f2dafec0d82c",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/functional-runs/20260915T025431Z-selected-2c2c3ea9ae6c/build/ModuleCache.noindex/3KD679GGJSMXE/simd-1UMVU90N80PW8.pcm",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/failure-runs/20260915T004859Z-selected-d933564297b6/selected.xcresult/Data/data.0~6Pw3z8RjCyAOTjWWo0Y6vrTJMFP1rcHpQGDKtIIgQdmpDk2oiMBqMYA8iNpAv-JdEgm46-CIhxllzvvOiWBgGw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-071.json",
+      "files": 1000,
+      "sha256": "ec6398b70fc0ae080e744a8b3b5bc1c3551ce12b89ec2ce6e54cbb8270c93044",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/failure-runs/20260915T004859Z-selected-d933564297b6/selected.xcresult/Data/refs.0~rY8NO2S3nXyHHW9X0k8jHS8xLN4WpCVu0E1J5nf4UtMqowJAdd5KTWuSNZzFUN5Tsqaqbzo9JeUkSQkR9o0sww==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/failure-runs/20260915T004859Z-selected-d933564297b6/build/CompilationCache.noindex/builtin/v1.1/v9.933136.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-072.json",
+      "files": 1000,
+      "sha256": "dee7236bfa25acd69e703525d0ef1f899c9a91494ea991a3f8062ecc7f5f42bb",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/failure-runs/20260915T004859Z-selected-d933564297b6/build/CompilationCache.noindex/builtin/v1.1/v9.2011976.leaf",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pass-runs/20260915T005355Z-selected-67dae754fec2/build/ModuleCache.noindex/Foundation-BYRKDUC09CX6R0ZQU8PW9M5G6.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-073.json",
+      "files": 1000,
+      "sha256": "a39edd7023af2c626139398ab4b5b3004d4743d94ab928d33723e9c409aee8de",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pass-runs/20260915T005355Z-selected-67dae754fec2/build/ModuleCache.noindex/ImageIO-8WB63I76DJPMGH5ZOZ2IFUYC5.pcm",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/iPhone 17-restore/result.xcresult/Data/data.0~URPEiPve8XT8boEnMeBe73BVukPNzAZRsaKBIMCgbhUcQ4iqgrqUBGplwiabnvzzd1LxZwi2FE57NM5GfXfbYA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-074.json",
+      "files": 1000,
+      "sha256": "fbcbc725fef9b14e37617293a354aa2b5a5bd0612bc7d4213b9e325bd3ab3866",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/iPhone 17-restore/result.xcresult/Data/refs.0~wXshPhzBhsGowgE9OloAShKMzkb4tliPjnRfPz7rW5H_AxjrtWbQ-x1GrsnKMjAM7yN4VR-SoF6zO8rmSyNqXA==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/result.xcresult/Data/refs.0~9t0uLQutYE5plS4CqPyXDJBVM6hAS8otxEkmSwPCH04Eam6YkUTP2TRzldq-Am3TEW5r_WOpy8BqBRfTYJ-Bew=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-075.json",
+      "files": 1000,
+      "sha256": "d1eefdca03daf5744b8b5ca25b8bfe22321af79d9dc900c6fee5c83028c75e18",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/result.xcresult/Data/data.0~8_K9FmYChGyCYBqFT1epPBYtrjqfgEBWGvmW2ySlenzASWhM4q8VNEOaWXdJUdJseUJ9W5ItOV_n133uMj4FMQ==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/build/CompilationCache.noindex/builtin/v1.1/v9.1842656.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-076.json",
+      "files": 1000,
+      "sha256": "54bdcb8d0c8e0d0af0795ac55e2dd5243e997433b5b07841b6f2f9ff922e16a2",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/build/CompilationCache.noindex/builtin/v1.1/v9.1197616.leaf",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-runs/20260915T005748Z-selected-79c23cc5f37c/selected.xcresult/Data/refs.0~WZMZgzW7WdTYxEJsVG81MNgaN9g-EwBClKvGyVuzGJU8syZowismLie_T8p5GR5_o6KFQGPI24QdTScrK7wafw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-077.json",
+      "files": 1000,
+      "sha256": "977c5f036f6711fd4c96b857ba4d2a785e04b10ed3fe3a38c2feaf83ab43dadf",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-runs/20260915T005748Z-selected-79c23cc5f37c/selected.xcresult/Data/data.0~FKO-VyfvBz7qEj_B0cK9l_N9jqabASPtxV_FY6YDCH8QRBEBF9CevJH54NG53FNT1MBM8tAIg3OjFyelVTcrAw==",
+      "last_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-runs/20260915T005748Z-selected-79c23cc5f37c/build/CompilationCache.noindex/builtin/v1.1/v9.31296.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-078.json",
+      "files": 1000,
+      "sha256": "546115d001e52d0e21ae7fce012fd0eba3b88a9265f91356354e32b2fb7dc2c9",
+      "first_path": "mcx19b-implementation-20260914/pilot-preparation-20260915/functional-runs/20260915T005748Z-selected-79c23cc5f37c/build/CompilationCache.noindex/builtin/v1.1/v9.1966496.leaf",
+      "last_path": "mcx19b-implementation-20260914/audit-lifecycle-20260915/runs/20260914T215523Z-selected-6d10158a115f/build/ModuleCache.noindex/1A7OV6OTSYFHK/IOSurface-2GMZHIFU9GAVA.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-079.json",
+      "files": 1000,
+      "sha256": "d6897e572da6ed03aabe3398cb5d5f6c62e48d2f2a23bb53625fda27682a164c",
+      "first_path": "mcx19b-implementation-20260914/audit-lifecycle-20260915/runs/20260914T215523Z-selected-6d10158a115f/build/ModuleCache.noindex/1A7OV6OTSYFHK/FileProvider-2O2DCCNZ1P9DX.pcm",
+      "last_path": "mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppUITests.build/ACEClientAppUITests.DependencyStaticMetadataFileList"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-080.json",
+      "files": 1000,
+      "sha256": "a37f167c7bd9ee02fb3091af4a9685c51428affa5ab49c7e9a64d406398f178b",
+      "first_path": "mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientAppUITests.build/ACEClientAppUITests-all-non-framework-target-headers.hmap",
+      "last_path": "mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xcresult/Data/refs.0~di7ukAtLNhpHmIojhJDQbqvT0RjzCiwmN4zQxlS0styXZ_vlAfDClG_9abtQL7BFtaBCArGPxNGkCr2FKrHPag=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-081.json",
+      "files": 1000,
+      "sha256": "56a9069efdf59eb2fdc9d67b922825336c51c38af664c4f83fa3d0de23b4799c",
+      "first_path": "mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b/selected.xcresult/Data/refs.0~jZyGHJXM3PKF1i7GWlZZEkWAterJwFfygQqD2_zFUlxEDvYDCn55gMO84nuQ5vcDPJXnFcIr-le8G2ttzjvgcA==",
+      "last_path": "mcx19b-implementation-20260914/audit-metadata-20260915/runs/20260914T220936Z-selected-5d3c95e880df/selected.xcresult/Data/refs.0~boL0sry2NADVbXh9LODqJevYlRZl3n3vXSn-32akejoPaeMqL3cRJNc0ja0ym6N-fnYqlwmF2zT_edIRNcjmqg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-082.json",
+      "files": 1000,
+      "sha256": "094cc61d242baf643b04769665084fe54b128d0e7bfd858c08beedbb145c14be",
+      "first_path": "mcx19b-implementation-20260914/audit-metadata-20260915/runs/20260914T220936Z-selected-5d3c95e880df/selected.xcresult/Data/data.0~MSA6K5QyBNvuTpHnPCkcZBN3cSJ7aDTafPPkX_xNWhvCGtu7w7sPlphl0CJyaYNML6fud3YmjTtmWhOtKGJhmg==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult/Data/data.0~5sDo_ET4Acvb0BrScmUyRBPiJxohaKK6kY_A-PO3IRqMpYPF_4CJqVXx0H8IYx3NBipiZnsQJUm1HUnFJMm5lQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-083.json",
+      "files": 1000,
+      "sha256": "87d5fe6ba3ba38a8857c905c1e5260190745819cc084c15ac4eacd144de3f78b",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult/Data/refs.0~ozzqeu7B3w60HROfDLKwJEDJXXIrgBEpvDZGN0pr-6bmoxm3aHoHhOo3Ar79qZ5iSAPwHcxCYJ6i7d3vtdfAhQ==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult/Data/data.0~4oxOsTLYCDMlnTJ0lbBFouOZJJtobIM6zAODH_kjuVhr3FIodk_tOePHm4uH5nmEbcOgQWAaP6AHCd9LxCZ7hQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-084.json",
+      "files": 1000,
+      "sha256": "407498adee107e2220aa35d39c3c9d5133a2ae36d3a32d61c95e1a991eced50b",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult/Data/refs.0~KwV0er6jX9jfOfujMGP_v8JfsQ8cD8JTOvBoQgFuVmv4XPqiNeiue51bkrVLR91S2J7RlrfUAfmI22NJAiZsXg==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100656Z-selected-6532f26731b7/build/CompilationCache.noindex/builtin/v1.1/v9.1946056.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-085.json",
+      "files": 1000,
+      "sha256": "4ae50c849fbdbec89dcc0a7104fa301deb9146865cff01d56a6a288c2893d87a",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100656Z-selected-6532f26731b7/build/CompilationCache.noindex/builtin/v1.1/v9.873296.leaf",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105104Z-selected-54d47b72224d/selected.xcresult/Data/refs.0~nERDBrU5Hxzxl-XOYQjS4aKs7OBtCYiFQpg9qBqtmLok5XK7ki-UbDfdE1a4LzSwFtUZF5QiFTbDFOiXu8lnaQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-086.json",
+      "files": 1000,
+      "sha256": "b5ba89734fcb5d318d4e19d894809e7f2a6de7e013e3f241913e5b4c2710b447",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105104Z-selected-54d47b72224d/selected.xcresult/Data/refs.0~thJGCgQCmexV1eXuFqNTsOTPfM2Z1nekL0p1kq0rfG2dCJY7N17xrZIwWmelW7buyfnUEUXzLmkrldqbAZipIg==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/selected.xcresult/Data/data.0~dHOs5ACoio92AT02scggTblhvCyRDy1hEKD0ai7tktRRBwWei1hPSLVgxh6nkIOzHTMG_BlxaLdbJyjneWSWVA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-087.json",
+      "files": 1000,
+      "sha256": "a53c1b4f87b1e833ce2635fb962a3b8d65828b1041ac1b9e614f12f87897ecc5",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/selected.xcresult/Data/data.0~wJWalqbKsPBjBiVSQ-D6l4HmMbBBi8ciRu2xyQVUGzdKwSLA2B28_rmjsBHaqXUBpjxU4rI65-zysv0m08JmfA==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/selected.xcresult/Data/refs.0~V-yZHST4S087_cAf8dM_uqRr59DB6I-o5W2HVQ96svFhtcId83eeKoxiEpHIWXp9km_bdS31JAxyl9sthlhfTw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-088.json",
+      "files": 1000,
+      "sha256": "3d6e59303a533285eaa5e5871ea25592331478c1dba484fe406da45784a0a579",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/selected.xcresult/Data/data.0~Se7l-rCVnG_rnUwhLftCmsapwy8vukbSW-I18kryZ-Ocz6Ld5kEsL0PhhWYtBpgmCkVPF03hi1fbNtna1Eqxww==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/build/CompilationCache.noindex/builtin/v1.1/v9.913016.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-089.json",
+      "files": 1000,
+      "sha256": "a52573682816c5101dcee28211a19c4dabd7feb9738673374435e2ec3cecc3a5",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T084144Z-selected-d53d2186439c/build/CompilationCache.noindex/builtin/v1.1/v9.1896736.leaf",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T095533Z-selected-279971683f21/selected.xcresult/Data/data.0~9sG4hZ2wgwIusKZhDVE5WIU0SkmAW6MAlvoJ4wE_fGtQ-vzhm5e1UnSYJ4K82uyxk7VCiM5w0-sgXrXdJ9NiIg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-090.json",
+      "files": 1000,
+      "sha256": "68abca6b80a003c0300220fd8644d389ed540b101a9e7e448afa8533802aaf56",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T095533Z-selected-279971683f21/selected.xcresult/Data/refs.0~GkfP80ocC16BQt2kPrejlAaHxz6NMK2V08fxFRgk2ezkNF04DywUNTQTYw4Qwg6t6TpLS69zSmxCcuju7_M8sw==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T095533Z-selected-279971683f21/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app.dSYM/Contents/Resources/Relocations/x86_64/ACEClientApp.yml"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-091.json",
+      "files": 1000,
+      "sha256": "db3ca05b8feb5ce7ec5189cc006ab7311f206c9ba8fa1f92bdd259f2541166fd",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T095533Z-selected-279971683f21/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app.dSYM/Contents/Resources/DWARF/ACEClientApp",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/build/CompilationCache.noindex/builtin/v1.1/v9.893456.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-092.json",
+      "files": 1000,
+      "sha256": "cdde47c5f6b1fbcf7e86e6377c08955e8d14b5d692e5d7830c57c8e2cfe9a474",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T100030Z-selected-de52076afee0/build/CompilationCache.noindex/builtin/v1.1/v4.actions.shared",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xcresult/Data/data.0~Srw-SAENKoqngUXr0c7HWZxXcCEDb2AfbVigWo14fSGCUtXSnjNbUv35dsjzriAbFA51gMeFiON5dp4GGXlfQw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-093.json",
+      "files": 1000,
+      "sha256": "5c8d2f34e2ce77fba234d88f94c84e368588e530ef657b76fec510f144d7eef0",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xcresult/Data/data.0~jYpJwg80bR2DG5vEaQvoVutuINQJcJF8mhrU0NNQifma3S6YQbvD79dh6kmfnEXmqLUrW0NYbOtQ8q7OJB8Crg==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xcresult/Data/data.0~c1m-ncTJadX3A-QL1huB-9Jtl-5trR2CRASBRiv6kk-93qBAieGbOAXM94jVAgAKhck-KN6Vx4O6l59HWEyM4Q=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-094.json",
+      "files": 1000,
+      "sha256": "1121e795ff197ea70b0d9c80c409d373e5ea42df68e3e7f0963262fb7a5b19a2",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xcresult/Data/data.0~mqVL8Tl6bu6YNrPgDV6zDx_5QiWlUF9R2dzCwgnoB3f-PGZzr9DPzY5TtlVpQVUa6LF2AvQB7dHyiF3QNYU68A==",
+      "last_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/build/CompilationCache.noindex/builtin/v1.1/v9.1734056.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-095.json",
+      "files": 1000,
+      "sha256": "f79c8e1c31ce066b7edc5a68151a058c30bea07e55799c300d4a03ad9e163bb3",
+      "first_path": "mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/build/CompilationCache.noindex/builtin/v1.1/v9.1749136.leaf",
+      "last_path": "mcx19b-implementation-20260914/settings-bold-integration/native-settings/changed/result.xcresult/Data/refs.0~ceIkgLit_ahwQvovr1PvrR8pjaBo6gm0UOKJGYi2RQhWJyPUElkr6jN_Gzwu8dMIBVmz7NXMYwh_6w6AwQHCVA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-096.json",
+      "files": 1000,
+      "sha256": "c9b2a15db475e8a3b7f2df58386e91f905eacbe3e837d3746784009038a7734d",
+      "first_path": "mcx19b-implementation-20260914/settings-bold-integration/native-settings/changed/result.xcresult/Data/data.0~D2sKnOTBfUkasUhUJWVG3ezm5jj893jBb_Rl-5TisJPgHssY9dB_CIoYJEiyriGQIQZju-jBNrYkv1vc-_ZiiA==",
+      "last_path": "mcx19b-implementation-20260914/contracts-before.xcresult/Data/data.0~MnddhOZJXKvEVh5KXwG6-cO_rMBcQE6dthgRF4u2z9kwuogC3upRIk_4JrjJjFFtOmUXMLS1N__t9oSboQouwA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-097.json",
+      "files": 1000,
+      "sha256": "cba6b841d9a7e618d49436900f6224aa9a0a3b38b74c40ad306cc21776c24929",
+      "first_path": "mcx19b-implementation-20260914/contracts-before.xcresult/Data/data.0~qdMHqa7_boL9Y1jUkV07xy28zX3gMA9um8srY2d3n6U9NfJvPH5C82GFGfjXuXffOZg3wf-I2oVHfqlql3-_qQ==",
+      "last_path": "mcx19b-implementation-20260914/release-metadata-omitted/result.xcresult/Data/data.0~A_qWbIK9kMi_evkvtwMasSlxTpPILmZTAMytn_F0GXC35nG76BtvKhIrxBW7KTBU42Pm9L0ZBdRW0B-1HAvwkg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-098.json",
+      "files": 1000,
+      "sha256": "115ad4bff75e251ee6d6d5e95073dce0687dbf499565e706d3c7b12cc5223d1e",
+      "first_path": "mcx19b-implementation-20260914/release-metadata-omitted/result.xcresult/Data/refs.0~CSn-8yWbWCd7iAA_6LWKA1cKpVmK8BH9x8Ed0Rp3y4whzxX83fbSb1nDMlxYWIi4tMAKNgjh3Nt11uC7CSMhvQ==",
+      "last_path": "mcx19b-implementation-20260914/release-current-build/result.xcresult/Data/refs.0~NoWuQfc28ZIrq7nCpSAysp4FjFrVPUjI_LJq7kwcUqqj5cG6mraRtN36SmqgeQAyEhblmRCYtE1G3n5PFA6VAA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-099.json",
+      "files": 1000,
+      "sha256": "bd7f5ed716ba61cdc2b7ae56dacdb61064ea23931dbf85eee3003a2c0b0bb822",
+      "first_path": "mcx19b-implementation-20260914/release-current-build/result.xcresult/Data/data.0~TUBT5skvsVAOwTSdPP3Dt0N__tWWGALzzV0_Ij3KER3ORb2oKcVnGJkomtvKLd-aqUmasDjGpSWGWdbrvkIMvg==",
+      "last_path": "mcx19b-implementation-20260914/release-current-build/result.xcresult/Data/data.0~km4TTzaxACovUzzvQ4yzYkcRkYlRZ_K7aFlKCjAWeK3bVMuQC7UFd5zGB76QfVhwLT50DijlUiotEW3uKxmgBQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-100.json",
+      "files": 1000,
+      "sha256": "ed91e351a9c168b3b221066585dd842bb47a81c67b151ee43c19cdceb065feaa",
+      "first_path": "mcx19b-implementation-20260914/release-current-build/result.xcresult/Data/refs.0~iHj5TY1v_1jOnG7SE2T2_kn_ZUzWYIcgkMy89grq2ACIOM32cwWLhQD2R2rK1rmvyw1u6XIbqNxTTeB62-Y2cg==",
+      "last_path": "mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/result.xcresult/Data/data.0~EDST70NLmHfs0aWDpdEqizz65TNUtXBZS-6w3j1ZrE4nvowem_zbcB2_-oO0uhackiZRLy0hrnYPBbn1eTgzrw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-101.json",
+      "files": 1000,
+      "sha256": "e8b913840cf14d4e8f249a6170ec52d19282e11af0e9ce389b971e02ebfca567",
+      "first_path": "mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/result.xcresult/Data/data.0~QFsqy7kZyzcLMU6maFE_CfBf60JgRSrIJeyQtKJMlgvmSV5Q8JcHxsAeive4TpmFu9Mr5H33X5Y7fWILQgZATw==",
+      "last_path": "mcx19b-implementation-20260914/native-copy-paste-probe-2/build/ModuleCache.noindex/_Builtin_limits-DEYKAJBP675YES6KO30HLHSRY.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-102.json",
+      "files": 1000,
+      "sha256": "a2361b0664774332121d2455802358bee55e97fbd5a760ce3f80fdf0d7448ab8",
+      "first_path": "mcx19b-implementation-20260914/native-copy-paste-probe-2/build/ModuleCache.noindex/FileProvider-BTQP5R7G9JB03MLQPT1GQ2Y71.pcm",
+      "last_path": "mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected-command.json"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-103.json",
+      "files": 1000,
+      "sha256": "051bf0ca6ccf74535d401596d82073f2d49d15e268225da8d7ea1d345acd94b1",
+      "first_path": "mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected-input.json",
+      "last_path": "mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected.xcresult/Data/refs.0~GSHcB2nW2HX2lKxRmlogNXrfHRhHy7NSw0KKLt1zi4xEEpMJMIsf1rPQw495ClT3DpuhbRVLtL26llkb8MJoOQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-104.json",
+      "files": 1000,
+      "sha256": "ee3c535861bbffd82211419bc47218796cebaf57cedbfd10d873dd0bc425190a",
+      "first_path": "mcx19b-implementation-20260914/field-text-trial-20260915/focused-runs/20260914T224536Z-selected-a0f5ab88c1ce/selected.xcresult/Data/data.0~YecsSp0HGbExF2s3hdLdRp0AZoBZJjUjU6JlVBDHJv1skw7vGuHTlUTRtMAsyeGWvmNXAiRk9E9q9R5da62nAQ==",
+      "last_path": "mcx19b-implementation-20260914/field-text-trial-20260915/maximum-runs/20260914T223626Z-selected-dece9a96e6ba/build/ModuleCache.noindex/1WA07B34GCDMP/os-35YBQJQ2YC966.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-105.json",
+      "files": 1000,
+      "sha256": "7abea4ada340bf28bbfeaf2ba5f31bd1dc4348ba25fa21e9667ecd070e160ba0",
+      "first_path": "mcx19b-implementation-20260914/field-text-trial-20260915/maximum-runs/20260914T223626Z-selected-dece9a96e6ba/build/ModuleCache.noindex/1WA07B34GCDMP/UIUtilities-2FUK9RCX1V5JB.pcm",
+      "last_path": "mcx19b-implementation-20260914/fixture-parity-integration/batches/000/result.xcresult/Data/refs.0~OXnnlb_BlBwa0V1tgs4EouJHn4rjlOTMdFdayo0GI0wFL5OUzczi2Eq1w1rlrAt6ZokNjAEJFEanzmxI6A2bdQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-106.json",
+      "files": 1000,
+      "sha256": "8dc6ff4517b50fe7219b88bcbc5d9d4fdd9be6adfb6772f161ad4b1e5cacc133",
+      "first_path": "mcx19b-implementation-20260914/fixture-parity-integration/batches/000/result.xcresult/Data/refs.0~EE4wBMeIuFlabWzB_VBCEYHCFPGF6ldD68PbbOEZba8qQMUX8oNjOeGH3E5uNexHRRwKugnur82hcfw3EQnTjA==",
+      "last_path": "mcx19b-implementation-20260914/derived-diagnostic/CompilationCache.noindex/builtin/v1.1/v9.1718696.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-107.json",
+      "files": 1000,
+      "sha256": "53e157b62854413b18a434ad7385d88a73ead5c4a8cdbf56301d2aa04f2c202b",
+      "first_path": "mcx19b-implementation-20260914/derived-diagnostic/CompilationCache.noindex/builtin/v1.1/v9.27616.leaf",
+      "last_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/omit-initial/result.xcresult/Data/data.0~EtshTfvS_CviMym6JmDwfH9eoiIfWmEGApK-FMq_wS3xDyiSbawQhNLj1ts-HB3c6TC4Fb4t9RlVaGbHH9cb0Q=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-108.json",
+      "files": 1000,
+      "sha256": "fc2671c541b0beb1f03a779d359272488c4945b529b9f4263fc0116368418a35",
+      "first_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/omit-initial/result.xcresult/Data/refs.0~bc9cl0nXvhO-K8WL2by6owMUwXhBdKa8ufCo6NjcaaZcqdO0SMAo1pbhEaDYOsMhyp4LXqd3xnPaRCKOo0-1TQ==",
+      "last_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/build/CompilationCache.noindex/builtin/v1.1/v9.35616.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-109.json",
+      "files": 1000,
+      "sha256": "0de1e3a76116acdc505d01b603fa4d1a03f07604be47d4107d95b3c260027a72",
+      "first_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/build/CompilationCache.noindex/builtin/v1.1/v9.183096.leaf",
+      "last_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/control/result.xcresult/Data/refs.0~YsnWggUhFwymu_hUVsH3CRUuLc0WfN5OTRHfcAV0OEqgA19N2uMZtYidGZQSVmnQHKbPs3slevkL_yNnNGL0kg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-110.json",
+      "files": 1000,
+      "sha256": "0c22696d063f282cf8fb830896b6fa073d2c82de141673cde14d35a59ca699e0",
+      "first_path": "mcx19b-implementation-20260914/release-audit-sequence-pair/control/result.xcresult/Data/refs.0~eqHtYGuAAeHUwkCG3oJU2v0EWMFa-fhhU_fOD-zGsbA5wDePstpKL6afIRV_dorlwr_PRUPmOoMnLXFwTWELyg==",
+      "last_path": "mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult/Data/refs.0~8sJ1CyXBzyMlsPpR31QMRPV1tMDMGf2U5uaNbC1SRH0iO9KwrtSCsfMb0WZvLEtNUELAwFyTYv9vWc3rH130mg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-111.json",
+      "files": 1000,
+      "sha256": "2cccb3d5ba4a80c8f6db965f6664c6526f45c760e90204f7f2ea54ecff708bb6",
+      "first_path": "mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult/Data/refs.0~Q3v562o6QwHFQmMzws3D1MKSxz8W8dHcgxsEGXLq_hKVeEx_9pWb0ZyQEy-3GtRlTbqrWw6q1AHp39BqvAvFzQ==",
+      "last_path": "mcx19b-implementation-20260914/no-conclusion-initial-diagnostic.xcresult/Data/data.0~t-ZtA2aFhjEy1_v0yz8BNVOwzGKYl40Aci1qhAdxqepoOFolXoXYgWBLHZH4iuSjR2-2EsfTItCNACLpvmP1nw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-112.json",
+      "files": 1000,
+      "sha256": "58b46acb066ee54c9d000f3980c80bb2d64110e34852acb43acf723974011aa5",
+      "first_path": "mcx19b-implementation-20260914/no-conclusion-initial-diagnostic.xcresult/Data/refs.0~guPWXuI-VryLaEpo3ASTTTHK5TF_GiGEfH9vRK7GpG5hJiSTkLviio9RORuRqxVnS2jqM20p-QDB9gWPbOhk0Q==",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/ACEClientApp.DependencyStaticMetadataFileList"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-113.json",
+      "files": 1000,
+      "sha256": "b1d1d4bd15e7be67a506a1146438415ccb4228fc80a6962106ceeb8ec4c352e6",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Script-F1A2B3C4D5E6F70809101701.sh",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected.xcresult/Data/data.0~bAU8vokLwjgd-JJnj_vj455ls5UDmpX-IVA9Evp9akWTq-12fTIQRbLd96zW4V3Cy5J7W7UWdtTuAGaZfzmzUQ=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-114.json",
+      "files": 1000,
+      "sha256": "c3d0f6c7364f109857ded2b7645d273c15f3fbc43b4a03f87b1854b6cd1e02bc",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/selected.xcresult/Data/data.0~BnHY_-mj-UAjoqHC9bv8AMNigMTRJqbodC3XDI_oNqe6v1U-qlWccWpvYnrhlq-N_zfVThdSvA0pit8SgF3Hdw==",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app/ACEClientApp"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-115.json",
+      "files": 1000,
+      "sha256": "66d6fde0eb6908ef093076e43afd725584c2eb5fef5b22805b8f4676a09f5eb6",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T200230Z-selected-e1d9354e289f/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app/Info.plist",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194130Z-selected-ecd018f79c36/build/CompilationCache.noindex/builtin/v1.1/v9.1989696.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-116.json",
+      "files": 1000,
+      "sha256": "03140acf89138a29015fecab17eb01ec01b9cdbdc5b1e25fb138d52331469bb5",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194130Z-selected-ecd018f79c36/build/CompilationCache.noindex/builtin/v1.1/v9.1992936.leaf",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194459Z-selected-ff65c583223e/selected.xcresult/Data/refs.0~8YYz0iA3Uu7eHEWKKPaVtMCiVXb2QwP8fdyuGLqUKYlGhki15-QmvxpSp6h-UaXOmXSwQufryxLbR2eXO2rqLA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-117.json",
+      "files": 1000,
+      "sha256": "08b60676c0cc7485fdd8a67670ae8317568eb50bc462ab544dfcd76c577e68e8",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194459Z-selected-ff65c583223e/selected.xcresult/Data/data.0~bpk7FfPC-zLfL1l7FN6iOJx9-KggFmr4ndn_Q6V7mpW835JLDbPDzR6-KFH427ss3cmhhei3UDLSceATJBpSCA==",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194459Z-selected-ff65c583223e/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/Network.swiftdeps"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-118.json",
+      "files": 1000,
+      "sha256": "d52dd8e0d341e8d02087be9cbd0f073e5d52fe9f9eeda61e8548b847b0b44159",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194459Z-selected-ff65c583223e/build/Build/Intermediates.noindex/ACEClientApp.build/Debug-iphonesimulator/ACEClientApp.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/selected.xcresult/Data/refs.0~Y-1T2V6E2XSMRiCcwoIlOalH8RXXw5meQG5EsOX7xC16LqneQW0ChPDB3sWOcTTlDJhbs7nssoSS6cwXL6fzYw=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-119.json",
+      "files": 1000,
+      "sha256": "223e24c6c5f9d07d42a6ff489ca3f176f6388e2d56f92b0f0c7f9131bf74cee0",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T202103Z-selected-9ee48641147a/selected.xcresult/Data/refs.0~LPsA1T0qvg58zR8BXrAtU_qdV1U-wFTzvKAL8YFEbaYF4jOyp5EE6D-5SIqR9YUNE9dFN0MjDGvgI0LlBuK3Ig==",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1/selected-failure.json"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-120.json",
+      "files": 1000,
+      "sha256": "548e158cf980bf67dc57cced627e942bc4ec87a032fea3738cd491c2387d1f02",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1/failure.json",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1/selected.xcresult/Data/refs.0~W5Oziul34yOBwC9aIoFfNj-FtDxj9lDySx-IDyK6CzlCuaGGzsdtN88kpG_BDb4u8vJ-mbEGPQQ17PZUdrqctg=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-121.json",
+      "files": 1000,
+      "sha256": "667088d69f702cf0202f6f6d17843b7ee36bac35737751ee9d1945d37f89180c",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1/selected.xcresult/Data/refs.0~6IzStIKyBscDvjVttkGdwEYQpF8mc86YYo_qOZf17BVmoLyv01QF6myDDTZbZva1lnRMxEBO2CokrIXH3Q41pA==",
+      "last_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201526Z-selected-8e1eec07c988/build/ModuleCache.noindex/Accessibility-6YYYP1SOPLPM1P3NEBKAJV03T.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-122.json",
+      "files": 1000,
+      "sha256": "b440ea583b1cd5b8105e1413966111f72c1a84199528728781809904d7dd996a",
+      "first_path": "mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201526Z-selected-8e1eec07c988/build/ModuleCache.noindex/os-AB1OSBO3XR1NMBSGVYGBN23SG.pcm",
+      "last_path": "mcx19b-implementation-20260914/functional-after-fixture-parity/result.xcresult/Data/data.0~BcuX68GIqpHiets0mgnROGgPeQKXrNnY3W2RduyuhaacuEgqLB3CDcpL4Ct4141rJlM6d-0y89kHeK8-XdruUA=="
+    },
+    {
+      "path": "docs/review/access-inventory/mac-123.json",
+      "files": 1000,
+      "sha256": "95f6daa8b2f6c63542245cf259c5f17d63cb251b224f16a1ba2e68fbc7e32a8d",
+      "first_path": "mcx19b-implementation-20260914/functional-after-fixture-parity/result.xcresult/Data/data.0~BIFCG-5YPZtlIZtRIa-IigzCxOMMStchb8Ib81UAAt8aYLyMjpTxJSEsr4e1axvpH4xIAsHx5ZDo0Yyk1wslhA==",
+      "last_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-device-host-observation.json"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-124.json",
+      "files": 1000,
+      "sha256": "6ba70931aa08ca9587f6a324e71b48504a7c81d7a950b7f4385134bcfe97a4eb",
+      "first_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-command.json",
+      "last_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/build/CompilationCache.noindex/builtin/v1.1/v9.1736136.leaf"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-125.json",
+      "files": 1000,
+      "sha256": "a03eccdb56d8da6475137677d11ddc538f4757d9e005b0b37906c475641dbfcc",
+      "first_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/maximum-runs/20260914T233502Z-selected-20ba01fec143/build/CompilationCache.noindex/builtin/v1.1/v9.14696.leaf",
+      "last_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs/20260914T230801Z-selected-156183575705/build/ModuleCache.noindex/_Builtin_stddef-3R8CT1PZY6DJVD29BCEESREL3.pcm"
+    },
+    {
+      "path": "docs/review/access-inventory/mac-126.json",
+      "files": 814,
+      "sha256": "e4f0a8a72162ed0f332246144f9513104e7d2623b0d9c8e78a62750df4a24574",
+      "first_path": "mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs/20260914T230801Z-selected-156183575705/build/ModuleCache.noindex/_Builtin_stdatomic-5U2MUQZJOQC07O3HRFQJVI94A.pcm",
+      "last_path": "mcx19b-archives/failed-pilot-52b212a-20260915T133932Z.tar.gz"
+    }
+  ],
+  "available_text_records": 6328,
+  "note": "Paths resolve from repository root. The chunks preserve every enumerated row; this index avoids one 67 MB JSON document."
+}

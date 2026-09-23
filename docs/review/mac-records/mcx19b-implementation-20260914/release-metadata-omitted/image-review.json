@@ -1,0 +1,43 @@
+{
+  "reviewedAtUTC": "2026-09-14T11:34:07.001162+00:00",
+  "method": "Primary agent inspected each distinct PNG at original resolution through authenticated SSH. Byte-identical files link to the same inspection.",
+  "imageCount": 14,
+  "distinctCount": 6,
+  "groups": {
+    "599c25ec992ea4fb97e52695a75b0e31dd586b1350c199de71c42e421c69d4ec": [
+      "DE8ED008-AE9D-4813-9C30-73C7E6F66436.png",
+      "7935E417-7A24-4148-BD98-078423005C9C.png",
+      "6BD6FEED-1D6E-40F0-9F2C-DC9D4078850C.png",
+      "F9DE6FC8-3DC3-4F97-B367-91D8C29EBE18.png"
+    ],
+    "af3d9920d2e42a34f389a1fe8e09798293b3792f6286a5d4b5315515fa2021d4": [
+      "F7DC0AE6-6882-4667-AE98-74B6B7C70C19.png",
+      "C8279DD3-A8D2-4067-98EC-F4C587B05523.png",
+      "5309E44C-6192-4ACD-9944-4276726ECB97.png"
+    ],
+    "412b7774ab099ed056b439ea94f7e49e6b830c72461e3bee2fdd5359697b7f26": [
+      "A6FA30FA-17C3-4D44-9785-D91721FDE9B6.png",
+      "24FA58C8-2CEB-4F0D-B926-1C2B37988698.png",
+      "77FD5AF8-B2A2-42A3-A9F2-4408D09A585E.png"
+    ],
+    "f608f7e9a087dfdd96080c6b8d41e25efae481d6c7c9dd69a47ba5afd4c437a1": [
+      "42C609B4-5DF2-444B-BE47-39B290911BB4.png"
+    ],
+    "5f36c39aa67a9e23e8180bc74ed675bee2de5aa0fc05e119f91f9e0256d4c599": [
+      "61E43FEC-749C-4598-954E-651A6A98C32E.png",
+      "38CADB10-C17F-4195-A46A-05DFB5218489.png"
+    ],
+    "38a11272131323397fb1419d335962aa46e7dbcf7877471c6a3436360fa621e3": [
+      "5A4116A6-80B8-43C4-BA74-FF9124E99230.png"
+    ]
+  },
+  "observations": [
+    "The test-only light/dark label is absent.",
+    "Release labels and values are readable in the retained default-size captures.",
+    "A viewport boundary cuts partially scrolled rows, as expected for scrolling; this does not establish audit sample-time positions.",
+    "The audit-associated screenshot differs in vertical position from the pre-audit release image.",
+    "Refresh and Sign out remain blue. Rendered font metrics and the relevant audit target remain unconfirmed.",
+    "Copy confirmation is visible."
+  ],
+  "acceptance": "Native contrast failure remains unresolved. Images do not override it."
+}

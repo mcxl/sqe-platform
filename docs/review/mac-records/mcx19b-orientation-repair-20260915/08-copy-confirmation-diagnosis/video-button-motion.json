@@ -1,0 +1,472 @@
+{
+  "error": null,
+  "method": "Pixel rows in x96..<528,y1000..<2500 with more than100 pixels within8 RGB levels of button grey. Video pixels are compressed.",
+  "samples": [
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 200
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 200.99
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.00166666666667
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.02833333333334
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.03833333333333
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.06333333333333
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.07333333333332
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.09666666666666
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.10166666666666
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.13
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.135
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.16166666666666
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.16833333333332
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.18833333333333
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.2
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.22166666666666
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.23333333333332
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.255
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 201.26666666666668
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2488,
+      "videoSeconds": 201.28666666666666
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2460,
+      "videoSeconds": 201.30666666666667
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2431,
+      "videoSeconds": 201.33
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2402,
+      "videoSeconds": 201.33666666666667
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2374,
+      "videoSeconds": 201.36166666666668
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2346,
+      "videoSeconds": 201.36833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2490,
+      "greyButtonTopPixels": 2317,
+      "videoSeconds": 201.38833333333332
+    },
+    {
+      "greyButtonBottomPixels": 2462,
+      "greyButtonTopPixels": 2289,
+      "videoSeconds": 201.4
+    },
+    {
+      "greyButtonBottomPixels": 2434,
+      "greyButtonTopPixels": 2261,
+      "videoSeconds": 201.42333333333335
+    },
+    {
+      "greyButtonBottomPixels": 2407,
+      "greyButtonTopPixels": 2234,
+      "videoSeconds": 201.435
+    },
+    {
+      "greyButtonBottomPixels": 2379,
+      "greyButtonTopPixels": 2206,
+      "videoSeconds": 201.45666666666668
+    },
+    {
+      "greyButtonBottomPixels": 2352,
+      "greyButtonTopPixels": 2179,
+      "videoSeconds": 201.46833333333333
+    },
+    {
+      "greyButtonBottomPixels": 2325,
+      "greyButtonTopPixels": 2152,
+      "videoSeconds": 201.48666666666668
+    },
+    {
+      "greyButtonBottomPixels": 2299,
+      "greyButtonTopPixels": 2126,
+      "videoSeconds": 201.50166666666667
+    },
+    {
+      "greyButtonBottomPixels": 2273,
+      "greyButtonTopPixels": 2100,
+      "videoSeconds": 201.52166666666668
+    },
+    {
+      "greyButtonBottomPixels": 2248,
+      "greyButtonTopPixels": 2075,
+      "videoSeconds": 201.535
+    },
+    {
+      "greyButtonBottomPixels": 2223,
+      "greyButtonTopPixels": 2050,
+      "videoSeconds": 201.55666666666667
+    },
+    {
+      "greyButtonBottomPixels": 2199,
+      "greyButtonTopPixels": 2026,
+      "videoSeconds": 201.56833333333333
+    },
+    {
+      "greyButtonBottomPixels": 2176,
+      "greyButtonTopPixels": 2003,
+      "videoSeconds": 201.58833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2153,
+      "greyButtonTopPixels": 1980,
+      "videoSeconds": 201.60166666666666
+    },
+    {
+      "greyButtonBottomPixels": 2132,
+      "greyButtonTopPixels": 1959,
+      "videoSeconds": 201.62333333333333
+    },
+    {
+      "greyButtonBottomPixels": 2112,
+      "greyButtonTopPixels": 1939,
+      "videoSeconds": 201.635
+    },
+    {
+      "greyButtonBottomPixels": 2093,
+      "greyButtonTopPixels": 1920,
+      "videoSeconds": 201.66166666666666
+    },
+    {
+      "greyButtonBottomPixels": 2075,
+      "greyButtonTopPixels": 1902,
+      "videoSeconds": 201.67
+    },
+    {
+      "greyButtonBottomPixels": 2060,
+      "greyButtonTopPixels": 1887,
+      "videoSeconds": 201.695
+    },
+    {
+      "greyButtonBottomPixels": 2047,
+      "greyButtonTopPixels": 1874,
+      "videoSeconds": 201.705
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 201.72833333333332
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 202.72666666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 202.79166666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 202.85333333333332
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 202.92
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 202.97333333333333
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.485
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.52333333333334
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.535
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.56
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.56666666666666
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.58666666666667
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 203.60166666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.61833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.63333333333333
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.65333333333334
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.66666666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.68666666666667
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.7
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.72166666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.73333333333332
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.75166666666667
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.76666666666668
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.78666666666666
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.8
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.82
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.83333333333334
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.85333333333332
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.86833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.88333333333333
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.9
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.92
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.93333333333334
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.95166666666665
+    },
+    {
+      "greyButtonBottomPixels": 2045,
+      "greyButtonTopPixels": 1872,
+      "videoSeconds": 203.96666666666667
+    },
+    {
+      "greyButtonBottomPixels": 1964,
+      "greyButtonTopPixels": 1791,
+      "videoSeconds": 208.55333333333334
+    },
+    {
+      "greyButtonBottomPixels": 2048,
+      "greyButtonTopPixels": 1875,
+      "videoSeconds": 208.73
+    },
+    {
+      "greyButtonBottomPixels": 2145,
+      "greyButtonTopPixels": 1972,
+      "videoSeconds": 208.905
+    },
+    {
+      "greyButtonBottomPixels": 2230,
+      "greyButtonTopPixels": 2057,
+      "videoSeconds": 209.08833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2428,
+      "greyButtonTopPixels": 1091,
+      "videoSeconds": 209.26666666666668
+    },
+    {
+      "greyButtonBottomPixels": 2499,
+      "greyButtonTopPixels": 2440,
+      "videoSeconds": 209.44
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 209.62333333333333
+    },
+    {
+      "greyButtonBottomPixels": 1625,
+      "greyButtonTopPixels": 1625,
+      "videoSeconds": 209.81
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 209.99
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 210.16833333333332
+    },
+    {
+      "greyButtonBottomPixels": 1126,
+      "greyButtonTopPixels": 1126,
+      "videoSeconds": 210.35833333333332
+    },
+    {
+      "greyButtonBottomPixels": null,
+      "greyButtonTopPixels": null,
+      "videoSeconds": 210.55833333333334
+    },
+    {
+      "greyButtonBottomPixels": 2230,
+      "greyButtonTopPixels": 2057,
+      "videoSeconds": 210.76
+    }
+  ],
+  "status": 2
+}

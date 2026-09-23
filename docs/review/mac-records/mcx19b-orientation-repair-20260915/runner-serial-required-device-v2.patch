@@ -1,0 +1,361 @@
+diff --git a/tools/ace_ios_local.py b/tools/ace_ios_local.py
+index 57c74dd..b5b63e0 100644
+--- a/tools/ace_ios_local.py
++++ b/tools/ace_ios_local.py
+@@ -403,7 +403,7 @@ def restore_boot_state(identifier: str, initial_state: str) -> None:
+         checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
+ 
+ 
+-def restore_simctl_settings(identifier: str, previous: dict[str, str], evidence: Path, device: str) -> list[str]:
++def restore_simctl_settings(identifier: str, previous: dict[str, str], evidence: Path, device: str, phase: str) -> list[str]:
+     failures: list[str] = []
+     records: list[dict[str, object]] = []
+     for setting, value in previous.items():
+@@ -411,8 +411,33 @@ def restore_simctl_settings(identifier: str, previous: dict[str, str], evidence:
+         records.append(result)
+         if result.get("exit") != 0:
+             failures.append(setting)
+-    (evidence / "restoration" / f"{device}-simctl-commands.json").parent.mkdir(parents=True, exist_ok=True)
+-    (evidence / "restoration" / f"{device}-simctl-commands.json").write_text(json.dumps(records, indent=2, sort_keys=True), encoding="utf-8")
++    path = evidence / "restoration" / f"{device}-simctl-{phase}-commands.json"
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(records, indent=2, sort_keys=True), encoding="utf-8")
++    return failures
++
++
++def restore_device_configuration(identifier: str, previous: dict[str, str] | None,
++                                 previous_native_flags: dict[str, object] | None, template: Path,
++                                 evidence: Path, device: str, phase: str) -> list[str]:
++    failures: list[str] = []
++    if previous is not None:
++        failures.extend(f"{device}:{field}" for field in restore_simctl_settings(identifier, previous, evidence, device, phase))
++        try:
++            observed_simctl = current_simctl_settings(identifier)
++            (evidence / "restoration" / f"{device}-simctl-{phase}-readback.json").write_text(
++                json.dumps({"expected": previous, "observed": observed_simctl}, indent=2, sort_keys=True), encoding="utf-8")
++            if observed_simctl != previous:
++                failures.append(f"{device}:simctl-readback")
++        except RunnerError:
++            failures.append(f"{device}:simctl-readback")
++    if previous_native_flags is not None:
++        try:
++            restored = native_flags(identifier, template, evidence, f"{device}-restore-{phase}", {"mode": "set", **previous_native_flags})
++            if restored != previous_native_flags:
++                failures.append(f"{device}:native-flags")
++        except RunnerError:
++            failures.append(f"{device}:native-restore")
+     return failures
+ 
+ 
+@@ -803,38 +828,69 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+     assert isinstance(devices, dict)
+     reused = set() if retained_pilot is None else eligible_pilot_cases(retained_pilot)
+     execution_cases = tuple(case for case in cases if canonical_case(case.device, case.scenario, case.settings.payload()) not in reused)
++    unordered_batch_plan = coverage_batches(execution_cases)
++    batch_plan = tuple(batch for device in DEVICES for batch in unordered_batch_plan if batch[0] == device)
++    final_batch_index = {device: index for index, (device, _settings, _cases) in enumerate(batch_plan, 1)}
+     previous: dict[str, dict[str, str]] = {}
+     previous_native_flags: dict[str, dict[str, object]] = {}
+     initial_boot_states: dict[str, str] = {}
+-    booted_by_runner: set[str] = set()
++    prepared_devices: set[str] = set()
++    batch_restored_devices: set[str] = set()
++    post_boot_restored_devices: set[str] = set()
++    failed_restoration_devices: set[str] = set()
+     restoration_failures: list[str] = []
+     records: list[dict[str, object]] = []
+     primary_error: RunnerError | None = None
+     try:
+-        for device, data in devices.items():
++        for device in DEVICES:
++            if device not in devices:
++                continue
++            data = devices[device]
++            assert isinstance(data, dict)
++            initial_boot_states[device] = simulator_state(str(data["udid"]))
++        for device in DEVICES:
++            if device not in devices or initial_boot_states[device] != "Booted":
++                continue
++            data = devices[device]
+             assert isinstance(data, dict)
+             identifier = str(data["udid"])
+-            initial_boot_states[device] = simulator_state(identifier)
+-            if initial_boot_states[device] == "Shutdown":
+-                # Restore even if boot succeeds but bootstatus later fails.
+-                booted_by_runner.add(device)
+-            boot_required_simulator(identifier, initial_boot_states[device])
+             previous[device] = current_simctl_settings(identifier)
+             previous_native_flags[device] = native_flags(identifier, Path(str(build_record["template"])), evidence, f"{device}-read", {"mode": "read"})
+-        for index, (device, settings, batch_cases) in enumerate(coverage_batches(execution_cases), 1):
++            checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
++        for index, (device, settings, batch_cases) in enumerate(batch_plan, 1):
+             if candidate() != candidate_record:
+                 raise RunnerError("candidate identity changed before native batch")
+             data = devices[device]
+             assert isinstance(data, dict)
+-            native_flags(str(data["udid"]), Path(str(build_record["template"])), evidence, f"{index:03d}-set", {
++            identifier = str(data["udid"])
++            if device not in prepared_devices:
++                boot_required_simulator(identifier, simulator_state(identifier))
++                if device not in previous:
++                    previous[device] = current_simctl_settings(identifier)
++                    previous_native_flags[device] = native_flags(identifier, Path(str(build_record["template"])), evidence, f"{device}-read", {"mode": "read"})
++                prepared_devices.add(device)
++            native_flags(identifier, Path(str(build_record["template"])), evidence, f"{index:03d}-set", {
+                 "mode": "set", "boldText": settings.boldText, "reduceMotion": settings.reduceMotion,
+                 "increaseContrast": settings.increaseContrast, "orientation": settings.orientation,
+             })
+-            records.append(run_batch(device, str(data["udid"]), settings, batch_cases, build_record, evidence, index))
++            records.append(run_batch(device, identifier, settings, batch_cases, build_record, evidence, index))
+             (evidence / "batches" / f"{index:03d}" / "checkpoint.json").write_text(
+                 json.dumps({"status": "passed", "record": records[-1]}, indent=2, sort_keys=True), encoding="utf-8")
+             if candidate() != candidate_record:
+                 raise RunnerError("candidate identity changed after native batch")
++            if index == final_batch_index[device]:
++                device_restore_failures = restore_device_configuration(
++                    identifier, previous[device], previous_native_flags[device], Path(str(build_record["template"])), evidence, device, "batch"
++                )
++                batch_restored_devices.add(device)
++                restoration_failures.extend(device_restore_failures)
++                if device_restore_failures:
++                    failed_restoration_devices.add(device)
++                    raise RunnerError("simulator setting restoration failed: " + ", ".join(restoration_failures))
++                if index == len(batch_plan):
++                    post_boot_restored_devices.add(device)
++                if initial_boot_states[device] == "Shutdown" or index != len(batch_plan):
++                    checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
+     except RunnerError as error:
+         primary_error = error
+         (evidence / "coverage-checkpoint.json").write_text(json.dumps({"status": "failed", "candidate": candidate_record,
+@@ -844,29 +900,33 @@ def run_coverage(cases: tuple[Case, ...], evidence: Path, retained_pilot: dict[s
+             data = devices[device]
+             assert isinstance(data, dict)
+             identifier = str(data["udid"])
+-            before = previous.get(device)
+-            if before is not None:
+-                restoration_failures.extend(f"{device}:{field}" for field in restore_simctl_settings(identifier, before, evidence, device))
+-                try:
+-                    observed_simctl = current_simctl_settings(identifier)
+-                    (evidence / "restoration" / f"{device}-simctl-readback.json").write_text(
+-                        json.dumps({"expected": before, "observed": observed_simctl}, indent=2, sort_keys=True), encoding="utf-8")
+-                    if observed_simctl != before:
+-                        restoration_failures.append(f"{device}:simctl-readback")
+-                except RunnerError:
+-                    restoration_failures.append(f"{device}:simctl-readback")
+-            if device in previous_native_flags:
++            if initial_boot_states[device] == "Shutdown":
++                if device in prepared_devices and device not in batch_restored_devices and device not in failed_restoration_devices:
++                    device_restore_failures = restore_device_configuration(
++                        identifier, previous.get(device), previous_native_flags.get(device), Path(str(build_record["template"])), evidence, device, "failure"
++                    )
++                    batch_restored_devices.add(device)
++                    restoration_failures.extend(device_restore_failures)
++                    if device_restore_failures:
++                        failed_restoration_devices.add(device)
+                 try:
+-                    restored = native_flags(identifier, Path(str(build_record["template"])), evidence, f"{device}-restore", {"mode": "set", **previous_native_flags[device]})
+-                    if restored != previous_native_flags[device]:
+-                        restoration_failures.append(f"{device}:native-flags")
++                    restore_boot_state(identifier, initial_boot_states[device])
+                 except RunnerError:
+-                    restoration_failures.append(f"{device}:native-restore")
+-            if device in booted_by_runner:
++                    restoration_failures.append(f"{device}:boot-state")
++            else:
+                 try:
+-                    restore_boot_state(identifier, initial_boot_states[device])
++                    boot_required_simulator(identifier, simulator_state(identifier))
+                 except RunnerError:
+                     restoration_failures.append(f"{device}:boot-state")
++                    continue
++                if device not in post_boot_restored_devices and device in previous and device not in failed_restoration_devices:
++                    device_restore_failures = restore_device_configuration(
++                        identifier, previous[device], previous_native_flags.get(device), Path(str(build_record["template"])), evidence, device, "post-boot"
++                    )
++                    post_boot_restored_devices.add(device)
++                    restoration_failures.extend(device_restore_failures)
++                    if device_restore_failures:
++                        failed_restoration_devices.add(device)
+     if primary_error is not None:
+         suffix = "" if not restoration_failures else "; restoration failures: " + ", ".join(restoration_failures)
+         (evidence / "coverage-final-failure.json").write_text(json.dumps({"candidate": candidate_record,
+diff --git a/tools/tests/test_ace_ios_local.py b/tools/tests/test_ace_ios_local.py
+index 7e7c318..3ea7f1b 100644
+--- a/tools/tests/test_ace_ios_local.py
++++ b/tools/tests/test_ace_ios_local.py
+@@ -33,6 +33,7 @@ class CoverageMatrixTests(unittest.TestCase):
+         cases = ace.pilot_cases()
+         self.assertEqual(len(cases), 22)
+         self.assertEqual(sum(case.audit for case in cases), 20)
++        self.assertEqual(sum(ace.expected_audit_invocations(case) for case in cases), 36)
+         self.assertEqual([case.scenario for case in cases if not case.audit], ["release", "release"])
+         configuration = lambda case: (case.device, case.scenario, case.settings)
+         self.assertEqual(len({configuration(case) for case in cases}), 22)
+@@ -335,6 +336,167 @@ class PartialBootRecoveryTests(unittest.TestCase):
+             self.assertEqual(failure["restorationFailures"], [])
+ 
+ 
++class SerialDeviceExecutionTests(unittest.TestCase):
++    def run_pilot(self, initial_states, failure_device=None, initial_orientations=None, cases=None):
++        identity = {"commit": "controlled", "status": "clean"}
++        devices = {device: {"udid": device} for device in ace.DEVICES}
++        states = dict(initial_states)
++        events = []
++        settings = {"appearance": "light", "content_size": "large", "increase_contrast": "disabled"}
++        flags = {"boldText": False, "reduceMotion": False, "increaseContrast": False, "orientation": "portrait"}
++
++        initial_orientations = initial_orientations or {}
++        cases = ace.pilot_cases() if cases is None else cases
++        initial_flags = {device: {**flags, "orientation": initial_orientations.get(device, "portrait")}
++                         for device in ace.DEVICES}
++        native_values = {device: dict(value) for device, value in initial_flags.items()}
++
++        def simulator_state(identifier):
++            events.append(("state", identifier))
++            return states[identifier]
++
++        def boot(identifier, initial_state):
++            events.append(("boot", identifier))
++            if states[identifier] == "Shutdown":
++                native_values[identifier]["orientation"] = "portrait"
++            states[identifier] = "Booted"
++            return initial_state == "Shutdown"
++
++        def checked(command, **_kwargs):
++            if command[:3] == ["xcrun", "simctl", "shutdown"]:
++                events.append(("shutdown", command[3]))
++                states[command[3]] = "Shutdown"
++            return {"exit": 0}
++
++        def native_flags(identifier, _template, _evidence, label, request):
++            events.append(("nativeFlags", identifier, label, request["mode"]))
++            if request["mode"] == "read":
++                return dict(native_values[identifier])
++            native_values[identifier] = {key: request[key] for key in flags}
++            return dict(native_values[identifier])
++
++        def run_batch(device, _identifier, _settings, _cases, _build, _evidence, index):
++            events.append(("batch", device, index))
++            (evidence / "batches" / f"{index:03d}").mkdir(parents=True, exist_ok=True)
++            if device == failure_device:
++                raise ace.RunnerError("first device native failure")
++            return {"device": device, "nativeTestCount": 1, "caseRecords": []}
++
++        with tempfile.TemporaryDirectory() as directory:
++            evidence = Path(directory)
++            (evidence / "restoration").mkdir()
++            with patch.object(ace, "preflight", return_value={"devices": devices}), \
++                 patch.object(ace, "candidate", return_value=identity), \
++                 patch.object(ace, "build", return_value={"template": "unused"}), \
++                 patch.object(ace, "simulator_state", side_effect=simulator_state), \
++                 patch.object(ace, "boot_required_simulator", side_effect=boot), \
++                 patch.object(ace, "checked", side_effect=checked), \
++                 patch.object(ace, "current_simctl_settings", return_value=settings), \
++                 patch.object(ace, "native_flags", side_effect=native_flags), \
++                 patch.object(ace, "restore_simctl_settings", side_effect=lambda identifier, _previous, _evidence, _device, phase: events.append(("restoreSettings", identifier, phase)) or []), \
++                 patch.object(ace, "run_batch", side_effect=run_batch):
++                if failure_device is None:
++                    result = ace.run_coverage(cases, evidence)
++                else:
++                    with self.assertRaisesRegex(ace.RunnerError, "first device native failure"):
++                        ace.run_coverage(cases, evidence)
++                    result = None
++        return events, states, result, native_values
++
++    def test_runs_one_required_device_before_booting_the_next(self):
++        events, states, result, _native_values = self.run_pilot({device: "Shutdown" for device in ace.DEVICES})
++        first_iphone17_batch = next(index for index, event in enumerate(events) if event[0] == "batch" and event[1] == "iPhone 17")
++        pro_max_boot = next(index for index, event in enumerate(events) if event == ("boot", "iPhone 17 Pro Max"))
++        iphone17_shutdown = next(index for index, event in enumerate(events) if event == ("shutdown", "iPhone 17"))
++        self.assertLess(first_iphone17_batch, pro_max_boot)
++        self.assertLess(iphone17_shutdown, pro_max_boot)
++        self.assertEqual(states, {device: "Shutdown" for device in ace.DEVICES})
++        self.assertEqual(result["caseCount"], 22)
++        self.assertEqual(sum(ace.expected_audit_invocations(case) for case in ace.pilot_cases()), 36)
++
++    def test_full_plan_finishes_one_device_before_starting_the_next(self):
++        events, states, result, _native_values = self.run_pilot(
++            {device: "Shutdown" for device in ace.DEVICES}, cases=ace.coverage_cases()
++        )
++        batch_devices = [event[1] for event in events if event[0] == "batch"]
++        self.assertEqual(batch_devices, sorted(batch_devices, key=ace.DEVICES.index))
++        pro_max_boot = next(index for index, event in enumerate(events) if event == ("boot", "iPhone 17 Pro Max"))
++        last_iphone17_batch = max(index for index, event in enumerate(events) if event[0] == "batch" and event[1] == "iPhone 17")
++        self.assertLess(last_iphone17_batch, pro_max_boot)
++        self.assertEqual(states, {device: "Shutdown" for device in ace.DEVICES})
++        self.assertEqual(result["caseCount"], len(ace.coverage_cases()))
++
++    def test_parks_initially_booted_idle_device_and_restores_boot_states(self):
++        events, states, _result, native_values = self.run_pilot({device: "Booted" for device in ace.DEVICES},
++                                                                  initial_orientations={device: "landscape" for device in ace.DEVICES})
++        first_iphone17_batch = next(index for index, event in enumerate(events) if event[0] == "batch" and event[1] == "iPhone 17")
++        pro_max_shutdown = next(index for index, event in enumerate(events) if event == ("shutdown", "iPhone 17 Pro Max"))
++        self.assertLess(pro_max_shutdown, first_iphone17_batch)
++        pro_max_native_read = next(index for index, event in enumerate(events) if event == ("nativeFlags", "iPhone 17 Pro Max", "iPhone 17 Pro Max-read", "read"))
++        self.assertLess(pro_max_native_read, pro_max_shutdown)
++        self.assertEqual(states, {device: "Booted" for device in ace.DEVICES})
++        expected_flags = {"boldText": False, "reduceMotion": False, "increaseContrast": False, "orientation": "landscape"}
++        self.assertEqual(native_values, {device: dict(expected_flags) for device in ace.DEVICES})
++
++    def test_uses_unique_native_restore_evidence_labels(self):
++        events, _states, _result, _native_values = self.run_pilot(
++            {device: "Booted" for device in ace.DEVICES}, initial_orientations={device: "landscape" for device in ace.DEVICES}
++        )
++        restore_labels = [event[2] for event in events if event[0] == "nativeFlags" and "-restore-" in event[2]]
++        self.assertEqual(len(restore_labels), len(set(restore_labels)))
++        self.assertIn("iPhone 17-restore-batch", restore_labels)
++        self.assertIn("iPhone 17-restore-post-boot", restore_labels)
++        self.assertIn("iPhone 17 Pro Max-restore-batch", restore_labels)
++        simctl_labels = [(event[1], event[2]) for event in events if event[0] == "restoreSettings"]
++        self.assertEqual(len(simctl_labels), len(set(simctl_labels)))
++        self.assertIn(("iPhone 17", "batch"), simctl_labels)
++        self.assertIn(("iPhone 17", "post-boot"), simctl_labels)
++
++    def test_simctl_restoration_evidence_includes_phase(self):
++        previous = {"appearance": "light", "content_size": "large", "increase_contrast": "disabled"}
++        with tempfile.TemporaryDirectory() as directory:
++            evidence = Path(directory)
++            with patch.object(ace, "command", return_value={"exit": 0}), \
++                 patch.object(ace, "current_simctl_settings", return_value=previous):
++                self.assertEqual(ace.restore_device_configuration("test-udid", previous, None, Path("unused"), evidence, "iPhone 17", "batch"), [])
++                self.assertEqual(ace.restore_device_configuration("test-udid", previous, None, Path("unused"), evidence, "iPhone 17", "post-boot"), [])
++            names = {path.name for path in (evidence / "restoration").iterdir()}
++        self.assertEqual(names, {
++            "iPhone 17-simctl-batch-commands.json", "iPhone 17-simctl-batch-readback.json",
++            "iPhone 17-simctl-post-boot-commands.json", "iPhone 17-simctl-post-boot-readback.json",
++        })
++
++    def test_records_all_initial_boot_states_before_parking(self):
++        events, _states, _result, _native_values = self.run_pilot({device: "Booted" for device in ace.DEVICES})
++        first_shutdown = next(index for index, event in enumerate(events) if event[0] == "shutdown")
++        initial_state_reads = [index for index, event in enumerate(events) if event[0] == "state"][:len(ace.DEVICES)]
++        self.assertEqual(len(initial_state_reads), len(ace.DEVICES))
++        self.assertTrue(all(index < first_shutdown for index in initial_state_reads))
++
++    def test_first_device_failure_does_not_start_the_second_device(self):
++        events, states, result, _native_values = self.run_pilot({device: "Shutdown" for device in ace.DEVICES}, failure_device="iPhone 17")
++        self.assertIsNone(result)
++        self.assertFalse(any(event[0] in {"boot", "nativeFlags", "batch"} and event[1] == "iPhone 17 Pro Max" for event in events))
++        self.assertEqual(states, {device: "Shutdown" for device in ace.DEVICES})
++
++    def test_mixed_boot_state_restores_landscape_after_final_boot(self):
++        initial_states = {"iPhone 17": "Shutdown", "iPhone 17 Pro Max": "Booted"}
++        _events, states, _result, native_values = self.run_pilot(
++            initial_states, initial_orientations={"iPhone 17 Pro Max": "landscape"}
++        )
++        self.assertEqual(states, initial_states)
++        self.assertEqual(native_values["iPhone 17 Pro Max"]["orientation"], "landscape")
++
++    def test_first_device_failure_restores_parked_landscape_device_after_final_boot(self):
++        initial_states = {"iPhone 17": "Shutdown", "iPhone 17 Pro Max": "Booted"}
++        events, states, result, native_values = self.run_pilot(
++            initial_states, failure_device="iPhone 17", initial_orientations={"iPhone 17 Pro Max": "landscape"}
++        )
++        self.assertIsNone(result)
++        self.assertFalse(any(event[0] == "batch" and event[1] == "iPhone 17 Pro Max" for event in events))
++        self.assertEqual(states, initial_states)
++        self.assertEqual(native_values["iPhone 17 Pro Max"]["orientation"], "landscape")
++
+ class CommandAndResourceEvidenceTests(unittest.TestCase):
+     def full_gate_fixture(self, root: Path):
+         candidate = {"commit": "candidate", "status": "clean"}

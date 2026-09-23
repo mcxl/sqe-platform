@@ -1,0 +1,18 @@
+{
+  "UTC": "2026-09-15T13:24:14.871210+00:00",
+  "candidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "parent": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "patchSha256": "e1ce54c8f569bcbee896017e2d88bf094f88bd996047013f1a86396eda4d629b",
+  "changedFiles": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+  ],
+  "primaryDiff": "complete inspected",
+  "checks": [
+    "Swift parse passed",
+    "diff check passed",
+    "actual extracted decision policy passed18 boundaries both desired values"
+  ],
+  "limitation": "Policy checks do not prove native delivery. Apple missed-input cause remains unresolved.",
+  "native": "pending",
+  "correctionAttempt": 1
+}

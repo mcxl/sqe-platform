@@ -1,0 +1,9 @@
+{
+  "question": "Does contrast alone reproduce the post-scroll nodes before the unchanged full audit?",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+  "test_sha256": "aeeee9381dc99a3c978d8879aa353a13434ea3bdffd3b4485976535b0b9bc2b7",
+  "runfile_sha256": "3a395333e8a3943ee88af2a6a419e860e72705e97077eaddceac027618d3a1f6",
+  "expected": "initial all audit then post-scroll contrast then unchanged all audit; retain every native failure",
+  "app_source_change": false,
+  "classification": "diagnostic only; not final acceptance"
+}

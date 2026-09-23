@@ -1,0 +1,175 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/derived-diagnostic/Build/Products/no-conclusion-contrast-diagnostic.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=2EB0863C-470E-467D-A0C6-CD216DA70C67" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300
+
+2026-09-14 17:24:21.156 xcodebuild[58549:1693133] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult
+
+2026-09-14 17:24:21.173 xcodebuild[58549:1693133] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:24:22.452 xcodebuild[58549:1693133] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:24:30.311440+1000 ACEClientAppUITests-Runner[58565:1693661] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 17:24:34.885.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 17:24:34.888.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 17:24:34.890.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit]' started.
+    t =     0.01s Start Test at 2026-09-14 17:24:34.905
+    t =     0.44s Set Up
+    t =     0.48s Open com.example.aceclientapp
+    t =     0.48s     Launch com.example.aceclientapp
+2026-09-14 17:24:35.568 xcodebuild[58549:1693133] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 17:24:35.568 xcodebuild[58549:1693133] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.90s         Setting up automation session
+    t =    10.66s         Wait for com.example.aceclientapp to idle
+    t =    15.50s Checking existence of `"No conclusion is available." StaticText`
+    t =    16.09s Get all elements bound by index for: Descendants matching type Button
+    t =    16.26s Find the Button (Element at index 0)
+    t =    16.52s Find the "Copy Engagement name" Button
+    t =    16.69s Find the "Copy Engagement name" Button
+    t =    16.83s Find the Button (Element at index 1)
+    t =    17.01s Find the "Copy Review status" Button
+    t =    17.16s Find the "Copy Review status" Button
+    t =    17.31s Find the Button (Element at index 2)
+    t =    17.62s Find the "Copy Release version" Button
+    t =    17.76s Find the "Copy Release version" Button
+    t =    17.88s Find the Button (Element at index 3)
+    t =    18.10s Find the "Copy Published date and time" Button
+    t =    18.25s Find the "Copy Published date and time" Button
+    t =    18.39s Find the Button (Element at index 4)
+    t =    18.55s Find the Button (Element at index 5)
+    t =    18.70s Find the Button (Element at index 6)
+    t =    18.95s Find the "Copy Action description" Button
+    t =    19.10s Find the "Copy Action description" Button
+    t =    19.24s Find the Button (Element at index 7)
+    t =    19.42s Find the "Copy Action owner" Button
+    t =    19.55s Find the "Copy Action owner" Button
+    t =    19.69s Find the Button (Element at index 8)
+    t =    19.91s Find the "Copy Action target date" Button
+    t =    20.06s Find the "Copy Action target date" Button
+    t =    20.20s Find the Button (Element at index 9)
+    t =    20.37s Find the Target Application 'com.example.aceclientapp'
+    t =    22.11s Added attachment named 'Controlled state — noConclusion — initial-audit'
+    t =    29.90s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    30.98s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    30.98s         Checking existence of `ScrollView (First Match)`
+    t =    31.02s Checking existence of `"No conclusion is available." StaticText`
+    t =    31.24s Find the "No conclusion is available." StaticText
+    t =    31.53s Find the ScrollView (First Match)
+    t =    31.59s Checking existence of `"No conclusion is available." StaticText`
+    t =    31.83s Find the "No conclusion is available." StaticText
+    t =    32.12s Press ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    32.12s     Wait for com.example.aceclientapp to idle
+    t =    32.13s     Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    32.19s     Check for interrupting elements affecting ScrollView
+    t =    32.37s     Synthesize event
+    t =    32.38s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    32.46s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    32.54s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    32.64s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    32.78s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    33.81s     Wait for com.example.aceclientapp to idle
+    t =    33.85s Checking existence of `"No conclusion is available." StaticText`
+    t =    34.07s Find the "No conclusion is available." StaticText
+    t =    34.39s Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    34.45s Checking existence of `"No conclusion is available." StaticText`
+    t =    34.72s Find the "No conclusion is available." StaticText
+    t =    34.98s Press ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {370.0, 709.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    34.98s     Wait for com.example.aceclientapp to idle
+    t =    35.00s     Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    35.05s     Check for interrupting elements affecting ScrollView
+    t =    35.21s     Synthesize event
+    t =    35.22s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    35.38s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    35.52s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    35.63s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    35.77s         Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    36.80s     Wait for com.example.aceclientapp to idle
+    t =    37.19s Checking existence of `"No conclusion is available." StaticText`
+    t =    37.45s Find the "No conclusion is available." StaticText
+    t =    37.76s Find the "No conclusion is available." StaticText
+    t =    38.01s Find the ScrollView at {{16.0, 114.3}, {370.0, 709.7}}
+    t =    38.06s Find the Target Application 'com.example.aceclientapp'
+    t =    38.72s Added attachment named 'Controlled state — noConclusion — light'
+    t =    49.15s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359509168.140)
+    t =    49.33s Find the "Copy" StaticText
+    t =    49.49s Find the "Copy" StaticText
+    t =    49.65s Find the "Copy" StaticText
+    t =    49.80s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58.000000000000028,"width":93,"x":277,"y":137.33333333333331},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    49.94s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359509168.140)
+    t =    50.06s Checking existence of `"Copy" StaticText`
+    t =    50.18s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+    t =    50.72s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359515312.143)
+    t =    50.84s Find the "Copy" StaticText
+    t =    51.09s Find the "Copy" StaticText
+    t =    51.34s Find the "Copy" StaticText
+    t =    51.50s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":57.999999999999972,"width":93,"x":277,"y":207.33333333333334},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    51.66s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359515312.143)
+    t =    51.78s Checking existence of `"Copy" StaticText`
+    t =    51.89s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+    t =    52.11s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359521456.146)
+    t =    52.30s Find the "Copy" StaticText
+    t =    52.42s Find the "Copy" StaticText
+    t =    52.53s Find the "Copy" StaticText
+    t =    52.68s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":277,"y":393.66666666666657},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    52.84s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359521456.146)
+    t =    52.97s Checking existence of `"Copy" StaticText`
+    t =    53.09s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+    t =    53.28s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359527600.149)
+    t =    53.40s Find the "Copy" StaticText
+    t =    53.52s Find the "Copy" StaticText
+    t =    53.64s Find the "Copy" StaticText
+    t =    53.77s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":57.999999999999943,"width":93,"x":277,"y":463.66666666666657},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    53.90s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359527600.149)
+    t =    54.09s Checking existence of `"Copy" StaticText`
+    t =    54.19s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+    t =    54.37s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359533744.152)
+    t =    54.59s Find the "Copy" StaticText
+    t =    54.81s Find the "Copy" StaticText
+    t =    54.96s Find the "Copy" StaticText
+    t =    55.08s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58.000000000000114,"width":93,"x":277,"y":533.66666666666652},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    55.19s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359533744.152)
+    t =    55.30s Checking existence of `"Copy" StaticText`
+    t =    55.46s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+    t =    55.75s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359539888.155)
+    t =    55.89s Find the "Copy" StaticText
+    t =    56.01s Find the "Copy" StaticText
+    t =    56.13s Find the "Copy" StaticText
+    t =    56.32s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":277,"y":603.66666666666663},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"noConclusion"}
+    t =    56.49s Find the Any (Descendant with identity binding to AX element pid: 58590, elementOrHash.elementID: 4359539888.155)
+    t =    56.63s Checking existence of `"Copy" StaticText`
+    t =    56.74s Find the "Copy" StaticText
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Contrast failed
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 2)","compactDescription":"Potentially inaccessible text","detailedDescription":"This element appears to display text that should be represented using the accessibility API.","element":{"identifier":"","label":"","type":"unavailable"},"scenario":"noConclusion"}
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Potentially inaccessible text
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 2)","compactDescription":"Potentially inaccessible text","detailedDescription":"This element appears to display text that should be represented using the accessibility API.","element":{"identifier":"","label":"","type":"unavailable"},"scenario":"noConclusion"}
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:182: error: -[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit] : Potentially inaccessible text
+    t =    56.92s Terminate com.example.aceclientapp:58590
+    t =    58.05s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit]' failed (58.623 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 17:25:33.525.
+	 Executed 1 test, with 8 failures (0 unexpected) in 58.623 (58.635) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 17:25:33.527.
+	 Executed 1 test, with 8 failures (0 unexpected) in 58.623 (58.638) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 17:25:33.529.
+	 Executed 1 test, with 8 failures (0 unexpected) in 58.623 (58.644) seconds
+2026-09-14 17:26:35.630 xcodebuild[58549:1693133] [MT] IDETestOperationsObserverDebug: 133.160 elapsed -- Testing started completed.
+2026-09-14 17:26:35.630 xcodebuild[58549:1693133] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 17:26:35.631 xcodebuild[58549:1693133] [MT] IDETestOperationsObserverDebug: 133.160 sec, +133.160 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-contrast-diagnostic.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

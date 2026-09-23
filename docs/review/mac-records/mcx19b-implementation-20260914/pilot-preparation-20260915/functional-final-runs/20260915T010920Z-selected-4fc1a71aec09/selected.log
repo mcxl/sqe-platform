@@ -1,0 +1,170 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppTests/ACEClientAppTests/testValidReleasePassesValidation" "-only-testing:ACEClientAppTests/ACEClientAppTests/testOnlyDefinedEmptyResponsePassesValidation" "-only-testing:ACEClientAppTests/ACEClientAppTests/testMissingTopLevelNestedAndActionsFieldsFailDecoding" "-only-testing:ACEClientAppTests/ACEClientAppTests/testActionOrderAndUnknownFieldsRemainSafe" "-only-testing:ACEClientAppTests/ACEClientAppTests/testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators" "-only-testing:ACEClientAppTests/ACEClientAppTests/testClipboardWriteOptionsRemainLocalForFiveMinutes" "-only-testing:ACEClientAppTests/ACEClientAppTests/testInvalidReleaseValuesFailClosed" "-only-testing:ACEClientAppTests/ACEClientAppTests/testOriginRequiresAbsoluteHTTPSRoot" "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache" "-only-testing:ACEClientAppTests/ACEClientAppTests/testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse" "-only-testing:ACEClientAppTests/ACEClientAppTests/testDeletionUsesServiceAndAllSynchronisationClasses" "-only-testing:ACEClientAppTests/ACEClientAppTests/testExactReadNotFoundAfterInventoryIsUnsafe" "-only-testing:ACEClientAppTests/ACEClientAppTests/testExactReadFailureAfterInventoryIsControlledReadFailure" "-only-testing:ACEClientAppTests/ACEClientAppTests/testInvalidReturnedAttributeEntersUnsafeRecovery" "-only-testing:ACEClientAppTests/ACEClientAppTests/testSaveAddsExactGenericPasswordContract" "-only-testing:ACEClientAppTests/ACEClientAppTests/testDuplicateAddUpdatesExactAccountOnly" "-only-testing:ACEClientAppTests/ACEClientAppTests/testSameAccountUpdateFailureDeletesAllServiceItems" "-only-testing:ACEClientAppTests/ACEClientAppTests/testDifferentAccountDeletesBeforeAddingReplacement" "-only-testing:ACEClientAppTests/ACEClientAppTests/testRepositoryMapsDeniedWithoutJSONContentType" "-only-testing:ACEClientAppTests/ACEClientAppTests/testRepositoryRejectsWrongSuccessContentType" "-only-testing:ACEClientAppTests/ACEClientAppTests/testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery" "-only-testing:ACEClientAppTests/ACEClientAppTests/testStateMapsUnavailableAndSignOutDeletionFailure" "-only-testing:ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueHasUniqueIdentifiers" "-only-testing:ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testCatalogueMethodsExist" "-only-testing:ACEClientAppTests/AcceptanceEvidenceCatalogueTests/testPendingRuntimePlanHasUniqueStructuredEntries" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseValidation" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testDecodingFailsClosed" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testRequestConstruction" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testOriginValidation" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testRedirectDelegate" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testTrustHandlingSourceInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testRepositoryResponseMapping" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSessionConfiguration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainLifecycle" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testComposedCredentialStoreSessionLifecycle" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainQueries" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSerialisation" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainSourceInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testKeychainValidation" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testStateGeneration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testStateErrorHandling" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testStateMatrix" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testCopyControlsUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testClipboardContract" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testScreenshotPolicyInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSceneDelegateTest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacyCoverUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testPrivacySourceInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testEvidencePrivacyInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSignInUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSafeInterfaceUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testReleaseScreenUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testFixtureInspection" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityLabelsUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testVoiceOverOrderUITest" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testServerCompatibilityExternal" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testAccessibilityAuditPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testBoldTextPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testContrastPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testDynamicTypePending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testLayoutMatrixPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testManualAppSwitcherPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testManualVoiceOverPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testPhysicalDevicePending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testReduceMotionPending" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSimulatorMatrixPending" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xcresult
+
+Test Suite 'Selected tests' started at 2026-09-15 11:11:53.206.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-15 11:11:53.208.
+Test Suite 'ACEClientAppTests' started at 2026-09-15 11:11:53.210.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators]' passed (0.012 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testActionOrderAndUnknownFieldsRemainSafe]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testActionOrderAndUnknownFieldsRemainSafe]' passed (0.056 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testClipboardWriteOptionsRemainLocalForFiveMinutes]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testClipboardWriteOptionsRemainLocalForFiveMinutes]' passed (0.027 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDeletionUsesServiceAndAllSynchronisationClasses]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDeletionUsesServiceAndAllSynchronisationClasses]' passed (0.012 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDifferentAccountDeletesBeforeAddingReplacement]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDifferentAccountDeletesBeforeAddingReplacement]' passed (0.115 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDuplicateAddUpdatesExactAccountOnly]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testDuplicateAddUpdatesExactAccountOnly]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testExactReadFailureAfterInventoryIsControlledReadFailure]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testExactReadFailureAfterInventoryIsControlledReadFailure]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testExactReadNotFoundAfterInventoryIsUnsafe]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testExactReadNotFoundAfterInventoryIsUnsafe]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInvalidReleaseValuesFailClosed]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInvalidReleaseValuesFailClosed]' passed (0.022 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInvalidReturnedAttributeEntersUnsafeRecovery]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInvalidReturnedAttributeEntersUnsafeRecovery]' passed (0.022 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testInventoryUsesAllSynchronisationClassesAndExactReadUsesFalse]' passed (0.020 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testMissingTopLevelNestedAndActionsFieldsFailDecoding]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testMissingTopLevelNestedAndActionsFieldsFailDecoding]' passed (0.008 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testOnlyDefinedEmptyResponsePassesValidation]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testOnlyDefinedEmptyResponsePassesValidation]' passed (0.008 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testOriginRequiresAbsoluteHTTPSRoot]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testOriginRequiresAbsoluteHTTPSRoot]' passed (0.009 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRepositoryMapsDeniedWithoutJSONContentType]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRepositoryMapsDeniedWithoutJSONContentType]' passed (0.010 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRepositoryRejectsWrongSuccessContentType]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRepositoryRejectsWrongSuccessContentType]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testSameAccountUpdateFailureDeletesAllServiceItems]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testSameAccountUpdateFailureDeletesAllServiceItems]' passed (0.061 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testSaveAddsExactGenericPasswordContract]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testSaveAddsExactGenericPasswordContract]' passed (0.014 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testStateMapsUnavailableAndSignOutDeletionFailure]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testStateMapsUnavailableAndSignOutDeletionFailure]' passed (0.015 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testStateUsesControlledStoreForNoCredentialAndUnsafeRecovery]' passed (0.014 seconds).
+Test Case '-[ACEClientAppTests.ACEClientAppTests testValidReleasePassesValidation]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testValidReleasePassesValidation]' passed (0.016 seconds).
+Test Suite 'ACEClientAppTests' passed at 2026-09-15 11:11:53.763.
+	 Executed 22 tests, with 0 failures (0 unexpected) in 0.474 (0.554) seconds
+Test Suite 'AcceptanceEvidenceCatalogueTests' started at 2026-09-15 11:11:53.765.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testCatalogueHasUniqueIdentifiers]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testCatalogueHasUniqueIdentifiers]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testCatalogueMethodsExist]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testCatalogueMethodsExist]' passed (0.024 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testPendingRuntimePlanHasUniqueStructuredEntries]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceCatalogueTests testPendingRuntimePlanHasUniqueStructuredEntries]' passed (0.025 seconds).
+Test Suite 'AcceptanceEvidenceCatalogueTests' passed at 2026-09-15 11:11:53.842.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.054 (0.077) seconds
+Test Suite 'AcceptanceEvidenceContractTests' started at 2026-09-15 11:11:53.843.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testAccessibilityAuditPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testAccessibilityAuditPending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testAccessibilityLabelsUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testAccessibilityLabelsUITest]' passed (0.057 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testBoldTextPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testBoldTextPending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testClipboardContract]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testClipboardContract]' passed (0.038 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testComposedCredentialStoreSessionLifecycle]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testComposedCredentialStoreSessionLifecycle]' passed (0.019 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testContrastPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testContrastPending]' passed (0.004 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testCopyControlsUITest]' passed (0.039 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testDecodingFailsClosed]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testDecodingFailsClosed]' passed (0.013 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testDynamicTypePending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testDynamicTypePending]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testEvidencePrivacyInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testEvidencePrivacyInspection]' passed (0.571 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testFixtureInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testFixtureInspection]' passed (0.019 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainLifecycle]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainLifecycle]' passed (0.022 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainQueries]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainQueries]' passed (0.011 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainSerialisation]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainSerialisation]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainSourceInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainSourceInspection]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainValidation]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testKeychainValidation]' passed (0.007 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testLayoutMatrixPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testLayoutMatrixPending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testManualAppSwitcherPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testManualAppSwitcherPending]' passed (0.007 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testManualVoiceOverPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testManualVoiceOverPending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testOriginValidation]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testOriginValidation]' passed (0.015 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPhysicalDevicePending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPhysicalDevicePending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPrivacyCoverUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPrivacyCoverUITest]' passed (0.018 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPrivacySourceInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testPrivacySourceInspection]' passed (0.097 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' passed (0.198 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRedirectDelegate]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRedirectDelegate]' passed (0.084 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReduceMotionPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReduceMotionPending]' passed (0.007 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReleaseScreenUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReleaseScreenUITest]' passed (0.023 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReleaseValidation]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testReleaseValidation]' passed (0.126 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRepositoryResponseMapping]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRepositoryResponseMapping]' passed (0.019 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRequestConstruction]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testRequestConstruction]' passed (0.004 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSafeInterfaceUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSafeInterfaceUITest]' passed (0.034 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSceneDelegateTest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSceneDelegateTest]' passed (0.056 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testScreenshotPolicyInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testScreenshotPolicyInspection]' passed (0.027 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testServerCompatibilityExternal]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testServerCompatibilityExternal]' passed (0.006 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSessionConfiguration]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSessionConfiguration]' passed (0.007 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSignInUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSignInUITest]' passed (0.037 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSimulatorMatrixPending]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSimulatorMatrixPending]' passed (0.005 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' passed (0.068 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateErrorHandling]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateErrorHandling]' passed (0.030 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateGeneration]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateGeneration]' passed (0.018 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateMatrix]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testStateMatrix]' passed (0.181 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testTrustHandlingSourceInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testTrustHandlingSourceInspection]' passed (0.026 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testVoiceOverOrderUITest]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testVoiceOverOrderUITest]' passed (0.022 seconds).
+Test Suite 'AcceptanceEvidenceContractTests' passed at 2026-09-15 11:11:55.933.
+	 Executed 43 tests, with 0 failures (0 unexpected) in 1.956 (2.089) seconds
+Test Suite 'ACEClientAppTests.xctest' passed at 2026-09-15 11:11:55.943.
+	 Executed 68 tests, with 0 failures (0 unexpected) in 2.483 (2.734) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 11:11:55.949.
+	 Executed 68 tests, with 0 failures (0 unexpected) in 2.483 (2.743) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/functional-final-runs/20260915T010920Z-selected-4fc1a71aec09/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 11:11:45.411 xcodebuild[88881:3594386] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:11:45.493 xcodebuild[88881:3594386] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:11:46.690 xcodebuild[88881:3594386] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:11:56.309 xcodebuild[88881:3594386] [MT] IDETestOperationsObserverDebug: 9.591 elapsed -- Testing started completed.
+2026-09-15 11:11:56.309 xcodebuild[88881:3594386] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 11:11:56.309 xcodebuild[88881:3594386] [MT] IDETestOperationsObserverDebug: 9.591 sec, +9.591 sec -- end

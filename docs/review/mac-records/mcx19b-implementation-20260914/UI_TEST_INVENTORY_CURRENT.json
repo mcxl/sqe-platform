@@ -1,0 +1,23 @@
+{
+  "sourceFile": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "sourceSha256": "4d9a0f2e0cdae86c6d1397ef995674144c45e57d4a2d2d3aabd0028b38149791",
+  "selectors": [
+    "testCoverageBatch",
+    "testConfigureAccessibilitySettings",
+    "testAllReleaseClipboardValuesPasteExactly",
+    "testBothAppearances",
+    "testLaunchShowsSafeConfigurationState",
+    "testSignInPasswordFieldIsSecure",
+    "testFictionalReleaseHasApprovedCopyControls",
+    "testClippingNoActionsStandaloneAudit",
+    "testClippingNoConclusionStandaloneAudit",
+    "testAllControlledScenariosShowExpectedStateAndAudit",
+    "testReleaseOrientationHooks",
+    "testNormalDeviceSettings"
+  ],
+  "newFunctionalSelector": "testAllReleaseClipboardValuesPasteExactly",
+  "newSelectorCount": 1,
+  "fieldChecksWithinNewSelector": 11,
+  "acceptedCoverageCases": 0,
+  "completeRegressionExecution": "pending"
+}

@@ -1,0 +1,14 @@
+test_first_device_failure_does_not_start_the_second_device (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_first_device_failure_does_not_start_the_second_device) ... ok
+test_first_device_failure_restores_parked_landscape_device_after_final_boot (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_first_device_failure_restores_parked_landscape_device_after_final_boot) ... ok
+test_full_plan_finishes_one_device_before_starting_the_next (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_full_plan_finishes_one_device_before_starting_the_next) ... ok
+test_mixed_boot_state_restores_landscape_after_final_boot (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_mixed_boot_state_restores_landscape_after_final_boot) ... ok
+test_parks_initially_booted_idle_device_and_restores_boot_states (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_parks_initially_booted_idle_device_and_restores_boot_states) ... ok
+test_records_all_initial_boot_states_before_parking (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_records_all_initial_boot_states_before_parking) ... ok
+test_runs_one_required_device_before_booting_the_next (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_runs_one_required_device_before_booting_the_next) ... ok
+test_simctl_restoration_evidence_includes_phase (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_simctl_restoration_evidence_includes_phase) ... ok
+test_uses_unique_native_restore_evidence_labels (tools.tests.test_ace_ios_local.SerialDeviceExecutionTests.test_uses_unique_native_restore_evidence_labels) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.081s
+
+OK

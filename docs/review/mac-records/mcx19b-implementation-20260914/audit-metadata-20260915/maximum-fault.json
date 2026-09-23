@@ -1,0 +1,31 @@
+{
+  "test": "ACEClientAppUITests/ACEClientAppUITests/testNormalDeviceSettings",
+  "sourceLine": 837,
+  "expected": "Unrestricted post-scroll audit passes, all eleven values visible at verified maximum system text size.",
+  "actual": "One native Contrast failed for published date value. Initial audit and all field visibility assertions passed.",
+  "nativeExit": 65,
+  "runnerExit": 2,
+  "issues": [
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast failed",
+      "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
+      "element": {
+        "frame": {
+          "height": 125.33333333333348,
+          "width": 352.6666666666667,
+          "x": 32,
+          "y": 824.333333333333
+        },
+        "identifier": "",
+        "label": "2026-08-24T10:15:30Z",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "release-normal-device-settings"
+    }
+  ],
+  "run": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/maximum-runs/20260914T222458Z-selected-2ffefefebf5b",
+  "settingsRestored": true,
+  "classification": "Native contrast failure; application-versus-audit mechanism unresolved.",
+  "mainSourceUnchanged": true
+}

@@ -1,0 +1,40 @@
+.........EF.............................
+======================================================================
+ERROR: test_matched_native_accessibility_failure_is_retained (tools.tests.test_ace_ios_local.DiscoveryRegressionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py", line 653, in discovery_native_result
+    text = log.read_text(encoding="utf-8")
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1256, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1242, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1110, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/var/folders/0s/nc46sxvn05x4xtklpp2_rktm0000gp/T/tmpoy4p5765/native.log'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests/test_ace_ios_local.py", line 714, in test_matched_native_accessibility_failure_is_retained
+    result=ace.discovery_native_result(bundle, root/"summary.json", root.joinpath("native.log"), root/"attachments", case, {"exit":65,"timedOut":False})
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py", line 655, in discovery_native_result
+    raise RunnerError("discovery native log is unreadable or corrupt") from error
+ace_ios_local.RunnerError: discovery native log is unreadable or corrupt
+
+======================================================================
+FAIL: test_mismatched_failure_text_blocks_discovery (tools.tests.test_ace_ios_local.DiscoveryRegressionTests)
+----------------------------------------------------------------------
+ace_ios_local.RunnerError: failed discovery test contains unexpected completion markers
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests/test_ace_ios_local.py", line 726, in test_mismatched_failure_text_blocks_discovery
+    ace.discovery_native_result(b,root/"s.json",log,root/"a",case,{"exit":65,"timedOut":False})
+AssertionError: "cannot be distinguished" does not match "failed discovery test contains unexpected completion markers"
+
+----------------------------------------------------------------------
+Ran 40 tests in 4.354s
+
+FAILED (failures=1, errors=1)

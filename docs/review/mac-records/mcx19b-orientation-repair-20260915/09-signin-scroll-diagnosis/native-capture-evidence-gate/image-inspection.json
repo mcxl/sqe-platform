@@ -1,0 +1,15 @@
+{
+  "status": "negative evidence inspected; positive pending",
+  "recordedUTC": "2026-09-15T12:15:48.560525+00:00",
+  "negative": {
+    "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+    "sourceLine": 124,
+    "expected": "Injected XCTest failure immediately after complete initial screenshot capture",
+    "actual": "failed - ACE_CAPTURE_GATE_INTENTIONAL_FAILURE after retained initial viewport",
+    "nativeExit": 65,
+    "image": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-capture-evidence-gate/negative/batches/001/attachments/C4278B20-2503-4BBE-8A22-A47A1D002FED.png",
+    "sha256": "811482a79ba4683b3385aa85c3b03257b8aa80e18f33d30dbfb30a133d07b05c",
+    "inspection": "Original resolution inspected. Complete portrait screen retained; readable release details and conclusion. Action section continues below the scroll viewport. No entered credentials."
+  },
+  "pilotCredit": 0
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "-c",
+    "C:\\Users\\AlanRichardson\\Documents\\sqe-platform\\pyproject.toml",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\12-gate-fail-tmp",
+    "--junitxml",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\12-gate-fail.xml",
+    "-q",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\test_evidence_gate.py"
+  ],
+  "exit_code": 1,
+  "seconds": 11.9748821999965
+}

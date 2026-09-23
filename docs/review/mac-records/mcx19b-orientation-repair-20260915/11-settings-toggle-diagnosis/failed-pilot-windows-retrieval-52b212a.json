@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "startedUTC": "2026-09-15T20:00:24.4620695Z",
+  "finishedUTC": "2026-09-15T20:00:32.0717681Z",
+  "seconds": 7.620925199999999,
+  "host": "ace-mac",
+  "archivePath": "LOCAL_HOME/ace-private/mcx19b-archives/failed-pilot-52b212a-20260915T133932Z.tar.gz",
+  "receivedBytes": 125360893,
+  "expectedBytes": 125360893,
+  "sha256": "cf3d92b456bcda55dd386b6c4692e9b2081dc78e81d3f782fea07ec5210fd67b",
+  "expectedSha256": "cf3d92b456bcda55dd386b6c4692e9b2081dc78e81d3f782fea07ec5210fd67b",
+  "sshExit": 0,
+  "bulkFileWrittenOnWindows": false,
+  "method": "Authenticated SSH stream through a 64 KiB buffer; final byte count and SHA-256 verified without a bulk file."
+}

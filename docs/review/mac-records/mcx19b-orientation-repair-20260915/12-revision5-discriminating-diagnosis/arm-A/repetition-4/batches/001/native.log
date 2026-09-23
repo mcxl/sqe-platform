@@ -1,0 +1,110 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/result.xcresult
+
+2026-09-16 22:12:26.100002+1000 ACEClientAppUITests-Runner[97228:7471659] [Default] Running tests...
+2026-09-16 22:12:26.483252+1000 ACEClientAppUITests-Runner[97228:7471757] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-16 22:12:32.611.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-16 22:12:32.613.
+Test Suite 'ACEClientAppUITests' started at 2026-09-16 22:12:32.614.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' started.
+    t =     0.01s Start Test at 2026-09-16 22:12:32.625
+2026-09-16 22:12:32.677737+1000 ACEClientAppUITests-Runner[97228:7472037] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =     0.21s Set Up
+    t =     0.23s Setting device orientation to Portrait
+    t =     0.24s     Device orientation changed to Portrait
+    t =     0.31s     Wait for com.apple.springboard to idle
+    t =     0.61s Open com.example.aceclientapp
+    t =     0.61s     Launch com.example.aceclientapp
+    t =     3.91s         Setting up automation session
+    t =     9.94s         Wait for com.example.aceclientapp to idle
+    t =    13.53s Waiting 5.0s for "Current Release" StaticText to exist
+    t =    14.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Current Release" StaticText`
+    t =    14.61s         Checking existence of `"Current Release" StaticText`
+    t =    15.09s Checking existence of `"Current Release" StaticText`
+    t =    15.18s Find the "Current Release" StaticText
+    t =    15.36s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_READ_STARTED {"requested":"portrait"}
+    t =    15.41s Find the Target Application 'com.example.aceclientapp'
+ACE_ORIENTATION_FRAME {"elapsedReadSeconds":0.050271940999664366,"frame":{"height":"874.0","width":"402.0","x":"0.0","y":"0.0"},"outcome":"match","requested":"portrait"}
+    t =    15.47s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    16.57s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    16.57s         Checking existence of `"Effective interface style" Any`
+    t =    17.74s Find the "Effective interface style" Any
+    t =    17.81s Find the "Effective interface style" ScrollView
+    t =    18.50s Added attachment named 'Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial'
+    t =    23.23s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    24.31s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    24.31s         Checking existence of `ScrollView (First Match)`
+    t =    24.35s Checking existence of `"Copy action 1" Button`
+    t =    24.46s Find the "Copy action 1" Button
+    t =    24.62s Find the ScrollView (First Match)
+    t =    24.68s Checking existence of `"Copy action 1" Button`
+    t =    24.79s Find the "Copy action 1" Button
+    t =    24.94s Press "Effective interface style" ScrollView[0.50, 0.72] for 0.1 seconds, then drag to "Effective interface style" ScrollView[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    24.94s     Wait for com.example.aceclientapp to idle
+    t =    24.95s     Find the "Effective interface style" ScrollView
+    t =    25.01s     Check for interrupting elements affecting "Effective interface style" ScrollView
+    t =    25.11s     Synthesize event
+    t =    25.12s         Find the "Effective interface style" ScrollView
+    t =    25.20s         Find the "Effective interface style" ScrollView
+    t =    25.37s         Find the "Effective interface style" ScrollView
+    t =    25.45s         Find the "Effective interface style" ScrollView
+    t =    25.56s         Find the "Effective interface style" ScrollView
+    t =    26.81s     Wait for com.example.aceclientapp to idle
+    t =    26.83s Checking existence of `"Copy action 1" Button`
+    t =    26.93s Find the "Copy action 1" Button
+    t =    27.09s Find the "Copy action 1" Button
+    t =    27.25s Find the "Effective interface style" ScrollView
+    t =    27.40s Checking existence of `"Copy action 1" Button`
+    t =    27.52s Find the "Copy action 1" Button
+    t =    27.69s Find the "Copy action 1" Button
+    t =    27.86s Tap "Copy action 1" Button
+    t =    27.86s     Wait for com.example.aceclientapp to idle
+    t =    27.88s     Find the "Copy action 1" Button
+    t =    28.03s     Check for interrupting elements affecting "Copy action 1" Button
+    t =    28.12s     Synthesize event
+    t =    28.48s     Wait for com.example.aceclientapp to idle
+    t =    28.51s Waiting 5.0s for Any (First Match) to exist
+    t =    29.53s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    29.53s         Checking existence of `Any (First Match)`
+    t =    29.69s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    30.75s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    30.75s         Checking existence of `ScrollView (First Match)`
+    t =    30.79s Checking existence of `Any (First Match)`
+    t =    30.92s Find the Any (First Match)
+    t =    31.14s Find the "Copied Action 1." StaticText
+    t =    31.29s Find the ScrollView (First Match)
+    t =    31.35s Checking existence of `"Copied Action 1." StaticText`
+    t =    31.47s Find the "Copied Action 1." StaticText
+    t =    31.76s Find the "Copied Action 1." StaticText
+    t =    31.95s Find the ScrollView (First Match)
+    t =    32.44s Added attachment named 'Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation'
+ACE_CASE_RESULT {"auditInvocations":2,"id":"pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0","observed":{"appearance":"light","boldText":false,"contentSize":"large","increaseContrast":false,"orientation":"portrait","reduceMotion":false},"result":"passed","scenario":"copyConfirmation","screenshots":["Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial","Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation"]}
+    t =    37.79s Terminate com.example.aceclientapp:97274
+    t =    40.85s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' passed (41.806 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-16 22:13:14.430.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.806 (41.816) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-16 22:13:14.433.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.806 (41.820) seconds
+Test Suite 'Selected tests' passed at 2026-09-16 22:13:14.435.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.806 (41.824) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/12-revision5-discriminating-diagnosis/arm-A/repetition-4/batches/001/result.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-16 22:12:16.547 xcodebuild[97205:7470869] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-16 22:12:16.575 xcodebuild[97205:7470869] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-16 22:12:18.317 xcodebuild[97205:7470869] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-16 22:12:33.400 xcodebuild[97205:7470869] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-16 22:12:33.400 xcodebuild[97205:7470869] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-16 22:13:14.875 xcodebuild[97205:7470869] [MT] IDETestOperationsObserverDebug: 56.547 elapsed -- Testing started completed.
+2026-09-16 22:13:14.875 xcodebuild[97205:7470869] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-16 22:13:14.875 xcodebuild[97205:7470869] [MT] IDETestOperationsObserverDebug: 56.547 sec, +56.547 sec -- end

@@ -1,0 +1,7 @@
+{
+  "exit": 0,
+  "stdout": "[codex/mcx19b-release-layout b9ba714] Add local iOS verification and align fictional pilot screens\n Committer: Alan Richardson <alanrichardson@Vincent-MacBook-Pro.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 10 files changed, 2449 insertions(+), 190 deletions(-)\n create mode 100644 docs/plans/2026-09-14-ace-ios-local-verification.md\n create mode 100644 tools/ace_ios_local.py\n create mode 100644 tools/tests/test_ace_ios_local.py\n",
+  "stderr": "",
+  "commit": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+  "status": ""
+}

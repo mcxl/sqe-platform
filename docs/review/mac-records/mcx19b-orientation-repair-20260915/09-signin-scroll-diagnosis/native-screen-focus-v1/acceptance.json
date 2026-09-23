@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "recordedUTC": "2026-09-15T12:06:58.048034+00:00",
+  "nativeCases": 1,
+  "nativeAuditInvocations": 1,
+  "settingsChecks": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/native-settings/001-set/summary.json",
+      "sha256": "5c14242ea2941063f7db8e3b6873237c755f6de13ab49649a0be24004ee9c280"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/native-settings/iPhone 17 Pro Max-read/summary.json",
+      "sha256": "3bb5ec76242c1771ecda80002c77d86f52481e78319e5c369b27d2a87d3964ee"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/native-settings/iPhone 17 Pro Max-restore-post-boot/summary.json",
+      "sha256": "648709c17e25f7a7b50733651ad5271201ab168f16581b70d7aaace6c2f3a8e0"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/native-settings/iPhone 17-read/summary.json",
+      "sha256": "c4d8bd5afbe2177388eaeced0028317c551d120787830749289b0d6512a5a443"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-screen-focus-v1/native-settings/iPhone 17-restore-batch/summary.json",
+      "sha256": "5f293d21c428f8443d62ff749b3da53a3e1aafe085e8cb201b8d9d530e117c5f"
+    }
+  ],
+  "restoration": "passed",
+  "sourceUnchanged": true,
+  "bundleLogImageHashes": "verified",
+  "images": "two complete landscape images inspected",
+  "pilotCredit": 0
+}

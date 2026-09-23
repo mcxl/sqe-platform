@@ -1,0 +1,26 @@
+{
+  "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "preparedUTC": "2026-09-15T12:45:53.722762+00:00",
+  "scripts": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/run-complete-pilot.py",
+      "sha256": "5aa03f65ef27c1ff3b402722c31e8a169da589a7c4a8cc1af9691b8a85a2d950"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/index-complete-pilot-images.py",
+      "sha256": "dc2402f69f1a369eb27b603f0f585e196e86ecc6ad0c478fa9283cf2ba6e2455"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/verify-complete-pilot-evidence.py",
+      "sha256": "d38aeac83e8b1dfe924d9365fd35291fa58ac2f8c70a4dff413e44093222d0cc"
+    }
+  ],
+  "state": "prepared only; focused native, image, evidence gate and Pocock readiness required before launch",
+  "workflow": "Use current Pocock readiness before pilot. Fresh Sol review occurs after complete native and image verification, as approved. Prior source review is historical only.",
+  "postprocessorRepair": {
+    "recordedUTC": "2026-09-15T12:49:49.719379+00:00",
+    "issue": "The unexecuted integrity report script reused its output-directory variable for restoration JSON. This would prevent report writing.",
+    "correction": "Give restoration data its own variable. Native checks and outputs are unchanged.",
+    "verification": "Complete script inspected and Python AST parsed. First edit assertion detected an indentation mismatch and made no change. Script has not run against final native evidence yet."
+  }
+}

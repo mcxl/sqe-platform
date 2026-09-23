@@ -1,0 +1,36 @@
+{
+  "reviewedAtUTC": "2026-09-14T11:00:43.162178+00:00",
+  "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "head": "7fee853aef52e85a813368a51d833c134710186d",
+  "completeDiffInspected": true,
+  "inspectionParts": [
+    {
+      "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+      "head": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+      "files": 10,
+      "record": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/PRIMARY_DIFF_REVIEW_b9ba714.json"
+    },
+    {
+      "base": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+      "head": "7fee853aef52e85a813368a51d833c134710186d",
+      "files": 2,
+      "record": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/runner-review-fixes-primary-checks.json"
+    }
+  ],
+  "checks": {
+    "pythonChecks": 24,
+    "pythonResult": "passed",
+    "gitDiffCheck": "passed",
+    "standardsReview": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/POCOCK_STANDARDS_7fee853.md",
+    "specificationReview": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/POCOCK_SPEC_7fee853.md"
+  },
+  "sourceReviewResult": "passed",
+  "acceptanceResult": "UNVERIFIED - UI QA INCOMPLETE",
+  "limits": [
+    "Native acceptance programme has not run.",
+    "Release audit fails at current iOS source hashes.",
+    "Signed-device, private-service, historical-baseline and final Sol gates remain open."
+  ],
+  "pushPerformed": false,
+  "mergePerformed": false
+}

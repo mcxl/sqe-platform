@@ -1,0 +1,410 @@
+Timestamp               Ty Process[PID:TID]
+2026-09-17 12:20:02.193 I  SpringBoard[72474:860f56] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized name: RTTNotificationExtension
+2026-09-17 12:20:02.193 I  SpringBoard[72474:860f56] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized short name: RTTNotificationExtension
+2026-09-17 12:20:02.208 Df SpringBoard[72474:860f56] [com.apple.UserNotificationsUI:Extensions] Loaded extension com.apple.accessibility.RTTUI.RTTNotifications for categories [ com.apple.RTTNotifications.message ] with attributes: {
+    NSExtensionPointName = "com.apple.usernotifications.content-extension";
+    NSExtensionPointVersion = "1.0";
+    NSExtensionVersion = 1;
+    UNNotificationExtensionCategory =     (
+        "com.apple.RTTNotifications.message"
+    );
+    UNNotificationExtensionCustomSectionIdentifier = "com.apple.RTTNotifications";
+    UNNotificationExtensionDefaultContentHidden = 1;
+    UNNotificationExtensionInitialContentSizeRatio = 1;
+    UNNotificationExtensionOverridesDefaultTitle = 1;
+    UNNotificationExtensionUserInteractionEnabled = 1;
+}
+2026-09-17 12:20:03.167 I  SpringBoard[72474:860fda] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized name: RTTNotificationExtension
+2026-09-17 12:20:03.167 I  SpringBoard[72474:860fda] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized short name: RTTNotificationExtension
+2026-09-17 12:20:03.186 Df SpringBoard[72474:860fda] [com.apple.UserNotificationsUI:Extensions] Loaded extension com.apple.accessibility.RTTUI.RTTNotifications for categories [ com.apple.RTTNotifications.message ] with attributes: {
+    NSExtensionPointName = "com.apple.usernotifications.content-extension";
+    NSExtensionPointVersion = "1.0";
+    NSExtensionVersion = 1;
+    UNNotificationExtensionCategory =     (
+        "com.apple.RTTNotifications.message"
+    );
+    UNNotificationExtensionCustomSectionIdentifier = "com.apple.RTTNotifications";
+    UNNotificationExtensionDefaultContentHidden = 1;
+    UNNotificationExtensionInitialContentSizeRatio = 1;
+    UNNotificationExtensionOverridesDefaultTitle = 1;
+    UNNotificationExtensionUserInteractionEnabled = 1;
+}
+2026-09-17 12:20:04.149 I  SpringBoard[72474:85f371] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized name: RTTNotificationExtension
+2026-09-17 12:20:04.149 I  SpringBoard[72474:85f371] [com.apple.PlugInKit:ls] [u D9CF313A-88EA-4B67-8E3B-7722527550C6] [com.apple.accessibility.RTTUI.RTTNotifications(1)] got localized short name: RTTNotificationExtension
+2026-09-17 12:20:04.264 Df SpringBoard[72474:85f371] [com.apple.UserNotificationsUI:Extensions] Loaded extension com.apple.accessibility.RTTUI.RTTNotifications for categories [ com.apple.RTTNotifications.message ] with attributes: {
+    NSExtensionPointName = "com.apple.usernotifications.content-extension";
+    NSExtensionPointVersion = "1.0";
+    NSExtensionVersion = 1;
+    UNNotificationExtensionCategory =     (
+        "com.apple.RTTNotifications.message"
+    );
+    UNNotificationExtensionCustomSectionIdentifier = "com.apple.RTTNotifications";
+    UNNotificationExtensionDefaultContentHidden = 1;
+    UNNotificationExtensionInitialContentSizeRatio = 1;
+    UNNotificationExtensionOverridesDefaultTitle = 1;
+    UNNotificationExtensionUserInteractionEnabled = 1;
+}
+2026-09-17 12:20:15.968 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Received new test session connection from process with PID 73015
+2026-09-17 12:20:15.974 Df testmanagerd[72802:860bb3] [com.apple.runningboard:connection] Initializing connection
+2026-09-17 12:20:15.975 Df testmanagerd[72802:860bb3] [com.apple.runningboard:process] Removing all cached process handles
+2026-09-17 12:20:15.975 Df testmanagerd[72802:861796] [com.apple.runningboard:connection] Sending handshake request attempt #1 to server
+2026-09-17 12:20:15.975 Df testmanagerd[72802:861796] [com.apple.runningboard:connection] Creating connection to com.apple.runningboard
+2026-09-17 12:20:15.975 Df testmanagerd[72802:861796] [com.apple.xpc:connection] [0x108b08830] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-09-17 12:20:15.985 Df testmanagerd[72802:861796] [com.apple.runningboard:connection] Handshake succeeded
+2026-09-17 12:20:15.985 Df testmanagerd[72802:861796] [com.apple.runningboard:connection] Identity resolved as osservice<com.apple.testmanagerd>
+2026-09-17 12:20:17.067 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Creating XCTDAutomationModeInterface.sharedInterface
+2026-09-17 12:20:17.100 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Init XCTDAutomationModeInterface, automationModeFunctions.registerAutomationModeChangeHandler is 0x7ffb0f2f8edd, from stack (
+	0   testmanagerd                        0x0000000106ff2373 -[XCTDAutomationModeInterface initWithAutomationModeFunctions:] + 202
+	1   testmanagerd                        0x0000000106ff228e __46+[XCTDAutomationModeInterface sharedInterface]_block_invoke + 170
+	2   libdispatch.dylib                   0x00007ff8028643a9 _dispatch_client_callout + 6
+	3   libdispatch.dylib                   0x00007ff80284c7cb _dispatch_once_callout + 20
+	4   testmanagerd                        0x0000000106ff21e2 +[XCTDAutomationModeInterface sharedInterface] + 51
+	5   testmanagerd                        0x00000001070168ee -[XCTestSession initWithNSXPCConnection:delegate:diagnosticsProvider:processManagementServices:targetBootstrapSessionProvider:] + 160
+	6   testmanagerd                        0x0000000107016816 -[XCTestSession initWithNSXPCConnection:delegate:diagnosticsProvider:targetBootstrapSessionProvider:] + 124
+	7   testmanagerd                        0x0000000107026e53 -[XCTDDaemon listener:shouldAcce
+2026-09-17 12:20:17.101 Df testmanagerd[72802:860bb3] [com.apple.dt.automationmode:Default] XAM shared observer connecting to com.apple.dt.automationmode.reader
+2026-09-17 12:20:17.101 Df testmanagerd[72802:860bb3] [com.apple.xpc:connection] [0x108d085e0] activating connection: mach=true listener=false peer=false name=com.apple.dt.automationmode.reader
+2026-09-17 12:20:17.237 Df dasd[72501:85f286] [com.apple.duetactivityscheduler:BGSTHelper] Submitted <_DASActivity: "com.apple.voicedb.firstUnlock:1048B7", UserInitiated, 60s, [17/9/2026, 12:20:17 pm - 17/9/2026, 12:20:17 pm], Group: "com.apple.dasd.default", InternalGroups: {(
+    "com.apple.dasd.default"
+)}, Service Name: accessibility.axassetsd, ClassC, ClassC, Delayed Start, User Specified: {     Resources = CPU; }> (BGST 0x105338800)
+2026-09-17 12:20:17.593 Df SpringBoard[72474:85f130] [com.apple.SpringBoard:Common] SceneWorkspaceDelegate[0x60000026d140-com.apple.SpringBoard.SceneWorkspace.AccessibilityUIServerUI] client did connect with handshake: <FBSceneClientHandshake:0x60000048d620; [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015] remnants=0>
+2026-09-17 12:20:19.325 Df modelcatalogd[72687:860a87] [com.apple.ModelCatalog:Subscriptions] SubscriptionEvaluator evaluating download condition for use case: accessibility.imageExplorer
+2026-09-17 12:20:19.556 Df modelcatalogd[72687:860a87] [com.apple.ModelCatalog:Subscriptions] SubscriptionEvaluator evaluating download condition for use case: accessibility.imageDescriptions
+2026-09-17 12:20:19.644 Df modelcatalogd[72687:860a87] [com.apple.ModelCatalog:Subscriptions] SubscriptionEvaluator evaluating download condition for use case: accessibility.magnifier
+2026-09-17 12:20:19.691 Df modelcatalogd[72687:860a87] [com.apple.ModelCatalog:Subscriptions] SubscriptionEvaluator evaluating download condition for use case: accessibility.liveRecognition
+2026-09-17 12:20:19.972 Df testmanagerd[72802:860bb3] [com.apple.xpc:connection] [0x108d085e0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-09-17 12:20:20.281 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Got request for process assertion for pid 72802.
+2026-09-17 12:20:20.281 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Created process assertion for pid 72802: <BKSProcessAssertion: 0x108c0bd70>, waiting for response from assertiond.
+2026-09-17 12:20:20.281 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] <XCTestSession: 0x10880afb0> pid 73015 resuming connection
+2026-09-17 12:20:20.282 I  testmanagerd[72802:861796] [com.apple.runningboard:assertion] Acquiring assertion: <RBSAssertionDescriptor| "Developer testing" ID:(null) target:72802>
+2026-09-17 12:20:20.282 Df testmanagerd[72802:860bb3] [com.apple.xpc:connection] [0x10880a040] activating connection: mach=false listener=false peer=true name=com.apple.testmanagerd.peer[73015].0x10880a040
+2026-09-17 12:20:20.283 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Got reply for process assertion request, success: YES
+2026-09-17 12:20:20.283 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Got reply for process assertion request for pid 72802, success: YES
+2026-09-17 12:20:20.284 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Got request for process assertion for pid 73015.
+2026-09-17 12:20:20.284 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Created process assertion for pid 73015: <BKSProcessAssertion: 0x108b07120>, waiting for response from assertiond.
+2026-09-17 12:20:20.284 I  testmanagerd[72802:861797] [com.apple.runningboard:assertion] Acquiring assertion: <RBSAssertionDescriptor| "Developer testing" ID:(null) target:73015>
+2026-09-17 12:20:20.284 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] <XCTDProcessMonitor: 0x108c08c40> starting to monitor com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:20:20.286 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Got reply for process assertion request, success: YES
+2026-09-17 12:20:20.287 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Got reply for process assertion request for pid 73015, success: YES
+2026-09-17 12:20:20.291 Df testmanagerd[72802:86186f] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-09-17 12:20:20.330 Df testmanagerd[72802:86186f] [com.apple.dt.xctest:Default] Received request to exchange capabilities, remote interface capabilities are: <XCTCapabilities: 0x107707800>: {
+    "application state change handling capability" = 2;
+    "handle AX notification capability" = 2;
+    "handle receipt of device or interface orientation change events" = 1;
+}, local capabilities are: <XCTCapabilities: 0x108804700>: {
+    "Siri request with audio URL capability" = 1;
+    "Siri request with text capability" = 1;
+    XCTProtectedResourceBluetoothIdentifier = 1;
+    XCTProtectedResourceCalendarIdentifier = 1;
+    XCTProtectedResourceCameraIdentifier = 1;
+    XCTProtectedResourceContactsIdentifier = 1;
+    XCTProtectedResourceFocusIdentifier = 1;
+    XCTProtectedResourceHealthIdentifier = 1;
+    XCTProtectedResourceHomeKitIdentifier = 1;
+    XCTProtectedResourceKeyboardNetworkIdentifier = 1;
+    XCTProtectedResourceLocalNetworkIdentifier = 1;
+    XCTProtectedResourceLocationIdentifier = 1;
+    XCTProtectedResourceMediaLibraryIdentifier = 1;
+    XCTProtectedResourceMicrophoneIdentifier = 1;
+    XCTProtectedResourcePhotosIdentifier = 1;
+    XCTProtectedResourceRemindersIde
+2026-09-17 12:20:20.337 Df testmanagerd[72802:86186f] [com.apple.dt.xctest:Default] Test session 2A30010D-5777-4DF3-9957-90AA25F5C5E8 requested transport for IDE
+2026-09-17 12:20:20.337 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Test session 2A30010D-5777-4DF3-9957-90AA25F5C5E8 requested serialized transport
+2026-09-17 12:20:20.337 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Initiating serialized transport handoff from IDE connection to test host.
+2026-09-17 12:20:20.337 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Sending barrier
+2026-09-17 12:20:20.337 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] Barrier flushed. Cancelling connection. Socket will not be closed
+2026-09-17 12:20:20.338 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Closing session <XCIDESession: 0x108c0adf0> (socket 5) created Thursday, 17 September 2026 at 12:19:08 pm Australian Eastern Standard Time waiting to pair with test session 2A30010D-5777-4DF3-9957-90AA25F5C5E8
+2026-09-17 12:20:20.338 Df testmanagerd[72802:861796] [com.apple.dt.xctest:Default] DTXSocketTransport for socket 5 disconnected, owner is <XCIDESession: 0x108c0adf0> (socket 5) created Thursday, 17 September 2026 at 12:19:08 pm Australian Eastern Standard Time waiting to pair with test session 2A30010D-5777-4DF3-9957-90AA25F5C5E8
+2026-09-17 12:20:20.339 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Tearing down <XCIDESession: 0x108c0adf0> (socket 5) created Thursday, 17 September 2026 at 12:19:08 pm Australian Eastern Standard Time waiting to pair with test session 2A30010D-5777-4DF3-9957-90AA25F5C5E8.
+2026-09-17 12:20:20.339 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Session summary: 1 test sessions, 0 sessions with identifiers, 0 unidentified sessions, 0 remote automation sessions, has control sessions
+2026-09-17 12:20:20.339 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Control sessions: (
+    "<XCIDESession: 0x108907bc0> (socket 4) created Thursday, 17 September 2026 at 12:19:07\134U202fpm Australian Eastern Standard Time"
+)
+2026-09-17 12:20:20.339 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] XCTDAuthorizedProcessTracker is cancelling dispatch sources as part of its dealloc routine
+2026-09-17 12:20:20.339 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] XCTDAuthorizedProcessTracker has cancelled dispatch sources as part of its dealloc routine
+2026-09-17 12:20:20.347 Df testmanagerd[72802:8603df] [com.apple.dt.xctest:Default] Authorizing process with pid 73015
+2026-09-17 12:20:20.348 Df testmanagerd[72802:8603df] [com.apple.dt.xctest:Default] XCTDAuthorizedProcessTracker has started monitoring and tracking dispatch source for pid 73015
+2026-09-17 12:20:20.348 Df testmanagerd[72802:8603df] [com.apple.dt.xctest:Default] Current mappings: {
+    73015 = "<OS_dispatch_source: 0x107505060>";
+}
+2026-09-17 12:20:20.473 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Test session with pid 73015 requesting automation mode
+2026-09-17 12:20:20.474 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Added Automation Mode client <XCTestSession: 0x10880afb0> pid 73015. Total clients: 1
+2026-09-17 12:20:20.474 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Enabling Automation Mode...
+2026-09-17 12:20:20.474 Df testmanagerd[72802:861797] [com.apple.xpc:connection] [0x108c0b0f0] activating connection: mach=true listener=false peer=false name=com.apple.dt.automationmode.writer
+2026-09-17 12:20:20.474 Df testmanagerd[72802:861797] [com.apple.dt.automationmode:Default] Created new connection <NSXPCConnection: 0x108c06770> connection to service named com.apple.dt.automationmode.writer.
+2026-09-17 12:20:20.481 Df testmanagerd[72802:86186f] [com.apple.dt.automationmode:Default] Handling posted change notification (com.apple.dt.automationmode.state-changed)
+2026-09-17 12:20:20.481 Df testmanagerd[72802:861797] [com.apple.dt.automationmode:Default] Invalidating connection <NSXPCConnection: 0x108c06770> connection to service with pid 73044 named com.apple.dt.automationmode.writer.
+2026-09-17 12:20:20.481 Df testmanagerd[72802:86186f] [com.apple.dt.automationmode:Default] XAM shared observer connecting to com.apple.dt.automationmode.reader
+2026-09-17 12:20:20.481 Df testmanagerd[72802:861797] [com.apple.xpc:connection] [0x108c0b0f0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-09-17 12:20:20.482 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Finished enabling Automation Mode
+2026-09-17 12:20:20.482 Df testmanagerd[72802:86186f] [com.apple.xpc:connection] [0x108c08a50] activating connection: mach=true listener=false peer=false name=com.apple.dt.automationmode.reader
+2026-09-17 12:20:20.483 Df testmanagerd[72802:86186f] [com.apple.xpc:connection] [0x108c08a50] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-09-17 12:20:20.483 Df testmanagerd[72802:86186f] [com.apple.dt.automationmode:Default] Comparing previous enabled state (0) to current enabled state (1)
+2026-09-17 12:20:20.485 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Added Automation Mode client <XCTestSession: 0x10880afb0> pid 73015. Total clients: 1
+2026-09-17 12:20:20.485 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Automation already enabled, nothing to do.
+2026-09-17 12:20:21.841 Df dasd[72501:861275] [com.apple.duetactivityscheduler:BGSTHelper] Submitted <_DASActivity: "com.apple.voicedb.ausp_axsr_appl.retry:368661", UserInitiated, 60s, [17/9/2026, 12:20:26 pm - 17/9/2026, 12:20:26 pm], Group: "com.apple.dasd.default", InternalGroups: {(
+    "com.apple.dasd.default"
+)}, Service Name: accessibility.axassetsd, Delayed Start, User Specified: {     Resources = CPU; }> (BGST 0x10714c650)
+2026-09-17 12:20:25.642 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Updating process monitor config
+2026-09-17 12:20:25.642 Df testmanagerd[72802:860bb3] [com.apple.runningboard:monitor] Updating configuration of monitor M72802-1
+2026-09-17 12:20:25.643 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Synchronously fetching the current state(s) for com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:20:25.643 A  testmanagerd[72802:86193a] (RunningBoardServices) observedProcessStatesDidChange
+2026-09-17 12:20:25.643 Df testmanagerd[72802:86193a] [com.apple.runningboard:connection] Creating side-channel connection to com.apple.runningboard
+2026-09-17 12:20:25.643 Df testmanagerd[72802:86193a] [com.apple.xpc:connection] [0x108d04890] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-09-17 12:20:25.644 Df testmanagerd[72802:86193a] [com.apple.runningboard:process] Hit the server for a process handle 5ddd07700011d37 that resolved to: [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015]
+2026-09-17 12:20:25.644 Df testmanagerd[72802:86193a] [com.apple.runningboard:monitor] Received state update for 73015 (app<com.example.aceclientapp.uitests.xctrunner((null))>, running-active-NotVisible
+2026-09-17 12:20:25.644 Df testmanagerd[72802:860bb3] [com.apple.runningboard:process] Hit the server for a process handle 5ddd07700011d37 that resolved to: [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015]
+2026-09-17 12:20:25.645 Df testmanagerd[72802:86193b] [com.apple.dt.xctest:Default] Process monitor update handler invoked for com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:20:25.645 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] Computed display ID com.example.aceclientapp.uitests.xctrunner from embeddedApplicationIdentifier: com.example.aceclientapp.uitests.xctrunner, xpcServiceIdentifier: (null), bundleID: com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:20:25.645 Df testmanagerd[72802:86193b] [com.apple.dt.xctest:Default] Computed display ID com.example.aceclientapp.uitests.xctrunner from embeddedApplicationIdentifier: com.example.aceclientapp.uitests.xctrunner, xpcServiceIdentifier: (null), bundleID: com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:20:27.016 Df testmanagerd[72802:86193b] [com.apple.dt.xctest:Default] <XCTDProcessMonitor: 0x108c08c40> passing update com.example.aceclientapp.uitests.xctrunner@LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/D375E3C4-60D5-4DBD-BD8B-D1DB8E2A6724/ACEClientAppUITests-Runner.app processName: ACEClientAppUIT pid: 73015 state: running background to <XCTDProcessManagementServicesProvider: 0x10880b160>
+2026-09-17 12:20:27.016 Df testmanagerd[72802:86186f] [com.apple.dt.xctest:Default] <XCTDProcessMonitor: 0x108c08c40> passing update com.example.aceclientapp.uitests.xctrunner@LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/D375E3C4-60D5-4DBD-BD8B-D1DB8E2A6724/ACEClientAppUITests-Runner.app processName: ACEClientAppUIT pid: 73015 state: running background to <XCTDProcessManagementServicesProvider: 0x10880b160>
+2026-09-17 12:20:27.021 Df testmanagerd[72802:860bb3] [com.apple.dt.xctest:Default] <XCTestSession: 0x10880afb0> pid 73015 com.example.aceclientapp.uitests.xctrunner@LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/D375E3C4-60D5-4DBD-BD8B-D1DB8E2A6724/ACEClientAppUITests-Runner.app processName: ACEClientAppUIT pid: 73015 state: running background
+2026-09-17 12:20:27.041 I  testmanagerd[72802:86193b] [com.apple.runningboard:monitor] Update delivered for [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015] with taskState 4
+2026-09-17 12:20:27.928 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Received request to load Accessibility
+2026-09-17 12:20:27.936 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Beginning AX loading sequence.
+2026-09-17 12:20:27.936 Df testmanagerd[72802:861797] [com.apple.Accessibility:AXSupportCommon] Setting automation enabled: 1
+2026-09-17 12:20:27.943 Df testmanagerd[72802:861797] [com.apple.Accessibility:AXSupportCommon] AXS AccessibilityEnabled: (app ax: 0), ax settings: 1, cached: 0
+2026-09-17 12:20:27.947 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Received update for automation: 1
+2026-09-17 12:20:27.947 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Update on AX Enabled Notification, App Notification: 0, AX Enabled: 1, AX App Enabled: 0
+2026-09-17 12:20:27.949 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Update on AX Enabled Notification, App Notification: 0, AX Enabled: 1, AX App Enabled: 0
+2026-09-17 12:20:28.460 Df testmanagerd[72802:8603df] [com.apple.Accessibility:AXCommon] Read Per-App on Init: Smart invert = (null)
+2026-09-17 12:20:32.421 Df SpringBoard[72474:85f6c0] [com.apple.SplashBoard:Purge] Marking com.apple.AccessibilityUIServer as uncommon
+2026-09-17 12:20:32.422 I  SpringBoard[72474:85f6c0] [com.apple.SplashBoard:FileManifest] <XBApplicationSnapshotManifestImpl: 0x600002c94a80> [com.apple.AccessibilityUIServer] Incrementing client count: 2
+2026-09-17 12:20:32.422 I  SpringBoard[72474:86151b] [com.apple.SplashBoard:FileManifest] <XBApplicationSnapshotManifestImpl: 0x600002c94a80> [com.apple.AccessibilityUIServer] Decrementing client count: 1
+2026-09-17 12:20:32.662 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Checking if bundle identifier: com.apple.AccessibilityUIServer is entitled for KVS
+2026-09-17 12:20:32.663 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Found 10 store identifiers for bundle identifier: com.apple.AccessibilityUIServer (
+    "com.apple.accessibility.AccessibilityUIServer",
+    "com.apple.Accessibility.SwitchControl",
+    "com.apple.Accessibility.TouchAccommodations",
+    "com.apple.HearingAids",
+    "com.apple.SoundDetection",
+    "com.apple.Accessibility",
+    "com.apple.AssistiveTouch",
+    "com.apple.VoiceOverTouch",
+    "com.apple.ZoomTouch",
+    "com.apple.SpeakSelection"
+)
+2026-09-17 12:20:35.068 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Found 3 store identifiers for bundle identifier: com.apple.VoiceOverTouch (
+    "com.apple.Accessibility",
+    "com.apple.VoiceOverTouch",
+    "com.apple.voiceovertouch"
+)
+2026-09-17 12:20:36.516 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Found 4 store identifiers for bundle identifier: com.apple.assistivetouchd (
+    "com.apple.AssistiveTouch",
+    "com.apple.assistivetouchd",
+    "com.apple.Accessibility",
+    "com.apple.Accessibility.SwitchControl"
+)
+2026-09-17 12:20:40.367 Df sirittsd[72538:86069a] [com.apple.xpc:session] [0x106605740] Session created with Mach Service: com.apple.accessibility.voices
+2026-09-17 12:20:40.368 Df sirittsd[72538:86069a] [com.apple.xpc:connection] [0x106613140] activating connection: mach=true listener=false peer=false name=com.apple.accessibility.voices
+2026-09-17 12:20:47.166 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Checking if bundle identifier: com.apple.AccessibilityUIServer.AccessibilityAppIntents is entitled for KVS
+2026-09-17 12:20:47.167 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Found 12 store identifiers for bundle identifier: com.apple.AccessibilityUIServer.AccessibilityAppIntents (
+    "com.apple.ZoomTouch",
+    "com.apple.VoiceOverTouch",
+    "com.apple.HearingAids",
+    "com.apple.hearing.comfortsound",
+    "com.apple.AssistiveTouch",
+    "com.apple.Accessibility.TouchAccommodations",
+    "com.apple.SoundDetection",
+    "com.apple.accessibility.AccessibilityUIServer",
+    "com.apple.Accessibility.SwitchControl",
+    "com.apple.SpeakSelection",
+    "com.apple.Accessibility",
+    "com.apple.fullkeyboardaccess"
+)
+2026-09-17 12:20:47.980 Df testmanagerd[72802:861797] [com.apple.Accessibility:AXSupportCommon] Application accessibility enabled: 1, (
+	0   libAccessibility.dylib              0x00007ff816b4d1ed _AXSApplicationAccessibilitySetEnabled + 82
+	1   libAccessibility.dylib              0x00007ff816b5601b _AXSSetAutomationEnabled + 199
+	2   testmanagerd                        0x0000000106ff0f65 -[XCTDAccessibilitySystem _queue_loadAccessibilityIfNeeded:andWaitForNotificationWithTimeout:error:] + 510
+	3   testmanagerd                        0x0000000106ff0bf5 -[XCTDAccessibilitySystem _queue_loadAccessibilityWithTimeout:error:] + 501
+	4   testmanagerd                        0x0000000106ff093a __62-[XCTDAccessibilitySystem loadAccessibilityWithTimeout:error:]_block_invoke + 49
+	5   libdispatch.dylib                   0x00007ff8028643a9 _dispatch_client_callout + 6
+	6   libdispatch.dylib                   0x00007ff80285a4e0 _dispatch_lane_barrier_sync_invoke_and_complete + 92
+	7   testmanagerd                        0x0000000106ff0835 -[XCTDAccessibilitySystem loadAccessibilityWithTimeout:error:] + 223
+	8   testmanagerd
+2026-09-17 12:20:47.981 Df testmanagerd[72802:861797] [com.apple.Accessibility:AXSupportCommon] Stored App AX setting: 1
+2026-09-17 12:20:47.983 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Update on AX Enabled Notification, App Notification: 1, AX Enabled: 1, AX App Enabled: 1
+2026-09-17 12:20:47.983 Df testmanagerd[72802:861797] [com.apple.Accessibility:AXSupportCommon] AXS AccessibilityEnabled: (app ax: 1), ax settings: 1, cached: 1
+2026-09-17 12:20:47.983 Df testmanagerd[72802:861797] [com.apple.dt.xctest:Default] Waiting 65.0s for AX to finish loading...
+2026-09-17 12:20:47.983 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Update on AX Enabled Notification, App Notification: 0, AX Enabled: 1, AX App Enabled: 1
+2026-09-17 12:20:48.663 I  testmanagerd[72802:8603df] [com.apple.Accessibility:AXSupportCommon] Update on AX Enabled Notification, App Notification: 1, AX Enabled: 1, AX App Enabled: 1
+2026-09-17 12:20:51.921 I  SpringBoard[72474:85f130] [com.apple.Accessibility:AXAppAccessibility] Started AXRuntime server. SystemApp=1
+2026-09-17 12:20:54.218 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Checking if bundle identifier: com.apple.AccessibilityUIServer.AccessibilityControlsExtension is entitled for KVS
+2026-09-17 12:20:55.069 Db syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Checking if bundle identifier: com.apple.accessibility.RTTUI.RTTNotifications is entitled for KVS
+2026-09-17 12:20:55.791 I  ACEClientAppUITests-Runner[73015:8615a7] [com.apple.Accessibility:AXAppAccessibility] Started AXRuntime server. SystemApp=0
+2026-09-17 12:21:01.521 Df SpringBoard[72474:85f130] [com.apple.Accessibility:AXCommon] AXControlsSettingsObserver: Handling notification for com.apple.mediaaccessibility.displayFilterSettingsChanged
+2026-09-17 12:21:01.522 Df SpringBoard[72474:85f130] [com.apple.chrono:controls] Reloading control for extension: com.apple.AccessibilityUIServer.AccessibilityControlsExtension kind: nil reason: AX preference changed
+2026-09-17 12:21:01.545 Df chronod[72607:861e67] [com.apple.chrono:reloadService] Setting last requested reload date for key: <_ReloadStateKey: extensionBundleIdentifier=com.apple.AccessibilityUIServer.AccessibilityControlsExtension, kind=all>: 17/9/2026, 12:21 pm
+2026-09-17 12:21:03.222 Df siriactionsd[72551:861906] [com.apple.shortcuts:Daemon] Dispatching XPC event: <darwin notification: com.apple.mediaaccessibility.displayFilterSettingsChanged>
+2026-09-17 12:21:05.264 Df siriactionsd[72551:861906] [com.apple.shortcuts:XPCEvent] Dispatching XPC event: <darwin notification: com.apple.mediaaccessibility.displayFilterSettingsChanged>
+2026-09-17 12:21:05.265 Df siriactionsd[72551:861906] [com.apple.shortcuts:Daemon] Firing event: <darwin notification: com.apple.mediaaccessibility.displayFilterSettingsChanged>
+2026-09-17 12:21:05.419 I  syncdefaultsd[72627:861934] [com.apple.kvs:Misc] Generated new store bundle mapping: {
+    "com.apple.Accessibility" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.VoiceOverTouch",
+        "com.apple.assistivetouchd",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.Accessibility.SwitchControl" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.assistivetouchd",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.Accessibility.TouchAccommodations" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.AssistiveTouch" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.assistivetouchd",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.HearingAids" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.Maps" =     (
+        "com.apple.Maps"
+    );
+    "com.apple.Maps.recents" =     (
+        "com.apple.Maps"
+    );
+    "com.apple.MapsSupport.bookmarks" =     (
+        "com.apple.Maps"
+    );
+    "com.apple.MapsSupport.history" =     (
+        "com.apple.Maps"
+    );
+    "com.apple.MobileSMS" =     (
+        "com.apple.MobileSMS",
+        "com.apple.Preferences",
+        "com.apple.mobilesms.compose"
+    );
+    "com.apple.SoundDetection" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.SpeakSelection" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.VoiceOverTouch" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.VoiceOverTouch",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.ZoomTouch" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.accessibility.AccessibilityUIServer" =     (
+        "com.apple.AccessibilityUIServer",
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.assistivetouchd" =     (
+        "com.apple.assistivetouchd"
+    );
+    "com.apple.familycircle.checklist" =     (
+        "com.apple.Preferences"
+    );
+    "com.apple.finder" =     (
+        "com.apple.DocumentsApp",
+        "com.apple.DocumentManager.DockFolderViewService",
+        "com.apple.DocumentManagerUICore.RecentsAvocado",
+        "com.apple.DocumentsApp.DocumentAppShortcuts",
+        "com.apple.CloudDocsUI.DocumentPicker",
+        "com.apple.DocumentManagerUICore.SaveToFiles",
+        "com.apple.DocumentManagerUICore.RecentsAvocadoIntentHandler",
+        "com.apple.UIKit.ShareUI",
+        "com.apple.DocumentManagerUICore.AddTagsActionExtension",
+        "com.apple.DocumentsApp.DocumentAppIntents",
+        "com.apple.DocumentManagerUICore.Service"
+    );
+    "com.apple.fullkeyboardaccess" =     (
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.gamecenter" =     (
+        "com.apple.GameCenterUI.GameCenterTurnBasedMatchmakerExtension",
+        "com.apple.GameCenterUI.GameCenterMatchmakerExtension",
+        "com.apple.gamecenter.GameCenterUIService.GameCenterMessageExtension"
+    );
+    "com.apple.hearing.comfortsound" =     (
+        "com.apple.AccessibilityUIServer.AccessibilityAppIntents"
+    );
+    "com.apple.messages.pinning" =     (
+        "com.apple.MobileSMS"
+    );
+    "com.apple.mobilesafari" =     (
+        "com.apple.mobilesafari"
+    );
+    "com.apple.photos.kvstore" =     (
+        "com.apple.mobileslideshow",
+        "com.apple.mobileslideshow.photosnotifications-updates"
+    );
+    "com.apple.priml.pfl.plugins" =     (
+        "com.apple.AppleMediaDiscovery.PFLASLExperimental",
+        "com.apple.AppleMediaDiscovery.PFLCSLAppStore2",
+        "com.apple.AppleMediaDiscovery.PFLASLArcadeRanking",
+        "com.apple.AppleMediaDiscovery.PFLASLAppEmbedding",
+        "com.apple.AppleMediaDiscovery.PFLCSLAppStore",
+        "com.apple.AppleMediaDiscovery.PFLASLArcadeRetention",
+        "com.apple.PhotoAnalysis.PhotosPFLPlugin"
+    );
+    "com.apple.sharing.headphonetutorialcards" =     (
+        "com.apple.SharingViewService"
+    );
+    "com.apple.springboard" =     (
+        "com.apple.springboard"
+    );
+    "com.apple.tipsd" =     (
+        "com.apple.TVRemoteUIService",
+        "com.apple.MobileSMS",
+        "com.apple.Preferences",
+        "com.apple.mobileslideshow",
+        "com.apple.mobilecal",
+        "com.apple.DocumentsApp",
+        "com.apple.shortcuts",
+        "com.apple.mobilesafari",
+        "com.apple.PhotosUIPrivate.PhotosPosterProvider",
+        "com.apple.MobileSMS.MessagesAssistantExtension"
+    );
+    "com.apple.tv" =     (
+        "com.apple.tv.VideosUIEngagementExtension"
+    );
+    "com.apple.voiceovertouch" =     (
+        "com.apple.VoiceOverTouch"
+    );
+    "com.apple.weather" =     (
+        "com.apple.Spotlight",
+        "com.apple.Maps",
+        "com.apple.Posters.WeatherPosterApp.WeatherPoster"
+    );
+}
+2026-09-17 12:21:06.916 Df siriactionsd[72551:861906] [com.apple.shortcuts:Daemon] <Executing DaemonTask: BiomeStreamWriter.com.apple.mediaaccessibility.displayFilterSettingsChanged, queue: (runningCount: 2, queuedTasks (0): [])>
+2026-09-17 12:21:15.524 I  biomed[72488:861ff8] [com.apple.Biome:BiomeAccessService] -fileHandleForFileAtPath:flags:protection:reply: called with subpath: streams/restricted/Accessibility.ColorFilters/local
+2026-09-17 12:21:16.119 I  biomed[72488:861ff8] [com.apple.Biome:BiomeAccessService] -fileHandleForFileAtPath:flags:protection:reply: called with subpath: streams/restricted/Accessibility.ColorFilters/local/811044189421409
+2026-09-17 12:21:16.220 I  siriactionsd[72551:861906] [com.apple.Biome:BiomeStorage] Successfully mapped file: LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Library/Biome/streams/restricted/Accessibility.ColorFilters/local/811044189421409 address: 0x10e706000 offset:0 size:32
+2026-09-17 12:21:16.372 I  siriactionsd[72551:861906] [com.apple.Biome:BiomeStorage] Successfully mapped file: LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Library/Biome/streams/restricted/Accessibility.ColorFilters/local/811044189421409 address: 0x110aa6000 offset:32 size:131040
+2026-09-17 12:21:17.117 I  siriactionsd[72551:861906] [com.apple.Biome:BiomeCompute] Subscription marker exists: NO for stream: Accessibility.ColorFilters using domain: User
+2026-09-17 12:21:17.769 Df siriactionsd[72551:861906] [com.apple.shortcuts:Daemon] <Finished DaemonTask: BiomeStreamWriter.com.apple.mediaaccessibility.displayFilterSettingsChanged, queue: (runningCount: 2, queuedTasks (0): [])>
+2026-09-17 12:21:32.017 E  ACEClientAppUITests-Runner[73015:8615a7] [com.apple.dt.xctest:Default] Failed to initialize for UI testing: Error Domain=com.apple.dt.XCTest.XCTFuture Code=1000 "Timed out while loading Accessibility." UserInfo={NSLocalizedDescription=Timed out while loading Accessibility.}
+2026-09-17 12:21:32.022 Df testmanagerd[72802:861ca1] [com.apple.xpc:connection] [0x10880a040] invalidated because the client process (pid 73015) either cancelled the connection or exited
+2026-09-17 12:21:32.022 Df testmanagerd[72802:861ca1] [com.apple.dt.xctest:Default] Test process connection invalidated or interrupted, closing test session <XCTestSession: 0x10880afb0> pid 73015.
+2026-09-17 12:21:32.022 Df testmanagerd[72802:861ca1] [com.apple.dt.xctest:Default] Closed <XCTestSession: 0x10880afb0> pid 73015, removing from (
+    "<XCTestSession: 0x10880afb0> pid 73015"
+)
+2026-09-17 12:21:32.022 Df testmanagerd[72802:861ca1] [com.apple.dt.xctest:Default] Tearing down <XCTestSession: 0x10880afb0> pid 73015.
+2026-09-17 12:21:32.060 Df testmanagerd[72802:8622fb] [com.apple.dt.xctest:Default] XCTDAuthorizedProcessTracker has cancelled dispatch source for pid 73015 and removed it from its list of dispatch sources to track
+2026-09-17 12:21:32.060 Df testmanagerd[72802:8622fb] [com.apple.dt.xctest:Default] Current mappings: {
+}
+2026-09-17 12:21:33.467 A  testmanagerd[72802:8622fb] (RunningBoardServices) assertionsDidInvalidate
+2026-09-17 12:21:34.122 A  testmanagerd[72802:862330] (RunningBoardServices) observedProcessStatesDidChange
+2026-09-17 12:21:34.122 Df testmanagerd[72802:862330] [com.apple.runningboard:monitor] Received state update for 73015 (app<com.example.aceclientapp.uitests.xctrunner((null))>, none-NotVisible
+2026-09-17 12:21:34.122 Df testmanagerd[72802:8622fb] [com.apple.dt.xctest:Default] Process monitor update handler invoked for com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:21:34.122 Df testmanagerd[72802:8622fb] [com.apple.dt.xctest:Default] Computed display ID com.example.aceclientapp.uitests.xctrunner from embeddedApplicationIdentifier: com.example.aceclientapp.uitests.xctrunner, xpcServiceIdentifier: (null), bundleID: com.example.aceclientapp.uitests.xctrunner
+2026-09-17 12:21:34.122 Df testmanagerd[72802:8622fb] [com.apple.dt.xctest:Default] <XCTDProcessMonitor: 0x108c08c40> passing update com.example.aceclientapp.uitests.xctrunner@LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/D375E3C4-60D5-4DBD-BD8B-D1DB8E2A6724/ACEClientAppUITests-Runner.app processName: ACEClientAppUIT pid: 73015 state: not running to <XCTDProcessManagementServicesProvider: 0x10880b160>
+2026-09-17 12:21:34.122 A  testmanagerd[72802:862330] (RunningBoardServices) observedProcessStatesDidChange
+2026-09-17 12:21:34.122 I  testmanagerd[72802:8622fb] [com.apple.runningboard:monitor] Update delivered for [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015] with taskState 1
+2026-09-17 12:21:34.123 Df testmanagerd[72802:862330] [com.apple.runningboard:monitor] Received state update for 73015 (app<com.example.aceclientapp.uitests.xctrunner((null))>, none-NotVisible
+2026-09-17 12:21:34.123 I  testmanagerd[72802:8622fb] [com.apple.runningboard:monitor] Update skipped for [app<com.example.aceclientapp.uitests.xctrunner((null))>:73015]

@@ -1,0 +1,24 @@
+{
+  "startedAtUTC": "2026-09-14T19:34:00.018041+00:00",
+  "baseCommit": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "authority": "User confirmed complete action item Copy with Yrs. Existing unbounded implementation authority remains.",
+  "scope": "One Copy action control per visible action record; remove individual field Copy controls; preserve all displayed data.",
+  "acceptance": [
+    "exact five-line payload",
+    "correct action association",
+    "repeated Copy",
+    "no individual-field Copy",
+    "no Copy with no actions",
+    "native light/dark/default/maximum images and unrestricted audits"
+  ],
+  "privacy": "UTF-8 plain text; localOnly true; expiration 300 seconds; fictional data only",
+  "limits": "No total time limit. Two failed corrective attempts per fault. No broad expansion after unresolved failure.",
+  "nativeProgramme": "focused only; zero accepted final cases",
+  "sourceRecordFiles": [
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md"
+  ],
+  "historicalRunnerGateReused": "../runner-selected-failure-pass-gate-7fee853.json",
+  "runnerSha256": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+  "estimate": "Native duration depends on the changed screen and audit result; no proven end-to-end estimate."
+}

@@ -1,0 +1,114 @@
+{
+  "currentReviewCommit": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+  "limit": "These records do not test the current review commit. Causes remain unresolved.",
+  "cases": [
+    {
+      "case": "release-light-v2",
+      "selector": "testFictionalReleaseHasApprovedCopyControls",
+      "source": "ACEClientAppUITests.swift",
+      "sourceLineAtTest": 135,
+      "contrastFindings": 8,
+      "inaccessibleTextFindings": 2,
+      "result": "failed; historical revised-layout v2 candidate",
+      "paths": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2.xcresult",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2-summary.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2-tests.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-light-v2-attachments",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "case": "release-max-text-v2",
+      "selector": "testNormalDeviceSettings",
+      "source": "ACEClientAppUITests.swift",
+      "sourceLineAtTest": 260,
+      "contrastFindings": 5,
+      "inaccessibleTextFindings": 0,
+      "result": "failed; historical revised-layout v2 candidate",
+      "paths": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2.xcresult",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2-summary.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2-tests.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/release-max-text-v2-attachments",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "case": "no-actions-v2",
+      "selector": "testClippingNoActionsStandaloneAudit",
+      "source": "ACEClientAppUITests.swift",
+      "sourceLineAtTest": 171,
+      "contrastFindings": 1,
+      "inaccessibleTextFindings": 0,
+      "result": "failed; historical revised-layout v2 candidate",
+      "paths": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2.xcresult",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2-summary.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2-tests.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-actions-v2-attachments",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "case": "no-conclusion-v2",
+      "selector": "testClippingNoConclusionStandaloneAudit",
+      "source": "ACEClientAppUITests.swift",
+      "sourceLineAtTest": 171,
+      "contrastFindings": 6,
+      "inaccessibleTextFindings": 2,
+      "result": "failed; historical revised-layout v2 candidate",
+      "paths": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2.xcresult",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2-summary.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2-tests.json",
+          "exists": true
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-layout-20260914/no-conclusion-v2-attachments",
+          "exists": true
+        }
+      ]
+    }
+  ]
+}

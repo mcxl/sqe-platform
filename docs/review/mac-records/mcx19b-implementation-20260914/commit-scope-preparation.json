@@ -1,0 +1,29 @@
+{
+  "approvedScope": [
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "branch": "codex/mcx19b-release-layout",
+  "hashes": {
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "fc97102e4143af939de4974d92aeda01147b17916aeac0f4b2938e9d22df9ca1",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b",
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "af600b46ea52b3702cbd322b92108d90f55a75830ca6b6f47eb6c4e766876f28",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "33d45d245dcdeca3bda0765c378d3c3aee35798d5f83103d7daa727b792ba6b2",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "13b4bf7ae35a7a545e1de8bb16d40f264ec2b3765979227b7ea90ba05899dbe0",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "b48ee5d7d7fd2f813e68f2ec592c05460e56b9bdaa89a6ef5d557b8138a13eb4",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "01751e452c0f35bc7ecb613b899504702b79da9ef029023b6f87341ae6a71787",
+    "ios/ACEClientApp/RuntimeEvidencePlan.json": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5",
+    "tools/ace_ios_local.py": "22ffe41fd705e61729bd3cee78f88188ae2c1c87b738f5f0a505e5b71bb28dd8",
+    "tools/tests/test_ace_ios_local.py": "b48ec6ec4b94d7974045d2759ab4a6d1f85fe1aee9e4ca6f258f24bcc7788d84"
+  },
+  "authority": "The user approved the implementation plan, including a task-only commit. This preparation does not approve delivery, push or merge."
+}

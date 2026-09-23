@@ -1,0 +1,50 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/selected.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testSignInPasswordFieldIsSecure" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/selected.xcresult
+
+2026-09-14 20:16:10.199280+1000 ACEClientAppUITests-Runner[79543:2072451] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 20:16:23.090.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 20:16:23.102.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 20:16:23.103.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testSignInPasswordFieldIsSecure]' started.
+    t =     0.03s Start Test at 2026-09-14 20:16:23.132
+    t =     1.89s Set Up
+    t =     1.92s Open com.example.aceclientapp
+    t =     1.92s     Launch com.example.aceclientapp
+    t =     6.93s         Setting up automation session
+    t =    15.78s         Wait for com.example.aceclientapp to idle
+    t =    20.27s Checking existence of `"Sign In heading" StaticText`
+    t =    20.79s Find the "Sign In heading" StaticText
+    t =    20.93s Checking existence of `"Password" SecureTextField`
+    t =    21.07s Get all elements bound by index for: Descendants matching type Button
+    t =    21.21s Find the Button (Element at index 0)
+    t =    21.46s Find the "Sign in" Button
+    t =    21.62s Find the "Sign in" Button
+    t =    21.76s Find the Target Application 'com.example.aceclientapp'
+    t =    23.34s Added attachment named 'Controlled state — signIn — dark'
+    t =    30.87s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testSignInPasswordFieldIsSecure]' passed (33.178 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 20:16:56.291.
+	 Executed 1 test, with 0 failures (0 unexpected) in 33.178 (33.188) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 20:16:56.293.
+	 Executed 1 test, with 0 failures (0 unexpected) in 33.178 (33.192) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 20:16:56.296.
+	 Executed 1 test, with 0 failures (0 unexpected) in 33.178 (33.206) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T101054Z-selected-da6dcb775554/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-14 20:15:59.823 xcodebuild[79518:2071842] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 20:15:59.856 xcodebuild[79518:2071842] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 20:16:01.703 xcodebuild[79518:2071842] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 20:16:25.285 xcodebuild[79518:2071842] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 20:16:25.285 xcodebuild[79518:2071842] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 20:16:56.875 xcodebuild[79518:2071842] [MT] IDETestOperationsObserverDebug: 55.162 elapsed -- Testing started completed.
+2026-09-14 20:16:56.876 xcodebuild[79518:2071842] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 20:16:56.876 xcodebuild[79518:2071842] [MT] IDETestOperationsObserverDebug: 55.162 sec, +55.162 sec -- end

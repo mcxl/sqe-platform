@@ -1,0 +1,14 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+--- a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
++++ b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+@@ -24,7 +24,9 @@ struct ACEClientApp: App {
+             RootView(state: state)
+             #if DEBUG
+                 .safeAreaInset(edge: .top, spacing: 0) {
+-                    if UITestScenario.current != nil {
++                    // Manual phone previews can omit test metadata. Audit runs retain it.
++                    if UITestScenario.current != nil,
++                       ProcessInfo.processInfo.environment["ACE_UI_TEST_SHOW_DIAGNOSTICS"] != "0" {
+                         EffectiveInterfaceStyleIndicator()
+                     }
+                 }

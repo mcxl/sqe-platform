@@ -1,0 +1,7 @@
+{
+  "fault": "Temporary record script import omitted sys.modules registration required by dataclasses.",
+  "applicationOrRunnerChange": false,
+  "correctiveAttempts": 1,
+  "correction": "Register the import module in sys.modules before exec_module.",
+  "result": "Checkpoint written."
+}

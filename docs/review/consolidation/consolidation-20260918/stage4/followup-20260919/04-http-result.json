@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "requests": {
+    "health": {
+      "url": "http://127.0.0.1:64870/",
+      "status": 200
+    },
+    "engagement": {
+      "url": "http://127.0.0.1:64870/workbench/engagement/summary",
+      "status": 200
+    },
+    "evidence": {
+      "url": "http://127.0.0.1:64870/workbench/evidence/EVD-FIC-0001/review",
+      "status": 200
+    },
+    "evidence-state": {
+      "url": "http://127.0.0.1:64870/workbench/api/v1/evidence/EVD-FIC-0001/review",
+      "status": 200
+    },
+    "relationship": {
+      "url": "http://127.0.0.1:64870/workbench/relationship-reviews/REL-FIC-0001",
+      "status": 200
+    }
+  },
+  "version": "1.0",
+  "evidence_id": "EVD-FIC-0001",
+  "completion_state": "PENDING_REVIEW",
+  "unchanged_files": 150,
+  "browser_rendering": "unverified"
+}

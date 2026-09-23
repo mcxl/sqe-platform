@@ -1,0 +1,22 @@
+{
+  "question": "Does noConclusion pass an unrestricted audit before scrolling and fail its unchanged post-scroll audit?",
+  "kind": "diagnostic, not a correction or final acceptance",
+  "base": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "sourceHashes": {
+    "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift": "ab451f6660f908eee2017e692ea75300f3c37488af8b5742238bd2b173781d2d",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "656af6f4d152dcb4a8ea6cd88fae829907255c9237f3f51df7cafc3c1a78e84e",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "3a164eea3b8e6a44f6b247b4989f6740fada23369745e2f3d9fcb6d99ab1951d"
+  },
+  "variablesChanged": [
+    "Added initial noConclusion unrestricted audit and screenshot"
+  ],
+  "unchanged": [
+    "application source",
+    "light appearance",
+    "large content size",
+    "existing post-scroll audit",
+    "audit type all",
+    "300 second native limit"
+  ]
+}

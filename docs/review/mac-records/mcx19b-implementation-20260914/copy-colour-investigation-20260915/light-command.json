@@ -1,0 +1,21 @@
+{
+  "startUTC": "2026-09-14T23:08:01.091118+00:00",
+  "question": "Does replacing lower-contrast neighbouring release link tint clear Copy and confirmation findings without changing either control?",
+  "expected": "One test, all11fields,3unrestrictedaudits,0failure0skip.",
+  "args": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/light-runs",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+    "--test-env-json",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/light.json"
+  ],
+  "exit": 0,
+  "endUTC": "2026-09-14T23:11:42.308941+00:00"
+}

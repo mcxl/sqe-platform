@@ -1,0 +1,11 @@
+{
+  "retrieved_at": "2026-09-18T13:08:10.316434+10:00",
+  "path": "LOCAL_HOME/ace-private/sqe-consolidation-20260918/stage2/STAGE-2-COMPARISON-REPORT.md",
+  "transport": "SSH cat; Windows memory only, no local evidence export",
+  "bytes": 10225,
+  "source_sha256": "73268fb7ed667d3018b835e7806487b4ea738b5858f1c517ba5d1212993774f8",
+  "retrieved_sha256": "73268fb7ed667d3018b835e7806487b4ea738b5858f1c517ba5d1212993774f8",
+  "matches": true,
+  "utf8_decodes": true,
+  "required_sections_present": true
+}

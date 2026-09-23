@@ -1,0 +1,33 @@
+{
+  "status": "closed_non_reproduction",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "nativeArchive": "LOCAL_HOME/ace-private/mcx19b-release-timeout-20260915/diagnostic-native-evidence.tar.gz",
+  "nativeArchiveSha256": "1c5079d03988078e89c9cc752a3f22289256df28e5f5ece8c5391a01b453766e",
+  "recordArchive": "LOCAL_HOME/ace-private/mcx19b-release-timeout-20260915/work-piece-records.tar.gz",
+  "recordArchiveSha256": "210eeebf11b553b0ac284979cbc3a41eb521a1a659895dcf552f307afd058bbd",
+  "verifiedRecordHashes": {
+    "PLAN.md": "1e53ee872c8841a4061b9801ebeba5ecafb24f984cae2ae0493b336450bbe400",
+    "OUTCOME.md": "dceda16bb0525bac9ff78f7e1e4950eaa9b02801300f370d7bf01f824a02d907",
+    "TASK.json": "ec2e8e4b82c66b3103048cc772f28f02778c92986e46d2b659b2cfa45d1de06c",
+    "preflight.json": "c0cf5be91b3ac56f2059057b0081037f4adcf853ecd9ff5a85d5dbad42e6f2d4",
+    "verification-reconciliation.json": "7865e347b22b856289d67f70fd7bb0ba41c76804f814c6a91b595273c8b729a5",
+    "final-state.json": "ab43742bc869d209658685a7942716e2d461289e4a72a11b7d16625cd93e0a4d",
+    "independent-timeout-review.json": "20b6053b533d41976525590cf867cb1fbcbce83880601c292c5f68fb6f8300c2",
+    "outcome-review.json": "3cb8e12756c0cd2587d3c2d3275d1e4318ca7ff5165a5c8ae9d6ddfa68473bbc",
+    "archive-verification.json": "5e17c30dc57345389581430322f76a5408f003152e47c1e8848aa2a09ce7d94e",
+    "authenticated-retrieval.json": "dadcecb77efdfb78542531ba69c3312386d70367796a07b202c6315cc7d05673",
+    "01-unchanged-prefix/result.json": "c9a0232eb55a113e6bd302eade1c1eb1557ea96b7af8c5d980abcc4373135add",
+    "01-unchanged-prefix/image-inventory.json": "5680a259bc8529bb4af6cf735f6325c07bf36e8139dd6caca2e70d349466f2ed",
+    "02-pro-max-prefix/result.json": "bb8e5e8fbc66205bf835da12812dcbbd004df78dc47f4b1ad42a916cf7406492",
+    "02-pro-max-prefix/image-inventory.json": "e9ac3beb54f4c56615ec595c60f5e291ba5fc39746c2b714f7491277dd2d20cb"
+  },
+  "diagnosticCasesPassed": 4,
+  "nativeCoverageTestsPassed": 2,
+  "auditInvocationsPassed": 6,
+  "uniqueImagesInspected": 8,
+  "sourceChanges": [],
+  "originalPilot": "failed",
+  "cause": "unresolved",
+  "nextStage": "fresh22-case pilot, not started",
+  "retainUntilUTC": "2026-10-15T04:31:01.965601+00:00"
+}

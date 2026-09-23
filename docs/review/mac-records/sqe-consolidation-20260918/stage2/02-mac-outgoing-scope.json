@@ -1,0 +1,6980 @@
+{
+  "source": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "selected_ref": "refs/heads/codex/mcx19b-release-layout",
+  "head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "captured_at": "2026-09-18T12:53:26.195556+10:00",
+  "objects": [
+    {
+      "oid": "40bae2640b23eb05496a093d09a4c20186403879",
+      "path": "",
+      "kind": "commit",
+      "bytes": 331
+    },
+    {
+      "oid": "52b212aca02190ee0e742debe383fa6016fe36b9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 320
+    },
+    {
+      "oid": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 321
+    },
+    {
+      "oid": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+      "path": "",
+      "kind": "commit",
+      "bytes": 328
+    },
+    {
+      "oid": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 328
+    },
+    {
+      "oid": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 325
+    },
+    {
+      "oid": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+      "path": "",
+      "kind": "commit",
+      "bytes": 313
+    },
+    {
+      "oid": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+      "path": "",
+      "kind": "commit",
+      "bytes": 315
+    },
+    {
+      "oid": "add02b803eaf9e655f544f9b111733d1c07004b7",
+      "path": "",
+      "kind": "commit",
+      "bytes": 317
+    },
+    {
+      "oid": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+      "path": "",
+      "kind": "commit",
+      "bytes": 328
+    },
+    {
+      "oid": "905004fc71107565abf2d68cb05fc581cf5bf310",
+      "path": "",
+      "kind": "commit",
+      "bytes": 314
+    },
+    {
+      "oid": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 320
+    },
+    {
+      "oid": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+      "path": "",
+      "kind": "commit",
+      "bytes": 325
+    },
+    {
+      "oid": "b2c45093a44c6171ca250b858378ea57693d8477",
+      "path": "",
+      "kind": "commit",
+      "bytes": 324
+    },
+    {
+      "oid": "493e632b2640fb12b54bf709719b0320cadd899a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 328
+    },
+    {
+      "oid": "023b1e8dd0a742d2a1caa3f30f5141af2c5021db",
+      "path": "",
+      "kind": "commit",
+      "bytes": 830
+    },
+    {
+      "oid": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+      "path": "",
+      "kind": "commit",
+      "bytes": 652
+    },
+    {
+      "oid": "b63af743b207fcbb78df1b473707660789a2dc60",
+      "path": "",
+      "kind": "commit",
+      "bytes": 323
+    },
+    {
+      "oid": "7fee853aef52e85a813368a51d833c134710186d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 328
+    },
+    {
+      "oid": "b9ba714d99862e9ef5572b7eb2a1b1d6471d0932",
+      "path": "",
+      "kind": "commit",
+      "bytes": 325
+    },
+    {
+      "oid": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 292
+    },
+    {
+      "oid": "50aaf697673756e7935fcc20908c44749a905e51",
+      "path": "",
+      "kind": "commit",
+      "bytes": 300
+    },
+    {
+      "oid": "783a12113a8e85ba228d5a96f6bdc2678820e3e6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 298
+    },
+    {
+      "oid": "3acd4147c176465a7c8f167da542d8cbd7184e3a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 304
+    },
+    {
+      "oid": "0196fdbba0071c53747249dd0352b6f9e36fb555",
+      "path": "",
+      "kind": "commit",
+      "bytes": 297
+    },
+    {
+      "oid": "045e626e9c0e8b91de2869eee8fd8a36dc4f183a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 309
+    },
+    {
+      "oid": "a3f6d5e75a7a95c9c533fb46faac6e4562c1cc59",
+      "path": "",
+      "kind": "commit",
+      "bytes": 290
+    },
+    {
+      "oid": "4b92bc340b2997eaf0200a220b4b1b03eb619900",
+      "path": "",
+      "kind": "commit",
+      "bytes": 290
+    },
+    {
+      "oid": "3e1415f28c78406f61af6aafb04844e42cc19dab",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "2eafeb48a01431563d95aba8949260ef06b11ce5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 305
+    },
+    {
+      "oid": "39eed65f197c9344216bbcbe938ce0812f5d9d5d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 287
+    },
+    {
+      "oid": "86d60f395feb22967db94ba360bec9bce056ca21",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "b33548a53a8808d42888a0aed9dc7dcb64cefa46",
+      "path": "",
+      "kind": "commit",
+      "bytes": 298
+    },
+    {
+      "oid": "1883d95e938dff9afdeaca018472120a22fb3d6e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 301
+    },
+    {
+      "oid": "6155d1197dc01910b0d7cd8bbb4ceb949969c5f9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 287
+    },
+    {
+      "oid": "809a4576fb03d35eea52d0a2fe174151e3fc2949",
+      "path": "",
+      "kind": "commit",
+      "bytes": 295
+    },
+    {
+      "oid": "dbb2bbf5e27011d0590d3e04b95fbeefd8647ba6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 282
+    },
+    {
+      "oid": "0fed7141bdc7268b3f86cc3ccf82aa4b901f59d4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 289
+    },
+    {
+      "oid": "e25dd29c8aae3da3f5a22088e8f20e66b22aa6c1",
+      "path": "",
+      "kind": "commit",
+      "bytes": 301
+    },
+    {
+      "oid": "7519dba068ee6c52497c29acfbf6dd263bf764d5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "a3a95955c862d55b9bb679fa988fecb4429a59c5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "2b5cebe2144ad0fc99fa4be748d3653e2a8038ce",
+      "path": "",
+      "kind": "commit",
+      "bytes": 293
+    },
+    {
+      "oid": "4c2e56efc4ef21355707ac612e21da5a543fedf9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 298
+    },
+    {
+      "oid": "f9dba2f78929eb6ce00fb2e2d4c6b3732dbac12e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 300
+    },
+    {
+      "oid": "bcfbbb26d7073d1dc5a21b977a1e40158aaf6b3e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "06f60eeb3446f45ff7cb5bdf80cb714d51b641bf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 303
+    },
+    {
+      "oid": "ba42dd4e5cf9ddf1d9517b069820aae584792321",
+      "path": "",
+      "kind": "commit",
+      "bytes": 305
+    },
+    {
+      "oid": "a0e146d5faac7db91cc20efd7425ad1129b5d7f1",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "25e978226b98a05a738c79eec91a4a47191d8d6c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "980a25af4edfccd3171ef8d91b9aa6d761e87765",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "725d1a0fd7ed945fc59b3912871dbcde267a9ffb",
+      "path": "",
+      "kind": "commit",
+      "bytes": 297
+    },
+    {
+      "oid": "33c995a25d7fa4c1103faafa676d310c4d9a6894",
+      "path": "",
+      "kind": "commit",
+      "bytes": 293
+    },
+    {
+      "oid": "7f2a002926ce0447ad628ccf42516a78281eeaff",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "74c9a08729a4aa5530d59fd700147ab7beab273b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 292
+    },
+    {
+      "oid": "5929b0cf42cfa7855b451d0d93d088a79e6e99ee",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "b494ae95a1324091ce817cfc94694c8fd91cba97",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "3259048186916941bf3557d55503e7375e432c57",
+      "path": "",
+      "kind": "commit",
+      "bytes": 284
+    },
+    {
+      "oid": "f9b77a819fd608cb57d334d2a106ea80422222e4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 297
+    },
+    {
+      "oid": "3105a63b95aec0b04b36b0181abfc4b94539aa7e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 294
+    },
+    {
+      "oid": "838ae6af5933495c49f74d3e47109e6159bb951b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 291
+    },
+    {
+      "oid": "583daded5540d5f87a95138694f37548290ce2e6",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "8348d9f0650a50df1c89406f0664ba8b828689bf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 292
+    },
+    {
+      "oid": "0a936811f75713d43235f86176e55e756b48ba73",
+      "path": "",
+      "kind": "commit",
+      "bytes": 300
+    },
+    {
+      "oid": "b6eabcdc36e80ba55ff0f6dd1201b96a0547b44e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 296
+    },
+    {
+      "oid": "d7955042870c5458778bf57c4bccc5703aa0a08b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 291
+    },
+    {
+      "oid": "1dc21a3481de549f338b34ee298f67c3adb0bc5d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 288
+    },
+    {
+      "oid": "3a52b52c0e6124137f2f25a9ce810fb489c7adcf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 296
+    },
+    {
+      "oid": "c8dc459c20472092b80b83d44d980b5670dc61fa",
+      "path": "",
+      "kind": "commit",
+      "bytes": 300
+    },
+    {
+      "oid": "18ec5a0456c1392022f27007dab3fd071266b9f7",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "c22c246d71026fa73b0b74cf95bbab8b7a3b1308",
+      "path": "",
+      "kind": "commit",
+      "bytes": 289
+    },
+    {
+      "oid": "965c244d29b428091879194ed1143ac1fbf95422",
+      "path": "",
+      "kind": "commit",
+      "bytes": 294
+    },
+    {
+      "oid": "40f04d96311d6cc3f384d3afe06eb9329df33859",
+      "path": "",
+      "kind": "commit",
+      "bytes": 285
+    },
+    {
+      "oid": "a1daf3dbde1b72ce05db9f4857d7127848f19c2e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 278
+    },
+    {
+      "oid": "3703458db72ce1e388967c7af3b760108db3bab9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 281
+    },
+    {
+      "oid": "7e663758df36a1c54f9f7a18d0f056242978175e",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "fcbe3583b54a974e74eb71d4175a01e587c9a79c",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "4cf12fd5395fc290235e359aa8485f903b8f11da",
+      "path": "",
+      "kind": "commit",
+      "bytes": 287
+    },
+    {
+      "oid": "11b41a2631831361bd67b6d5a03c3d32424e1186",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "ec0f19bc1e469ba90d9bb90f9b71fdaf3b7d401a",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "f77bc6184a04fe1abab4574070a18cc807adf9c2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "acea7785df09207e4cda3600499357c1b12c7234",
+      "path": "",
+      "kind": "commit",
+      "bytes": 270
+    },
+    {
+      "oid": "c78dfc5c717eafe46c37afade7eca4e7e1c5d044",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "7fa7df8fdf80c65485d690c8262fada8f6665cda",
+      "path": "",
+      "kind": "commit",
+      "bytes": 271
+    },
+    {
+      "oid": "7da6228dc87ad970aa8d44365fbc3823c58020da",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1194
+    },
+    {
+      "oid": "6d5a20c51ec009cc0a7f317f96e4095f35820c34",
+      "path": "",
+      "kind": "commit",
+      "bytes": 290
+    },
+    {
+      "oid": "4306edd463271c8560225f0369b16fccc31a29bf",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "61a1cc58a6a38d09e93c3205d51da637c381d233",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "721bbf34e9efa644f162c8b8cfcabb0712356c22",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1212
+    },
+    {
+      "oid": "3de745934d62034d843032ad9b202b2fecc93a6b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "c345b4e5654be0efc4d767e5621618ecfc06122d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "2140dc9382ded3aabb3969676dcb251fbb9d4441",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1214
+    },
+    {
+      "oid": "2e0e31ffe21feee4ce3e5927c733d70e429429b9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "80bbe4b4e41a03c381c7ada59cbae317b37c4992",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1198
+    },
+    {
+      "oid": "25a3035eed07306e5b3e4aa8a67d8aa2235fed34",
+      "path": "",
+      "kind": "commit",
+      "bytes": 277
+    },
+    {
+      "oid": "a40d34b82d784baee498361a837c3585cbab48d9",
+      "path": "",
+      "kind": "commit",
+      "bytes": 270
+    },
+    {
+      "oid": "92cd41966e7a8fa5eabdad94c77b30c818e21be4",
+      "path": "",
+      "kind": "commit",
+      "bytes": 1214
+    },
+    {
+      "oid": "bdbceb6d0dd260dded1782f9b9c76aa5f7bad14b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 292
+    },
+    {
+      "oid": "7db3dd7a783120401575206f838d1f34ceabc2dd",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "38c1790ff83b26ec49a8f261ee57ff5103139ab2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "6dbf8046858df7c6e25d2dbef7db73b8d9d303ce",
+      "path": "",
+      "kind": "commit",
+      "bytes": 275
+    },
+    {
+      "oid": "183ae36a464e7b46a6f424551d4ba9eae8c50881",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "e6560a496a4babdd764bb18890402d90d9ecf44b",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "eaa383f09566a37b0cbeb2ed3ba9dfeaa8cfafac",
+      "path": "",
+      "kind": "commit",
+      "bytes": 266
+    },
+    {
+      "oid": "5af22fa37df865616ebfb6549b1dbf39cfd460de",
+      "path": "",
+      "kind": "commit",
+      "bytes": 271
+    },
+    {
+      "oid": "8a6742fe5a6730cd66a9985a642bfc5743fd59f2",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "bfa9013ed219a47ed5e14c19415d88104a227210",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "326b2b7f5292ac71423201f32e6b68222e0e7e25",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "308f12fd1369b55ac03c7b2633f5a4f71372db39",
+      "path": "",
+      "kind": "commit",
+      "bytes": 283
+    },
+    {
+      "oid": "9414b265863d4ba4989ac7b5b4ca8d2cd8652e49",
+      "path": "",
+      "kind": "commit",
+      "bytes": 279
+    },
+    {
+      "oid": "fe91ef14d1eef0b7c441b5551bca5cacb3ad7934",
+      "path": "",
+      "kind": "commit",
+      "bytes": 272
+    },
+    {
+      "oid": "f0b9da8e6d89da2d632fbb2e106f84ce349e2c97",
+      "path": "",
+      "kind": "commit",
+      "bytes": 273
+    },
+    {
+      "oid": "59378e9277bd4c7c9be89694f2220cbc28e7c211",
+      "path": "",
+      "kind": "commit",
+      "bytes": 274
+    },
+    {
+      "oid": "01d583af137ca645ce830e3e5e26fc8e1bd7c036",
+      "path": "",
+      "kind": "commit",
+      "bytes": 286
+    },
+    {
+      "oid": "6e0e66ea78cc48fcd10a34d4a30220506aebcb9d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 303
+    },
+    {
+      "oid": "c761fe2045e9f16dc1bd1770f8d940215247e26d",
+      "path": "",
+      "kind": "commit",
+      "bytes": 276
+    },
+    {
+      "oid": "d1507336ca6be5f6ae5f90227a66f10dffa83728",
+      "path": "",
+      "kind": "commit",
+      "bytes": 280
+    },
+    {
+      "oid": "1084f13a041ff3866daf5fc9e68d17ce173fb3e5",
+      "path": "",
+      "kind": "commit",
+      "bytes": 230
+    },
+    {
+      "oid": "81bb5329e5347e334b5b03964d48298e2a6b46f0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2259ed32639ffc419f238787cce9ba0916fe1865",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "1790477e289df16bd9fe86a2cd89bf9d88a52d90",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "c1f1d23f1e40634afc41d884cc0a809b1a47722b",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 6984
+    },
+    {
+      "oid": "f65423462344828c38a1688836143c0f2b13d594",
+      "path": ".github/workflows/release-quality.yml",
+      "kind": "blob",
+      "bytes": 1381
+    },
+    {
+      "oid": "988fb818746db74a2896a5df60efe62dd07616ed",
+      "path": ".gitignore",
+      "kind": "blob",
+      "bytes": 88
+    },
+    {
+      "oid": "3e756556e4f6248897535fe1aaca834d6596b390",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 27950
+    },
+    {
+      "oid": "855d07fa1145e30afd2cb6c178aab3b493dd6b45",
+      "path": "ACE_VISION_AND_ROADMAP.md",
+      "kind": "blob",
+      "bytes": 912
+    },
+    {
+      "oid": "30f5ade7d676bb097d555de40282907380b5c163",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 6661
+    },
+    {
+      "oid": "c3226c28c5b1935870c645d8a35b5d1266f028bc",
+      "path": "CONTEXT.md",
+      "kind": "blob",
+      "bytes": 1469
+    },
+    {
+      "oid": "3d1b4cfd6d3ed152d2f489f76ddd566f7f1b43a5",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 2039
+    },
+    {
+      "oid": "e67ca1bdafc81b03a8e17385e0565b864c1871ea",
+      "path": "README.md",
+      "kind": "blob",
+      "bytes": 1457
+    },
+    {
+      "oid": "637edd14d2901e3de8f8ec361643cc4976ba03be",
+      "path": "WORKFLOW-NOTES.md",
+      "kind": "blob",
+      "bytes": 887
+    },
+    {
+      "oid": "246848fa1da8a77b6c836ae91b3e773594684d36",
+      "path": "apps",
+      "kind": "tree",
+      "bytes": 52
+    },
+    {
+      "oid": "8b947e2b5356188dd837e17d3d87f6977610eb85",
+      "path": "apps/relationship-review-pilot",
+      "kind": "tree",
+      "bytes": 677
+    },
+    {
+      "oid": "1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163",
+      "path": "apps/relationship-review-pilot/.env.example",
+      "kind": "blob",
+      "bytes": 90
+    },
+    {
+      "oid": "830932714370a9751e228be3aa1d9ea1177177df",
+      "path": "apps/relationship-review-pilot/.gitignore",
+      "kind": "blob",
+      "bytes": 42
+    },
+    {
+      "oid": "9ce958e3e4c536fa65ab53cd9424dbe462b2b208",
+      "path": "apps/relationship-review-pilot/README.md",
+      "kind": "blob",
+      "bytes": 469
+    },
+    {
+      "oid": "044847aa771ec066f138b81cab89f9dbf9c56ace",
+      "path": "apps/relationship-review-pilot/app",
+      "kind": "tree",
+      "bytes": 150
+    },
+    {
+      "oid": "661243a5c37be5f34414e17c5b764f1d84072869",
+      "path": "apps/relationship-review-pilot/app/error.tsx",
+      "kind": "blob",
+      "bytes": 458
+    },
+    {
+      "oid": "08d5ca0c046f8832984e609959bb13999b054275",
+      "path": "apps/relationship-review-pilot/app/globals.css",
+      "kind": "blob",
+      "bytes": 171
+    },
+    {
+      "oid": "8ad36db97cfc844408ceca643c58de4181bdb4c2",
+      "path": "apps/relationship-review-pilot/app/layout.tsx",
+      "kind": "blob",
+      "bytes": 382
+    },
+    {
+      "oid": "b7fe1709c171c5122d71476fc3b8913e33b92842",
+      "path": "apps/relationship-review-pilot/app/page.tsx",
+      "kind": "blob",
+      "bytes": 1128
+    },
+    {
+      "oid": "d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9",
+      "path": "apps/relationship-review-pilot/components.json",
+      "kind": "blob",
+      "bytes": 408
+    },
+    {
+      "oid": "922d1cfb60c0f0bfda576c71876c0fc7483f1490",
+      "path": "apps/relationship-review-pilot/components",
+      "kind": "tree",
+      "bytes": 144
+    },
+    {
+      "oid": "17e0fddebdf56b3fe2b26dc9c78276b52300b5bc",
+      "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+      "kind": "blob",
+      "bytes": 374
+    },
+    {
+      "oid": "04fc774ed5e59f587636417a528bbd5234bcd045",
+      "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+      "kind": "blob",
+      "bytes": 7961
+    },
+    {
+      "oid": "d80b121b72ac257c642ad0968137bc90c945b615",
+      "path": "apps/relationship-review-pilot/components/ui",
+      "kind": "tree",
+      "bytes": 186
+    },
+    {
+      "oid": "f4c0ff7be212c0a96e925282a75f13798359059d",
+      "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+      "kind": "blob",
+      "bytes": 662
+    },
+    {
+      "oid": "302196895e4b92ca76ea4ab7a8a899ecc0760c30",
+      "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+      "kind": "blob",
+      "bytes": 813
+    },
+    {
+      "oid": "8b52a14188fcbf7c18a5393aac47453894365699",
+      "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+      "kind": "blob",
+      "bytes": 311
+    },
+    {
+      "oid": "df98f6b72a7967e91b95939590c877ce72f798d8",
+      "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+      "kind": "blob",
+      "bytes": 1166
+    },
+    {
+      "oid": "a5ef193506d07d0459fec4f187af08283094d7c8",
+      "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+      "kind": "blob",
+      "bytes": 169
+    },
+    {
+      "oid": "445100e4e26865fbfc4af84ca93f117931d70c33",
+      "path": "apps/relationship-review-pilot/convex",
+      "kind": "tree",
+      "bytes": 194
+    },
+    {
+      "oid": "39425ad8470feb4466818eb3ed41d2cf5d4f138a",
+      "path": "apps/relationship-review-pilot/convex/_generated",
+      "kind": "tree",
+      "bytes": 188
+    },
+    {
+      "oid": "c049816b49eb290630ffeed9abb27776c05dc1f5",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+      "kind": "blob",
+      "bytes": 1022
+    },
+    {
+      "oid": "44bf98583204c1f9474b38f84b48659b192eea8b",
+      "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+      "kind": "blob",
+      "bytes": 480
+    },
+    {
+      "oid": "f97fd1942151eef5b818c0679f7a12f2c22557b5",
+      "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+      "kind": "blob",
+      "bytes": 1736
+    },
+    {
+      "oid": "f235db4a112ece75f7698b191532048a98270c21",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+      "kind": "blob",
+      "bytes": 6008
+    },
+    {
+      "oid": "2dbe0dbd475de29f550f222942597ef9f5dc8654",
+      "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+      "kind": "blob",
+      "bytes": 3872
+    },
+    {
+      "oid": "ef4cf74f8dcc9f7413c1516e81368048a1234cf1",
+      "path": "apps/relationship-review-pilot/convex/relationships.ts",
+      "kind": "blob",
+      "bytes": 5278
+    },
+    {
+      "oid": "8351fca4541f2ca58c8851c79c64fe93407eb6a2",
+      "path": "apps/relationship-review-pilot/convex/schema.ts",
+      "kind": "blob",
+      "bytes": 1871
+    },
+    {
+      "oid": "fa69fa296c815263b1a7bd9f761c992e74860e4c",
+      "path": "apps/relationship-review-pilot/convex/seed.ts",
+      "kind": "blob",
+      "bytes": 6374
+    },
+    {
+      "oid": "73649cf0b74e85f4b015115564c41397fb5bd92a",
+      "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+      "kind": "blob",
+      "bytes": 228
+    },
+    {
+      "oid": "fe04c1f8ad833e39504ba140c495f3c5246ca44f",
+      "path": "apps/relationship-review-pilot/eslint.config.mjs",
+      "kind": "blob",
+      "bytes": 239
+    },
+    {
+      "oid": "428f5ce1e15d8f5364679a301a1bbbed7ebdd86a",
+      "path": "apps/relationship-review-pilot/next-env.d.ts",
+      "kind": "blob",
+      "bytes": 152
+    },
+    {
+      "oid": "cb651cdc007c4c5087ea7b4e61981bb2733f7d92",
+      "path": "apps/relationship-review-pilot/next.config.ts",
+      "kind": "blob",
+      "bytes": 104
+    },
+    {
+      "oid": "134c3e8e9d9e27b17c850cab9285e72bcea99f4a",
+      "path": "apps/relationship-review-pilot/package-lock.json",
+      "kind": "blob",
+      "bytes": 320120
+    },
+    {
+      "oid": "ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b",
+      "path": "apps/relationship-review-pilot/package.json",
+      "kind": "blob",
+      "bytes": 918
+    },
+    {
+      "oid": "999cd7b9d2cd26ba7b02c69c272868b39bea0674",
+      "path": "apps/relationship-review-pilot/postcss.config.mjs",
+      "kind": "blob",
+      "bytes": 108
+    },
+    {
+      "oid": "e3193a0241ac59904ae480b987a565e4e243a12f",
+      "path": "apps/relationship-review-pilot/tests",
+      "kind": "tree",
+      "bytes": 115
+    },
+    {
+      "oid": "6d61af4e7cd5de8a51826f5246c7eb346e2de888",
+      "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+      "kind": "blob",
+      "bytes": 8223
+    },
+    {
+      "oid": "85ff3f3796415d3470f7fccb52b9e3bfb10df425",
+      "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+      "kind": "blob",
+      "bytes": 4513
+    },
+    {
+      "oid": "b456a6eb10ddb1e591185f66b20379c7a022f55b",
+      "path": "apps/relationship-review-pilot/tsconfig.json",
+      "kind": "blob",
+      "bytes": 574
+    },
+    {
+      "oid": "d9481977b149f5238f1810595402583135c18f1c",
+      "path": "apps/relationship-review-pilot/vitest.config.ts",
+      "kind": "blob",
+      "bytes": 515
+    },
+    {
+      "oid": "f149f27ae4bbd7cc4f6253570176a4fce144ef95",
+      "path": "apps/relationship-review-pilot/vitest.setup.ts",
+      "kind": "blob",
+      "bytes": 43
+    },
+    {
+      "oid": "e9563d00b4d0630a5b556ad66ad933fd64f85945",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 6972
+    },
+    {
+      "oid": "c494119e383ffe04747145c4b051599607830f2c",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 254
+    },
+    {
+      "oid": "0ae4ecf1fcddf1fdd0b08f23782b4d64fb52e1a6",
+      "path": "docs/DOCUMENTATION-INVENTORY.md",
+      "kind": "blob",
+      "bytes": 1183
+    },
+    {
+      "oid": "e56f8a4cc21c9540d33390a4473abab86fed2325",
+      "path": "docs/adr",
+      "kind": "tree",
+      "bytes": 280
+    },
+    {
+      "oid": "50a087af26e859eaa72b6738e8adb0bc628f6fee",
+      "path": "docs/adr/0001-human-auditor-controls-final-decisions.md",
+      "kind": "blob",
+      "bytes": 426
+    },
+    {
+      "oid": "b2650e3448688a5fdf196dcef518342a8cef4c18",
+      "path": "docs/adr/0002-g0-protects-the-data-boundary.md",
+      "kind": "blob",
+      "bytes": 381
+    },
+    {
+      "oid": "b32de4ad02ad12d94aae50fa8e3165ac05f34c33",
+      "path": "docs/adr/0003-approved-records-use-versioned-history.md",
+      "kind": "blob",
+      "bytes": 368
+    },
+    {
+      "oid": "0ed9469bc18bafa404ce120bffba0d2fecfbdb67",
+      "path": "docs/adr/0004-release-projection-is-read-only.md",
+      "kind": "blob",
+      "bytes": 374
+    },
+    {
+      "oid": "502bd1536550eb3d3226b318da6c05541aeb2616",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 173
+    },
+    {
+      "oid": "a2ae1946089598f970d8929dec6e2ff912ed0db0",
+      "path": "docs/agents/agent-permissions.md",
+      "kind": "blob",
+      "bytes": 611
+    },
+    {
+      "oid": "e29624de32681197b8ebe5ac74ca4b23671feffd",
+      "path": "docs/agents/domain.md",
+      "kind": "blob",
+      "bytes": 226
+    },
+    {
+      "oid": "908b1896120f4280ab1e73f661dbe6801c1a5ca2",
+      "path": "docs/agents/issue-tracker.md",
+      "kind": "blob",
+      "bytes": 943
+    },
+    {
+      "oid": "829c6967660988d60e4ebd7ce5baf73da06a7daf",
+      "path": "docs/agents/triage-labels.md",
+      "kind": "blob",
+      "bytes": 215
+    },
+    {
+      "oid": "4010a196e845b4761e9c0c86dc382a17c5b83fb9",
+      "path": "docs/diagrams",
+      "kind": "tree",
+      "bytes": 123
+    },
+    {
+      "oid": "ba73f6803620381f8b773b77a8dafc07561024c8",
+      "path": "docs/diagrams/README.md",
+      "kind": "blob",
+      "bytes": 225
+    },
+    {
+      "oid": "3ad9e9c802b11cf443833b631b781aca8da2ef15",
+      "path": "docs/diagrams/controlled",
+      "kind": "tree",
+      "bytes": 34
+    },
+    {
+      "oid": "12efc6166665a3b563844d329dc47dd55e136fdb",
+      "path": "docs/diagrams/controlled/mermaid",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "4d96b623f240ae8e79e2cc4749a69a6807eb061e",
+      "path": "docs/diagrams/controlled/mermaid/approval-review-states.mmd",
+      "kind": "blob",
+      "bytes": 288
+    },
+    {
+      "oid": "9f4e5c2aafef9e94f84ca9aa0ba3b69455565f1e",
+      "path": "docs/diagrams/controlled/mermaid/auditor-workflow.mmd",
+      "kind": "blob",
+      "bytes": 183
+    },
+    {
+      "oid": "2d9095b8a19f7b64baa5385b07733d89abee81cb",
+      "path": "docs/diagrams/controlled/mermaid/evidence-relationship-map.mmd",
+      "kind": "blob",
+      "bytes": 202
+    },
+    {
+      "oid": "ea0d6b009d24d42a239e2434ff089c9771c121d3",
+      "path": "docs/diagrams/diagram-manifest.json",
+      "kind": "blob",
+      "bytes": 223
+    },
+    {
+      "oid": "6312cd0466610b267b69f6efac98c85599f670a8",
+      "path": "docs/plans",
+      "kind": "tree",
+      "bytes": 137
+    },
+    {
+      "oid": "20f2b0ad7569f377dfb0376b94c3e4dacfbc27b8",
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "kind": "blob",
+      "bytes": 9731
+    },
+    {
+      "oid": "3b5a2da7fdd6c3f19a4ed322c01ab6576c72a4ee",
+      "path": "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+      "kind": "blob",
+      "bytes": 4633
+    },
+    {
+      "oid": "5d871ab2dbc4f28f5039da3a9ab6ea402ea35fdc",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "ce352bd2f44526422ffce398f3f49eb84da24539",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 86223
+    },
+    {
+      "oid": "d8ca7db85bbb8f8bda10295369fc2a8efb2098a0",
+      "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+      "kind": "blob",
+      "bytes": 1224
+    },
+    {
+      "oid": "f4e122c27a4a6bf1419fe107c40db6922cd1989c",
+      "path": "docs/specs/documentation-control.md",
+      "kind": "blob",
+      "bytes": 670
+    },
+    {
+      "oid": "15d38ed62aa565365f9be1419804152b8eff4a2b",
+      "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+      "kind": "blob",
+      "bytes": 16508
+    },
+    {
+      "oid": "43f3a2141f1836d7d281e84e99dfc8c5d2eab56a",
+      "path": "docs/specs/phase6-stage2-release-workflow.md",
+      "kind": "blob",
+      "bytes": 6271
+    },
+    {
+      "oid": "1be8f9466a3891af465a387d555c8b55b0708a35",
+      "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+      "kind": "blob",
+      "bytes": 11276
+    },
+    {
+      "oid": "96d281352a47b8cc976d709d6cea4d5b09700c26",
+      "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+      "kind": "blob",
+      "bytes": 10972
+    },
+    {
+      "oid": "8531a9fe84ee1e1b7f141f6d7ecc6a37d9d9e808",
+      "path": "docs/superpowers",
+      "kind": "tree",
+      "bytes": 64
+    },
+    {
+      "oid": "eacb229f7cc9639197648786fbf564e65bf48bb0",
+      "path": "docs/superpowers/plans",
+      "kind": "tree",
+      "bytes": 285
+    },
+    {
+      "oid": "e3bcef77922f4885bb0385b816e93bf2442b7153",
+      "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+      "kind": "blob",
+      "bytes": 32718
+    },
+    {
+      "oid": "346121bc97971423554ed9b833902bcc901269c4",
+      "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+      "kind": "blob",
+      "bytes": 56812
+    },
+    {
+      "oid": "027237e08feeec1b8213e2e5ca30dbc7f627da9f",
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+      "kind": "blob",
+      "bytes": 63684
+    },
+    {
+      "oid": "b5b37978b25914f1abdfe07f82569f0ed800ccab",
+      "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+      "kind": "blob",
+      "bytes": 86584
+    },
+    {
+      "oid": "0ec5f7f856d99d9fdee818ed2b1791e789b4512c",
+      "path": "docs/superpowers/specs",
+      "kind": "tree",
+      "bytes": 391
+    },
+    {
+      "oid": "f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5",
+      "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+      "kind": "blob",
+      "bytes": 10820
+    },
+    {
+      "oid": "70fbf6cd959aa03867c89d33ec5c1c2acb0573dc",
+      "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+      "kind": "blob",
+      "bytes": 21139
+    },
+    {
+      "oid": "c887e61e1bb3f53649c84b9fc2e26d5a2789460b",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+      "kind": "blob",
+      "bytes": 25784
+    },
+    {
+      "oid": "cd729d22a55808e3d07d1257bbc31af7a90e486b",
+      "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+      "kind": "blob",
+      "bytes": 32848
+    },
+    {
+      "oid": "8fb6ba4b4a23167c25376caf50fa8121f4e191f9",
+      "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+      "kind": "blob",
+      "bytes": 13664
+    },
+    {
+      "oid": "5b847ef102f18cf566502f94691f345579a4a2ac",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "79bdb46911129d638a69ef48dfce609d2bf3d6ac",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "fca7c38c0980dd4bf8c5d8a9ca5ef48d91db7a5f",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj",
+      "kind": "tree",
+      "bytes": 82
+    },
+    {
+      "oid": "d8c921d3de4849ab73de58a3925761789efcefcc",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+      "kind": "blob",
+      "bytes": 14409
+    },
+    {
+      "oid": "7cb2632a69b1087515e10859a935b85b6696f3d4",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "9d51cf332211a8d7728e6e5ad2027f9b970bb676",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "aa82130565c15085d1e2bebfbea31a2644b2a543",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+      "kind": "blob",
+      "bytes": 1580
+    },
+    {
+      "oid": "697df2c6d8653ab95d8465f52c4d95530a814d59",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "kind": "blob",
+      "bytes": 1964
+    },
+    {
+      "oid": "73eb7724993aef0f9268a04cb14d8c214a4c0654",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "f8a9bcee7039cf97bb3270ba890753d13e7e8d11",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 5242
+    },
+    {
+      "oid": "f51d2b28d7dc79352a216a6949104d9a853a9f5f",
+      "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+      "kind": "blob",
+      "bytes": 2500
+    },
+    {
+      "oid": "c93b91867bab745c22646ed0c2bed6c0b3edc90e",
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "kind": "blob",
+      "bytes": 6761
+    },
+    {
+      "oid": "b26fe330361b313f651f34adb2391eaf4e8f7c49",
+      "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+      "kind": "blob",
+      "bytes": 917
+    },
+    {
+      "oid": "333506cfd67e186439ca1bf4d5f8be86ea3b4734",
+      "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+      "kind": "blob",
+      "bytes": 8714
+    },
+    {
+      "oid": "fbba5660ace68df9fb25228b9fa325266cf82224",
+      "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+      "kind": "blob",
+      "bytes": 4415
+    },
+    {
+      "oid": "17c5efa9886867531294a2a0a72adb448960b4a5",
+      "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+      "kind": "blob",
+      "bytes": 3137
+    },
+    {
+      "oid": "21d5d70a35651836807c9e19da6c62487b754cf6",
+      "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+      "kind": "blob",
+      "bytes": 10382
+    },
+    {
+      "oid": "aca017f06d6b29f81b894dc5fb85079f694e316b",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 13305
+    },
+    {
+      "oid": "abe58228b1726c17f06fc6e0a64534fafe4c8d67",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "97ae5cecdcdad318d18ac7ef5ee5dfd942498523",
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "kind": "blob",
+      "bytes": 28636
+    },
+    {
+      "oid": "30afc85efe57e82f9fd6bcda454b64dbeaeb53a5",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+      "kind": "blob",
+      "bytes": 17495
+    },
+    {
+      "oid": "70c20446002bb7c1619a80ba3ad96558936bac41",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 124519
+    },
+    {
+      "oid": "f0734f4d248beb8cee2c438516cf869dc05a8ff0",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "54db2a6c0dc7abdd218215f9596531ec3bcff39a",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 61477
+    },
+    {
+      "oid": "da381ce3b8c8cc390ea7db513370ccc8aeb1054e",
+      "path": "ios/ACEClientApp/Makefile",
+      "kind": "blob",
+      "bytes": 2080
+    },
+    {
+      "oid": "91d770692558e913629b359ced00fae0c5de91d8",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 22358
+    },
+    {
+      "oid": "bf076600ad7516d5f12bad6f5cebf02af19a8117",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 5342
+    },
+    {
+      "oid": "c75b14a5873f4c1f22df9923cc7a375c542493cf",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 14690
+    },
+    {
+      "oid": "a1b7101ec8d75c6412052243cf37d1ffc6510d9d",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 7541
+    },
+    {
+      "oid": "d928fbf82ab9fc92cf80ab7f9c95a01f9677590f",
+      "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+      "kind": "blob",
+      "bytes": 447
+    },
+    {
+      "oid": "0764f192cd9c0945585fd27cf6c98c7a5b495c65",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 28593
+    },
+    {
+      "oid": "f78980429b5792417de0217fcd65226aa2fdbfd3",
+      "path": "pyproject.toml",
+      "kind": "blob",
+      "bytes": 696
+    },
+    {
+      "oid": "76217c1c42989a36c64041fac2bedce00fe470e2",
+      "path": "quality",
+      "kind": "tree",
+      "bytes": 44
+    },
+    {
+      "oid": "b10d83c649b488b48649f53312e1a85c74417ab4",
+      "path": "quality/test-groups.json",
+      "kind": "blob",
+      "bytes": 1424
+    },
+    {
+      "oid": "55240f34ba8660d2af90c0fb74581633e6c8c387",
+      "path": "security",
+      "kind": "tree",
+      "bytes": 34
+    },
+    {
+      "oid": "3b13131b58eda6ca458d66f51ba9e57249229d6b",
+      "path": "security/deepsec",
+      "kind": "tree",
+      "bytes": 54
+    },
+    {
+      "oid": "81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e",
+      "path": "security/deepsec/deepsec-residual-risk.yaml",
+      "kind": "blob",
+      "bytes": 728
+    },
+    {
+      "oid": "6c7f778c08c6ad50adc41c29657806879c593447",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "1e81120586fb5e0e92fbd1ca4a8c6789470d32eb",
+      "path": "src/__init__.py",
+      "kind": "blob",
+      "bytes": 82
+    },
+    {
+      "oid": "1f4b99c6209f90cd8069640acb07a2e2fc4a92b0",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "af245d52ea1b3f9a9728cc3198e42f6f09f23c19",
+      "path": "src/ace/__init__.py",
+      "kind": "blob",
+      "bytes": 55
+    },
+    {
+      "oid": "a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7",
+      "path": "src/ace/app.py",
+      "kind": "blob",
+      "bytes": 3139
+    },
+    {
+      "oid": "a0477c4b4c83f40ee5ad633d3dd2e9782a36342b",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b",
+      "path": "src/ace/domain/__init__.py",
+      "kind": "blob",
+      "bytes": 1518
+    },
+    {
+      "oid": "b2bc4a09af434c7f31bfde8c02178afd7c64016c",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 11079
+    },
+    {
+      "oid": "5e4c7a3b8aaaedde1e7034b3f614a3298935c741",
+      "path": "src/ace/domain/enums.py",
+      "kind": "blob",
+      "bytes": 666
+    },
+    {
+      "oid": "9b7332ae80cea46c4e0c2e13408a879194639958",
+      "path": "src/ace/domain/models.py",
+      "kind": "blob",
+      "bytes": 3865
+    },
+    {
+      "oid": "d3052b39d92d500bcea16a1938822162f9c6e784",
+      "path": "src/ace/domain/release.py",
+      "kind": "blob",
+      "bytes": 4136
+    },
+    {
+      "oid": "24c035f305bd307a12e3a012f8e67693f01931b2",
+      "path": "src/ace/domain/trace.py",
+      "kind": "blob",
+      "bytes": 6814
+    },
+    {
+      "oid": "069ee3382702581bdc0b9c8a61dd6bbb00262e79",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "a6a85eba2c2881370e265f55374ed5fd029ba40c",
+      "path": "src/ace/engine/__init__.py",
+      "kind": "blob",
+      "bytes": 608
+    },
+    {
+      "oid": "3fb703a3c7bfe15b9f87e919c236f99eea92011f",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 13252
+    },
+    {
+      "oid": "6f734719daf96ce5620a52de31d5ee6a8c82ebc9",
+      "path": "src/ace/engine/evaluator.py",
+      "kind": "blob",
+      "bytes": 2493
+    },
+    {
+      "oid": "b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9",
+      "path": "src/ace/engine/tracing.py",
+      "kind": "blob",
+      "bytes": 13396
+    },
+    {
+      "oid": "7f226ff0bcd0f8ce954f3f121952cf1808f7362a",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 827
+    },
+    {
+      "oid": "c2421621a45852c1edd4e893d8f31c542df829e4",
+      "path": "src/ace/workbench/__init__.py",
+      "kind": "blob",
+      "bytes": 353
+    },
+    {
+      "oid": "009b7ce18c8073cdbf68d0641ede1837f68167f5",
+      "path": "src/ace/workbench/action_result.py",
+      "kind": "blob",
+      "bytes": 2106
+    },
+    {
+      "oid": "3a46f45a5f21d53ea229e0476148d751e21d15bf",
+      "path": "src/ace/workbench/change_record.py",
+      "kind": "blob",
+      "bytes": 2459
+    },
+    {
+      "oid": "fc15024e81ebe5d8311b1700216856c62deaf24b",
+      "path": "src/ace/workbench/client_auth.py",
+      "kind": "blob",
+      "bytes": 1896
+    },
+    {
+      "oid": "50c3e8ea5a72d622a314ff4c234182fffe5661bc",
+      "path": "src/ace/workbench/client_release_projection.py",
+      "kind": "blob",
+      "bytes": 3016
+    },
+    {
+      "oid": "152da398adbed0554046cbef1ca5d1bd620a25ef",
+      "path": "src/ace/workbench/client_release_service.py",
+      "kind": "blob",
+      "bytes": 12258
+    },
+    {
+      "oid": "fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa",
+      "path": "src/ace/workbench/client_routes.py",
+      "kind": "blob",
+      "bytes": 7353
+    },
+    {
+      "oid": "a157b2260adf3d7d05d10f3ccb95fae7a7e68b5b",
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "kind": "blob",
+      "bytes": 3458
+    },
+    {
+      "oid": "1efc7f447dc242e84db7496dc43261e7a3d5f244",
+      "path": "src/ace/workbench/engagement.py",
+      "kind": "blob",
+      "bytes": 9010
+    },
+    {
+      "oid": "7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7",
+      "path": "src/ace/workbench/evidence_review.py",
+      "kind": "blob",
+      "bytes": 3913
+    },
+    {
+      "oid": "88f482a8c81cf33bdbe6c58f8a525e5e6f2a88ae",
+      "path": "src/ace/workbench/export_builder.py",
+      "kind": "blob",
+      "bytes": 23844
+    },
+    {
+      "oid": "a3ddfe4931417f5d942b26c148ddf1ef5b3d9058",
+      "path": "src/ace/workbench/extraction.py",
+      "kind": "blob",
+      "bytes": 6668
+    },
+    {
+      "oid": "c281f9ed242707201c160379b741cc1559120833",
+      "path": "src/ace/workbench/notion_publisher.py",
+      "kind": "blob",
+      "bytes": 3404
+    },
+    {
+      "oid": "a054b5838083ca6c5290786a3d8ee65f422c55e3",
+      "path": "src/ace/workbench/relationship_review.py",
+      "kind": "blob",
+      "bytes": 19216
+    },
+    {
+      "oid": "662f239a839f67d88440b7ff2dbb8592418b76fd",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 51376
+    },
+    {
+      "oid": "44632c998c369086d7886668e67086b48ba33c39",
+      "path": "src/ace/workbench/release_storage.py",
+      "kind": "blob",
+      "bytes": 6443
+    },
+    {
+      "oid": "4e69f1d29d95914ecfac3b29511aa66063707ce2",
+      "path": "src/ace/workbench/routes.py",
+      "kind": "blob",
+      "bytes": 97944
+    },
+    {
+      "oid": "9f310dfbeeeb128ce4c30fb152027ac9cf15df4a",
+      "path": "src/ace/workbench/storage.py",
+      "kind": "blob",
+      "bytes": 211912
+    },
+    {
+      "oid": "5d3305990956dc1a194c71b77127c4780867b7ed",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "f102e61d370776570f1c6a6d02237463cec87a0e",
+      "path": "tests/test_action_result.py",
+      "kind": "blob",
+      "bytes": 1998
+    },
+    {
+      "oid": "8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72",
+      "path": "tests/test_app.py",
+      "kind": "blob",
+      "bytes": 9672
+    },
+    {
+      "oid": "0e2b0bc40b49101fdecf9248bef4d60e7a016714",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 36577
+    },
+    {
+      "oid": "41f3ba179143ba75ecb3151341527a2c11e11653",
+      "path": "tests/test_capture.py",
+      "kind": "blob",
+      "bytes": 9943
+    },
+    {
+      "oid": "f26b200d4802e65c3c75b9ca741103f35a4bf8a8",
+      "path": "tests/test_change_export.py",
+      "kind": "blob",
+      "bytes": 29072
+    },
+    {
+      "oid": "b79457826591c81352c0eeeb1888240bf30856bd",
+      "path": "tests/test_client_release.py",
+      "kind": "blob",
+      "bytes": 386057
+    },
+    {
+      "oid": "16d8e3b5cc936a501f31980d36004aef86f70c07",
+      "path": "tests/test_client_release_projection.py",
+      "kind": "blob",
+      "bytes": 7081
+    },
+    {
+      "oid": "d08f9db8a19889176411e6c35d8edafffb8752b3",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 81389
+    },
+    {
+      "oid": "c5b215a4274be1856365f5f3835fdd0a88f7c4e4",
+      "path": "tests/test_engagement_setup.py",
+      "kind": "blob",
+      "bytes": 30318
+    },
+    {
+      "oid": "b6c8b0cf9fe636ced590ba82c19908bc93f2d328",
+      "path": "tests/test_engagement_summary.py",
+      "kind": "blob",
+      "bytes": 12378
+    },
+    {
+      "oid": "16e51f95bdb3f7a89c7c27aa02f38e09bc08c925",
+      "path": "tests/test_evidence_review.py",
+      "kind": "blob",
+      "bytes": 51803
+    },
+    {
+      "oid": "47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0",
+      "path": "tests/test_extraction.py",
+      "kind": "blob",
+      "bytes": 10846
+    },
+    {
+      "oid": "920fe93267ae8072a95d2d847967959c75ccbe3c",
+      "path": "tests/test_graph_projection.py",
+      "kind": "blob",
+      "bytes": 19136
+    },
+    {
+      "oid": "39b1ac861f4a1440aaff46fb3d2fe74902d16c4c",
+      "path": "tests/test_ios_accessibility_layout.py",
+      "kind": "blob",
+      "bytes": 2476
+    },
+    {
+      "oid": "74fc1ef263a00f3148c924f483cdb4c832062eab",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 4081
+    },
+    {
+      "oid": "aedfe16bbd3c28d1e8cf790eaed715205f9c232d",
+      "path": "tests/test_offline_drafts.py",
+      "kind": "blob",
+      "bytes": 5481
+    },
+    {
+      "oid": "b2c207300da093dd24b25000a1d3d2b136d67f7b",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 38436
+    },
+    {
+      "oid": "816b77c170a3a46030769ec6f08f31ca5d281940",
+      "path": "tests/test_quality_gates_workflow.py",
+      "kind": "blob",
+      "bytes": 735
+    },
+    {
+      "oid": "58fba2594c184ad4adcad05ec22677168115da08",
+      "path": "tests/test_rating_engine.py",
+      "kind": "blob",
+      "bytes": 10190
+    },
+    {
+      "oid": "b8b43d3fed573ffe0aa4becd1bb9fc672a3f96e3",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 54425
+    },
+    {
+      "oid": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 240294
+    },
+    {
+      "oid": "6ef5893612f58493ee1b2069304e232d96639932",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 23581
+    },
+    {
+      "oid": "f84cfd4fd66ee082e88b5a2d1d2acbbbe5457e76",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "a31950b5d56c4b8421a05609c904bba714e92ade",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 88874
+    },
+    {
+      "oid": "f2ea1ccb696db88a8d69ae0e992850b0718d5fa1",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 76422
+    },
+    {
+      "oid": "2d88789c53013971b156a4cd088a28b720cc066b",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 282873
+    },
+    {
+      "oid": "7cc8ee8e423733a4fb832666069e69f56c132164",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "fbddcf603d392fd86097624b921c1e1e286e02f2",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 64974
+    },
+    {
+      "oid": "3151880ae3453321bfc19ad1be84ac2376606886",
+      "path": "uv.lock",
+      "kind": "blob",
+      "bytes": 71994
+    },
+    {
+      "oid": "85ebebfd7d300d14d11b868e0830dd63ca1e3528",
+      "path": "workflows",
+      "kind": "tree",
+      "bytes": 346
+    },
+    {
+      "oid": "d336ae5ee0724121cef0662d5dc37f3d7b242ee2",
+      "path": "workflows/codex-autonomous-delivery.md",
+      "kind": "blob",
+      "bytes": 9175
+    },
+    {
+      "oid": "389fc7bd1c3d4f9bd8a4312d16270abdbf6e89e0",
+      "path": "workflows/conclusion-review.md",
+      "kind": "blob",
+      "bytes": 943
+    },
+    {
+      "oid": "27352c110def06d809cd9f8e55836efd1b502b42",
+      "path": "workflows/engagement-setup.md",
+      "kind": "blob",
+      "bytes": 707
+    },
+    {
+      "oid": "eeca34452b870119de4dd0efb9c8f17012d6c0db",
+      "path": "workflows/evidence-review.md",
+      "kind": "blob",
+      "bytes": 734
+    },
+    {
+      "oid": "3c2e27f90dd20ad38ac002a383af22db5ad2c294",
+      "path": "workflows/field-evidence-capture.md",
+      "kind": "blob",
+      "bytes": 699
+    },
+    {
+      "oid": "0b78e693a94fd89d9c68cfb9c1dd21418cf6a960",
+      "path": "workflows/mate-assessment.md",
+      "kind": "blob",
+      "bytes": 888
+    },
+    {
+      "oid": "21bbe0f760cf376107850fe76dfa767d4075328a",
+      "path": "workflows/relationship-review.md",
+      "kind": "blob",
+      "bytes": 819
+    },
+    {
+      "oid": "8b86c9d30efa8bf48616962fccb2580143529e4c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "deb5dce8eb457b73244df2a22c8edbf929b68126",
+      "path": "ACE_PROGRESS_GUIDE.html",
+      "kind": "blob",
+      "bytes": 27068
+    },
+    {
+      "oid": "2c04978b84c5a95d1003908068f6174f6eb7e80b",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 1247
+    },
+    {
+      "oid": "36381e1454dd06895789b4178e0a5abc9aeaae0c",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 254
+    },
+    {
+      "oid": "a7cd5a9c3594b54f847d8bc52cc11bf913804eb4",
+      "path": "docs/plans",
+      "kind": "tree",
+      "bytes": 68
+    },
+    {
+      "oid": "33eb24f36a65e6452bd55ce574916d9825dafa10",
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "kind": "blob",
+      "bytes": 8919
+    },
+    {
+      "oid": "71334c6e97b877b84b2e8ce52cbd6eb326c01b8d",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "3bcbe5722fc68511bfe281c2d34ebea2c0b4623d",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 85916
+    },
+    {
+      "oid": "cf41e9559300c86177fd1a27ffb39bbb719d198d",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "17c4683a2d80304f09c572907adf8e9fc5e9374b",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 76397
+    },
+    {
+      "oid": "4976431c5ee261711e97b375006abaf4f30dd574",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "4705ce0e6e69e0f4116ee512ac9b6615dbe0754e",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 45546
+    },
+    {
+      "oid": "b28ed84cbe1d247d591bebab7c067088661f58ca",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "67c94222b3abe09b8943a84e37806a774a7d8b4e",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "4f9e3231badf7db6e3d9c720e5836ee63bfc5192",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5c1589d3c8b393b697f1f03bf5049c5d66dccda6",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "fa4afb0cafd5082451257443894702b02ddf101c",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 61322
+    },
+    {
+      "oid": "cbc0cbbbd7a3af3c7c84a32a0700277bc4b0c9c6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a7889eb463f60ecc4fa1143d939b41d314632ddd",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "112749278ff9271644ba2a3bc2898d68e589973b",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "d757cb490502a23d62417e21bb7d31efa81d1caa",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "0fe796163e01cfa2be3f205c11055aa3e80854cc",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 59311
+    },
+    {
+      "oid": "62d24c3632af5021036987e941788b9c3c22ea5b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1004a838d15294991b2056b659a9c1775d1c5b6c",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "307a069219b509dfc2c1541d3212f1d4ec4b6242",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "d1b5bfe253010095746ee14e3ceb138214cfcc08",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "29f56b98bd34e022b7b13558c8c69bf7b7368776",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 59062
+    },
+    {
+      "oid": "01d457de85de6314fbd159228199e6706815b43b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "49321b1515c37219e69931732c134bbb2a7a8778",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "bb6b16ae0fa369b137a40f35cd66000093a7b058",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5c531ebfe37b807355d4b5f433c21269b0ce1412",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "25d0d9eb2fa6f49db172c24a2984d6d5a6d3ee92",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 59022
+    },
+    {
+      "oid": "d35689ea1f363808817d9ce260bbf2f4cd976c68",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "6ca0fcb7227231b01f03ef7262cebac8a794cb18",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "aaa74d00ed1257db6d1b5589be53ab13ecd6eb24",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "76110e25ece1bc358d53255c6d77a0e4fc7bd756",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "b11bc9c23fb11de251a50613ee3739931f8c44ec",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 58538
+    },
+    {
+      "oid": "707de88b0a6b7f5539325af3ec6e44e362d38f21",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d9ed58eddb8ac619d256e9edfa35a1d9c3354693",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "c390bdcc631f8d29ca195add42ec146eb1cdac52",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "d0e5bf94beb43a8b3bd8c4cbe3442793fd14cc2d",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "e1e2317dd8866355b1fbfde25125b9ddb94a41bc",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 13286
+    },
+    {
+      "oid": "b936a703555327bb239c10a9199f25efc4186fdc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "884db1ee4254765fa2fdc08e114191e231f29f06",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "2951d7c2ea5409fbc38c2675f5bd5b147f910d94",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "bb312692648b46235bec1f2050e4de2df7c61bcd",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "78943d1c1b9c65168274be67f61f1825cc6bc803",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 13276
+    },
+    {
+      "oid": "db6c31c6e6b84c2a7f0e3adbcf051401d08f009c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "5ef11d30a1e51efe2615dd89bf0c2c5bdddb8428",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "df81563f9af3ec065dce4e43e23566c60d5ea353",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "6d25b4d7a016f7b943d44b958fe04c02da9e5f93",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "db9fc6d8380f0f4700be6cab49004797abafb8ed",
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "kind": "blob",
+      "bytes": 6553
+    },
+    {
+      "oid": "d613e144d891eab038d44c5ae8a72e7624facf1f",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 12897
+    },
+    {
+      "oid": "2ddba624fa2bcdfa3f7b1bcfed0eea377ad3c916",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "9f8fd195a64f669d59e306ae9a8a9c741da66a26",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "b5b63e0283fcf725d370ba7ed78985e76f650461",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 76339
+    },
+    {
+      "oid": "396ff24cd16e995b616ad5a9e31d8745c7815602",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "3ea7f1b50ce4511f05813aaaac66d34157c8bccb",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 43897
+    },
+    {
+      "oid": "0091d8ee1666a592f2eea2fbb8758f58085b3702",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b0b1b18b4a919a61f428c15b63ae4c94553b8661",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "57c74dde3ffcb7bed8f8019e609cae4b4220f1e6",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 72855
+    },
+    {
+      "oid": "f654e3ee178ddeec1f8a7120e7715eeb7f02bb88",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "7e7c318c73d88f4b69b6263fabec94c8da04bb2c",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 32946
+    },
+    {
+      "oid": "9c2bf80cbc40c21cf9c1a74a042fb516d2478283",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d8d4ac48b02bcf644b3dc6aec5bef14f0accafda",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "fdd326e8d6a0d60580ea572f1d3ea43a36209e3c",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "f682305b6fb91125dc6d45c49becca95404a87fb",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "b5ab0b0ecdf4f545f0637ed03c30b217ad848c10",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 57587
+    },
+    {
+      "oid": "4a7417a0c9728421da20ef5a7b394c732fbcf844",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "582abdd0e964bca92fa313321f13393976432dea",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "55d0d216b8db323671ab5fd31a4df1d27efb1996",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "46ad292a7e81536bee07d271917ea5e01bc23bcd",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "38d6c59c262c3a95d6ad73ab53bcb13d78975ecf",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 56468
+    },
+    {
+      "oid": "408c1fad15865df944451845e557a511cd26a126",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "565c0e6b15f51fde055c9720c508674acb03c1af",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "58eddb41d361dea64a10e854c7c6e22b98f387be",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "647455ed45cb874626458d0e6a5754e513ae6894",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "00536de3e301c7370c3e7d4e5af6835f5bbe1581",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 124519
+    },
+    {
+      "oid": "8ab6973c480cac8caeae6d2fb6162776598c09a0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d6d75a3e70cc1f7e08e983916004ed6a7191e84c",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 254
+    },
+    {
+      "oid": "4b2a57138b7f167b6ed9b4d54916f9fd12631501",
+      "path": "docs/plans",
+      "kind": "tree",
+      "bytes": 68
+    },
+    {
+      "oid": "867276a2bccedf7bca0662a5da4abf34a38b296a",
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "kind": "blob",
+      "bytes": 8259
+    },
+    {
+      "oid": "97db93a3435b44097807d6ab322d03bcf318462e",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "0621fc7ab93fdf8c1febb5a85dfc9f5cdafe39b5",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 85590
+    },
+    {
+      "oid": "b926a9112908e25d3616b723e3095b09f4f8c880",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "a5f47eb43f0b3010cc68e9e7cea13e86a71ab206",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 72664
+    },
+    {
+      "oid": "bce19e5023a98c730320c842d01ab5f0743a4d0b",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "6c3eeb196a379abdcd030d941796c4d44139dfcb",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 30450
+    },
+    {
+      "oid": "950e56c07a6a31867724f32b734f556c6cd1dccb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "cf51ba4ade6510a43378cf71290dca00a2074a16",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "18ce8803c0c967d3731fea6203d8d44eeebfb147",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "c9c09aa7a8ac9f6426cfb1ff9ce2423efdd6726b",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "f3c6b6b2f4f2c9cf8f0bdc6d948d972f1113d9c9",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 5232
+    },
+    {
+      "oid": "757be82d5a2a912dba421c0f8a3b21e7947b64b1",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 13101
+    },
+    {
+      "oid": "ab1525b04a2e4c8088ab0d868f823ae6b6acd26f",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "175c95dab062f2c07c068653f5ad0a395d9696a9",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 56183
+    },
+    {
+      "oid": "5fad088e518ce74cadaa645549d1d8abd0badb9a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "07b99a63ca0351950fce6fd2b7ac7205a7358a2b",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 254
+    },
+    {
+      "oid": "1fff3ed8baed36f47fdc4a9029d13a7772a4bbea",
+      "path": "docs/plans",
+      "kind": "tree",
+      "bytes": 68
+    },
+    {
+      "oid": "45b633489a09bc1b37709cbcaa86b18af16217ec",
+      "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+      "kind": "blob",
+      "bytes": 6659
+    },
+    {
+      "oid": "6dc6a26fc004f383b2fe57da6b7b6ddc6ed4223b",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "c90807e210215f96634c89ac674880393abbe75a",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 84163
+    },
+    {
+      "oid": "15cf49e259daa0430cfecd1ced87b971055f1b3f",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "7642c6f4146dff7201e879d6dc76feff9ddb61fe",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "068c618268741ed62a5bce7d4c8cf1876a7489fe",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "b2679308f6b7dd235844ce5ff4f330d3e318250e",
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "kind": "blob",
+      "bytes": 4474
+    },
+    {
+      "oid": "55402d5e490f0ac931df96c8d3c5a302a4b707d8",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 12885
+    },
+    {
+      "oid": "bf2dcf4e887c060371a84e50a1efd5cb070c651b",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "65327cd1743bba1416c9a1e60444672910b4e08c",
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "kind": "blob",
+      "bytes": 27136
+    },
+    {
+      "oid": "f537f1be285bf7a9bc7db4ea504a6dbc0387899f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 124058
+    },
+    {
+      "oid": "e12898c86e1a2dac78afca539488c2df5a0bb09f",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "d5575857bee3f722c7b6f26f54868ff9a2400823",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 52381
+    },
+    {
+      "oid": "0941a4c37a3facea1b489f8b360a74f1d447bd49",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "25ca4d40219f690b9cc2f8dcccc6583b4c4d8adf",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "0d907d1cf5e8ffb7a9e8357be514308e0c984e5e",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "72c93333e2fbfbd810cb93d1492c9135e880f55e",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "7020e076577a083d45665cbb5a9d6a5956083988",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 48425
+    },
+    {
+      "oid": "c8579817f6c8020f5024ea047c315b56432b1471",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2997edc74cd434bd55531095759cc3a5d0293dda",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 159
+    },
+    {
+      "oid": "3ce1df7f588a425de2f318272a74a7be5a7b940f",
+      "path": "tools/ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 64459
+    },
+    {
+      "oid": "17bb6f48822b586746ec7c5c29d011d26f2963f7",
+      "path": "tools/tests",
+      "kind": "tree",
+      "bytes": 49
+    },
+    {
+      "oid": "5aadfc3e1f805d08e8487d8580bd1856b20f247d",
+      "path": "tools/tests/test_ace_ios_local.py",
+      "kind": "blob",
+      "bytes": 18477
+    },
+    {
+      "oid": "deda5cb678f6d6a9ceb0940e145c614b82505e1c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ae774a0ffc599189b37b2f19e267d2b9da1c4f3e",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "81cbfee6467394b26cb4f4c97e437b8f39978971",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "520b957cf64b366919048893253c8199374307cc",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 78868
+    },
+    {
+      "oid": "e0b3f393ac1c0e6ce3770c9573807bf37c30bc65",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "4ba45eb6ffedb1eea0d8d998a8ea338127b7f8ac",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5cb16c6d6f8802c5bf72344a72bd6114f261552d",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "71f10f6c6215dabe60d4fc28340bcde45e16f5a1",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 3762
+    },
+    {
+      "oid": "ff2857764786668e433443c44167e00951e690fb",
+      "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+      "kind": "blob",
+      "bytes": 3913
+    },
+    {
+      "oid": "26f39205a2dc321a8d5159e2ff13bc0f689f237a",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 11018
+    },
+    {
+      "oid": "0461635bc0682652e99cf806a3c4c4b5ca8fe467",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "75fd6eb44c3ca653bf05370639b1ebce3f0751a3",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "97ee003f1335a9d3e89b647e4f7e0f5d88059dc6",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "8ce039f439e432f10489b891570eacd41a4ca20e",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 21498
+    },
+    {
+      "oid": "074b53e23204d5d35386fe342ce88fb522b60847",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 13627
+    },
+    {
+      "oid": "9f4d9e67b0bfec7771414180787d280e533ac9ec",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "5becd58528115b42e603e8d62bada70a52585671",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a07facabf83c4eb432ef997c14e90e2630b34f93",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "f1368122518afe06c543f601bacd88212d12090c",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 240287
+    },
+    {
+      "oid": "42f9521c53b0a1d121b52e7a0061cb1850f62f8d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "543465ef24ed5723f8e545dffa342ec299812962",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 7451
+    },
+    {
+      "oid": "cf83da32d1f05b1f6cf70978bcd0231e996b8ca5",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "3acbef260a53c6100060e3d399a5a9a31135dda8",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "627c791532ed54889f41dd0b11169639750b2d2f",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "6a61cd88a6092c779126597fede84e74ae614833",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 20922
+    },
+    {
+      "oid": "16c0bcb13c584895c62a8ecaddcef393db4359f8",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "9db2d4093f83843a07b4df417ef7e6d721fef820",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 240297
+    },
+    {
+      "oid": "aa7cb44dc9a53d5f1232b3f21f48975f7348ef3a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "18dc15c6ee0b3ef918df4bd68a3c2642c967765c",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "265a4109f6dbc6c2ecd55bda0d803e7735edea64",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "276658e6ddbb563d4e439c7579c4595e1019b7e7",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "b7a93f1d66eb73f766ca82a180c5262db4442187",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "acb3a49bcd46a30c2cffed6e636fe72465b52749",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "5f6d3299b9483ab145f1b5779292392498aee464",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 239173
+    },
+    {
+      "oid": "c7abf748373fbd4a64e621b3c0de3ba276407398",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ba2717eb2b53f693d824045ff5b71fab0420e3d5",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "5ec45fd6e26b6e1d75f5cc9215b990bf27d4c9d1",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 282785
+    },
+    {
+      "oid": "e98c33f8c62a9c29548fb1ea5257665d6b061af6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "0623c416ea52f1763710a809211647fa781c38d1",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "27998397b7acc111b7ace7c310545fe40f05cf4e",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 239101
+    },
+    {
+      "oid": "d1ca01b0bb42b6ab71c29bb3d7ee2402c1d1fa1a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e04285e56e29bb46a4e7216d614e54bc087bff39",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "8f842030c0083ec1d9e7c2ad01eb1229b5c554c6",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 224449
+    },
+    {
+      "oid": "d3146bf19cddc7ffa14c8927fcea7af2b6f16278",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "1025a76c514b7e8fe7b14f55d800d1a7444fd6a0",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 274930
+    },
+    {
+      "oid": "0314f156e99d58537c2c0e75322e1dc868cc9b6f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "3bdbd2d71e1e7d1e2dbedb90bf881ea0c2fa4ad0",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 7361
+    },
+    {
+      "oid": "e1f9d78f2b4ec7e68709fb5cf82901a5a9483d91",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "675ccafa3ac18d6836c8668dd78a858629be1282",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "a43ef29157ce00e5f111e033bf065aef37ea72fa",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 78763
+    },
+    {
+      "oid": "06013bd21f1d4db35d284b5fa9c604ad985abb41",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "d0db5fcfafe9ca377a786f5ea7c92919bf882865",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "a916ca6e5a52fce74f2443df82152d0b91b01e41",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6781
+    },
+    {
+      "oid": "bb5a8b16886c80f16ccd996fb0468d0a9d5034ba",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "f3fb24d3b5d339527f50ae8527988eee441c09f5",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 213014
+    },
+    {
+      "oid": "d4a1f155b2c714f14b5008a0fd15d51c6d173b38",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "155320ccc22a399891bcc445e2a91a8c2614f565",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 243610
+    },
+    {
+      "oid": "f8b3043dc29ae03287c6f3b355959b40d608f94c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "54e9990cb38876029d62eba17643ec84777aa219",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "d59aeb2bcb894bfa115d6497407937291e1d84a0",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 212904
+    },
+    {
+      "oid": "29a0e5d1d851205e0d2187d2bcc46ac9a825bee0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ed9574694eedf72d928644f4327ce629b4f1aa3d",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 7361
+    },
+    {
+      "oid": "03ea2e1872626eda8c3b96e5066a6426a5cc9026",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "28afe3591a93f8e6ce829115c8676c892fc6970c",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 6361
+    },
+    {
+      "oid": "d8e14d3541c7977262d6de6e1505e366943b551a",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "888e2391a4d7573e967393f56a1bfbc71d13a3bf",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "1918c3e860660bfd4079db2474d939fafbd5e7da",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 22358
+    },
+    {
+      "oid": "773322ca557a96e28d862441f9eb7959cfffe406",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 13627
+    },
+    {
+      "oid": "d58df48d2b15f3dc01ab83982a6d2036f52b3cd2",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6781
+    },
+    {
+      "oid": "aa9bd6885dd4b7740cb9dbb4606311cfcf5f82cc",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "09c3beb57c4bc22cc81fa627ee9b897fe3b7529e",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 174031
+    },
+    {
+      "oid": "cc248058bf7e536fe79cd0cac7437c60890b3a03",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "b6a10681239e634712af6015f1697af342f3e66e",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 191769
+    },
+    {
+      "oid": "f10d43e9458fdcc0cfc5ac72320a6d6627490569",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "435f52157f2fe6716ecedb7713f80215eacafe23",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "866f21efba2da2ac711e6e4ccfa1ef6ef6596888",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "17af856bfdff40ff19353a9c9fccc9f2d837d6fe",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "5b4c4f0b0ad41962cd3b59770b8b5437a06b4564",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 18812
+    },
+    {
+      "oid": "6e0efb763f45da3956a219abe6be0faa3bb4c0c6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "639fbd921cf3db87627209ed097bfd33729c6d88",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 173989
+    },
+    {
+      "oid": "69531c32a6ba206b1f25ae2d7f571cc6b4eda28a",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "047028c5d3dc7b87a9f3d18686f7a635945894c7",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 192122
+    },
+    {
+      "oid": "67704eb0c5674e50fba307288963e069ef14d33f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "8508a3c538470cb986848451504b658a225d2ebc",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "087a73e4ab08e8481f1901d8418df117c8b5b1ec",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 3860
+    },
+    {
+      "oid": "dbdda9d19d8e0fb46df4bb9427dea67ff9ceb688",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "8b5f968b35d92e6b454bce1c6a1af178936e8c8d",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 6291
+    },
+    {
+      "oid": "fa7a6057c1239a0e8f19afd8783d02febbeb76aa",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "426b4b50908e2a3dd51ae17b20c101f46ef0e1af",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 173865
+    },
+    {
+      "oid": "03d660192b2f1c86682b866f75c996a6b3a3bda5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "4c65cae57596da6d37efeb7c0f61c8e10a5c969a",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 5223
+    },
+    {
+      "oid": "9cc37f3306b246d03b1cec7dbc66cd0693681b3e",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "c54f44f94bf42a660ecf6bbf41094abe4e38e03c",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "daf9612c5a46361c4515cf9e534d6dbe29c37b99",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "d5ce8b92a59fc4119ae9fc557ceda265e777ef08",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "54b4d8bf91e17c97a094a102de82937e702a17b7",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "102ff4938580a529bb174df5f7ea6f85b6b595bc",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 17827
+    },
+    {
+      "oid": "55f2326dba9845e8611a464816b2b771ec206285",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "1ea52d8564f4649aeb74a27b7774bc54984b07f2",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 164876
+    },
+    {
+      "oid": "6fda37da194596e3fe966923688b35e256e914fd",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "b9a46c536d97012f7ce3370d9adb86755aa9519e",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 181706
+    },
+    {
+      "oid": "4f5dd5d9f6bc87badd9183cbdbcd7facf3dc4115",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "66d435a73b830b3a90176ae9a337f439f260a7e4",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 5223
+    },
+    {
+      "oid": "4cd23f4ead1b45829e4d8f8191a4c5322a887113",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "c9eee3c5139feaad5a562c1abe28e614c0202e74",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "6cbe9c5e0e4bbe46bcccf347bc964b277597b6b3",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 81389
+    },
+    {
+      "oid": "ba4c54c503a1c31cba89bbb1cebbb114d28dd261",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 164876
+    },
+    {
+      "oid": "1db52d4faf2591f46b196f29d7d7c95a629c0cf4",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "195085b31c5efcdf9949f707d9132491233983ca",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 181706
+    },
+    {
+      "oid": "72728705c27383c9d115dd80714e982ecbcde34f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2e46a4780052e95bdb9153a0a08147303f8c1dcd",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 5223
+    },
+    {
+      "oid": "a36b2d65e0d0f5302935f76f9008a50055adc134",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "02eb0d2f4c6ec34d387d54538979cebf49215f55",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 164876
+    },
+    {
+      "oid": "b7a74d0a68eded26597de3f9551794b5b4b17cda",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "53d4a15aff227b697214e19282db2fa003273820",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "5e021c1eed276572d9a1e63267abd846943139a0",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 181707
+    },
+    {
+      "oid": "6e39c8184b8facbd656c919819088839a86e7016",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "5319f66a5c9c737b216e0d47b8de8cc10f068d0a",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "3b6f6e247eb821b82988d813be1a17a506219e4b",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 181673
+    },
+    {
+      "oid": "05dce313cb94b1e01a75d9b3cc6124ed725ba36b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e4c7e6dae2ffa418f3dce5bc0d3c3a077573c58c",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 4815
+    },
+    {
+      "oid": "55f767f256adeeebc99de43cc0022e7626b3e03c",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "19591eda29a1881fa51c5afbac55f1c7e7b17f3d",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "d9d181b5aea1c6a67c1b11030685780d6ac2a7ac",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 78780
+    },
+    {
+      "oid": "245b9a64423978d7cae7d21252f2073c24ddf1cb",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "cd2aeb850a2cc9ae66b1e5b99165e82e43b1e90c",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5fedb30a0bf9c2b46fbd814c9f303449ac69874b",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 22255
+    },
+    {
+      "oid": "6f90cfadc431d242e67405427a0339d41020f4bc",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 13667
+    },
+    {
+      "oid": "b6eb08ffecfac9afd8f538db3160ffac071459b6",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6705
+    },
+    {
+      "oid": "4a31058d6acce9ba63a4d49571c31f7ff0f5ef44",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "374237dee1e8f3f9ed49ba2b76a2a024e048877c",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 81347
+    },
+    {
+      "oid": "39ebecff8796d522dc3f44bba1c39027e07ec3ef",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 149597
+    },
+    {
+      "oid": "a6f42e895dae9fcea65d2cff0125d2427c51b82e",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "b5cd58e74421a06dbfad32f10eccbd150b75539c",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 76365
+    },
+    {
+      "oid": "19760dc62f15b5665521d1667eb22b7ce7a75949",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 165896
+    },
+    {
+      "oid": "3f43a4f56a0d168ce5a8272c28195347a4ff3829",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "73a7b352d0a0d495da41f447d00f399e2b3972fe",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "a0f12be913e7f43e137fe818398c831593fcadd5",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "dc5808432b171642d768e94cb88747605f31132b",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "9cd9d3caab543f664f1934445f51405d2f9a9e3b",
+      "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+      "kind": "blob",
+      "bytes": 27154
+    },
+    {
+      "oid": "17b2685f51ba7efefd00f9b3aecfee11477848c0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "112bb2f5d2c0421386d0da3275eb81b79b90fec0",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 4734
+    },
+    {
+      "oid": "244b7ba0d833d1815458c97f50011b1fc06e4f21",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "e84ee99bd66aeebca00a1dbbce5a12d1e4c1de77",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 140468
+    },
+    {
+      "oid": "0bc7c9b316845ca2b5a15241c6673aed8e4e4553",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "5c88d7fa60399ace04767cb8c66bf46d4d447f93",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 143610
+    },
+    {
+      "oid": "58887407e2e8dc2f03c5147c73e6a37559a35c2d",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b018961414b57ef5f90449cc42c6c1eab7e9f584",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "74f13e815835185ceaa6e30c3a1a9613f937de41",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "8300be306f02dffb24cdfd27667c02394080514b",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 77437
+    },
+    {
+      "oid": "0de06320c8c075f8ba7dc2ef39626f8ffaf6000f",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "551ed94199770bd67094b498335a7fc98d8e0028",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "717165ac3243807a9684e3f9de353c9c51779325",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "b0bb51b1eec4891d5ec110a30a3bca555c92b7bc",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "9bee9ee192300c15e13371075a96a01705b215c7",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 21048
+    },
+    {
+      "oid": "ce51e041f6cc4f8fda38a54d587180def952da46",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 4069
+    },
+    {
+      "oid": "b1daa9eb54a131b915a5a1de27d36783751318a2",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 12460
+    },
+    {
+      "oid": "d1ad50044dfc63a9693f53df1900cb1a7ddeed5e",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 5422
+    },
+    {
+      "oid": "10d1beb81b2758cdf479bf4da0b25a5e9d357100",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "7aa8ea0438cc737de02f18d32c3b542b38ce17e0",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 70187
+    },
+    {
+      "oid": "7017f77db61636eab0434863b95b2a6064fd35df",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "32a4760f78686efb1c66c52faa5539ff94d9dde6",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 68389
+    },
+    {
+      "oid": "d023effdbb8ae92a4ba0330932463955438bd42f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "4931e896a71e0b4d504cad3b346ea942db1c904b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "6a9936bbaf691d2f6d65ba25c79b3f23dbfc8a8f",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 57538
+    },
+    {
+      "oid": "cc1be1382d7e2dff70dfbe26517b63e74b8acf5a",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "90c5e8fa2f45997d03949a88bf9ca2cd7f0b05d1",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 55034
+    },
+    {
+      "oid": "b0b6b471722082aee366cc263019b477f57855fc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "34516dead6322c004a22f780f312d4d114f65b70",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "961a43e4da21a4ab491f3a9d71e63569bdb84642",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 51900
+    },
+    {
+      "oid": "8aba91a99f0f247274c1d779aefa13b027b08ac0",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "34e8ee9ef380417529cd25644253c1cdc5427ad0",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 52355
+    },
+    {
+      "oid": "6b0d5e7362da06c8efb03e047240fda355044d72",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "7c2672bc0bf03d5a362adf78977e35431c8f8326",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "b0d3af69cf0b777c06a1bb283e57aea2ddefd331",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 50327
+    },
+    {
+      "oid": "57122bd4af099b5a25379a6bd17924bb372bdfd1",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "816e3303715c2209928dc232711f247c55557556",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 51532
+    },
+    {
+      "oid": "dc958d7a3382bba7867c12ebc8e3a261b6a9bffb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "6aabea75c1dd927520ae95d77ba97e55ef5a9713",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "e18a2ca0f95d81e497d383e5fa4a004bcb969438",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 48121
+    },
+    {
+      "oid": "00b1f868cc79d0c700c0caead61bc34253b03c46",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "742e46ab902832b934b6a66ff7b883ac16ab3e8b",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 51115
+    },
+    {
+      "oid": "dece9dd04fedc73d72bd3a4b05d6f5637af42e2a",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "c2cf4a4f0e809b5fcaabae4e6ea5a9a9a8a90ae2",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "318c29cc0350376c522232300a4cb7c42212ba05",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 44725
+    },
+    {
+      "oid": "d3c2c57df41964ac3e640b2af2b153fb3dc03da8",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "e737a0389b4d669b503a3f3419892d5adad89aa4",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 49170
+    },
+    {
+      "oid": "ddbc06ea737056668edbb465f1323709c366f713",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1dffa1f03e77232fd8c29f3d39adf8ee7f7cfad2",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "e45b5140a2c3e400eb64061e605eaa7d2c64df0b",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 42782
+    },
+    {
+      "oid": "ada178dbe5303bc7f2d4445b101453897215f5a5",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "80c4a5423aaa58ec67662e7dd3e936ea1994e718",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 48839
+    },
+    {
+      "oid": "de915c5797bc58cd8b803d86af9b2692af20e19c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a3c447c6abf5d236ed0a6d6214f09cfa4525086e",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3936
+    },
+    {
+      "oid": "e3a0b529a2a39250c3b546f48c92e8a789c56065",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "1d7bc384355686aa58de6eafc25f8da769ad8877",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "bc8b62728b133b52f4545b28ee3166b7079fc773",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 75380
+    },
+    {
+      "oid": "8e3c5cbd655f80db5f9608407604658e68646479",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "4ee70b64794a5cf538a406dda47956c134709112",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "3b73112db43b3cef8d19ce334ba793f4f5758898",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "3a6c32689388e4a56098e3cd518c3bc821e0f9df",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "d57743981be9ceeed5691113353bacf63acb7b68",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19735
+    },
+    {
+      "oid": "2f921a148a314a6bc0d7d90755d4bc891e6ba440",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 2332
+    },
+    {
+      "oid": "a1a6cc03e6318315811c42c867554063432c635c",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 11147
+    },
+    {
+      "oid": "419c0e3927f2d338bbfaf57cf01ece29b1614648",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 3649
+    },
+    {
+      "oid": "6cdeb9e4cbdd27710eb8676a461e23ea6f3bcda0",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "16f4bc02d8f6efe926f8bfc8a3a60f35f2faaf4f",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 29451
+    },
+    {
+      "oid": "252f3d7019bc4b003148a9088b6da8168db45530",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 121028
+    },
+    {
+      "oid": "d41c437250954e6c31f6d452116bb0770e643792",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "481ee76b1aece655e5c63852d739595677e8ab35",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 30065
+    },
+    {
+      "oid": "6e41f5be90b846be2e056cab285795ef45d45c5e",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 117044
+    },
+    {
+      "oid": "3f943a6d857d5db87c4be29fe899897bd21854d6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "8993162a9a7ad4447b30db7b9e4df1435427fe39",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "ee63e674f2c4ac80f4bbf3e796cce340e4beeed4",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 25080
+    },
+    {
+      "oid": "b5441bf604bb05ffca859f72e6956c0f817128ce",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "4bcf8fc44b1808c723d06040616366e9ce9d8c28",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 29415
+    },
+    {
+      "oid": "b8bee423b46cfaafca142f8c38287869098c2cf9",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "34a7d874efa5a96416aa5de9d5cbbde30e84e5fd",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "f6ac54784ef04d7a546a8ca6e40f4c9486d84d2e",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "bd6c6de49c42a2656206bb5634e5244c5ae7fe68",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "c7d3410950fe3800774eb33ed46b00f3ba52df45",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 121338
+    },
+    {
+      "oid": "4b5b5923a6a2a25b6723612d204790df68004d3a",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "5fd08c723b3878d3bc3c6e96b33493699867ee6b",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 23945
+    },
+    {
+      "oid": "90762b0ac393b51cd965208e4f9bbaba6174a9ac",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 118201
+    },
+    {
+      "oid": "f5240fa0ecc7467ea163e171834aedc4834aede8",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "97f161e4045827ee02e610beff32c733759607e0",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 29316
+    },
+    {
+      "oid": "7873737c30d21760fc2ac3e3bae9a5d14b80159a",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 114350
+    },
+    {
+      "oid": "2de558f307edfaf2e272bddc909591cdda3823cb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "250bbc75498dcbccadaf1054a61235a4203714d0",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3874
+    },
+    {
+      "oid": "6a4bc47f8804ecb2d6b57905b0d3af31fba163c0",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "71da61abb98ebd2a1409d26e6c82faf3b0690dca",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "a49392780ca3b3da9f48e4f7d7296c2876fa4652",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "7e4e45d84e69aa6cb3c0804a9ef4c926d5b8c294",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 2871
+    },
+    {
+      "oid": "fbce8cb892778a2a80454ed677e1a545e48e5fb0",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "aaa349fa0a0c9957b2d8206a15fe73e4a4141dea",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 16656
+    },
+    {
+      "oid": "c6df7a2eadddc777beca1681cd4eec11bbec3eb5",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19734
+    },
+    {
+      "oid": "60a0ad7390636444fd85e57d7d8dc1fa3a414562",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 11146
+    },
+    {
+      "oid": "6b44529f6f682f1e1a542ac8e829d4be1b6076ff",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 3295
+    },
+    {
+      "oid": "7a79e07b9e21eb02c43b4037d65eceb42b7f71af",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "9abeb297b8f81d0fff71a6570c2f3a08c05d8ffd",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 18836
+    },
+    {
+      "oid": "7a77b05268a175c62fa86bc3c542be1dfabf6fea",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 3591
+    },
+    {
+      "oid": "bbe5119de5fe9526a8af57cd5ea990bf62ab4087",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 108752
+    },
+    {
+      "oid": "383def7351d5536dcba504dc7b935049234623e9",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "0ee291965ca351627c83c21e04bff7e03d685b04",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 20823
+    },
+    {
+      "oid": "bdcd77bdb2525bfa97ff7b2c91b3e6b4ca4040ca",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 100969
+    },
+    {
+      "oid": "ad9e2455a67945b2616602a2ad7e3d25735a6a6b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "c0291469c0fc19ceaf15da66cfb652e8bf69417d",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "b52d41b4466b7bf6b33f9f971e8c165a291a0113",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "14e0c72c6d2e0e920f1a1ea0cc126d82360aef0c",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "7c81b3c9f1ba45cceae4768e2caf792aa167e4d4",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 15884
+    },
+    {
+      "oid": "ae9ab3227011b2eda68d3e6552d8212b6465e670",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "caabac09df146d38a8a65e48d0313fab172b1083",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 14220
+    },
+    {
+      "oid": "a8ad60940bd7e3bdf3f919d5aac28a89e68462dd",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 3122
+    },
+    {
+      "oid": "309fe22e399295f034a03fcfc59833ac8c7130e4",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "faba1ba7b4968bba1eaf782d40cca5feced821a5",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 19262
+    },
+    {
+      "oid": "e2aad80c5f50cfecddc366d06e5206c4c3cc2f0f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b2ac1e2cb0f6558dab0d014cc6ddcc798debef59",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3807
+    },
+    {
+      "oid": "1d1ba29b8c957a035b941ae61cb99b5d7eb9c9ec",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "6751e180b36e1ba927ffb3dccd0ec9e0a1660e31",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 9082
+    },
+    {
+      "oid": "b28a6b7d7cc8ee373b9b1801edb5d5117acd205d",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "7bce3cf060451654aac4f30470dce856c7f71eaa",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 8905
+    },
+    {
+      "oid": "b0a4e0286d616696ab408861651ee32c09d7f716",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "99b752d4316785206e3adb8cb46739da933bf684",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3568
+    },
+    {
+      "oid": "b9cb045037b31025f091fff65db1c06367607f20",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 222
+    },
+    {
+      "oid": "2335c17d1e6b4b71ec393e8074c4d5d4dcf804ba",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 471
+    },
+    {
+      "oid": "a60efb08bdf4056bddab837f1e0f831fe8f273c6",
+      "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+      "kind": "blob",
+      "bytes": 71691
+    },
+    {
+      "oid": "f11be2071bff2be6841a6970a275fe6ed9acebeb",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "1726394cafc3c176edfdd01591c4f8e79b513f69",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "a5b9e8d1e6bd40ee4d1d9eca039c718affb64367",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "5f4fed63755a797bd873144c612f678b5190c2a9",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 8755
+    },
+    {
+      "oid": "2a6619b47f0cdd3fbb888ec6aa6dfba0f59f26c9",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "1853619e3249da33fd3bb7c0dcdc896d06637eb4",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 2531
+    },
+    {
+      "oid": "cc0705128a8d1500863f7ddb8e57d22709f0286b",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 94913
+    },
+    {
+      "oid": "0b7cd6dfeebdbbd3215e950e99ca63ea29e58307",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "012c8f3372ca3a4b391b3d1d3f1deaa94840b70d",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 79211
+    },
+    {
+      "oid": "1cdb25711754cfd81dbe681cb77c319d6337725c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "320ee5051a6c720320a006f1ba839001fe91b382",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3568
+    },
+    {
+      "oid": "06e2d674e6bb743b2987792c4921df0d57df40da",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9",
+      "path": "AGENTS.md",
+      "kind": "blob",
+      "bytes": 5184
+    },
+    {
+      "oid": "f2103cd38e0388366bcda24a7e3b314cad080e93",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "5ff848f1f20e21ac7eb10a67dd397e5f3807be8e",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "60ae14e980491ea503ac2e89f542feb30936523d",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "a0d7353a5b01657ae7a9d516f094a7f21a129a2d",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 10976
+    },
+    {
+      "oid": "64f4dffc6568db6e0fcc12f7a37ad152ead5e4f8",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "261a42cf8c8b4157d059702b5379d12b4fea3b62",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 8611
+    },
+    {
+      "oid": "558df94e0bc4a683de3d10723aab60929e21a1ea",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1109
+    },
+    {
+      "oid": "fca602ab3fc106c9fa8c90022e88b00ca90cadfe",
+      "path": "tests/test_ios_accessibility_layout.py",
+      "kind": "blob",
+      "bytes": 2306
+    },
+    {
+      "oid": "ff558a486bddb98f90997828b87f02b11357ace5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "f851bc4ccbd27831d698d05645ea0beab4093077",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "8c4e6eaa7fac075864704eec338577c74d3d7b85",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "69538915f55099277cad0950f338cda682a9f345",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "559d8bfad76cc1aed63f99ffd95535a34ca589d7",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 2627
+    },
+    {
+      "oid": "d49d8863f26d4df7360ee76984960a78a8228361",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 10514
+    },
+    {
+      "oid": "d01f0d7d7fac3ccb5725cebc76bbb6d615c5ac70",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1049
+    },
+    {
+      "oid": "abfd185f2d5b711fbe2088c20ecf1b727fbca2e1",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 9082
+    },
+    {
+      "oid": "64e619ed6741a76f4dcdc829f058834b89940b95",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "9d25f4edf17200b1364dc8c87cac94664d5c33d0",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 8905
+    },
+    {
+      "oid": "5d03f0c2977410d02d92466a49148768b2137216",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "f4d6cafc3d21f121a2bcb7ac24e4cc0d6ae41364",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "716b06a275917e0488a748ad2b570fac1bd39a65",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "ba26913c3f7bfd5c8f427598c611797eaabfaf77",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "4b3f4ea462a38fc47ad2427ffcf8165ce6f08ab7",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 8497
+    },
+    {
+      "oid": "2fbba62100d37853e6a388b1dbacdb1af22ffbd6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1049
+    },
+    {
+      "oid": "8c19dc72c8817ec8348acc5bc2cf11995f135d27",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 2225
+    },
+    {
+      "oid": "d88acb5e69bbe603972c667e515c8f0ad336c9d0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "9c606ddb7a7076a05b24d9878b26fadc61ce1e2d",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "412118419ed372fdfdc181ae37971d2f7b70928b",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "a19281063c3bf4f82159a9626c4629f6572a0f9a",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "83b3c2c1ff6a0dfdda063089a4fff1246d153265",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 8492
+    },
+    {
+      "oid": "80165e5f6b5fd79d31c976235bc9c2901369de0b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1049
+    },
+    {
+      "oid": "5bf096a44b54d88f1ca2d4d0806ccd54ef22ff13",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 2141
+    },
+    {
+      "oid": "a9d0347a3170e4219289b86dbe39e145c7d8eb3b",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "79af371d9d0bc29acdc80f7a909889db71571277",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "3e4e0019ce9b16b096e4fe4dbef6d242cb5a3974",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "4c2ee2c516a99157c7d8679c8413af88f42ad0e4",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "eb18119e9e3ee7919e8db80dc3014661d5c42b18",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 6211
+    },
+    {
+      "oid": "f26b0a4f090372c1939f75c141c9b55b43c64696",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 1049
+    },
+    {
+      "oid": "cc777f400cd32086bc85e6249cb48291c0690ed5",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 4379
+    },
+    {
+      "oid": "c805991bafd2f59e3c66bd577b2d7a83aa99a793",
+      "path": "tests/test_ios_action_targets.py",
+      "kind": "blob",
+      "bytes": 1632
+    },
+    {
+      "oid": "065918d3b4da85607c2ef71f8b3dce09c81bd2d4",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "eb2010410b8d279a3252b849641f19755013a032",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 6240
+    },
+    {
+      "oid": "6a58de25f0d98edce95bf2902cca15f01a90726f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ccadcd5b4d528d4f66c790569ec7f22a07209a0c",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3543
+    },
+    {
+      "oid": "a64056a5ed39086a7e5c2ed4cc97afeed7be03df",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "913175431bb34ebbe43721d866f353e49ef1b5f5",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5aa3b86737ee389ce20579cce82b408c89fe986d",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "7f2744ea3de1c483388d253ce7bccb4f1fc92513",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 9147
+    },
+    {
+      "oid": "8c8261b236a5a20d86fb83425b3cac2d93ced033",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "eed3dcbf005bb795d40a5ce641a36e9f246d4059",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 120959
+    },
+    {
+      "oid": "f9dee50ec71fdda8496b4d261b00a71382694826",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "1c270eb98a47430296149c45a2911bcc2a6a666a",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 5561
+    },
+    {
+      "oid": "ef5e7d4b41956c8b23bb4b64eeb12d285ab9b685",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "6959171f715caebf31811a680744864f2da732a8",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 4037
+    },
+    {
+      "oid": "ef08d8234926e8fb90a1466fd5e1ae1b92e7a293",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "52065390e41c846ffce46f084468ca61398ecd5e",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 6078
+    },
+    {
+      "oid": "b4fb6a38ded1506108d2cef5c04d48cbff89188f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2c35c601bacdd1208327b40dd6c559322dfeaf9b",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3542
+    },
+    {
+      "oid": "4b8ba4ba0aec43dcaf21b424f910c8cb3cfa80b8",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "074dede0a41dbe9c4431f5614b71a1a2fdd53731",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "3cda9cd9f755f4c7b2e51b659d347357d1a18642",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "44c9aa5f7e8c78588ae632207dfd1f6902a36aa0",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 2188
+    },
+    {
+      "oid": "2bcb034ba48c41c24774b83fa65f17b2c5ef8e44",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "9602e73e85ba59f8e370157aba40e52499d4d864",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 4654
+    },
+    {
+      "oid": "fd0c4eb24432a74327f19dc6a2b1fe0c4fe789d9",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "1d601009e172f37d461e8d4d6b44d944dff3ab78",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 4053
+    },
+    {
+      "oid": "e8da15bda4ff8b1cdf0392057c4c701a73b161f6",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 93794
+    },
+    {
+      "oid": "0be61c732b705b65768198dde09a3db263949c9e",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "56871840413c11903e5bf0f00697631413a5e147",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 6076
+    },
+    {
+      "oid": "7e8b609325bdb3e43871d8fe5e1a7619e8dfabae",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 79167
+    },
+    {
+      "oid": "f42c0dc0e55b82ca6f0d28657b2a1be511a12921",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "6c6bb9d1088f8be66f70d152fdde0052ba7c05b9",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "c25f6c9d1dd403711ad5a73da6e5b4a4c7fad200",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "1ade09e21cd683fa24cab2c97277b6c44ad8e349",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "c411da37e26f191e8763c482eadcc02eabd24f4d",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 1975
+    },
+    {
+      "oid": "828941327aa4d9a1b43985461d7b33e0bda24edf",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "50635e3bfacbaf86c16076f46119158784ce855a",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 92826
+    },
+    {
+      "oid": "973a6640751d8a8cb2a0c6e93fce2e7fc7e116d0",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2ef841c85ec318c31187455b59d5e95e56f3060f",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3545
+    },
+    {
+      "oid": "fad6f99a03e6f31e759f94837d3344716450b2e9",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "b9e92e4949898fd0acd398badf39034e07a21a54",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 2194
+    },
+    {
+      "oid": "84cce3d77e666afa8c00e8081e301173635623aa",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "4f24281ea9318787cb6c2db15fd1ce8152579ea9",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 6682
+    },
+    {
+      "oid": "07880ad724cb51634acdd3b8fce018ecb808db6c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e8730bfd2703c7ee23241fb4c50b5ffde537e980",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3367
+    },
+    {
+      "oid": "aca68aa7c77c1a589f678ccd2ce026e512ae3ce5",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "b27f02d94dbd58bd1d533a25938320b99d5af3df",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 86859
+    },
+    {
+      "oid": "dc20a2a6c6ad090788399504952fd9fede21f1e1",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "426f2bcb996e5ce42cf19ba8f1720dc7fcbc9ab2",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 76819
+    },
+    {
+      "oid": "38dba465a129a6a23d23287926022fbf7511511f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "40fb9d2b84bea32f62c25d76171d8ee38572ab49",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "09f90f8e3c45b23b0bba1002c4de70ad0e20bb82",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "7a73975d450a50579f1b8b5b953a62943ab1c8e7",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj",
+      "kind": "tree",
+      "bytes": 82
+    },
+    {
+      "oid": "392c17807a7b2c34424827b463924bdacb758692",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "d2a8064f3085638c1b639316587b5affc26f74dd",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "c5cc0b7f25b03aca7057bedce99c872c53527ce1",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "kind": "blob",
+      "bytes": 2110
+    },
+    {
+      "oid": "c43ee4bdc1cb7a62eddb8c81898c0f7ed7a9c29a",
+      "path": "ios/ACEClientApp/Makefile",
+      "kind": "blob",
+      "bytes": 2021
+    },
+    {
+      "oid": "366e4ce2223704ff414cd1c8e6ff8c2221892fea",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "1f9868d97a4e12b40e32520d2287fb31f293d17e",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 85631
+    },
+    {
+      "oid": "ec51c5d06c88ada1cedef65d5b753c7c26fcbe59",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 83
+    },
+    {
+      "oid": "f4b8ae49114fe6c4b5e6b40a556caa6111902b8d",
+      "path": "tools/diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 6805
+    },
+    {
+      "oid": "5daf3bb74eaa700779ac5e1bc2e25fe7ddae4fea",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 76406
+    },
+    {
+      "oid": "06a2b4f0cd03c56e2803760bd7755c3165870e05",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "406b43f444da1884dfa046e2002b013cd0adb034",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 3370
+    },
+    {
+      "oid": "39a2e5720c1cfc0a7e05a5b4db399d5134a80cd5",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 995
+    },
+    {
+      "oid": "8af4d086759b3b36ca6b741e48352d207af7aecc",
+      "path": "tests/test_diagnose_ios.py",
+      "kind": "blob",
+      "bytes": 2103
+    },
+    {
+      "oid": "bb7c495700c34b28801344af63843aa77dbe4779",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1276783b364fa2abab6f601cf5de0147372a8a92",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 2803
+    },
+    {
+      "oid": "f7b4826e4b79360ee3a61beddabe49606a34f11f",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "6c103c109c1c1d0e1bdd2c465b54e7a89611077b",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "da00dadfafaa2783a8dbc2dc7fd6e11753e08704",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d95c5b84a2a60e660bf33ee5e4e16e356597a956",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "a314cd1652bb3834443aa307d41a72c01123cd8d",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 72861
+    },
+    {
+      "oid": "fdd2fa0e6710946c4ed48b7901f6d824e8faf74f",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "44dee373566f9b9223d1eb9991b746e7004664ed",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 66297
+    },
+    {
+      "oid": "acee1e20b9554d61f41f4350ae0016275317bbd3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "fd11c75091058ca190625f0c934f04759a345e3a",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "3a24f86088c495f3ac32c315fa19c886c89b81ec",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 70451
+    },
+    {
+      "oid": "a48fcaa75099b8b7d5fc92a70ffa0a6558068beb",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "cba49372c45255a3bc8f4c0b6a6c307b406b3eb8",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 65709
+    },
+    {
+      "oid": "2d567f83fc2b6ecfcd3815cdda3ddd0987cddfb1",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b6eb16e19f18a0849860e5336393d953d00f809a",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "f5a225061717e10f2928e11f4b36f1890dd6b878",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 63930
+    },
+    {
+      "oid": "98b844136bd72defc8bb2f090667fc60bc0003a8",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "2c8473fbfe84b3244f264fb2c4736a66d43bf44f",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 63575
+    },
+    {
+      "oid": "978cda0fa8a07804d88edd73dcd620725ab04d35",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "9e4dbae71aa0b44ed7ff012f5b730efe732954de",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "f8e65068149c0af8b2df9b7bf15003af1cff6b67",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 58614
+    },
+    {
+      "oid": "4c0cb0cc2254854365027fac0f3926d727afd122",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "d86d99459248084e02bf36c1719b796c5bf5809d",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 60390
+    },
+    {
+      "oid": "8e114ac4e68e9d2721b5f2d8fdebe4885cd29460",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "da264976a25ae90ecd53c8db02d796f51cfa00ba",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "fecb64b0be5d5addf6584a57da392394978780c4",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 56008
+    },
+    {
+      "oid": "2b30e9cdabc34e1c84a04f3a07242bc91b27aa05",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "f2fee2f0d68dc47e8f642977b503ead0ef5c57b5",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 59428
+    },
+    {
+      "oid": "8fdaad7807e9fd1ee1980ffd4b3fed3967deefe8",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "7edb50c99b1494c55c637dba7b698a9132bccb0c",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "c1d67d222a53615fac5427dbe5c7d3525e3d26f6",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 55599
+    },
+    {
+      "oid": "2feb6c22dcb0f7e099ffca03426a855e47b0bade",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "b9a6723f4f2043eef97285adce496498d382b67a",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 59402
+    },
+    {
+      "oid": "c7fe80cc5150fd5ee00a5d95263640f11ba7dcc6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "0a5c7742a757db6e43e4547f71ec9fa4893b3afb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "6a788a4d729374c7de253ca4a3bbb078de02f3cf",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 50574
+    },
+    {
+      "oid": "28e722b204c0f834db8908c3fad3dec4351a9f1c",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "3d9cbe2cb80fe39a89257dae8189143da28fa84e",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 58737
+    },
+    {
+      "oid": "d5a4bc4edf1d291e5dfe31f16b354a00f1c1d5fc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "7be2f201817aaabc02dfb32e27890b7bf525ad68",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "35919e8226f23295d5d01aa819a6f0410ce6dfbc",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "eb8f1477133554ac401972b6a9da215b1b79dd35",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10937
+    },
+    {
+      "oid": "3687c3c15b8d7aedbcd89614d411cef0eaeb0178",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 3062
+    },
+    {
+      "oid": "a816a4bb69d48fcf8b3e6da8b860c660d0de12e2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "2a457ef4d21df41a686256d05d77b8b8a0f1f99d",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 2759
+    },
+    {
+      "oid": "d5d98b7f6d54f6ea64bcbbca8767c01768ada600",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "e819638e8889c115fe2fd498ae2b63f1ebd8584f",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "9dbaf63925ed135d4f35fa2c44588a1adcda0ac7",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10764
+    },
+    {
+      "oid": "9ce6cb3330e300dc8a4162caf613448d78a8cd11",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 2910
+    },
+    {
+      "oid": "151f6325f25d72cf4d192436932ed077806fd90c",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "223b6b6a63c1535c7fc1a3157297f7993dcee6f7",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 50435
+    },
+    {
+      "oid": "a847cc1890444703ab939ca452239fdd58af4c1e",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "8fa7141b3769cfb2623a5673dd532c08068451df",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "9ca57b3a9c4f822d0126b1de093b1660c5bda86b",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "90c765721af03785fae9d45b8b9e855894de0e6a",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19631
+    },
+    {
+      "oid": "926aacdd96a0fe07fb643e44dae4c90a20e96c74",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 2241
+    },
+    {
+      "oid": "56173188a1c7b76d5bd183440e43015b3b7b73b6",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10668
+    },
+    {
+      "oid": "f76627ca5f7e5435986c3a123a7e0b5dbc075d2a",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 2822
+    },
+    {
+      "oid": "f8f84914c6da2d96dddf117e7d2d1a9cdc3eb9ee",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 28502
+    },
+    {
+      "oid": "313ba0cd4354d0ea18ed9ee6e7727bea6fa232eb",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "f3e570ff8515b335bbe37ebd74ebc8d654eed88a",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 48450
+    },
+    {
+      "oid": "7760004baf1b0a606b313bf8792b89a36cc961a2",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "f445d2453731e8b0776108ed84883addd1b2030c",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 58327
+    },
+    {
+      "oid": "e42f73843a513e316d55b799eb02e2351c7f8692",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "3a3aeddcbd8f0653d1882b7236ed41afd40d2042",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 2658
+    },
+    {
+      "oid": "064890d11c389809e5f961b89882dfaa6e42067f",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "88ff6797d119ee1151e328d8afec36a8e9e2a752",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "e6a4d5dee3f965295e249cadfb5c191244cb68b6",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19262
+    },
+    {
+      "oid": "07f353fd50c524dea7f5d8be7d10de0898df6b54",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 1966
+    },
+    {
+      "oid": "265721e3b4aea72d1efc320bc8d236cf20fad813",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10275
+    },
+    {
+      "oid": "896bc498566d997ad03d9bebd025e4df5b67e765",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 2500
+    },
+    {
+      "oid": "503cb2c11af8aef4fadf7769223d997181028feb",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 28270
+    },
+    {
+      "oid": "0be69e672cee3f31a339588fff47934c1957c880",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "e0cccd19fd104216e8831f39c0ceed6f9d9ec5e7",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 44550
+    },
+    {
+      "oid": "09008810cd741a0925b2addda141dad8c5525141",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "0df8890622094f0c6bb2be172d01e9ebbaab635f",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 56824
+    },
+    {
+      "oid": "762ad4b89abca12b270de5af1b9916a00737bb24",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "10e7b4b645b49c87f2132fdf34f1b23820752016",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 2642
+    },
+    {
+      "oid": "ad32ca0b9b009d033b9220002be74e75ff946453",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "f804849bde1e10f0a96d2af338ebcddaa63392e1",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "5cf27f31c1bb688fe76a6255bdd00851d82a8e28",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19254
+    },
+    {
+      "oid": "34e76d51d612ea3fc139c361049e54692b722a96",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 1950
+    },
+    {
+      "oid": "f03cd141790e051748c353bd3dbc3990aef0c9d7",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10267
+    },
+    {
+      "oid": "d9476e1caf09fb6584fcaff39b3a5f6c7213b4a1",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 2492
+    },
+    {
+      "oid": "c9c3c6c6dab57a86cd67d22aaee3a0ee0ae2fb27",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 28262
+    },
+    {
+      "oid": "8064e1d98f2d70a1d1c6e0d6b73801a7876ce27b",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "fbc2c7663fa65bd75e5573865d3a7d44e66f9b3c",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 43730
+    },
+    {
+      "oid": "a45e674c21d35396447121e0a353b96223e81db2",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "aa07e00925d240496bd8a96a988e9b26b2e833e0",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 2032
+    },
+    {
+      "oid": "f815e0725ac68da213f43541f75cf6299b1749a0",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "4771ef586273364e8d85fc56893f6dd1783718a4",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "1732f16d92a37633fa0e6c0d3d0df970aef60be8",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19681
+    },
+    {
+      "oid": "04ae145c42d3966f80b6244e0fde10d39b1eadcf",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 1844
+    },
+    {
+      "oid": "80de144c0e1c1fc52f9d9e2d84b1898ab9bd44ce",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10386
+    },
+    {
+      "oid": "754a9acc85f972d2e7a108ccd6aaab97e5055cc1",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 1641
+    },
+    {
+      "oid": "8c95076264526fec40455683707e1ed3bed750af",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 27844
+    },
+    {
+      "oid": "b929ad982d54a72e4870ddb8284ea7208351f1bd",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "df34ce36bf241c1df201157b57001e96e3a0234e",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 33358
+    },
+    {
+      "oid": "1cab6b28acd08a96951eb65f37b56097344d9a07",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "c071e0c587b0f5bcfb214a3a981efa31cfdf8235",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 40267
+    },
+    {
+      "oid": "335fce8a4429cebf8e4829fdbbf0b39f3a0745af",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "f11853e16d3d6f25b22a0724e6a0eacfdb23c3ec",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "7f5f0cc3dac3e6dd04c7cbc85d2199fa2bcd2b5b",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "9dd8ea4e7d3a9e4a750d02f6df04f63b0e5da508",
+      "path": "ios/ACEClientApp/Makefile",
+      "kind": "blob",
+      "bytes": 2033
+    },
+    {
+      "oid": "8ea5077bff819b586e261428f3401f6b53bc04a7",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "346a154a39cc36afbdae09c5cf5fc09756b9ab93",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 33246
+    },
+    {
+      "oid": "18d09812043692016c3fd20a0e758c6b2eb511e6",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "b3128445365ded45fdcda5f96711973a8eafe730",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "4ac149157801635504222b41e38c81f2489df9b2",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 31594
+    },
+    {
+      "oid": "2fd82fc6599d50c4e9215dea8eaab9f6f5dd2fad",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "9f61ff48c5ec66ecd8a68d845ff6e818d1c9cbd8",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "6ff11e8c9ca6e2b5e44b868cb0518d4962878452",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "80cba949bf8429325c505944765ee17e9c2804ba",
+      "path": "ios/ACEClientApp/Makefile",
+      "kind": "blob",
+      "bytes": 2065
+    },
+    {
+      "oid": "2b7ff4f971a8dd9d51465d0a2d410260feb29fec",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "21b14c321e157bcb0cf2c16d93e73db689e1ba4f",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 27732
+    },
+    {
+      "oid": "6723deba2c0a0d4ca8a0fbf426067d7f4210bfcb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "24c35bd7bebc3c380be281693bff695450d598d6",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "def8a934102e0d181de687dde1db0ae9750d4f8a",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 26645
+    },
+    {
+      "oid": "429cacc40c014d333f3a3fe4f71fe7c81059ffaa",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "d02d4dd62c644a0b44ffd095fcbb570ca0b97c06",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "ec0e605508872a8f0e5ff01c413b42eb938b8d04",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "09963fed10d71a111dacf2758952b8cdeafd5197",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19665
+    },
+    {
+      "oid": "35f3f08e52bc34e36cd0edb7e3483c7f263b8d36",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 1869
+    },
+    {
+      "oid": "4ca9ece5348999e814a94a5075e298cf16224f27",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 10370
+    },
+    {
+      "oid": "c05fda344e8feeeb8fd5d65c0e9af543f0e0df93",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 1638
+    },
+    {
+      "oid": "01caf2352eeaf23f7969c26273e8e5aac927e768",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "6e892f0c6b2ae42c281da0b5f37a43c4eaf79f0a",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 24898
+    },
+    {
+      "oid": "db85ae93d8bfa4feff98a82995eb69a728457f97",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "0ad6288933df0ba5c74fa112bd79b4d51c6680e1",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 40257
+    },
+    {
+      "oid": "aada3196f20fc9e2c31813b3d4a0070cc426ef87",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "16d2a20b0d1b2e744c31e644e85886799699be32",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "f350a6f04204ad507d501210649bdccd42ae1eca",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 24227
+    },
+    {
+      "oid": "f74ef3d8d6fb908e622fc9abcb41dca8704e483f",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "7e806bcf60c4c1d55006752e4ee7465d7194c6ed",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "ab30766c6245f00f18048a2bb54c31248689bad6",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "c700587969fbdfa74970444583eb484366f56e5e",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "2832299604d784e2674333a6a625dd681fb3bc5e",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 13058
+    },
+    {
+      "oid": "a1524cf5dca47c65d476c15c313bca7114bbe2f1",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "bee829a4193ed9ee315dc31838824a9eef044045",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 34657
+    },
+    {
+      "oid": "40dc26be8ee3df7af66cadeb6b6929948354fe6c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "ab09a9a46aa10ca6ba11da170d550718b8f0360c",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "e412dba8f91b3cac0817e4b1f083fc108cbc9240",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "e8d2b9da75fbe509672d8ee41f50660152b5817d",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "6a11cca04fdadcf4996baac78a5286210e8bf61b",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 12654
+    },
+    {
+      "oid": "950c94a2389876386901b290b38e525b6a07ef96",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "389f4ed99a620b3dcfb3d003daa81e00ab454064",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 32599
+    },
+    {
+      "oid": "0930099809f781a01379f97675227d60071ab835",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "75aa3deaef0b8675854637db8c201ea9dbdbd520",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "6f8fd3da0c7d0a74a0bc03bc157a246d1173b860",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 20184
+    },
+    {
+      "oid": "78f89cdb86cba6f360c792c065ac47f8aa103614",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "6193159fb19f605eb04c51feaa83c24d8579d8b6",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 37289
+    },
+    {
+      "oid": "33b5de5715b9cfa875907d86f4b0d25db38ee244",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "33a9b3b1e82040fe0a46face7a6b6812c2bc602d",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "660a186c55d7cf1d29a4b863a68af4df94a956db",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "e26b446c282f37613a4a3846792ca89864bb2ef3",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 19690
+    },
+    {
+      "oid": "131a4872f15225b84d39bdeba17b6dd555d794df",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 1775
+    },
+    {
+      "oid": "158d9e65dc79a7c760de46bbd18ad358e6c0bd8c",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 9273
+    },
+    {
+      "oid": "a4f9586478eceeda56dbab63cfe9131aeada40ee",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 1481
+    },
+    {
+      "oid": "ad5883cca232b39ca35de22dfaeca859fec93ab0",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "498d208f32fa0523fb2d6c797f186c556052bcd1",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 16758
+    },
+    {
+      "oid": "dd533777cfcbf39d94e490e388d281cff1af32c7",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "10776d22bb48745d384c8ae9fa7aa52fafdc815b",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 28966
+    },
+    {
+      "oid": "5ad4d80c8ebaa3d019fcdcc1104faef71027c3e3",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "a46ed49b175ae9e4b5ec9cc97b41947f74a35bd9",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "da2ce1c53173666b83a62081d9d574948ba1ed4e",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "b08fa252bbceb1ba59a81c3e058a9f1366832a8a",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "453fae92516354595682883ffcbec01e96cce30e",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 4548
+    },
+    {
+      "oid": "a015f0afa042eb1069a60a5bd233ebfdad19b700",
+      "path": "ios/ACEClientApp/Makefile",
+      "kind": "blob",
+      "bytes": 1988
+    },
+    {
+      "oid": "371b152723b69c18436fee43c12947d9897b4e60",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 17155
+    },
+    {
+      "oid": "1d829ad5dc8bc49ac8df64f3369b196d1c5580f6",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 15252
+    },
+    {
+      "oid": "1c4c31b2494cc45e1d683764877399b5912f5965",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 8767
+    },
+    {
+      "oid": "dd5e8d0e941bcb67e5fdf1145147be6000e62fb1",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6939
+    },
+    {
+      "oid": "5d839306e6d3fdcd24a2203dba072f830002de64",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 27843
+    },
+    {
+      "oid": "0b4440a205355dcddb0e785dbbbd842c53ab6ce1",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "df079214826d68bacb897f1dcc5ce02a4a021ab6",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "f0f04b2c00857c10a1650d2f39ac88a78f2586bb",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "d78ad5ff42eaf86028908fdab2bd63f37a6a2852",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 10911
+    },
+    {
+      "oid": "9aa698384ae4afe5cbe3ebd608b10da2b49f0080",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "4430412d254297a50e2a7dd95beca9c7889dc968",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 11156
+    },
+    {
+      "oid": "2ec6b611d22b56ef50dea96c8c673ef355e5e3a5",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 947
+    },
+    {
+      "oid": "a5056183f9267e707d569c83e52536ae6aac6847",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 29949
+    },
+    {
+      "oid": "b924083d5af1df50fb4a64b18f3b324479d26770",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 13104
+    },
+    {
+      "oid": "259998b331c0813f395cd0371a9620caa582022e",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "92bc012b06c6ef978e7b74e66c1bafea54af6c62",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 25547
+    },
+    {
+      "oid": "985f0f6cb7b53936f01f1afec48cd1fe680915df",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "dfaa337163f5377dc2eceb0876cadd6e4a61de05",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "d85adf900a2efe6fc6585e6655c8112ad004a8dc",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "b1d890a064955dbc3ad9be8486dcb0b07d14c569",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 5941
+    },
+    {
+      "oid": "19216cb5a4da02975c80cf2288afb04ba6de90b4",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "cc59e1e4f8462351a5681669f8c991b02b14b711",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "a80882966218ad9f80da48397da21d644d75ef1c",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "d47d571b0805d627571834a61239938c2b4de31f",
+      "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+      "kind": "blob",
+      "bytes": 1619
+    },
+    {
+      "oid": "e5ecbe6412a3357de3216f00fb17a37232355f1f",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "6ad7de14540de723257bfe517346a6120d1e55e2",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 4289
+    },
+    {
+      "oid": "39c2b1aefe6d272fec0841cbe54eb5199c751aaa",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 10446
+    },
+    {
+      "oid": "c7afff1109d22c667e8d23eff0e9656204e1be2e",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 15600
+    },
+    {
+      "oid": "aa107648c6cce32346e83fcf28b1265d66144903",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6770
+    },
+    {
+      "oid": "78bf86d2b3fd3eae1151799b9f39cb95e1bed6d8",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 27815
+    },
+    {
+      "oid": "6f979fc0992e095b20229882e3f93f46eaa0f685",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "84af1a0d8a1b1b9d33740226761641693c3a6ce2",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "4a2d3db021ffa9b510bb16e8b3909bbc0f85aee2",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "f2a716dcd7087f80fee42f6bb4c31d27074d0a4a",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 11902
+    },
+    {
+      "oid": "19a8655029a49480d2f129dc1cd63b3a4255eed4",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "a84fc6c369a0bcc64cc4b7559482fbc8a6e67348",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 8939
+    },
+    {
+      "oid": "a99423a439aa6468d8ff678e75e7000a8d1a6c90",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 827
+    },
+    {
+      "oid": "2a125e5cd5b056861940bb87d6e2e785350739d8",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 50822
+    },
+    {
+      "oid": "6d6540b0fb273313cc85b51228c65245ccc5f4d0",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "bc039c66da715430fe7a54c323114cecf6d753d3",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 28012
+    },
+    {
+      "oid": "2b0d5f7a9c9da23032368365add789fe36f5d2f3",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 38554
+    },
+    {
+      "oid": "1c69653030e6d16b8f68ebcf397895dbc17464da",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 11614
+    },
+    {
+      "oid": "6b83a1d0169cf2e176766fb2036c21fdd422bf88",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "1f40fd8673a8204bc17aa5dafdac1cefcaa78d71",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 23811
+    },
+    {
+      "oid": "1de1c09f5e8bf37936cdbeb0cf11228813b5c8a4",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "7c946a1504acdb6afb2151c4101f825e3c82b021",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "d5cb7ad7d2eb349d1b84c82d436c594ffdb000e9",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 6544
+    },
+    {
+      "oid": "98192471bc9e48ea5bc0c991125c2475a9f29cd6",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "6654943d60c3a4a4c490010fbeb0a0cf0f851bd4",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 16286
+    },
+    {
+      "oid": "f9bb4fcd19911a12c0bf80eb565b4eedfb874506",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "46a21f472adb894bde4122af72a7416bf5e6a0ec",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "b032908aa81b7c216a79fb288b26321130890e2b",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 38099
+    },
+    {
+      "oid": "c3f757c55edb11ad771513bb9082cd5eed0e6b92",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "aa42ef9dcddc4a7ec2e6323c520d28305a81379e",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "56b8360edcb30651b23b823d425c4b2bef7784bf",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "e1704e419772ec23880ccfb6210161c62948304e",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 4756
+    },
+    {
+      "oid": "a712e4a7f972fc9598d3480b1afaa3d7383e9648",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 1816
+    },
+    {
+      "oid": "98d0ebcf60a274b63a37d9c823c2154ebf4a4528",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "717261cee941f30cd94e28cacde57f92b137b9b0",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "1b226abad5b8f66c41feb572d26e057bdf700bae",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj",
+      "kind": "tree",
+      "bytes": 82
+    },
+    {
+      "oid": "d3bfae6e0347087a2a4867c04e5a1588fa185598",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "62ae9f96cdcdf976e68c722d0b0a6d8af5e9a774",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes",
+      "kind": "tree",
+      "bytes": 105
+    },
+    {
+      "oid": "8696ec1ee823fbf26a0c980876579509ec48e53a",
+      "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+      "kind": "blob",
+      "bytes": 1966
+    },
+    {
+      "oid": "dcaff748328e9c8cfd2051b5a78c1166d038afd6",
+      "path": "ios/ACEClientApp/ACEClientApp",
+      "kind": "tree",
+      "bytes": 401
+    },
+    {
+      "oid": "688c2ffb391ec674cbd843665d598e9ba4d82d13",
+      "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+      "kind": "blob",
+      "bytes": 9171
+    },
+    {
+      "oid": "1e467c29e7a4cccf6233fd99a31be94ec146a038",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "745541ba7ac101756dad95d651b80416caa64421",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 120921
+    },
+    {
+      "oid": "08c31b7d1527166eeeb00febf620f44c503c8920",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+      "kind": "blob",
+      "bytes": 10390
+    },
+    {
+      "oid": "3195a7826ba60ae8b5321468d7c3cdc7dfe714ac",
+      "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+      "kind": "blob",
+      "bytes": 15086
+    },
+    {
+      "oid": "67fe4b7502870b38375ac2f563d25a87c83052b8",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+      "kind": "blob",
+      "bytes": 15828
+    },
+    {
+      "oid": "132081ccd335f4d271aca9ae37d2a3ca52fc5700",
+      "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+      "kind": "blob",
+      "bytes": 6568
+    },
+    {
+      "oid": "5d5ffe54ad5aa224c0cef69c8e78a008b3f0e186",
+      "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+      "kind": "blob",
+      "bytes": 27647
+    },
+    {
+      "oid": "40a83139599c5f6936326d66048b026d9d87da75",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "23b9051643ff9e977f433b733ee22f72a8a4ffb3",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "831f7382d9c5f18c79db86239b7a2912a646668c",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "6df2072c755de5a8d2a940ab6914557d9d8c1939",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 9630
+    },
+    {
+      "oid": "9ada0c2a94ad13251bfde92bb63e294f1f7b4e8a",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "6e5c8ddd5a4e35bbcbd431788d310cba89c383b6",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 8630
+    },
+    {
+      "oid": "45df8281373bbfe3a602eb72e920a37bdb7042e9",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 827
+    },
+    {
+      "oid": "ca55b5f8eee6923c0c3f1728f22077d04ac5b174",
+      "path": "src/ace/workbench/relationship_review_storage.py",
+      "kind": "blob",
+      "bytes": 50809
+    },
+    {
+      "oid": "d30dcf2659eca5917a0b9180b6f94d3a3660dd23",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "27cc60f7d68ab486d7e9e30f37525aac580b6c3b",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 26342
+    },
+    {
+      "oid": "252dab737a0d52234b3bc4c2c4888f69a6c78c48",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 54136
+    },
+    {
+      "oid": "6fcdb1bcae8ffd7ffbc196b513566e97367edd65",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 4811
+    },
+    {
+      "oid": "ce1e81b1491d81bc5a6955132c88a87c53c6e32e",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "997ab21afad125ae8b556b3ce92fdcde001db44d",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 9311
+    },
+    {
+      "oid": "0d187ab2e8910f07f1fe44f94abdc70c1d62a8cc",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "473373434074322d80a814eb03ef327d7d827e1a",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "c5ca3867c7141e08d1b23f394b96ec89d555f3da",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "6b5f1a0a14d538042b822d6084c5d448eaef8c13",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 4352
+    },
+    {
+      "oid": "43dae9b0b7c6f4a1e325b7b7ea2a453feec1ac64",
+      "path": ".github/workflows/release-quality.yml",
+      "kind": "blob",
+      "bytes": 1193
+    },
+    {
+      "oid": "545f3613153426cf2b0435932eea770f2af8eb25",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "1d2e5a219e705f08485832512ba92363de8e43ae",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "a0d80c8f8fd9698b2a42db5ad6b16aa77906f3a0",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "2062df37d983e15428fd303e23a33d2b434c5e41",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 4057
+    },
+    {
+      "oid": "d95898d5b4d8176f28054901702262b1a3c1f94c",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "017116a379c6d61ce58de3aa7ca8e192af32a811",
+      "path": "ios",
+      "kind": "tree",
+      "bytes": 39
+    },
+    {
+      "oid": "66aedc104c48ff33d37da7e01ddc4ee2ee516f2d",
+      "path": "ios/ACEClientApp",
+      "kind": "tree",
+      "bytes": 536
+    },
+    {
+      "oid": "fba260f1a462ffc5ea543e95b0918edf9ed46351",
+      "path": "ios/ACEClientApp/ACEClientAppTests",
+      "kind": "tree",
+      "bytes": 177
+    },
+    {
+      "oid": "022a63a3f2106734604301182f4c6425b41dae5f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "kind": "blob",
+      "bytes": 120981
+    },
+    {
+      "oid": "b0c5d7547af16469dd59580e842ff69fcbae6f25",
+      "path": "ios/ACEClientApp/ACEClientAppUITests",
+      "kind": "tree",
+      "bytes": 53
+    },
+    {
+      "oid": "ea276258ff8bc3466c0c72bc1d311146046bb243",
+      "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "kind": "blob",
+      "bytes": 4013
+    },
+    {
+      "oid": "cae14b8e62151a5323cd30468f3dd43dd13c7653",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "62f9121255264b933c0ebe4e5759768920c55e19",
+      "path": "tests/test_run_tests.py",
+      "kind": "blob",
+      "bytes": 2379
+    },
+    {
+      "oid": "6a4c4e25d633fcabe0ccb0c86c82eddcd9c64d0a",
+      "path": "tools",
+      "kind": "tree",
+      "bytes": 40
+    },
+    {
+      "oid": "7bd03c6102497e23dead6b1a0dd129d765fbffb8",
+      "path": "tools/run_tests.py",
+      "kind": "blob",
+      "bytes": 7926
+    },
+    {
+      "oid": "667b2ca6ec322cfe085984a366f4f36a981d6581",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "e9ae956d6fbad0502172f0de6d32863030ed1713",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 889
+    },
+    {
+      "oid": "65716ccdd6485ddb090b3f5a8b385535844eaed2",
+      "path": "tests/test_change_export.py",
+      "kind": "blob",
+      "bytes": 28992
+    },
+    {
+      "oid": "830fb757209306d766d022ccbc73a9919fac20f5",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "f277c15f26805662642aff881ca4de371ac9a8ea",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "601375b582988cdad61d2e77a55471f0e421ffc1",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "fe442dcc9a476ffd8c99e0d9882e221a476ebd55",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 3905
+    },
+    {
+      "oid": "6fa8f06d28c11e73307c2235fbf6ea843e734c07",
+      "path": ".github/workflows/release-quality.yml",
+      "kind": "blob",
+      "bytes": 1041
+    },
+    {
+      "oid": "1bfd49faea44efb527132c09212341ecc4802aab",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "4251666eb8a05ac97e82797f6c94cd707e97b0f6",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "ee005e374a000bb4dd0b8b64b8a139b21dbd3b67",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "edf787abfb17b0b0996ba694b3327d979aa02fc2",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 3935
+    },
+    {
+      "oid": "6cc0257e8b72c6942b0e50d500e707c4d18600ce",
+      "path": ".github/workflows/release-quality.yml",
+      "kind": "blob",
+      "bytes": 1074
+    },
+    {
+      "oid": "e9d5b45b405569ab168181ca80f54dbb86794ea9",
+      "path": "",
+      "kind": "tree",
+      "bytes": 783
+    },
+    {
+      "oid": "67efdf131f5587e919fd28ed52744c06c14cdd45",
+      "path": ".github",
+      "kind": "tree",
+      "bytes": 36
+    },
+    {
+      "oid": "b2993c670984e47ac4bec260a4df4d22e6aa8a7a",
+      "path": ".github/workflows",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "36acefe57be38ef609e40b6d8814bcf1fc878018",
+      "path": ".github/workflows/quality-gates.yml",
+      "kind": "blob",
+      "bytes": 3902
+    },
+    {
+      "oid": "c1070596bb7332df8909777ec73c41d7255ad7fe",
+      "path": ".github/workflows/release-quality.yml",
+      "kind": "blob",
+      "bytes": 1041
+    },
+    {
+      "oid": "2f771f973830b75019af19993b65b0bd78f4c812",
+      "path": "",
+      "kind": "tree",
+      "bytes": 749
+    },
+    {
+      "oid": "cdd4b4025fd36263938a3b419224a2981c874727",
+      "path": "codemagic.yaml",
+      "kind": "blob",
+      "bytes": 46260
+    },
+    {
+      "oid": "e71e0b24225d6966b10a4e73c98da6dbb22fd118",
+      "path": "",
+      "kind": "tree",
+      "bytes": 683
+    },
+    {
+      "oid": "a43af230e5a8d207ef09a9fef4ceb0af3becea16",
+      "path": ".gitignore",
+      "kind": "blob",
+      "bytes": 70
+    },
+    {
+      "oid": "59170143664c796d04972fa52a72c2c89632c523",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "5b583cf1d4dbcacf7fbac907a6dfa84898ee45c1",
+      "path": "",
+      "kind": "tree",
+      "bytes": 547
+    },
+    {
+      "oid": "67e1a1c66f4c48bee1c6faf5baf5390680fae1df",
+      "path": "DEV_STATE.md",
+      "kind": "blob",
+      "bytes": 34769
+    },
+    {
+      "oid": "1dcf1584e2acd898986553fccfc73db812994714",
+      "path": "README.md",
+      "kind": "blob",
+      "bytes": 1684
+    },
+    {
+      "oid": "4af328ef250db7fc0bcbf2618df530b115a718c3",
+      "path": "docs",
+      "kind": "tree",
+      "bytes": 103
+    },
+    {
+      "oid": "2c2d520b486042915bde9492481412f1f8d971f3",
+      "path": "docs/agents",
+      "kind": "tree",
+      "bytes": 92
+    },
+    {
+      "oid": "09a92316ead61413421b053574347025b6e5d5f6",
+      "path": "docs/specs",
+      "kind": "tree",
+      "bytes": 419
+    },
+    {
+      "oid": "86e1215fe308e06fb5c3477c69633375edd2807c",
+      "path": "workflows",
+      "kind": "tree",
+      "bytes": 56
+    },
+    {
+      "oid": "1f992b9fdf7fb05ea95918a42e060b8ad5255c86",
+      "path": "",
+      "kind": "tree",
+      "bytes": 547
+    },
+    {
+      "oid": "0cb021683aed4a4b67fb307ac341e952476d4c21",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "95a9f2870163e6c3f9cf15f192da51c6f18aa189",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "e66a3f855a0ea79a370dabdcbd12933a3d9eee97",
+      "path": "src/ace/workbench",
+      "kind": "tree",
+      "bytes": 827
+    },
+    {
+      "oid": "bb70fa5b69c6e7267000cf295c3d38009c00a73e",
+      "path": "src/ace/workbench/document_toolchain_doctor.py",
+      "kind": "blob",
+      "bytes": 3296
+    },
+    {
+      "oid": "e65b9dba49512ce16311137575826ddc1ee5d6c8",
+      "path": "src/ace/workbench/export_builder.py",
+      "kind": "blob",
+      "bytes": 23667
+    },
+    {
+      "oid": "986eef63f66a45f0355cd0b5b00d006070f94cac",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "0fc7d84aff5f7120039f8e5083999358ea53e7d7",
+      "path": "tests/test_change_export.py",
+      "kind": "blob",
+      "bytes": 28149
+    },
+    {
+      "oid": "c3fdcdc54e02cdffc63f7aa6064b206c21952ff0",
+      "path": "tests/test_relationship_review.py",
+      "kind": "blob",
+      "bytes": 54022
+    },
+    {
+      "oid": "ef468f24f98f0cf80aed282549d0a6e2f9bee452",
+      "path": "tests/test_workbench.py",
+      "kind": "blob",
+      "bytes": 23172
+    },
+    {
+      "oid": "f1fd2534528a30488cd9a1f34ae59ea766280ffb",
+      "path": "",
+      "kind": "tree",
+      "bytes": 547
+    },
+    {
+      "oid": "586a41c85ddd54bf123b5e1ad2480949244a7c0f",
+      "path": "src",
+      "kind": "tree",
+      "bytes": 69
+    },
+    {
+      "oid": "05dd4173de21b35d9d7256173f2d6d79733fb944",
+      "path": "src/ace",
+      "kind": "tree",
+      "bytes": 175
+    },
+    {
+      "oid": "4ed3bbb995336f3df0b86abee3a6548c223efc55",
+      "path": "src/ace/domain",
+      "kind": "tree",
+      "bytes": 227
+    },
+    {
+      "oid": "23c00ad0252331dd523f79b8c724e5fedef7404f",
+      "path": "src/ace/domain/assessment.py",
+      "kind": "blob",
+      "bytes": 8619
+    },
+    {
+      "oid": "ea59b297ad6dd1b7ab3c03966627010f45891f3e",
+      "path": "src/ace/engine",
+      "kind": "tree",
+      "bytes": 156
+    },
+    {
+      "oid": "5a4e723461d6cf5f72842c62492f17eb13348a2d",
+      "path": "src/ace/engine/approval.py",
+      "kind": "blob",
+      "bytes": 8610
+    },
+    {
+      "oid": "17edc4d9306f2841a800e2453ac539fd3beac682",
+      "path": "tests",
+      "kind": "tree",
+      "bytes": 844
+    },
+    {
+      "oid": "06d504606e7b262b3ed5014d9903cf7c5c81181b",
+      "path": "tests/test_approval_gate.py",
+      "kind": "blob",
+      "bytes": 24806
+    },
+    {
+      "oid": "3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59",
+      "path": "tests/test_planning_trace.py",
+      "kind": "blob",
+      "bytes": 37981
+    },
+    {
+      "oid": "bf6153b2df041ab1bdfb303a14ebca5af194a996",
+      "path": "",
+      "kind": "tree",
+      "bytes": 475
+    }
+  ],
+  "object_counts": {
+    "commit": 117,
+    "tree": 518,
+    "blob": 526
+  },
+  "raw_object_bytes": 18689183
+}

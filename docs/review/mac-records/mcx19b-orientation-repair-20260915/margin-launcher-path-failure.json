@@ -1,0 +1,13 @@
+{
+  "updatedUTC": "2026-09-15T09:32:49.978316+00:00",
+  "failedJob": "1789464720027-ace-margin-focus-v2-9ba6f187",
+  "exit": 1,
+  "error": "FileExistsError at evidence.mkdir: temporary launcher still named previous native-focus directory",
+  "expected": "Use a new evidence directory and preserve the previous failure",
+  "actual": "Existing-directory guard stopped launch before build or device work",
+  "nativeCommands": 0,
+  "correction": "New launcher has verified native-focus-v2 directory; previous launcher and evidence preserved",
+  "correctiveAttempt": 1,
+  "newScript": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/run-margin-focus-v3.py",
+  "newScriptSha256": "d3fe976afadd8438fa04ba868d938d94f7e3063efb38e1f5c984987c6f98b50d"
+}

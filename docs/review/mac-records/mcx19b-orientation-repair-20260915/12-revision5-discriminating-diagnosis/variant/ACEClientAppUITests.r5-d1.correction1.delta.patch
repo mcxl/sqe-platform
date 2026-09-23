@@ -1,0 +1,119 @@
+--- failed-build/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ correction1/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -1,5 +1,6 @@
+ import Foundation
+ import CoreGraphics
++import Synchronization
+ import XCTest
+ 
+ final class ACEClientAppUITests: XCTestCase {
+@@ -42,21 +43,27 @@
+         let repetition: String
+     }
+ 
++    // Only this counter crosses into the audit callback; all access holds its mutex.
++    private final class D1IssueCounter: Sendable {
++        private let count = Mutex<Int>(0)
++
++        func recordIssue() { count.withLock { $0 += 1 } }
++        var value: Int { count.withLock { $0 } }
++    }
++
+     private final class D1AuditSession {
+         let configuration: D1AuditConfiguration
+         private let expectedAuditCallsPerViewport: Int
+         private var attemptedAuditCalls = 0
+         private var returnedNormallyAuditCalls = 0
+         private var returnedNormallyCallsByViewport: [String: Int] = [:]
+-        private var issueCount = 0
++        let issueCounter = D1IssueCounter()
+         private var auditErrors: [String] = []
+ 
+         init(configuration: D1AuditConfiguration) {
+             self.configuration = configuration
+             self.expectedAuditCallsPerViewport = configuration.arm == .splitAudits ? 7 : 1
+         }
+-
+-        func recordIssue() { issueCount += 1 }
+ 
+         func recordAuditCompletion(viewport: String, returnedNormally: Bool) {
+             attemptedAuditCalls += 1
+@@ -70,8 +77,8 @@
+             auditErrors.append(String(error.localizedDescription.prefix(256)))
+         }
+ 
+-        var callbackIssueCount: Int { issueCount }
+-        var hasIssues: Bool { issueCount > 0 }
++        var callbackIssueCount: Int { issueCounter.value }
++        var hasIssues: Bool { callbackIssueCount > 0 }
+         var hasAuditErrors: Bool { !auditErrors.isEmpty }
+ 
+         func completionPayload() -> [String: Any] {
+@@ -90,7 +97,7 @@
+                 "bothViewportAuditGroupsCompleted": completedViewports == expectedViewports,
+                 "allAuditTypesAttempted": attemptedAuditCalls == expectedAuditCalls,
+                 "allAuditCallsReturnedNormally": returnedNormallyAuditCalls == expectedAuditCalls,
+-                "callbackIssueCount": issueCount,
++                "callbackIssueCount": callbackIssueCount,
+                 "auditErrors": auditErrors
+             ]
+         }
+@@ -545,21 +552,26 @@
+         for (auditName, auditType) in auditCalls {
+             let auditStart = ProcessInfo.processInfo.systemUptime
+             let issuesBeforeCall = session.callbackIssueCount
+-            let issueHandler: (XCUIAccessibilityAuditIssue) -> Bool = { issue in
+-                session.recordIssue()
++            let issueCounter = session.issueCounter
++            let arm = session.configuration.arm.rawValue
++            let repetition = session.configuration.repetition
++            let issueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
++                issueCounter.recordIssue()
+                 let elapsedSeconds = ProcessInfo.processInfo.systemUptime - auditStart
+                 let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+-                attachment.name = "D1 \(session.configuration.arm.rawValue) repetition \(session.configuration.repetition) \(viewport) \(auditName) callback-time evidence"
++                attachment.name = "D1 \(arm) repetition \(repetition) \(viewport) \(auditName) callback-time evidence"
+                 attachment.lifetime = .keepAlways
+-                self.add(attachment)
+-                self.emitJSON(marker: "ACE_D1_A11Y_ISSUE", payload: self.d1IssuePayload(
++                XCTContext.runActivity(named: attachment.name) { activity in
++                    activity.add(attachment)
++                }
++                Self.emitD1Issue(Self.d1IssuePayload(
+                     issue,
+                     auditName: auditName,
+                     auditStart: auditStart,
+                     callbackElapsedSeconds: elapsedSeconds,
+-                    repetition: session.configuration.repetition,
++                    repetition: repetition,
+                     viewport: viewport,
+-                    arm: session.configuration.arm.rawValue
++                    arm: arm
+                 ))
+                 // Preserve XCTest's native audit finding without filtering it.
+                 return false
+@@ -628,7 +640,7 @@
+                                "D1 C Copy action 1 frame changed during the approved 0.5 second interval")
+     }
+ 
+-    private func d1IssuePayload(_ issue: XCUIAccessibilityAuditIssue, auditName: String, auditStart: TimeInterval,
++    private static func d1IssuePayload(_ issue: XCUIAccessibilityAuditIssue, auditName: String, auditStart: TimeInterval,
+                                 callbackElapsedSeconds: TimeInterval, repetition: String, viewport: String, arm: String) -> [String: Any] {
+         var element: [String: Any] = ["identifier": "", "label": "", "type": "unavailable"]
+         if let auditedElement = issue.element {
+@@ -652,6 +664,15 @@
+             "repetition": repetition,
+             "viewport": viewport
+         ]
++    }
++
++    private static func emitD1Issue(_ payload: [String: Any]) {
++        guard let data = try? JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]),
++              let value = String(data: data, encoding: .utf8) else {
++            XCTFail("Could not serialize ACE_D1_A11Y_ISSUE")
++            return
++        }
++        print("ACE_D1_A11Y_ISSUE \(value)")
+     }
+ 
+     private func requireCoverage(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String) -> Bool {

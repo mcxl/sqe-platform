@@ -1,0 +1,27 @@
+{
+  "review_axis": "standards",
+  "review_scope": "delta only",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "base_ref_requested": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "base_ref_resolved": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "head_ref_requested": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "head_ref_resolved": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "diff_evidence_sha256": "4c76f7987557bd9edc4b9eb52e6847d44a22fb9c5c67c51b903599269d787a1d",
+  "changed_files": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+  "inspected_sources": ["AGENTS.md", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+  "standards_sources": [
+    "AGENTS.md: native UI verification, test-harness integrity and evidence controls",
+    "matt-skills-curated code-review SKILL.md: standards axis, evidence citations and Fowler smell baseline"
+  ],
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "medium",
+  "actual_runtime_model_or_effort": "unobservable",
+  "findings": [],
+  "limits": [
+    "Spec-axis outcome was not inspected.",
+    "Native focused run, simulator checks, whole-pilot run and UI acceptance were not run.",
+    "Syntax and lint checks were not rerun.",
+    "Earlier complete-goal five-file standards review remains retained."
+  ],
+  "verdict": "PASS — no actionable standards findings in this delta; native evidence remains outside source-only review"
+}

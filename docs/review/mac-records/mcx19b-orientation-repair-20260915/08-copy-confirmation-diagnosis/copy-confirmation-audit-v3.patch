@@ -1,0 +1,49 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index b11bc9c..c9dcc23 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -298,11 +298,44 @@ final class ACEClientAppUITests: XCTestCase {
+                                  audit: Bool, screenshots: inout [String], audits: inout Int) -> Bool {
+         captureCoverageViewport(in: app, caseID: caseID, viewport: viewport, screenshots: &screenshots)
+         guard audit else { return true }
++        let isCopyConfirmationAudit = scenario == "copyConfirmation" && viewport == "copy-confirmation"
++        if isCopyConfirmationAudit {
++            emitCopyConfirmationAuditFrames(in: app, phase: "before")
++        }
++        defer {
++            if isCopyConfirmationAudit {
++                emitCopyConfirmationAuditFrames(in: app, phase: "after")
++            }
++        }
+         guard runCoverageAudit(in: app, scenario: scenario, viewport: viewport) else { return false }
+         audits += 1
+         return true
+     }
+ 
++    private func emitCopyConfirmationAuditFrames(in app: XCUIApplication, phase: String) {
++        let queryStartUptimeSeconds = ProcessInfo.processInfo.systemUptime
++        let scroll = app.scrollViews.firstMatch
++        let copyAction1 = app.buttons["Copy action 1"]
++        let copyAction = app.staticTexts["Copy action"]
++        let confirmation = coverageElement(in: app, labeled: "Copied Action 1.")
++        let copyActionExists = copyAction.exists
++        let frames: [String: Any] = [
++            "app": Self.frameJSON(app.frame),
++            "scroll": Self.frameJSON(scroll.frame),
++            "copyAction1": Self.frameJSON(copyAction1.frame),
++            "copyAction": copyActionExists ? Self.frameJSON(copyAction.frame) : NSNull(),
++            "confirmation": Self.frameJSON(confirmation.frame)
++        ]
++        let queryFinishUptimeSeconds = ProcessInfo.processInfo.systemUptime
++        emitJSON(marker: "ACE_COPY_CONFIRMATION_AUDIT_FRAMES", payload: [
++            "phase": phase,
++            "queryStartUptimeSeconds": queryStartUptimeSeconds,
++            "queryFinishUptimeSeconds": queryFinishUptimeSeconds,
++            "copyActionExists": copyActionExists,
++            "frames": frames
++        ])
++    }
++
+     private func coverageActionLabels(for scenario: String) -> [String] {
+         switch scenario {
+         case "signIn", "denied", "keychainWrite":

@@ -1,0 +1,32 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testProjectConfiguration" "-only-testing:ACEClientAppTests/AcceptanceEvidenceContractTests/testSourceBoundaryInspection" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult
+
+Test Suite 'Selected tests' started at 2026-09-15 11:08:13.646.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-15 11:08:13.648.
+Test Suite 'AcceptanceEvidenceContractTests' started at 2026-09-15 11:08:13.649.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testProjectConfiguration]' passed (0.257 seconds).
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' started.
+Test Case '-[ACEClientAppTests.AcceptanceEvidenceContractTests testSourceBoundaryInspection]' passed (0.188 seconds).
+Test Suite 'AcceptanceEvidenceContractTests' passed at 2026-09-15 11:08:14.104.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.455) seconds
+Test Suite 'ACEClientAppTests.xctest' passed at 2026-09-15 11:08:14.106.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.458) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 11:08:14.107.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.445 (0.462) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/digest-focused-runs/20260915T010530Z-selected-02ad70a4f735/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 11:08:05.803 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:08:05.850 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:08:07.460 xcodebuild[88332:3587823] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 6.987 elapsed -- Testing started completed.
+2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 11:08:14.462 xcodebuild[88332:3587823] [MT] IDETestOperationsObserverDebug: 6.987 sec, +6.987 sec -- end

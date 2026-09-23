@@ -1,0 +1,331 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 54db2a6..ebf1834 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -1,5 +1,6 @@
+ import Foundation
+ import CoreGraphics
++import Synchronization
+ import XCTest
+ 
+ final class ACEClientAppUITests: XCTestCase {
+@@ -32,6 +33,77 @@ final class ACEClientAppUITests: XCTestCase {
+         let increaseContrast: Bool?
+     }
+ 
++    private enum D1Arm: String {
++        case splitAudits = "B"
++        case upperViewport = "C"
++    }
++
++    private struct D1AuditConfiguration {
++        let arm: D1Arm
++        let repetition: String
++    }
++
++    // Only this counter crosses into the audit callback; all access holds its mutex.
++    private final class D1IssueCounter: Sendable {
++        private let count = Mutex<Int>(0)
++
++        func recordIssue() { count.withLock { $0 += 1 } }
++        var value: Int { count.withLock { $0 } }
++    }
++
++    private final class D1AuditSession {
++        let configuration: D1AuditConfiguration
++        private let expectedAuditCallsPerViewport: Int
++        private var attemptedAuditCalls = 0
++        private var returnedNormallyAuditCalls = 0
++        private var returnedNormallyCallsByViewport: [String: Int] = [:]
++        let issueCounter = D1IssueCounter()
++        private var auditErrors: [String] = []
++
++        init(configuration: D1AuditConfiguration) {
++            self.configuration = configuration
++            self.expectedAuditCallsPerViewport = configuration.arm == .splitAudits ? 7 : 1
++        }
++
++        func recordAuditCompletion(viewport: String, returnedNormally: Bool) {
++            attemptedAuditCalls += 1
++            if returnedNormally {
++                returnedNormallyAuditCalls += 1
++                returnedNormallyCallsByViewport[viewport, default: 0] += 1
++            }
++        }
++
++        func recordAuditError(_ error: Error) {
++            auditErrors.append(String(error.localizedDescription.prefix(256)))
++        }
++
++        var callbackIssueCount: Int { issueCounter.value }
++        var hasIssues: Bool { callbackIssueCount > 0 }
++        var hasAuditErrors: Bool { !auditErrors.isEmpty }
++
++        func completionPayload() -> [String: Any] {
++            let expectedViewports: Set<String> = ["initial", "copy-confirmation"]
++            let completedViewports = Set(returnedNormallyCallsByViewport.compactMap {
++                $0.value == expectedAuditCallsPerViewport ? $0.key : nil
++            })
++            let expectedAuditCalls = expectedAuditCallsPerViewport * expectedViewports.count
++            return [
++                "arm": configuration.arm.rawValue,
++                "repetition": configuration.repetition,
++                "expectedAuditCalls": expectedAuditCalls,
++                "attemptedAuditCalls": attemptedAuditCalls,
++                "returnedNormallyAuditCalls": returnedNormallyAuditCalls,
++                "completedViewports": completedViewports.sorted(),
++                "bothViewportAuditGroupsCompleted": completedViewports == expectedViewports,
++                "allAuditTypesAttempted": attemptedAuditCalls == expectedAuditCalls,
++                "allAuditCallsReturnedNormally": returnedNormallyAuditCalls == expectedAuditCalls,
++                "callbackIssueCount": callbackIssueCount,
++                "auditErrors": auditErrors
++            ]
++        }
++    }
++
++    private var d1AuditSession: D1AuditSession?
+     func testCoverageBatch() {
+         continueAfterFailure = false
+         guard let cases = decodedCoverageCases(), !cases.isEmpty else { return }
+@@ -104,6 +176,35 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func runCoverageCase(_ coverageCase: CoverageCase) -> Bool {
++        let d1Requested = ProcessInfo.processInfo.environment["ACE_D1_ARM"] != nil
++            || ProcessInfo.processInfo.environment["ACE_D1_REPETITION"] != nil
++        let d1Configuration = d1AuditConfiguration()
++        guard !d1Requested || d1Configuration != nil else { return false }
++
++        let activeD1Session: D1AuditSession?
++        let originalContinueAfterFailure: Bool?
++        if let d1Configuration {
++            guard coverageCase.scenario == "copyConfirmation" && coverageCase.audit else {
++                XCTFail("D1 requires one audited copyConfirmation coverage case")
++                return false
++            }
++            let session = D1AuditSession(configuration: d1Configuration)
++            activeD1Session = session
++            originalContinueAfterFailure = continueAfterFailure
++            d1AuditSession = session
++            // The handler still returns false. This only lets every approved D1 audit call finish.
++            continueAfterFailure = true
++        } else {
++            activeD1Session = nil
++            originalContinueAfterFailure = nil
++        }
++        defer {
++            if let activeD1Session, let originalContinueAfterFailure {
++                emitJSON(marker: "ACE_D1_DIAGNOSTIC_COMPLETE", payload: activeD1Session.completionPayload())
++                continueAfterFailure = originalContinueAfterFailure
++                d1AuditSession = nil
++            }
++        }
+         guard ProcessInfo.processInfo.environment["ACE_UI_TEST_APPEARANCE"] == nil else {
+             XCTFail("Coverage runs must not set ACE_UI_TEST_APPEARANCE")
+             return false
+@@ -128,6 +229,21 @@ final class ACEClientAppUITests: XCTestCase {
+         }
+         guard verifyCoverageScenario(coverageCase.scenario, in: app, caseID: coverageCase.id,
+                                      audit: coverageCase.audit, screenshots: &screenshots, audits: &audits) else { return false }
++        if let session = d1AuditSession {
++            let completion = session.completionPayload()
++            guard completion["bothViewportAuditGroupsCompleted"] as? Bool == true,
++                  completion["allAuditTypesAttempted"] as? Bool == true,
++                  completion["allAuditCallsReturnedNormally"] as? Bool == true else {
++                XCTFail("D1 did not complete every required audit call")
++                return false
++            }
++            if session.hasAuditErrors {
++                XCTFail("D1 accessibility audit call raised an error after completing the diagnostic sequence")
++                return false
++            }
++            // An issue handler returning false already recorded XCTest's native failure.
++            guard !session.hasIssues else { return false }
++        }
+         emitJSON(marker: "ACE_CASE_RESULT", payload: ["id": coverageCase.id, "scenario": coverageCase.scenario,
+             "observed": observed.payload, "result": "passed", "screenshots": screenshots, "auditInvocations": audits])
+         return true
+@@ -383,10 +499,183 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func runCoverageAudit(in app: XCUIApplication, scenario: String, viewport: String) -> Bool {
++        if let session = d1AuditSession {
++            return runD1AccessibilityAudit(in: app, viewport: viewport, session: session)
++        }
+         do { try assertAccessibilityAudit(in: app, scenario: "\(scenario)-\(viewport)"); return true }
+         catch { XCTFail("Accessibility audit failed for \(scenario) \(viewport): \(error.localizedDescription)"); return false }
+     }
+ 
++    private func d1AuditConfiguration() -> D1AuditConfiguration? {
++        let environment = ProcessInfo.processInfo.environment
++        guard let armValue = environment["ACE_D1_ARM"] else {
++            if environment["ACE_D1_REPETITION"] != nil {
++                XCTFail("ACE_D1_REPETITION requires ACE_D1_ARM")
++            }
++            return nil
++        }
++        guard let arm = D1Arm(rawValue: armValue) else {
++            XCTFail("ACE_D1_ARM must be B or C")
++            return nil
++        }
++        guard let repetition = environment["ACE_D1_REPETITION"], !repetition.isEmpty else {
++            XCTFail("ACE_D1_REPETITION is required for D1")
++            return nil
++        }
++        return D1AuditConfiguration(arm: arm, repetition: repetition)
++    }
++
++    private func runD1AccessibilityAudit(in app: XCUIApplication, viewport: String,
++                                         session: D1AuditSession) -> Bool {
++        if session.configuration.arm == .upperViewport && viewport == "copy-confirmation"
++            && !placeCopyActionInUpperViewport(in: app, repetition: session.configuration.repetition) {
++            return false
++        }
++
++        let auditCalls: [(String, XCUIAccessibilityAuditType)]
++        switch session.configuration.arm {
++        case .splitAudits:
++            // The iPhoneSimulator 26.4 XCUIAccessibilityAuditTypes.h declaration fixes this order.
++            auditCalls = [
++                ("contrast", .contrast),
++                ("elementDetection", .elementDetection),
++                ("hitRegion", .hitRegion),
++                ("sufficientElementDescription", .sufficientElementDescription),
++                ("dynamicType", .dynamicType),
++                ("textClipped", .textClipped),
++                ("trait", .trait)
++            ]
++        case .upperViewport:
++            auditCalls = [("all", .all)]
++        }
++
++        for (auditName, auditType) in auditCalls {
++            let auditStart = ProcessInfo.processInfo.systemUptime
++            let issuesBeforeCall = session.callbackIssueCount
++            let issueCounter = session.issueCounter
++            let arm = session.configuration.arm.rawValue
++            let repetition = session.configuration.repetition
++            let issueHandler: @Sendable (XCUIAccessibilityAuditIssue) -> Bool = { issue in
++                issueCounter.recordIssue()
++                let elapsedSeconds = ProcessInfo.processInfo.systemUptime - auditStart
++                let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
++                let attachmentName = "D1 \(arm) repetition \(repetition) \(viewport) \(auditName) callback-time evidence"
++                attachment.name = attachmentName
++                attachment.lifetime = .keepAlways
++                XCTContext.runActivity(named: attachmentName) { activity in
++                    activity.add(attachment)
++                }
++                Self.emitD1Issue(Self.d1IssuePayload(
++                    issue,
++                    auditName: auditName,
++                    auditStart: auditStart,
++                    callbackElapsedSeconds: elapsedSeconds,
++                    repetition: repetition,
++                    viewport: viewport,
++                    arm: arm
++                ))
++                // Preserve XCTest's native audit finding without filtering it.
++                return false
++            }
++            var returnedNormally = false
++            var errorText: String?
++            do {
++                try app.performAccessibilityAudit(for: auditType, issueHandler)
++                returnedNormally = true
++            } catch {
++                session.recordAuditError(error)
++                errorText = String(error.localizedDescription.prefix(256))
++                emitJSON(marker: "ACE_D1_AUDIT_ERROR", payload: [
++                    "arm": session.configuration.arm.rawValue,
++                    "auditName": auditName,
++                    "repetition": session.configuration.repetition,
++                    "viewport": viewport,
++                    "error": errorText ?? ""
++                ])
++            }
++            session.recordAuditCompletion(viewport: viewport, returnedNormally: returnedNormally)
++            emitJSON(marker: "ACE_D1_AUDIT_CALL", payload: [
++                "arm": session.configuration.arm.rawValue,
++                "auditName": auditName,
++                "error": errorText ?? NSNull(),
++                "issueObserved": session.callbackIssueCount > issuesBeforeCall,
++                "repetition": session.configuration.repetition,
++                "returnedNormally": returnedNormally,
++                "viewport": viewport
++            ])
++        }
++        return true
++    }
++
++    private func placeCopyActionInUpperViewport(in app: XCUIApplication, repetition: String) -> Bool {
++        let copyAction = app.buttons["Copy action 1"]
++        let scrollView = app.scrollViews.firstMatch
++        guard copyAction.exists && scrollView.exists else {
++            XCTFail("D1 C requires the Copy action 1 button and release scroll view")
++            return false
++        }
++        for _ in 0..<16 {
++            let copyFrame = copyAction.frame
++            let viewport = scrollView.frame
++            let midpoint = viewport.minY + viewport.height / 2
++            if isFullyVisible(copyAction, in: scrollView) && copyFrame.maxY < midpoint { break }
++            drag(scrollView, upward: copyFrame.maxY >= midpoint)
++        }
++        let firstFrame = copyAction.frame
++        let viewport = scrollView.frame
++        let midpoint = viewport.minY + viewport.height / 2
++        guard requireCoverage(isFullyVisible(copyAction, in: scrollView) && firstFrame.maxY < midpoint,
++                              "D1 C could not place Copy action 1 fully above the scroll viewport midpoint") else { return false }
++        let frameReadInterval: TimeInterval = 0.5
++        Thread.sleep(forTimeInterval: frameReadInterval)
++        let secondFrame = copyAction.frame
++        emitJSON(marker: "ACE_D1_C_PLACEMENT", payload: [
++            "firstFrame": Self.frameJSON(firstFrame),
++            "midpoint": Double(midpoint),
++            "repetition": repetition,
++            "secondFrame": Self.frameJSON(secondFrame),
++            "twoFrameReadsIdentical": firstFrame == secondFrame,
++            "viewport": Self.frameJSON(viewport)
++        ])
++        return requireCoverage(firstFrame == secondFrame,
++                               "D1 C Copy action 1 frame changed during the approved 0.5 second interval")
++    }
++
++    private static func d1IssuePayload(_ issue: XCUIAccessibilityAuditIssue, auditName: String, auditStart: TimeInterval,
++                                callbackElapsedSeconds: TimeInterval, repetition: String, viewport: String, arm: String) -> [String: Any] {
++        var element: [String: Any] = ["identifier": "", "label": "", "type": "unavailable"]
++        if let auditedElement = issue.element {
++            element["identifier"] = Self.limitedAuditText(auditedElement.identifier)
++            element["label"] = Self.limitedAuditText(auditedElement.label)
++            element["type"] = Self.limitedAuditText(String(describing: auditedElement.elementType))
++            let frame = auditedElement.frame
++            element["frame"] = Self.frameJSON(frame)
++        }
++        return [
++            "arm": arm,
++            "auditStartUptimeSeconds": auditStart,
++            "auditType": Self.limitedAuditText(String(describing: issue.auditType)),
++            "callbackElapsedSeconds": callbackElapsedSeconds,
++            "callbackEvidence": "XCUIScreen screenshot observed when the callback ran; not the audit sample rendering",
++            "compactDescription": Self.limitedAuditText(issue.compactDescription),
++            "detailedDescription": Self.limitedAuditText(issue.detailedDescription),
++            "auditTypeRawValue": NSNumber(value: issue.auditType.rawValue),
++            "element": element,
++            "requestedAuditName": auditName,
++            "repetition": repetition,
++            "viewport": viewport
++        ]
++    }
++
++    private static func emitD1Issue(_ payload: [String: Any]) {
++        guard let data = try? JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]),
++              let value = String(data: data, encoding: .utf8) else {
++            XCTFail("Could not serialize ACE_D1_A11Y_ISSUE")
++            return
++        }
++        print("ACE_D1_A11Y_ISSUE \(value)")
++    }
++
+     private func requireCoverage(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String) -> Bool {
+         guard condition() else { XCTFail(message()); return false }
+         return true

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\\uv.EXE",
+    "--no-config",
+    "venv",
+    "--python",
+    "C:\\Users\\AlanRichardson\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv"
+  ],
+  "exit_code": 0,
+  "seconds": 0.5923248999897623
+}

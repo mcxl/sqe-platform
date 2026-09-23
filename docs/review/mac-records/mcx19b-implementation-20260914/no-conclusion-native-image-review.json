@@ -1,0 +1,50 @@
+{
+  "activeReviewSeconds": "not separately measured; do not use for pilot effort forecast",
+  "imageMechanism": "Direct original-resolution image blocks; no Windows file export",
+  "images": 16,
+  "inspectedAt": "2026-09-14T08:49:51.730357+00:00",
+  "observations": [
+    "All six native contrast crops contain the visible black Copy label and icon on a grey button background. They form two byte-identical groups.",
+    "Converted native sRGB pixels include black (0,0,0) and dominant button grey (198,198,203). Their colour-pair contrast is 12.341:1. This does not establish the native audit sampling mechanism.",
+    "The controlled pre-audit capture shows Sign out fully. The native failure capture shows only its upper part. These captures establish different positions; their precise sampling times and causal role remain unproved.",
+    "The initial and full-audit failure images remain separate records. All native findings remain failures."
+  ],
+  "pixelAnalysis": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/no-conclusion-native-crop-colours.json",
+  "reviewedRepresentatives": [
+    "415A9672-8EB8-45AF-8FA3-3EBCB947EDAA.png",
+    "DD5EB2D1-5A14-4714-B26C-B334148DAF1A.png",
+    "03FC56BB-7BB0-4D35-89DD-A427DD07ECE6.png",
+    "CF4B285C-EE60-49ED-B479-1EF49958A38F.png",
+    "33A397F3-B943-4572-BA1A-00DF0C723D77.png"
+  ],
+  "scope": "Historical diagnostic candidate; no final acceptance credit",
+  "sha256Duplicates": {
+    "3738a967985db27673f8970b82ae7b170cff1534bd39dc1efec451541605c4c6": [
+      "03FC56BB-7BB0-4D35-89DD-A427DD07ECE6.png",
+      "9283F6F0-01DC-453D-BE15-E088FD9FB3CE.png"
+    ],
+    "64e6bf6bdba11771e806c6a1a9e0349c58050f28576f23a5492d68fb9442877a": [
+      "09759FD3-1EEE-4108-9A69-1EC9709F0CA6.png",
+      "19F3D83F-558D-497E-823C-2FE56C96CE30.png",
+      "415A9672-8EB8-45AF-8FA3-3EBCB947EDAA.png",
+      "950DD9EE-BC74-4DD1-B590-BB47178B90A7.png",
+      "AF287AC6-8FDC-4862-A4C7-19C30504CF0C.png",
+      "DB7E1474-BC15-4DFC-B4D0-E72D2E72C5F1.png",
+      "F9A94646-1447-4549-9388-9052C4439AE1.png",
+      "FD7EB0B8-FE0C-452E-B763-CD159DEA5069.png"
+    ],
+    "70ceb4aa1dc92183437d1077910f9ce999f754386cf8b7bbad3c979bbcacbf2a": [
+      "CF4B285C-EE60-49ED-B479-1EF49958A38F.png"
+    ],
+    "cf357be506c7e0e7b3c9dc57dc948c2ee053854e1bd9632a0e1d0ad85dc72566": [
+      "33A397F3-B943-4572-BA1A-00DF0C723D77.png"
+    ],
+    "e5901805175418853e7d766ae5f2ee49349a227b07f22105abf93ed70dd8d60c": [
+      "CA8DB5C2-B4DC-4A24-9E7B-18CE89DDD428.png",
+      "DD5EB2D1-5A14-4714-B26C-B334148DAF1A.png",
+      "E36C70F9-2C00-4B59-AAAF-BC2326157E1C.png",
+      "F7C04CED-FB1F-4899-8153-31D50CFC35AA.png"
+    ]
+  },
+  "uniqueHashes": 5
+}

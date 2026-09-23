@@ -1,0 +1,18 @@
+{
+  "UTC": "2026-09-15T13:40:25.614094+00:00",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "sourceDiffSha256": "e888978d4406e154d95b411a6d10c9893cc5a012c2ac4d0ac397baed054cd885",
+  "primaryInspection": "Complete five-file goal diff read. First retrieval had tool-layer truncation in runner diff; full runner diff was then retrieved separately and inspected without truncation. No new actionable finding.",
+  "nativeExecutionScriptSha256": "0452511cf2f5f25ef5d110a144a04b764db626b21735a4697ab90a7c3442e60e",
+  "postprocessing": "Image index and resource report now include Settings recovery screenshots and native Settings evidence size. These read-only report scripts do not affect native candidate execution.",
+  "reportScripts": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/index-complete-pilot-images.py",
+      "sha256": "bd7178d3e8d5055b69fa704b623004bf2b61660b437595c9d6f16387d8cdb24f"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/verify-complete-pilot-evidence.py",
+      "sha256": "5f6acc5e1051f0a1335764b3b2a95e3bfa557c6384a0734bfd33f4ee5314c056"
+    }
+  ]
+}

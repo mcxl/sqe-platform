@@ -1,0 +1,135 @@
+{
+  "test": "testAllControlledScenariosShowExpectedStateAndAudit",
+  "expected": "All controlled scenarios satisfy the unrestricted audit",
+  "actualAuditIssues": [
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.333333333333343,
+          "width": 191.33333333333334,
+          "x": 0,
+          "y": 176.99999999999991
+        },
+        "identifier": "",
+        "label": "Published date and time",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "noConclusion"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 145,
+          "x": 0,
+          "y": 353.99999999999994
+        },
+        "identifier": "",
+        "label": "Action description",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "noConclusion"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 104.66666666666667,
+          "x": 0,
+          "y": 454.6666666666666
+        },
+        "identifier": "",
+        "label": "Action owner",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "noConclusion"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 143,
+          "x": 0,
+          "y": 555.3333333333333
+        },
+        "identifier": "",
+        "label": "Action target date",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "noConclusion"
+    },
+    {
+      "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
+      "compactDescription": "Contrast nearly passed",
+      "detailedDescription": "Contrast is not high enough for SwiftUI.AccessibilityNode unless font size is larger.",
+      "element": {
+        "frame": {
+          "height": 20.33333333333337,
+          "width": 105,
+          "x": 0,
+          "y": 655.9999999999999
+        },
+        "identifier": "",
+        "label": "Action status",
+        "type": "XCUIElementType(rawValue: 48)"
+      },
+      "scenario": "noConclusion"
+    }
+  ],
+  "errors": [
+    {
+      "logLine": 3713,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : Contrast nearly passed"
+    },
+    {
+      "logLine": 3723,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : Contrast nearly passed"
+    },
+    {
+      "logLine": 3733,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : Contrast nearly passed"
+    },
+    {
+      "logLine": 3743,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : Contrast nearly passed"
+    },
+    {
+      "logLine": 3753,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : Contrast nearly passed"
+    },
+    {
+      "logLine": 3811,
+      "text": "/Users/builder/clone/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:183: error: -[ACEClientAppUITests.ACEClientAppUITests testAllControlledScenariosShowExpectedStateAndAudit] : failed: caught error: \"Error Domain=com.apple.xcode.xctest.accessibilityAudit Code=-56 \"Audit failed to complete in time\" UserInfo={NSLocalizedDescription=Audit failed to complete in time}\""
+    }
+  ],
+  "sourceRestored": true,
+  "settingsEvidence": {
+    "appearanceBefore": "light",
+    "appearanceObserved": "light",
+    "appearanceRequested": "light",
+    "appearanceRestored": "light",
+    "contentSizeBefore": "large",
+    "contentSizeObserved": "large",
+    "contentSizeRequested": "large",
+    "contentSizeRestored": "large"
+  },
+  "classification": {
+    "contrast": "Five native contrast findings belong to noConclusion. That audit completed before app termination at t=32.04s; underlying cause unresolved.",
+    "timeout": "The later noActions audit timed out with error -56 after its Controlled state — noActions — light attachment at t=40.53s and before teardown at t=55.59s. This timeout does not belong to noConclusion; no cause established.",
+    "provenance": "The user identified the noActions attribution from the retained log. The primary verified that sequence on 2026-09-13. An earlier second review repeated the wrong attribution; agreement between reviews was not treated as evidence."
+  },
+  "patchAcceptance": "blocked by required legacy smoke failure; no further application correction attempted",
+  "log": "C:\\Users\\AlanRichardson\\Documents\\Codex\\2026-09-11\\mcx19-retention\\native-raw\\build-6aa41273d371340fffaea8f8\\additional-diagnostics\\clipping-6aa5d3e5a5297549762a03ca\\final-legacy-controlled-review\\commands\\legacy-controlled-smoke\\ios-normal-settings-iPhone 17-light-testAllControlledScenariosShowExpectedStateAndAudit.log"
+}

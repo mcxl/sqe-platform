@@ -1,0 +1,127 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testNativeCopyPasteProbe" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/result.xcresult
+
+2026-09-14 21:34:38.619485+1000 ACEClientAppUITests-Runner[89407:2239273] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 21:34:48.003.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 21:34:48.006.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 21:34:48.006.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testNativeCopyPasteProbe]' started.
+    t =     0.01s Start Test at 2026-09-14 21:34:48.014
+    t =     0.30s Set Up
+    t =     0.33s Open com.example.aceclientapp
+    t =     0.34s     Launch com.example.aceclientapp
+    t =     2.79s         Setting up automation session
+    t =     9.13s         Wait for com.example.aceclientapp to idle
+    t =    12.42s Waiting 5.0s for "Copy Engagement name" Button to exist
+    t =    13.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Copy Engagement name" Button`
+    t =    13.45s         Checking existence of `"Copy Engagement name" Button`
+    t =    14.14s Tap "Copy Engagement name" Button
+    t =    14.14s     Wait for com.example.aceclientapp to idle
+    t =    14.15s     Find the "Copy Engagement name" Button
+    t =    14.70s     Check for interrupting elements affecting "Copy Engagement name" Button
+    t =    14.89s     Synthesize event
+    t =    15.28s     Wait for com.example.aceclientapp to idle
+    t =    15.30s Waiting 5.0s for "Copied Engagement name." StaticText to exist
+    t =    16.38s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Engagement name." StaticText`
+    t =    16.38s         Checking existence of `"Copied Engagement name." StaticText`
+    t =    16.69s Find the Target Application 'com.example.aceclientapp'
+    t =    17.75s Added attachment named 'Copy actual engagement value'
+    t =    17.76s Terminate com.example.aceclientapp:89442
+    t =    18.82s Open com.example.aceclientapp
+    t =    18.82s     Launch com.example.aceclientapp
+    t =    20.10s         Setting up automation session
+    t =    26.58s         Wait for com.example.aceclientapp to idle
+    t =    30.16s Waiting 5.0s for "Username" TextField to exist
+    t =    31.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =    31.19s         Checking existence of `"Username" TextField`
+    t =    31.65s Tap "Username" TextField
+    t =    31.65s     Wait for com.example.aceclientapp to idle
+    t =    31.67s     Find the "Username" TextField
+    t =    31.76s     Check for interrupting elements affecting "Username" TextField
+    t =    31.87s     Synthesize event
+    t =    32.32s     Wait for com.example.aceclientapp to idle
+    t =    37.52s Press "Username" TextField for 1.0 seconds
+    t =    37.52s     Wait for com.example.aceclientapp to idle
+    t =    37.65s     Find the "Username" TextField
+    t =    38.19s     Check for interrupting elements affecting "Username" TextField
+    t =    38.47s     Synthesize event
+    t =    39.78s     Wait for com.example.aceclientapp to idle
+    t =    41.22s Find the Target Application 'com.example.aceclientapp'
+    t =    42.43s Added attachment named 'Native Paste menu'
+    t =    42.43s Waiting 5.0s for "Paste" Button to exist
+    t =    43.48s     Checking `Expect predicate `existsNoRetry == 1` for object "Paste" Button`
+    t =    43.48s         Checking existence of `"Paste" Button`
+    t =    43.73s         Capturing element debug description
+    t =    44.48s     Checking `Expect predicate `existsNoRetry == 1` for object "Paste" Button`
+    t =    44.48s         Checking existence of `"Paste" Button`
+    t =    44.72s         Capturing element debug description
+    t =    45.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Paste" Button`
+    t =    45.44s         Checking existence of `"Paste" Button`
+    t =    45.69s         Capturing element debug description
+    t =    46.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Paste" Button`
+    t =    46.45s         Checking existence of `"Paste" Button`
+    t =    46.77s         Capturing element debug description
+    t =    47.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Paste" Button`
+    t =    47.45s         Checking existence of `"Paste" Button`
+    t =    47.69s         Capturing element debug description
+    t =    47.70s     Checking existence of `"Paste" Button`
+    t =    47.92s Collecting debug information to assist test failure triage
+    t =    47.93s     Requesting snapshot of accessibility hierarchy for app with pid 89480
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/source/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:517: error: -[ACEClientAppUITests.ACEClientAppUITests testNativeCopyPasteProbe] : XCTAssertTrue failed - Native Paste command must be available
+    t =    48.77s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testNativeCopyPasteProbe]' failed (49.991 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 21:35:38.006.
+	 Executed 1 test, with 1 failure (0 unexpected) in 49.991 (49.999) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 21:35:38.008.
+	 Executed 1 test, with 1 failure (0 unexpected) in 49.991 (50.003) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 21:35:38.011.
+	 Executed 1 test, with 1 failure (0 unexpected) in 49.991 (50.008) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/copy-paste/result.xcresult
+
+Testing started
+2026-09-14 21:34:28.802 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:28.899 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:28.953 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:36.449 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:37.043 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:37.790 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:38.067 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:38.735 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:48.668 xcodebuild[89377:2238742] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 21:34:48.668 xcodebuild[89377:2238742] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 21:34:59.565 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:34:59.725 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:00.207 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:01.098 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:01.493 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:05.051 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:06.834 xcodebuild[89377:2238742] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 21:35:06.834 xcodebuild[89377:2238742] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 21:35:24.475 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:25.852 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:27.428 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:28.044 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:28.559 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:29.025 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:33.181 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:33.625 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:33.987 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:34.449 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:34.701 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:35.270 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:36.400 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:36.625 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:36.893 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:35:37.449 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:36:00.399 xcodebuild[89377:2238742] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:36:50.260 xcodebuild[89377:2238742] [MT] IDETestOperationsObserverDebug: 139.744 elapsed -- Testing started completed.
+2026-09-14 21:36:50.260 xcodebuild[89377:2238742] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 21:36:50.260 xcodebuild[89377:2238742] [MT] IDETestOperationsObserverDebug: 139.744 sec, +139.744 sec -- end
+** TEST EXECUTE FAILED **
+

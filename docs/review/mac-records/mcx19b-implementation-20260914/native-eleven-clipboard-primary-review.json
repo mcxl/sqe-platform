@@ -1,0 +1,27 @@
+{
+  "createdAtUTC": "2026-09-14T12:11:28.468509+00:00",
+  "baseCommit": "7fee853aef52e85a813368a51d833c134710186d",
+  "testSourceSHA256": "4d9a0f2e0cdae86c6d1397ef995674144c45e57d4a2d2d3aabd0028b38149791",
+  "diffSHA256": "3efc9a245eee2843da7f11913a5a65004f5028e8330ae765188f938069cdb4b9",
+  "completeDiffInspected": true,
+  "diffCheckExit": 0,
+  "retainedSelectors": [
+    "testCoverageBatch",
+    "testConfigureAccessibilitySettings",
+    "testBothAppearances",
+    "testLaunchShowsSafeConfigurationState",
+    "testSignInPasswordFieldIsSecure",
+    "testFictionalReleaseHasApprovedCopyControls",
+    "testClippingNoActionsStandaloneAudit",
+    "testClippingNoConclusionStandaloneAudit",
+    "testAllControlledScenariosShowExpectedStateAndAudit",
+    "testReleaseOrientationHooks",
+    "testNormalDeviceSettings"
+  ],
+  "addedSelectors": [
+    "testAllReleaseClipboardValuesPasteExactly"
+  ],
+  "nativeRun": "ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79",
+  "nativeResult": "Passed: native exit 0, runner exit 0, one test, eleven field assertions, no failures/skips",
+  "scope": "Only new clipboard UI test and its setup helper; no app source change."
+}

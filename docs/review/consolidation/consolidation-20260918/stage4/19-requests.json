@@ -1,0 +1,37 @@
+{
+  "engagement": {
+    "url": "http://127.0.0.1:60097/workbench/engagement/summary",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "seconds": 2.7132301999954507
+  },
+  "evidence": {
+    "url": "http://127.0.0.1:60097/workbench/evidence/EVD-FIC-0001/review",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "seconds": 0.14739359999657609
+  },
+  "relationship": {
+    "url": "http://127.0.0.1:60097/workbench/relationship-reviews/REL-FIC-0001",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "seconds": 0.12364219999290071
+  },
+  "evidence-state": {
+    "url": "http://127.0.0.1:60097/workbench/api/v1/evidence/EVD-FIC-0001/review",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "seconds": 0.12333370000123978
+  },
+  "relationship-state": {
+    "url": "http://127.0.0.1:60097/workbench/api/v1/relationship-reviews/REL-FIC-0001",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "seconds": 0.12154920000466518
+  }
+}

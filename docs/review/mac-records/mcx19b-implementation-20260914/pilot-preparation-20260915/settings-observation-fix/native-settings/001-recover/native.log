@@ -1,0 +1,175 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/ACEClientAppUITests.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/result.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/result.xcresult
+
+2026-09-15 12:12:51.270033+1000 ACEClientAppUITests-Runner[97355:3735212] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 12:14:05.134.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 12:14:05.136.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 12:14:05.137.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' started.
+    t =     0.01s Start Test at 2026-09-15 12:14:05.148
+    t =    12.32s Set Up
+    t =    12.38s Open com.example.aceclientapp
+    t =    12.38s     Launch com.example.aceclientapp
+    t =    18.40s         Setting up automation session
+    t =    25.39s         Wait for com.example.aceclientapp to idle
+    t =    85.44s             App event loop idle notification not received, will attempt to continue.
+    t =    86.45s Waiting 5.0s for "Effective interface style" Any to exist
+    t =    87.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" Any`
+    t =    87.53s         Checking existence of `"Effective interface style" Any`
+    t =    91.77s         Capturing element debug description
+    t =    91.78s     Checking existence of `"Effective interface style" Any`
+    t =   110.06s Find the "Effective interface style" Any
+    t =   110.72s Find the "Effective interface style" ScrollView
+    t =   110.80s Terminate com.example.aceclientapp:97567
+    t =   118.91s Open com.apple.Preferences
+    t =   118.91s     Launch com.apple.Preferences
+    t =   127.06s         Setting up automation session
+    t =   140.53s         Wait for com.apple.Preferences to idle
+    t =   157.28s Wait for com.apple.Preferences to become Running Foreground
+    t =   157.29s Checking existence of `"Settings" NavigationBar`
+    t =   158.01s Checking existence of `"Accessibility" Cell`
+    t =   158.38s Checking existence of `"Accessibility" StaticText`
+    t =   158.96s Find the "Accessibility" StaticText
+    t =   159.48s Tap "Accessibility" StaticText
+    t =   159.48s     Wait for com.apple.Preferences to idle
+    t =   159.50s     Find the "Accessibility" StaticText
+    t =   160.11s     Check for interrupting elements affecting "Accessibility" StaticText
+    t =   160.40s     Synthesize event
+    t =   168.55s     Wait for com.apple.Preferences to idle
+    t =   168.57s Checking existence of `"Motion" Cell`
+    t =   168.94s Checking existence of `"Motion" StaticText`
+    t =   169.25s Checking existence of `"Motion" Button`
+    t =   169.58s Swipe up Application 'com.apple.Preferences'
+    t =   169.58s     Wait for com.apple.Preferences to idle
+    t =   169.60s     Find the Application 'com.apple.Preferences'
+    t =   169.81s     Check for interrupting elements affecting "Settings" Application
+    t =   170.07s     Synthesize event
+    t =   170.54s     Wait for com.apple.Preferences to idle
+    t =   171.58s Checking existence of `"Motion" Cell`
+    t =   171.91s Checking existence of `"Motion" StaticText`
+    t =   172.21s Checking existence of `"Motion" Button`
+    t =   172.57s Swipe up Application 'com.apple.Preferences'
+    t =   172.57s     Wait for com.apple.Preferences to idle
+    t =   172.84s     Find the Application 'com.apple.Preferences'
+    t =   173.04s     Check for interrupting elements affecting "Settings" Application
+    t =   173.30s     Synthesize event
+    t =   173.79s     Wait for com.apple.Preferences to idle
+    t =   174.30s Checking existence of `"Motion" Cell`
+    t =   174.59s Checking existence of `"Motion" StaticText`
+    t =   174.90s Checking existence of `"Motion" Button`
+    t =   175.27s Swipe up Application 'com.apple.Preferences'
+    t =   175.27s     Wait for com.apple.Preferences to idle
+    t =   175.28s     Find the Application 'com.apple.Preferences'
+    t =   175.48s     Check for interrupting elements affecting "Settings" Application
+    t =   178.46s     Synthesize event
+    t =   178.92s     Wait for com.apple.Preferences to idle
+    t =   179.41s Checking existence of `"Motion" Cell`
+    t =   179.81s Checking existence of `"Motion" StaticText`
+    t =   180.13s Checking existence of `"Motion" Button`
+    t =   180.45s Swipe up Application 'com.apple.Preferences'
+    t =   180.45s     Wait for com.apple.Preferences to idle
+    t =   180.66s     Find the Application 'com.apple.Preferences'
+    t =   180.90s     Check for interrupting elements affecting "Settings" Application
+    t =   181.16s     Synthesize event
+    t =   181.62s     Wait for com.apple.Preferences to idle
+    t =   182.11s Checking existence of `"Motion" Cell`
+    t =   182.46s Checking existence of `"Motion" StaticText`
+    t =   183.01s Checking existence of `"Motion" Button`
+    t =   183.51s Swipe up Application 'com.apple.Preferences'
+    t =   183.52s     Wait for com.apple.Preferences to idle
+    t =   183.73s     Find the Application 'com.apple.Preferences'
+    t =   183.96s     Check for interrupting elements affecting "Settings" Application
+    t =   184.41s     Synthesize event
+    t =   184.87s     Wait for com.apple.Preferences to idle
+    t =   185.37s Checking existence of `"Motion" Cell`
+    t =   185.93s Checking existence of `"Motion" StaticText`
+    t =   186.41s Checking existence of `"Motion" Button`
+    t =   186.90s Swipe up Application 'com.apple.Preferences'
+    t =   186.90s     Wait for com.apple.Preferences to idle
+    t =   186.92s     Find the Application 'com.apple.Preferences'
+    t =   187.16s     Check for interrupting elements affecting "Settings" Application
+    t =   187.90s     Synthesize event
+    t =   188.51s     Wait for com.apple.Preferences to idle
+    t =   189.00s Checking existence of `"Motion" Cell`
+    t =   189.51s Checking existence of `"Motion" StaticText`
+    t =   190.26s Checking existence of `"Motion" Button`
+    t =   190.83s Swipe up Application 'com.apple.Preferences'
+    t =   190.83s     Wait for com.apple.Preferences to idle
+    t =   190.86s     Find the Application 'com.apple.Preferences'
+    t =   191.39s     Check for interrupting elements affecting "Settings" Application
+    t =   191.67s     Synthesize event
+    t =   192.14s     Wait for com.apple.Preferences to idle
+    t =   192.63s Checking existence of `"Motion" Cell`
+    t =   192.96s Checking existence of `"Motion" StaticText`
+    t =   193.23s Checking existence of `"Motion" Button`
+    t =   193.63s Swipe up Application 'com.apple.Preferences'
+    t =   193.64s     Wait for com.apple.Preferences to idle
+    t =   193.87s     Find the Application 'com.apple.Preferences'
+    t =   194.10s     Check for interrupting elements affecting "Settings" Application
+    t =   194.41s     Synthesize event
+    t =   194.87s     Wait for com.apple.Preferences to idle
+    t =   195.36s Checking existence of `"Motion" Cell`
+    t =   195.67s Checking existence of `"Motion" StaticText`
+    t =   195.94s Checking existence of `"Motion" Button`
+    t =   196.29s Swipe up Application 'com.apple.Preferences'
+    t =   196.29s     Wait for com.apple.Preferences to idle
+    t =   196.30s     Find the Application 'com.apple.Preferences'
+    t =   196.52s     Check for interrupting elements affecting "Settings" Application
+    t =   196.74s     Synthesize event
+    t =   197.21s     Wait for com.apple.Preferences to idle
+    t =   197.70s Checking existence of `"Motion" Cell`
+    t =   197.97s Checking existence of `"Motion" StaticText`
+    t =   198.28s Checking existence of `"Motion" Button`
+    t =   198.61s Swipe up Application 'com.apple.Preferences'
+    t =   198.61s     Wait for com.apple.Preferences to idle
+    t =   198.62s     Find the Application 'com.apple.Preferences'
+    t =   198.83s     Check for interrupting elements affecting "Settings" Application
+    t =   199.09s     Synthesize event
+    t =   199.61s     Wait for com.apple.Preferences to idle
+    t =   200.10s Checking existence of `"Motion" Cell`
+    t =   200.43s Checking existence of `"Motion" StaticText`
+    t =   200.74s Checking existence of `"Motion" Button`
+    t =   201.07s Swipe up Application 'com.apple.Preferences'
+    t =   201.07s     Wait for com.apple.Preferences to idle
+    t =   201.34s     Find the Application 'com.apple.Preferences'
+    t =   201.64s     Check for interrupting elements affecting "Settings" Application
+    t =   201.94s     Synthesize event
+    t =   202.40s     Wait for com.apple.Preferences to idle
+    t =   202.90s Checking existence of `"Motion" Cell`
+    t =   203.21s Checking existence of `"Motion" StaticText`
+    t =   203.66s Checking existence of `"Motion" Button`
+    t =   203.95s Swipe up Application 'com.apple.Preferences'
+    t =   203.96s     Wait for com.apple.Preferences to idle
+    t =   204.17s     Find the Application 'com.apple.Preferences'
+    t =   204.41s     Check for interrupting elements affecting "Settings" Application
+    t =   204.68s     Synthesize event
+    t =   205.14s     Wait for com.apple.Preferences to idle
+    t =   205.63s Find the Application 'com.apple.Preferences'
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:374: error: -[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings] : Failed to get screenshot: Timed out while requesting screenshot.
+    t =   256.56s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testConfigureAccessibilitySettings]' failed (258.029 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-15 12:18:23.176.
+	 Executed 1 test, with 1 failure (0 unexpected) in 258.029 (258.039) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-15 12:18:23.179.
+	 Executed 1 test, with 1 failure (0 unexpected) in 258.029 (258.043) seconds
+Test Suite 'Selected tests' failed at 2026-09-15 12:18:23.181.
+	 Executed 1 test, with 1 failure (0 unexpected) in 258.029 (258.048) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/native-settings/001-recover/result.xcresult
+
+Testing started
+2026-09-15 12:10:53.065 xcodebuild[97104:3729972] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:10:53.168 xcodebuild[97104:3729972] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:10:53.210 xcodebuild[97104:3729972] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 12:14:20.166 xcodebuild[97104:3729972] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 12:14:20.166 xcodebuild[97104:3729972] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 12:20:17.696 xcodebuild[97104:3729972] [MT] IDETestOperationsObserverDebug: 556.439 elapsed -- Testing started completed.
+2026-09-15 12:20:17.696 xcodebuild[97104:3729972] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 12:20:17.696 xcodebuild[97104:3729972] [MT] IDETestOperationsObserverDebug: 556.439 sec, +556.439 sec -- end
+** TEST EXECUTE FAILED **
+

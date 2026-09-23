@@ -1,0 +1,7 @@
+{
+  "question": "Does changing only the final audit type to contrast remove the reduced-view post-scroll findings?",
+  "sourceEdit": "Contrast selector now has the same initial full audit, scrolling, target checks and capture as the all selector. Only final audit type differs.",
+  "uiTestSha256": "de5d6864cf41f7eb7e98785ef477720f26d3c81fe20d164e8952cad8a8d40591",
+  "historicalAllResult": "results-minimal-audit-repro/minimal-audit-repro-all.xcresult",
+  "comparisonLimit": "Diagnostic test binary changed to align setup. App sources and all-selector body remain unchanged. No acceptance credit."
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "analysisColourSpace" : "sRGB",
+    "blackPixels" : 1785,
+    "file" : "\/Users\/alanrichardson\/ace-private\/mcx19b-implementation-20260914\/no-conclusion-contrast-diagnostic-attachments\/DD5EB2D1-5A14-4714-B26C-B334148DAF1A.png",
+    "height" : 174,
+    "mostFrequentOpaqueColours" : [
+      {
+        "contrastAgainstBlack" : 12.341146082257943,
+        "pixelCount" : 38263,
+        "rgb" : [
+          198,
+          198,
+          203
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 18.819381454911877,
+        "pixelCount" : 6222,
+        "rgb" : [
+          242,
+          242,
+          247
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 1,
+        "pixelCount" : 1785,
+        "rgb" : [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.086532801891513,
+        "pixelCount" : 73,
+        "rgb" : [
+          196,
+          196,
+          201
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 1.0364232380258604,
+        "pixelCount" : 40,
+        "rgb" : [
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.460151717947459,
+        "pixelCount" : 38,
+        "rgb" : [
+          199,
+          199,
+          203
+        ]
+      }
+    ],
+    "sourceColourSpace" : "kCGColorSpaceSRGB",
+    "width" : 278
+  },
+  {
+    "analysisColourSpace" : "sRGB",
+    "blackPixels" : 1785,
+    "file" : "\/Users\/alanrichardson\/ace-private\/mcx19b-implementation-20260914\/no-conclusion-contrast-diagnostic-attachments\/03FC56BB-7BB0-4D35-89DD-A427DD07ECE6.png",
+    "height" : 172,
+    "mostFrequentOpaqueColours" : [
+      {
+        "contrastAgainstBlack" : 12.341146082257943,
+        "pixelCount" : 38152,
+        "rgb" : [
+          198,
+          198,
+          203
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 18.819381454911877,
+        "pixelCount" : 5890,
+        "rgb" : [
+          242,
+          242,
+          247
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 1,
+        "pixelCount" : 1785,
+        "rgb" : [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.086532801891513,
+        "pixelCount" : 73,
+        "rgb" : [
+          196,
+          196,
+          201
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 1.0364232380258604,
+        "pixelCount" : 40,
+        "rgb" : [
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "contrastAgainstBlack" : 12.460151717947459,
+        "pixelCount" : 32,
+        "rgb" : [
+          199,
+          199,
+          203
+        ]
+      }
+    ],
+    "sourceColourSpace" : "kCGColorSpaceSRGB",
+    "width" : 278
+  }
+]

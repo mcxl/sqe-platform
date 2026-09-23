@@ -1,0 +1,13 @@
+{
+  "agent": "/root/timeout_evidence_review",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "observedModel": "unobservable",
+  "observedEffort": "unobservable",
+  "status": "completed",
+  "verdict": "accept bounded diagnostic conclusion",
+  "scope": "diagnostic outcome only; not source correction or app acceptance",
+  "finding": "Four diagnostic cases and six unrestricted audits passed on unchanged candidate. No further native check is necessary in this bounded work piece. Timeout cause remains unresolved. No correction is supported.",
+  "nextStage": "Fresh22-case pilot; preserve original failed pilot; stop on first error; no836expansion yet",
+  "closeout": "Record outcome, archive hashes and restored state."
+}

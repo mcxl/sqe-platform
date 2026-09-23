@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "retained_assertion": "expected ENG-FIC-9999; actual ENG-FIC-0001",
+  "fail_exit": 1,
+  "pass_exit": 0,
+  "changed_variable": "GATE_EXPECTED only; same source, tools and fictional store"
+}

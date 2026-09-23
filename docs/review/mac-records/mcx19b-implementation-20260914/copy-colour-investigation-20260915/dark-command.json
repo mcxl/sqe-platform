@@ -1,0 +1,25 @@
+{
+  "startUTC": "2026-09-14T23:27:53.444373+00:00",
+  "question": "Does primary tint keep release, Copy confirmation, no-actions and no-conclusion audits passing in dark appearance?",
+  "expected": "Three tests, all eleven release fields, five unrestricted audits, no failures or skips.",
+  "args": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-copy-colour-trial/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/dark-runs",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit",
+    "--test-env-json",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/dark.json"
+  ],
+  "exit": 0,
+  "endUTC": "2026-09-14T23:32:15.173465+00:00"
+}

@@ -1,0 +1,76 @@
+{
+  "review_type": "Pocock specification axis",
+  "scope": "Specification requirements and authorised scope only. Naming and standards were not assessed.",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "pinned_refs": {
+    "base": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+    "head": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "diff": "git diff 15e4363c2ac074ceeea71599d1f2b64f67446487...c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+    "changed_files": [
+      "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"
+    ]
+  },
+  "inspected_sources": [
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:106-133,165-180,321-381,940-966",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md:913-915,1188-1205,1277-1295,1312-1356,1335-1339,1420-1426",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md:71-102,114-128"
+  ],
+  "requirement_refs": [
+    "Spec 2026-08-24:913-915 requires full native audits and permits no unresolved automated accessibility failure.",
+    "Spec 2026-08-24:1190-1201 and 1335-1339 require a clean exact candidate and renewal after a test change.",
+    "Spec 2026-08-24:1285-1295 requires the 22-case pilot on one unchanged candidate, including MAX landscape dark all-settings cases.",
+    "Spec 2026-08-24:1347-1355 requires named screenshots, portrait and landscape evidence, reachable controls, and actual image inspection.",
+    "Plan 2026-09-14:71-80 retains the 512-audit, 324-layout-only, 836-case matrix.",
+    "Plan 2026-09-14:86-96 defines the 22-case unchanged-candidate pilot and observed-settings/artifact gates.",
+    "Plan 2026-09-14:116-126 requires focused diagnostics, a frozen candidate, review, and renewed gates after relevant test changes."
+  ],
+  "assessment": [
+    {
+      "subject": "Missing-element CollectionView handling",
+      "source_refs": [
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:333-359",
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:940-947"
+      ],
+      "result": "Pass",
+      "rationale": "The new CollectionView path scrolls until the control is fully visible. isFullyVisible also requires existence, hittability, non-zero bounds, and full containment."
+    },
+    {
+      "subject": "App-scoped landscape capture",
+      "source_refs": [
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:377-381",
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:957-966"
+      ],
+      "result": "Pass",
+      "rationale": "Each named coverage viewport now attaches XCUIScreen.main.screenshot(), which captures the device screen after orientation assertion and observed-settings validation."
+    },
+    {
+      "subject": "Preserved control checks",
+      "source_refs": [
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:321-329",
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:361-365"
+      ],
+      "result": "Pass",
+      "rationale": "The action path still requires reachability, 44-point width, and 44-point height before its screenshot."
+    },
+    {
+      "subject": "Scope",
+      "source_refs": [
+        "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:1-966"
+      ],
+      "result": "Pass",
+      "rationale": "The pinned diff changes one UI-test file only. It adds no app design, dependency, service, API, or coverage-matrix expansion."
+    }
+  ],
+  "findings": [],
+  "verdict": "PASS \u2014 no actionable specification-scope finding in the pinned source delta. This review does not establish pilot or final acceptance.",
+  "retained_limitations": [
+    "Historical intermittent Copy contrast and Settings missed-tap causes remain unresolved.",
+    "No native test or artifact review was run in this specification review.",
+    "The required 22-case pilot and complete 836-case programme remain acceptance gates on the unchanged candidate."
+  ],
+  "requested_model": "gpt-5.6-terra",
+  "requested_effort": "medium",
+  "actual_runtime": "unobservable",
+  "reviewed_at": "2026-09-15",
+  "request_metadata_source": "Primary corrected these request fields from the recorded spawn call; actual runtime remains unobservable."
+}

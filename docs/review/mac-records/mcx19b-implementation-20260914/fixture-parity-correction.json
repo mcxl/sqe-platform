@@ -1,0 +1,18 @@
+{
+  "reason": "Eleven DEBUG fixture names used different production view types or omitted recovery controls. Inject no-op actions into the same view types used by RootView. Production actions and screen layout are preserved. No SessionState, network, credential or server code changes.",
+  "files": {
+    "ios/ACEClientApp/ACEClientApp/Views.swift": {
+      "before": "fd198b1845d32ec20cc00e9c550a16e0b1b436de640f5252c54bd061b9fec662",
+      "after": "6080ff02e6b4df7fc2f1ed383cbb4c737245284abdf20256bbd0b2cefbf85fe2"
+    },
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": {
+      "before": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751",
+      "after": "33d45d245dcdeca3bda0765c378d3c3aee35798d5f83103d7daa727b792ba6b2"
+    },
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": {
+      "before": "50422346e84232ba959d37d7caaf28976eb676a1d8b6884329177b3bcb44ebca",
+      "after": "944842b3097c38e11a53d1dc9428e28bb7ca0d59b6e65a453a118f7996521427"
+    }
+  },
+  "status": "applied"
+}

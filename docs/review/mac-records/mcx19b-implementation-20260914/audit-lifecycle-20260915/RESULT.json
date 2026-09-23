@@ -1,0 +1,15 @@
+{
+  "dateUTC": "2026-09-14T22:08:29.586200+00:00",
+  "baseCommit": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "patch": "lifecycle-trace.patch",
+  "nativeResult": "One focused test passed; three unrestricted audits emitted no findings. No product behavior correction.",
+  "run": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-lifecycle-20260915/runs/20260914T215523Z-selected-6d10158a115f",
+  "appSHA256": "b549d16757d2b0e5e9cce70c8231957a306e7d15e86f018d2a91fbc5f3da43ba",
+  "testSHA256": "dea59c5756a9bf8268b1ce854e68279c2951b1bfe6199656f151a5e18352e31e",
+  "observation": "All 39 Dynamic Type events within three audit intervals report active app state and normal window level. No cover event logged during those intervals.",
+  "limit": "The run passed. It cannot exclude privacy cover during a failing run. Added logging can affect timing. No correction or final acceptance claimed.",
+  "postAuditPositionChangePoints": 99.333,
+  "positionConclusion": "Frame displacement also occurs in a passing run; displacement alone does not explain failure.",
+  "images": "14 PNGs, four distinct hashes inspected at original resolution; see image-review.json.",
+  "preRunFault": "Private wrapper had newline SyntaxError, corrected before any native execution; prior failed validation preserved in conversation."
+}

@@ -3,9 +3,13 @@
 This is the current Windows SQE source snapshot prepared for independent review on 23 September 2026.
 Select branch `codex/vorflux-review-20260923`, not `main`.
 
+## Master Update
+
+Read [MASTER_UPDATE.md](MASTER_UPDATE.md) first. It consolidates current state, earlier work, diagnostics, source identities and the access-gap register. This expanded export includes 6,328 Mac text records through deduplicated links, preserved Windows variants, 25 Mac worktree records, original approved instructions, showcase source and latest-failure images/video. Remaining raw bundles and execution access are explicitly unresolved.
+
 ## What To Review
 
-Read [the Mac evidence update](docs/review/MAC-UPDATE.md) first; it supersedes earlier Mac-unavailable statements. Then read [the complete review brief](docs/review/VORFLUX-FULL-REVIEW-BRIEF.md), then [development state](DEV_STATE.md) and [code and evidence index](docs/ace/CODE-AND-EVIDENCE-INDEX.md).
+After the master update, read [the Mac evidence update](docs/review/MAC-UPDATE.md), [the complete review brief](docs/review/VORFLUX-FULL-REVIEW-BRIEF.md), [development state](DEV_STATE.md) and [code and evidence index](docs/ace/CODE-AND-EVIDENCE-INDEX.md). Dated Mac-unavailable statements are superseded.
 The separate [SQE options brief](docs/review/SQE-OPTIONS-AND-IOS-REVIEW.md) is also included. Its local reference in older records refers to this copy.
 
 Recommend how to complete the existing work and which mobile delivery route to pursue. Compare Swift, Expo/React Native, mobile web/PWA and justified alternatives. Reuse the existing service and approval model where appropriate. Review only; do not implement, purchase, deploy or change acceptance rules without a further decision. The owner's later permission to publish this review snapshot supersedes the historical brief's prohibition on this upload only.
@@ -49,11 +53,11 @@ In particular, Windows Python approval/G0 and toolchain choices remain held diff
 
 This is not 100% of every device, private record or historical dirty worktree. It is the current Windows review snapshot and selected retained verification summaries.
 
-- Mac access was restored after resolving a stale address. The clean delivery HEAD, tracked-source comparison and 45 retained diagnostic records are now included; see the Mac update.
-- Selected native logs and machine summaries are included. Raw result bundles, screenshots and video remain on the Mac. Unexported local evidence paths are identifiers, not remote attachments.
+- Mac access was restored after resolving a stale address. The clean delivery HEAD, tracked-source comparison and 6,328 indexed text records are included; see the master update. The original Mac update described the first 45-record selection.
+- Selected native logs and machine summaries are included. Most raw result bundles and historical media remain on the Mac; latest-failure PNGs and video are included in the master update. Unexported local evidence paths are identifiers, not remote attachments.
 - Real client records, signing material, service credentials, local viewer tokens, database contents and environment files are excluded.
-- Current Mac variants are included as references. Other dirty worktrees and historical repository variants have not been consolidated here. Main and other public branches remain separate comparison sources.
-- The public showcase is a separate presentation. Its source and original client correspondence are not included in this code-review snapshot.
+- Current Mac variants are included as references. The master update now includes preserved variants and the 25 registered Mac worktree records; those are not merged application changes. Main and other public branches remain separate comparison sources.
+- The public showcase is a separate presentation. Its published page source and checking scripts are now included. Original client correspondence remains outside this public export.
 
 Report these limits explicitly. Do not infer a root cause, test pass or product readiness from inaccessible evidence.
 

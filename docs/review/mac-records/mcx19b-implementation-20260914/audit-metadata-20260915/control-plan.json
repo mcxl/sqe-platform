@@ -1,0 +1,12 @@
+{
+  "base": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "control": "LOCAL_HOME/Developer/sqe-platform-audit-metadata-control",
+  "trial": "LOCAL_HOME/Developer/sqe-platform-audit-metadata",
+  "question": "Does the original banner/inset source also pass or still fail when it uses the exact same UI queries? A passing original prevents attribution of a correction from pass alone.",
+  "scope": "One light-release selector, same device and environment as metadata light pass. No product source change in control.",
+  "sharedUITestSHA256": "3429cb6089ee0555bbf2e447d61838888661be5453a0dce73be4edc5dc094042",
+  "controlAppSHA256": "af600b46ea52b3702cbd322b92108d90f55a75830ca6b6f47eb6c4e766876f28",
+  "trialAppSHA256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3",
+  "onlyApplicationVariable": "App composition: diagnostic Text/inset versus nonvisual root settings metadata.",
+  "status": "Not executed. Maximum-text trial retained a native failure; further expansion paused while a smaller field representation trial is assessed."
+}

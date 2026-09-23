@@ -1,0 +1,25 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun",
+    "-destination",
+    "id=D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "-parallel-testing-enabled",
+    "NO",
+    "-enumerate-tests",
+    "-test-enumeration-style",
+    "flat",
+    "-test-enumeration-format",
+    "json",
+    "-test-enumeration-output-path",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/test-enumeration.json"
+  ],
+  "end": "2026-09-14T08:34:20.245587+00:00",
+  "exit": 0,
+  "seconds": 16.394,
+  "start": "2026-09-14T08:34:03.859329+00:00",
+  "stderr": "2026-09-14 18:34:10.809 xcodebuild[66646:1843922] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 18:34:10.881 xcodebuild[66646:1843922] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 18:34:12.075 xcodebuild[66646:1843922] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-14 18:34:12.603 xcodebuild[66646:1843922] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/build/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO -enumerate-tests -test-enumeration-style flat -test-enumeration-format json -test-enumeration-output-path LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083152Z-selected-897fd0674048/test-enumeration.json\n\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/Library/Developer/Xcode/DerivedData/ACEClientApp-blfzhrlccfovijaznhxqwncyejhm/Logs/Test/Test-ACEClientApp-2026.09.14_18-34-10-+1000.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\n"
+}

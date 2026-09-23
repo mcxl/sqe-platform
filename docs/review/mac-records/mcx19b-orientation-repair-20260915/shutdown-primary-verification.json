@@ -1,0 +1,26 @@
+{
+  "checkedUTC": "2026-09-15T08:28:34.595868+00:00",
+  "base": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "worktree": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-guard-worktree-v3",
+  "patchSha256": "30d01d470b7e7d4b646d7336543a847ba9acce1e677e214f2288db7e6ffd89c1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tools/tests",
+    "-p",
+    "test_ace_ios_local.py",
+    "-v"
+  ],
+  "testExit": 0,
+  "testLogSha256": "5ab176fec0ed5406e52979e2721534bc038dff237ccef242201e56a57b719d3e",
+  "diffCheckExit": 0,
+  "completeDiffInspected": true,
+  "sourceScope": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "meaning": "Native gate and pilot remain pending"
+}

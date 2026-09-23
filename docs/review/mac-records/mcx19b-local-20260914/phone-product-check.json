@@ -1,0 +1,13 @@
+{
+  "bundle_identifier": "com.alanrichardson.aceclientapp",
+  "application_identifier": "85SMJXHMJ5.com.alanrichardson.aceclientapp",
+  "profile_name": "iOS Team Provisioning Profile: com.alanrichardson.aceclientapp",
+  "profile_uuid": "3753523d-0823-4877-a3bb-0d2479a35d5e",
+  "profile_expires": "2026-09-21T02:37:21Z",
+  "phone_in_profile": true,
+  "expected_keychain_group": "85SMJXHMJ5.com.alanrichardson.aceclientapp",
+  "signed_keychain_check": "pending",
+  "preview_origin": "https://preview.example.invalid",
+  "code_signature_verified": true,
+  "executable_sha256": "5172fbedfde8ab38252518c60387a4275e2c37000f98760cbf791be8f125b0ba"
+}

@@ -1,0 +1,159 @@
+{
+  "reviewedUTC": "2026-09-14T21:10:27.550620+00:00",
+  "method": "Primary agent visually inspected every unique PNG at original resolution, streamed over SSH. No bulk Windows export.",
+  "imageCount": 38,
+  "uniqueImageCount": 16,
+  "images": [
+    {
+      "sha256": "ac72e46b38f78777cf3c2b825de8eaa019a84d114d765b00f029b519da9775dd",
+      "files": [
+        "selected-attachments/02930BE9-D24E-4511-80B5-2FA3D39982C2.png",
+        "selected-attachments/0803C653-F139-4D87-AD24-88E6D1B12BE1.png"
+      ],
+      "observation": "Native crop: OPEN fully visible black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "c0028e2342a53ecde373d892641fecf332a9f4da22cfbcdab6842fbce7024ba8",
+      "files": [
+        "selected-attachments/0B8335E6-8BE5-47ED-A0D8-345AF791AA68.png",
+        "selected-attachments/0E22D004-D4E2-4F63-B5ED-88D0DC7949C3.png",
+        "selected-attachments/474ED1B4-6979-4E65-943B-636394EBBB38.png",
+        "selected-attachments/48015756-BB91-422D-9A54-9E258DE56348.png",
+        "selected-attachments/8F242186-F715-4EA7-9272-E121CFA4E476.png",
+        "selected-attachments/AA332E14-D482-485B-AA95-1BAAC5C09818.png",
+        "selected-attachments/ABA0FCDB-2F11-4700-BE5C-43A96BD2D654.png",
+        "selected-attachments/D3D972ED-6DAD-48F7-B530-0BD79293032A.png",
+        "selected-attachments/EF0D7779-30CD-4BF4-A25D-04A294A545B9.png"
+      ],
+      "observation": "Initial release: release details and conclusion visible and legible; action continues below viewport.",
+      "inspected": true
+    },
+    {
+      "sha256": "2da11c7c232260b8754ee3a3756e48470ad024ec8bb5b78c9adac9b5120cb782",
+      "files": [
+        "selected-attachments/19B0B295-1770-4319-AFF4-74543F118C96.png"
+      ],
+      "observation": "Native crop: Action target date label fully visible, black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "78be6b5aca4d2d90e45e3f29146e8ff16a823ab12c434753613bc4c988fea56e",
+      "files": [
+        "selected-attachments/23321B9D-0583-40DC-BA73-67FFCE6C5127.png"
+      ],
+      "observation": "Native crop: upper part of Release version clipped; lower text black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "6b630e42745aa5e3093869b8c141a13e1c4ba5a3092cec63fcda096f590dc0f5",
+      "files": [
+        "selected-attachments/2DC79EF2-EC70-4B2D-B02E-8EAE2FABD79E.png",
+        "selected-attachments/56F50467-ACFD-4764-A568-DC7935A3144A.png",
+        "selected-attachments/5D778D9C-5611-4362-8886-182D16ED33B7.png",
+        "selected-attachments/864E2BA5-8517-48A7-821B-FAC73FC6B183.png",
+        "selected-attachments/907E9C93-07D7-49CF-A2A5-2ACC5D960D37.png",
+        "selected-attachments/C3132F80-4030-420E-B7BC-C9087C7FA383.png"
+      ],
+      "observation": "Post-scroll native full view: Release version clipped at top; version value, publication value, conclusion and action content visible.",
+      "inspected": true
+    },
+    {
+      "sha256": "bb5f3a0c9d7f5d5d944019d76d34cd9dc64418bf0a1e72b7e85efe05cf24aafc",
+      "files": [
+        "selected-attachments/45A61EDD-8BCD-4ECC-9468-972B80EF410B.png"
+      ],
+      "observation": "Native crop: version value partly clipped, lower stroke visible.",
+      "inspected": true
+    },
+    {
+      "sha256": "96d4be2b23930d2c200e6765b0c2015d19985bc325e8d2453b731fd089db0613",
+      "files": [
+        "selected-attachments/4AF89D07-9C3A-412D-A6B8-AE3D6B03BBE4.png"
+      ],
+      "observation": "Native crop: Action status fully visible, black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "51ab3e502f24f31d1141a39be680b8f2405dbd53265796bfea3c58a7f50f8601",
+      "files": [
+        "selected-attachments/5389CC28-C1B4-4A02-99CA-2C53DB7EE8C6.png"
+      ],
+      "observation": "Native crop: version 1 fully visible black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "0459dd3864b7031494aec5811af039a45cc1913108c643a9ffce188e6c7b4221",
+      "files": [
+        "selected-attachments/538FCFB0-B6C5-4545-9D1D-CAF321698B43.png",
+        "selected-attachments/85F407DE-B2A4-471A-A05D-3DFAFC11C31F.png",
+        "selected-attachments/8B5730F3-1C3E-45F6-B9FD-AD36D2A9273C.png",
+        "selected-attachments/97517776-6418-433E-9E8A-5D38056F488D.png",
+        "selected-attachments/9904ABC6-99AF-46DC-B5EE-1511FF1C517F.png",
+        "selected-attachments/E0C8E66B-809A-4326-A659-7D1D1E825F05.png"
+      ],
+      "observation": "Post-copy native full view: upper version value clipped at viewport top; conclusion and action content visible; Copy confirmation black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "d1645e22166670c06b3956b1c404d66c20ee806636c138567ef3dd0accd9a038",
+      "files": [
+        "selected-attachments/719F56D8-9ED3-4359-B503-A005271116AF.png"
+      ],
+      "observation": "Native crop: Copied Action 1. fully visible black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "0aec6a0dbdf6cc8999e210526dc9224a9f666ef72ee901726ef64416223248b4",
+      "files": [
+        "selected-attachments/7BD7EA36-D43D-4D36-896B-7CF7E198F424.png"
+      ],
+      "observation": "Native crop: target date value fully visible black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd",
+      "files": [
+        "selected-attachments/7D1B1633-41DC-4B40-85FD-B0CB927521BC.png",
+        "selected-attachments/B873817E-E54B-4AD2-962F-AD885915A8A0.png"
+      ],
+      "observation": "Native crop: Copy action, black text and icon on grey capsule.",
+      "inspected": true
+    },
+    {
+      "sha256": "56635f23b56d42693a90d9c2fe8ee8a8e66812cc9f450b7b3d66676dfcde5d0d",
+      "files": [
+        "selected-attachments/8CE66788-3221-4708-8E6A-2933486EA63F.png",
+        "selected-attachments/A1F3CE50-8BDF-40E8-AB79-BEA1FCCB9EC1.png",
+        "selected-attachments/F5696798-2304-4B65-97BA-9276FBF8BE0E.png"
+      ],
+      "observation": "Before-audit scrolled view, earlier clock: complete action and Copy visible; Refresh and Sign out visible.",
+      "inspected": true
+    },
+    {
+      "sha256": "f2208ae34100bc5e6aa700d403b282a4099079a8346adcda4e75d7ff443dcf2f",
+      "files": [
+        "selected-attachments/DEBFA123-8997-4C8D-A1A9-6F353564E1D3.png"
+      ],
+      "observation": "Before-audit scrolled view: complete action and Copy visible; Refresh and Sign out visible.",
+      "inspected": true
+    },
+    {
+      "sha256": "d67ddba3912143814b39a35ad229e7aa04c1d175f247bca53aae29b995031df4",
+      "files": [
+        "selected-attachments/E7A90F9F-6CE2-4547-A1F4-218372C00C6B.png"
+      ],
+      "observation": "Native crop: Published date and time label fully visible black on pale grey.",
+      "inspected": true
+    },
+    {
+      "sha256": "884edaa578d0279a72141058790469ef81a61af706ab6bf6c9a5652e8a57ef6c",
+      "files": [
+        "selected-attachments/EA31F0CF-C58F-461D-B453-2E47002D404D.png"
+      ],
+      "observation": "Before-confirmation-audit full view: complete action, Copy and confirmation visible, Refresh below.",
+      "inspected": true
+    }
+  ],
+  "limit": "Settled screenshots and callback frames do not establish audit sampling-time pixels or explain the full native failure mechanism."
+}

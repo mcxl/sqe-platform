@@ -1,0 +1,490 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCompleteActionClipboardPastesExactly" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/selected.xcresult
+
+2026-09-15 06:11:43.572526+1000 ACEClientAppUITests-Runner[49211:3044814] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 06:11:47.757.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 06:11:47.770.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 06:11:47.771.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCompleteActionClipboardPastesExactly]' started.
+    t =     0.01s Start Test at 2026-09-15 06:11:47.780
+    t =     0.20s Set Up
+    t =     0.22s Open com.example.aceclientapp
+    t =     0.22s     Launch com.example.aceclientapp
+    t =     2.37s         Setting up automation session
+    t =     6.89s         Wait for com.example.aceclientapp to idle
+    t =     9.91s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =    10.99s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =    10.99s         Checking existence of `"Clipboard test destination" Button`
+    t =    11.36s Tap "Clipboard test destination" Button
+    t =    11.36s     Wait for com.example.aceclientapp to idle
+    t =    11.38s     Find the "Clipboard test destination" Button
+    t =    11.54s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =    11.68s     Synthesize event
+    t =    12.05s     Wait for com.example.aceclientapp to idle
+    t =    12.23s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =    13.31s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =    13.31s         Checking existence of `"Clipboard paste destination" TextView`
+    t =    13.53s Find the "Clipboard paste destination" TextView
+    t =    13.69s Tap "Clipboard paste destination" TextView
+    t =    13.69s     Wait for com.example.aceclientapp to idle
+    t =    13.70s     Find the "Clipboard paste destination" TextView
+    t =    13.96s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    14.11s     Synthesize event
+    t =    14.47s     Wait for com.example.aceclientapp to idle
+    t =    15.70s Waiting 5.0s for Keyboard (First Match) to exist
+    t =    16.78s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    16.78s         Checking existence of `Keyboard (First Match)`
+    t =    16.88s Type 'ActionOneClipboard...' into "Clipboard paste destination" TextView
+    t =    16.88s     Wait for com.example.aceclientapp to idle
+    t =    16.89s     Find the "Clipboard paste destination" TextView
+    t =    17.35s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    17.57s     Synthesize event
+    t =    18.27s     Wait for com.example.aceclientapp to idle
+    t =    18.42s Find the "Clipboard paste destination" TextView
+    t =    18.84s Double tap "Clipboard paste destination" TextView
+    t =    18.84s     Wait for com.example.aceclientapp to idle
+    t =    18.85s     Find the "Clipboard paste destination" TextView
+    t =    19.22s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    19.48s     Synthesize event
+    t =    19.90s     Wait for com.example.aceclientapp to idle
+    t =    22.35s Find the Target Application 'com.example.aceclientapp'
+    t =    23.46s Added attachment named 'Native clipboard sentinel selected — ActionOneClipboardSentinelA'
+    t =    23.48s Waiting 1.0s for MenuItem (First Match) to exist
+    t =    24.48s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =    24.48s         Checking existence of `MenuItem (First Match)`
+    t =    24.71s     Checking existence of `MenuItem (First Match)`
+    t =    25.03s Waiting 5.0s for MenuItem (First Match) to exist
+    t =    26.12s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =    26.12s         Checking existence of `MenuItem (First Match)`
+    t =    26.37s Find the Target Application 'com.example.aceclientapp'
+    t =    27.42s Added attachment named 'Native clipboard sentinel menu — ActionOneClipboardSentinelA'
+    t =    27.43s Tap MenuItem (First Match)
+    t =    27.43s     Wait for com.example.aceclientapp to idle
+    t =    27.44s     Find the MenuItem (First Match)
+    t =    27.69s     Check for interrupting elements affecting "Copy" MenuItem
+    t =    28.03s     Synthesize event
+    t =    28.39s     Wait for com.example.aceclientapp to idle
+    t =    28.73s Find the Target Application 'com.example.aceclientapp'
+    t =    29.69s Added attachment named 'Native clipboard sentinel copied — ActionOneClipboardSentinelA'
+    t =    29.69s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =    30.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =    30.73s         Checking existence of `"Close clipboard test destination" Button`
+    t =    31.01s Tap "Close clipboard test destination" Button
+    t =    31.01s     Wait for com.example.aceclientapp to idle
+    t =    31.02s     Find the "Close clipboard test destination" Button
+    t =    31.40s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =    31.67s     Synthesize event
+    t =    32.06s     Wait for com.example.aceclientapp to idle
+    t =    33.66s Checking existence of `"Clipboard paste destination" TextView`
+    t =    33.80s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    34.93s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    34.93s         Checking existence of `ScrollView (First Match)`
+    t =    34.99s Checking existence of `"Copy action 1" Button`
+    t =    35.13s Find the "Copy action 1" Button
+    t =    35.32s Find the ScrollView (First Match)
+    t =    35.39s Checking existence of `"Copy action 1" Button`
+    t =    35.62s Find the "Copy action 1" Button
+    t =    35.82s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    35.82s     Wait for com.example.aceclientapp to idle
+    t =    35.83s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    35.90s     Check for interrupting elements affecting ScrollView
+    t =    36.04s     Synthesize event
+    t =    36.05s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    36.16s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    36.25s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    36.34s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    36.43s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    37.54s     Wait for com.example.aceclientapp to idle
+    t =    39.11s Checking existence of `"Copy action 1" Button`
+    t =    39.26s Find the "Copy action 1" Button
+    t =    39.53s Find the "Copy action 1" Button
+    t =    39.75s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    39.82s Find the "Copy action 1" Button
+    t =    40.03s Tap "Copy action 1" Button
+    t =    40.03s     Wait for com.example.aceclientapp to idle
+    t =    40.05s     Find the "Copy action 1" Button
+    t =    40.21s     Check for interrupting elements affecting "Copy action 1" Button
+    t =    40.45s     Synthesize event
+    t =    40.81s     Wait for com.example.aceclientapp to idle
+    t =    40.83s Waiting 5.0s for "Copied Action 1." StaticText to exist
+    t =    41.90s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action 1." StaticText`
+    t =    41.90s         Checking existence of `"Copied Action 1." StaticText`
+    t =    42.07s Find the Target Application 'com.example.aceclientapp'
+    t =    42.96s Added attachment named 'Native action copied — step 1 — Copy action 1'
+    t =    42.96s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =    44.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =    44.03s         Checking existence of `"Clipboard test destination" Button`
+    t =    44.19s Tap "Clipboard test destination" Button
+    t =    44.19s     Wait for com.example.aceclientapp to idle
+    t =    44.24s     Find the "Clipboard test destination" Button
+    t =    44.39s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =    44.54s     Synthesize event
+    t =    44.91s     Wait for com.example.aceclientapp to idle
+    t =    45.28s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =    46.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =    46.34s         Checking existence of `"Clipboard paste destination" TextView`
+    t =    46.51s Find the "Clipboard paste destination" TextView
+    t =    46.75s Find the "Clipboard paste destination" TextView
+    t =    46.94s Tap "Clipboard paste destination" TextView
+    t =    46.94s     Wait for com.example.aceclientapp to idle
+    t =    46.96s     Find the "Clipboard paste destination" TextView
+    t =    47.16s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    47.32s     Synthesize event
+    t =    47.68s     Wait for com.example.aceclientapp to idle
+    t =    48.00s Waiting 5.0s for Keyboard (First Match) to exist
+    t =    49.08s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    49.08s         Checking existence of `Keyboard (First Match)`
+    t =    49.17s Press "Clipboard paste destination" TextView for 1.0 seconds
+    t =    49.18s     Wait for com.example.aceclientapp to idle
+    t =    49.19s     Find the "Clipboard paste destination" TextView
+    t =    49.48s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    49.72s     Synthesize event
+    t =    51.03s     Wait for com.example.aceclientapp to idle
+    t =    51.67s Find the Target Application 'com.example.aceclientapp'
+    t =    52.71s Added attachment named 'Native Paste menu — step 1 — Copy action 1'
+    t =    52.71s Waiting 5.0s for MenuItem (First Match) to exist
+    t =    53.78s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =    53.78s         Checking existence of `MenuItem (First Match)`
+    t =    54.08s Tap MenuItem (First Match)
+    t =    54.08s     Wait for com.example.aceclientapp to idle
+    t =    54.09s     Find the MenuItem (First Match)
+    t =    54.43s     Check for interrupting elements affecting "Paste" MenuItem
+    t =    54.70s     Synthesize event
+    t =    55.08s     Wait for com.example.aceclientapp to idle
+    t =    55.51s Find the "Clipboard paste destination" TextView
+    t =    55.79s Find the Target Application 'com.example.aceclientapp'
+    t =    56.72s Added attachment named 'Native pasted value — step 1 — Copy action 1'
+    t =    56.73s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =    57.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =    57.82s         Checking existence of `"Close clipboard test destination" Button`
+    t =    58.09s Tap "Close clipboard test destination" Button
+    t =    58.09s     Wait for com.example.aceclientapp to idle
+    t =    58.11s     Find the "Close clipboard test destination" Button
+    t =    58.40s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =    58.71s     Synthesize event
+    t =    59.07s     Wait for com.example.aceclientapp to idle
+    t =    60.67s Checking existence of `"Clipboard paste destination" TextView`
+    t =    60.84s Checking existence of `"Copied Action 1." StaticText`
+    t =    61.05s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =    62.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =    62.12s         Checking existence of `"Clipboard test destination" Button`
+    t =    62.29s Tap "Clipboard test destination" Button
+    t =    62.29s     Wait for com.example.aceclientapp to idle
+    t =    62.30s     Find the "Clipboard test destination" Button
+    t =    62.48s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =    62.67s     Synthesize event
+    t =    63.03s     Wait for com.example.aceclientapp to idle
+    t =    63.43s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =    64.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =    64.52s         Checking existence of `"Clipboard paste destination" TextView`
+    t =    64.70s Find the "Clipboard paste destination" TextView
+    t =    64.92s Tap "Clipboard paste destination" TextView
+    t =    64.92s     Wait for com.example.aceclientapp to idle
+    t =    64.93s     Find the "Clipboard paste destination" TextView
+    t =    65.13s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    65.34s     Synthesize event
+    t =    65.71s     Wait for com.example.aceclientapp to idle
+    t =    66.20s Waiting 5.0s for Keyboard (First Match) to exist
+    t =    67.25s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    67.25s         Checking existence of `Keyboard (First Match)`
+    t =    67.35s Type 'ActionTwoClipboard...' into "Clipboard paste destination" TextView
+    t =    67.36s     Wait for com.example.aceclientapp to idle
+    t =    67.37s     Find the "Clipboard paste destination" TextView
+    t =    67.67s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    68.01s     Synthesize event
+    t =    68.70s     Wait for com.example.aceclientapp to idle
+    t =    68.90s Find the "Clipboard paste destination" TextView
+    t =    69.31s Double tap "Clipboard paste destination" TextView
+    t =    69.31s     Wait for com.example.aceclientapp to idle
+    t =    69.32s     Find the "Clipboard paste destination" TextView
+    t =    69.64s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    69.94s     Synthesize event
+    t =    70.37s     Wait for com.example.aceclientapp to idle
+    t =    72.09s Find the Target Application 'com.example.aceclientapp'
+    t =    73.36s Added attachment named 'Native clipboard sentinel selected — ActionTwoClipboardSentinelB'
+    t =    73.36s Waiting 1.0s for MenuItem (First Match) to exist
+    t =    74.37s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =    74.37s         Checking existence of `MenuItem (First Match)`
+    t =    74.68s         Capturing element debug description
+    t =    74.68s     Checking existence of `MenuItem (First Match)`
+    t =    75.07s Waiting 5.0s for MenuItem (First Match) to exist
+    t =    76.13s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =    76.13s         Checking existence of `MenuItem (First Match)`
+    t =    76.52s Find the Target Application 'com.example.aceclientapp'
+    t =    77.59s Added attachment named 'Native clipboard sentinel menu — ActionTwoClipboardSentinelB'
+    t =    77.59s Tap MenuItem (First Match)
+    t =    77.59s     Wait for com.example.aceclientapp to idle
+    t =    77.61s     Find the MenuItem (First Match)
+    t =    77.93s     Check for interrupting elements affecting "Copy" MenuItem
+    t =    78.28s     Synthesize event
+    t =    78.65s     Wait for com.example.aceclientapp to idle
+    t =    78.99s Find the Target Application 'com.example.aceclientapp'
+    t =    79.97s Added attachment named 'Native clipboard sentinel copied — ActionTwoClipboardSentinelB'
+    t =    79.97s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =    81.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =    81.03s         Checking existence of `"Close clipboard test destination" Button`
+    t =    81.32s Tap "Close clipboard test destination" Button
+    t =    81.32s     Wait for com.example.aceclientapp to idle
+    t =    81.33s     Find the "Close clipboard test destination" Button
+    t =    81.67s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =    81.93s     Synthesize event
+    t =    82.29s     Wait for com.example.aceclientapp to idle
+    t =    83.85s Checking existence of `"Clipboard paste destination" TextView`
+    t =    84.01s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    85.04s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    85.05s         Checking existence of `ScrollView (First Match)`
+    t =    85.09s Checking existence of `"Copy action 2" Button`
+    t =    85.26s Find the "Copy action 2" Button
+    t =    85.50s Find the ScrollView (First Match)
+    t =    85.57s Checking existence of `"Copy action 2" Button`
+    t =    85.76s Find the "Copy action 2" Button
+    t =    85.94s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    85.94s     Wait for com.example.aceclientapp to idle
+    t =    85.95s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.02s     Check for interrupting elements affecting ScrollView
+    t =    86.18s     Synthesize event
+    t =    86.19s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.29s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.45s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.53s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    86.70s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    87.77s     Wait for com.example.aceclientapp to idle
+    t =    88.15s Checking existence of `"Copy action 2" Button`
+    t =    88.32s Find the "Copy action 2" Button
+    t =    88.56s Find the "Copy action 2" Button
+    t =    88.74s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    88.81s Find the "Copy action 2" Button
+    t =    89.02s Tap "Copy action 2" Button
+    t =    89.02s     Wait for com.example.aceclientapp to idle
+    t =    89.03s     Find the "Copy action 2" Button
+    t =    89.21s     Check for interrupting elements affecting "Copy action 2" Button
+    t =    89.37s     Synthesize event
+    t =    89.73s     Wait for com.example.aceclientapp to idle
+    t =    89.76s Waiting 5.0s for "Copied Action 2." StaticText to exist
+    t =    90.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action 2." StaticText`
+    t =    90.82s         Checking existence of `"Copied Action 2." StaticText`
+    t =    90.97s Find the Target Application 'com.example.aceclientapp'
+    t =    91.70s Added attachment named 'Native action copied — step 2 — Copy action 2'
+    t =    91.71s Checking existence of `"Copied Action 1." StaticText`
+    t =    91.85s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =    92.91s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =    92.91s         Checking existence of `"Clipboard test destination" Button`
+    t =    93.09s Tap "Clipboard test destination" Button
+    t =    93.09s     Wait for com.example.aceclientapp to idle
+    t =    93.14s     Find the "Clipboard test destination" Button
+    t =    93.35s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =    93.56s     Synthesize event
+    t =    93.98s     Wait for com.example.aceclientapp to idle
+    t =    94.40s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =    95.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =    95.45s         Checking existence of `"Clipboard paste destination" TextView`
+    t =    95.63s Find the "Clipboard paste destination" TextView
+    t =    95.81s Find the "Clipboard paste destination" TextView
+    t =    96.02s Tap "Clipboard paste destination" TextView
+    t =    96.02s     Wait for com.example.aceclientapp to idle
+    t =    96.03s     Find the "Clipboard paste destination" TextView
+    t =    96.21s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    96.38s     Synthesize event
+    t =    96.75s     Wait for com.example.aceclientapp to idle
+    t =    96.99s Waiting 5.0s for Keyboard (First Match) to exist
+    t =    98.05s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    98.05s         Checking existence of `Keyboard (First Match)`
+    t =    98.13s Press "Clipboard paste destination" TextView for 1.0 seconds
+    t =    98.13s     Wait for com.example.aceclientapp to idle
+    t =    98.14s     Find the "Clipboard paste destination" TextView
+    t =    98.41s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =    98.64s     Synthesize event
+    t =    99.93s     Wait for com.example.aceclientapp to idle
+    t =   100.50s Find the Target Application 'com.example.aceclientapp'
+    t =   101.59s Added attachment named 'Native Paste menu — step 2 — Copy action 2'
+    t =   101.60s Waiting 5.0s for MenuItem (First Match) to exist
+    t =   102.64s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =   102.64s         Checking existence of `MenuItem (First Match)`
+    t =   102.87s Tap MenuItem (First Match)
+    t =   102.87s     Wait for com.example.aceclientapp to idle
+    t =   102.88s     Find the MenuItem (First Match)
+    t =   103.17s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   103.45s     Synthesize event
+    t =   103.82s     Wait for com.example.aceclientapp to idle
+    t =   104.27s Find the "Clipboard paste destination" TextView
+    t =   104.61s Find the Target Application 'com.example.aceclientapp'
+    t =   105.88s Added attachment named 'Native pasted value — step 2 — Copy action 2'
+    t =   105.88s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =   106.93s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =   106.94s         Checking existence of `"Close clipboard test destination" Button`
+    t =   107.23s Tap "Close clipboard test destination" Button
+    t =   107.23s     Wait for com.example.aceclientapp to idle
+    t =   107.30s     Find the "Close clipboard test destination" Button
+    t =   107.61s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =   107.89s     Synthesize event
+    t =   108.25s     Wait for com.example.aceclientapp to idle
+    t =   109.81s Checking existence of `"Clipboard paste destination" TextView`
+    t =   109.97s Checking existence of `"Copied Action 2." StaticText`
+    t =   110.11s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =   111.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =   111.19s         Checking existence of `"Clipboard test destination" Button`
+    t =   111.35s Tap "Clipboard test destination" Button
+    t =   111.35s     Wait for com.example.aceclientapp to idle
+    t =   111.36s     Find the "Clipboard test destination" Button
+    t =   111.61s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =   111.76s     Synthesize event
+    t =   112.12s     Wait for com.example.aceclientapp to idle
+    t =   112.53s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =   113.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =   113.61s         Checking existence of `"Clipboard paste destination" TextView`
+    t =   113.79s Find the "Clipboard paste destination" TextView
+    t =   113.98s Tap "Clipboard paste destination" TextView
+    t =   113.99s     Wait for com.example.aceclientapp to idle
+    t =   114.00s     Find the "Clipboard paste destination" TextView
+    t =   114.22s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =   114.41s     Synthesize event
+    t =   114.78s     Wait for com.example.aceclientapp to idle
+    t =   115.41s Waiting 5.0s for Keyboard (First Match) to exist
+    t =   116.46s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =   116.46s         Checking existence of `Keyboard (First Match)`
+    t =   116.62s Type 'ActionOneClipboard...' into "Clipboard paste destination" TextView
+    t =   116.63s     Wait for com.example.aceclientapp to idle
+    t =   116.64s     Find the "Clipboard paste destination" TextView
+    t =   116.97s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =   117.25s     Synthesize event
+    t =   117.93s     Wait for com.example.aceclientapp to idle
+    t =   118.13s Find the "Clipboard paste destination" TextView
+    t =   118.42s Double tap "Clipboard paste destination" TextView
+    t =   118.42s     Wait for com.example.aceclientapp to idle
+    t =   118.43s     Find the "Clipboard paste destination" TextView
+    t =   118.82s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =   119.09s     Synthesize event
+    t =   119.51s     Wait for com.example.aceclientapp to idle
+    t =   120.75s Find the Target Application 'com.example.aceclientapp'
+    t =   121.76s Added attachment named 'Native clipboard sentinel selected — ActionOneClipboardSentinelC'
+    t =   121.77s Waiting 1.0s for MenuItem (First Match) to exist
+    t =   122.77s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =   122.77s         Checking existence of `MenuItem (First Match)`
+    t =   123.06s     Checking existence of `MenuItem (First Match)`
+    t =   123.39s Waiting 5.0s for MenuItem (First Match) to exist
+    t =   124.45s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =   124.45s         Checking existence of `MenuItem (First Match)`
+    t =   124.80s Find the Target Application 'com.example.aceclientapp'
+    t =   125.89s Added attachment named 'Native clipboard sentinel menu — ActionOneClipboardSentinelC'
+    t =   125.90s Tap MenuItem (First Match)
+    t =   125.90s     Wait for com.example.aceclientapp to idle
+    t =   125.91s     Find the MenuItem (First Match)
+    t =   126.17s     Check for interrupting elements affecting "Copy" MenuItem
+    t =   126.48s     Synthesize event
+    t =   126.84s     Wait for com.example.aceclientapp to idle
+    t =   127.17s Find the Target Application 'com.example.aceclientapp'
+    t =   128.12s Added attachment named 'Native clipboard sentinel copied — ActionOneClipboardSentinelC'
+    t =   128.13s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =   129.18s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =   129.18s         Checking existence of `"Close clipboard test destination" Button`
+    t =   129.47s Tap "Close clipboard test destination" Button
+    t =   129.47s     Wait for com.example.aceclientapp to idle
+    t =   129.49s     Find the "Close clipboard test destination" Button
+    t =   129.80s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =   130.06s     Synthesize event
+    t =   130.43s     Wait for com.example.aceclientapp to idle
+    t =   131.97s Checking existence of `"Clipboard paste destination" TextView`
+    t =   132.11s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   133.20s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   133.20s         Checking existence of `ScrollView (First Match)`
+    t =   133.24s Checking existence of `"Copy action 1" Button`
+    t =   133.41s Find the "Copy action 1" Button
+    t =   133.64s Find the "Copy action 1" Button
+    t =   133.80s Find the ScrollView (First Match)
+    t =   133.87s Find the "Copy action 1" Button
+    t =   134.12s Tap "Copy action 1" Button
+    t =   134.12s     Wait for com.example.aceclientapp to idle
+    t =   134.14s     Find the "Copy action 1" Button
+    t =   134.34s     Check for interrupting elements affecting "Copy action 1" Button
+    t =   134.51s     Synthesize event
+    t =   134.88s     Wait for com.example.aceclientapp to idle
+    t =   134.89s Waiting 5.0s for "Copied Action 1." StaticText to exist
+    t =   135.93s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action 1." StaticText`
+    t =   135.94s         Checking existence of `"Copied Action 1." StaticText`
+    t =   136.16s Find the Target Application 'com.example.aceclientapp'
+    t =   136.86s Added attachment named 'Native action copied — step 3 — Copy action 1'
+    t =   136.86s Find the Any (First Match)
+    t =   137.00s Checking existence of `"Copied Action 2." StaticText`
+    t =   137.18s Waiting 5.0s for "Clipboard test destination" Button to exist
+    t =   138.20s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard test destination" Button`
+    t =   138.20s         Checking existence of `"Clipboard test destination" Button`
+    t =   138.37s Tap "Clipboard test destination" Button
+    t =   138.37s     Wait for com.example.aceclientapp to idle
+    t =   138.39s     Find the "Clipboard test destination" Button
+    t =   138.65s     Check for interrupting elements affecting "Clipboard test destination" Button
+    t =   138.82s     Synthesize event
+    t =   139.18s     Wait for com.example.aceclientapp to idle
+    t =   139.57s Waiting 5.0s for "Clipboard paste destination" TextView to exist
+    t =   140.62s     Checking `Expect predicate `existsNoRetry == 1` for object "Clipboard paste destination" TextView`
+    t =   140.62s         Checking existence of `"Clipboard paste destination" TextView`
+    t =   140.81s Find the "Clipboard paste destination" TextView
+    t =   141.01s Find the "Clipboard paste destination" TextView
+    t =   141.20s Tap "Clipboard paste destination" TextView
+    t =   141.20s     Wait for com.example.aceclientapp to idle
+    t =   141.25s     Find the "Clipboard paste destination" TextView
+    t =   141.49s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =   141.68s     Synthesize event
+    t =   142.07s     Wait for com.example.aceclientapp to idle
+    t =   142.52s Waiting 5.0s for Keyboard (First Match) to exist
+    t =   143.58s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =   143.59s         Checking existence of `Keyboard (First Match)`
+    t =   143.67s Press "Clipboard paste destination" TextView for 1.0 seconds
+    t =   143.67s     Wait for com.example.aceclientapp to idle
+    t =   143.69s     Find the "Clipboard paste destination" TextView
+    t =   143.98s     Check for interrupting elements affecting "Clipboard paste destination" TextView
+    t =   144.32s     Synthesize event
+    t =   145.62s     Wait for com.example.aceclientapp to idle
+    t =   146.22s Find the Target Application 'com.example.aceclientapp'
+    t =   147.42s Added attachment named 'Native Paste menu — step 3 — Copy action 1'
+    t =   147.42s Waiting 5.0s for MenuItem (First Match) to exist
+    t =   148.47s     Checking `Expect predicate `existsNoRetry == 1` for object MenuItem (First Match)`
+    t =   148.47s         Checking existence of `MenuItem (First Match)`
+    t =   148.76s Tap MenuItem (First Match)
+    t =   148.76s     Wait for com.example.aceclientapp to idle
+    t =   148.78s     Find the MenuItem (First Match)
+    t =   149.12s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   149.44s     Synthesize event
+    t =   149.80s     Wait for com.example.aceclientapp to idle
+    t =   150.24s Find the "Clipboard paste destination" TextView
+    t =   150.58s Find the Target Application 'com.example.aceclientapp'
+    t =   151.68s Added attachment named 'Native pasted value — step 3 — Copy action 1'
+    t =   151.70s Waiting 5.0s for "Close clipboard test destination" Button to exist
+    t =   152.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Close clipboard test destination" Button`
+    t =   152.75s         Checking existence of `"Close clipboard test destination" Button`
+    t =   153.07s Tap "Close clipboard test destination" Button
+    t =   153.07s     Wait for com.example.aceclientapp to idle
+    t =   153.08s     Find the "Close clipboard test destination" Button
+    t =   153.37s     Check for interrupting elements affecting "Close clipboard test destination" Button
+    t =   153.63s     Synthesize event
+    t =   154.05s     Wait for com.example.aceclientapp to idle
+    t =   155.65s Checking existence of `"Clipboard paste destination" TextView`
+    t =   155.81s Checking existence of `"Copied Action 1." StaticText`
+    t =   155.98s Find the Any (First Match)
+    t =   156.14s Terminate com.example.aceclientapp:49229
+    t =   157.25s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCompleteActionClipboardPastesExactly]' passed (157.532 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 06:14:25.313.
+	 Executed 1 test, with 0 failures (0 unexpected) in 157.532 (157.542) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 06:14:25.315.
+	 Executed 1 test, with 0 failures (0 unexpected) in 157.532 (157.545) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 06:14:25.317.
+	 Executed 1 test, with 0 failures (0 unexpected) in 157.532 (157.560) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T201002Z-selected-952647e42766/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 06:11:36.141 xcodebuild[49192:3044331] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 06:11:36.162 xcodebuild[49192:3044331] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 06:11:37.410 xcodebuild[49192:3044331] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 06:11:48.175 xcodebuild[49192:3044331] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 06:11:48.175 xcodebuild[49192:3044331] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 06:14:26.094 xcodebuild[49192:3044331] [MT] IDETestOperationsObserverDebug: 168.676 elapsed -- Testing started completed.
+2026-09-15 06:14:26.094 xcodebuild[49192:3044331] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 06:14:26.094 xcodebuild[49192:3044331] [MT] IDETestOperationsObserverDebug: 168.676 sec, +168.676 sec -- end

@@ -1,0 +1,25 @@
+{
+  "python": {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "tools/tests/test_ace_ios_local.py"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "........................\n----------------------------------------------------------------------\nRan 24 tests in 3.375s\n\nOK\n"
+  },
+  "diff": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sourceHashes": {
+    "tools/ace_ios_local.py": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+    "tools/tests/test_ace_ios_local.py": "32fa082804578796995421e5520275e723bdd8dad8d2d672103712a1cac3bebe"
+  }
+}

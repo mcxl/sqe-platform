@@ -1,0 +1,17 @@
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -44,7 +44,13 @@
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: nil, actions: release.actions), notices: ["No conclusion is available."], refresh: {}, signOut: {})
+         case .noActions:
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: release.conclusion, actions: []), notices: ["No actions are available."], refresh: {}, signOut: {})
+-        case .copyConfirmation: ValueRow(field: .engagementName, value: release.engagementName)
++        case .copyConfirmation:
++            ScrollView {
++                VStack(alignment: .leading, spacing: 16) {
++                    ValueRow(field: .engagementName, value: release.engagementName)
++                }
++                .frame(maxWidth: .infinity, alignment: .leading)
++            }
+         case .privacy: PrivacyCoverView()
+         }
+     }

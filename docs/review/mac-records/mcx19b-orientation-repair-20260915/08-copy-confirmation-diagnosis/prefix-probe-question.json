@@ -1,0 +1,10 @@
+{
+  "question": "Does the original preceding-case sequence account for the failure absent from the isolated Copy probe?",
+  "oneChangedVariable": "restore signIn, release, noConclusion, noActions before Copy in same native batch",
+  "unchanged": "clean6718 diagnostic candidate; .all audits; device/settings/runner/frame logging",
+  "expectedEvidence": "five case records and9 audit invocations if passed; exact first native assertion otherwise; before/after Copy frames; images; original settings/boot restoration",
+  "inferenceLimit": "A pass rules out a deterministic sequence failure in this observation; it does not resolve the original intermittent contrast failure.",
+  "pilotCredit": 0,
+  "appCorrectionAttempts": 0,
+  "scriptSha256": "69b97da36586c4c71282ab3c5c7e2f493bcb21388b545d800841ff855f4b77b9"
+}

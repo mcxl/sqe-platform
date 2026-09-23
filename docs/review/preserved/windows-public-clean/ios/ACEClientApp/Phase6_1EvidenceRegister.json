@@ -1,0 +1,871 @@
+{
+  "scope": "G0-public-planning-only",
+  "releaseEvidence": false,
+  "status": "pending",
+  "activeRecordRequirements": {
+    "repository": "mcxl/sqe-platform",
+    "commit": "executing Git head",
+    "status": "pending",
+    "reviewedRecordFields": [
+      "repository",
+      "commit",
+      "package",
+      "entry",
+      "device",
+      "software",
+      "operator",
+      "date",
+      "result",
+      "artifact",
+      "reviewer",
+      "status"
+    ]
+  },
+  "resultFieldSchema": [
+    "repository",
+    "commit",
+    "package",
+    "entry",
+    "device",
+    "software",
+    "operator",
+    "date",
+    "result",
+    "artifact",
+    "reviewer"
+  ],
+  "workflow": "ace-ios-evidence-preflight-manual",
+  "simulatorProvisioning": {
+    "status": "pending",
+    "exactTargets": [
+      "iPhone 17",
+      "iPhone 17 Pro Max"
+    ],
+    "runtime": "the highest available iOS 26.x simulator runtime",
+    "procedure": "Use only the manual ace-ios-live-evidence-manual workflow after approval. Pass the separately approved SHA from ACE_LIVE_EVIDENCE_APPROVED_COMMIT as --expected-commit. Require it to equal CM_COMMIT and Git HEAD. Require CM_BRANCH equal to codex/mcx-19-live-evidence-harness, CM_BUILD_ID and CM_BUILD_DIR for the current Codemagic build, CM_TRIGGER_SOURCE equal to api, a non-empty CM_BUILD_STARTED_BY operator, and ACE_LIVE_EVIDENCE_WORKFLOW equal to ace-ios-live-evidence-manual. Bind the approved remote repository, clean Git tree, baseline ancestry, and exact executing Git head. Resolve exact existing device types before device selection. Require canonical unique UUIDs for existing available targets in the selected runtime. Do not create a simulator in the normal workflow. Select the highest available iOS 26.x runtime before target resolution. Use one 360-second monotonic deadline for inventory and readiness checks. Retain controlled simulator metadata, result bundles, summaries, logs, and checksums only below the absolute external artifact root /private/tmp/mcx-19-live-evidence. Do not write raw artifacts or result claims to the repository. For approved fictional MCX19-B tests only, a separate private-record procedure requires verified authenticated storage, authorised project-operator retrieval, 30-day expiry, and proof of authorised retrieval and unauthorised denial before a paid suite. Generate the private inventory exactly from the planned command set. Do not publish an unrestricted directory glob. Each started XCTest command has one generated .xcresult, with complete or incomplete state recorded. Retain exported summaries, individual failures, and attachment inventories. Retain compiler, test, simulator-setting, export, and packaging output only from approved commands. Retain candidate and build identity, relative path, producing command, size, SHA-256, and collection state. Existing checked JSON and allowed fictional PNG images remain controlled review records, separately. Public artifacts still prohibit raw Xcode logs and result bundles. Keep raw records out of Git, PR comments, public links, and public artifact downloads. Do not put temporary authenticated download URLs in reports, logs, commits, or messages. Do not use public bearer-link access. Do not retain confirmed credentials or real client information. For planned .xcresult/Data/* members from approved fictional XCTest commands only, permit unresolved credential-prefix byte matches with neighbourhoodShape=non-utf8 in the existing authenticated private storage. Preserve exact bytes, provenance and hashes. Record quarantined-pending-review. The match can be a real credential. This status does not establish scanner clearance, collection acceptance or release acceptance. Keep all other matchers and all text, decoded-data, metadata and path checks unchanged. Resolve a record only after mapping the match to its object and reading and classifying all required children. Missing mapping, read errors or partial coverage remain pending. Keep raw matched bytes, object identifiers and command errors private. Stop collection if a genuine credential or real client information is confirmed. Before the next paid run, verify authenticated retrieval of an existing approved fictional artifact, unauthorised denial and effective 30-day retention. The first focused run must then prove original-bundle retrieval before the corrected case or complete suite. Do not bypass a blocked download. Keep the candidate unverified while any record is unresolved. All original-bundle, approved-Mac, provider-retention, provider-interruption, retrieval, and denial checks remain PENDING.",
+    "failure": "Fail on absent, invalid, or non-matching approved commit; wrong CM_BRANCH, trigger source, or operator; invalid Codemagic build context, workflow, or exact external artifact root; repository, baseline, clean-tree, or exact-commit mismatch; artifact-root symlink, path escape, Git-tree location, or pre-existence; absent or ambiguous type; wrong runtime; invalid or duplicate UUID; timeout; unavailable device; normal-path simulator creation; non-zero result; missing, skipped, failed, or wrong test count; missing artifact; checksum change; secret; or redaction failure."
+  },
+  "packages": [
+    {
+      "package": "P01",
+      "name": "Repository Ancestry Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-BASE-001"
+      ]
+    },
+    {
+      "package": "P02",
+      "name": "Signed Returned-Attribute Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-AUTH-038"
+      ]
+    },
+    {
+      "package": "P03",
+      "name": "Signed Access-Group Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-AUTH-053"
+      ]
+    },
+    {
+      "package": "P04",
+      "name": "Accessibility Audit And Simulator Matrix",
+      "status": "pending",
+      "identifiers": [
+        "IOS-ACC-001",
+        "IOS-ACC-002",
+        "IOS-ACC-003",
+        "IOS-ACC-004",
+        "IOS-ACC-005",
+        "IOS-ACC-006",
+        "IOS-ACC-007",
+        "IOS-ACC-008",
+        "IOS-ACC-010",
+        "IOS-ACC-011",
+        "IOS-ACC-012",
+        "IOS-ACC-013",
+        "IOS-ACC-014",
+        "IOS-ACC-015",
+        "IOS-ACC-018",
+        "IOS-ACC-019"
+      ]
+    },
+    {
+      "package": "P05",
+      "name": "Manual Device Journeys",
+      "status": "pending",
+      "identifiers": [
+        "IOS-AUTH-023",
+        "IOS-ACC-009",
+        "IOS-ACC-016",
+        "IOS-ACC-017",
+        "IOS-SHOT-007"
+      ]
+    },
+    {
+      "package": "P06",
+      "name": "Controlled Evidence Privacy Review",
+      "status": "pending",
+      "identifiers": [
+        "IOS-AUTH-036",
+        "IOS-AUTH-037"
+      ]
+    },
+    {
+      "package": "P07",
+      "name": "Network Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-NET-007",
+        "IOS-NET-008",
+        "IOS-NET-028",
+        "IOS-STATE-017",
+        "IOS-STATE-018"
+      ]
+    },
+    {
+      "package": "P08",
+      "name": "Controlled Xcode Build Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-NET-015",
+        "IOS-NET-016"
+      ]
+    },
+    {
+      "package": "P09",
+      "name": "Simulator Screenshot Validation",
+      "status": "pending",
+      "identifiers": [
+        "IOS-SHOT-001",
+        "IOS-SHOT-010"
+      ]
+    },
+    {
+      "package": "P10",
+      "name": "Cover And Server Review",
+      "status": "pending",
+      "identifiers": [
+        "IOS-STATE-009",
+        "IOS-STATE-010",
+        "IOS-SHOT-003",
+        "IOS-SHOT-004",
+        "IOS-SHOT-005",
+        "IOS-SHOT-006",
+        "IOS-SHOT-008",
+        "IOS-SHOT-009",
+        "IOS-BOUND-006"
+      ]
+    }
+  ],
+  "results": {
+    "IOS-BASE-001": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-AUTH-038": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-AUTH-053": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-001": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-002": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-003": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-004": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-005": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-006": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-007": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-008": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-010": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-011": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-012": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-013": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-014": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-015": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-018": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-019": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-AUTH-023": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-009": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-016": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-ACC-017": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-007": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-AUTH-036": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-AUTH-037": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-NET-007": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-NET-008": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-NET-028": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-STATE-017": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-STATE-018": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-NET-015": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-NET-016": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-001": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-010": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-STATE-009": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-STATE-010": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-003": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-004": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-005": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-006": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-008": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-SHOT-009": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    },
+    "IOS-BOUND-006": {
+      "status": "pending",
+      "result": {
+        "commit": "",
+        "package": "",
+        "entry": "",
+        "device": "",
+        "software": "",
+        "operator": "",
+        "date": "",
+        "result": "",
+        "artifact": "",
+        "reviewer": "",
+        "repository": ""
+      }
+    }
+  },
+  "repository": "mcxl/sqe-platform"
+}

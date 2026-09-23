@@ -1,0 +1,82 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testAllReleaseClipboardValuesPasteExactly" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xcresult
+
+2026-09-14 21:56:01.423164+1000 ACEClientAppUITests-Runner[92165:2281374] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 21:56:06.823.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 21:56:06.825.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 21:56:06.826.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testAllReleaseClipboardValuesPasteExactly]' started.
+    t =     0.01s Start Test at 2026-09-14 21:56:06.834
+    t =     0.42s Set Up
+    t =     0.44s Open com.example.aceclientapp
+    t =     0.44s     Launch com.example.aceclientapp
+    t =     2.34s         Setting up automation session
+    t =     8.26s         Wait for com.example.aceclientapp to idle
+    t =    11.54s Waiting 5.0s for "Username" TextField to exist
+    t =    12.61s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =    12.61s         Checking existence of `"Username" TextField`
+    t =    13.02s Tap "Username" TextField
+    t =    13.02s     Wait for com.example.aceclientapp to idle
+    t =    13.03s     Find the "Username" TextField
+    t =    13.17s     Check for interrupting elements affecting "Username" TextField
+    t =    13.28s     Synthesize event
+    t =    13.66s     Wait for com.example.aceclientapp to idle
+    t =    15.65s Type 'FictionalClipboard...' into "Username" TextField
+    t =    15.65s     Wait for com.example.aceclientapp to idle
+    t =    15.72s     Find the "Username" TextField
+    t =    16.05s     Check for interrupting elements affecting "Username" TextField
+    t =    16.32s     Synthesize event
+    t =    17.23s     Wait for com.example.aceclientapp to idle
+    t =    17.64s Press "Username" TextField for 1.0 seconds
+    t =    17.64s     Wait for com.example.aceclientapp to idle
+    t =    17.66s     Find the "Username" TextField
+    t =    17.81s     Check for interrupting elements affecting "Username" TextField
+    t =    17.99s     Synthesize event
+    t =    19.27s     Wait for com.example.aceclientapp to idle
+    t =    20.20s Waiting 5.0s for Any (First Match) to exist
+    t =    21.21s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    21.21s         Checking existence of `Any (First Match)`
+    t =    21.69s         Capturing element debug description
+    t =    22.22s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    22.22s         Checking existence of `Any (First Match)`
+    t =    22.65s         Capturing element debug description
+    t =    23.29s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    23.29s         Checking existence of `Any (First Match)`
+    t =    23.66s         Capturing element debug description
+    t =    24.21s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    24.21s         Checking existence of `Any (First Match)`
+    t =    24.62s         Capturing element debug description
+    t =    25.21s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    25.21s         Checking existence of `Any (First Match)`
+    t =    25.53s         Capturing element debug description
+    t =    25.54s     Checking existence of `Any (First Match)`
+    t =    26.22s Collecting debug information to assist test failure triage
+    t =    26.22s     Requesting snapshot of accessibility hierarchy for app with pid 92190
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:571: error: -[ACEClientAppUITests.ACEClientAppUITests testAllReleaseClipboardValuesPasteExactly] : XCTAssertTrue failed - Native Select All command must be available for clipboard seeding
+    t =    26.84s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testAllReleaseClipboardValuesPasteExactly]' failed (27.553 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 21:56:34.386.
+	 Executed 1 test, with 1 failure (0 unexpected) in 27.553 (27.560) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 21:56:34.388.
+	 Executed 1 test, with 1 failure (0 unexpected) in 27.553 (27.563) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 21:56:34.391.
+	 Executed 1 test, with 1 failure (0 unexpected) in 27.553 (27.568) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T115411Z-selected-abb859aa119d/selected.xcresult
+
+Testing started
+2026-09-14 21:55:52.435 xcodebuild[92147:2280883] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:55:52.460 xcodebuild[92147:2280883] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:55:53.747 xcodebuild[92147:2280883] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 21:56:07.491 xcodebuild[92147:2280883] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 21:56:07.491 xcodebuild[92147:2280883] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 21:57:37.181 xcodebuild[92147:2280883] [MT] IDETestOperationsObserverDebug: 103.424 elapsed -- Testing started completed.
+2026-09-14 21:57:37.181 xcodebuild[92147:2280883] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 21:57:37.181 xcodebuild[92147:2280883] [MT] IDETestOperationsObserverDebug: 103.424 sec, +103.424 sec -- end
+** TEST EXECUTE FAILED **
+

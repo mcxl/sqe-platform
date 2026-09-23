@@ -1,0 +1,10 @@
+{
+  "purpose": "Inspect the native PNG decoded pixels without orientation metadata. Preserve original. This compares decoder display, not app design.",
+  "input": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8/batches/002/attachments/07126ED3-BFD3-4635-91DF-B6D404A610C1.png",
+  "inputSHA256": "2a5801afd431c792dc9ad5ed4b5ea03abe43dd619baaadd43e1428e8abe0e34a",
+  "exit": 0,
+  "stdout": "Decoded raw pixel dimensions: 2622x1206\n",
+  "stderr": "",
+  "output": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-png-decoded-pixels.png",
+  "outputBytes": 98225
+}

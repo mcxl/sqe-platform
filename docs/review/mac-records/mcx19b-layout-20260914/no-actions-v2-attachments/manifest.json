@@ -1,0 +1,52 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "8F2C120D-83C2-4F13-8A99-5DA751359107.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Controlled state — noActions — light_0_EAB8D0F2-533D-4F72-9718-5B222388600D.png",
+        "timestamp" : 1789356603.001
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "224CE75A-D10A-4C8E-ADA8-65ACCE7FF48F",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-09-14 at 01.30.01 pm",
+        "timestamp" : 1789356601.888
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "4D5BD9C2-4862-4951-9BF8-B4D886BDA642.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-14 at 01.29.49 pm.mp4",
+        "timestamp" : 1789356589.08
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "922DACF4-30E8-4289-A79C-6CCFA83D1B55.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "Complete Issue Description.txt"
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "A328263F-C120-4B99-9D8F-71E7E60842CD.png",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "App Screenshot_0_CC969C84-9004-4EFE-BDF9-C2DCBBD024A4.png",
+        "timestamp" : 1789356606.961
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testClippingNoActionsStandaloneAudit()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit"
+  }
+]

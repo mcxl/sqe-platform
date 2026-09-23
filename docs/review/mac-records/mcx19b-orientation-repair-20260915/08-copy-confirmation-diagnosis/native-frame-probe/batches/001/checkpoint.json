@@ -1,0 +1,58 @@
+{
+  "record": {
+    "attachmentDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-frame-probe/batches/001/attachments",
+    "attachmentSha256": "b3513a54f6b6b02189f6706a96f109ce0db78ace9629b77ecb2f8e8c2edcba48",
+    "auditCount": 1,
+    "caseCount": 1,
+    "caseRecords": [
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "copyConfirmation",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation"
+        ]
+      }
+    ],
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-frame-probe/batches/001/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-frame-probe/batches/001/result.xcresult"
+    ],
+    "device": "iPhone 17",
+    "exit": 0,
+    "logSha256": "79882a7ccdbf5a65e9549b3bf887c82b7e9a6783f2123fd37ba7ab454052acf3",
+    "nativeTestCount": 1,
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/native-frame-probe/batches/001/result.xcresult",
+    "resultBundleSha256": "ec2b0097be02593ab27a4782bd88713480807f5ce247a9d9a0cecf489e34b9f8",
+    "runfileSha256": "413b93410824a452d46800522b0c0a42794b2da9e65698ff7a5168d2a658e207",
+    "settings": {
+      "appearance": "light",
+      "boldText": false,
+      "contentSize": "large",
+      "increaseContrast": false,
+      "orientation": "portrait",
+      "reduceMotion": false
+    },
+    "summarySha256": "92023313cff93845dcafd84661d5b46ce8c7734f820c0086b3e7d624c48d4692"
+  },
+  "status": "passed"
+}

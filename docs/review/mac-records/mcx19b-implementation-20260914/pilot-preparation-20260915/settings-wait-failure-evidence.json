@@ -1,0 +1,44 @@
+{
+  "candidate": "b2c45093a44c6171ca250b858378ea57693d8477",
+  "device": "iPhone 17",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+  "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:405",
+  "expected": "Increase Contrast true, confirmed by the wait",
+  "actual": "Five-second XCTWaiter did not complete; subsequent diagnostic nativeSwitchValue read Optional(true)",
+  "assertion": "Settings control Increase Contrast: expected true, actual Optional(true)",
+  "nativeExit": 65,
+  "classification": "test setup observation fault; precise XCTest timing mechanism not established",
+  "imageReview": {
+    "reviewer": "primary",
+    "resolution": "original",
+    "finding": "Increase Contrast and Bold Text visibly on. No evidence here of application accessibility failure."
+  },
+  "correctionAttempts": 0,
+  "pilotCasesPassed": 5,
+  "pilotCaseImagesInspected": 36,
+  "distinctImagesInspected": 13,
+  "next": "Finish original settings restoration. Diagnose the smallest native settings selector before any further pilot batch.",
+  "evidence": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/summary.json",
+      "sha256": "4f7ab0e2b564c48f80a635203be01250c11ca25bc97bc74385675fe96d273d4e"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/native.log",
+      "sha256": "8d8e0075d127391aeb91d242d0de73b89d0608aa973c2c60b3d5a747ee851305"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/command.json",
+      "sha256": "c28ca0b08c3cab6a1713c9671a2d766b89c7c8470a629d672d562989670f9277"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/failure.json",
+      "sha256": "7be2534d5ca05a61f3c413f7b1b6d71b84f2b42697bf4dba4b02da0b963b719a"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/native-settings/002-set/attachments/A23AC148-845F-4F92-8146-6231D814D34F.png",
+      "sha256": "188fec330e626bca375e2da96a65e2561f807661a0225602233b1b8802adf6d4"
+    }
+  ],
+  "recordedUTC": "2026-09-15T01:38:31.246162+00:00"
+}

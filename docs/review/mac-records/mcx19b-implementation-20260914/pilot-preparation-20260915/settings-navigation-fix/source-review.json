@@ -1,0 +1,12 @@
+{
+  "verdict": "source readiness only; native execution pending",
+  "reviewer": "fresh Sol subagent /root/settings_value_review plus primary full diff inspection",
+  "requestedLane": "Sol reviewer / high",
+  "actualRuntime": "unobservable",
+  "preparedPatchSha256": "eef014f13da6661e6fa465cdee675b58feaaf7ca3a0772c1cf9168bcf794f61e",
+  "finalSourceSha256": "cccd23735441a3a3943f4b43581a9b597984a8d70fa89ec7b2ce026d239d7615",
+  "standardsAxis": "bounded control search, native row target, destination check, no dependency or app changes",
+  "specificationAxis": "actual flags remain mandatory; all native audits remain unrestricted; failure message retained before screenshot attempt",
+  "findings": [],
+  "recordedUTC": "2026-09-15T02:29:17.976370+00:00"
+}

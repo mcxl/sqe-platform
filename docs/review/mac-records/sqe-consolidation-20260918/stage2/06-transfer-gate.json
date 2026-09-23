@@ -1,0 +1,17 @@
+{
+  "time": "2026-09-18T12:56:21.635275+10:00",
+  "decision": "Proceed with private transfer of the two selected refs only",
+  "windows_head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+  "mac_head": "40bae2640b23eb05496a093d09a4c20186403879",
+  "reviewed_blobs": 953,
+  "windows_findings": 0,
+  "mac_findings": 72,
+  "mac_disposition": "All findings are three repeated deliberate invalid-URL test literals. Reviewed assertion/mocking context and test-word passwords. No actual credential identified. Retain all findings; do not alter source.",
+  "environment_example": "Same object ID on both sources; NEXT_PUBLIC_CONVEX_URL value empty.",
+  "path_review": "Selected histories contain application, tests, technical documentation and existing security review records. No client document/data archive path or non-UTF8 blob identified in this bounded review.",
+  "limitations": "Pattern checks and focused inspection are not exhaustive security certification. Approval concerns private history transfer, not publication or public push.",
+  "raw_objects_bytes": 43214043,
+  "conservative_working_allowance_bytes": 345712344,
+  "allowance_method": "Eight times total raw selected objects for bundles, imported objects and diff records; additionally enforce 2 GiB hard cap. No checkout required.",
+  "mac_free_bytes": 222726467584
+}

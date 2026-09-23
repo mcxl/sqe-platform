@@ -1,0 +1,1197 @@
+{
+  "findings": [
+    {
+      "oid": "70c20446002bb7c1619a80ba3ad96558936bac41",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 255,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "path": "tests/test_run_tests.py",
+      "line": 1939,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "c799dab52ed6961b5c25cf7a4a83c60824dc5882",
+      "path": "tests/test_run_tests.py",
+      "line": 1986,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "00536de3e301c7370c3e7d4e5af6835f5bbe1581",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 255,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "f537f1be285bf7a9bc7db4ea504a6dbc0387899f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 255,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "75fd6eb44c3ca653bf05370639b1ebce3f0751a3",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "f1368122518afe06c543f601bacd88212d12090c",
+      "path": "tests/test_run_tests.py",
+      "line": 1939,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "f1368122518afe06c543f601bacd88212d12090c",
+      "path": "tests/test_run_tests.py",
+      "line": 1986,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "9db2d4093f83843a07b4df417ef7e6d721fef820",
+      "path": "tests/test_run_tests.py",
+      "line": 1939,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "9db2d4093f83843a07b4df417ef7e6d721fef820",
+      "path": "tests/test_run_tests.py",
+      "line": 1986,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "b7a93f1d66eb73f766ca82a180c5262db4442187",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "5f6d3299b9483ab145f1b5779292392498aee464",
+      "path": "tests/test_run_tests.py",
+      "line": 1911,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "5f6d3299b9483ab145f1b5779292392498aee464",
+      "path": "tests/test_run_tests.py",
+      "line": 1958,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "27998397b7acc111b7ace7c310545fe40f05cf4e",
+      "path": "tests/test_run_tests.py",
+      "line": 1909,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "27998397b7acc111b7ace7c310545fe40f05cf4e",
+      "path": "tests/test_run_tests.py",
+      "line": 1956,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "8f842030c0083ec1d9e7c2ad01eb1229b5c554c6",
+      "path": "tests/test_run_tests.py",
+      "line": 1706,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "8f842030c0083ec1d9e7c2ad01eb1229b5c554c6",
+      "path": "tests/test_run_tests.py",
+      "line": 1753,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "f3fb24d3b5d339527f50ae8527988eee441c09f5",
+      "path": "tests/test_run_tests.py",
+      "line": 1620,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "f3fb24d3b5d339527f50ae8527988eee441c09f5",
+      "path": "tests/test_run_tests.py",
+      "line": 1667,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "d59aeb2bcb894bfa115d6497407937291e1d84a0",
+      "path": "tests/test_run_tests.py",
+      "line": 1620,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "d59aeb2bcb894bfa115d6497407937291e1d84a0",
+      "path": "tests/test_run_tests.py",
+      "line": 1667,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "09c3beb57c4bc22cc81fa627ee9b897fe3b7529e",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "09c3beb57c4bc22cc81fa627ee9b897fe3b7529e",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "639fbd921cf3db87627209ed097bfd33729c6d88",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "639fbd921cf3db87627209ed097bfd33729c6d88",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "426b4b50908e2a3dd51ae17b20c101f46ef0e1af",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "426b4b50908e2a3dd51ae17b20c101f46ef0e1af",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "d5ce8b92a59fc4119ae9fc557ceda265e777ef08",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "1ea52d8564f4649aeb74a27b7774bc54984b07f2",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "1ea52d8564f4649aeb74a27b7774bc54984b07f2",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "ba4c54c503a1c31cba89bbb1cebbb114d28dd261",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "ba4c54c503a1c31cba89bbb1cebbb114d28dd261",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "02eb0d2f4c6ec34d387d54538979cebf49215f55",
+      "path": "tests/test_run_tests.py",
+      "line": 1559,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "02eb0d2f4c6ec34d387d54538979cebf49215f55",
+      "path": "tests/test_run_tests.py",
+      "line": 1606,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "39ebecff8796d522dc3f44bba1c39027e07ec3ef",
+      "path": "tests/test_run_tests.py",
+      "line": 1510,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "39ebecff8796d522dc3f44bba1c39027e07ec3ef",
+      "path": "tests/test_run_tests.py",
+      "line": 1557,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "e84ee99bd66aeebca00a1dbbce5a12d1e4c1de77",
+      "path": "tests/test_run_tests.py",
+      "line": 1504,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "e84ee99bd66aeebca00a1dbbce5a12d1e4c1de77",
+      "path": "tests/test_run_tests.py",
+      "line": 1551,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "b0bb51b1eec4891d5ec110a30a3bca555c92b7bc",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "3a6c32689388e4a56098e3cd518c3bc821e0f9df",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "252f3d7019bc4b003148a9088b6da8168db45530",
+      "path": "tests/test_run_tests.py",
+      "line": 1164,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "252f3d7019bc4b003148a9088b6da8168db45530",
+      "path": "tests/test_run_tests.py",
+      "line": 1211,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "c7d3410950fe3800774eb33ed46b00f3ba52df45",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "90762b0ac393b51cd965208e4f9bbaba6174a9ac",
+      "path": "tests/test_run_tests.py",
+      "line": 1154,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "90762b0ac393b51cd965208e4f9bbaba6174a9ac",
+      "path": "tests/test_run_tests.py",
+      "line": 1201,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "bbe5119de5fe9526a8af57cd5ea990bf62ab4087",
+      "path": "tests/test_run_tests.py",
+      "line": 993,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "bbe5119de5fe9526a8af57cd5ea990bf62ab4087",
+      "path": "tests/test_run_tests.py",
+      "line": 1040,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "cc0705128a8d1500863f7ddb8e57d22709f0286b",
+      "path": "tests/test_run_tests.py",
+      "line": 941,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "cc0705128a8d1500863f7ddb8e57d22709f0286b",
+      "path": "tests/test_run_tests.py",
+      "line": 988,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "eed3dcbf005bb795d40a5ce641a36e9f246d4059",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "e8da15bda4ff8b1cdf0392057c4c701a73b161f6",
+      "path": "tests/test_run_tests.py",
+      "line": 941,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "e8da15bda4ff8b1cdf0392057c4c701a73b161f6",
+      "path": "tests/test_run_tests.py",
+      "line": 988,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "50635e3bfacbaf86c16076f46119158784ce855a",
+      "path": "tests/test_run_tests.py",
+      "line": 941,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "50635e3bfacbaf86c16076f46119158784ce855a",
+      "path": "tests/test_run_tests.py",
+      "line": 988,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "b27f02d94dbd58bd1d533a25938320b99d5af3df",
+      "path": "tests/test_run_tests.py",
+      "line": 849,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "b27f02d94dbd58bd1d533a25938320b99d5af3df",
+      "path": "tests/test_run_tests.py",
+      "line": 896,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "1f9868d97a4e12b40e32520d2287fb31f293d17e",
+      "path": "tests/test_run_tests.py",
+      "line": 848,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "1f9868d97a4e12b40e32520d2287fb31f293d17e",
+      "path": "tests/test_run_tests.py",
+      "line": 895,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "a314cd1652bb3834443aa307d41a72c01123cd8d",
+      "path": "tests/test_run_tests.py",
+      "line": 625,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "a314cd1652bb3834443aa307d41a72c01123cd8d",
+      "path": "tests/test_run_tests.py",
+      "line": 672,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "3a24f86088c495f3ac32c315fa19c886c89b81ec",
+      "path": "tests/test_run_tests.py",
+      "line": 571,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "3a24f86088c495f3ac32c315fa19c886c89b81ec",
+      "path": "tests/test_run_tests.py",
+      "line": 618,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "f5a225061717e10f2928e11f4b36f1890dd6b878",
+      "path": "tests/test_run_tests.py",
+      "line": 467,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "f5a225061717e10f2928e11f4b36f1890dd6b878",
+      "path": "tests/test_run_tests.py",
+      "line": 514,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "f8e65068149c0af8b2df9b7bf15003af1cff6b67",
+      "path": "tests/test_run_tests.py",
+      "line": 349,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "f8e65068149c0af8b2df9b7bf15003af1cff6b67",
+      "path": "tests/test_run_tests.py",
+      "line": 396,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "fecb64b0be5d5addf6584a57da392394978780c4",
+      "path": "tests/test_run_tests.py",
+      "line": 298,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "fecb64b0be5d5addf6584a57da392394978780c4",
+      "path": "tests/test_run_tests.py",
+      "line": 345,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "c1d67d222a53615fac5427dbe5c7d3525e3d26f6",
+      "path": "tests/test_run_tests.py",
+      "line": 290,
+      "rule": "credentialed_url",
+      "context_key": "91703f925c374135e7878560f145a33cb15944b29f7c53607633d978878db523",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "oid": "c1d67d222a53615fac5427dbe5c7d3525e3d26f6",
+      "path": "tests/test_run_tests.py",
+      "line": 337,
+      "rule": "credentialed_url",
+      "context_key": "f329f6fa7b701c61b5acac95ffe43fc1c06ee0219a3ae0a7195fb384738ed455",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    },
+    {
+      "oid": "745541ba7ac101756dad95d651b80416caa64421",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "oid": "022a63a3f2106734604301182f4c6425b41dae5f",
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "line": 252,
+      "rule": "credentialed_url",
+      "context_key": "64beba28f9f9aba25abdcd810e005ec226ea03f0c5fe3fbbecb92f887a82df4f",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    }
+  ],
+  "unique_contexts": [
+    {
+      "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+      "context": "        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"http://example.invalid\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://host.invalid:0\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://host.invalid:65536\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://[REDACTED]@host.invalid\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://host.invalid/path\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://host.invalid?query=1\"))\n        XCTAssertThrowsError(try PreviewOrigin(rawValue: \"https://host.invalid#frag\"))\n        for invalidHost in [\".preview.example.invalid\", \"preview..example.invalid\", \"preview_example.invalid\"] {",
+      "safe_url_properties": [
+        {
+          "host": "host.invalid",
+          "username_is_test_word": true,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "baf22a876cc6496dd5d48393aacd2d76c0f236d7f4d8b40a46829511be990c7e"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_run_tests.py",
+      "context": "            )\n\n    def test_live_repository_binding_rejects_unapproved_remote_forms_without_values(self):\n        rejected_remotes = (\n            \"https://[REDACTED]@github.com/mcxl/sqe-platform\",\n            \"https://github.com:443/mcxl/sqe-platform\",\n            \"https://github.com/mcxl/sqe-platform?branch=main\",\n            \"https://github.com/mcxl/sqe-platform#fragment\",\n            \"https://mcxl@github.example.com/mcxl/sqe-platform\",",
+      "safe_url_properties": [
+        {
+          "host": "github.com",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "d578faf17fad663aca0984ef079b5d9b94c1b0864bdb7c79266ced417ca2d7f2"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_run_tests.py",
+      "context": "                ):\n                    runner._live_repository_metadata(\"a\" * 40)\n\n    def test_live_repository_binding_reports_only_failed_check_names(self):\n        remote = \"https://[REDACTED]@github.example:8443/other-owner/other-repository?secret=value#fragment\"\n        head = \"c\" * 40\n        expected = \"d\" * 40\n        clean_output = \"secret-clean-tree\"\n        with mock.patch.object(",
+      "safe_url_properties": [
+        {
+          "host": "github.example",
+          "username_is_test_word": false,
+          "password_is_test_word": true,
+          "has_userinfo": true,
+          "url_hash": "788f06b08adc4f1002f79985209f5d4803b90065429d45087c5fddc454eae67f"
+        }
+      ]
+    }
+  ]
+}

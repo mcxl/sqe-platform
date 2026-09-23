@@ -1,0 +1,11 @@
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -115,7 +115,7 @@
+         let app = launchForCoverageObservation(scenario: coverageCase.scenario)
+         defer { app.terminate() }
+         guard waitForCoverageState(in: app, scenario: coverageCase.scenario),
+-              assertRequestedOrientation(in: app, requested: coverageCase.settings.orientation),
++              assertRequestedOrientation(in: app, requested: coverageCase.settings.orientation == "portrait" ? "landscape" : "portrait"),
+               let observed = observedSettings(in: app),
+               requireCoverage(observed == coverageCase.settings,
+                               "Observed settings differ from requested settings for \(coverageCase.id): \(observed.payload)") else { return false }

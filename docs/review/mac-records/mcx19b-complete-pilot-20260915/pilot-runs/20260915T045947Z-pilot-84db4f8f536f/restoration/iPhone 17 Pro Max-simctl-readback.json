@@ -1,0 +1,12 @@
+{
+  "expected": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  },
+  "observed": {
+    "appearance": "light",
+    "content_size": "large",
+    "increase_contrast": "disabled"
+  }
+}

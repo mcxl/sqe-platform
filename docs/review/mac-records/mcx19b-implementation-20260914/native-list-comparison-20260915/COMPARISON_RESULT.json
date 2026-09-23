@@ -1,0 +1,80 @@
+{
+  "closedUTC": "2026-09-14T21:18:34.149044+00:00",
+  "mainHead": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "mainClean": true,
+  "trialPromoted": false,
+  "metrics": {
+    "control": {
+      "build": {
+        "exit": 0,
+        "seconds": 64.833,
+        "start": "2026-09-14T21:02:19.953483+00:00",
+        "end": "2026-09-14T21:03:24.786639+00:00"
+      },
+      "test-enumeration": {
+        "exit": 0,
+        "seconds": 20.018,
+        "start": "2026-09-14T21:03:26.221042+00:00",
+        "end": "2026-09-14T21:03:46.239360+00:00"
+      },
+      "selected": {
+        "exit": 65,
+        "seconds": 187.036,
+        "start": "2026-09-14T21:03:46.246310+00:00",
+        "end": "2026-09-14T21:06:53.284013+00:00"
+      },
+      "rawRunBytes": 331369714,
+      "pngBytes": 5306487
+    },
+    "trial": {
+      "build": {
+        "exit": 0,
+        "seconds": 63.559,
+        "start": "2026-09-14T21:09:13.285926+00:00",
+        "end": "2026-09-14T21:10:16.845650+00:00"
+      },
+      "test-enumeration": {
+        "exit": 0,
+        "seconds": 15.715,
+        "start": "2026-09-14T21:10:18.541978+00:00",
+        "end": "2026-09-14T21:10:34.256625+00:00"
+      },
+      "selected": {
+        "exit": 65,
+        "seconds": 250.278,
+        "start": "2026-09-14T21:10:34.280866+00:00",
+        "end": "2026-09-14T21:14:44.560929+00:00"
+      },
+      "rawRunBytes": 338110426,
+      "pngBytes": 10030134
+    }
+  },
+  "remainingMacFreeGiB": 227.45,
+  "scopeResult": "Comparison complete; proposed standard List correction failed. Overall delivery remains incomplete.",
+  "remaining": {
+    "accessibility": "failed",
+    "phoneAccess": "blocked; preflight tunnel unavailable",
+    "privateService": "blocked; approved inputs missing",
+    "historicalBaseline": "blocked; no accepted resolution",
+    "pilot22": "pending; zero accepted",
+    "coverage836": "pending; zero accepted",
+    "physicalVoiceOverClipboardKeychainPrivacy": "pending",
+    "serviceAndServerCompatibility": "blocked",
+    "finalPocockSolReviews": "pending"
+  },
+  "rawEvidenceMode": "0o700",
+  "retentionMinimumDays": 30,
+  "notes": [
+    "Native findings are not independent application defects. Counts do not measure app severity.",
+    "No main source edit, phone install, commit, push or merge during this trial.",
+    "No additional simulator settings were changed by this diagnostic wrapper."
+  ],
+  "activeTrialProcesses": [],
+  "postRunContentSize": {
+    "exit": 0,
+    "value": "large"
+  },
+  "sourceReview": "SOL_TRIAL_REVIEW.json",
+  "elapsedFromTrialPlanMinutes": 20.21,
+  "activeWorkAndWaiting": "Not independently timed; do not infer active work or waiting from wall time. Native build, enumeration and test command durations recorded separately."
+}

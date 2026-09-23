@@ -1,0 +1,18 @@
+{
+  "updatedUTC": "2026-09-15T09:27:37.427221+00:00",
+  "patchSha256": "2e7d0db8b8606c8b85f30136c1d5cabd203cf657b150e7f7ad251ca7e0711e15",
+  "verdict": "ship for source; native safe-area rendering pending",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "actualRuntime": "unobservable",
+  "provider": "orientation_fix_design fresh source reviewer",
+  "findings": [],
+  "confirmed": [
+    "Release margins move inside ScrollView",
+    "Production only .release outer margin removed",
+    "Only five DEBUG release scenarios change",
+    "Other views keep default padding",
+    "multiAction retains safeAreaInset and44-point minimum"
+  ],
+  "limitation": "Source-only review. No native execution or acceptance. Primary complete diff inspection completed."
+}

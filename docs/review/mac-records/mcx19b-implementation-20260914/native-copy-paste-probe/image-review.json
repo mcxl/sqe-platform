@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-14T11:46:07.226471+00:00",
+  "method": "Primary agent inspected every distinct PNG at original resolution through authenticated SSH.",
+  "imageCount": 2,
+  "distinctCount": 2,
+  "groups": {
+    "87aabf1eb3fb74ffb8f1e77f88374393fd803345d1ef6123cc8de798230bb36a": [
+      "232C5537-26AA-4AAD-BF56-764F93CDB4F7.png"
+    ],
+    "1216b2b0b343aace5f2825450a135a0dfe395ac3ca841028d87ee5c3fe1876bd": [
+      "73CBE702-772E-4BC2-90B9-CA908954C7B0.png"
+    ]
+  },
+  "observations": [
+    "Actual release Copy confirmation is visible.",
+    "Native Paste menu is visible.",
+    "The failed button-only query did not find the visible Paste command."
+  ],
+  "scope": "Focused one-value functional evidence; no complete clipboard, VoiceOver, signing, private-service or final acceptance."
+}

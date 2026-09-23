@@ -1,0 +1,49 @@
+Device,Appearance,ContentSize,Orientation,Case,NativeAudit,ManualAcceptance,Evidence,RemainingReason
+iPhone 17,light,large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,large,portrait,standalone-after-copy,passed,passed,LOCAL_HOME\Documents\Codex\2026-09-11\mcx19-retention\native-raw\build-6aa41273d371340fffaea8f8\additional-diagnostics\clipping-6aa5d3e5a5297549762a03ca\candidate-after-large-review\final.json,
+iPhone 17,light,extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,light,accessibility-extra-extra-extra-large,portrait,release-before-copy,passed,passed,LOCAL_HOME\Documents\Codex\2026-09-11\mcx19-retention\native-raw\build-6aa41273d371340fffaea8f8\additional-diagnostics\clipping-6aa5d3e5a5297549762a03ca\final-iphone-17-light-ax-review\final.json,
+iPhone 17,light,accessibility-extra-extra-extra-large,portrait,release-after-copy,passed,pending-confirmation-visibility,LOCAL_HOME\Documents\Codex\2026-09-11\mcx19-retention\native-raw\build-6aa41273d371340fffaea8f8\additional-diagnostics\clipping-6aa5d3e5a5297549762a03ca\final-iphone-17-light-ax-review\final.json,original confirmation image does not show the last line
+iPhone 17,light,accessibility-extra-extra-extra-large,portrait,standalone-before-copy,passed,passed,LOCAL_HOME\Documents\Codex\2026-09-11\mcx19-retention\native-raw\build-6aa41273d371340fffaea8f8\additional-diagnostics\clipping-6aa5d3e5a5297549762a03ca\final-iphone-17-light-ax-review\final.json,
+iPhone 17,light,accessibility-extra-extra-extra-large,portrait,standalone-after-copy,passed,passed,LOCAL_HOME\Documents\Codex\2026-09-11\mcx19-retention\native-raw\build-6aa41273d371340fffaea8f8\additional-diagnostics\clipping-6aa5d3e5a5297549762a03ca\final-iphone-17-light-ax-review\final.json,
+iPhone 17,dark,large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,accessibility-extra-extra-extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,accessibility-extra-extra-extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,accessibility-extra-extra-extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17,dark,accessibility-extra-extra-extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,accessibility-extra-extra-extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,accessibility-extra-extra-extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,accessibility-extra-extra-extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,light,accessibility-extra-extra-extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,accessibility-extra-extra-extra-large,portrait,release-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,accessibility-extra-extra-extra-large,portrait,release-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,accessibility-extra-extra-extra-large,portrait,standalone-before-copy,not-run,not-run,,testing stopped for local storage; paid session closed
+iPhone 17 Pro Max,dark,accessibility-extra-extra-extra-large,portrait,standalone-after-copy,not-run,not-run,,testing stopped for local storage; paid session closed

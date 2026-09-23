@@ -1,0 +1,38 @@
+{
+  "category": "test evidence expectation faults",
+  "assertions": [
+    {
+      "test": "AcceptanceEvidenceContractTests/testFixtureInspection()",
+      "assertion": "XCTAssertEqual failed: (\"[\"2026-08-24T10:15:30Z\", \"Access denied. Sign in again.\", \"RELEASED\", \"Fictional summary\", \"ACE could not establish a secure connection. Try again later.\", \"Sign-in could not be saved. Try again.\", \"Sign-out could not be completed. Try again.\", \"No actions are available.\", \"Second fictional owner\", \"Loading current release\", \"Try again\", \"\", \"No current release is available.\", \"2026-08-25\", \"OPEN\", \"Fictional action\", \"Clipboard paste destination\", \"Saved sign-in could not be read. Try again.\", \"Fictional Engagement\", \"Reset saved sign-in\", \"FICTIONAL-REF-001\", \"ACE is unavailable. Try again later.\", \"COMPLETE\", \"This app is not configured for access.\", \"Saved sign-in must be reset before access.\", \"Loading\", \"Fictional conclusion\", \"No conclusion is available.\", \"ACE could not be reached. Check your connection and try again.\", \"Second fictional action\", \"2026-08-26\", \"Saved sign-in could not be removed. Try again.\", \"Fictional owner\", \"The request timed out. Try again.\", \"ACE_UI_TEST_SCENARIO\"]\") is not equal to (\"[\"FICTIONAL-REF-001\", \"2026-08-24T10:15:30Z\", \"Reset saved sign-in\", \"Saved sign-in must be reset before access.\", \"ACE could not establish a secure connection. Try again later.\", \"Loading\", \"Saved sign-in could not be removed. Try again.\", \"Access denied. Sign in again.\", \"2026-08-25\", \"ACE_UI_TEST_SCENARIO\", \"Fictional action\", \"Loading current release\", \"Sign-out could not be completed. Try again.\", \"The request timed out. Try again.\", \"This app is not configured for access.\", \"Fictional owner\", \"Try again\", \"No actions are available.\", \"No current release is available.\", \"Fictional conclusion\", \"Fictional summary\", \"OPEN\", \"Saved sign-in could not be read. Try again.\", \"ACE could not be reached. Check your connection and try again.\", \"Fictional Engagement\", \"No conclusion is available.\", \"RELEASED\", \"ACE is unavailable. Try again later.\", \"Sign-in could not be saved. Try again.\"]\") - Controlled scenario literals changed; review each value before approval"
+    },
+    {
+      "test": "AcceptanceEvidenceContractTests/testProjectConfiguration()",
+      "assertion": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b\"]\")"
+    },
+    {
+      "test": "AcceptanceEvidenceContractTests/testSourceBoundaryInspection()",
+      "assertion": "XCTAssertEqual failed: (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0\"]\") is not equal to (\"[\"docs/specs/2026-08-24-ace-ios-read-only-client-application.md\": \"bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b\"]\")"
+    }
+  ],
+  "sourceLines": [
+    1582,
+    36,
+    84
+  ],
+  "expected": "reviewed fictional literal set and approved specification digest",
+  "actual": "six new reviewed fixture literals and changed approved specification digest",
+  "correction": "update exact allowlist and approved document digest only",
+  "correctiveAttempt": 1,
+  "applicationUnchanged": true,
+  "baselineAncestry": "still blocked",
+  "failedNativeEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T194459Z-selected-ff65c583223e",
+  "focusedPassedEvidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195042Z-selected-c7afef835756",
+  "focusedCounts": {
+    "totalTestCount": 7,
+    "passedTests": 7,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "expectedFailures": 0
+  },
+  "noFullCurrentSuiteClaim": true
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests",
+    "tools.tests.test_ace_ios_local.DiscoveryExecutionTests",
+    "-v"
+  ],
+  "exit": 0,
+  "runnerSha256": "144a3d6d86924b0af5394d3c8de2276e372bfd8a5a12fe263b5c556589dfb523",
+  "testsSha256": "2e7f80472709ebfb8a2ef4d0b95204746213de8bbdd1acb384300f0e3f063f5f",
+  "time": "2026-09-16T21:15:58.760841+00:00"
+}

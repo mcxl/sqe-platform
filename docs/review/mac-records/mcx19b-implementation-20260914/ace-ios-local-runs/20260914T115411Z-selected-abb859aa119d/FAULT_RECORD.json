@@ -1,0 +1,24 @@
+{
+  "test": "testAllReleaseClipboardValuesPasteExactly",
+  "sourceLine": 571,
+  "expected": "Native Select All menu exists after press",
+  "actual": "No Select All element; retained hierarchy and video frame show cursor in sentinel without menu",
+  "nativeExit": 65,
+  "runnerExit": 2,
+  "failed": 1,
+  "passed": 0,
+  "skipped": 0,
+  "classification": "test interaction fault during clipboard setup",
+  "imagesReviewed": [
+    {
+      "path": "seed-failure-frame.png",
+      "sha256": "dc73bdce8f283b2636a9e5fb472dbd764ebd1cab0b8359a74f31911a50398030",
+      "detail": "original",
+      "observation": "Typed sentinel visible. Cursor at mid-string. No menu or selected text."
+    }
+  ],
+  "correctiveAttempt": 1,
+  "correction": "Replace long press plus Select All with double tap of the single-word sentinel. Require the native Copy menu. No app change.",
+  "newTestSha256": "4d9a0f2e0cdae86c6d1397ef995674144c45e57d4a2d2d3aabd0028b38149791",
+  "limit": "Selected video frame inspected; whole recording not inspected. Release Copy cases did not execute."
+}

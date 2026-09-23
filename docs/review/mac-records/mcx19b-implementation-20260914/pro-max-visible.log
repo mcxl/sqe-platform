@@ -1,0 +1,67 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/derived-diagnostic/Build/Products/pro-max-visible.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testBothAppearances" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300
+
+2026-09-14 17:28:50.415 xcodebuild[59262:1709029] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible.xcresult
+
+2026-09-14 17:28:50.465 xcodebuild[59262:1709029] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:28:53.139 xcodebuild[59262:1709029] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 17:29:46.089180+1000 ACEClientAppUITests-Runner[59405:1712132] [Default] Running tests...
+2026-09-14 17:29:46.246308+1000 ACEClientAppUITests-Runner[59405:1712319] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-14 17:29:46.286420+1000 ACEClientAppUITests-Runner[59405:1712319] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 17:29:59.971.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 17:29:59.973.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 17:29:59.974.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testBothAppearances]' started.
+    t =     0.01s Start Test at 2026-09-14 17:29:59.988
+    t =     1.03s Set Up
+    t =     1.07s Open com.example.aceclientapp
+    t =     1.07s     Launch com.example.aceclientapp
+2026-09-14 17:30:01.264 xcodebuild[59262:1709029] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 17:30:01.264 xcodebuild[59262:1709029] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.25s         Setting up automation session
+    t =     8.95s         Wait for com.example.aceclientapp to idle
+    t =    11.95s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    13.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    13.03s         Checking existence of `"Effective interface style" StaticText`
+    t =    14.76s Checking `Expect predicate `label == "light"` for object "Effective interface style" StaticText`
+    t =    14.76s     Find the "Effective interface style" StaticText
+    t =    14.97s Checking existence of `"FICTIONAL PILOT — CONTROLLED" StaticText`
+    t =    15.20s Find the Target Application 'com.example.aceclientapp'
+    t =    16.19s Added attachment named 'Fictional release — forced-light'
+    t =    16.20s Terminate com.example.aceclientapp:59441
+    t =    17.26s Open com.example.aceclientapp
+    t =    17.27s     Launch com.example.aceclientapp
+2026-09-14 17:30:17.247 xcodebuild[59262:1709029] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 17:30:17.248 xcodebuild[59262:1709029] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    20.00s         Setting up automation session
+    t =    25.83s         Wait for com.example.aceclientapp to idle
+    t =    29.08s Waiting 5.0s for "Effective interface style" StaticText to exist
+    t =    30.15s     Checking `Expect predicate `existsNoRetry == 1` for object "Effective interface style" StaticText`
+    t =    30.15s         Checking existence of `"Effective interface style" StaticText`
+    t =    31.86s Checking `Expect predicate `label == "dark"` for object "Effective interface style" StaticText`
+    t =    31.86s     Find the "Effective interface style" StaticText
+    t =    32.08s Checking existence of `"FICTIONAL PILOT — CONTROLLED" StaticText`
+    t =    32.27s Find the Target Application 'com.example.aceclientapp'
+    t =    32.98s Added attachment named 'Fictional release — forced-dark'
+    t =    32.98s Terminate com.example.aceclientapp:59498
+    t =    34.02s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testBothAppearances]' passed (35.748 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 17:30:35.735.
+	 Executed 1 test, with 0 failures (0 unexpected) in 35.748 (35.762) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 17:30:35.738.
+	 Executed 1 test, with 0 failures (0 unexpected) in 35.748 (35.765) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 17:30:35.740.
+	 Executed 1 test, with 0 failures (0 unexpected) in 35.748 (35.769) seconds
+2026-09-14 17:30:36.188 xcodebuild[59262:1709029] [MT] IDETestOperationsObserverDebug: 102.972 elapsed -- Testing started completed.
+2026-09-14 17:30:36.188 xcodebuild[59262:1709029] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 17:30:36.188 xcodebuild[59262:1709029] [MT] IDETestOperationsObserverDebug: 102.972 sec, +102.972 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pro-max-visible.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

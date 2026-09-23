@@ -1,0 +1,836 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testAllReleaseClipboardValuesPasteExactly" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xcresult
+
+2026-09-14 22:02:47.387704+1000 ACEClientAppUITests-Runner[93064:2300238] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 22:02:51.872.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 22:02:51.875.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 22:02:51.876.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testAllReleaseClipboardValuesPasteExactly]' started.
+    t =     0.03s Start Test at 2026-09-14 22:02:51.928
+    t =     0.28s Set Up
+    t =     0.31s Open com.example.aceclientapp
+    t =     0.31s     Launch com.example.aceclientapp
+    t =     2.41s         Setting up automation session
+    t =     7.95s         Wait for com.example.aceclientapp to idle
+    t =    11.11s Waiting 5.0s for "Username" TextField to exist
+    t =    12.17s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =    12.17s         Checking existence of `"Username" TextField`
+    t =    12.53s Tap "Username" TextField
+    t =    12.53s     Wait for com.example.aceclientapp to idle
+    t =    12.54s     Find the "Username" TextField
+    t =    12.62s     Check for interrupting elements affecting "Username" TextField
+    t =    12.73s     Synthesize event
+    t =    13.13s     Wait for com.example.aceclientapp to idle
+    t =    15.23s Type 'FictionalClipboard...' into "Username" TextField
+    t =    15.23s     Wait for com.example.aceclientapp to idle
+    t =    15.44s     Find the "Username" TextField
+    t =    15.74s     Check for interrupting elements affecting "Username" TextField
+    t =    15.91s     Synthesize event
+    t =    16.80s     Wait for com.example.aceclientapp to idle
+    t =    17.38s Double tap "Username" TextField
+    t =    17.38s     Wait for com.example.aceclientapp to idle
+    t =    17.40s     Find the "Username" TextField
+    t =    17.63s     Check for interrupting elements affecting "Username" TextField
+    t =    17.82s     Synthesize event
+    t =    18.23s     Wait for com.example.aceclientapp to idle
+    t =    20.23s Find the Target Application 'com.example.aceclientapp'
+    t =    21.26s Added attachment named 'Native clipboard sentinel selection'
+    t =    21.28s Waiting 5.0s for Any (First Match) to exist
+    t =    22.29s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    22.29s         Checking existence of `Any (First Match)`
+    t =    22.53s Find the Target Application 'com.example.aceclientapp'
+    t =    23.53s Added attachment named 'Native clipboard sentinel selected'
+    t =    23.54s Tap Any (First Match)
+    t =    23.54s     Wait for com.example.aceclientapp to idle
+    t =    23.55s     Find the Any (First Match)
+    t =    23.79s     Check for interrupting elements affecting "Copy" MenuItem
+    t =    24.04s     Synthesize event
+    t =    24.42s     Wait for com.example.aceclientapp to idle
+    t =    24.80s Find the Target Application 'com.example.aceclientapp'
+    t =    25.74s Added attachment named 'Native clipboard sentinel copied'
+    t =    25.74s Terminate com.example.aceclientapp:93079
+    t =    26.77s Open com.example.aceclientapp
+    t =    26.77s     Launch com.example.aceclientapp
+    t =    28.09s         Setting up automation session
+    t =    34.17s         Wait for com.example.aceclientapp to idle
+    t =    37.25s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    38.34s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    38.34s         Checking existence of `ScrollView (First Match)`
+    t =    38.49s Checking existence of `"Copy Engagement name" Button`
+    t =    38.81s Find the "Copy Engagement name" Button
+    t =    39.06s Find the "Copy Engagement name" Button
+    t =    39.27s Find the ScrollView (First Match)
+    t =    39.33s Find the "Copy Engagement name" Button
+    t =    39.63s Tap "Copy Engagement name" Button
+    t =    39.63s     Wait for com.example.aceclientapp to idle
+    t =    39.65s     Find the "Copy Engagement name" Button
+    t =    39.85s     Check for interrupting elements affecting "Copy Engagement name" Button
+    t =    40.03s     Synthesize event
+    t =    40.41s     Wait for com.example.aceclientapp to idle
+    t =    40.45s Waiting 5.0s for "Copied Engagement name." StaticText to exist
+    t =    41.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Engagement name." StaticText`
+    t =    41.52s         Checking existence of `"Copied Engagement name." StaticText`
+    t =    41.76s Find the Any (First Match)
+    t =    41.85s Tap "Copy Engagement name" Button
+    t =    41.86s     Wait for com.example.aceclientapp to idle
+    t =    41.87s     Find the "Copy Engagement name" Button
+    t =    42.06s     Check for interrupting elements affecting "Copy Engagement name" Button
+    t =    42.26s     Synthesize event
+    t =    42.67s     Wait for com.example.aceclientapp to idle
+    t =    42.70s Waiting 5.0s for "Copied Engagement name." StaticText to exist
+    t =    43.76s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Engagement name." StaticText`
+    t =    43.76s         Checking existence of `"Copied Engagement name." StaticText`
+    t =    43.98s Find the "Engagement name: Fictional Engagement" StaticText
+    t =    44.05s Find the Target Application 'com.example.aceclientapp'
+    t =    44.95s Added attachment named 'Native copy — Engagement name'
+    t =    44.95s Terminate com.example.aceclientapp:93118
+    t =    46.00s Open com.example.aceclientapp
+    t =    46.01s     Launch com.example.aceclientapp
+    t =    46.95s         Setting up automation session
+    t =    52.07s         Wait for com.example.aceclientapp to idle
+    t =    55.35s Waiting 5.0s for "Username" TextField to exist
+    t =    56.41s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =    56.41s         Checking existence of `"Username" TextField`
+    t =    56.71s Tap "Username" TextField
+    t =    56.71s     Wait for com.example.aceclientapp to idle
+    t =    56.74s     Find the "Username" TextField
+    t =    56.83s     Check for interrupting elements affecting "Username" TextField
+    t =    56.93s     Synthesize event
+    t =    57.29s     Wait for com.example.aceclientapp to idle
+    t =    59.03s Press "Username" TextField for 1.0 seconds
+    t =    59.03s     Wait for com.example.aceclientapp to idle
+    t =    59.30s     Find the "Username" TextField
+    t =    59.72s     Check for interrupting elements affecting "Username" TextField
+    t =    59.87s     Synthesize event
+    t =    61.17s     Wait for com.example.aceclientapp to idle
+    t =    61.83s Find the Target Application 'com.example.aceclientapp'
+    t =    62.75s Added attachment named 'Native Paste menu — Engagement name'
+    t =    62.76s Waiting 5.0s for Any (First Match) to exist
+    t =    63.83s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    63.83s         Checking existence of `Any (First Match)`
+    t =    64.18s Tap Any (First Match)
+    t =    64.18s     Wait for com.example.aceclientapp to idle
+    t =    64.20s     Find the Any (First Match)
+    t =    64.50s     Check for interrupting elements affecting "Paste" MenuItem
+    t =    64.76s     Synthesize event
+    t =    65.13s     Wait for com.example.aceclientapp to idle
+    t =    65.57s Find the "Username" TextField
+    t =    65.75s Find the Target Application 'com.example.aceclientapp'
+    t =    66.77s Added attachment named 'Native paste value — Engagement name'
+    t =    66.77s Terminate com.example.aceclientapp:93145
+    t =    67.87s Open com.example.aceclientapp
+    t =    67.87s     Launch com.example.aceclientapp
+    t =    69.20s         Setting up automation session
+    t =    74.44s         Wait for com.example.aceclientapp to idle
+    t =    77.59s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    78.62s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    78.62s         Checking existence of `ScrollView (First Match)`
+    t =    78.77s Checking existence of `"Copy Review status" Button`
+    t =    79.17s Find the "Copy Review status" Button
+    t =    79.48s Find the "Copy Review status" Button
+    t =    79.73s Find the ScrollView (First Match)
+    t =    79.80s Find the "Copy Review status" Button
+    t =    80.07s Tap "Copy Review status" Button
+    t =    80.07s     Wait for com.example.aceclientapp to idle
+    t =    80.09s     Find the "Copy Review status" Button
+    t =    80.29s     Check for interrupting elements affecting "Copy Review status" Button
+    t =    80.47s     Synthesize event
+    t =    80.84s     Wait for com.example.aceclientapp to idle
+    t =    80.87s Waiting 5.0s for "Copied Review status." StaticText to exist
+    t =    81.92s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Review status." StaticText`
+    t =    81.92s         Checking existence of `"Copied Review status." StaticText`
+    t =    82.15s Find the Target Application 'com.example.aceclientapp'
+    t =    83.16s Added attachment named 'Native copy — Review status'
+    t =    83.16s Terminate com.example.aceclientapp:93174
+    t =    84.25s Open com.example.aceclientapp
+    t =    84.26s     Launch com.example.aceclientapp
+    t =    85.12s         Setting up automation session
+    t =    90.46s         Wait for com.example.aceclientapp to idle
+    t =    93.52s Waiting 5.0s for "Username" TextField to exist
+    t =    94.61s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =    94.61s         Checking existence of `"Username" TextField`
+    t =    94.96s Tap "Username" TextField
+    t =    94.97s     Wait for com.example.aceclientapp to idle
+    t =    94.98s     Find the "Username" TextField
+    t =    95.07s     Check for interrupting elements affecting "Username" TextField
+    t =    95.19s     Synthesize event
+    t =    95.57s     Wait for com.example.aceclientapp to idle
+    t =    97.22s Press "Username" TextField for 1.0 seconds
+    t =    97.22s     Wait for com.example.aceclientapp to idle
+    t =    97.61s     Find the "Username" TextField
+    t =    97.97s     Check for interrupting elements affecting "Username" TextField
+    t =    98.16s     Synthesize event
+    t =    99.47s     Wait for com.example.aceclientapp to idle
+    t =   100.22s Find the Target Application 'com.example.aceclientapp'
+    t =   101.00s Added attachment named 'Native Paste menu — Review status'
+    t =   101.00s Waiting 5.0s for Any (First Match) to exist
+    t =   102.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   102.07s         Checking existence of `Any (First Match)`
+    t =   102.33s Tap Any (First Match)
+    t =   102.33s     Wait for com.example.aceclientapp to idle
+    t =   102.35s     Find the Any (First Match)
+    t =   102.62s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   102.89s     Synthesize event
+    t =   103.26s     Wait for com.example.aceclientapp to idle
+    t =   103.75s Find the "Username" TextField
+    t =   103.93s Find the Target Application 'com.example.aceclientapp'
+    t =   104.83s Added attachment named 'Native paste value — Review status'
+    t =   104.83s Terminate com.example.aceclientapp:93203
+    t =   105.88s Open com.example.aceclientapp
+    t =   105.88s     Launch com.example.aceclientapp
+    t =   106.97s         Setting up automation session
+    t =   112.47s         Wait for com.example.aceclientapp to idle
+    t =   115.48s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   116.56s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   116.56s         Checking existence of `ScrollView (First Match)`
+    t =   116.83s Checking existence of `"Copy Release version" Button`
+    t =   117.48s Find the "Copy Release version" Button
+    t =   117.83s Find the "Copy Release version" Button
+    t =   118.05s Find the ScrollView (First Match)
+    t =   118.13s Find the "Copy Release version" Button
+    t =   118.44s Tap "Copy Release version" Button
+    t =   118.44s     Wait for com.example.aceclientapp to idle
+    t =   118.46s     Find the "Copy Release version" Button
+    t =   118.72s     Check for interrupting elements affecting "Copy Release version" Button
+    t =   118.90s     Synthesize event
+    t =   119.27s     Wait for com.example.aceclientapp to idle
+    t =   119.28s Waiting 5.0s for "Copied Release version." StaticText to exist
+    t =   120.37s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Release version." StaticText`
+    t =   120.37s         Checking existence of `"Copied Release version." StaticText`
+    t =   120.59s Find the Target Application 'com.example.aceclientapp'
+    t =   121.51s Added attachment named 'Native copy — Release version'
+    t =   121.52s Terminate com.example.aceclientapp:93240
+    t =   122.53s Open com.example.aceclientapp
+    t =   122.53s     Launch com.example.aceclientapp
+    t =   123.40s         Setting up automation session
+    t =   128.46s         Wait for com.example.aceclientapp to idle
+    t =   131.76s Waiting 5.0s for "Username" TextField to exist
+    t =   132.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   132.82s         Checking existence of `"Username" TextField`
+    t =   133.21s Tap "Username" TextField
+    t =   133.21s     Wait for com.example.aceclientapp to idle
+    t =   133.23s     Find the "Username" TextField
+    t =   133.33s     Check for interrupting elements affecting "Username" TextField
+    t =   133.43s     Synthesize event
+    t =   133.80s     Wait for com.example.aceclientapp to idle
+    t =   135.91s Press "Username" TextField for 1.0 seconds
+    t =   135.91s     Wait for com.example.aceclientapp to idle
+    t =   136.08s     Find the "Username" TextField
+    t =   136.41s     Check for interrupting elements affecting "Username" TextField
+    t =   136.62s     Synthesize event
+    t =   137.93s     Wait for com.example.aceclientapp to idle
+    t =   138.86s Find the Target Application 'com.example.aceclientapp'
+    t =   139.77s Added attachment named 'Native Paste menu — Release version'
+    t =   139.77s Waiting 5.0s for Any (First Match) to exist
+    t =   140.85s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   140.85s         Checking existence of `Any (First Match)`
+    t =   141.13s Tap Any (First Match)
+    t =   141.13s     Wait for com.example.aceclientapp to idle
+    t =   141.14s     Find the Any (First Match)
+    t =   141.40s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   141.62s     Synthesize event
+    t =   141.99s     Wait for com.example.aceclientapp to idle
+    t =   142.46s Find the "Username" TextField
+    t =   142.63s Find the Target Application 'com.example.aceclientapp'
+    t =   143.42s Added attachment named 'Native paste value — Release version'
+    t =   143.43s Terminate com.example.aceclientapp:93261
+    t =   144.47s Open com.example.aceclientapp
+    t =   144.47s     Launch com.example.aceclientapp
+    t =   145.66s         Setting up automation session
+    t =   150.93s         Wait for com.example.aceclientapp to idle
+    t =   153.86s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   154.94s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   154.94s         Checking existence of `ScrollView (First Match)`
+    t =   155.15s Checking existence of `"Copy Published date and time" Button`
+    t =   155.43s Find the "Copy Published date and time" Button
+    t =   155.73s Find the "Copy Published date and time" Button
+    t =   156.00s Find the ScrollView (First Match)
+    t =   156.07s Find the "Copy Published date and time" Button
+    t =   156.40s Tap "Copy Published date and time" Button
+    t =   156.40s     Wait for com.example.aceclientapp to idle
+    t =   156.41s     Find the "Copy Published date and time" Button
+    t =   156.63s     Check for interrupting elements affecting "Copy Published date and time" Button
+    t =   156.81s     Synthesize event
+    t =   157.18s     Wait for com.example.aceclientapp to idle
+    t =   157.20s Waiting 5.0s for "Copied Published date and time." StaticText to exist
+    t =   158.26s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Published date and time." StaticText`
+    t =   158.26s         Checking existence of `"Copied Published date and time." StaticText`
+    t =   158.45s Find the Target Application 'com.example.aceclientapp'
+    t =   159.43s Added attachment named 'Native copy — Published date and time'
+    t =   159.44s Terminate com.example.aceclientapp:93294
+    t =   160.49s Open com.example.aceclientapp
+    t =   160.49s     Launch com.example.aceclientapp
+    t =   161.59s         Setting up automation session
+    t =   166.39s         Wait for com.example.aceclientapp to idle
+    t =   169.69s Waiting 5.0s for "Username" TextField to exist
+    t =   170.79s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   170.79s         Checking existence of `"Username" TextField`
+    t =   171.11s Tap "Username" TextField
+    t =   171.11s     Wait for com.example.aceclientapp to idle
+    t =   171.13s     Find the "Username" TextField
+    t =   171.24s     Check for interrupting elements affecting "Username" TextField
+    t =   171.35s     Synthesize event
+    t =   171.78s     Wait for com.example.aceclientapp to idle
+    t =   173.45s Press "Username" TextField for 1.0 seconds
+    t =   173.45s     Wait for com.example.aceclientapp to idle
+    t =   173.83s     Find the "Username" TextField
+    t =   174.12s     Check for interrupting elements affecting "Username" TextField
+    t =   174.28s     Synthesize event
+    t =   175.58s     Wait for com.example.aceclientapp to idle
+    t =   176.40s Find the Target Application 'com.example.aceclientapp'
+    t =   177.42s Added attachment named 'Native Paste menu — Published date and time'
+    t =   177.42s Waiting 5.0s for Any (First Match) to exist
+    t =   178.50s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   178.50s         Checking existence of `Any (First Match)`
+    t =   178.75s Tap Any (First Match)
+    t =   178.75s     Wait for com.example.aceclientapp to idle
+    t =   178.76s     Find the Any (First Match)
+    t =   179.01s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   179.38s     Synthesize event
+    t =   179.75s     Wait for com.example.aceclientapp to idle
+    t =   180.22s Find the "Username" TextField
+    t =   180.47s Find the Target Application 'com.example.aceclientapp'
+    t =   181.36s Added attachment named 'Native paste value — Published date and time'
+    t =   181.36s Terminate com.example.aceclientapp:93315
+    t =   182.46s Open com.example.aceclientapp
+    t =   182.46s     Launch com.example.aceclientapp
+    t =   183.52s         Setting up automation session
+    t =   188.82s         Wait for com.example.aceclientapp to idle
+    t =   192.16s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   193.24s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   193.24s         Checking existence of `ScrollView (First Match)`
+    t =   193.37s Checking existence of `"Copy Conclusion title" Button`
+    t =   193.74s Find the "Copy Conclusion title" Button
+    t =   194.04s Find the "Copy Conclusion title" Button
+    t =   194.28s Find the ScrollView (First Match)
+    t =   194.35s Find the "Copy Conclusion title" Button
+    t =   194.64s Tap "Copy Conclusion title" Button
+    t =   194.64s     Wait for com.example.aceclientapp to idle
+    t =   194.66s     Find the "Copy Conclusion title" Button
+    t =   194.86s     Check for interrupting elements affecting "Copy Conclusion title" Button
+    t =   195.03s     Synthesize event
+    t =   195.40s     Wait for com.example.aceclientapp to idle
+    t =   195.42s Waiting 5.0s for "Copied Conclusion title." StaticText to exist
+    t =   196.50s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Conclusion title." StaticText`
+    t =   196.50s         Checking existence of `"Copied Conclusion title." StaticText`
+    t =   196.70s Find the Target Application 'com.example.aceclientapp'
+    t =   197.94s Added attachment named 'Native copy — Conclusion title'
+    t =   197.95s Terminate com.example.aceclientapp:93346
+    t =   199.03s Open com.example.aceclientapp
+    t =   199.03s     Launch com.example.aceclientapp
+    t =   199.96s         Setting up automation session
+    t =   205.00s         Wait for com.example.aceclientapp to idle
+    t =   208.37s Waiting 5.0s for "Username" TextField to exist
+    t =   209.43s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   209.43s         Checking existence of `"Username" TextField`
+    t =   209.85s Tap "Username" TextField
+    t =   209.85s     Wait for com.example.aceclientapp to idle
+    t =   209.86s     Find the "Username" TextField
+    t =   209.97s     Check for interrupting elements affecting "Username" TextField
+    t =   210.09s     Synthesize event
+    t =   210.48s     Wait for com.example.aceclientapp to idle
+    t =   212.50s Press "Username" TextField for 1.0 seconds
+    t =   212.50s     Wait for com.example.aceclientapp to idle
+    t =   212.56s     Find the "Username" TextField
+    t =   212.86s     Check for interrupting elements affecting "Username" TextField
+    t =   213.05s     Synthesize event
+    t =   214.36s     Wait for com.example.aceclientapp to idle
+    t =   215.16s Find the Target Application 'com.example.aceclientapp'
+    t =   216.14s Added attachment named 'Native Paste menu — Conclusion title'
+    t =   216.14s Waiting 5.0s for Any (First Match) to exist
+    t =   217.20s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   217.21s         Checking existence of `Any (First Match)`
+    t =   217.55s Tap Any (First Match)
+    t =   217.56s     Wait for com.example.aceclientapp to idle
+    t =   217.57s     Find the Any (First Match)
+    t =   217.86s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   218.11s     Synthesize event
+    t =   218.48s     Wait for com.example.aceclientapp to idle
+    t =   218.95s Find the "Username" TextField
+    t =   219.18s Find the Target Application 'com.example.aceclientapp'
+    t =   219.99s Added attachment named 'Native paste value — Conclusion title'
+    t =   220.00s Terminate com.example.aceclientapp:93375
+    t =   221.06s Open com.example.aceclientapp
+    t =   221.06s     Launch com.example.aceclientapp
+    t =   222.31s         Setting up automation session
+    t =   227.31s         Wait for com.example.aceclientapp to idle
+    t =   230.57s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   231.64s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   231.64s         Checking existence of `ScrollView (First Match)`
+    t =   231.83s Checking existence of `"Copy Conclusion summary" Button`
+    t =   232.16s Find the "Copy Conclusion summary" Button
+    t =   232.44s Find the "Copy Conclusion summary" Button
+    t =   232.64s Find the ScrollView (First Match)
+    t =   232.72s Find the "Copy Conclusion summary" Button
+    t =   233.08s Tap "Copy Conclusion summary" Button
+    t =   233.08s     Wait for com.example.aceclientapp to idle
+    t =   233.09s     Find the "Copy Conclusion summary" Button
+    t =   233.36s     Check for interrupting elements affecting "Copy Conclusion summary" Button
+    t =   233.53s     Synthesize event
+    t =   233.90s     Wait for com.example.aceclientapp to idle
+    t =   233.92s Waiting 5.0s for "Copied Conclusion summary." StaticText to exist
+    t =   234.99s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Conclusion summary." StaticText`
+    t =   234.99s         Checking existence of `"Copied Conclusion summary." StaticText`
+    t =   235.20s Find the Target Application 'com.example.aceclientapp'
+    t =   236.10s Added attachment named 'Native copy — Conclusion summary'
+    t =   236.11s Terminate com.example.aceclientapp:93425
+    t =   237.17s Open com.example.aceclientapp
+    t =   237.17s     Launch com.example.aceclientapp
+    t =   238.03s         Setting up automation session
+    t =   243.51s         Wait for com.example.aceclientapp to idle
+    t =   246.69s Waiting 5.0s for "Username" TextField to exist
+    t =   247.78s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   247.78s         Checking existence of `"Username" TextField`
+    t =   248.08s Tap "Username" TextField
+    t =   248.09s     Wait for com.example.aceclientapp to idle
+    t =   248.10s     Find the "Username" TextField
+    t =   248.19s     Check for interrupting elements affecting "Username" TextField
+    t =   248.43s     Synthesize event
+    t =   248.94s     Wait for com.example.aceclientapp to idle
+    t =   250.84s Press "Username" TextField for 1.0 seconds
+    t =   250.84s     Wait for com.example.aceclientapp to idle
+    t =   251.01s     Find the "Username" TextField
+    t =   251.44s     Check for interrupting elements affecting "Username" TextField
+    t =   251.60s     Synthesize event
+    t =   252.89s     Wait for com.example.aceclientapp to idle
+    t =   253.43s Find the Target Application 'com.example.aceclientapp'
+    t =   254.47s Added attachment named 'Native Paste menu — Conclusion summary'
+    t =   254.48s Waiting 5.0s for Any (First Match) to exist
+    t =   255.55s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   255.55s         Checking existence of `Any (First Match)`
+    t =   255.78s Tap Any (First Match)
+    t =   255.78s     Wait for com.example.aceclientapp to idle
+    t =   255.80s     Find the Any (First Match)
+    t =   256.04s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   256.36s     Synthesize event
+    t =   256.72s     Wait for com.example.aceclientapp to idle
+    t =   257.20s Find the "Username" TextField
+    t =   257.36s Find the Target Application 'com.example.aceclientapp'
+    t =   258.13s Added attachment named 'Native paste value — Conclusion summary'
+    t =   258.13s Terminate com.example.aceclientapp:93450
+    t =   259.20s Open com.example.aceclientapp
+    t =   259.20s     Launch com.example.aceclientapp
+    t =   260.32s         Setting up automation session
+    t =   265.76s         Wait for com.example.aceclientapp to idle
+    t =   268.60s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   269.61s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   269.61s         Checking existence of `ScrollView (First Match)`
+    t =   269.77s Checking existence of `"Copy Evidence reference" Button`
+    t =   270.27s Find the "Copy Evidence reference" Button
+    t =   270.70s Find the "Copy Evidence reference" Button
+    t =   270.97s Find the ScrollView (First Match)
+    t =   271.04s Find the "Copy Evidence reference" Button
+    t =   271.32s Tap "Copy Evidence reference" Button
+    t =   271.32s     Wait for com.example.aceclientapp to idle
+    t =   271.34s     Find the "Copy Evidence reference" Button
+    t =   271.58s     Check for interrupting elements affecting "Copy Evidence reference" Button
+    t =   271.76s     Synthesize event
+    t =   272.14s     Wait for com.example.aceclientapp to idle
+    t =   272.15s Waiting 5.0s for "Copied Evidence reference." StaticText to exist
+    t =   273.23s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Evidence reference." StaticText`
+    t =   273.23s         Checking existence of `"Copied Evidence reference." StaticText`
+    t =   273.43s Find the Target Application 'com.example.aceclientapp'
+    t =   274.33s Added attachment named 'Native copy — Evidence reference'
+    t =   274.34s Terminate com.example.aceclientapp:93485
+    t =   275.44s Open com.example.aceclientapp
+    t =   275.44s     Launch com.example.aceclientapp
+    t =   276.52s         Setting up automation session
+    t =   281.82s         Wait for com.example.aceclientapp to idle
+    t =   285.33s Waiting 5.0s for "Username" TextField to exist
+    t =   286.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   286.42s         Checking existence of `"Username" TextField`
+    t =   286.78s Tap "Username" TextField
+    t =   286.78s     Wait for com.example.aceclientapp to idle
+    t =   286.80s     Find the "Username" TextField
+    t =   286.90s     Check for interrupting elements affecting "Username" TextField
+    t =   287.22s     Synthesize event
+    t =   287.68s     Wait for com.example.aceclientapp to idle
+    t =   289.33s Press "Username" TextField for 1.0 seconds
+    t =   289.33s     Wait for com.example.aceclientapp to idle
+    t =   289.71s     Find the "Username" TextField
+    t =   290.05s     Check for interrupting elements affecting "Username" TextField
+    t =   290.23s     Synthesize event
+    t =   291.53s     Wait for com.example.aceclientapp to idle
+    t =   292.30s Find the Target Application 'com.example.aceclientapp'
+    t =   293.22s Added attachment named 'Native Paste menu — Evidence reference'
+    t =   293.23s Waiting 5.0s for Any (First Match) to exist
+    t =   294.30s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   294.30s         Checking existence of `Any (First Match)`
+    t =   294.57s Tap Any (First Match)
+    t =   294.57s     Wait for com.example.aceclientapp to idle
+    t =   294.58s     Find the Any (First Match)
+    t =   294.87s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   295.14s     Synthesize event
+    t =   295.50s     Wait for com.example.aceclientapp to idle
+    t =   295.95s Find the "Username" TextField
+    t =   296.12s Find the Target Application 'com.example.aceclientapp'
+    t =   297.08s Added attachment named 'Native paste value — Evidence reference'
+    t =   297.09s Terminate com.example.aceclientapp:93507
+    t =   298.12s Open com.example.aceclientapp
+    t =   298.12s     Launch com.example.aceclientapp
+    t =   298.97s         Setting up automation session
+    t =   304.12s         Wait for com.example.aceclientapp to idle
+    t =   306.97s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   308.05s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   308.06s         Checking existence of `ScrollView (First Match)`
+    t =   308.19s Checking existence of `"Copy Action description" Button`
+    t =   308.93s Find the "Copy Action description" Button
+    t =   309.24s Find the ScrollView (First Match)
+    t =   309.33s Checking existence of `"Copy Action description" Button`
+    t =   309.55s Find the "Copy Action description" Button
+    t =   310.00s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =   310.01s     Wait for com.example.aceclientapp to idle
+    t =   310.02s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   310.09s     Check for interrupting elements affecting ScrollView
+    t =   310.28s     Synthesize event
+    t =   310.28s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   310.37s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   310.45s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   310.54s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   310.70s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   311.81s     Wait for com.example.aceclientapp to idle
+    t =   312.53s Checking existence of `"Copy Action description" Button`
+    t =   312.73s Find the "Copy Action description" Button
+    t =   312.99s Find the "Copy Action description" Button
+    t =   313.23s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   313.30s Find the "Copy Action description" Button
+    t =   313.57s Tap "Copy Action description" Button
+    t =   313.58s     Wait for com.example.aceclientapp to idle
+    t =   313.73s     Find the "Copy Action description" Button
+    t =   313.98s     Check for interrupting elements affecting "Copy Action description" Button
+    t =   314.14s     Synthesize event
+    t =   314.50s     Wait for com.example.aceclientapp to idle
+    t =   314.52s Waiting 5.0s for "Copied Action description." StaticText to exist
+    t =   315.59s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action description." StaticText`
+    t =   315.60s         Checking existence of `"Copied Action description." StaticText`
+    t =   315.83s Find the Target Application 'com.example.aceclientapp'
+    t =   316.77s Added attachment named 'Native copy — Action description'
+    t =   316.77s Terminate com.example.aceclientapp:93540
+    t =   317.80s Open com.example.aceclientapp
+    t =   317.81s     Launch com.example.aceclientapp
+    t =   318.69s         Setting up automation session
+    t =   324.29s         Wait for com.example.aceclientapp to idle
+    t =   327.41s Waiting 5.0s for "Username" TextField to exist
+    t =   328.51s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   328.52s         Checking existence of `"Username" TextField`
+    t =   328.96s Tap "Username" TextField
+    t =   328.96s     Wait for com.example.aceclientapp to idle
+    t =   328.97s     Find the "Username" TextField
+    t =   329.06s     Check for interrupting elements affecting "Username" TextField
+    t =   329.27s     Synthesize event
+    t =   329.87s     Wait for com.example.aceclientapp to idle
+    t =   331.35s Press "Username" TextField for 1.0 seconds
+    t =   331.35s     Wait for com.example.aceclientapp to idle
+    t =   331.51s     Find the "Username" TextField
+    t =   331.89s     Check for interrupting elements affecting "Username" TextField
+    t =   332.07s     Synthesize event
+    t =   333.39s     Wait for com.example.aceclientapp to idle
+    t =   334.26s Find the Target Application 'com.example.aceclientapp'
+    t =   335.21s Added attachment named 'Native Paste menu — Action description'
+    t =   335.22s Waiting 5.0s for Any (First Match) to exist
+    t =   336.27s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   336.27s         Checking existence of `Any (First Match)`
+    t =   336.50s Tap Any (First Match)
+    t =   336.50s     Wait for com.example.aceclientapp to idle
+    t =   336.52s     Find the Any (First Match)
+    t =   336.80s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   337.02s     Synthesize event
+    t =   337.39s     Wait for com.example.aceclientapp to idle
+    t =   337.84s Find the "Username" TextField
+    t =   338.07s Find the Target Application 'com.example.aceclientapp'
+    t =   339.00s Added attachment named 'Native paste value — Action description'
+    t =   339.00s Terminate com.example.aceclientapp:93579
+    t =   340.04s Open com.example.aceclientapp
+    t =   340.05s     Launch com.example.aceclientapp
+    t =   341.09s         Setting up automation session
+    t =   346.49s         Wait for com.example.aceclientapp to idle
+    t =   349.37s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   350.44s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   350.44s         Checking existence of `ScrollView (First Match)`
+    t =   350.68s Checking existence of `"Copy Action owner" Button`
+    t =   350.98s Find the "Copy Action owner" Button
+    t =   351.36s Find the ScrollView (First Match)
+    t =   351.42s Checking existence of `"Copy Action owner" Button`
+    t =   351.62s Find the "Copy Action owner" Button
+    t =   352.03s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =   352.03s     Wait for com.example.aceclientapp to idle
+    t =   352.05s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   352.11s     Check for interrupting elements affecting ScrollView
+    t =   352.35s     Synthesize event
+    t =   352.35s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   352.44s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   352.52s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   352.69s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   352.81s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   353.98s     Wait for com.example.aceclientapp to idle
+    t =   354.68s Checking existence of `"Copy Action owner" Button`
+    t =   354.87s Find the "Copy Action owner" Button
+    t =   355.20s Find the "Copy Action owner" Button
+    t =   355.45s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   355.51s Find the "Copy Action owner" Button
+    t =   355.83s Tap "Copy Action owner" Button
+    t =   355.83s     Wait for com.example.aceclientapp to idle
+    t =   355.93s     Find the "Copy Action owner" Button
+    t =   356.21s     Check for interrupting elements affecting "Copy Action owner" Button
+    t =   356.36s     Synthesize event
+    t =   356.74s     Wait for com.example.aceclientapp to idle
+    t =   356.76s Waiting 5.0s for "Copied Action owner." StaticText to exist
+    t =   357.84s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action owner." StaticText`
+    t =   357.85s         Checking existence of `"Copied Action owner." StaticText`
+    t =   358.04s Find the Target Application 'com.example.aceclientapp'
+    t =   359.05s Added attachment named 'Native copy — Action owner'
+    t =   359.05s Terminate com.example.aceclientapp:93612
+    t =   360.07s Open com.example.aceclientapp
+    t =   360.07s     Launch com.example.aceclientapp
+    t =   361.15s         Setting up automation session
+    t =   366.74s         Wait for com.example.aceclientapp to idle
+    t =   370.00s Waiting 5.0s for "Username" TextField to exist
+    t =   371.08s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   371.08s         Checking existence of `"Username" TextField`
+    t =   371.54s Tap "Username" TextField
+    t =   371.54s     Wait for com.example.aceclientapp to idle
+    t =   371.56s     Find the "Username" TextField
+    t =   371.65s     Check for interrupting elements affecting "Username" TextField
+    t =   371.76s     Synthesize event
+    t =   372.12s     Wait for com.example.aceclientapp to idle
+    t =   373.97s Press "Username" TextField for 1.0 seconds
+    t =   373.97s     Wait for com.example.aceclientapp to idle
+    t =   374.32s     Find the "Username" TextField
+    t =   374.64s     Check for interrupting elements affecting "Username" TextField
+    t =   374.81s     Synthesize event
+    t =   376.11s     Wait for com.example.aceclientapp to idle
+    t =   376.84s Find the Target Application 'com.example.aceclientapp'
+    t =   377.83s Added attachment named 'Native Paste menu — Action owner'
+    t =   377.84s Waiting 5.0s for Any (First Match) to exist
+    t =   378.86s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   378.86s         Checking existence of `Any (First Match)`
+    t =   379.14s Tap Any (First Match)
+    t =   379.14s     Wait for com.example.aceclientapp to idle
+    t =   379.16s     Find the Any (First Match)
+    t =   379.52s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   379.78s     Synthesize event
+    t =   380.14s     Wait for com.example.aceclientapp to idle
+    t =   380.58s Find the "Username" TextField
+    t =   380.76s Find the Target Application 'com.example.aceclientapp'
+    t =   381.61s Added attachment named 'Native paste value — Action owner'
+    t =   381.62s Terminate com.example.aceclientapp:93641
+    t =   382.69s Open com.example.aceclientapp
+    t =   382.70s     Launch com.example.aceclientapp
+    t =   383.75s         Setting up automation session
+    t =   389.42s         Wait for com.example.aceclientapp to idle
+    t =   392.55s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   393.63s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   393.63s         Checking existence of `ScrollView (First Match)`
+    t =   393.80s Checking existence of `"Copy Action target date" Button`
+    t =   394.16s Find the "Copy Action target date" Button
+    t =   394.55s Find the ScrollView (First Match)
+    t =   394.62s Checking existence of `"Copy Action target date" Button`
+    t =   394.81s Find the "Copy Action target date" Button
+    t =   395.04s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =   395.05s     Wait for com.example.aceclientapp to idle
+    t =   395.06s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   395.12s     Check for interrupting elements affecting ScrollView
+    t =   395.39s     Synthesize event
+    t =   395.39s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   395.47s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   395.58s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   395.67s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   395.76s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   396.83s     Wait for com.example.aceclientapp to idle
+    t =   397.46s Checking existence of `"Copy Action target date" Button`
+    t =   397.66s Find the "Copy Action target date" Button
+    t =   397.94s Find the "Copy Action target date" Button
+    t =   398.20s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   398.26s Find the "Copy Action target date" Button
+    t =   398.53s Tap "Copy Action target date" Button
+    t =   398.53s     Wait for com.example.aceclientapp to idle
+    t =   398.70s     Find the "Copy Action target date" Button
+    t =   398.91s     Check for interrupting elements affecting "Copy Action target date" Button
+    t =   399.08s     Synthesize event
+    t =   399.44s     Wait for com.example.aceclientapp to idle
+    t =   399.46s Waiting 5.0s for "Copied Action target date." StaticText to exist
+    t =   400.47s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action target date." StaticText`
+    t =   400.47s         Checking existence of `"Copied Action target date." StaticText`
+    t =   400.67s Find the Target Application 'com.example.aceclientapp'
+    t =   401.69s Added attachment named 'Native copy — Action target date'
+    t =   401.70s Terminate com.example.aceclientapp:93678
+    t =   402.75s Open com.example.aceclientapp
+    t =   402.75s     Launch com.example.aceclientapp
+    t =   403.63s         Setting up automation session
+    t =   409.35s         Wait for com.example.aceclientapp to idle
+    t =   412.64s Waiting 5.0s for "Username" TextField to exist
+    t =   413.73s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   413.73s         Checking existence of `"Username" TextField`
+    t =   414.11s Tap "Username" TextField
+    t =   414.11s     Wait for com.example.aceclientapp to idle
+    t =   414.14s     Find the "Username" TextField
+    t =   414.22s     Check for interrupting elements affecting "Username" TextField
+    t =   414.34s     Synthesize event
+    t =   414.73s     Wait for com.example.aceclientapp to idle
+    t =   416.32s Press "Username" TextField for 1.0 seconds
+    t =   416.32s     Wait for com.example.aceclientapp to idle
+    t =   416.50s     Find the "Username" TextField
+    t =   416.84s     Check for interrupting elements affecting "Username" TextField
+    t =   417.02s     Synthesize event
+    t =   418.31s     Wait for com.example.aceclientapp to idle
+    t =   419.07s Find the Target Application 'com.example.aceclientapp'
+    t =   420.06s Added attachment named 'Native Paste menu — Action target date'
+    t =   420.06s Waiting 5.0s for Any (First Match) to exist
+    t =   421.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   421.09s         Checking existence of `Any (First Match)`
+    t =   421.41s Tap Any (First Match)
+    t =   421.41s     Wait for com.example.aceclientapp to idle
+    t =   421.42s     Find the Any (First Match)
+    t =   421.73s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   422.00s     Synthesize event
+    t =   422.39s     Wait for com.example.aceclientapp to idle
+    t =   422.88s Find the "Username" TextField
+    t =   423.05s Find the Target Application 'com.example.aceclientapp'
+    t =   423.93s Added attachment named 'Native paste value — Action target date'
+    t =   423.93s Terminate com.example.aceclientapp:93707
+    t =   424.96s Open com.example.aceclientapp
+    t =   424.96s     Launch com.example.aceclientapp
+    t =   426.02s         Setting up automation session
+    t =   431.47s         Wait for com.example.aceclientapp to idle
+    t =   434.98s Waiting 5.0s for ScrollView (First Match) to exist
+    t =   436.07s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =   436.07s         Checking existence of `ScrollView (First Match)`
+    t =   436.29s Checking existence of `"Copy Action status" Button`
+    t =   436.64s Find the "Copy Action status" Button
+    t =   437.04s Find the ScrollView (First Match)
+    t =   437.11s Checking existence of `"Copy Action status" Button`
+    t =   437.32s Find the "Copy Action status" Button
+    t =   437.58s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =   437.58s     Wait for com.example.aceclientapp to idle
+    t =   437.60s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   437.66s     Check for interrupting elements affecting ScrollView
+    t =   437.89s     Synthesize event
+    t =   437.90s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   437.97s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   438.06s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   438.14s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   438.22s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   439.31s     Wait for com.example.aceclientapp to idle
+    t =   440.01s Checking existence of `"Copy Action status" Button`
+    t =   440.19s Find the "Copy Action status" Button
+    t =   440.43s Find the "Copy Action status" Button
+    t =   440.67s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =   440.73s Find the "Copy Action status" Button
+    t =   441.01s Tap "Copy Action status" Button
+    t =   441.01s     Wait for com.example.aceclientapp to idle
+    t =   441.25s     Find the "Copy Action status" Button
+    t =   441.44s     Check for interrupting elements affecting "Copy Action status" Button
+    t =   441.62s     Synthesize event
+    t =   442.00s     Wait for com.example.aceclientapp to idle
+    t =   442.01s Waiting 5.0s for "Copied Action status." StaticText to exist
+    t =   443.08s     Checking `Expect predicate `existsNoRetry == 1` for object "Copied Action status." StaticText`
+    t =   443.09s         Checking existence of `"Copied Action status." StaticText`
+    t =   443.29s Find the Target Application 'com.example.aceclientapp'
+    t =   444.13s Added attachment named 'Native copy — Action status'
+    t =   444.14s Terminate com.example.aceclientapp:93739
+    t =   445.16s Open com.example.aceclientapp
+    t =   445.16s     Launch com.example.aceclientapp
+    t =   446.04s         Setting up automation session
+    t =   451.66s         Wait for com.example.aceclientapp to idle
+    t =   454.72s Waiting 5.0s for "Username" TextField to exist
+    t =   455.78s     Checking `Expect predicate `existsNoRetry == 1` for object "Username" TextField`
+    t =   455.78s         Checking existence of `"Username" TextField`
+    t =   456.10s Tap "Username" TextField
+    t =   456.10s     Wait for com.example.aceclientapp to idle
+    t =   456.13s     Find the "Username" TextField
+    t =   456.23s     Check for interrupting elements affecting "Username" TextField
+    t =   456.57s     Synthesize event
+    t =   457.00s     Wait for com.example.aceclientapp to idle
+    t =   458.87s Press "Username" TextField for 1.0 seconds
+    t =   458.87s     Wait for com.example.aceclientapp to idle
+    t =   459.02s     Find the "Username" TextField
+    t =   459.33s     Check for interrupting elements affecting "Username" TextField
+    t =   459.50s     Synthesize event
+    t =   460.80s     Wait for com.example.aceclientapp to idle
+    t =   461.56s Find the Target Application 'com.example.aceclientapp'
+    t =   462.39s Added attachment named 'Native Paste menu — Action status'
+    t =   462.40s Waiting 5.0s for Any (First Match) to exist
+    t =   463.46s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   463.46s         Checking existence of `Any (First Match)`
+    t =   463.69s Tap Any (First Match)
+    t =   463.69s     Wait for com.example.aceclientapp to idle
+    t =   463.70s     Find the Any (First Match)
+    t =   463.97s     Check for interrupting elements affecting "Paste" MenuItem
+    t =   464.25s     Synthesize event
+    t =   464.62s     Wait for com.example.aceclientapp to idle
+    t =   465.05s Find the "Username" TextField
+    t =   465.23s Find the Target Application 'com.example.aceclientapp'
+    t =   466.07s Added attachment named 'Native paste value — Action status'
+    t =   466.07s Terminate com.example.aceclientapp:93765
+    t =   467.20s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testAllReleaseClipboardValuesPasteExactly]' passed (467.932 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-14 22:10:39.858.
+	 Executed 1 test, with 0 failures (0 unexpected) in 467.932 (467.982) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-14 22:10:39.860.
+	 Executed 1 test, with 0 failures (0 unexpected) in 467.932 (467.986) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 22:10:39.863.
+	 Executed 1 test, with 0 failures (0 unexpected) in 467.932 (467.991) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T120101Z-selected-cd2c12182d79/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-14 22:02:38.335 xcodebuild[93047:2299683] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 22:02:38.390 xcodebuild[93047:2299683] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 22:02:39.784 xcodebuild[93047:2299683] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 22:02:40.249 xcodebuild[93047:2299683] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 22:02:52.387 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:02:52.387 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:03:18.682 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:03:18.682 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:03:37.915 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:03:37.915 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:03:59.791 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:03:59.791 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:04:16.164 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:04:16.164 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:04:37.829 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:04:37.829 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:04:54.438 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:04:54.438 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:05:16.381 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:05:16.381 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:05:32.424 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:05:32.424 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:05:54.375 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:05:54.375 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:06:10.939 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:06:10.939 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:06:32.972 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:06:32.972 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:06:49.077 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:06:49.077 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:07:11.112 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:07:11.112 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:07:27.350 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:07:27.350 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:07:50.028 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:07:50.028 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:08:09.718 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:08:09.718 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:08:31.959 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:08:31.959 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:08:51.981 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:08:51.981 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:09:14.604 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:09:14.604 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:09:34.663 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:09:34.663 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:09:56.871 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:09:56.871 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:10:17.072 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 22:10:17.072 xcodebuild[93047:2299683] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-14 22:10:40.842 xcodebuild[93047:2299683] [MT] IDETestOperationsObserverDebug: 480.583 elapsed -- Testing started completed.
+2026-09-14 22:10:40.843 xcodebuild[93047:2299683] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 22:10:40.843 xcodebuild[93047:2299683] [MT] IDETestOperationsObserverDebug: 480.583 sec, +480.583 sec -- end

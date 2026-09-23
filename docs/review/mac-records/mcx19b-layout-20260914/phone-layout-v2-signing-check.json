@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "bundleIdentifier": true,
+    "team": true,
+    "applicationIdentifier": true,
+    "connectedPhoneInProfile": true,
+    "notExpired": true,
+    "signatureVerified": true
+  },
+  "profileUUID": "3753523d-0823-4877-a3bb-0d2479a35d5e",
+  "expiresUTC": "2026-09-21T02:37:21Z",
+  "bundleIdentifier": "com.alanrichardson.aceclientapp",
+  "testedBaseCommit": "7dc7cee7654ae8cc002da54324c3d1475a8494e6",
+  "sourceStatus": "private uncommitted UI candidate; UI QA incomplete"
+}

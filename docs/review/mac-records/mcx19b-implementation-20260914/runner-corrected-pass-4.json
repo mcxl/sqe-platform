@@ -1,0 +1,11 @@
+{
+  "commit": "7fee853aef52e85a813368a51d833c134710186d",
+  "runnerSha256": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+  "question": "Does the same selected GET request test pass after exact restoration of its expectation?",
+  "selector": "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+  "started": 1789383468.752664,
+  "runnerExit": 0,
+  "finished": 1789383614.34506,
+  "finalSourceSha256": "8bcd2da3c4bc53e65a2a05e7a3109bf66616b97993a32dd18aa108607111c4a3",
+  "finalGitStatus": ""
+}

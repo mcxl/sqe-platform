@@ -1,0 +1,16 @@
+{
+  "baseCommit": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "control": "LOCAL_HOME/Developer/sqe-platform-native-list-control",
+  "trial": "LOCAL_HOME/Developer/sqe-platform-native-list-trial",
+  "differentTrackedFiles": [
+    "ios/ACEClientApp/ACEClientApp/Views.swift"
+  ],
+  "sameUITests": true,
+  "sameRunner": true,
+  "views": {
+    "control": "05ed4ad3d3ef786c1274aa298089c18e74c9a3bea099a7df816ce3d3492c1756",
+    "trial": "3a23812a4abe08458ee6a10fb9de6a86608a4468e7e019775bc312989f981f1a"
+  },
+  "controlDiffCheckExit": 0,
+  "trialDiffCheckExit": 0
+}

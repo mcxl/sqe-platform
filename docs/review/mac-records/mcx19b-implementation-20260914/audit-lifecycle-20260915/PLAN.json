@@ -1,0 +1,18 @@
+{
+  "startUTC": "2026-09-14T21:54:25.944650+00:00",
+  "authority": "User: Just get it sorted; existing unbounded implementation authority. Keep all safety, privacy, scope and merge limits.",
+  "question": "Does a privacy window appear, or does the scene become inactive, during a failing native accessibility audit?",
+  "smallestScope": "One existing selected light release test on iPhone 17 Pro Max. Add timestamp logging only; retain all three unrestricted audits and all assertions.",
+  "variable": "Diagnostic observability: scene transitions, visible window levels, and dynamic text-size updates. No product behaviour change.",
+  "expectedEvidence": "Native failing assertions plus timestamped .all audit boundaries and app lifecycle/visible window log. Failing result must be retained before any correction.",
+  "candidateBase": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "limit": "No total limit. Two failed corrective attempts per fault. No blind rerun or broad suite.",
+  "estimate": "Prior selected build/test runs took five to six minutes. Diagnosis duration remains unknown.",
+  "highCostCommands": [
+    "generic xcodebuild build-for-testing",
+    "one selected xcodebuild test-without-building"
+  ],
+  "evidenceGate": "Reuse runner-selected-failure-pass-gate-7fee853.json; runner SHA unchanged; both native evidence directories accessible.",
+  "acceptance": "A product correction is accepted only after the original unrestricted failing test and affected checks pass. A diagnostic pass alone is not a cause or correction.",
+  "missingInputs": "Phone disconnected by user; not needed for this simulator diagnostic. Private service inputs and baseline decision remain independent."
+}

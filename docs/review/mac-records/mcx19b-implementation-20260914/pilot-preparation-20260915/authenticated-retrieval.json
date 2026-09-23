@@ -1,0 +1,9 @@
+{
+  "archive": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/retained-failure-evidence.tar.gz",
+  "method": "SSH streamed binary data to SHA-256 on Windows; no bulk file created",
+  "sshExit": 0,
+  "windowsSha256": "feddc7bd07154853e321850baa5d9c73c72df5459ff1c2e9c5f4263177358880",
+  "matchesMacSha256": true,
+  "result": "passed",
+  "observedUTC": "2026-09-15T00:55:24.670421+00:00"
+}

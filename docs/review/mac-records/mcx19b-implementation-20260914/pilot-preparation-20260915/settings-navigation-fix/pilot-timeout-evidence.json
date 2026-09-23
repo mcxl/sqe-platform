@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-09-15T03:44:42.925560+00:00",
+  "candidate": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "pilotStatus": "failed",
+  "nativeSelector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+  "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:348",
+  "case": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+  "viewport": "release-final",
+  "expected": "Unrestricted accessibility audit completes and passes",
+  "actual": "Accessibility audit failed for release release-final: Audit failed to complete in time",
+  "completedPilotBatches": 0,
+  "restorationFailures": [],
+  "cause": "Unresolved. Audit timeout does not establish an application display defect or an Apple defect.",
+  "imageInspection": "Primary session inspected release-final PNG at original resolution. Visible conclusion and action text, Copy action, Refresh and Sign out are readable; screenshot alone does not resolve the timeout.",
+  "nextStep": "Isolate the release-final timeout with retained evidence before correction. No correction attempted for this timeout on this candidate.",
+  "artifacts": [
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/batches/001/native-summary.json",
+      "sha256": "4e446a1818cac70cfb43ea0d177962e05244af012d12867f64b87c7d45f5ab5e"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/batches/001/native.log",
+      "sha256": "6ab82a755f5f9bc28fe9c3dd88050b8b3648b219a0847d7ac4a6d6664495fb12"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/batches/001/attachments/03E5CF71-E3FA-49EF-B7A2-0E2CC65440D1.png",
+      "sha256": "8de1cb0687bdf7104feba0d13a5bbea5f262d4853d497ad7ada07062895ec4bc"
+    },
+    {
+      "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-navigation-fix/pilot-runs/20260915T025954Z-pilot-e3aba28d2fcb/coverage-final-failure.json",
+      "sha256": "17a812081df5ecf8bda86388e0ed055de1c7e06cf9f9794750dd2301a21a0f70"
+    }
+  ]
+}

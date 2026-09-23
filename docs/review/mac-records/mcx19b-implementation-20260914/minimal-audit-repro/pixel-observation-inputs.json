@@ -1,0 +1,10 @@
+{
+  "question": "Does the unrestricted post-scroll audit still fail after directly observed pixel stability, and does the captured viewport change across the audit?",
+  "evidenceForQuestion": "The retained original pre-audit and native failure captures show different content positions. This probe measures the pixels; it does not assume a delay fixes the audit.",
+  "selectedTest": "testMinimalAuditReproPixelStableAllAudits",
+  "maximumObservationSeconds": 10,
+  "minimumIdenticalImageWindowSeconds": 0.5,
+  "appSourceChanged": false,
+  "acceptanceCredit": false,
+  "uiTestSha256": "e2c9d53ede357635b8bd2838b3033b73e8790f19ece95bc6bbb930955bd0fbe1"
+}

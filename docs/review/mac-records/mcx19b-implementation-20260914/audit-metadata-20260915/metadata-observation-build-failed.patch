@@ -1,0 +1,119 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+index f3c6b6b..4dbc969 100644
+--- a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
++++ b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+@@ -16,20 +16,30 @@ struct ACEClientApp: App {
+         default: return nil
+         }
+     }
++
++    private var showsUITestObservation: Bool {
++        UITestScenario.current != nil
++            && ProcessInfo.processInfo.environment["ACE_UI_TEST_SHOW_DIAGNOSTICS"] != "0"
++    }
++
++    @ViewBuilder
++    private var rootContent: some View {
++        if showsUITestObservation {
++            RootView(state: state)
++                .modifier(UITestObservationMetadata())
++        } else {
++            RootView(state: state)
++        }
++    }
+     #endif
+ 
+     var body: some Scene {
+         WindowGroup {
+-            RootView(state: state)
+             #if DEBUG
+-                .safeAreaInset(edge: .top, spacing: 0) {
+-                    // Manual phone previews can omit test metadata. Audit runs retain it.
+-                    if UITestScenario.current != nil,
+-                       ProcessInfo.processInfo.environment["ACE_UI_TEST_SHOW_DIAGNOSTICS"] != "0" {
+-                        EffectiveInterfaceStyleIndicator()
+-                    }
+-                }
++            rootContent
+                 .preferredColorScheme(uiTestColorScheme)
++            #else
++            RootView(state: state)
+             #endif
+                 .task {
+                 #if DEBUG
+@@ -42,7 +52,7 @@ struct ACEClientApp: App {
+ }
+ 
+ #if DEBUG
+-private struct EffectiveInterfaceStyleIndicator: View {
++private struct UITestObservationMetadata: ViewModifier {
+     // Read the window's environment, not the App's scene-level environment.
+     @Environment(\.colorScheme) private var colorScheme
+     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+@@ -95,15 +105,11 @@ private struct EffectiveInterfaceStyleIndicator: View {
+         return window.bounds.width > window.bounds.height ? "landscape" : "portrait"
+     }
+ 
+-    var body: some View {
+-        Text(colorScheme == .dark ? "dark" : "light")
+-            .font(.body)
+-            .foregroundStyle(.primary)
+-            .frame(maxWidth: .infinity, alignment: .leading)
+-            .padding(.horizontal)
+-            .padding(.vertical, 8)
+-            .background(.background)
++    func body(content: Content) -> some View {
++        content
++            .accessibilityElement(children: .contain)
+             .accessibilityIdentifier("Effective interface style")
++            .accessibilityLabel(colorScheme == .dark ? "dark" : "light")
+             .accessibilityValue(accessibilityValue)
+     }
+ }
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 175c95d..3e2af3c 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -142,8 +142,14 @@ final class ACEClientAppUITests: XCTestCase {
+         return app
+     }
+ 
++    private func observationElement(in app: XCUIApplication) -> XCUIElement {
++        app.descendants(matching: .any)
++            .matching(identifier: "Effective interface style")
++            .firstMatch
++    }
++
+     private func observedSettings(in app: XCUIApplication) -> CoverageSettings? {
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         guard requireCoverage(indicator.waitForExistence(timeout: 5), "Coverage observation indicator must exist") else { return nil }
+         let ready = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+             guard let value = indicator.value as? String, let data = value.data(using: .utf8) else { return false }
+@@ -618,7 +624,7 @@ final class ACEClientAppUITests: XCTestCase {
+     func testBothAppearances() {
+         for appearance in ["light", "dark"] {
+             let app = launch("release", appearance: appearance)
+-            let indicator = app.staticTexts["Effective interface style"]
++            let indicator = observationElement(in: app)
+             XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+             let displayedAppearance = XCTNSPredicateExpectation(
+                 predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+@@ -663,7 +669,7 @@ final class ACEClientAppUITests: XCTestCase {
+         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must expose only one grouped action copy control")
+         assertMinimumActionTargets(in: app)
+         let appearance = requiredAppearance()
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+         let displayedAppearance = XCTNSPredicateExpectation(
+             predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+@@ -805,7 +811,7 @@ final class ACEClientAppUITests: XCTestCase {
+         XCUIDevice.shared.orientation = .portrait
+         let app = launchWithNormalDeviceSettings("release")
+         defer { app.terminate() }
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+         let displayedAppearance = XCTNSPredicateExpectation(
+             predicate: NSPredicate(format: "label == %@", expectedAppearance), object: indicator

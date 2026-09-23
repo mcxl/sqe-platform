@@ -1,0 +1,58 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index b5ab0b0..0e56a65 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -70,7 +70,7 @@ final class ACEClientAppUITests: XCTestCase {
+         if request.mode == "set" {
+             guard let boldText = request.boldText, let reduceMotion = request.reduceMotion,
+                   let increaseContrast = request.increaseContrast, let orientation = request.orientation,
+-                  assertRequestedOrientation(in: app, requested: orientation),
++                  assertRequestedOrientation(in: app, requested: orientation == "portrait" ? "landscape" : "portrait"),
+                   requireCoverage(
+                     observed.orientation == orientation && observed.boldText == boldText && observed.reduceMotion == reduceMotion
+                         && observed.increaseContrast == increaseContrast,
+@@ -163,12 +163,38 @@ final class ACEClientAppUITests: XCTestCase {
+     }
+ 
+     private func assertRequestedOrientation(in app: XCUIApplication, requested: String) -> Bool {
+-        let expectation = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+-            let frame = app.frame
+-            return requested == "landscape" ? frame.width > frame.height : frame.height > frame.width
+-        }, object: nil)
+-        return requireCoverage(XCTWaiter.wait(for: [expectation], timeout: 5) == .completed,
+-                               "App frame did not reach requested \(requested) orientation")
++        emitJSON(marker: "ACE_ORIENTATION_READ_STARTED", payload: ["requested": requested])
++        let readStart = ProcessInfo.processInfo.systemUptime
++        let frame = app.frame
++        let elapsedReadSeconds = ProcessInfo.processInfo.systemUptime - readStart
++        let hasUsableDimensions = frame.width.isFinite && frame.height.isFinite
++            && frame.width > 0 && frame.height > 0
++        let matches = hasUsableDimensions && (requested == "landscape"
++            ? frame.width > frame.height
++            : frame.height > frame.width)
++        let outcome = hasUsableDimensions ? (matches ? "match" : "mismatch") : "readFailure"
++
++        emitJSON(marker: "ACE_ORIENTATION_FRAME", payload: [
++            "requested": requested,
++            "outcome": outcome,
++            "elapsedReadSeconds": elapsedReadSeconds,
++            "frame": [
++                "x": "\(frame.origin.x)",
++                "y": "\(frame.origin.y)",
++                "width": "\(frame.width)",
++                "height": "\(frame.height)"
++            ]
++        ])
++
++        guard requireCoverage(
++            hasUsableDimensions,
++            "Could not read a usable native app frame for requested \(requested) orientation"
++        ) else { return false }
++
++        return requireCoverage(
++            matches,
++            "Native app frame does not match requested \(requested) orientation"
++        )
+     }
+ 
+     private func waitForCoverageState(in app: XCUIApplication, scenario: String) -> Bool {

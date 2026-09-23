@@ -1,0 +1,8 @@
+{
+  "question": "What screen is visible while the existing recovery test is running?",
+  "scope": "one read-only screenshot; no input or settings change",
+  "utc": "2026-09-15T02:19:03.861149+00:00",
+  "exit": 0,
+  "stdout": "",
+  "stderr": "Detected file type from extension: PNG\nNote: No display specified. Defaulting to display: 39C2B830-F3B8-44E8-B2E5-1D32D5C1C478 (screenID: 1, name: LCD)\nWrote screenshot to: LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/settings-observation-fix/recovery-in-progress.png\n"
+}

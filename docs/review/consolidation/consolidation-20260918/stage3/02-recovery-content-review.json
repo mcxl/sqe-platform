@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-18T14:48:24.443956+10:00",
+  "files_reviewed": 120,
+  "patterns": [
+    "private_key",
+    "github_token",
+    "aws_key",
+    "openai_token",
+    "slack_token",
+    "credentialed_url"
+  ],
+  "unresolved": [],
+  "limit": "Bounded credential-pattern check and approved source scope; not exhaustive security certification. Existing tracked history review reused from Stage 2."
+}

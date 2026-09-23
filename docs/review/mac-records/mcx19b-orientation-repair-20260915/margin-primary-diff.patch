@@ -1,0 +1,61 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+index db9fc6d..c93b918 100644
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -10,6 +10,15 @@ enum UITestScenario: String {
+         guard let raw = ProcessInfo.processInfo.environment["ACE_UI_TEST_SCENARIO"] else { return nil }
+         return UITestScenario(rawValue: raw)
+     }
++
++    var usesReleaseScroll: Bool {
++        switch self {
++        case .release, .noConclusion, .noActions, .copyConfirmation, .multiAction:
++            true
++        default:
++            false
++        }
++    }
+ }
+ 
+ struct ScenarioRootView: View {
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index d613e14..78943d1 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -8,7 +8,11 @@ struct RootView: View {
+     var body: some View {
+         #if DEBUG
+         if let scenario = UITestScenario.current {
+-            ScenarioRootView(scenario: scenario).padding()
++            if scenario.usesReleaseScroll {
++                ScenarioRootView(scenario: scenario)
++            } else {
++                ScenarioRootView(scenario: scenario).padding()
++            }
+         }
+         else { content }
+         #else
+@@ -37,9 +41,14 @@ struct RootView: View {
+                 SafeMessageView(message: message, action: (deletionOnlyRecovery ? "Reset saved sign-in" : "Try again", deletionOnlyRecovery ? state.resetSavedSignIn : { state.retry(.deletion) }))
+             }
+         }
+-        .padding()
++        .padding(isReleasePresentation(presentation) ? 0 : nil)
+         .modifier(ErrorAnnouncement(message: presentation.errorMessage, event: state.errorAnnouncementEvent))
+     }
++
++    private func isReleasePresentation(_ presentation: ScreenState.Presentation) -> Bool {
++        if case .release = presentation { return true }
++        return false
++    }
+ }
+ 
+ private struct ErrorAnnouncement: ViewModifier {
+@@ -202,6 +211,7 @@ struct ReleaseView: View {
+                 .accessibilityLabel("Sign out")
+             }
+             .frame(maxWidth: .infinity, alignment: .leading)
++            .padding()
+         }
+         .tint(.primary)
+     }

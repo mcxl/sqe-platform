@@ -1,0 +1,14 @@
+{
+  "baseCommit": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "files": {
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "7d772483227b1a166864bff7190171db681b04cff1e93ced356fb1ab1976cbef",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "4fb5f44d88a34db25879ba2aeea6ab3b3f7edb4f6ffa0a2ca079e6320d541915",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "05ed4ad3d3ef786c1274aa298089c18e74c9a3bea099a7df816ce3d3492c1756",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "335687d59070fdd1499de490b2d35f13639bbbd4c931451a4d957beba0cde604",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "ae57ff6690f10d8fe3565ba1797119afda3ab32c9a4e175ec80146ebdc8e702f"
+  },
+  "primaryReview": "complete accumulated diff inspected before native execution",
+  "nativeStatus": "native menu correction ready"
+}

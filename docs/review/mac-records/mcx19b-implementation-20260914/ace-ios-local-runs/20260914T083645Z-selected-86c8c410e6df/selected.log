@@ -1,0 +1,31 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult
+
+Test Suite 'Selected tests' started at 2026-09-14 18:39:21.050.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 18:39:21.053.
+Test Suite 'ACEClientAppTests' started at 2026-09-14 18:39:21.054.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.
+LOCAL_HOME/Developer/sqe-platform-release-layout/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift:59: error: -[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache] : XCTAssertEqual failed: ("Optional("GET")") is not equal to ("Optional("POST")")
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' failed (0.335 seconds).
+Test Suite 'ACEClientAppTests' failed at 2026-09-14 18:39:21.395.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.335 (0.341) seconds
+Test Suite 'ACEClientAppTests.xctest' failed at 2026-09-14 18:39:21.396.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.335 (0.344) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 18:39:21.397.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.335 (0.347) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T083645Z-selected-86c8c410e6df/selected.xcresult
+
+Testing started
+2026-09-14 18:39:13.555 xcodebuild[67389:1859158] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:39:13.577 xcodebuild[67389:1859158] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:39:14.981 xcodebuild[67389:1859158] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:40:23.349 xcodebuild[67389:1859158] [MT] IDETestOperationsObserverDebug: 68.345 elapsed -- Testing started completed.
+2026-09-14 18:40:23.349 xcodebuild[67389:1859158] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:40:23.349 xcodebuild[67389:1859158] [MT] IDETestOperationsObserverDebug: 68.345 sec, +68.345 sec -- end
+** TEST EXECUTE FAILED **
+

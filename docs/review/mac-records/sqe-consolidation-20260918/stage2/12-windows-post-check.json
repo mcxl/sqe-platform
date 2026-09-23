@@ -1,0 +1,179 @@
+{
+  "captured_at": "2026-09-18T13:05:27.190202+10:00",
+  "checks": {
+    "head_unchanged": true,
+    "refs_unchanged_since_stage1": true,
+    "status_unchanged": true,
+    "index_entries_unchanged_since_stage1": true,
+    "tracked_worktree_clean": true
+  },
+  "head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+  "refs": "refs/heads/main 478a7d8cd9c97d0bc43bd4d41ea460d589d4003a\nrefs/remotes/origin/main 29b62df901af9833be334392d97a6b45a42d1962\n",
+  "status": "?? .snapshots/\u0000?? docs/plans/\u0000",
+  "index_entries": 112,
+  "preserved_files": [
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\ACE_PROGRESS_GUIDE.html",
+      "sha256": "62c1a67cce5dd1628196ba045bb7cdb15122e3f5ed0680496283c4d43df2b739",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\ACE_VISION_AND_ROADMAP.md",
+      "sha256": "047316a31675847fb2a31c8247d64180629ed4ae6c0acdb3a78e2020e270a6e7",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\AGENTS.md",
+      "sha256": "f26c07117e7003ec4011aa862ba120c7e410c2af3ba5e34d08e01ff4c96f07a3",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\DEV_STATE.md",
+      "sha256": "fb96574d75bdb08a5dcc9484b6507a323304cbdb5aa2bfd24783df2218abdcb5",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\ios\\ACEClientApp\\ACEClientAppUITests\\ACEClientAppUITests.swift",
+      "sha256": "5ced0a7a02d06b687b254f4321745319fa8b84c10ce239784bcf3bff5afbd31c",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\sqe-platform-public-clean\\uv.lock",
+      "sha256": "8e056bb71d34315fba863cbc3b8f827076d7cfdd1cb926e657db7244ed4d6b67",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\.gitignore",
+      "sha256": "b52bf90ac8bd80b11f0733a5ab5255d87fe6b37d5cffc008b60dd1c48e7c0773",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\AGENTS.md",
+      "sha256": "aa85e36601bb3b55caa8eb9c7e00c65115d0bb3377381e90926fd91b5ef00d77",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\README.md",
+      "sha256": "9cac56448368da88bbe2064482b24ab51d30f7db97b9157bd8e97a8349e4c41a",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\src\\ace\\domain\\assessment.py",
+      "sha256": "e523678603c98a22bdc1a3b258638cb56ed70df66b44db232b07e8f3de03de47",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\src\\ace\\engine\\approval.py",
+      "sha256": "596d98be74dd29be00256cc344078633d82325d633bed9007803a70e7703dc56",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\tests\\test_approval_gate.py",
+      "sha256": "bf3edc423fbeab9857735f41a13977b6ada4d844695ee09dce07b220f9987dec",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\tests\\test_planning_trace.py",
+      "sha256": "83f5319e0b65ae5d9dc4d5e5bf2907ce32adcacca6bdf6f3e8bfdb4ca90c9bef",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\tmp\\sqe-mcx-15-phase6-1-simulator-probe-v2\\sqe\\ios\\ACEClientApp\\Phase6_1EvidenceRegister.json",
+      "sha256": "2167232983867af6f89a5ffafc78cfa26d40079ca3121f03f1755f4759f7c844",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\tmp\\sqe-mcx-15-phase6-1-simulator-probe-v2\\sqe\\ios\\ACEClientApp\\Phase6_1EvidenceRegister.md",
+      "sha256": "d30359a8f6c8af2c654c5c66f13869d780b52262ca81f79feeaec694a8452536",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\ace_ios_local.py.transfer",
+      "sha256": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+      "matches_stage1": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\test_ace_ios_local.py.transfer",
+      "sha256": "32fa082804578796995421e5520275e723bdd8dad8d2d672103712a1cac3bebe",
+      "matches_stage1": true
+    }
+  ],
+  "approved_instructions": [
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\docs\\ace\\2026-09-16-ace-ios-swift-completion-instruction.md",
+      "sha256": "252aab6ba1115b72f1fcbd84c3d49f3429550c0845d96c2008088d15bdbbe629",
+      "matches_approved": true
+    },
+    {
+      "path": "C:\\Users\\AlanRichardson\\Documents\\agentic-os-workspace\\sqe\\docs\\ace\\2026-09-17-ace-ios-copy-reflow-check-instruction.md",
+      "sha256": "f7147730b09e0b4daf5d18090abc29d38f780962479dc55a49631af20c1f2179",
+      "matches_approved": true
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=normal"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "diff",
+        "--name-only"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "limitations": "Pre-stage raw index checksum was not recorded. Comparison uses Stage 1 index entries; ignored and grouped untracked trees were not rehashed."
+}

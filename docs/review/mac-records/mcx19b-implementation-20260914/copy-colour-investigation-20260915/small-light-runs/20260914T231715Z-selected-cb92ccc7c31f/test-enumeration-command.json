@@ -1,0 +1,26 @@
+{
+  "command": [
+    "xcodebuild",
+    "test-without-building",
+    "-xctestrun",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun",
+    "-destination",
+    "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+    "-parallel-testing-enabled",
+    "NO",
+    "-enumerate-tests",
+    "-test-enumeration-style",
+    "flat",
+    "-test-enumeration-format",
+    "json",
+    "-test-enumeration-output-path",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f/test-enumeration.json"
+  ],
+  "end": "2026-09-14T23:24:11.102278+00:00",
+  "exit": 0,
+  "seconds": 283.904,
+  "start": "2026-09-14T23:19:27.198280+00:00",
+  "stderr": "2026-09-15 09:19:42.401 xcodebuild[74635:3395608] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 09:19:42.466 xcodebuild[74635:3395608] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n2026-09-15 09:19:42.517 xcodebuild[74635:3395608] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.\n",
+  "stdout": "Command line invocation:\n    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f/build/Build/Products/ACEClientAppUITests_iphonesimulator26.4-x86_64.xctestrun -destination id=2EB0863C-470E-467D-A0C6-CD216DA70C67 -parallel-testing-enabled NO -enumerate-tests -test-enumeration-style flat -test-enumeration-format json -test-enumeration-output-path LOCAL_HOME/ace-private/mcx19b-implementation-20260914/copy-colour-investigation-20260915/small-light-runs/20260914T231715Z-selected-cb92ccc7c31f/test-enumeration.json\n\n2026-09-15 09:23:23.679277+1000 ACEClientAppUITests-Runner[75197:3404916] [Default] Running tests...\n2026-09-15 09:23:23.871663+1000 ACEClientAppUITests-Runner[75197:3405448] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric\n2026-09-15 09:23:23.912553+1000 ACEClientAppUITests-Runner[75197:3405418] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics\n    t =      nans Interface orientation changed to Portrait\n\nTest session results, code coverage, and logs:\n\tLOCAL_HOME/Library/Developer/Xcode/DerivedData/ACEClientApp-cakvlovmufjgjtffybfsfitxzcja/Logs/Test/Test-ACEClientAppUITests-2026.09.15_09-19-42-+1000.xcresult\n\n** TEST EXECUTE SUCCEEDED **\n\n",
+  "timedOut": false
+}

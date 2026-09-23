@@ -1,0 +1,19 @@
+{
+  "atUTC": "2026-09-16T21:24:47.165342+00:00",
+  "commit": "40bae2640b23eb05496a093d09a4c20186403879",
+  "branch": "codex/mcx19b-release-layout",
+  "files": [
+    "ACE_PROGRESS_GUIDE.html",
+    "DEV_STATE.md",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md",
+    "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "reviewedDiffSha256": "0700282b817ef24e7d21324c21c0c858c1bd82d5011f4e3afc5d3224fa23fcdd",
+  "commitOutput": "[codex/mcx19b-release-layout 40bae26] Add isolated ACE iOS discovery cases and preserve failure evidence\n Committer: Alan Richardson <alanrichardson@Vincent-MacBook-Pro.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 7 files changed, 635 insertions(+), 35 deletions(-)\n create mode 100644 docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+  "clean": true,
+  "pushPerformed": false,
+  "mergePerformed": false
+}

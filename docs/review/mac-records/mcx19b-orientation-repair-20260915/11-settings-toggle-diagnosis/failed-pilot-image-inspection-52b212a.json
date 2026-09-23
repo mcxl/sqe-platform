@@ -1,0 +1,332 @@
+{
+  "recordedUTC": "2026-09-15T19:58:02.459040+00:00",
+  "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6",
+  "nativePngCount": 38,
+  "distinctPngCount": 14,
+  "inspectionComplete": true,
+  "inspectionScope": "All PNG images in this failed native coverage batch. Three Copy failure/pre-audit images were inspected in the preceding turn; eleven other distinct images were inspected in this turn. Hash deduplication is confined to this candidate and run.",
+  "groups": [
+    {
+      "sha256": "feff1cd5b744632b400a0cadd906287eaf402050c94f2ddce55b38e2a4f59ede",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/082E918C-F964-42B0-9873-D36C0D47332A.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/082E918C-F964-42B0-9873-D36C0D47332A.png",
+          "bytes": 80324,
+          "capture": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport initial_0_7718382F-7EE4-4867-9F5B-B945C5D626A5.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B5F673B7-79AC-43B7-999B-A998AD4D8B8D.png",
+          "bytes": 80324,
+          "capture": "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in_0_A3F7E097-7AEA-4515-9BD4-6A9D1F200616.png"
+        }
+      ]
+    },
+    {
+      "sha256": "3930a55b1dc45cd0743204b8b08a1ef13b81850f6c7444754820a9bffa66a1d8",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/0E0937A9-F29B-41F2-96C6-1FA58F4E6A03.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/0E0937A9-F29B-41F2-96C6-1FA58F4E6A03.png",
+          "bytes": 192674,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Release version_0_D4862AEF-93AD-495A-ADA0-C00DCE85B788.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/0E34372B-2AB6-4569-BE96-30BFBB50C821.png",
+          "bytes": 192674,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Engagement name_0_5234CF44-C6E9-4B66-AB8E-B022FC849DED.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/49D77E76-8A34-47F0-9B1A-DFEC18716D83.png",
+          "bytes": 192674,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Review status_0_7850E62E-8DC9-4B73-A46A-3D7642F24A22.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/CAE22D65-6BCE-4BDF-9A0F-FE85F9AB50B5.png",
+          "bytes": 192674,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport initial_0_024BDED9-320F-4BF4-86BA-9D65FC73319C.png"
+        }
+      ]
+    },
+    {
+      "sha256": "b5c36b9901a56a807fa78407f34d6e1ff3678e23c22c8ac1045ec787617c4c4e",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/0F78F68E-ED91-478E-8A17-F4FDB1490FD5.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/0F78F68E-ED91-478E-8A17-F4FDB1490FD5.png",
+          "bytes": 182255,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner_0_76CDFC75-1862-4E98-AA25-754C0B6E2E9B.png"
+        }
+      ]
+    },
+    {
+      "sha256": "fe4efa56858144c2c89cef2940ee439df1799f5b1380c661f8ef1a2ad4d770a4",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/29F71F3C-8E9E-47AE-A618-5156A0BA89EC.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/29F71F3C-8E9E-47AE-A618-5156A0BA89EC.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Published date and time_0_ED712588-72EA-4DFD-9166-85A27A71C7B0.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/2B1AE275-FB79-4AFD-8F65-1E11EB156B4B.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_54AD9C59-BDE5-4D15-B8C9-A978BFAA5EC2.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/6FA0F2B4-8CEE-40D4-BABB-4F1CD88BB126.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Evidence reference_0_73BEE1DF-51D2-476A-9218-E9F91106032E.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/84602694-F416-4AE3-9646-98EA92F2EAB9.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Review status_0_689A314C-55D1-4043-9893-C7F8AB895461.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/AEE83B4C-2CE6-4CE0-8A9B-C294AF227E73.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action description_0_1CBB3706-2B15-423A-A4A5-F1D9F932E5C5.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B4071128-F545-4D2F-A04E-8EDE75AD09A4.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title_0_014CD340-E5E0-49DE-9DBA-5DD93027FD91.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/F8BF56E3-AC4F-49CC-8CAE-30DA9C3EDF8A.png",
+          "bytes": 191305,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Release version_0_204AD8D3-D5DB-4AD8-AFB3-87270FE5E181.png"
+        }
+      ]
+    },
+    {
+      "sha256": "3964fe7da0976c13d91c4d9c3073bcbad9bf278513893b813e3924e4a172b730",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/2D7CFEEF-B797-4DC0-AA30-6532BEC27D46.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/2D7CFEEF-B797-4DC0-AA30-6532BEC27D46.png",
+          "bytes": 193331,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner_0_6AF0B55B-CA67-42F4-8B2E-0F4D88680A25.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/5393FCEA-803F-4DE2-AAB9-78DB6BD12FE9.png",
+          "bytes": 193331,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time_0_AE33096B-CC2B-44EE-9480-184EC311FFCF.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/56934D5C-648A-4353-A312-455379E6ADB4.png",
+          "bytes": 193331,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action status_0_9087758E-3068-453F-88F0-AC92B8ED976C.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/8661447E-0E0B-4B38-BD8E-2BAC520D7946.png",
+          "bytes": 193331,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action target date_0_881A266D-EB81-42B4-BB8A-D71782F613DC.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/95212AE7-EFFE-4C95-AA55-B8460E9913E9.png",
+          "bytes": 193331,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action description_0_12FCCFD8-E631-46B2-BF67-8F13F093850B.png"
+        }
+      ]
+    },
+    {
+      "sha256": "203c248a38912d16345fb48ef811e993e69ad1340cb7e0142755949ee6023a4e",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/49BAD528-7807-49F0-8BD4-12E3A479403A.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/49BAD528-7807-49F0-8BD4-12E3A479403A.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Release version_0_6BF28662-C8B0-479F-96F9-4BE3FC1B3689.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/53171C3A-D24E-4730-A62C-19DBEA318515.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Review status_0_9DFE1DF6-77C1-42AA-BE97-3CD8F28E816D.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/A8D884DF-EF45-4F58-8213-A1CE53E4FC41.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Engagement name_0_8DF59779-2D43-4DBA-914A-3347667BF7A9.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B2CE536B-822F-4662-9CC1-81D672408E0D.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport initial_0_A09EDA84-BEB6-47D3-9DAA-FAC874B25ECB.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/D7DDF3C3-EC99-42FA-9E09-A419400D9587.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion title_0_4C428F5B-0F7A-48D0-A039-EED0DA6ACA22.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/E0FAC03B-3B4A-444D-8BA2-A09CDF9B10C9.png",
+          "bytes": 185847,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time_0_68D8F1E7-F751-41CE-8D8C-80912AAED908.png"
+        }
+      ]
+    },
+    {
+      "sha256": "2626bd22a355f1bdb80cebf58eb9523e46aec56ddc2083d785cd65d9f80efcbd",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/64C73E33-5B7D-437C-BCB3-EC9DF2299FE1.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/64C73E33-5B7D-437C-BCB3-EC9DF2299FE1.png",
+          "bytes": 12885,
+          "capture": "Element Screenshot_1_2B0737B3-A329-4857-833E-FFC3E451DDE9.png"
+        }
+      ]
+    },
+    {
+      "sha256": "a616141b653fcde6d965a3f788c43db9623310c1c96c70ad26bee4f589093960",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/78050D12-3535-4F27-AE4C-C122361E7902.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/78050D12-3535-4F27-AE4C-C122361E7902.png",
+          "bytes": 186044,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Evidence reference_0_03EFA2DA-D911-40A7-A3BD-F5508224BAC8.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/8A4980B8-CC6F-4A17-BA66-D7FF41E2E6EF.png",
+          "bytes": 186044,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion summary_0_FF536A64-6B43-4CB0-B1D7-0EA624616FD7.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/CC1F5B5C-5441-47D3-A04F-C764A8094088.png",
+          "bytes": 186044,
+          "capture": "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport no-actions-notice_0_4D6424C3-4F84-4621-AD6A-B5198AC59ADE.png"
+        }
+      ]
+    },
+    {
+      "sha256": "5eb815d6772e94d42501b0fa63b5db2ae5ba6a5401a167483b608092a54724d1",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/A1059D70-7315-4AEC-8A61-A0D37546CDB5.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/A1059D70-7315-4AEC-8A61-A0D37546CDB5.png",
+          "bytes": 192111,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Engagement name_0_A38FC022-3112-4097-ADBF-1D035DDA3EEA.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/CD0D9EED-7344-4F6C-B54B-C72CECECCC20.png",
+          "bytes": 192111,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial_0_4B84A6F0-C7E6-4299-99DA-4AE639BD6A99.png"
+        }
+      ]
+    },
+    {
+      "sha256": "ec776dddbe9d9fbf7e2ae6c95408bb5754a379417a7736d60c37669bff1c8756",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/A4E2B7C9-CA78-402B-AE61-16B5AE150740.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/A4E2B7C9-CA78-402B-AE61-16B5AE150740.png",
+          "bytes": 181654,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport release-final_0_FA6C5098-89E9-4377-B919-B26B2AC9BCA3.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B1A114AA-363D-450E-9DFC-D644C4D6C454.png",
+          "bytes": 181654,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action status_0_7F28A39B-B6A4-4A70-9282-338CE772225C.png"
+        },
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/F0E1C4C6-0955-4E46-AB6D-E067F568231A.png",
+          "bytes": 181654,
+          "capture": "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date_0_9A82DCD2-0443-4DC7-85B8-084B744DCC69.png"
+        }
+      ]
+    },
+    {
+      "sha256": "f804c0342d887185e4af84ae48fa22887b132146cc05d00a031466c865759f0a",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B7DDE42E-CF5F-4777-885D-B89C8D3135BC.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/B7DDE42E-CF5F-4777-885D-B89C8D3135BC.png",
+          "bytes": 190171,
+          "capture": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation_0_6FBDD4CD-A65B-4CFF-9345-991C12EEB61E.png"
+        }
+      ]
+    },
+    {
+      "sha256": "a8af8a5d730ec70d393c8b2670387c3ad060bdb364eb15642bafbcfe22e46fe5",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/C0581F09-E104-42CD-BE4A-6FB823EF97A4.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/C0581F09-E104-42CD-BE4A-6FB823EF97A4.png",
+          "bytes": 183411,
+          "capture": "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice_0_C465CF43-34CE-4677-A030-50EF4251E0E9.png"
+        }
+      ]
+    },
+    {
+      "sha256": "5cbd1124eeb137ddecf71855e5b7852cae34cd28d6a18e0b0798bcbd2e86f3b9",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/EA6E58A8-70B9-41A7-B81B-9543768B3CE6.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/EA6E58A8-70B9-41A7-B81B-9543768B3CE6.png",
+          "bytes": 203175,
+          "capture": "App Screenshot_0_81A436ED-0AA2-4B3C-BFAE-AE8E90CC3173.png"
+        }
+      ]
+    },
+    {
+      "sha256": "22d6bec70b5d8f334147f2f0c0f005ad28e3b7e031db2c18d80c1fd26ac7b64c",
+      "representative": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/F2E6B28F-D858-4F03-BA57-50157368B783.png",
+      "inspection": "Reviewed at original resolution; no additional visible layout defect identified. Scroll boundaries are assessed across retained viewports.",
+      "files": [
+        {
+          "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/attachments/F2E6B28F-D858-4F03-BA57-50157368B783.png",
+          "bytes": 192188,
+          "capture": "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial_0_24FFC4E5-2A4E-41A7-B84C-125FF1B2A5D7.png"
+        }
+      ]
+    }
+  ],
+  "nativeEvidence": {
+    "batches/001/native-command.json": {
+      "bytes": 58113,
+      "sha256": "e72529328614c97585433c2f2fb74af2bcf006b0b2ff574af0b5b4bebbd4363d"
+    },
+    "batches/001/native-summary.json": {
+      "bytes": 1311,
+      "sha256": "f9a6d4c89fe33d04fa6dc98399a4babb63d6f3e5fd8f80d1b2ea451d379cfb14"
+    },
+    "batches/001/native.log": {
+      "bytes": 55568,
+      "sha256": "2cde928cb625ecfd682aaf22822ca79f05709060e99471161c703ded39621fd0"
+    },
+    "batches/001/ACEClientAppUITests.xctestrun": {
+      "bytes": 7958,
+      "sha256": "3846d7e1df37a6b6a99deb8e84a960c29303ab867c7ca1f3acec0eb184b07424"
+    },
+    "batches/001/attachments/manifest.json": {
+      "bytes": 22847,
+      "sha256": "5442de18915c5843e9bd097cc2ed00bfdbf87a00e5b5c64e31a86234af7bea93"
+    }
+  },
+  "nativeBundle": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs/20260915T133932Z-pilot-497a5a280dc6/batches/001/result.xcresult",
+    "fileCount": 1066,
+    "bytes": 87944218
+  },
+  "limits": [
+    "Image inspection does not override native audit failures.",
+    "Video retained, not fully inspected for this run.",
+    "No claim about audit sampling pixels or the cause of Copy contrast.",
+    "This failed batch provides no completed pilot acceptance."
+  ]
+}

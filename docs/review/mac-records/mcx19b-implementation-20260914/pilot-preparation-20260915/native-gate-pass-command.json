@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pass-runs",
+    "selected",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache"
+  ],
+  "startedUTC": "2026-09-15T00:53:55.241169+00:00",
+  "finishedUTC": "2026-09-15T00:56:34.003332+00:00",
+  "runnerExit": 0,
+  "stdout": "{\"manifest\": \"LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pass-runs/20260915T005355Z-selected-67dae754fec2/manifest.json\", \"result\": \"passed\"}\n",
+  "stderr": ""
+}

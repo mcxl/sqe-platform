@@ -1,0 +1,348 @@
+diff --git a/tools/tests/test_ace_ios_local.py b/tools/tests/test_ace_ios_local.py
+index 4705ce0..fbddcf6 100644
+--- a/tools/tests/test_ace_ios_local.py
++++ b/tools/tests/test_ace_ios_local.py
+@@ -1,4 +1,8 @@
+ from copy import deepcopy
++from contextlib import ExitStack, redirect_stdout, redirect_stderr
++import io
++import struct
++import zlib
+ import importlib.util
+ import json
+ import plistlib
+@@ -695,5 +699,334 @@ class CommandAndResourceEvidenceTests(unittest.TestCase):
+                     ace.validate_full_gate(manifest, ledger, candidate)
+ 
+ 
++
++class DiscoveryNativeEvidenceTests(unittest.TestCase):
++    """Synthetic native evidence exercises parsing; it is not native execution proof."""
++
++    def setUp(self):
++        self.directory = tempfile.TemporaryDirectory()
++        self.addCleanup(self.directory.cleanup)
++        self.root = Path(self.directory.name)
++        self.bundle = self.root / "result.xcresult"
++        self.bundle.mkdir()
++        self.attachments = self.root / "attachments"
++        self.attachments.mkdir()
++        self.case = ace.make_case("pilot", "iPhone 17", "signIn", ace.Settings("light", "large", "portrait"), True)
++        self.process = {"exit": 65, "timedOut": False}
++        self.summary = {"totalTestCount": 1, "passedTests": 0, "failedTests": 1, "skippedTests": 0,
++                        "expectedFailures": 0, "result": "Failed", "testFailures": [{
++                            "targetName": "ACEClientAppUITests",
++                            "testIdentifierString": "ACEClientAppUITests/testCoverageBatch()",
++                            "failureText": "Contrast failed"}]}
++        self.finding = {"scenario": "signIn-initial", "compactDescription": "Contrast failed",
++                        "detailedDescription": "Contrast failed for SwiftUI.AccessibilityNode",
++                        "auditType": "XCUIAccessibilityAuditType(rawValue: 1)",
++                        "element": {"label": "Sign in", "identifier": "", "type": "button"}}
++        self.screenshot_name = f"Coverage {self.case.id} viewport initial"
++        self.image = self.attachments / "E28C726E-95E6-4B9A-B95B-3C717BD48381.png"
++        self.image.write_bytes(self.png())
++        self.manifest = [{"attachments": [{"exportedFileName": self.image.name,
++                                            "suggestedHumanReadableName": self.screenshot_name}]}]
++        self.write_manifest()
++        self.log = self.root / "native.log"
++        self.write_log()
++
++    @staticmethod
++    def png(raw=b"\x00\xff\xff\xff", colour=2, depth=8, interlace=0):
++        def chunk(kind, data):
++            return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
++        return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 1, 1, depth, colour, 0, 0, interlace))
++                + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
++
++    def write_manifest(self):
++        (self.attachments / "manifest.json").write_text(json.dumps(self.manifest), encoding="utf-8")
++
++    def write_log(self, include_finding=True, completion=True, extra=""):
++        lines = []
++        if include_finding:
++            lines.append("ACE_A11Y_ISSUE " + json.dumps(self.finding))
++        lines.append("/synthetic/ACEClientAppUITests.swift:386: error: "
++                     "-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch] : Contrast failed")
++        if completion:
++            lines.append("Test Case '-[ACEClientAppUITests.ACEClientAppUITests testCoverageBatch]' failed (1.0 seconds).")
++        self.log.write_text("\n".join(lines) + "\n" + extra, encoding="utf-8")
++
++    def classify(self, summary_text=None):
++        output = json.dumps(self.summary) if summary_text is None else summary_text
++        with patch.object(ace, "checked", return_value={"stdout": output, "exit": 0}):
++            return ace.discovery_native_result(self.bundle, self.root / "summary.json", self.log,
++                                               self.attachments, self.case, self.process)
++
++    def test_matched_failure_preserves_native_summary_assertion_and_finding(self):
++        result = self.classify()
++        self.assertEqual(result["status"], "failed")
++        self.assertEqual(result["classification"], "native-accessibility-assertion")
++        self.assertEqual(result["nativeSummary"], self.summary)
++        self.assertEqual(result["auditFindings"], [self.finding])
++        self.assertIn("ACEClientAppUITests.swift:386", result["nativeAssertions"][0])
++        self.assertEqual(result["caseRecords"], [])
++        self.assertIsNone(result["auditInvocationCount"])
++        self.assertEqual(json.loads((self.root / "summary.json").read_text()), self.summary)
++
++    def test_missing_and_malformed_native_summary_block(self):
++        for text in ("not JSON", "{}", "[]"):
++            with self.subTest(summary=text), self.assertRaises(ace.RunnerError):
++                self.classify(text)
++
++    def test_skipped_incomplete_unexpected_and_boolean_counts_block(self):
++        original = deepcopy(self.summary)
++        for field, value in (("totalTestCount", 0), ("totalTestCount", 2), ("skippedTests", 1),
++                             ("expectedFailures", 1), ("passedTests", 1), ("failedTests", 0), ("failedTests", True)):
++            with self.subTest(field=field, value=value):
++                self.summary = {**original, field: value}
++                with self.assertRaisesRegex(ace.RunnerError, "counts"):
++                    self.classify()
++
++    def test_wrong_summary_assertion_or_test_identity_blocks(self):
++        for field, value in (("failureText", "Another assertion"), ("targetName", "OtherTarget"),
++                             ("testIdentifierString", "OtherTest()")):
++            with self.subTest(field=field):
++                original = deepcopy(self.summary["testFailures"])
++                self.summary["testFailures"][0][field] = value
++                with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++                    self.classify()
++                self.summary["testFailures"] = original
++        self.summary["testFailures"] = []
++        with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++            self.classify()
++
++    def test_missing_malformed_and_mismatched_issue_markers_block(self):
++        self.write_log(include_finding=False)
++        with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++            self.classify()
++        self.write_log(include_finding=False, extra="ACE_A11Y_ISSUE not-json\n")
++        with self.assertRaisesRegex(ace.RunnerError, "marker JSON"):
++            self.classify()
++        for field, value in (("scenario", "release-initial"), ("compactDescription", "Other issue")):
++            with self.subTest(field=field):
++                original = dict(self.finding)
++                self.finding[field] = value
++                self.write_log()
++                with self.assertRaisesRegex(ace.RunnerError, "cannot be distinguished"):
++                    self.classify()
++                self.finding = original
++
++    def test_missing_mismatched_and_corrupt_screenshot_evidence_block(self):
++        self.image.unlink()
++        with self.assertRaisesRegex(ace.RunnerError, "exported file"):
++            self.classify()
++        self.image.write_bytes(self.png())
++        self.manifest[0]["attachments"][0]["suggestedHumanReadableName"] = "another case"
++        self.write_manifest()
++        with self.assertRaisesRegex(ace.RunnerError, "map to one attachment"):
++            self.classify()
++        self.manifest[0]["attachments"][0]["suggestedHumanReadableName"] = self.screenshot_name
++        self.write_manifest()
++        self.image.write_bytes(self.png()[:-5])
++        with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++            self.classify()
++        (self.attachments / "manifest.json").write_text("not-json", encoding="utf-8")
++        with self.assertRaisesRegex(ace.RunnerError, "manifest"):
++            self.classify()
++
++    def test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks(self):
++        for raw in (b"bad", b"\x00\x01\x02\x03\x04\x05", b"\x05\x01\x02\x03\x04"):
++            with self.subTest(raw=raw):
++                self.image.write_bytes(self.png(raw=raw, colour=6))
++                with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++                    self.classify()
++
++    def test_unsupported_png_headers_block(self):
++        for overrides in ({"depth": 16}, {"colour": 3}, {"interlace": 1}):
++            with self.subTest(header=overrides):
++                self.image.write_bytes(self.png(**overrides))
++                with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++                    self.classify()
++
++    def test_valid_native_rgb_and_rgba_screenshot_formats_are_supported(self):
++        for colour, raw in ((2, b"\x00\xff\xff\xff"), (6, b"\x00\xff\xff\xff\xff")):
++            with self.subTest(colour=colour):
++                self.image.write_bytes(self.png(raw=raw, colour=colour))
++                self.assertEqual(self.classify()["status"], "failed")
++
++    def test_finding_viewport_requires_its_own_screenshot(self):
++        self.finding["scenario"] = "signIn-other-viewport"
++        self.write_log()
++        with self.assertRaisesRegex(ace.RunnerError, "map to one attachment"):
++            self.classify()
++
++    def test_process_faults_do_not_become_native_assertions(self):
++        for process in ({"exit": 1, "timedOut": False}, {"exit": 65, "timedOut": True},
++                        {"exit": None, "timedOut": False}, {"exit": 65, "timedOut": False, "error": "launch failed"}):
++            with self.subTest(process=process):
++                self.process = process
++                with self.assertRaisesRegex(ace.RunnerError, "process outcome"):
++                    self.classify()
++
++    def test_launch_fault_and_missing_completion_block_despite_matching_finding(self):
++        self.write_log(extra="Failed to launch test runner\n")
++        with self.assertRaisesRegex(ace.RunnerError, "isolated audit assertion"):
++            self.classify()
++        self.write_log(completion=False)
++        with self.assertRaisesRegex(ace.RunnerError, "isolated audit assertion"):
++            self.classify()
++
++    def test_invalid_utf8_and_missing_log_block(self):
++        with self.log.open("ab") as stream:
++            stream.write(b"\xff")
++        with self.assertRaisesRegex(ace.RunnerError, "log is unreadable or corrupt"):
++            self.classify()
++        self.log.unlink()
++        with self.assertRaisesRegex(ace.RunnerError, "log is unreadable or corrupt"):
++            self.classify()
++
++    def test_prior_case_completion_marker_blocks_singleton_failure(self):
++        self.write_log(extra='ACE_CASE_RESULT {"id":"prior-case"}\n')
++        with self.assertRaisesRegex(ace.RunnerError, "unexpected completion"):
++            self.classify()
++
++    def test_pass_requires_real_case_marker_and_valid_screenshot(self):
++        self.summary.update(result="Passed", passedTests=1, failedTests=0, testFailures=[])
++        self.process["exit"] = 0
++        record = {"id": self.case.id, "scenario": self.case.scenario, "observed": self.case.settings.payload(),
++                  "result": "passed", "screenshots": [self.screenshot_name], "auditInvocations": 1}
++        self.log.write_text("ACE_CASE_RESULT " + json.dumps(record), encoding="utf-8")
++        result = self.classify()
++        self.assertEqual(result["status"], "passed")
++        self.assertEqual(result["caseRecords"], [record])
++        self.image.write_bytes(b"invalid PNG")
++        with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
++            self.classify()
++
++
++class DiscoveryExecutionTests(unittest.TestCase):
++    """Exercise real orchestration with synthetic native command boundaries."""
++
++    def setUp(self):
++        self.directory = tempfile.TemporaryDirectory()
++        self.addCleanup(self.directory.cleanup)
++        self.root = Path(self.directory.name)
++        self.identity = {"commit": "synthetic-candidate", "status": "clean"}
++        self.cases = tuple(ace.make_case("pilot", device, "signIn", ace.Settings("light", "large", "portrait"), True)
++                           for device in ace.DEVICES)
++        self.calls = []
++        self.outcomes = ["failed", "passed"]
++        self.restore_failures = []
++        self.stack = ExitStack()
++        self.addCleanup(self.stack.close)
++        self.preflight = self.stack.enter_context(patch.object(ace, "preflight", return_value={
++            "devices": {device: {"udid": device} for device in ace.DEVICES}}))
++        self.build = self.stack.enter_context(patch.object(ace, "build", return_value={"template": "synthetic-template"}))
++        self.candidate = self.stack.enter_context(patch.object(ace, "candidate", return_value=self.identity))
++        for name, value in (("simulator_state", "Shutdown"), ("boot_required_simulator", True),
++                            ("current_simctl_settings", {"appearance": "light"}),
++                            ("native_flags", {"boldText": False, "reduceMotion": False,
++                                              "increaseContrast": False, "orientation": "portrait"}),
++                            ("checked", {"exit": 0}), ("restore_boot_state", None)):
++            self.stack.enter_context(patch.object(ace, name, return_value=value))
++        self.restoration = self.stack.enter_context(patch.object(ace, "restore_device_configuration",
++                                                                 side_effect=self.restore))
++        self.stack.enter_context(patch.object(ace, "run_batch", side_effect=self.batch))
++
++    def restore(self, *args):
++        return list(self.restore_failures)
++
++    def batch(self, device, identifier, settings, cases, build, evidence, index, discovery=False):
++        self.calls.append((device, cases, discovery))
++        (evidence / "batches" / f"{index:03d}").mkdir(parents=True, exist_ok=True)
++        outcome = self.outcomes[index - 1]
++        if isinstance(outcome, Exception):
++            raise outcome
++        records = []
++        if outcome == "passed":
++            records = [{"id": cases[0].id, "auditInvocations": 1}]
++        return {"status": outcome, "nativeTestCount": 1, "caseRecords": records}
++
++    def test_failure_continues_then_completes_with_one_build_and_preflight(self):
++        result = ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual([call[0] for call in self.calls], list(ace.DEVICES))
++        self.assertTrue(all(len(call[1]) == 1 and call[2] for call in self.calls))
++        self.preflight.assert_called_once()
++        self.build.assert_called_once()
++        self.assertEqual(result["status"], "completed-with-failures")
++        self.assertEqual((result["completedCaseCount"], result["passedCaseCount"], result["failedCaseCount"]), (2, 1, 1))
++        self.assertEqual(result["remainingCaseCount"], 0)
++        self.assertFalse(result["acceptanceEligible"])
++        self.assertIsNone(result["auditInvocationCount"])
++        self.assertEqual(result["completedAuditInvocationCount"], 1)
++        checkpoint = json.loads((self.root / "batches" / "001" / "checkpoint.json").read_text())
++        self.assertEqual(checkpoint["status"], "failed")
++        self.assertEqual(json.loads((self.root / "discovery-summary.json").read_text())["status"], result["status"])
++
++    def test_evidence_or_launch_fault_stops_before_next_case(self):
++        self.outcomes[0] = ace.RunnerError("native launch or evidence fault")
++        with self.assertRaisesRegex(ace.RunnerError, "native launch or evidence fault"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["completedCaseCount"], 0)
++        self.assertEqual(summary["remainingCaseCount"], 2)
++        self.restoration.assert_called_once()
++
++    def test_restoration_fault_stops_before_next_device(self):
++        self.restore_failures = ["synthetic-settings-readback-failure"]
++        with self.assertRaisesRegex(ace.RunnerError, "restoration failed"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["failedCaseCount"], 1)
++        self.assertEqual(summary["remainingCaseCount"], 1)
++
++    def test_acceptance_native_error_still_stops(self):
++        self.outcomes[0] = ace.RunnerError("acceptance native failure")
++        with self.assertRaisesRegex(ace.RunnerError, "acceptance native failure"):
++            ace.run_coverage(self.cases, self.root, frozen_candidate=self.identity)
++        self.assertEqual(len(self.calls), 1)
++        self.assertFalse(self.calls[0][2])
++
++    def test_candidate_change_after_case_blocks_remaining_cases(self):
++        self.candidate.side_effect = [self.identity, self.identity, {"commit": "changed"}]
++        with self.assertRaisesRegex(ace.RunnerError, "candidate identity changed"):
++            ace.run_discovery(self.cases, self.root, self.identity)
++        self.assertEqual(len(self.calls), 1)
++        summary = json.loads((self.root / "discovery-summary.json").read_text())
++        self.assertEqual(summary["status"], "blocked")
++        self.assertEqual(summary["completedCaseCount"], 1)
++
++    def test_discovery_cli_reports_distinct_completed_failed_and_blocked_exits(self):
++        arguments = ["--evidence-root", str(self.root), "pilot", "--discovery", "--pocock-evidence", "p",
++                     "--functional-evidence", "f", "--evidence-gate", "g", "--private-input-record", "i"]
++        with patch.object(ace, "pilot_cases", return_value=self.cases), patch.object(ace, "pilot_readiness", return_value={}):
++            for outcomes, expected_exit, expected_status in ((["failed", "passed"], 1, "completed-with-failures"),
++                    (["passed", "passed"], 0, "completed"), ([ace.RunnerError("launch fault"), "passed"], 2, "blocked")):
++                with self.subTest(status=expected_status):
++                    self.outcomes = outcomes
++                    self.calls.clear()
++                    stdout, stderr = io.StringIO(), io.StringIO()
++                    with redirect_stdout(stdout), redirect_stderr(stderr):
++                        actual_exit = ace.main(arguments)
++                    self.assertEqual(actual_exit, expected_exit)
++                    output = json.loads(stderr.getvalue() if expected_exit == 2 else stdout.getvalue())
++                    self.assertEqual(output["result"], expected_status)
++                    if expected_exit != 2:
++                        manifest = json.loads(Path(output["manifest"]).read_text())
++                        self.assertEqual(manifest["mode"], "pilot-discovery")
++                        self.assertFalse(manifest["acceptanceEligible"])
++
++    def test_all_pass_discovery_manifest_is_rejected_by_actual_full_gate(self):
++        fixture = CommandAndResourceEvidenceTests()
++        identity, manifest, ledger, batch, attachments = fixture.full_gate_fixture(self.root)
++        required = json.loads(ledger.read_text())["resourceGate"]["requiredFreeBytes"]
++        with patch.object(ace.shutil, "disk_usage", return_value=SimpleNamespace(free=required)):
++            self.assertEqual(ace.validate_full_gate(manifest, ledger, identity)["caseCount"], 22)
++            payload = json.loads(manifest.read_text())
++            payload.update(mode="pilot-discovery", status="completed", acceptanceEligible=False)
++            manifest.write_text(json.dumps(payload), encoding="utf-8")
++            with self.assertRaisesRegex(ace.RunnerError, "pilot manifest candidate"):
++                ace.validate_full_gate(manifest, ledger, identity)
++
++
+ if __name__ == "__main__":
+     unittest.main()

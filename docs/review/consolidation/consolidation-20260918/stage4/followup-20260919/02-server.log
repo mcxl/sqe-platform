@@ -1,0 +1,9 @@
+INFO:     Started server process [38540]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:64870 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51166 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51167 - "GET /workbench/engagement/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51169 - "GET /workbench/evidence/EVD-FIC-0001/review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /workbench/api/v1/evidence/EVD-FIC-0001/review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51171 - "GET /workbench/relationship-reviews/REL-FIC-0001 HTTP/1.1" 200 OK

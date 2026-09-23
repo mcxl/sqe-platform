@@ -1,0 +1,62 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "CCC56468-14D5-431F-9439-D36F31BAB575.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.example_0_07FC090E-513E-4DE6-977B-52519E29350B.aceclientapp",
+        "timestamp" : 1789470962.865
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "FC603923-3EDE-4DA2-BEEF-CA21E2F30F85",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-09-15 at 09.16.02 pm",
+        "timestamp" : 1789470962.865
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "07126ED3-BFD3-4635-91DF-B6D404A610C1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport initial_0_6D4E500A-AFEC-4965-953B-708D489B2373.png",
+        "timestamp" : 1789470954.978
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "49D43AF5-0FE8-403D-9B3A-9B4A6549F27A.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-09-15 at 09.15.42 pm.mp4",
+        "timestamp" : 1789470942.163
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "038C99C1-CFCF-4F4D-A1A5-BF9D73555716.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.example_0_F9C3BEA5-ED34-49A0-8139-BAFC3E8C08EC.aceclientapp",
+        "timestamp" : 1789470963.079
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EB0863C-470E-467D-A0C6-CD216DA70C67",
+        "deviceName" : "iPhone 17",
+        "exportedFileName" : "A12ED488-4F3F-4E23-ACB3-9C5A4F8796C0",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-09-15 at 09.16.03 pm",
+        "timestamp" : 1789470963.079
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testCoverageBatch()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch"
+  }
+]

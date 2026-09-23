@@ -1,0 +1,90 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected.xctestrun -destination id=D1BAA05C-52DD-4E57-832F-C0A75718E085 -parallel-testing-enabled NO "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testClippingNoActionsStandaloneAudit" "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testClippingNoConclusionStandaloneAudit" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected.xcresult
+
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected.xcresult
+
+2026-09-15 08:19:45.888601+1000 ACEClientAppUITests-Runner[66526:3277232] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-15 08:19:50.822.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-15 08:19:50.825.
+Test Suite 'ACEClientAppUITests' started at 2026-09-15 08:19:50.826.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit]' started.
+    t =     0.01s Start Test at 2026-09-15 08:19:50.838
+    t =     0.24s Set Up
+    t =     0.26s Open com.example.aceclientapp
+    t =     0.27s     Launch com.example.aceclientapp
+    t =     2.10s         Setting up automation session
+    t =     7.11s         Wait for com.example.aceclientapp to idle
+    t =     9.75s Waiting 5.0s for "No actions are available." StaticText to exist
+    t =    10.82s     Checking `Expect predicate `existsNoRetry == 1` for object "No actions are available." StaticText`
+    t =    10.83s         Checking existence of `"No actions are available." StaticText`
+    t =    11.25s Get number of matches for: Elements matching predicate 'label BEGINSWITH "Copy "'
+    t =    11.38s Get all elements bound by index for: Descendants matching type Button
+    t =    11.46s Find the Button (Element at index 0)
+    t =    11.63s Find the "Refresh current release" Button
+    t =    11.75s Find the "Refresh current release" Button
+    t =    11.88s Find the Button (Element at index 1)
+    t =    12.03s Find the "Sign out" Button
+    t =    12.14s Find the "Sign out" Button
+    t =    12.31s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    13.38s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    13.38s         Checking existence of `ScrollView (First Match)`
+    t =    13.42s Checking existence of `"No actions are available." StaticText`
+    t =    13.53s Find the "No actions are available." StaticText
+    t =    13.68s Find the "No actions are available." StaticText
+    t =    13.79s Find the ScrollView (First Match)
+    t =    13.88s Find the Target Application 'com.example.aceclientapp'
+    t =    14.61s Added attachment named 'Controlled state — noActions — light'
+    t =    20.07s Terminate com.example.aceclientapp:66544
+    t =    21.11s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoActionsStandaloneAudit]' passed (21.340 seconds).
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit]' started.
+    t =     0.00s Start Test at 2026-09-15 08:20:12.180
+    t =     0.22s Set Up
+    t =     0.23s Open com.example.aceclientapp
+    t =     0.23s     Launch com.example.aceclientapp
+    t =     1.29s         Setting up automation session
+    t =     6.55s         Wait for com.example.aceclientapp to idle
+    t =    10.54s Checking existence of `"No conclusion is available." StaticText`
+    t =    10.89s Get all elements bound by index for: Descendants matching type Button
+    t =    10.99s Find the Button (Element at index 0)
+    t =    11.26s Find the Button (Element at index 1)
+    t =    11.40s Find the Button (Element at index 2)
+    t =    11.59s Find the "Copy action 1" Button
+    t =    11.72s Find the "Copy action 1" Button
+    t =    11.83s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    12.91s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    12.92s         Checking existence of `ScrollView (First Match)`
+    t =    12.95s Checking existence of `"No conclusion is available." StaticText`
+    t =    13.07s Find the "No conclusion is available." StaticText
+    t =    13.25s Find the "No conclusion is available." StaticText
+    t =    13.39s Find the ScrollView (First Match)
+    t =    13.43s Find the Target Application 'com.example.aceclientapp'
+    t =    14.25s Added attachment named 'Controlled state — noConclusion — light'
+    t =    20.62s Terminate com.example.aceclientapp:66575
+    t =    21.72s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testClippingNoConclusionStandaloneAudit]' passed (21.952 seconds).
+Test Suite 'ACEClientAppUITests' passed at 2026-09-15 08:20:34.131.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 43.292 (43.306) seconds
+Test Suite 'ACEClientAppUITests.xctest' passed at 2026-09-15 08:20:34.134.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 43.292 (43.309) seconds
+Test Suite 'Selected tests' passed at 2026-09-15 08:20:34.136.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 43.292 (43.314) seconds
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/focused-runs/20260914T221802Z-selected-43ebad9a93ed/selected.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
+2026-09-15 08:19:37.940 xcodebuild[66502:3276686] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:19:37.961 xcodebuild[66502:3276686] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:19:39.176 xcodebuild[66502:3276686] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-15 08:19:51.252 xcodebuild[66502:3276686] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 08:19:51.252 xcodebuild[66502:3276686] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 08:20:12.417 xcodebuild[66502:3276686] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-15 08:20:12.417 xcodebuild[66502:3276686] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-15 08:20:34.549 xcodebuild[66502:3276686] [MT] IDETestOperationsObserverDebug: 55.367 elapsed -- Testing started completed.
+2026-09-15 08:20:34.549 xcodebuild[66502:3276686] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-15 08:20:34.549 xcodebuild[66502:3276686] [MT] IDETestOperationsObserverDebug: 55.367 sec, +55.367 sec -- end

@@ -1,0 +1,16 @@
+{
+  "updatedUTC": "2026-09-15T09:23:28.931075+00:00",
+  "base": "eef4b163726444eb3c7bfd6e936cf9c8b53e46bc",
+  "patchSha256": "2e7d0db8b8606c8b85f30136c1d5cabd203cf657b150e7f7ad251ca7e0711e15",
+  "files": [
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift"
+  ],
+  "completePrimaryDiffInspection": "passed",
+  "observedChanges": "Release margins move into ScrollView content in production and DEBUG. Other presentation margins remain default. No text, controls, colours, spacing, audit rules, runner or assertions changed.",
+  "sourceRationale": "Native failure crop shows heading clipped at outer scroll edge. Initial inset and card width should remain. Native correction not yet established.",
+  "gitDiffCheck": "passed",
+  "sourceReview": "pending exact patch Sol review",
+  "nativeFocus": "pending",
+  "correctiveAttempt": 1
+}

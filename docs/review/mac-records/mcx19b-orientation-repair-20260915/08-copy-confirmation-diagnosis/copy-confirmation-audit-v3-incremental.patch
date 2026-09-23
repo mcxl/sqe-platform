@@ -1,0 +1,38 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -313,20 +313,26 @@
+     }
+ 
+     private func emitCopyConfirmationAuditFrames(in app: XCUIApplication, phase: String) {
++        let queryStartUptimeSeconds = ProcessInfo.processInfo.systemUptime
+         let scroll = app.scrollViews.firstMatch
+         let copyAction1 = app.buttons["Copy action 1"]
+         let copyAction = app.staticTexts["Copy action"]
+         let confirmation = coverageElement(in: app, labeled: "Copied Action 1.")
++        let copyActionExists = copyAction.exists
++        let frames: [String: Any] = [
++            "app": Self.frameJSON(app.frame),
++            "scroll": Self.frameJSON(scroll.frame),
++            "copyAction1": Self.frameJSON(copyAction1.frame),
++            "copyAction": copyActionExists ? Self.frameJSON(copyAction.frame) : NSNull(),
++            "confirmation": Self.frameJSON(confirmation.frame)
++        ]
++        let queryFinishUptimeSeconds = ProcessInfo.processInfo.systemUptime
+         emitJSON(marker: "ACE_COPY_CONFIRMATION_AUDIT_FRAMES", payload: [
+             "phase": phase,
+-            "uptimeSeconds": ProcessInfo.processInfo.systemUptime,
+-            "frames": [
+-                "app": Self.frameJSON(app.frame),
+-                "scroll": Self.frameJSON(scroll.frame),
+-                "copyAction1": Self.frameJSON(copyAction1.frame),
+-                "copyAction": Self.frameJSON(copyAction.frame),
+-                "confirmation": Self.frameJSON(confirmation.frame)
+-            ]
++            "queryStartUptimeSeconds": queryStartUptimeSeconds,
++            "queryFinishUptimeSeconds": queryFinishUptimeSeconds,
++            "copyActionExists": copyActionExists,
++            "frames": frames
+         ])
+     }
+ 

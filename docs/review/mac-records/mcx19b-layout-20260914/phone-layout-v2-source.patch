@@ -1,0 +1,240 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+index 71f10f6..61d1426 100644
+--- a/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
++++ b/ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift
+@@ -22,7 +22,9 @@ struct ACEClientApp: App {
+             RootView(state: state)
+             #if DEBUG
+                 .safeAreaInset(edge: .top, spacing: 0) {
+-                    if UITestScenario.current != nil {
++                    // Manual phone previews can omit test metadata. Audit runs retain it.
++                    if UITestScenario.current != nil,
++                       ProcessInfo.processInfo.environment["ACE_UI_TEST_SHOW_DIAGNOSTICS"] != "0" {
+                         EffectiveInterfaceStyleIndicator()
+                     }
+                 }
+diff --git a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+index ff28577..4de37cf 100644
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -44,7 +44,13 @@ struct ScenarioRootView: View {
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: nil, actions: release.actions), notices: ["No conclusion is available."], refresh: {}, signOut: {})
+         case .noActions:
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: release.conclusion, actions: []), notices: ["No actions are available."], refresh: {}, signOut: {})
+-        case .copyConfirmation: ValueRow(field: .engagementName, value: release.engagementName)
++        case .copyConfirmation:
++            ScrollView {
++                VStack(alignment: .leading, spacing: 16) {
++                    ValueRow(field: .engagementName, value: release.engagementName)
++                }
++                .frame(maxWidth: .infinity, alignment: .leading)
++            }
+         case .privacy: PrivacyCoverView()
+         }
+     }
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 26f3920..75b2ecd 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -7,7 +7,9 @@ struct RootView: View {
+ 
+     var body: some View {
+         #if DEBUG
+-        if let scenario = UITestScenario.current { ScenarioRootView(scenario: scenario) }
++        if let scenario = UITestScenario.current {
++            ScenarioRootView(scenario: scenario).padding()
++        }
+         else { content }
+         #else
+         content
+@@ -148,23 +150,33 @@ struct ReleaseView: View {
+ 
+     var body: some View {
+         ScrollView {
+-            VStack(alignment: .leading, spacing: 16) {
++            VStack(alignment: .leading, spacing: 20) {
++                SectionHeader("Current Release")
+                 HandlingLabel()
+-                ValueRow(field: .engagementName, value: release.engagementName)
+-                ValueRow(field: .reviewStatus, value: release.reviewStatus)
+-                ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
+-                ValueRow(field: .publishedAt, value: release.publishedAt)
++                ReleaseCard {
++                    Text("Release Details")
++                        .font(.headline)
++                        .accessibilityAddTraits(.isHeader)
++                    ValueRow(field: .engagementName, value: release.engagementName)
++                    ValueRow(field: .reviewStatus, value: release.reviewStatus)
++                    ValueRow(field: .releaseVersion, value: String(release.releaseVersion))
++                    ValueRow(field: .publishedAt, value: release.publishedAt)
++                }
+                 if let conclusion = release.conclusion {
+-                    SectionHeader("Conclusion")
+-                    ValueRow(field: .conclusionTitle, value: conclusion.title)
+-                    ValueRow(field: .conclusionSummary, value: conclusion.summary)
+-                    ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
++                    ReleaseCard {
++                        SectionHeader("Conclusion")
++                        ValueRow(field: .conclusionTitle, value: conclusion.title)
++                        ValueRow(field: .conclusionSummary, value: conclusion.summary)
++                        ValueRow(field: .evidenceReference, value: conclusion.evidenceReferenceID)
++                    }
+                 }
+                 if !release.actions.isEmpty {
+                     SectionHeader("Actions")
+                     ForEach(Array(release.actions.enumerated()), id: \.offset) { index, action in
+-                        VStack(alignment: .leading, spacing: 8) {
+-                            Text("Action \(index + 1)").font(.headline)
++                        ReleaseCard {
++                            Text("Action \(index + 1)")
++                                .font(.headline)
++                                .accessibilityAddTraits(.isHeader)
+                             ValueRow(field: .actionDescription, value: action.description)
+                             ValueRow(field: .actionOwner, value: action.owner)
+                             ValueRow(field: .actionTargetDate, value: action.targetDate)
+@@ -192,6 +204,23 @@ struct ReleaseView: View {
+     }
+ }
+ 
++private struct ReleaseCard<Content: View>: View {
++    let content: Content
++
++    init(@ViewBuilder content: () -> Content) {
++        self.content = content()
++    }
++
++    var body: some View {
++        VStack(alignment: .leading, spacing: 12) {
++            content
++        }
++        .frame(maxWidth: .infinity, alignment: .leading)
++        .padding()
++        .background(Color(uiColor: .secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
++    }
++}
++
+ struct SectionHeader: View {
+     let value: String
+     init(_ value: String) { self.value = value }
+@@ -221,31 +250,59 @@ struct ValueRow: View {
+     let field: CopyableReleaseField
+     let value: String
+     @State private var confirmation: String?
++    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+ 
+     var body: some View {
+-        VStack(alignment: .leading, spacing: 4) {
+-            VStack(alignment: .leading, spacing: 4) {
+-                Text(field.label).font(.headline)
+-                Text(value)
+-                    .frame(maxWidth: .infinity, alignment: .leading)
+-                    .fixedSize(horizontal: false, vertical: true)
++        VStack(alignment: .leading, spacing: 8) {
++            if dynamicTypeSize.isAccessibilitySize {
++                fieldContents
++                copyButton
++            } else {
++                HStack(alignment: .top, spacing: 12) {
++                    fieldContents
++                    copyButton
++                }
+             }
+-            .accessibilityElement(children: .combine)
+-            .accessibilityLabel("\(field.label): \(value)")
+-            Button {
+-                ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
+-                let announcement = "Copied \(field.label)."
+-                confirmation = announcement
+-                UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
+-            } label: {
+-                Text("Copy \(field.label)")
+-                    .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+-                    .contentShape(Rectangle())
++            if let confirmation {
++                Text(confirmation)
++                    .font(.body)
++                    .foregroundStyle(.primary)
+             }
+-            .accessibilityLabel("Copy \(field.label)")
+-            if let confirmation { Text(confirmation) }
+         }
+     }
++
++    private var fieldContents: some View {
++        VStack(alignment: .leading, spacing: 6) {
++            Text(field.label)
++                .font(.subheadline)
++                .foregroundStyle(.primary)
++            Text(value)
++                .font(.body)
++                .frame(maxWidth: .infinity, alignment: .leading)
++                .fixedSize(horizontal: false, vertical: true)
++        }
++        .frame(maxWidth: .infinity, alignment: .leading)
++        .accessibilityElement(children: .combine)
++        .accessibilityLabel("\(field.label): \(value)")
++    }
++
++    private var copyButton: some View {
++        Button(action: copyValue) {
++            Label("Copy", systemImage: "doc.on.doc")
++                .frame(minWidth: 44, minHeight: 44)
++                .contentShape(Rectangle())
++        }
++        .buttonStyle(.bordered)
++        .tint(.primary)
++        .accessibilityLabel("Copy \(field.label)")
++    }
++
++    private func copyValue() {
++        ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
++        let announcement = "Copied \(field.label)."
++        confirmation = announcement
++        UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
++    }
+ }
+ 
+ enum ClipboardWriteContract {
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 8ce039f..7370250 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -139,10 +139,38 @@ final class ACEClientAppUITests: XCTestCase {
+         let confirmationApp = launch("copyConfirmation")
+         confirmationApp.buttons["Copy Engagement name"].tap()
+         XCTAssertTrue(confirmationApp.staticTexts["Copied Engagement name."].exists, "Copy confirmation must be available to VoiceOver")
++        scrollUntilVisible(confirmationApp.staticTexts["Copied Engagement name."], in: confirmationApp, field: "Copy confirmation")
+         addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(appearance)")
++        try assertAccessibilityAudit(in: confirmationApp, scenario: "copyConfirmation-after-copy")
+         confirmationApp.terminate()
+     }
+ 
++    func testClippingNoActionsStandaloneAudit() throws {
++        try runOriginalScenarioAudit(scenario: "noActions", expected: "No actions are available.")
++    }
++
++    func testClippingNoConclusionStandaloneAudit() throws {
++        try runOriginalScenarioAudit(scenario: "noConclusion", expected: "No conclusion is available.")
++    }
++
++    private func runOriginalScenarioAudit(scenario: String, expected: String) throws {
++        let app = launch(scenario)
++        defer { app.terminate() }
++        let expectedState = XCTNSPredicateExpectation(
++            predicate: NSPredicate { _, _ in
++                app.staticTexts[expected].exists
++                    || app.buttons[expected].exists
++                    || app.progressIndicators[expected].exists
++            },
++            object: nil
++        )
++        XCTAssertEqual(XCTWaiter.wait(for: [expectedState], timeout: 5), .completed, "Scenario \(scenario)")
++        assertMinimumActionTargets(in: app)
++        scrollUntilVisible(app.staticTexts[expected], in: app, field: expected)
++        addScreenshot(of: app, named: "Controlled state — \(scenario) — \(requiredAppearance())")
++        try assertAccessibilityAudit(in: app, scenario: scenario)
++    }
++
+     func testAllControlledScenariosShowExpectedStateAndAudit() throws {
+         let states = [
+             ("loading", "Loading"), ("emptyRelease", "No current release is available."), ("emptyEngagement", "No current release is available."),

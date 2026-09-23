@@ -1,0 +1,208 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/derived-minimal-audit-repro/Build/Products/minimal-audit-repro.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=D1BAA05C-52DD-4E57-832F-C0A75718E085" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 -resultBundlePath LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all.xcresult "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testMinimalAuditReproAllAudits"
+
+2026-09-14 18:50:31.762 xcodebuild[68985:1887063] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all.xcresult
+
+2026-09-14 18:50:31.846 xcodebuild[68985:1887063] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:50:32.951 xcodebuild[68985:1887063] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 18:50:40.664492+1000 ACEClientAppUITests-Runner[69009:1887603] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-14 18:50:45.256.
+Test Suite 'ACEClientAppUITests.xctest' started at 2026-09-14 18:50:45.258.
+Test Suite 'ACEClientAppUITests' started at 2026-09-14 18:50:45.259.
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits]' started.
+    t =     0.01s Start Test at 2026-09-14 18:50:45.267
+    t =     0.27s Set Up
+    t =     0.37s Open com.example.aceclientapp
+    t =     0.37s     Launch com.example.aceclientapp
+2026-09-14 18:50:45.929 xcodebuild[68985:1887063] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-14 18:50:45.929 xcodebuild[68985:1887063] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     2.95s         Setting up automation session
+    t =     8.56s         Wait for com.example.aceclientapp to idle
+    t =    11.85s Waiting 5.0s for "Minimal audit reproduction bottom" StaticText to exist
+    t =    12.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Minimal audit reproduction bottom" StaticText`
+    t =    12.88s         Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    13.29s Get all elements bound by index for: Descendants matching type Button
+    t =    13.42s Find the Button (Element at index 0)
+    t =    13.62s Find the "Copy Engagement name" Button
+    t =    13.76s Find the "Copy Engagement name" Button
+    t =    13.88s Find the Button (Element at index 1)
+    t =    14.13s Find the "Copy Review status" Button
+    t =    14.29s Find the "Copy Review status" Button
+    t =    14.43s Find the Button (Element at index 2)
+    t =    14.62s Find the "Copy Release version" Button
+    t =    14.81s Find the "Copy Release version" Button
+    t =    15.28s Find the Button (Element at index 3)
+    t =    15.49s Find the "Copy Published date and time" Button
+    t =    15.66s Find the "Copy Published date and time" Button
+    t =    15.82s Find the Button (Element at index 4)
+    t =    16.02s Find the "Copy Action description" Button
+    t =    16.17s Find the "Copy Action description" Button
+    t =    16.31s Find the Button (Element at index 5)
+    t =    16.60s Find the "Copy Action owner" Button
+    t =    16.75s Find the "Copy Action owner" Button
+    t =    16.88s Find the Button (Element at index 6)
+    t =    17.12s Find the "Copy Action target date" Button
+    t =    17.28s Find the "Copy Action target date" Button
+    t =    17.43s Find the Button (Element at index 7)
+    t =    17.62s Find the "Copy Action status" Button
+    t =    17.76s Find the "Copy Action status" Button
+    t =    26.63s Waiting 5.0s for ScrollView (First Match) to exist
+    t =    27.70s     Checking `Expect predicate `existsNoRetry == 1` for object ScrollView (First Match)`
+    t =    27.70s         Checking existence of `ScrollView (First Match)`
+    t =    27.74s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    27.99s Find the "Minimal audit reproduction bottom" StaticText
+    t =    28.27s Find the ScrollView (First Match)
+    t =    28.34s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    28.57s Find the "Minimal audit reproduction bottom" StaticText
+    t =    28.89s Press ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.72] for 0.1 seconds, then drag to ScrollView at {{16.0, 114.3}, {408.0, 791.7}}[0.50, 0.28] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    28.89s     Wait for com.example.aceclientapp to idle
+    t =    28.90s     Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    28.96s     Check for interrupting elements affecting ScrollView
+    t =    29.13s     Synthesize event
+    t =    29.13s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    29.21s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    29.33s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    29.41s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    29.50s         Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    30.62s     Wait for com.example.aceclientapp to idle
+    t =    31.09s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    31.33s Find the "Minimal audit reproduction bottom" StaticText
+    t =    31.63s Find the "Minimal audit reproduction bottom" StaticText
+    t =    31.91s Find the ScrollView at {{16.0, 114.3}, {408.0, 791.7}}
+    t =    31.97s Checking existence of `"Minimal audit reproduction bottom" StaticText`
+    t =    32.22s Find the "Minimal audit reproduction bottom" StaticText
+    t =    32.54s Find the "Minimal audit reproduction bottom" StaticText
+    t =    32.83s Find the ScrollView (First Match)
+    t =    32.88s Get all elements bound by index for: Descendants matching type Button
+    t =    33.00s Find the Button (Element at index 0)
+    t =    33.21s Find the "Copy Engagement name" Button
+    t =    33.42s Find the "Copy Engagement name" Button
+    t =    33.67s Find the Button (Element at index 1)
+    t =    33.85s Find the "Copy Review status" Button
+    t =    34.00s Find the "Copy Review status" Button
+    t =    34.12s Find the Button (Element at index 2)
+    t =    34.32s Find the "Copy Release version" Button
+    t =    34.48s Find the "Copy Release version" Button
+    t =    34.59s Find the Button (Element at index 3)
+    t =    34.77s Find the "Copy Published date and time" Button
+    t =    35.00s Find the "Copy Published date and time" Button
+    t =    35.13s Find the Button (Element at index 4)
+    t =    35.31s Find the "Copy Action description" Button
+    t =    35.48s Find the "Copy Action description" Button
+    t =    35.61s Find the Button (Element at index 5)
+    t =    35.87s Find the "Copy Action owner" Button
+    t =    36.05s Find the "Copy Action owner" Button
+    t =    36.20s Find the Button (Element at index 6)
+    t =    36.39s Find the "Copy Action target date" Button
+    t =    36.55s Find the "Copy Action target date" Button
+    t =    36.68s Find the Button (Element at index 7)
+    t =    36.86s Find the "Copy Action status" Button
+    t =    37.01s Find the "Copy Action status" Button
+    t =    37.14s Find the Target Application 'com.example.aceclientapp'
+    t =    37.85s Added attachment named 'Minimal audit reproduction — post-scroll — light'
+    t =    47.79s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576588384.134)
+    t =    47.93s Find the "Copy" StaticText
+    t =    48.11s Find the "Copy" StaticText
+    t =    48.24s Find the "Copy" StaticText
+    t =    48.42s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":57.999999999999972,"width":93,"x":315,"y":207.33333333333334},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    48.58s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576588384.134)
+    t =    48.75s Checking existence of `"Copy" StaticText`
+    t =    48.87s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    49.27s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576594528.137)
+    t =    49.39s Find the "Copy" StaticText
+    t =    49.52s Find the "Copy" StaticText
+    t =    49.64s Find the "Copy" StaticText
+    t =    49.79s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":277.33333333333331},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    49.96s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576594528.137)
+    t =    50.10s Checking existence of `"Copy" StaticText`
+    t =    50.23s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    50.41s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576600672.140)
+    t =    50.56s Find the "Copy" StaticText
+    t =    50.71s Find the "Copy" StaticText
+    t =    50.86s Find the "Copy" StaticText
+    t =    51.00s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":347.33333333333331},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    51.14s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576600672.140)
+    t =    51.27s Checking existence of `"Copy" StaticText`
+    t =    51.38s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    51.55s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576606816.143)
+    t =    51.68s Find the "Copy" StaticText
+    t =    51.82s Find the "Copy" StaticText
+    t =    52.00s Find the "Copy" StaticText
+    t =    52.14s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":417.33333333333331},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    52.28s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576606816.143)
+    t =    52.40s Checking existence of `"Copy" StaticText`
+    t =    52.51s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    52.77s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576612960.146)
+    t =    52.95s Find the "Copy" StaticText
+    t =    53.11s Find the "Copy" StaticText
+    t =    53.28s Find the "Copy" StaticText
+    t =    53.42s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":603.66666666666663},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    53.62s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576612960.146)
+    t =    53.77s Checking existence of `"Copy" StaticText`
+    t =    53.89s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    54.09s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576619104.149)
+    t =    54.21s Find the "Copy" StaticText
+    t =    54.36s Find the "Copy" StaticText
+    t =    54.49s Find the "Copy" StaticText
+    t =    54.71s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":673.66666666666663},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    54.85s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576619104.149)
+    t =    55.00s Checking existence of `"Copy" StaticText`
+    t =    55.12s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    55.30s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576625248.152)
+    t =    55.50s Find the "Copy" StaticText
+    t =    55.65s Find the "Copy" StaticText
+    t =    55.79s Find the "Copy" StaticText
+    t =    55.92s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":743.66666666666663},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    56.05s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576625248.152)
+    t =    56.19s Checking existence of `"Copy" StaticText`
+    t =    56.36s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+    t =    56.62s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576631392.155)
+    t =    56.76s Find the "Copy" StaticText
+    t =    56.94s Find the "Copy" StaticText
+    t =    57.09s Find the "Copy" StaticText
+    t =    57.23s Find the "Copy" StaticText
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 1)","compactDescription":"Contrast failed","detailedDescription":"Contrast failed for SwiftUI.AccessibilityNode","element":{"frame":{"height":58,"width":93,"x":315,"y":813.66666666666663},"identifier":"","label":"Copy","type":"XCUIElementType(rawValue: 48)"},"scenario":"minimal-audit-repro-post-scroll"}
+    t =    57.36s Find the Any (Descendant with identity binding to AX element pid: 69038, elementOrHash.elementID: 4576631392.155)
+    t =    57.53s Checking existence of `"Copy" StaticText`
+    t =    57.64s Find the "Copy" StaticText
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Contrast failed
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 2)","compactDescription":"Potentially inaccessible text","detailedDescription":"This element appears to display text that should be represented using the accessibility API.","element":{"identifier":"","label":"","type":"unavailable"},"scenario":"minimal-audit-repro-post-scroll"}
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Potentially inaccessible text
+ACE_A11Y_ISSUE {"auditType":"XCUIAccessibilityAuditType(rawValue: 2)","compactDescription":"Potentially inaccessible text","detailedDescription":"This element appears to display text that should be represented using the accessibility API.","element":{"identifier":"","label":"","type":"unavailable"},"scenario":"minimal-audit-repro-post-scroll"}
+LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:603: error: -[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits] : Potentially inaccessible text
+    t =    57.85s Terminate com.example.aceclientapp:69038
+    t =    58.89s Tear Down
+Test Case '-[ACEClientAppUITests.ACEClientAppUITests testMinimalAuditReproAllAudits]' failed (59.337 seconds).
+Test Suite 'ACEClientAppUITests' failed at 2026-09-14 18:51:44.605.
+	 Executed 1 test, with 10 failures (0 unexpected) in 59.337 (59.346) seconds
+Test Suite 'ACEClientAppUITests.xctest' failed at 2026-09-14 18:51:44.607.
+	 Executed 1 test, with 10 failures (0 unexpected) in 59.337 (59.350) seconds
+Test Suite 'Selected tests' failed at 2026-09-14 18:51:44.609.
+	 Executed 1 test, with 10 failures (0 unexpected) in 59.337 (59.354) seconds
+2026-09-14 18:52:49.286 xcodebuild[68985:1887063] [MT] IDETestOperationsObserverDebug: 136.326 elapsed -- Testing started completed.
+2026-09-14 18:52:49.286 xcodebuild[68985:1887063] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 18:52:49.286 xcodebuild[68985:1887063] [MT] IDETestOperationsObserverDebug: 136.326 sec, +136.326 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-implementation-20260914/minimal-audit-repro/results-minimal-audit-repro/minimal-audit-repro-all.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

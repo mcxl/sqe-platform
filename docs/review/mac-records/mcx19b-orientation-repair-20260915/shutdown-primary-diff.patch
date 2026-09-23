@@ -1,0 +1,80 @@
+diff --git a/tools/ace_ios_local.py b/tools/ace_ios_local.py
+index b5b63e0..17c4683 100644
+--- a/tools/ace_ios_local.py
++++ b/tools/ace_ios_local.py
+@@ -400,7 +400,8 @@ def boot_required_simulator(identifier: str, initial_state: str) -> bool:
+ 
+ def restore_boot_state(identifier: str, initial_state: str) -> None:
+     if initial_state == "Shutdown":
+-        checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
++        if simulator_state(identifier) != "Shutdown":
++            checked(["xcrun", "simctl", "shutdown", identifier], timeout=120)
+ 
+ 
+ def restore_simctl_settings(identifier: str, previous: dict[str, str], evidence: Path, device: str, phase: str) -> list[str]:
+diff --git a/tools/tests/test_ace_ios_local.py b/tools/tests/test_ace_ios_local.py
+index 3ea7f1b..4705ce0 100644
+--- a/tools/tests/test_ace_ios_local.py
++++ b/tools/tests/test_ace_ios_local.py
+@@ -147,15 +147,37 @@ class NativeRecordTests(unittest.TestCase):
+                 ace.selected_test_environment(path, "ACEClientAppUITests")
+ 
+     def test_selected_boot_helpers_restore_only_an_initially_shutdown_simulator(self):
+-        original = ace.checked
+         commands = []
+-        ace.checked = lambda command, **_kwargs: commands.append(command) or {"exit": 0}
+-        try:
++        def checked(command, **_kwargs):
++            commands.append(command)
++            return {"exit": 0}
++
++        with patch.object(ace, "simulator_state", return_value="Booted"), \
++             patch.object(ace, "checked", side_effect=checked):
+             self.assertTrue(ace.boot_required_simulator("id", "Shutdown"))
+             ace.restore_boot_state("id", "Shutdown")
+-            self.assertEqual(commands, [["xcrun", "simctl", "boot", "id"], ["xcrun", "simctl", "bootstatus", "id", "-b"], ["xcrun", "simctl", "shutdown", "id"]])
+-        finally:
+-            ace.checked = original
++        self.assertEqual(commands, [["xcrun", "simctl", "boot", "id"], ["xcrun", "simctl", "bootstatus", "id", "-b"], ["xcrun", "simctl", "shutdown", "id"]])
++
++    def test_restore_boot_state_skips_shutdown_when_the_simulator_is_already_shutdown(self):
++        with patch.object(ace, "simulator_state", return_value="Shutdown") as simulator_state, \
++             patch.object(ace, "checked") as checked:
++            ace.restore_boot_state("id", "Shutdown")
++        simulator_state.assert_called_once_with("id")
++        checked.assert_not_called()
++
++    def test_restore_boot_state_propagates_state_and_shutdown_errors(self):
++        with self.subTest("unavailable-state"):
++            with patch.object(ace, "simulator_state", side_effect=ace.RunnerError("required simulator state is unavailable")), \
++                 patch.object(ace, "checked") as checked:
++                with self.assertRaisesRegex(ace.RunnerError, "state is unavailable"):
++                    ace.restore_boot_state("id", "Shutdown")
++            checked.assert_not_called()
++
++        with self.subTest("shutdown-error"):
++            with patch.object(ace, "simulator_state", return_value="Booted"), \
++                 patch.object(ace, "checked", side_effect=ace.RunnerError("command failed: xcrun simctl shutdown id")):
++                with self.assertRaisesRegex(ace.RunnerError, "simctl shutdown"):
++                    ace.restore_boot_state("id", "Shutdown")
+ 
+     def test_pilot_readiness_rejects_loose_prose_and_bad_artifact_hash(self):
+         candidate = {"commit": "abc", "status": "clean", "sourceHashes": {}, "statusDetail": "", "workingTreeSha256": "x"}
+@@ -364,6 +386,8 @@ class SerialDeviceExecutionTests(unittest.TestCase):
+ 
+         def checked(command, **_kwargs):
+             if command[:3] == ["xcrun", "simctl", "shutdown"]:
++                if states[command[3]] == "Shutdown":
++                    raise ace.RunnerError("duplicate simulator shutdown")
+                 events.append(("shutdown", command[3]))
+                 states[command[3]] = "Shutdown"
+             return {"exit": 0}
+@@ -411,6 +435,8 @@ class SerialDeviceExecutionTests(unittest.TestCase):
+         self.assertLess(first_iphone17_batch, pro_max_boot)
+         self.assertLess(iphone17_shutdown, pro_max_boot)
+         self.assertEqual(states, {device: "Shutdown" for device in ace.DEVICES})
++        shutdowns = {device: sum(event == ("shutdown", device) for event in events) for device in ace.DEVICES}
++        self.assertEqual(shutdowns, {device: 1 for device in ace.DEVICES})
+         self.assertEqual(result["caseCount"], 22)
+         self.assertEqual(sum(ace.expected_audit_invocations(case) for case in ace.pilot_cases()), 36)
+ 

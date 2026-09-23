@@ -1,0 +1,6 @@
+2026-09-17 12:20:15.941249+1000 ACEClientAppUITests-Runner[73015:8787367] [Default] Running tests...
+2026-09-17 12:21:32.020517+1000 ACEClientAppUITests-Runner[73015:8787367] [Default] Failed to initialize for UI testing: Error Domain=com.apple.dt.XCTest.XCTFuture Code=1000 "Timed out while loading Accessibility." UserInfo={NSLocalizedDescription=Timed out while loading Accessibility.}
+
+
+*** If you believe this error represents a bug, please attach the result bundle at LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/14-copy-reflow-check-20260917/01-harness-failure/result.xcresult
+

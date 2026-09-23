@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/swift",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/measure-crop-colors.swift",
+    "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-pilot-runs/20260915T100107Z-pilot-a8d5a906fdf3/batches/001/attachments/F49E7030-3109-40AE-956F-A02C7D4C2A5E.png"
+  ],
+  "exit": 0,
+  "stdout": "{\n  \"colorSpace\" : \"sRGB\",\n  \"dominantColors\" : [\n    {\n      \"pixels\" : 62989,\n      \"rgba\" : \"#c6c6cbff\"\n    },\n    {\n      \"pixels\" : 6368,\n      \"rgba\" : \"#f2f2f7ff\"\n    },\n    {\n      \"pixels\" : 2860,\n      \"rgba\" : \"#000000ff\"\n    },\n    {\n      \"pixels\" : 86,\n      \"rgba\" : \"#c4c4c9ff\"\n    },\n    {\n      \"pixels\" : 71,\n      \"rgba\" : \"#060606ff\"\n    },\n    {\n      \"pixels\" : 41,\n      \"rgba\" : \"#1e1e1fff\"\n    },\n    {\n      \"pixels\" : 40,\n      \"rgba\" : \"#7e7e81ff\"\n    },\n    {\n      \"pixels\" : 38,\n      \"rgba\" : \"#c7c7cbff\"\n    },\n    {\n      \"pixels\" : 38,\n      \"rgba\" : \"#010101ff\"\n    },\n    {\n      \"pixels\" : 36,\n      \"rgba\" : \"#cacaceff\"\n    }\n  ],\n  \"height\" : 174,\n  \"path\" : \"\\/Users\\/alanrichardson\\/ace-private\\/mcx19b-orientation-repair-20260915\\/margin-pilot-runs\\/20260915T100107Z-pilot-a8d5a906fdf3\\/batches\\/001\\/attachments\\/F49E7030-3109-40AE-956F-A02C7D4C2A5E.png\",\n  \"width\" : 432\n}\n",
+  "stderr": ""
+}

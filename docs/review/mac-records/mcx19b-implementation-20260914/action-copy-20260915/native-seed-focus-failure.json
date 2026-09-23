@@ -1,0 +1,21 @@
+{
+  "category": "native test input-focus fault; production cause not established",
+  "test": "testCompleteActionClipboardPastesExactly",
+  "line": 514,
+  "expected": "Username receives seed text after tap",
+  "actual": "Failed to synthesize event: Neither element nor any descendant has keyboard focus. Event dispatch snapshot: TextField, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nElement debug description:\nAttributes: TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nElement subtree:\n \u2192TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nPath to element:\n \u2192Application, 0x102705a70, pid: 46852, label: 'ACE Client'\n  \u21b3Window (Main), 0x1027191b0, {{0.0, 0.0}, {440.0, 956.0}}\n   \u21b3Other, 0x10271c030, {{0.0, 0.0}, {440.0, 956.0}}\n    \u21b3Other, 0x1027228a0, {{0.0, 0.0}, {440.0, 956.0}}\n     \u21b3Other, 0x10272e4c0, {{0.0, 0.0}, {440.0, 956.0}}\n      \u21b3Other, 0x102715900, {{0.0, 0.0}, {440.0, 956.0}}\n       \u21b3CollectionView, 0x102722c30, {{16.0, 114.3}, {408.0, 791.7}}\n        \u21b3Cell, 0x10271ec90, {{36.0, 240.7}, {368.0, 52.0}}\n         \u21b3Other, 0x10271fed0, {{36.0, 240.7}, {368.0, 52.0}}\n          \u21b3Other, 0x102720a80, {{36.0, 240.7}, {368.0, 52.0}}\n           \u21b3Other, 0x10271f010, {{36.0, 240.7}, {368.0, 52.0}}\n            \u21b3TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\nQuery chain:\n \u2192Find: Target Application 'com.example.aceclientapp'\n  Output: {\n    Application, 0x105826cf0, pid: 46852, label: 'ACE Client'\n  }\n  \u21aa\ufe0eFind: Descendants matching type TextField\n    Output: {\n      TextField, 0x10be09a20, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\n    }\n    \u21aa\ufe0eFind: Elements matching predicate '\"Username\" IN identifiers'\n      Output: {\n        TextField, 0x105827550, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'\n      }\n",
+  "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1",
+  "nativeExit": 65,
+  "counts": {
+    "passedTests": 0,
+    "failedTests": 1,
+    "skippedTests": 0
+  },
+  "copyOperationsReached": 0,
+  "image": {
+    "path": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/action-copy-20260915/runs/20260914T195338Z-selected-847909b2c9d1/keyboard-focus-failure.png",
+    "sha256": "ca5c448687d21466b1ffa47295a4fafe2526c44194970618fe8eabe35a44a27e",
+    "inspection": "Full native frame inspected: sign-in controls visible; no keyboard visible. This does not prove why focus was absent."
+  },
+  "nextScope": "One existing native clipboard selector with DEBUG sheet for independent test repeat defect; verify keyboard state before typing. Production unchanged."
+}

@@ -1,0 +1,14 @@
+{
+  "baseCommit": "b63af743b207fcbb78df1b473707660789a2dc60",
+  "files": {
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "7d772483227b1a166864bff7190171db681b04cff1e93ced356fb1ab1976cbef",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift": "cd1b48d62e8cd2e935f90967a834d55fb8f88b62bf4ddb03acca5fe1abe69169",
+    "ios/ACEClientApp/ACEClientApp/Views.swift": "05ed4ad3d3ef786c1274aa298089c18e74c9a3bea099a7df816ce3d3492c1756",
+    "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7",
+    "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift": "14ab329e19a4855e1dc4a42cdd1821e9b0fdcc3c4c91d66f50951a31924e75b1",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift": "83fa4ec5df2464caf57e5af16f4a53c31cc59e5eecff4b440d38989e6dcd2b1d"
+  },
+  "primaryReview": "complete accumulated diff inspected before native execution",
+  "nativeStatus": "focused record and clipboard tests running"
+}

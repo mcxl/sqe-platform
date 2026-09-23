@@ -1,0 +1,16 @@
+{
+  "pid": 46932,
+  "port": 64870,
+  "command": [
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "uvicorn",
+    "src.ace.app:app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "64870"
+  ],
+  "data_dir": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\followup-20260919\\fictional-data"
+}

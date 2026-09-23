@@ -1,0 +1,74 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 353e34e..d6dbeef 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -7,7 +7,13 @@ struct RootView: View {
+     var body: some View {
+         #if DEBUG
+         if let scenario = UITestScenario.current {
+-            ScenarioRootView(scenario: scenario).padding()
++            if scenario.usesReleaseLayout {
++                ScenarioRootView(scenario: scenario)
++            }
++            else {
++                ScenarioRootView(scenario: scenario)
++                    .padding()
++            }
+         }
+         else { content }
+         #else
+@@ -21,22 +27,23 @@ struct RootView: View {
+         Group {
+             switch presentation {
+             case .configuration(let message):
+-                SafeMessageView(message: message, action: nil)
++                SafeMessageView(message: message, action: nil).padding()
+             case .signIn(let message):
+-                SignInView(message: message, submit: state.signIn)
++                SignInView(message: message, submit: state.signIn).padding()
+             case .loading:
+                 ProgressView("Loading")
+                     .accessibilityLabel("Loading current release")
++                    .padding()
+             case .release(let release, let notices):
+                 ReleaseView(release: release, notices: notices, refresh: state.refresh, signOut: state.signOut)
+             case .empty(let message):
+-                CurrentReleaseMessageView(message: message, retry: .refresh, retryAction: state.refresh, signOutAction: state.signOut)
++                CurrentReleaseMessageView(message: message, retry: .refresh, retryAction: state.refresh, signOutAction: state.signOut).padding()
+             case .failure(let message, let retry):
+-                CurrentReleaseMessageView(message: message, retry: retry, retryAction: { state.retry(retry) }, signOutAction: retry == .refresh ? { state.signOut() } : nil)
++                CurrentReleaseMessageView(message: message, retry: retry, retryAction: { state.retry(retry) }, signOutAction: retry == .refresh ? { state.signOut() } : nil).padding()
+             case .deletionPending(let message, let deletionOnlyRecovery):
+-                SafeMessageView(message: message, action: (deletionOnlyRecovery ? "Reset saved sign-in" : "Try again", deletionOnlyRecovery ? state.resetSavedSignIn : { state.retry(.deletion) }))
++                SafeMessageView(message: message, action: (deletionOnlyRecovery ? "Reset saved sign-in" : "Try again", deletionOnlyRecovery ? state.resetSavedSignIn : { state.retry(.deletion) }))
++                    .padding()
+             }
+         }
+-        .padding()
+         .modifier(ErrorAnnouncement(message: presentation.errorMessage, event: state.errorAnnouncementEvent))
+     }
+@@ -202,6 +209,7 @@ struct ReleaseView: View {
+                 .accessibilityLabel("Sign out")
+             }
+             .frame(maxWidth: .infinity, alignment: .leading)
++            .padding()
+         }
+         .tint(.primary)
+     }
+diff --git a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+index 8c56e1e..5e5bef0 100644
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -11,3 +11,11 @@ enum UITestScenario: String {
+         return UITestScenario(rawValue: raw)
+     }
+
+    var usesReleaseLayout: Bool {
+        switch self {
+        case .release, .noConclusion, .noActions, .copyConfirmation, .multiAction:
+            true
+        default:
+            false
+        }
+    }
+ }

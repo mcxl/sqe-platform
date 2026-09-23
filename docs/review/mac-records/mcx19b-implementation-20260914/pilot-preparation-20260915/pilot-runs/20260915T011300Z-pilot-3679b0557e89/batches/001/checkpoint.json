@@ -1,0 +1,156 @@
+{
+  "record": {
+    "attachmentDirectory": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/attachments",
+    "attachmentSha256": "6200646b030ba2af7ad56f87d8a9f6f32309b602dee6dd2f746acf8bac28abed",
+    "auditCount": 5,
+    "caseCount": 5,
+    "caseRecords": [
+      {
+        "auditInvocations": 1,
+        "id": "pilot.iPhone-17.signIn.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "signIn",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.signIn.light.large.portrait.0.0.0 viewport control-Sign in"
+        ]
+      },
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.release.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "release",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Engagement name",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Review status",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Release version",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Published date and time",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion title",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Conclusion summary",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Evidence reference",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action description",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action owner",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action target date",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport value-Action status",
+          "Coverage pilot.iPhone-17.release.light.large.portrait.0.0.0 viewport release-final"
+        ]
+      },
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "noConclusion",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Engagement name",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Review status",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Release version",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Published date and time",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action description",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action owner",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action target date",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport value-Action status",
+          "Coverage pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0 viewport no-conclusion-notice"
+        ]
+      },
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.noActions.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "noActions",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Engagement name",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Review status",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Release version",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Published date and time",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion title",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Conclusion summary",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport value-Evidence reference",
+          "Coverage pilot.iPhone-17.noActions.light.large.portrait.0.0.0 viewport no-actions-notice"
+        ]
+      },
+      {
+        "auditInvocations": 2,
+        "id": "pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0",
+        "observed": {
+          "appearance": "light",
+          "boldText": false,
+          "contentSize": "large",
+          "increaseContrast": false,
+          "orientation": "portrait",
+          "reduceMotion": false
+        },
+        "result": "passed",
+        "scenario": "copyConfirmation",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport initial",
+          "Coverage pilot.iPhone-17.copyConfirmation.light.large.portrait.0.0.0 viewport copy-confirmation"
+        ]
+      }
+    ],
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/result.xcresult"
+    ],
+    "device": "iPhone 17",
+    "exit": 0,
+    "logSha256": "02c3d39d0f190b766f62e83568c9c418d88dd1de2e4c7614500facb71ba2517a",
+    "nativeTestCount": 1,
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/pilot-preparation-20260915/pilot-runs/20260915T011300Z-pilot-3679b0557e89/batches/001/result.xcresult",
+    "resultBundleSha256": "c41146080f0652780b946fc92b22792978ab1cddb0b8cee4ca225822f3dbc732",
+    "runfileSha256": "c039e6a4a81b960ad39c0402270894000bd824b638cac3dccf9ffe1104dd32db",
+    "settings": {
+      "appearance": "light",
+      "boldText": false,
+      "contentSize": "large",
+      "increaseContrast": false,
+      "orientation": "portrait",
+      "reduceMotion": false
+    },
+    "summarySha256": "a37d14c25f5c7aacaf1190c5f13922068053786d5ca4231e9f4adf71ccd0e6cd"
+  },
+  "status": "passed"
+}

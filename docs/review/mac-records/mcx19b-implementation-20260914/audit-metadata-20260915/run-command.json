@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-audit-metadata/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/runs",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+    "--test-env-json",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-metadata-20260915/light.json"
+  ],
+  "question": "Does removing the diagnostic inset while retaining actual settings metadata preserve all fields and controls and pass the three unrestricted release audits?",
+  "expected": "One selected test, zero skips, all eleven fields and grouped Copy asserted; native bundle and images retained. A pass alone does not prove correction.",
+  "primaryDiffInspection": "Complete two-file patch inspected before native run; no audit mask, delay, fixture or product content changes.",
+  "runnerSHA256": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f"
+}

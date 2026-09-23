@@ -1,0 +1,26 @@
+{
+  "timeUTC": "2026-09-15T07:50:55.087876+00:00",
+  "oldCommit": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+  "newCommit": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "changedSourcePaths": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "changedRunnerFunctions": [
+    "restore_device_configuration",
+    "restore_simctl_settings",
+    "run_coverage"
+  ],
+  "unchangedNativeCollectorFunctions": {
+    "command": "f8902222d94d0fd44e3a6e3f8b3ac249770e78ede99639b5fa7cc3de92795c8d",
+    "build": "03cfa343e353f2187fdb2410d6c01cee2a959d2662448a5e73e7e4d3d3b042d3",
+    "configure_xctestrun": "1831e790293a6b010dcc128641b9cbbb13a7590878d45cdc377c5eb08c4e0ba2",
+    "native_flags": "247d8954b783917e838bcc29d1e057039028e2fbad7d3e9050307e746367985d",
+    "native_summary": "8073f921601aee951afa7d36e78f97f7e80b5e9602004434f864ad09970ef9f8",
+    "_export_attachments": "4235c11c3173f4c1fac6240287fa003ad1cbe0d19193c3b48ea9769b8fdd2c7e",
+    "run_batch": "11ec7106398fd0d15ca9c4667ea7de1de201c9f587b5c5ce7e3350a76f03ea26",
+    "validate_pilot_result": "3820ad3a3d2c2dfe813004cb9de9ba02d15d20e3c77c100a68be3a542d38eaa1"
+  },
+  "functionalReuseBasis": "All app sources, native unit and contract tests, project files and selected-test runner functions are byte-identical. Retain the68-test result with its actuala84commit. Native serial lifecycle failure/pass verification remains required.",
+  "functionalEvidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/functional-runs/20260915T061955Z-selected-6d1e36eb268b"
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "E32AFB15-A681-4C55-9B8D-C03644B83CA8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Actual clipboard value pasted_0_F9D804C4-B5F4-4BC1-A293-3DB6EAD4D2F5.png",
+        "timestamp" : 1789386069.352
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "237266E8-2C99-4144-8FEF-0DC11961203D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Native Paste menu_0_7514F12B-9E60-4E41-AE88-C33B87942828.png",
+        "timestamp" : 1789386065.069
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "9494FD76-DA47-4A1F-A8AD-D8EDB6D9F89F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Copy actual engagement value_0_66A7FB9D-E9FD-4D6F-B779-004D76914ED9.png",
+        "timestamp" : 1789386045.34
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testNativeCopyPasteProbe()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testNativeCopyPasteProbe"
+  }
+]

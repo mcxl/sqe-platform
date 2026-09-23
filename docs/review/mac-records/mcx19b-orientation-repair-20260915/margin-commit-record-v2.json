@@ -1,0 +1,14 @@
+{
+  "commit": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+  "status": "clean",
+  "files": [
+    "ios/ACEClientApp/ACEClientApp/Views.swift"
+  ],
+  "correction": "Compiler-supported edge-set overload preserves default padding",
+  "patchSha256": "75003c1ebb84d593593bd2b281c078723d83769c584515ac5e01dd6938ae76a1",
+  "fullDiffFromEef4b16Sha256": "9fa51e8924b0a16fe32721e18b9ab2b9b787c8d46faa90ee1bb33032055a445d",
+  "primaryDiffInspection": "passed",
+  "sourceReview": "fresh v2 review pending; must pass before pilot",
+  "nativeBuildAndFocus": "pending",
+  "push": "not performed"
+}

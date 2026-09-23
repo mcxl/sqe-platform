@@ -1,0 +1,13 @@
+{
+  "test": "AcceptanceEvidenceContractTests/testFixtureInspection()",
+  "line": 1583,
+  "retainedFailure": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/functional-after-fixture-parity/result.xcresult",
+  "classification": "source test expectation became outdated after the approved shared screen change",
+  "reviewedLiteralChange": {
+    "removedFromFixtureOnly": "Refresh; it now comes from CurrentReleaseMessageView in Views.swift and was visible in the focused native screen check",
+    "added": "Loading current release; matches the existing production ProgressView accessibility label"
+  },
+  "attempt": 1,
+  "beforeSha256": "ab5f5b193bd133860742fac278b3782c4d423e9a348ca613329909dc826f3e4f",
+  "afterSha256": "b48ee5d7d7fd2f813e68f2ec592c05460e56b9bdaa89a6ef5d557b8138a13eb4"
+}

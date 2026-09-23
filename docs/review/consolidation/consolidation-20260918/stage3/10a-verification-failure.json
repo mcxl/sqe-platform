@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-18T14:53:31.814300+10:00",
+  "failure": "local_remote_scope_exact False",
+  "expected": {
+    "url": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage3\\mac-delivery-40bae26.bundle",
+    "fetch": "+refs/heads/codex/mcx19b-release-layout:refs/remotes/mac-consolidation-source/codex/mcx19b-release-layout"
+  },
+  "actual": {
+    "url": "C:\\\\Users\\\\AlanRichardson\\\\sqe-private\\\\consolidation-20260918\\\\stage3\\\\mac-delivery-40bae26.bundle",
+    "fetch": "+refs/heads/codex/mcx19b-release-layout:refs/remotes/mac-consolidation-source/codex/mcx19b-release-layout"
+  },
+  "classification": "Verification assertion under investigation; no source correction made",
+  "source": "Stage 3 Windows verification command, line 29 final checks assertion"
+}

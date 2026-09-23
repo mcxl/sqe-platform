@@ -1,0 +1,28 @@
+{
+  "timeUTC": "2026-09-15T07:49:08.476198+00:00",
+  "commit": "905004fc71107565abf2d68cb05fc581cf5bf310",
+  "files": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "stagedDiffSha256": "8c8bd502cf4899b9f0b00cc3f0a0afb652e0763699086175081f3dbbab340e74",
+  "primaryDiffInspection": "Complete final diff inspected, including phase-specific native and simctl evidence paths. No unresolved source finding.",
+  "verification": {
+    "timeUTC": "2026-09-15T07:47:47.249513+00:00",
+    "base": "a84f67010362c9e87e49576af8cf40b2c23a807b",
+    "patchSha256": "8c8bd502cf4899b9f0b00cc3f0a0afb652e0763699086175081f3dbbab340e74",
+    "testExit": 0,
+    "diffCheckExit": 0,
+    "testLogSha256": "f3b48bb168248c87f9236a0ce02c75f10fddd0db4d71444d126ee9b75065e2eb",
+    "diffSha256": "8c8bd502cf4899b9f0b00cc3f0a0afb652e0763699086175081f3dbbab340e74",
+    "changedFiles": [
+      "tools/ace_ios_local.py",
+      "tools/tests/test_ace_ios_local.py"
+    ],
+    "reviewStatus": "fresh final review pending; not committed"
+  },
+  "commitOutput": "[codex/mcx19b-release-layout 905004f] Run ACE coverage one required simulator at a time\n Committer: Alan Richardson <alanrichardson@Vincent-MacBook-Pro.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 2 files changed, 253 insertions(+), 31 deletions(-)\n",
+  "push": "not performed",
+  "review": "fresh final Sol source review pending",
+  "nativeGate": "pending"
+}

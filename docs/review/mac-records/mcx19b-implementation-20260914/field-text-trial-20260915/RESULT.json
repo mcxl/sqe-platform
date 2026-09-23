@@ -1,0 +1,25 @@
+{
+  "updatedUTC": "2026-09-14T22:55:41.035793+00:00",
+  "objective": "Resolve remaining native accessibility failures with a small design change.",
+  "result": "Not resolved; isolated candidate retained, not adopted.",
+  "authority": "User approved unbounded task work; two failed corrective attempts per fault remain a pause rule.",
+  "mainHead": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "mainClean": true,
+  "candidatePatchSHA256": "73ac95cea4be82679adf297fb3e2e0b15e3a464290164aacbdd2614ebe789bf4",
+  "checks": {
+    "maximumText": "Passed one test and both unrestricted audits; all11fields; earlier UItest hash before probe adaptation.",
+    "noActions": "Passed",
+    "noConclusion": "Passed",
+    "lightRelease": "Failed post-scroll Copy contrast; initial audit and all11field checks passed.",
+    "copyConfirmation": "Failed native contrast for Copy action and Copied Action 1.",
+    "sourceReview": "Fresh Sol review acceptable for complete3file source diff; native acceptance remains failed.",
+    "imageReview": "Maximum12PNG/7distinct; focused21PNG/10distinct; every distinct image inspected original resolution.",
+    "fullAcceptance": "Pending/blocked; no accepted final pilot or836case programme.",
+    "physicalPhone": "Disconnected; no new installation.",
+    "privateService": "Missing approved service inputs; blocked.",
+    "baseline": "Unresolved historical baseline ancestry.",
+    "finalReviews": "Pocock/finalcandidate/Sol full acceptance still pending."
+  },
+  "activeProcesses": [],
+  "next": "Pause further corrective design trials under two-attempt limit. A resumed investigation should focus on the native Copy and confirmation findings; keep .all audits and preserve failed results."
+}

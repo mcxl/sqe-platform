@@ -1,0 +1,35 @@
+{
+  "review_axis": "standards",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "base_ref_requested": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "base_ref_resolved": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "head_ref_requested": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "head_ref_resolved": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+  "patch_sha256": "e1ce54c8f569bcbee896017e2d88bf094f88bd996047013f1a86396eda4d629b",
+  "changed_files": ["ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+  "inspected_sources": ["AGENTS.md", "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift"],
+  "standards_sources": [
+    "AGENTS.md: native UI verification and test-harness evidence requirements",
+    "matt-skills-curated code-review SKILL.md: standards axis, evidence citations and clean-code smell baseline"
+  ],
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "medium",
+  "actual_runtime_model_or_effort": "unobservable",
+  "findings": [
+    {
+      "id": "P2",
+      "file": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+      "lines": "424-428, 460-463",
+      "standard": "AGENTS.md test-harness evidence integrity: failures must report exact diagnostic details and distinguish failure causes.",
+      "finding": "nativeSwitchAction returns the same .fail case for an unreadable nil switch value and for a second-attempt exhaustion. The caller labels both cases as a missing Settings control and captures the missing-control screenshot, so an existing but unreadable switch is misreported.",
+      "recommendation": "Use distinct unreadable and retry-exhausted outcomes. Keep the existing-control screenshot and include the nil value in the failure message for the unreadable case."
+    }
+  ],
+  "limits": [
+    "Spec-axis outcome was not inspected.",
+    "No native tests, simulator checks, whole-pilot run or UI acceptance were run.",
+    "The focused native run was active under the primary agent; no simulator state was changed.",
+    "No source edits were made."
+  ],
+  "verdict": "ACTION REQUIRED — one P2 standards finding; native result remains unverified here"
+}

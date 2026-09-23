@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName" : "iPhone 17 Pro Max",
+        "exportedFileName" : "849AB630-0940-4630-92A2-69113DA8751B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Minimal audit reproduction — post-scroll — light_0_EC506424-2B50-4AB0-A2C1-2C7B53281C43.png",
+        "timestamp" : 1789377022.636
+      }
+    ],
+    "testIdentifier" : "ACEClientAppUITests/testMinimalAuditReproAllAudits()",
+    "testIdentifierURL" : "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testMinimalAuditReproAllAudits"
+  }
+]

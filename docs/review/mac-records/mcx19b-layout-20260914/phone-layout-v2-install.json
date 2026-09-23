@@ -1,0 +1,41 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "CD033598-77C2-5F34-9DB2-D90082F10623",
+      "LOCAL_HOME/ace-private/mcx19b-layout-20260914/derived-phone/Build/Products/Debug-iphoneos/ACEClientApp.app",
+      "--timeout",
+      "60",
+      "--json-output",
+      "LOCAL_HOME/ace-private/mcx19b-layout-20260914/phone-layout-v2-install.json",
+      "--log-output",
+      "LOCAL_HOME/ace-private/mcx19b-layout-20260914/phone-layout-v2-install.log"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.27"
+  },
+  "result" : {
+    "deviceIdentifier" : "CD033598-77C2-5F34-9DB2-D90082F10623",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.alanrichardson.aceclientapp",
+        "databaseSequenceNumber" : 2324,
+        "databaseUUID" : "264B79D4-14F9-4AE5-944B-AC6788532DB4",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/2C8249BA-DC8A-426C-B6D4-961641B35321/ACEClientApp.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

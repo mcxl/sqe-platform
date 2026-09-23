@@ -1,0 +1,18 @@
+{
+  "recordedUTC": "2026-09-15T12:00:37.740371+00:00",
+  "candidate": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "base": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "reviewer": "/root/signin_capture_review",
+  "requestedModel": "gpt-5.6-sol",
+  "requestedEffort": "high",
+  "runtimeModelVerified": false,
+  "verdict": "ship for source only",
+  "findings": [],
+  "inspected": [
+    "complete base-to-head diff",
+    "UITest helpers lines340-380,940-965,1039-1046",
+    "e426 focused Sign in evidence"
+  ],
+  "scope": "read-only source review; candidate clean before and after",
+  "limits": "c8 full-screen native check still running at verdict. No image,22-case or final app acceptance. Host did not enforce read-only isolation. Reviewer prohibited file writes, so primary retained this returned result."
+}

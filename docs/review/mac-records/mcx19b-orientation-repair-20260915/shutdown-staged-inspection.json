@@ -1,0 +1,10 @@
+{
+  "branch": "codex/mcx19b-release-layout",
+  "stagedFiles": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "stagedPatchSha256": "30d01d470b7e7d4b646d7336543a847ba9acce1e677e214f2288db7e6ffd89c1",
+  "unstagedFiles": [],
+  "untrackedFiles": []
+}

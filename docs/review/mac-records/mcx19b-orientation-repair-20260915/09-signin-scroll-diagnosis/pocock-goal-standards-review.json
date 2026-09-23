@@ -1,0 +1,44 @@
+{
+  "review_axis": "standards",
+  "review_scope": "complete current goal",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "base_ref_requested": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "base_ref_resolved": "464671562cfb0249e859ffc8905a8f8c5ef17e55",
+  "head_ref_requested": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "head_ref_resolved": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "complete_diff_evidence_sha256": "43eb801bea65e9b1a500870b43c1891e3ee28bb96237aeaa33a1f8b4b7cac5b5",
+  "changed_files": [
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "inspected_sources": [
+    "AGENTS.md",
+    "docs/agents/issue-tracker.md",
+    "docs/agents/triage-labels.md",
+    "docs/agents/domain.md",
+    "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+    "ios/ACEClientApp/ACEClientApp/Views.swift",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "standards_sources": [
+    "AGENTS.md: native UI verification, test-harness integrity, bounded-work and evidence controls",
+    "matt-skills-curated code-review SKILL.md: standards axis, evidence citations, naming/cohesion/duplication and Fowler smell baseline"
+  ],
+  "coding_standards_document": null,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "medium",
+  "actual_runtime_model_or_effort": "unobservable",
+  "findings": [],
+  "limits": [
+    "Spec completeness and requirement matching were excluded.",
+    "Syntax, lint, native tests, Python tests and simulator state were not rerun; retained evidence was accepted as supplied.",
+    "Rendered UI, accessibility audits and screenshot inspection were not performed.",
+    "No source edits were made."
+  ],
+  "verdict": "PASS — no actionable standards findings in the complete source diff; UNVERIFIED — UI QA INCOMPLETE for native evidence"
+}

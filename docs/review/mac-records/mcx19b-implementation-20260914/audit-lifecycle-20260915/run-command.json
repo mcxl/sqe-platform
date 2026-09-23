@@ -1,0 +1,36 @@
+{
+  "startUTC": "2026-09-14T21:55:23.106605+00:00",
+  "logCommand": [
+    "xcrun",
+    "simctl",
+    "spawn",
+    "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+    "log",
+    "stream",
+    "--level",
+    "debug",
+    "--style",
+    "json",
+    "--predicate",
+    "subsystem == \"com.auditco.ace.audit-diagnostic\""
+  ],
+  "testCommand": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "LOCAL_HOME/Developer/sqe-platform-audit-lifecycle/tools/ace_ios_local.py",
+    "--evidence-root",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-lifecycle-20260915/runs",
+    "selected",
+    "--diagnostic-dirty",
+    "--device",
+    "iPhone 17 Pro Max",
+    "--test",
+    "ACEClientAppUITests/ACEClientAppUITests/testFictionalReleaseHasApprovedCopyControls",
+    "--test-env-json",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/audit-lifecycle-20260915/light.json"
+  ],
+  "loggerPid": 62998,
+  "runnerExit": 0,
+  "loggerAliveUntilTestEnd": true,
+  "loggerExitAfterRequestedStop": 143,
+  "endUTC": "2026-09-14T21:59:22.329531+00:00"
+}

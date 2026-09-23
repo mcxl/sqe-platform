@@ -1,0 +1,33 @@
+{
+  "review_axis": "standards",
+  "base_ref_requested": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "base_ref_resolved": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "head_ref_requested": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "head_ref_resolved": "c8b10875658e5fbd6a66dea1fbcec9bb4a2f5b0d",
+  "repository": "LOCAL_HOME/Developer/sqe-platform-release-layout",
+  "inspected_sources": [
+    "AGENTS.md",
+    "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+    "docs/agents/issue-tracker.md",
+    "docs/agents/triage-labels.md",
+    "docs/agents/domain.md"
+  ],
+  "standards_sources": [
+    "AGENTS.md (native UI verification, test harness, bounded work, source review constraints)",
+    "matt-skills-curated code-review SKILL.md (standards axis, evidence citations, smell baseline)"
+  ],
+  "coding_standards_document": null,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "medium",
+  "actual_runtime_model_or_effort": "unobservable",
+  "findings": [],
+  "notes": [
+    "Diff reviewed with git diff base...head.",
+    "The change removes duplicated table scrolling logic by extracting scrollControlUntilFullyVisible and adds collection-view support.",
+    "The existence guard prevents frame checks on non-existent XCUI elements.",
+    "Coverage screenshots now use XCUIScreen.main.screenshot(), retaining full-screen capture.",
+    "No native tests were run by request; rendered UI and accessibility evidence remain unverified."
+  ],
+  "verdict": "PASS \u2014 no actionable standards findings; native UI verification unverified per source-only scope",
+  "request_metadata_source": "Primary corrected these request fields from the recorded spawn call; actual runtime remains unobservable."
+}

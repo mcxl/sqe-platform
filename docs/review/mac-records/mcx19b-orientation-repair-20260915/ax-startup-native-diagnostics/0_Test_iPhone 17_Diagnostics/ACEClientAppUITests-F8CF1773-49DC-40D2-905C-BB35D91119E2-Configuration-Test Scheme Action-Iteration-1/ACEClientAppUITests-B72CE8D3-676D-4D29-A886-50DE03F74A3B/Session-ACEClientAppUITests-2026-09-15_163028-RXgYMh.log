@@ -1,0 +1,289 @@
+Xcode version: 26.4.1 (17E202)
+16:30:28.897 xcodebuild[24365:4265570] Beginning test session ACEClientAppUITests-FE2FB173-A9EB-495B-80B5-3D01742D7803 at 2026-09-15 16:30:28.895 on target <DVTiPhoneSimulator: 0x7fa00b023c70> {
+		SimDevice: iPhone 17 (2EB0863C-470E-467D-A0C6-CD216DA70C67, iOS 26.4, Booted)
+} (26.4.1 (23E254a))
+16:30:28.897 xcodebuild[24365:4265570] 	/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
+test-without-building
+-xctestrun
+LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/ACEClientAppUITests.xctestrun
+-destination
+id=2EB0863C-470E-467D-A0C6-CD216DA70C67
+-parallel-testing-enabled
+NO
+-only-testing:ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings
+-resultBundlePath
+LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult
+16:30:28.901 xcodebuild[24365:4265570] Test standard output and standard error is at LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/native-settings/iPhone 17-read/result.xcresult/Staging/1_Test/Diagnostics/ACEClientAppUITests-F8CF1773-49DC-40D2-905C-BB35D91119E2-Configuration-Test Scheme Action-Iteration-1/ACEClientAppUITests-B72CE8D3-676D-4D29-A886-50DE03F74A3B/StandardOutputAndStandardError.txt
+16:30:28.913 xcodebuild[24365:4266086] 📱<DVTiPhoneSimulator (0x7fa00b023c70), iPhone 17, unknown class, 26.4.1 (23E254a), 2EB0863C-470E-467D-A0C6-CD216DA70C67> claim LaunchSessionClaim_0x7fa009f55c80 on simulator was issued, 2 claims exist.
+16:30:28.957 xcodebuild[24365:4265570] Setting up test runner session
+16:30:28.958 xcodebuild[24365:4265572] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+16:30:28.960 xcodebuild[24365:4265572] Sim iPhone 17 has testmanagerd socket at /private/var/tmp/com.apple.launchd.GyJpgnHTeU/com.apple.testmanagerd.unix-domain.socket
+16:30:28.960 xcodebuild[24365:4265572] Validating test connection socket path (/private/var/tmp/com.apple.launchd.GyJpgnHTeU/com.apple.testmanagerd.unix-domain.socket)
+16:30:28.960 xcodebuild[24365:4265572] Constructing transport for test connection socket
+16:30:28.960 xcodebuild[24365:4265572] Connected socket 35 to testmanagerd for Sim iPhone 17
+16:30:28.961 xcodebuild[24365:4265570] Registering/updating daemon-based crash report observer for process names (
+    xctest,
+    debugserver,
+    FrontBoard,
+    assertiond,
+    runningboardd,
+    SpringBoard,
+    testmanagerd,
+    backboardd,
+    DTServiceHub,
+    ACEClientApp,
+    "ACEClientAppUITests-Runner",
+    ACEClientAppUITests
+)
+16:30:28.961 xcodebuild[24365:4265573] Received connection for test runner session
+16:30:28.961 xcodebuild[24365:4265573] Listening for proxy connection request from the test bundle
+16:30:28.962 xcodebuild[24365:4265573] Initiating session with identifier: FE2FB173-A9EB-495B-80B5-3D01742D7803
+16:30:28.967 xcodebuild[24365:4265570] Test runner session acquired connection.
+16:30:31.569 xcodebuild[24365:4265573] Got reply to session initiation request with identifier FE2FB173-A9EB-495B-80B5-3D01742D7803 (error: (null))
+16:30:31.803 xcodebuild[24365:4265570] Finished requesting crash reports. Continuing with testing.
+16:30:31.859 xcodebuild[24365:4265570] Launch session started.
+16:30:31.882 xcodebuild[24365:4266130] 📱<DVTiPhoneSimulator (0x7fa00b023c70), iPhone 17, unknown class, 26.4.1 (23E254a), 2EB0863C-470E-467D-A0C6-CD216DA70C67> claim LaunchSessionClaim_0x7fa009f55c80 on simulator was issued, 2 claims exist.
+16:30:31.901 xcodebuild[24365:4266086] 📱<DVTiPhoneSimulator (0x7fa00b023c70), iPhone 17, unknown class, 26.4.1 (23E254a), 2EB0863C-470E-467D-A0C6-CD216DA70C67> claim LaunchSessionClaim_0x7fa009f55c80 on simulator was issued, 2 claims exist.
+16:30:31.901 xcodebuild[24365:4266086] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Registered for sim device notification, got token 8
+16:30:31.901 xcodebuild[24365:4265573] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Unregistering for sim device notification with token 8
+16:30:31.911 xcodebuild[24365:4266086] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Installing app at path: LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app and options: {
+    SkipWatchAppInstall = 1;
+}
+16:31:40.661 xcodebuild[24365:4266086] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Installed app at path: LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app and options: {
+    SkipWatchAppInstall = 1;
+}
+16:31:40.667 xcodebuild[24365:4266086] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Launching app with identifier: com.example.aceclientapp.uitests.xctrunner and options: {
+    "activate_suspended" = 1;
+    arguments =     (
+    );
+    environment =     {
+        "ACE_ACCESSIBILITY_SETTINGS_JSON" = "{\"mode\":\"read\"}";
+        "APP_DISTRIBUTOR_ID_OVERRIDE" = "com.apple.AppStore";
+        "CA_ASSERT_MAIN_THREAD_TRANSACTIONS" = 0;
+        "CA_DEBUG_TRANSACTIONS" = 0;
+        "DYLD_FRAMEWORK_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/FrameworkLOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks";
+        "DYLD_INSERT_LIBRARIES" = "/usr/lib/libRPAC.dylib:/usr/lib/libRPAC.dylib:/usr/lib/libRPAC.dylib";
+        "DYLD_LIBRARY_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/liLOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib";
+        "LLVM_PROFILE_FILE" = "/dev/null";
+        NSUnbufferedIO = YES;
+        "OS_ACTIVITY_DT_MODE" = YES;
+        "PERFC_ENABLE_EXTENDED_DIAGNOSTIC_FORMAT" = 1;
+        "PERFC_ENABLE_PROFILE_MODE" = 1;
+        "PERFC_RESET_INSERT_LIBRARIES" = 1;
+        "PERFC_SUPPRESS_SYSTEM_REPORTS" = 1;
+        "RUN_DESTINATION_DEVICE_NAME" = "iPhone 17";
+        "RUN_DESTINATION_DEVICE_PLATFORM_IDENTIFIER" = "com.apple.platform.iphonesimulator";
+        "RUN_DESTINATION_DEVICE_UDID" = "2EB0863C-470E-467D-A0C6-CD216DA70C67";
+        "SQLITE_ENABLE_THREAD_ASSERTIONS" = 1;
+        "SWIFT_BACKTRACE" = "enable=no";
+        TERM = dumb;
+        "XCODE_SCHEME_NAME" = ACEClientAppUITests;
+        XCTestBundleInjectPath = "/usr/lib/libRPAC.dylib:/usr/lib/libRPAC.dylib:/usr/lib/libRPAC.dylib";
+        XCTestBundlePath = "PlugIns/ACEClientAppUITests.xctest";
+        XCTestConfigurationFilePath = "";
+        XCTestSessionIdentifier = "FE2FB173-A9EB-495B-80B5-3D01742D7803";
+        "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_FRAMEWORK_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulatoLOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_LIBRARY_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulatoLOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+        "__XPC_LLVM_PROFILE_FILE" = "/dev/null";
+    };
+    stderr = "/dev/ttys001";
+    stdout = "/dev/ttys001";
+    "terminate_running_process" = 1;
+    "wait_for_debugger" = 1;
+}
+16:31:42.136 xcodebuild[24365:4268459] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Launched app with identifier: com.example.aceclientapp.uitests.xctrunner (pid = 24555)
+16:31:42.140 xcodebuild[24365:4268459] 📱<DVTiPhoneSimulator (0x7fa00b023c70), iPhone 17, unknown class, 26.4.1 (23E254a), 2EB0863C-470E-467D-A0C6-CD216DA70C67> tracking pid 24555
+16:31:42.142 xcodebuild[24365:4268459] 📱<DVTiPhoneSimulator (0x7fa00b023c70), iPhone 17, unknown class, 26.4.1 (23E254a), 2EB0863C-470E-467D-A0C6-CD216DA70C67> checking to see if pid 24555 is valid: kill(pid, 0) = 0 (YES, it's still running)
+16:31:42.143 xcodebuild[24365:4269380] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Registered for sim device notification, got token 10
+16:31:42.143 xcodebuild[24365:4269381] 2EB0863C-470E-467D-A0C6-CD216DA70C67: Unregistering for sim device notification with token 10
+16:31:46.355 xcodebuild[24365:4265570] Test process runnable PID is 24555.
+16:31:46.355 xcodebuild[24365:4266086] XCTHTestOperationStateMachine: Transitioning from state Initial to AcquiredPID
+2026-09-15 16:31:49.001664+1000 ACEClientAppUITests-Runner[24555:4269581] [Default] Running tests...
+2026-09-15 16:31:49.319598+1000 ACEClientAppUITests-Runner[24555:4270192] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-09-15 16:31:49.358673+1000 ACEClientAppUITests-Runner[24555:4270198] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+16:31:50.829 xcodebuild[24365:4269381] Handling proxy channel request from test runner
+16:31:50.829 ACEClientAppUITests-Runner[24555:4269581] Creating future for 'requesting test configuration' with timeout 600.00
+16:31:50.829 ACEClientAppUITests-Runner[24555:4269581] Notifying test runner ready
+16:31:50.830 xcodebuild[24365:4269381] Test runner is ready with capabilities: <XCTCapabilities: 0x6000019905a0>: {
+    "delayed attachment transfer" = 1;
+    "fetch all test identifiers" = 2;
+    "ubiquitous test identifiers" = 1;
+}
+16:31:50.833 xcodebuild[24365:4265570] Test runner session successfully initiated.
+16:31:50.833 xcodebuild[24365:4265570] Authorizing test process ID 24555
+16:31:50.830 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c016e0> entering wait loop for 600.00s with expectations: `requesting test configuration`
+16:31:50.833 xcodebuild[24365:4266086] XCTHTestOperationStateMachine: Transitioning from state AcquiredPID to ReportedReady
+16:31:50.836 xcodebuild[24365:4265570] Got authorization response from test daemon: Success
+16:31:50.837 xcodebuild[24365:4265570] Registering/updating daemon-based crash report observer for process names (
+    xctest,
+    debugserver,
+    FrontBoard,
+    assertiond,
+    runningboardd,
+    SpringBoard,
+    testmanagerd,
+    backboardd,
+    DTServiceHub,
+    ACEClientApp,
+    "ACEClientAppUITests-Runner",
+    ACEClientAppUITests
+)
+16:31:50.837 xcodebuild[24365:4265570] Telling test runner to start executing tests.
+16:31:50.841 ACEClientAppUITests-Runner[24555:4270192] Received test runner ready reply. Waiting for request to start running tests.
+16:31:50.842 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c016e0>
+16:31:50.842 ACEClientAppUITests-Runner[24555:4270192] _IDE_startExecutingTestPlanWithProtocolVersion:36
+16:31:50.842 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x600001706800> completed after 0.012s
+16:31:50.843 ACEClientAppUITests-Runner[24555:4269581] cleaning up requesting test configuration
+16:31:50.843 ACEClientAppUITests-Runner[24555:4269581] Loading test bundle at: file://LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/F0EF50D6-C606-40F7-B586-6BB56F0D5E60/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest/
+16:31:50.863 ACEClientAppUITests-Runner[24555:4270198] -[XCTRunnerDaemonSession(XCTMessagingRole_UIApplicationStateUpdating) _XCT_applicationDidUpdateState:] com.example.aceclientapp.uitests.xctrunner@LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/F0EF50D6-C606-40F7-B586-6BB56F0D5E60/ACEClientAppUITests-Runner.app processName: ACEClientAppUIT pid: 24555 state: running background
+16:31:50.905 ACEClientAppUITests-Runner[24555:4269581] Finished loading test bundle
+16:31:50.907 ACEClientAppUITests-Runner[24555:4269581] Interop: not enabled, so skipping install
+16:31:50.908 ACEClientAppUITests-Runner[24555:4269581] Registering in-process symbolication service with image names: ACEClientAppUITests-Runner, ACEClientAppUITests, ACEClientApp
+16:31:50.908 ACEClientAppUITests-Runner[24555:4269581] Running tests with active test configuration: <XCTestConfiguration: 0x107307580>
+	                  testBundleURL:file://LOCAL_HOME/Library/Developer/CoreSimulator/Devices/2EB0863C-470E-467D-A0C6-CD216DA70C67/data/Containers/Bundle/Application/F0EF50D6-C606-40F7-B586-6BB56F0D5E60/ACEClientAppUITests-Runner.app/PlugIns/ACEClientAppUITests.xctest/
+	         testBundleRelativePath:PlugIns/ACEClientAppUITests.xctest
+	              productModuleName:ACEClientAppUITests
+	                  testSelection:<XCTTestSelection: 0x600000c2a0d0>
+	            identifiersToRun:<XCTTestIdentifier leaf, method ["ACEClientAppUITests", "testConfigureAccessibilitySettings"]>, <XCTTestIdentifier container ["ACEClientAppUITests", "testConfigureAccessibilitySettings"]>
+	            identifiersToSkip:
+	            tagsToRun:(null)
+	            tagsToSkip:<XCTTagSelection: 0x600000226be0>
+	            mode:and
+	            tags:{(
+)}
+	  includeXCTests:NO
+
+
+	             reportResultsToIDE:YES
+	               testsDrivenByIDE:NO
+	inProcessParallelizationEnabled:NO
+	              sessionIdentifier:FE2FB173-A9EB-495B-80B5-3D01742D7803
+	      disablePerformanceMetrics:NO
+	treatMissingBaselinesAsFailures:NO
+	                baselineFileURL:(null)
+	       baselineFileRelativePath:(null)
+	          targetApplicationPatLOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app
+	      targetApplicationBundleID:com.example.aceclientapp
+	 testApplicationDependencies:
+{
+    "com.example.aceclientapp" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator/ACEClientApp.app";
+    "com.example.aceclientapp.uitests.xctrunner" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator/ACEClientAppUITests-Runner.app";
+}
+	 bundleIDsForCrashReportEmphasis:
+{(
+    "com.example.aceclientapp",
+    "com.example.aceclientapp.uitests"
+)}
+	 testApplicationUserOverrides:(null)
+	     targetApplicationArguments:
+	   targetApplicationEnvironment:
+{
+    "APP_DISTRIBUTOR_ID_OVERRIDE" = "com.apple.AppStore";
+    "DYLD_FRAMEWORK_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+    "DYLD_LIBRARY_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+    "XCODE_SCHEME_NAME" = ACEClientAppUITests;
+    "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+    "__XPC_DYLD_FRAMEWORK_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+    "__XPC_DYLD_LIBRARY_PATH" = "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/pilot-runs/20260915T062647Z-pilot-d12f05a89420/build/Build/Products/Debug-iphonesimulator";
+}
+	                  reportActivities:YES
+	          testsMustRunOnMainThread:YES
+	            initializeForUITesting:YES
+	            traceCollectionEnabled:(null)
+	 enablePerformanceTestsDiagnostics:(null)
+	 aggregateStatisticsBeforeCrash:
+{
+    XCSuiteRecordsKey =     {
+    };
+}
+	        automationFrameworkPath:/Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework
+	                     emitOSLogs:NO
+	       systemAttachmentLifetime:deleteOnSuccess
+	         userAttachmentLifetime:deleteOnSuccess
+	   preferredScreenCaptureFormat:screenRecording
+	   gatherLocalizableStringsData:NO
+	          testExecutionOrdering:alphabetical
+	    randomExecutionOrderingSeed:(null)
+	               repetitionPolicy:<XCTRepetitionPolicy: 0x600000226980>
+	            mode:None
+	            maximumIterations:1
+	            repeatInNewRunnerProcess:NO
+
+	       runtimeDiagnosticsPolicy:<XCTRuntimeDiagnosticsPolicy: 0x600000c2aac0>
+	            otherRuntimeIssuesDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x600000226940>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            threadPerformanceCheckerRuntimeIssueDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x600000226940>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            mainThreadCheckerDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x600000226940>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            checkedAllocations:disabled
+
+	            testTimeoutsEnabled:NO
+	              leaksCheckingMode:off
+	 defaultTestExecutionTimeAllowance:600
+	 maximumTestExecutionTimeAllowance:0
+	                IDECapabilities:<XCTCapabilities: 0x600000024640>: {
+    "XCTIssue capability" = 1;
+    "daemon container sandbox extension" = 1;
+    "delayed attachment transfer" = 1;
+    "expected failure test capability" = 1;
+    "in-process test parallelization capability" = 1;
+    "request diagnostics for specific devices" = 1;
+    "runner plan" = 1;
+    "skipped suite capability" = 1;
+    "skipped test capability" = 1;
+    "test case run configurations" = 1;
+    "test iterations" = 2;
+    "test timeout capability" = 1;
+    traits = 1;
+    "ubiquitous test identifiers" = 1;
+    "unified issue recorded" = 1;
+}
+	        symbolicationImageNames:ACEClientAppUITests, ACEClientAppUITests-Runner, ACEClientApp
+	         applicationBundleInfos:
+{
+    "com.example.aceclientapp" = "<XCTApplicationBundleInfo localizations:[] infoDictionary:[]>";
+    "com.example.aceclientapp.uitests.xctrunner" = "<XCTApplicationBundleInfo localizations:[en] infoDictionary:[UISupportedInterfaceOrientations~ipad: (\n    UIInterfaceOrientationPortrait,\n    UIInterfaceOrientationPortraitUpsideDown,\n    UIInterfaceOrientationLandscapeLeft,\n    UIInterfaceOrientationLandscapeRight\n), UISupportedInterfaceOrientations: (\n    UIInterfaceOrientationPortrait,\n    UIInterfaceOrientationLandscapeLeft,\n    UIInterfaceOrientationLandscapeRight\n)]>";
+}
+
+16:31:50.911 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c21b30> entering wait loop for 600.00s with expectations: `requesting ready for testing`
+16:31:50.912 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c21b30>
+16:31:50.912 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x600001745f40> completed after 0.001s
+16:31:50.912 ACEClientAppUITests-Runner[24555:4269581] cleaning up requesting ready for testing
+16:31:50.913 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c23810> entering wait loop for 600.00s with expectations: `IDE proxy`
+16:31:50.913 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c23810>
+16:31:50.914 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x600001745880> completed after 0.001s
+16:31:50.914 ACEClientAppUITests-Runner[24555:4269581] cleaning up IDE proxy
+16:31:50.915 ACEClientAppUITests-Runner[24555:4269581] Initializing for UI testing.
+16:31:50.920 ACEClientAppUITests-Runner[24555:4269581] Linked XCTAutomationSupport.framework from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework/XCTAutomationSupport, built with Xcode 2641(17E201), modified on Friday, 10 April 2026 at 4:03:41 am Australian Eastern Standard Time, bundle version: 24833
+16:31:50.921 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c1ef40> entering wait loop for 60.00s with expectations: `initiating daemon session`
+16:31:50.922 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c1ef40>
+16:31:50.922 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x60000172a740> completed after 0.001s
+16:31:50.922 ACEClientAppUITests-Runner[24555:4269581] cleaning up initiating daemon session
+16:31:50.923 ACEClientAppUITests-Runner[24555:4269581] Creating future for 'enabling automation mode' with timeout 60.00
+16:31:50.924 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c1f4e0> entering wait loop for 60.00s with expectations: `enabling automation mode`
+16:31:50.933 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c1f4e0>
+16:31:50.933 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x60000171b0c0> completed after 0.010s
+16:31:50.933 ACEClientAppUITests-Runner[24555:4269581] cleaning up enabling automation mode
+16:31:50.934 ACEClientAppUITests-Runner[24555:4269581] Creating future for 'loading Accessibility' with timeout 70.00
+16:31:50.935 ACEClientAppUITests-Runner[24555:4269581] <XCTWaiter: 0x600000c06220> entering wait loop for 70.00s with expectations: `loading Accessibility`
+16:32:55.992 ACEClientAppUITests-Runner[24555:4269581] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x600000c06220>
+16:32:55.993 ACEClientAppUITests-Runner[24555:4269581] Wait <XCTWaiterWait: 0x60000170b240> completed after 65.058s
+16:32:55.993 ACEClientAppUITests-Runner[24555:4269581] cleaning up loading Accessibility
+16:32:55.994 ACEClientAppUITests-Runner[24555:4269581] Error from daemon in loading AX: Timed out waiting for AX loaded notification
+16:32:55.994 ACEClientAppUITests-Runner[24555:4269581] Failed to load accessibility.
+16:32:55.994 ACEClientAppUITests-Runner[24555:4269581] Failed to initialize for UI testing: Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}
+2026-09-15 16:32:55.994915+1000 ACEClientAppUITests-Runner[24555:4269581] [Default] Failed to initialize for UI testing: Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}
+16:32:55.996 xcodebuild[24365:4265570] Test runner began initialization for UI testing.
+16:32:55.997 xcodebuild[24365:4265570] Initialization failure for UI testing: Timed out waiting for AX loaded notification
+16:32:55.997 xcodebuild[24365:4265570] Test operation failure: Error Domain=XCTHTestOperationCoordinatorErrorDomain Code=8 "The test runner failed to initialize for UI testing" UserInfo={NSLocalizedDescription=The test runner failed to initialize for UI testing, NSUnderlyingError=0x60000174f900 {Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}}}
+16:32:55.997 xcodebuild[24365:4265570] _finishWithError:Error Domain=XCTHTestOperationCoordinatorErrorDomain Code=8 "The test runner failed to initialize for UI testing" UserInfo={NSLocalizedDescription=The test runner failed to initialize for UI testing, NSUnderlyingError=0x60000174f900 {Error Domain=XCTDaemonErrorDomain Code=18 "Timed out waiting for AX loaded notification" UserInfo={NSLocalizedDescription=Timed out waiting for AX loaded notification}}}
+16:32:55.997 xcodebuild[24365:4265570] Current state: testRunnerLaunchSessionHasFinishedReceivingData: NO, delegateBlockQueue.count: 0
+16:32:55.997 xcodebuild[24365:4265570] <XCTHTestOperationCoordinator: 0x7fa00b560f00>: _considerFlushingDelegateBlockQueue - nothing to flush

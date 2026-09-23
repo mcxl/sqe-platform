@@ -1,0 +1,17 @@
+{
+  "timeUTC": "2026-09-14T19:44:38.171931+00:00",
+  "category": "test invocation fault",
+  "expected": "all requested selectors exist in native enumeration",
+  "actual": "selected test selector was not found by native enumeration",
+  "source": "external private run-unit.py selector preparation; no XCTest assertion",
+  "buildExit": 0,
+  "executedTests": 0,
+  "correction": "use exact 68 native enumerated unit identifiers",
+  "missing": [
+    "ACEClientAppTests/AcceptanceEvidenceCatalogue/testCatalogueHasUniqueIdentifiers",
+    "ACEClientAppTests/AcceptanceEvidenceCatalogue/testCatalogueMethodsExist",
+    "ACEClientAppTests/AcceptanceEvidenceCatalogue/testPendingRuntimePlanHasUniqueStructuredEntries"
+  ],
+  "sourceUnchanged": true,
+  "attempt": 1
+}

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "core.fsmonitor=false",
+    "ls-files",
+    "--cached",
+    "--others",
+    "--exclude-standard",
+    "-z"
+  ],
+  "exit_code": 0,
+  "seconds": 0.8519225999916671
+}

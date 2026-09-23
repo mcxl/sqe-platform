@@ -1,0 +1,32 @@
+{
+  "startUTC": "2026-09-16T21:19:18.188410+00:00",
+  "endUTC": "2026-09-16T21:19:23.262360+00:00",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "runnerTestsExit": 0,
+  "diffCheckExit": 0,
+  "files": {
+    "ACE_PROGRESS_GUIDE.html": "aeac192a65e19a02de9571fc8e92f0a2ac6dd04ae3e41cd8d534485594b7c98f",
+    "DEV_STATE.md": "60a4dd815df828f9881403a436d6f8e01a67f1b589a0dbfff358ccd9edbd59d7",
+    "docs/plans/2026-09-14-ace-ios-local-verification.md": "82ed627b02513b6b52c90244cb93d9a2dcc8738a8f06ec8cbb899255423156f4",
+    "docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "3ac56988d48275947cadf0a69e15fd9ddb160eb524174e7a0acef9a47f20b1c9",
+    "docs/plans/2026-09-17-ace-ios-discovery-candidate.md": "9228d23e71fbd649ffe6dd23cbbe416d71f75e7fc127f6c6d1f231eda5a54dfd",
+    "tools/ace_ios_local.py": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5",
+    "tools/tests/test_ace_ios_local.py": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d"
+  },
+  "diffSha256": "0700282b817ef24e7d21324c21c0c858c1bd82d5011f4e3afc5d3224fa23fcdd",
+  "sourceInspection": "Primary read complete runner changes, all new tests, all four tracked record diffs and the new candidate record. No application or Swift test file changed.",
+  "nativeTestsRun": 0,
+  "remaining": [
+    "fresh Sol review",
+    "clean task commit",
+    "68 native unit/contract tests",
+    "discovery native evidence check before pilot"
+  ],
+  "documentationOrderCorrection": "Aligned commit and68native-test order with approved R5P0. Changed-discovery native gate remains required before pilot. Code/test files unchanged;59passed checks reused."
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\AlanRichardson\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\\uv.EXE",
+    "--no-config",
+    "pip",
+    "compile",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\requirements.in",
+    "--constraint",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\lock-constraints.txt",
+    "--python",
+    "C:\\Users\\AlanRichardson\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "--generate-hashes",
+    "--output-file",
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\requirements-resolved.txt"
+  ],
+  "exit_code": 0,
+  "seconds": 2.929756899990025
+}

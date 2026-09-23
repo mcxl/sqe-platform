@@ -1,0 +1,656 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+index b267930..db9fc6d 100644
+--- a/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
++++ b/ios/ACEClientApp/ACEClientApp/DebugScenario.swift
+@@ -4,7 +4,7 @@ import SwiftUI
+ enum UITestScenario: String {
+     case configuration, signIn, loading, emptyRelease, emptyEngagement, release, noConclusion, noActions
+     case denied, unavailable, unexpected, connection, timeout, invalidResponse, secure
+-    case keychainRead, keychainWrite, keychainDeletion, deletionOnly, deletionRetry, copyConfirmation, privacy
++    case keychainRead, keychainWrite, keychainDeletion, deletionOnly, deletionRetry, copyConfirmation, multiAction, privacy
+ 
+     static var current: UITestScenario? {
+         guard let raw = ProcessInfo.processInfo.environment["ACE_UI_TEST_SCENARIO"] else { return nil }
+@@ -45,14 +45,68 @@ struct ScenarioRootView: View {
+         case .noActions:
+             ReleaseView(release: ClientReleaseResponse(engagementName: release.engagementName, reviewStatus: release.reviewStatus, releaseVersion: release.releaseVersion, publishedAt: release.publishedAt, conclusion: release.conclusion, actions: []), notices: ["No actions are available."], refresh: {}, signOut: {})
+         case .copyConfirmation:
+-            ScrollView {
+-                VStack(alignment: .leading, spacing: 16) {
+-                    ValueRow(field: .engagementName, value: release.engagementName)
++            ReleaseView(release: release, notices: [], refresh: {}, signOut: {})
++        case .multiAction:
++            MultiActionClipboardFixture(
++                release: ClientReleaseResponse(
++                    engagementName: release.engagementName,
++                    reviewStatus: release.reviewStatus,
++                    releaseVersion: release.releaseVersion,
++                    publishedAt: release.publishedAt,
++                    conclusion: release.conclusion,
++                    actions: [
++                        release.actions[0],
++                        ClientAction(description: "Second fictional action", owner: "Second fictional owner", targetDate: "2026-08-26", status: "COMPLETE")
++                    ]
++                )
++            )
++        case .privacy: PrivacyCoverView()
++        }
++    }
++}
++
++private struct MultiActionClipboardFixture: View {
++    let release: ClientReleaseResponse
++    @State private var isClipboardTestDestinationPresented = false
++
++    var body: some View {
++        ReleaseView(release: release, notices: [], refresh: {}, signOut: {})
++            .safeAreaInset(edge: .bottom) {
++                Button {
++                    isClipboardTestDestinationPresented = true
++                } label: {
++                    Text("Clipboard test destination")
++                        .frame(minWidth: 44, minHeight: 44)
++                        .contentShape(Rectangle())
+                 }
+-                .frame(maxWidth: .infinity, alignment: .leading)
++                .accessibilityLabel("Clipboard test destination")
+             }
+-        case .privacy: PrivacyCoverView()
++            .sheet(isPresented: $isClipboardTestDestinationPresented) {
++                ClipboardPasteFixture {
++                    isClipboardTestDestinationPresented = false
++                }
++            }
++    }
++}
++
++private struct ClipboardPasteFixture: View {
++    let close: () -> Void
++    @State private var pastedValue = ""
++
++    var body: some View {
++        VStack(alignment: .leading, spacing: 16) {
++            TextEditor(text: $pastedValue)
++                .frame(minHeight: 120)
++                .accessibilityLabel("Clipboard paste destination")
++            Button(action: close) {
++                Text("Close")
++                    .frame(minWidth: 44, minHeight: 44)
++                    .contentShape(Rectangle())
++            }
++            .accessibilityLabel("Close clipboard test destination")
+         }
++        .padding()
++        .onAppear { pastedValue = "" }
+     }
+ }
+ #endif
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+index 55402d5..757be82 100644
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -182,6 +182,7 @@ struct ReleaseView: View {
+                             ValueRow(field: .actionOwner, value: action.owner)
+                             ValueRow(field: .actionTargetDate, value: action.targetDate)
+                             ValueRow(field: .actionStatus, value: action.status)
++                            ActionCopyControl(action: action, index: index)
+                         }
+                         .accessibilityElement(children: .contain)
+                     }
+@@ -250,29 +251,8 @@ enum CopyableReleaseField: CaseIterable {
+ struct ValueRow: View {
+     let field: CopyableReleaseField
+     let value: String
+-    @State private var confirmation: String?
+-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+ 
+     var body: some View {
+-        VStack(alignment: .leading, spacing: 8) {
+-            if dynamicTypeSize.isAccessibilitySize {
+-                fieldContents
+-                copyButton
+-            } else {
+-                HStack(alignment: .top, spacing: 12) {
+-                    fieldContents
+-                    copyButton
+-                }
+-            }
+-            if let confirmation {
+-                Text(confirmation)
+-                    .font(.body)
+-                    .foregroundStyle(.primary)
+-            }
+-        }
+-    }
+-
+-    private var fieldContents: some View {
+         VStack(alignment: .leading, spacing: 6) {
+             Text(field.label)
+                 .font(.subheadline)
+@@ -286,21 +266,46 @@ struct ValueRow: View {
+         .accessibilityElement(children: .combine)
+         .accessibilityLabel("\(field.label): \(value)")
+     }
++}
+ 
+-    private var copyButton: some View {
+-        Button(action: copyValue) {
+-            Label("Copy", systemImage: "doc.on.doc")
+-                .frame(minWidth: 44, minHeight: 44)
+-                .contentShape(Rectangle())
++enum ActionClipboardPayload {
++    static func value(for action: ClientAction, index: Int) -> String {
++        [
++            "Action \(index + 1)",
++            "Description: \(action.description)",
++            "Owner: \(action.owner)",
++            "Target date: \(action.targetDate)",
++            "Status: \(action.status)"
++        ].joined(separator: "\n")
++    }
++}
++
++struct ActionCopyControl: View {
++    let action: ClientAction
++    let index: Int
++    @State private var confirmation: String?
++
++    var body: some View {
++        VStack(alignment: .leading, spacing: 8) {
++            Button(action: copyAction) {
++                Label("Copy action", systemImage: "doc.on.doc")
++                    .frame(minWidth: 44, minHeight: 44)
++                    .contentShape(Rectangle())
++            }
++            .buttonStyle(.bordered)
++            .tint(.primary)
++            .accessibilityLabel("Copy action \(index + 1)")
++            if let confirmation {
++                Text(confirmation)
++                    .font(.body)
++                    .foregroundStyle(.primary)
++            }
+         }
+-        .buttonStyle(.bordered)
+-        .tint(.primary)
+-        .accessibilityLabel("Copy \(field.label)")
+     }
+ 
+-    private func copyValue() {
+-        ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())
+-        let announcement = "Copied \(field.label)."
++    private func copyAction() {
++        ClipboardWriteContract.write(visibleValue: ActionClipboardPayload.value(for: action, index: index), writtenAt: Date())
++        let announcement = "Copied Action \(index + 1)."
+         confirmation = announcement
+         UIAccessibility.post(notification: .announcement, argument: announcement as NSString)
+     }
+diff --git a/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift b/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift
+index 65327cd..97ae5ce 100644
+--- a/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift
++++ b/ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift
+@@ -34,6 +34,38 @@ final class ACEClientAppTests: XCTestCase {
+         XCTAssertEqual(try release.validated(), .release(release))
+     }
+ 
++    func testActionClipboardPayloadUsesExactUTF8PlainTextWithLFSeparators() {
++        let action = ClientAction(
++            description: "Fictional action",
++            owner: "Fictional owner",
++            targetDate: "2026-08-25",
++            status: "OPEN"
++        )
++        let expected = "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"
++        let payload = ActionClipboardPayload.value(for: action, index: 0)
++
++        XCTAssertEqual(payload, expected)
++        XCTAssertFalse(payload.hasSuffix("\n"))
++        XCTAssertEqual(ClipboardWriteContract.item(visibleValue: payload)["public.utf8-plain-text"] as? String, expected)
++
++        let secondAction = ClientAction(
++            description: "  Café\n第二行  ",
++            owner: "  Zoë  ",
++            targetDate: " 2026-08-26 ",
++            status: " COMPLETE "
++        )
++        let secondExpected = "Action 2\nDescription:   Café\n第二行  \nOwner:   Zoë  \nTarget date:  2026-08-26 \nStatus:  COMPLETE "
++        XCTAssertEqual(ActionClipboardPayload.value(for: secondAction, index: 1), secondExpected)
++    }
++
++    func testClipboardWriteOptionsRemainLocalForFiveMinutes() {
++        let writtenAt = Date(timeIntervalSinceReferenceDate: 123)
++        let options = ClipboardWriteContract.options(writtenAt: writtenAt)
++
++        XCTAssertEqual(options[.localOnly] as? Bool, true)
++        XCTAssertEqual(options[.expirationDate] as? Date, writtenAt.addingTimeInterval(300))
++    }
++
+     func testInvalidReleaseValuesFailClosed() {
+         let invalids = [
+             ClientReleaseResponse(engagementName: "Fictional", reviewStatus: "RELEASED", releaseVersion: 0, publishedAt: "2026-08-24T10:15:30Z", conclusion: nil, actions: []),
+diff --git a/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift b/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
+index f537f1b..00536de 100644
+--- a/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
++++ b/ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift
+@@ -27,7 +27,7 @@ extension AcceptanceEvidenceContractTests {
+         // This digest verifies approved document content. It does not prove direct ancestry.
+         // Commit 6b exists in the original Windows repository, but import history differs.
+         // Baseline acceptance remains blocked.
+-        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "bce02156da2e55749347678feb206173d2c0ff07bb0c40ba3d88f21d1aca2a7b"]
++        ["docs/specs/2026-08-24-ace-ios-read-only-client-application.md": "34557384743e61331628b767551b6e2aed72d140d4dd072606adb7e2b395e1a0"]
+     }
+ 
+     func testProjectConfiguration() throws {
+@@ -1370,57 +1370,56 @@ extension AcceptanceEvidenceContractTests {
+ 
+     func testCopyControlsUITest() throws {
+         // This test inspects source. It does not perform a runtime UI interaction.
+-        // IOS-COPY-001: Each visible value has labelled copy control
+-        // IOS-COPY-004: Evidence references copy as text, never open as links
+-        // IOS-COPY-005: Copy action gives accessible confirmation
+-        // IOS-COPY-006: Only eleven named field types have copy controls
+-        // IOS-COPY-007: No unapproved internal identifier has copy control
++        // IOS-COPY-001: Each complete action has one labelled copy control.
++        // IOS-COPY-004: Evidence references remain visible and do not have copy controls.
++        // IOS-COPY-005: Copy action gives accessible confirmation.
++        // IOS-COPY-006: Only action cards have grouped copy controls.
++        // IOS-COPY-007: No unapproved internal identifier has copy control.
+         XCTAssertEqual(CopyableReleaseField.allCases.count, 11)
+         let labels = CopyableReleaseField.allCases.map(\.label)
+-        XCTAssertTrue(labels.contains("Engagement name"))
+-        XCTAssertTrue(labels.contains("Review status"))
+-        XCTAssertTrue(labels.contains("Release version"))
+-        XCTAssertTrue(labels.contains("Published date and time"))
+-        XCTAssertTrue(labels.contains("Conclusion title"))
+-        XCTAssertTrue(labels.contains("Conclusion summary"))
+-        XCTAssertTrue(labels.contains("Evidence reference"))
+-        XCTAssertTrue(labels.contains("Action description"))
+-        XCTAssertTrue(labels.contains("Action owner"))
+-        XCTAssertTrue(labels.contains("Action target date"))
+-        XCTAssertTrue(labels.contains("Action status"))
++        XCTAssertEqual(labels, [
++            "Engagement name", "Review status", "Release version", "Published date and time",
++            "Conclusion title", "Conclusion summary", "Evidence reference", "Action description",
++            "Action owner", "Action target date", "Action status"
++        ])
+         let viewSource = try sourceText("Views.swift")
+-        XCTAssertTrue(viewSource.contains("let field: CopyableReleaseField"), "Copy controls must take an approved field type")
+-        let valueRowSource = viewSource.components(separatedBy: "struct ValueRow: View {").last ?? ""
+-        XCTAssertEqual(valueRowSource.components(separatedBy: "private var copyButton").count - 1, 1, "ValueRow must contain one dedicated copy-control implementation")
+-        XCTAssertEqual(valueRowSource.components(separatedBy: "ClipboardWriteContract.write(").count - 1, 1, "ValueRow must have one protected clipboard action")
+-        XCTAssertTrue(valueRowSource.contains("Label(\"Copy\""), "The copy control must have a visible Copy label")
+-        XCTAssertTrue(valueRowSource.contains(".accessibilityLabel(\"Copy \\(field.label)\")"), "The copy button must retain its accessible name")
++        let valueRowSource = (viewSource.components(separatedBy: "struct ValueRow: View {").last ?? "")
++            .components(separatedBy: "enum ActionClipboardPayload").first ?? ""
++        XCTAssertFalse(valueRowSource.contains("ClipboardWriteContract.write("), "Value rows must not copy individual values")
++        XCTAssertFalse(valueRowSource.contains("Label(\"Copy"), "Value rows must not contain Copy buttons")
++        XCTAssertEqual(viewSource.components(separatedBy: "struct ActionCopyControl: View {").count - 1, 1, "One grouped action-copy control type is required")
++        XCTAssertTrue(viewSource.contains("ActionCopyControl(action: action, index: index)"), "Each action card must use its grouped copy control")
++        XCTAssertTrue(viewSource.contains("Label(\"Copy action\""), "The copy control must have a visible Copy action label")
++        XCTAssertTrue(viewSource.contains(".accessibilityLabel(\"Copy action \\(index + 1)\")"), "The copy button must retain its numbered accessible name")
+         XCTAssertFalse(viewSource.contains(".textSelection("), "Native selection must not bypass ClipboardWriteContract")
+-        XCTAssertTrue(viewSource.contains("let announcement = \"Copied \\(field.label).\""), "Copy confirmation must be accessible text")
+-        XCTAssertTrue(valueRowSource.contains("if let confirmation"), "ValueRow must show the copy confirmation")
+-        XCTAssertTrue(valueRowSource.contains("Text(confirmation)"), "Copy confirmation must remain visible to accessibility services")
++        XCTAssertTrue(viewSource.contains("let announcement = \"Copied Action \\(index + 1).\""), "Copy confirmation must be accessible text")
++        XCTAssertTrue(viewSource.contains("if let confirmation"), "ActionCopyControl must show the copy confirmation")
++        XCTAssertTrue(viewSource.contains("Text(confirmation)"), "Copy confirmation must remain visible to accessibility services")
+         XCTAssertFalse(viewSource.contains("Link("), "Production source must not use Link-based external navigation")
+     }
+ 
+     func testClipboardContract() throws {
+-        // IOS-COPY-002: Copy control copies only its visible value
+-        // IOS-COPY-003: No copy control exposes credentials or technical details
+-        // IOS-COPY-008: Every clipboard write uses localOnly = true
+-        // IOS-COPY-009: Every clipboard write expires 5 minutes after write
+-        let visibleValue = "Visible release value"
++        // IOS-COPY-002: Copy action contains only its displayed action values.
++        // IOS-COPY-003: No copy control exposes credentials or technical details.
++        // IOS-COPY-008: Every clipboard write uses localOnly = true.
++        // IOS-COPY-009: Every clipboard write expires 5 minutes after write.
++        let action = ClientAction(description: "Fictional action", owner: "Fictional owner", targetDate: "2026-08-25", status: "OPEN")
++        let expected = "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN"
++        let payload = ActionClipboardPayload.value(for: action, index: 0)
++        XCTAssertEqual(payload, expected)
++        XCTAssertFalse(payload.hasSuffix("\n"))
+         let writtenAt = Date(timeIntervalSinceReferenceDate: 123_456)
+-        let item = ClipboardWriteContract.item(visibleValue: visibleValue)
++        let item = ClipboardWriteContract.item(visibleValue: payload)
+         XCTAssertEqual(item.count, 1)
+-        XCTAssertEqual(item["public.utf8-plain-text"] as? String, visibleValue)
++        XCTAssertEqual(item["public.utf8-plain-text"] as? String, expected)
+         let options = ClipboardWriteContract.options(writtenAt: writtenAt)
+         XCTAssertEqual(options[.localOnly] as? Bool, true)
+         XCTAssertEqual(options[.expirationDate] as? Date, writtenAt.addingTimeInterval(300))
+         let viewText = try sourceText("Views.swift")
+-        XCTAssertTrue(viewText.contains("ClipboardWriteContract.write(visibleValue: value, writtenAt: Date())"))
++        XCTAssertTrue(viewText.contains("ClipboardWriteContract.write(visibleValue: ActionClipboardPayload.value(for: action, index: index), writtenAt: Date())"))
+         let productionSourceText = try allSourceText()
+         XCTAssertFalse(productionSourceText.contains("UIPasteboard.general.setItems"))
+         XCTAssertEqual(productionSourceText.components(separatedBy: ".setItems(").count - 1, 1, "Only ClipboardWriteContract may write to the pasteboard")
+-        // No credential fields in CopyableReleaseField
+         let fieldLabels = CopyableReleaseField.allCases.map(\.label)
+         XCTAssertFalse(fieldLabels.contains(where: { $0.lowercased().contains("password") || $0.lowercased().contains("credential") || $0.lowercased().contains("authorization") }))
+     }
+@@ -1569,13 +1568,16 @@ extension AcceptanceEvidenceContractTests {
+         let scenarioSource = try sourceText("DebugScenario.swift")
+         XCTAssertTrue(scenarioSource.hasPrefix("#if DEBUG"), "Controlled scenarios must not ship in Release")
+         let approvedLiterals: Set<String> = [
+-            "2026-08-24T10:15:30Z", "2026-08-25", "Access denied. Sign in again.",
++            "", "2026-08-24T10:15:30Z", "2026-08-25", "2026-08-26", "Access denied. Sign in again.",
+             "ACE could not be reached. Check your connection and try again.",
+             "ACE could not establish a secure connection. Try again later.", "ACE is unavailable. Try again later.",
+-            "ACE_UI_TEST_SCENARIO", "Fictional action", "Fictional conclusion", "Fictional Engagement",
+-            "Fictional owner", "Fictional summary", "FICTIONAL-REF-001", "Loading", "Loading current release",
+-            "No actions are available.", "No conclusion is available.", "No current release is available.",
+-            "OPEN", "RELEASED", "Reset saved sign-in", "Saved sign-in could not be read. Try again.",
++            "ACE_UI_TEST_SCENARIO", "Clipboard paste destination", "Clipboard test destination", "Close",
++            "Close clipboard test destination", "COMPLETE", "Fictional action",
++            "Fictional conclusion", "Fictional Engagement", "Fictional owner", "Fictional summary",
++            "FICTIONAL-REF-001", "Loading", "Loading current release", "No actions are available.",
++            "No conclusion is available.", "No current release is available.", "OPEN", "RELEASED",
++            "Reset saved sign-in", "Saved sign-in could not be read. Try again.", "Second fictional action",
++            "Second fictional owner",
+             "Saved sign-in could not be removed. Try again.", "Saved sign-in must be reset before access.",
+             "Sign-in could not be saved. Try again.", "Sign-out could not be completed. Try again.",
+             "The request timed out. Try again.", "This app is not configured for access.", "Try again"
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index d557585..ae688bf 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -179,7 +179,7 @@ final class ACEClientAppUITests: XCTestCase {
+         case "keychainRead": expected = coverageElement(in: app, labeled: "Saved sign-in could not be read. Try again.")
+         case "keychainWrite": expected = coverageElement(in: app, labeled: "Sign-in could not be saved. Try again.")
+         case "keychainDeletion": expected = coverageElement(in: app, labeled: "Saved sign-in could not be removed. Try again.")
+-        case "copyConfirmation": expected = app.buttons["Copy Engagement name"]
++        case "copyConfirmation": expected = app.staticTexts["Current Release"]
+         case "privacy": expected = coverageElement(in: app, labeled: "ACE Client")
+         default: XCTFail("Unsupported coverage scenario: \(scenario)"); return false
+         }
+@@ -192,23 +192,24 @@ final class ACEClientAppUITests: XCTestCase {
+         switch scenario {
+         case "release":
+             return traverseReleaseFields(releaseFields, in: app, caseID: caseID, screenshots: &screenshots)
+-                && verifyReleaseActions(releaseFields, in: app)
++                && verifyReleaseActions(actionCount: 1, in: app)
+                 && captureAndAudit(in: app, scenario: scenario, caseID: caseID, viewport: "release-final", audit: audit, screenshots: &screenshots, audits: &audits)
+         case "noConclusion":
+             let fields = releaseFields.filter { !$0.0.hasPrefix("Conclusion") && $0.0 != "Evidence reference" }
+             return traverseReleaseFields(fields, in: app, caseID: caseID, screenshots: &screenshots)
+-                && verifyReleaseActions(fields, in: app)
++                && verifyReleaseActions(actionCount: 1, in: app)
+                 && verifyRequiredNotice("No conclusion is available.", scenario: scenario, in: app, caseID: caseID, viewport: "no-conclusion-notice", audit: audit, screenshots: &screenshots, audits: &audits)
+         case "noActions":
+             let fields = releaseFields.filter { !$0.0.hasPrefix("Action") }
+             return traverseReleaseFields(fields, in: app, caseID: caseID, screenshots: &screenshots)
+-                && verifyReleaseActions(fields, in: app)
++                && verifyReleaseActions(actionCount: 0, in: app)
+                 && verifyRequiredNotice("No actions are available.", scenario: scenario, in: app, caseID: caseID, viewport: "no-actions-notice", audit: audit, screenshots: &screenshots, audits: &audits)
+         case "copyConfirmation":
+-            let copy = app.buttons["Copy Engagement name"]
+-            guard verifyActionTarget(copy, name: "Copy Engagement name") else { return false }
++            let copy = app.buttons["Copy action 1"]
++            scrollUntilVisible(copy, in: app, field: "Copy action 1")
++            guard verifyActionTarget(copy, name: "Copy action 1") else { return false }
+             copy.tap()
+-            let confirmation = coverageElement(in: app, labeled: "Copied Engagement name.")
++            let confirmation = coverageElement(in: app, labeled: "Copied Action 1.")
+             guard requireCoverage(confirmation.waitForExistence(timeout: 5), "Copy confirmation is missing") else { return false }
+             scrollUntilVisible(confirmation, in: app, field: "Copy confirmation")
+             guard requireCoverage(isFullyVisible(confirmation, in: app.scrollViews.firstMatch), "Copy confirmation must be visible") else { return false }
+@@ -239,15 +240,13 @@ final class ACEClientAppUITests: XCTestCase {
+             scrollUntilVisible(row, in: app, field: field)
+             guard requireCoverage(isFullyVisible(row, in: app.scrollViews.firstMatch), "Release value for \(field) must be visible") else { return false }
+             captureCoverageViewport(in: app, caseID: caseID, viewport: "value-\(field)", screenshots: &screenshots)
+-            let copy = app.buttons["Copy \(field)"]
+-            scrollUntilVisible(copy, in: app, field: "Copy \(field)")
+-            guard verifyActionTarget(copy, name: "Copy \(field)") else { return false }
+         }
+         return true
+     }
+ 
+-    private func verifyReleaseActions(_ fields: [(String, String)], in app: XCUIApplication) -> Bool {
+-        for label in fields.map({ "Copy \($0.0)" }) + ["Refresh current release", "Sign out"] {
++    private func verifyReleaseActions(actionCount: Int, in app: XCUIApplication) -> Bool {
++        let actionLabels = actionCount > 0 ? (1...actionCount).map { "Copy action \($0)" } : []
++        for label in actionLabels + ["Refresh current release", "Sign out"] {
+             let button = app.buttons[label]
+             scrollUntilVisible(button, in: app, field: label)
+             guard verifyActionTarget(button, name: label) else { return false }
+@@ -497,82 +496,115 @@ final class ACEClientAppUITests: XCTestCase {
+         return contentSize
+     }
+ 
+-    func testAllReleaseClipboardValuesPasteExactly() {
++    func testCompleteActionClipboardPastesExactly() {
+         continueAfterFailure = false
+-        let fields = releaseFields
+-        let sentinel = "FictionalClipboardSentinelMustBeReplaced"
+-        XCTAssertEqual(Set(fields.map(\.1)).count, fields.count, "Release clipboard values must be unique")
+-        XCTAssertFalse(fields.map(\.1).contains(sentinel), "Clipboard sentinel must differ from every release value")
+-
+-        var activeApp: XCUIApplication?
+-        defer { activeApp?.terminate() }
+-
+-        let seedApp = launch("signIn")
+-        activeApp = seedApp
+-        seedNativeClipboard(with: sentinel, in: seedApp)
+-        seedApp.terminate()
+-        activeApp = nil
+-
+-        for (field, expectedValue) in fields {
+-            let release = launch("release")
+-            activeApp = release
+-            let copy = release.buttons["Copy \(field)"]
+-            scrollUntilVisible(copy, in: release, field: "Copy \(field)")
+-            XCTAssertTrue(copy.isHittable, "Copy \(field) must be tappable")
++        let actionPayloads = [
++            ("Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN", "ActionOneClipboardSentinelA"),
++            ("Copy action 2", "Action 2\nDescription: Second fictional action\nOwner: Second fictional owner\nTarget date: 2026-08-26\nStatus: COMPLETE", "ActionTwoClipboardSentinelB"),
++            ("Copy action 1", "Action 1\nDescription: Fictional action\nOwner: Fictional owner\nTarget date: 2026-08-25\nStatus: OPEN", "ActionOneClipboardSentinelC")
++        ]
++        let app = launch("multiAction")
++        defer { app.terminate() }
++
++        for (position, action) in actionPayloads.enumerated() {
++            let (label, expectedPayload, sentinel) = action
++            XCTAssertFalse(expectedPayload.contains(sentinel), "Clipboard sentinel must differ from the expected action payload")
++            seedNativeClipboard(with: sentinel, in: app)
++
++            let copy = app.buttons[label]
++            scrollUntilVisible(copy, in: app, field: label)
++            XCTAssertTrue(copy.isHittable, "\(label) must be tappable")
+             copy.tap()
+ 
+-            let confirmation = release.staticTexts["Copied \(field)."]
+-            XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "Copy \(field) must show its confirmation")
+-            if field == "Engagement name" {
+-                let displayedValue = release.descendants(matching: .any)
+-                    .matching(NSPredicate(format: "label == %@", "\(field): \(expectedValue)"))
++            let actionNumber = label.suffix(1)
++            let confirmation = app.staticTexts["Copied Action \(actionNumber)."]
++            XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "\(label) must show its confirmation")
++            addScreenshot(of: app, named: "Native action copied — step \(position + 1) — \(label)")
++            if position == 1 {
++                XCTAssertTrue(app.staticTexts["Copied Action 1."].exists, "Action 1 confirmation must persist after copying Action 2")
++            }
++            if position == 2 {
++                let actionDescription = app.descendants(matching: .any)
++                    .matching(NSPredicate(format: "label == %@", "Action description: Fictional action"))
+                     .firstMatch
+-                XCTAssertEqual(displayedValue.label, "\(field): \(expectedValue)", "First copy must preserve Engagement name")
+-                copy.tap()
+-                XCTAssertTrue(confirmation.waitForExistence(timeout: 5), "Repeated Copy Engagement name must show its confirmation")
+-                XCTAssertEqual(displayedValue.label, "\(field): \(expectedValue)", "Repeated copy must preserve Engagement name")
++                XCTAssertEqual(actionDescription.label, "Action description: Fictional action", "First Action 1 copy must keep its description visible")
++                XCTAssertTrue(app.staticTexts["Copied Action 2."].exists, "Action 2 confirmation must persist before repeated Action 1 copy")
+             }
+-            addScreenshot(of: release, named: "Native copy — \(field)")
+-            release.terminate()
+-            activeApp = nil
+-
+-            let destination = launch("signIn")
+-            activeApp = destination
+-            let username = destination.textFields["Username"]
+-            XCTAssertTrue(username.waitForExistence(timeout: 5), "Username destination must exist for \(field)")
+-            username.tap()
+-            username.press(forDuration: 1)
+-            addScreenshot(of: destination, named: "Native Paste menu — \(field)")
+-            let paste = destination.descendants(matching: .any)
++
++            let destination = openClipboardTestDestination(in: app)
++            XCTAssertEqual(destination.value as? String, "", "Clipboard test destination must be empty before Paste")
++            focus(destination, in: app, purpose: "Paste")
++            destination.press(forDuration: 1)
++            addScreenshot(of: app, named: "Native Paste menu — step \(position + 1) — \(label)")
++            let paste = app.descendants(matching: .any)
+                 .matching(NSPredicate(format: "label == %@", "Paste"))
+                 .firstMatch
+-            XCTAssertTrue(paste.waitForExistence(timeout: 5), "Native Paste command must be available for \(field)")
++            XCTAssertTrue(paste.waitForExistence(timeout: 5), "Native Paste command must be available for \(label)")
+             paste.tap()
+-            XCTAssertEqual(
+-                username.value as? String,
+-                expectedValue,
+-                "Native paste must reproduce the copied \(field) value"
+-            )
+-            addScreenshot(of: destination, named: "Native paste value — \(field)")
+-            destination.terminate()
+-            activeApp = nil
++            XCTAssertEqual(destination.value as? String, expectedPayload, "Native Paste must reproduce the copied \(label) payload exactly")
++            addScreenshot(of: app, named: "Native pasted value — step \(position + 1) — \(label)")
++            closeClipboardTestDestination(in: app)
++            XCTAssertTrue(confirmation.exists, "\(label) confirmation must persist after the sheet closes")
++            if position == 2 {
++                XCTAssertEqual(
++                    app.descendants(matching: .any)
++                        .matching(NSPredicate(format: "label == %@", "Action description: Fictional action"))
++                        .firstMatch.label,
++                    "Action description: Fictional action",
++                    "Repeated Action 1 copy must keep its description visible"
++                )
++            }
+         }
+     }
+ 
+     private func seedNativeClipboard(with sentinel: String, in app: XCUIApplication) {
+-        let username = app.textFields["Username"]
+-        XCTAssertTrue(username.waitForExistence(timeout: 5), "Username field must exist to seed the native clipboard")
+-        username.tap()
+-        username.typeText(sentinel)
+-        username.doubleTap()
+-        addScreenshot(of: app, named: "Native clipboard sentinel selection")
++        let destination = openClipboardTestDestination(in: app)
++        focus(destination, in: app, purpose: "Copy")
++        destination.typeText(sentinel)
++        XCTAssertEqual(destination.value as? String, sentinel, "Clipboard test destination must contain the complete sentinel before Copy")
++        destination.doubleTap()
++        addScreenshot(of: app, named: "Native clipboard sentinel selected — \(sentinel)")
+         let copy = app.descendants(matching: .any)
+             .matching(NSPredicate(format: "label == %@", "Copy"))
+             .firstMatch
+         XCTAssertTrue(copy.waitForExistence(timeout: 5), "Native Copy command must be available for clipboard seeding")
+-        addScreenshot(of: app, named: "Native clipboard sentinel selected")
++        addScreenshot(of: app, named: "Native clipboard sentinel menu — \(sentinel)")
+         copy.tap()
+-        addScreenshot(of: app, named: "Native clipboard sentinel copied")
++        addScreenshot(of: app, named: "Native clipboard sentinel copied — \(sentinel)")
++        closeClipboardTestDestination(in: app)
++    }
++
++    private func openClipboardTestDestination(in app: XCUIApplication) -> XCUIElement {
++        let open = app.buttons["Clipboard test destination"]
++        XCTAssertTrue(open.waitForExistence(timeout: 5), "Clipboard test destination control must exist")
++        open.tap()
++        let destination = app.textViews["Clipboard paste destination"]
++        XCTAssertTrue(destination.waitForExistence(timeout: 5), "Clipboard test destination must open")
++        XCTAssertEqual(destination.value as? String, "", "Clipboard test destination must reset when it opens")
++        return destination
++    }
++
++    private func focus(_ destination: XCUIElement, in app: XCUIApplication, purpose: String) {
++        destination.tap()
++        XCTAssertTrue(
++            app.keyboards.firstMatch.waitForExistence(timeout: 5),
++            "Native keyboard must appear after the clipboard test destination receives focus for \(purpose)"
++        )
++    }
++
++    private func closeClipboardTestDestination(in app: XCUIApplication) {
++        let close = app.buttons["Close clipboard test destination"]
++        XCTAssertTrue(close.waitForExistence(timeout: 5), "Clipboard test destination close control must exist")
++        close.tap()
++        let dismissed = XCTNSPredicateExpectation(
++            predicate: NSPredicate { _, _ in !app.textViews["Clipboard paste destination"].exists },
++            object: nil
++        )
++        XCTAssertEqual(
++            XCTWaiter.wait(for: [dismissed], timeout: 5),
++            .completed,
++            "Clipboard test destination must close before the next native operation"
++        )
+     }
+ 
+     func testBothAppearances() {
+@@ -611,14 +643,16 @@ final class ACEClientAppUITests: XCTestCase {
+ 
+     func testFictionalReleaseHasApprovedCopyControls() throws {
+         let app = launch("release")
+-        let approvedCopyControls = [
++        let approvedCopyControls = ["Copy action 1"]
++        let removedIndividualCopyControls = [
+             "Copy Engagement name", "Copy Review status", "Copy Release version", "Copy Published date and time",
+             "Copy Conclusion title", "Copy Conclusion summary", "Copy Evidence reference", "Copy Action description",
+             "Copy Action owner", "Copy Action target date", "Copy Action status"
+         ]
+         for identifier in approvedCopyControls { XCTAssertTrue(app.buttons[identifier].exists, identifier) }
++        for identifier in removedIndividualCopyControls { XCTAssertFalse(app.buttons[identifier].exists, identifier) }
+         let copyButtons = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy "))
+-        XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must not expose an unapproved copy control")
++        XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must expose only one grouped action copy control")
+         assertMinimumActionTargets(in: app)
+         let appearance = requiredAppearance()
+         let indicator = app.staticTexts["Effective interface style"]
+@@ -651,16 +685,29 @@ final class ACEClientAppUITests: XCTestCase {
+         app.terminate()
+ 
+         let confirmationApp = launch("copyConfirmation")
+-        confirmationApp.buttons["Copy Engagement name"].tap()
+-        XCTAssertTrue(confirmationApp.staticTexts["Copied Engagement name."].exists, "Copy confirmation must be available to VoiceOver")
+-        scrollUntilVisible(confirmationApp.staticTexts["Copied Engagement name."], in: confirmationApp, field: "Copy confirmation")
++        let confirmationCopy = confirmationApp.buttons["Copy action 1"]
++        scrollUntilVisible(confirmationCopy, in: confirmationApp, field: "Copy action 1")
++        confirmationCopy.tap()
++        XCTAssertTrue(confirmationApp.staticTexts["Copied Action 1."].exists, "Copy confirmation must be available to VoiceOver")
++        scrollUntilVisible(confirmationApp.staticTexts["Copied Action 1."], in: confirmationApp, field: "Copy confirmation")
+         addScreenshot(of: confirmationApp, named: "Controlled state — copyConfirmation — \(appearance)")
+         try assertAccessibilityAudit(in: confirmationApp, scenario: "copyConfirmation-after-copy")
+         confirmationApp.terminate()
+     }
+ 
+     func testClippingNoActionsStandaloneAudit() throws {
+-        try runOriginalScenarioAudit(scenario: "noActions", expected: "No actions are available.")
++        let app = launch("noActions")
++        defer { app.terminate() }
++        XCTAssertTrue(app.staticTexts["No actions are available."].waitForExistence(timeout: 5), "No-actions notice must exist")
++        XCTAssertEqual(
++            app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Copy ")).count,
++            0,
++            "The no-actions state must expose no copy control"
++        )
++        assertMinimumActionTargets(in: app)
++        scrollUntilVisible(app.staticTexts["No actions are available."], in: app, field: "No actions are available.")
++        addScreenshot(of: app, named: "Controlled state — noActions — \(requiredAppearance())")
++        try assertAccessibilityAudit(in: app, scenario: "noActions")
+     }
+ 
+     func testClippingNoConclusionStandaloneAudit() throws {
+@@ -696,7 +743,7 @@ final class ACEClientAppUITests: XCTestCase {
+             ("keychainRead", "Saved sign-in could not be read. Try again."),
+             ("keychainWrite", "Sign-in could not be saved. Try again."), ("keychainDeletion", "Saved sign-in could not be removed. Try again."),
+             ("deletionOnly", "Saved sign-in must be reset before access."), ("deletionRetry", "Sign-out could not be completed. Try again."),
+-            ("copyConfirmation", "Copy Engagement name"), ("privacy", "ACE Client")
++            ("copyConfirmation", "Copy action 1"), ("privacy", "ACE Client")
+         ]
+         for (scenario, expected) in states {
+             let app = launch(scenario)

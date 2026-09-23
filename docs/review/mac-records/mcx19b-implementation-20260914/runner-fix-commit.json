@@ -1,0 +1,11 @@
+{
+  "head": "7fee853aef52e85a813368a51d833c134710186d",
+  "files": [
+    "tools/ace_ios_local.py",
+    "tools/tests/test_ace_ios_local.py"
+  ],
+  "clean": true,
+  "output": "[codex/mcx19b-release-layout 7fee853] Preserve runner timeout output and correct evidence projections\n Committer: Alan Richardson <alanrichardson@Vincent-MacBook-Pro.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 2 files changed, 332 insertions(+), 36 deletions(-)",
+  "pushed": false,
+  "merged": false
+}

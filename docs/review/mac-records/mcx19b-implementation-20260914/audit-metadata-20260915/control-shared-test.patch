@@ -1,0 +1,47 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 175c95d..3e2af3c 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -142,8 +142,14 @@ final class ACEClientAppUITests: XCTestCase {
+         return app
+     }
+ 
++    private func observationElement(in app: XCUIApplication) -> XCUIElement {
++        app.descendants(matching: .any)
++            .matching(identifier: "Effective interface style")
++            .firstMatch
++    }
++
+     private func observedSettings(in app: XCUIApplication) -> CoverageSettings? {
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         guard requireCoverage(indicator.waitForExistence(timeout: 5), "Coverage observation indicator must exist") else { return nil }
+         let ready = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+             guard let value = indicator.value as? String, let data = value.data(using: .utf8) else { return false }
+@@ -618,7 +624,7 @@ final class ACEClientAppUITests: XCTestCase {
+     func testBothAppearances() {
+         for appearance in ["light", "dark"] {
+             let app = launch("release", appearance: appearance)
+-            let indicator = app.staticTexts["Effective interface style"]
++            let indicator = observationElement(in: app)
+             XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+             let displayedAppearance = XCTNSPredicateExpectation(
+                 predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+@@ -663,7 +669,7 @@ final class ACEClientAppUITests: XCTestCase {
+         XCTAssertEqual(copyButtons.count, approvedCopyControls.count, "The release screen must expose only one grouped action copy control")
+         assertMinimumActionTargets(in: app)
+         let appearance = requiredAppearance()
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+         let displayedAppearance = XCTNSPredicateExpectation(
+             predicate: NSPredicate(format: "label == %@", appearance), object: indicator
+@@ -805,7 +811,7 @@ final class ACEClientAppUITests: XCTestCase {
+         XCUIDevice.shared.orientation = .portrait
+         let app = launchWithNormalDeviceSettings("release")
+         defer { app.terminate() }
+-        let indicator = app.staticTexts["Effective interface style"]
++        let indicator = observationElement(in: app)
+         XCTAssertTrue(indicator.waitForExistence(timeout: 5), "Appearance indicator must exist")
+         let displayedAppearance = XCTNSPredicateExpectation(
+             predicate: NSPredicate(format: "label == %@", expectedAppearance), object: indicator

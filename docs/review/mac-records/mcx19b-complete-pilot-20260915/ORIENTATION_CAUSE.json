@@ -1,0 +1,33 @@
+{
+  "recordedUTC": "2026-09-15T05:23:40.699720+00:00",
+  "sourceLog": "LOCAL_HOME/ace-private/mcx19b-complete-pilot-20260915/orientation-native-diagnostics/0_Test_iPhone 17_Diagnostics/ACEClientAppUITests-7D44A4FB-733D-4FCA-9C9C-FE89E3C5BDF1-Configuration-Test Scheme Action-Iteration-1/ACEClientAppUITests-B08753FE-A6A4-41A7-A8D7-34548222D7C5/Session-ACEClientAppUITests-2026-09-15_150934-p9oB7u.log",
+  "sourceLogSha256": "fd822b75f20f8208a7211435b9c32ca9983c5cf3d5d83cc4068f12f316219c31",
+  "confirmedMechanism": "The five-second outer XCTWaiter interrupted the remote app-frame snapshot query. XCTest returned XCTFuture Code 1001 Interrupted by waiter, then XCTWaiterResultTimedOut after 5.352 seconds. Test helper converted that non-completed waiter result into the orientation assertion.",
+  "evidenceLines": {
+    "waitStart": 1926,
+    "queryStart": 1927,
+    "remoteQueryInterrupted": 1952,
+    "snapshotCancelled": 2103,
+    "waiterTimedOut": 2107,
+    "actualWaiterResult": 2108,
+    "waitDuration": 2109,
+    "laterSnapshotResponses": [
+      2111,
+      2112
+    ]
+  },
+  "appOrientation": "Retained frames at video actual times 60.3967 and 68.6933 seconds show portrait. Numeric app.frame value is not retained.",
+  "unresolved": "Why native query response was slow; whether the old audit timeout shares a cause; no application orientation defect is proved.",
+  "currentHostObservations": {
+    "power": "Battery Power:\n lidwake              1\n lowpowermode         1\n standbydelayhigh     86400\n proximitywake        0\n standby              1\n standbydelaylow      10800\n ttyskeepawake        1\n hibernatemode        3\n powernap             0\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 0\n networkoversleep     0\n sleep                1\n lessbright           1\n halfdim              1\n acwake               0\n tcpkeepalive         1\n disksleep            0\nAC Power:\n lidwake              1\n lowpowermode         1\n standbydelayhigh     86400\n proximitywake        1\n standby              1\n standbydelaylow      0\n ttyskeepawake        1\n hibernatemode        3\n powernap             1\n gpuswitch            2\n hibernatefile        /var/vm/sleepimage\n highstandbythreshold 50\n displaysleep         0\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n halfdim              1\n acwake               0\n disksleep            0\n",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\n2026-09-15 15:23:40 +1000 CPU Power notify\n\tCPU_Scheduler_Limit \t= 100\n\tCPU_Available_CPUs \t= 16\n\tCPU_Speed_Limit \t= 39\n"
+  },
+  "candidateChanged": false,
+  "nativeReruns": 0,
+  "recommendedNext": [
+    "Test only the orientation helper. Preserve required independent in-app settings checks.",
+    "Read and record the actual frame outside the short enclosing wait so its timer cannot cancel the read. Report frame-read failure separately from a proven mismatch.",
+    "Use one required simulator at a time and assess power settings as separate environment variables.",
+    "Verify correct portrait and landscape, and prove an intentional mismatch still fails, before refreshing candidate readiness and another pilot."
+  ]
+}

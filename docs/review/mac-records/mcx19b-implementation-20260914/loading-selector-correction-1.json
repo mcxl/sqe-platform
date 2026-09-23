@@ -1,0 +1,11 @@
+{
+  "classification": "test selector fault",
+  "test": "ACEClientAppUITests/testCoverageBatch",
+  "sourceAssertion": "ACEClientAppUITests.swift:347",
+  "expected": "ProgressIndicator labelled Loading current release exists",
+  "actual": "No matching ProgressIndicator; retained native hierarchy identifies ActivityIndicator with the correct label at {{189.7,486.7},{60.7,46.9}}",
+  "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/fixture-parity-integration/batches/000/attachments/7C0C18AF-82A2-4ABA-9111-B823D8EEE539.txt",
+  "change": "Use ActivityIndicator for the loading observation and accept that native type in retained controlled-state regression selectors. No app change.",
+  "beforeSha256": "944842b3097c38e11a53d1dc9428e28bb7ca0d59b6e65a453a118f7996521427",
+  "afterSha256": "01751e452c0f35bc7ecb613b899504702b79da9ef029023b6f87341ae6a71787"
+}

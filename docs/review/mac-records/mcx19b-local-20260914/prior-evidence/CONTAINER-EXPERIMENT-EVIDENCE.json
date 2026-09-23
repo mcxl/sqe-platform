@@ -1,0 +1,196 @@
+{
+  "sequence": "baseline-candidate-baseline",
+  "sameDeviceAppearanceSizeAndSelector": true,
+  "baselineFailure": "Text clipped on Engagement name at testClippingStandaloneAfterCopy, Swift line 366",
+  "conclusion": "Container change removes the reproduced audit finding at light/large. Broader verification remains pending. Exact SwiftUI mechanism is not proved.",
+  "runs": [
+    {
+      "run": "baseline-large",
+      "status": "failed",
+      "summary": {
+        "failedTests": 1,
+        "passedTests": 0,
+        "result": "Failed",
+        "simulator": {
+          "architecture": "arm64",
+          "deviceId": "1114811B-9965-4FCA-A185-B1000429EC83",
+          "deviceName": "iPhone 17",
+          "modelName": "iPhone 17",
+          "osBuildNumber": "23E254a",
+          "osVersion": "26.4.1",
+          "platform": "iOS Simulator"
+        },
+        "skippedTests": 0,
+        "totalTestCount": 1
+      },
+      "settings": {
+        "appearanceBefore": "light",
+        "appearanceObserved": "light",
+        "appearanceRequested": "light",
+        "appearanceRestored": "light",
+        "contentSizeBefore": "large",
+        "contentSizeObserved": "large",
+        "contentSizeRequested": "large",
+        "contentSizeRestored": "large"
+      },
+      "cleanAfter": true,
+      "sourceRestore": {
+        "attempted": true,
+        "status": "restored"
+      },
+      "applicationRestore": {
+        "attempted": false,
+        "status": "not-needed"
+      },
+      "applicationOverlay": null,
+      "screenshot": {
+        "Clipping diagnostic \u2014 standalone \u2014 after-copy \u2014 light \u2014 large": {
+          "dataStatus": "checked-private-record",
+          "file": "9951ECEA-548F-4174-878D-F6EBB307E213.png",
+          "sha256": "e2a96f8b4fbff85abe06a887c0dba3f62dd5a3ec8fea291b940caf4272df3bbf",
+          "size": 89959
+        }
+      },
+      "integrity": {
+        "integrity": "passed",
+        "nativeRunStatus": "failed",
+        "failure": "native-test-failed",
+        "archiveSha256": "14067307083705f872d8986caa493fc6846cac76073060bf565bff39b36b853c",
+        "verifiedMembers": 1531,
+        "verifiedBytes": 65799262,
+        "extractedReviewFiles": 137,
+        "resultBundles": "retained-in-original-archive",
+        "acceptance": "requires-native-result-and-image-review"
+      },
+      "originalScreenshotReviewed": true
+    },
+    {
+      "run": "candidate-after-large",
+      "status": "passed",
+      "summary": {
+        "failedTests": 0,
+        "passedTests": 1,
+        "result": "Passed",
+        "simulator": {
+          "architecture": "arm64",
+          "deviceId": "1114811B-9965-4FCA-A185-B1000429EC83",
+          "deviceName": "iPhone 17",
+          "modelName": "iPhone 17",
+          "osBuildNumber": "23E254a",
+          "osVersion": "26.4.1",
+          "platform": "iOS Simulator"
+        },
+        "skippedTests": 0,
+        "totalTestCount": 1
+      },
+      "settings": {
+        "appearanceBefore": "light",
+        "appearanceObserved": "light",
+        "appearanceRequested": "light",
+        "appearanceRestored": "light",
+        "contentSizeBefore": "large",
+        "contentSizeObserved": "large",
+        "contentSizeRequested": "large",
+        "contentSizeRestored": "large"
+      },
+      "cleanAfter": true,
+      "sourceRestore": {
+        "attempted": true,
+        "status": "restored"
+      },
+      "applicationRestore": {
+        "attempted": true,
+        "status": "restored"
+      },
+      "applicationOverlay": {
+        "baselineSha256": "9b844d1216aadbd1677777ef2aacdd9e54a0d12d85060eb3864dedc939036a82",
+        "experimentId": "standalone-release-container",
+        "newSha256": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751",
+        "originalSha256": "9b844d1216aadbd1677777ef2aacdd9e54a0d12d85060eb3864dedc939036a82",
+        "overlayPath": "/private/tmp/clipping-control/DebugScenario.swift",
+        "overlaySha256": "67c56f86f646f9e6fe6498e66d179d0d341610b1023695af68f008035d974751",
+        "relativePath": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift"
+      },
+      "screenshot": {
+        "Clipping diagnostic \u2014 standalone \u2014 after-copy \u2014 light \u2014 large": {
+          "dataStatus": "checked-private-record",
+          "file": "1CAC5794-78CC-44CB-B2D2-D55638A3B4D8.png",
+          "sha256": "030f1420278f33cfe8a0ddbb22ccc18c126b77998760c8fe232c7c0d0f25b3a9",
+          "size": 88181
+        }
+      },
+      "integrity": {
+        "integrity": "passed",
+        "nativeRunStatus": "passed",
+        "failure": null,
+        "archiveSha256": "87d6a37569361d4eee9be372628b6be23272774e95428f600933f916eadd451f",
+        "verifiedMembers": 72,
+        "verifiedBytes": 1697125,
+        "extractedReviewFiles": 36,
+        "resultBundles": "retained-in-original-archive",
+        "acceptance": "requires-native-result-and-image-review"
+      },
+      "originalScreenshotReviewed": true
+    },
+    {
+      "run": "reversal-after-large",
+      "status": "failed",
+      "summary": {
+        "failedTests": 1,
+        "passedTests": 0,
+        "result": "Failed",
+        "simulator": {
+          "architecture": "arm64",
+          "deviceId": "1114811B-9965-4FCA-A185-B1000429EC83",
+          "deviceName": "iPhone 17",
+          "modelName": "iPhone 17",
+          "osBuildNumber": "23E254a",
+          "osVersion": "26.4.1",
+          "platform": "iOS Simulator"
+        },
+        "skippedTests": 0,
+        "totalTestCount": 1
+      },
+      "settings": {
+        "appearanceBefore": "light",
+        "appearanceObserved": "light",
+        "appearanceRequested": "light",
+        "appearanceRestored": "light",
+        "contentSizeBefore": "large",
+        "contentSizeObserved": "large",
+        "contentSizeRequested": "large",
+        "contentSizeRestored": "large"
+      },
+      "cleanAfter": true,
+      "sourceRestore": {
+        "attempted": true,
+        "status": "restored"
+      },
+      "applicationRestore": {
+        "attempted": false,
+        "status": "not-needed"
+      },
+      "applicationOverlay": null,
+      "screenshot": {
+        "Clipping diagnostic \u2014 standalone \u2014 after-copy \u2014 light \u2014 large": {
+          "dataStatus": "checked-private-record",
+          "file": "D0225635-CB94-4FB4-A273-732E891040D4.png",
+          "sha256": "6abb7352c55581dfc7f8167dcd0974387ae6d8746a8d73e9386653c3a435a210",
+          "size": 89017
+        }
+      },
+      "integrity": {
+        "integrity": "passed",
+        "nativeRunStatus": "failed",
+        "failure": "native-test-failed",
+        "archiveSha256": "616619e65bdc0e5e186b3b42df22553c38a4419e178a8370c4ca4d08c602990e",
+        "verifiedMembers": 1336,
+        "verifiedBytes": 58991179,
+        "extractedReviewFiles": 50,
+        "resultBundles": "retained-in-original-archive",
+        "acceptance": "requires-native-result-and-image-review"
+      },
+      "originalScreenshotReviewed": true
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "updatedUTC": "2026-09-15T10:27:49.260229+00:00",
+  "status": "inspection complete; diagnostic only",
+  "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+  "frames": [
+    {
+      "actualSeconds": 203.96666666666667,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/audit-video-frames/frame-207.70.png",
+      "requestedSeconds": 207.7,
+      "width": 1206,
+      "bytes": 367936,
+      "sha256": "6fcafa6b7086e859b395d3464abd0f54f8e641a62e454abdb45fd5dbc2c572e1",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Before audit: normal text, complete Copy button and confirmation; button near624pt."
+    },
+    {
+      "actualSeconds": 208.55333333333334,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/audit-video-frames/frame-208.56.png",
+      "requestedSeconds": 208.56,
+      "width": 1206,
+      "bytes": 353207,
+      "sha256": "cefafdd66a4134b4df1c5c25b1117cac9fd79a2bbe8a12f1e797ae860dbaa958",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Audit period: text visibly smaller; Copy button and confirmation remain visible."
+    },
+    {
+      "actualSeconds": 209.26666666666668,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/audit-video-frames/frame-209.27.png",
+      "requestedSeconds": 209.27,
+      "width": 1206,
+      "bytes": 504799,
+      "sha256": "148da08cabcc249a7c7d6b3b766bad62972ec9923cf1a8399a5317167494fab2",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Audit period: text grows; Copy approaches lower viewport edge."
+    },
+    {
+      "actualSeconds": 209.62333333333333,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/audit-video-frames/frame-209.63.png",
+      "requestedSeconds": 209.63,
+      "width": 1206,
+      "bytes": 536971,
+      "sha256": "c3064ddfb6989ce08883f8755b6de61f49c4360b88c3cb8231deb8f7d8ecce48",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Audit period: larger text places Copy below the viewport."
+    },
+    {
+      "actualSeconds": 210.35833333333332,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/audit-video-frames/frame-210.36.png",
+      "requestedSeconds": 210.36,
+      "width": 1206,
+      "bytes": 516384,
+      "sha256": "4040a4b02650f65db01ac48482d70ea57deffce7a303912c0c430629b31c9271",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Audit period: very large text; release details occupy the viewport."
+    },
+    {
+      "actualSeconds": 210.76,
+      "height": 2622,
+      "path": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/08-copy-confirmation-diagnosis/last-video-frame/frame-216.11.png",
+      "requestedSeconds": 216.10833333333335,
+      "width": 1206,
+      "bytes": 422275,
+      "sha256": "814c0a2a6c9b39c0d4a25a0bd3baf5ad7706527652ebe3e22c6919f14d02643c",
+      "inspectedAtOriginalResolution": true,
+      "observation": "Normal text restored; Copy is at685.67pt. The full native failure screenshot shows the same content position."
+    }
+  ],
+  "finding": "The audit period cycles text sizes. After normal size returns, Copy is about61.67pt lower than before audit. This explains the observed change in position but does not prove the contrast calculation cause.",
+  "nativeViewportTimestamp": 1789466987.464,
+  "nativeFailureImageTimestamp": 1789466993.175,
+  "videoStartTimestamp": 1789466779.744,
+  "videoTimestampCaution": "Video frame presentation times and test log times have small offsets; internal pixel sample time is unavailable."
+}

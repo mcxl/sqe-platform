@@ -1,0 +1,217 @@
+[
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/Developer/sqe-platform-release-layout",
+      "rev-parse",
+      "refs/heads/codex/mcx19b-release-layout"
+    ],
+    "exit_code": 0,
+    "stdout": "40bae2640b23eb05496a093d09a4c20186403879\n",
+    "stderr": "",
+    "seconds": 0.061
+  },
+  {
+    "command": [
+      "git",
+      "-c",
+      "pack.threads=1",
+      "-C",
+      "LOCAL_HOME/Developer/sqe-platform-release-layout",
+      "bundle",
+      "create",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle",
+      "refs/heads/codex/mcx19b-release-layout"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.617
+  },
+  {
+    "command": [
+      "git",
+      "init",
+      "--bare",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git"
+    ],
+    "exit_code": 0,
+    "stdout": "Initialized empty Git repository in LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git/\n",
+    "stderr": "",
+    "seconds": 0.104
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "bundle",
+      "verify",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle"
+    ],
+    "exit_code": 0,
+    "stdout": "The bundle contains this ref:\n478a7d8cd9c97d0bc43bd4d41ea460d589d4003a refs/heads/main\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+    "stderr": "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle is okay\n",
+    "seconds": 0.059
+  },
+  {
+    "command": [
+      "git",
+      "bundle",
+      "list-heads",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle"
+    ],
+    "exit_code": 0,
+    "stdout": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a refs/heads/main\n",
+    "stderr": "",
+    "seconds": 0.072
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "bundle",
+      "verify",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle"
+    ],
+    "exit_code": 0,
+    "stdout": "The bundle contains this ref:\n40bae2640b23eb05496a093d09a4c20186403879 refs/heads/codex/mcx19b-release-layout\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+    "stderr": "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle is okay\n",
+    "seconds": 0.09
+  },
+  {
+    "command": [
+      "git",
+      "bundle",
+      "list-heads",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle"
+    ],
+    "exit_code": 0,
+    "stdout": "40bae2640b23eb05496a093d09a4c20186403879 refs/heads/codex/mcx19b-release-layout\n",
+    "stderr": "",
+    "seconds": 0.075
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "fetch",
+      "--no-tags",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle",
+      "refs/heads/main:refs/heads/windows-main"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "From LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/windows-main-478a7d8.bundle\n * [new branch]      main       -> windows-main\n",
+    "seconds": 0.355
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "fetch",
+      "--no-tags",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle",
+      "refs/heads/codex/mcx19b-release-layout:refs/heads/mac-delivery"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "From LOCAL_HOME/ace-private/sqe-consolidation-20260918/bundles/mac-delivery-40bae26.bundle\n * [new branch]      codex/mcx19b-release-layout -> mac-delivery\n",
+    "seconds": 0.344
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "merge-base",
+      "--all",
+      "windows-main",
+      "mac-delivery"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.14
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "rev-list",
+      "--left-right",
+      "--count",
+      "windows-main...mac-delivery"
+    ],
+    "exit_code": 0,
+    "stdout": "152\t117\n",
+    "stderr": "",
+    "seconds": 0.085
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "diff",
+      "--stat",
+      "windows-main",
+      "mac-delivery"
+    ],
+    "exit_code": 0,
+    "stdout": " .github/workflows/quality-gates.yml                |  203 +\n .github/workflows/release-quality.yml              |   44 +\n .gitignore                                         |    1 +\n ACE_PROGRESS_GUIDE.html                            |   34 +-\n ACE_VISION_AND_ROADMAP.md                          |   25 +\n AGENTS.md                                          |   19 +\n CONTEXT.md                                         |   31 +\n DEV_STATE.md                                       |  584 +-\n README.md                                          |   37 +-\n WORKFLOW-NOTES.md                                  |   22 +\n codemagic.yaml                                     |  181 +\n docs/DOCUMENTATION-INVENTORY.md                    |   26 +\n .../0001-human-auditor-controls-final-decisions.md |   15 +\n docs/adr/0002-g0-protects-the-data-boundary.md     |   15 +\n .../0003-approved-records-use-versioned-history.md |   16 +\n docs/adr/0004-release-projection-is-read-only.md   |   15 +\n docs/agents/domain.md                              |    5 +\n docs/agents/triage-labels.md                       |    5 +\n docs/diagrams/README.md                            |    6 +\n .../controlled/mermaid/approval-review-states.mmd  |    8 +\n .../controlled/mermaid/auditor-workflow.mmd        |    6 +\n .../mermaid/evidence-relationship-map.mmd          |    7 +\n docs/diagrams/diagram-manifest.json                |    8 +\n .../plans/2026-09-14-ace-ios-local-verification.md |  139 +\n .../2026-09-17-ace-ios-discovery-candidate.md      |   62 +\n ...6-08-24-ace-ios-read-only-client-application.md |  405 +-\n docs/specs/documentation-control.md                |   19 +\n .../ACEClientApp.xcodeproj/project.pbxproj         |   94 +\n .../xcshareddata/xcschemes/ACEClientApp.xcscheme   |    2 +\n .../xcschemes/ACEClientAppUITests.xcscheme         |    2 +\n .../ACEClientApp/ACEClientAppApp.swift             |  147 +\n ios/ACEClientApp/ACEClientApp/Configuration.swift  |   53 +\n ios/ACEClientApp/ACEClientApp/DebugScenario.swift  |  121 +\n ios/ACEClientApp/ACEClientApp/Info.plist           |   15 +\n ios/ACEClientApp/ACEClientApp/KeychainStore.swift  |  164 +\n ios/ACEClientApp/ACEClientApp/Network.swift        |   93 +\n ios/ACEClientApp/ACEClientApp/ReleaseModels.swift  |   73 +\n ios/ACEClientApp/ACEClientApp/SessionState.swift   |  218 +\n ios/ACEClientApp/ACEClientApp/Views.swift          |  351 ++\n .../ACEClientAppTests/ACEClientAppTests.swift      |  456 ++\n .../AcceptanceEvidenceCatalogue.swift              |  264 +\n .../AcceptanceEvidenceContractTests.swift          | 1760 ++++++\n .../ACEClientAppUITests/ACEClientAppUITests.swift  | 1131 ++++\n ios/ACEClientApp/Makefile                          |   65 +\n ios/ACEClientApp/Phase6_1EvidenceRegister.json     |  871 +++\n ios/ACEClientApp/Phase6_1EvidenceRegister.md       |   80 +\n ios/ACEClientApp/RuntimeEvidencePlan.json          |  289 +\n ios/ACEClientApp/RuntimeEvidencePlan.md            |  113 +\n ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md      |   11 +\n ios/ACEClientApp/evidence-matrix-audit.md          |  308 +\n quality/test-groups.json                           |   25 +\n security/deepsec/results/pr-26/PILOT_RESULT.json   |    9 -\n security/deepsec/results/pr-26/SUMMARY.md          |   12 -\n security/deepsec/results/pr-26/findings.json       |    1 -\n src/ace/domain/assessment.py                       |   56 +-\n src/ace/engine/approval.py                         |  180 +-\n src/ace/workbench/document_toolchain_doctor.py     |    3 +-\n src/ace/workbench/export_builder.py                |    6 +-\n src/ace/workbench/relationship_review_storage.py   |   17 +-\n tests/test_approval_gate.py                        |  371 ++\n tests/test_change_export.py                        |   19 +\n tests/test_diagnose_ios.py                         | 1826 ++++++\n tests/test_ios_accessibility_layout.py             |   55 +\n tests/test_ios_action_targets.py                   |   74 +\n tests/test_planning_trace.py                       |   22 +-\n tests/test_quality_gates_workflow.py               |   17 +\n tests/test_relationship_review.py                  |   21 +-\n tests/test_run_tests.py                            | 4221 +++++++++++++\n tests/test_workbench.py                            |   11 +-\n tools/ace_ios_local.py                             | 1479 +++++\n tools/diagnose_ios.py                              | 1845 ++++++\n tools/run_tests.py                                 | 6427 ++++++++++++++++++++\n tools/tests/test_ace_ios_local.py                  | 1032 ++++\n workflows/conclusion-review.md                     |   29 +\n workflows/engagement-setup.md                      |   27 +\n workflows/evidence-review.md                       |   27 +\n workflows/field-evidence-capture.md                |   29 +\n workflows/mate-assessment.md                       |   29 +\n workflows/relationship-review.md                   |   29 +\n 79 files changed, 25733 insertions(+), 785 deletions(-)\n",
+    "stderr": "",
+    "seconds": 0.122
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "diff",
+      "--name-status",
+      "-M",
+      "windows-main",
+      "mac-delivery"
+    ],
+    "exit_code": 0,
+    "stdout": "A\t.github/workflows/quality-gates.yml\nA\t.github/workflows/release-quality.yml\nM\t.gitignore\nM\tACE_PROGRESS_GUIDE.html\nA\tACE_VISION_AND_ROADMAP.md\nM\tAGENTS.md\nA\tCONTEXT.md\nM\tDEV_STATE.md\nM\tREADME.md\nA\tWORKFLOW-NOTES.md\nA\tcodemagic.yaml\nA\tdocs/DOCUMENTATION-INVENTORY.md\nA\tdocs/adr/0001-human-auditor-controls-final-decisions.md\nA\tdocs/adr/0002-g0-protects-the-data-boundary.md\nA\tdocs/adr/0003-approved-records-use-versioned-history.md\nA\tdocs/adr/0004-release-projection-is-read-only.md\nA\tdocs/agents/domain.md\nA\tdocs/agents/triage-labels.md\nA\tdocs/diagrams/README.md\nA\tdocs/diagrams/controlled/mermaid/approval-review-states.mmd\nA\tdocs/diagrams/controlled/mermaid/auditor-workflow.mmd\nA\tdocs/diagrams/controlled/mermaid/evidence-relationship-map.mmd\nA\tdocs/diagrams/diagram-manifest.json\nA\tdocs/plans/2026-09-14-ace-ios-local-verification.md\nA\tdocs/plans/2026-09-17-ace-ios-discovery-candidate.md\nM\tdocs/specs/2026-08-24-ace-ios-read-only-client-application.md\nA\tdocs/specs/documentation-control.md\nA\tios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj\nA\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme\nA\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme\nA\tios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\nA\tios/ACEClientApp/ACEClientApp/Configuration.swift\nA\tios/ACEClientApp/ACEClientApp/DebugScenario.swift\nA\tios/ACEClientApp/ACEClientApp/Info.plist\nA\tios/ACEClientApp/ACEClientApp/KeychainStore.swift\nA\tios/ACEClientApp/ACEClientApp/Network.swift\nA\tios/ACEClientApp/ACEClientApp/ReleaseModels.swift\nA\tios/ACEClientApp/ACEClientApp/SessionState.swift\nA\tios/ACEClientApp/ACEClientApp/Views.swift\nA\tios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift\nA\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift\nA\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift\nA\tios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\nA\tios/ACEClientApp/Makefile\nA\tios/ACEClientApp/Phase6_1EvidenceRegister.json\nA\tios/ACEClientApp/Phase6_1EvidenceRegister.md\nA\tios/ACEClientApp/RuntimeEvidencePlan.json\nA\tios/ACEClientApp/RuntimeEvidencePlan.md\nA\tios/ACEClientApp/TEST_EXECUTION_LIMITATION.md\nA\tios/ACEClientApp/evidence-matrix-audit.md\nA\tquality/test-groups.json\nD\tsecurity/deepsec/results/pr-26/PILOT_RESULT.json\nD\tsecurity/deepsec/results/pr-26/SUMMARY.md\nD\tsecurity/deepsec/results/pr-26/findings.json\nM\tsrc/ace/domain/assessment.py\nM\tsrc/ace/engine/approval.py\nM\tsrc/ace/workbench/document_toolchain_doctor.py\nM\tsrc/ace/workbench/export_builder.py\nM\tsrc/ace/workbench/relationship_review_storage.py\nM\ttests/test_approval_gate.py\nM\ttests/test_change_export.py\nA\ttests/test_diagnose_ios.py\nA\ttests/test_ios_accessibility_layout.py\nA\ttests/test_ios_action_targets.py\nM\ttests/test_planning_trace.py\nA\ttests/test_quality_gates_workflow.py\nM\ttests/test_relationship_review.py\nA\ttests/test_run_tests.py\nM\ttests/test_workbench.py\nA\ttools/ace_ios_local.py\nA\ttools/diagnose_ios.py\nA\ttools/run_tests.py\nA\ttools/tests/test_ace_ios_local.py\nA\tworkflows/conclusion-review.md\nA\tworkflows/engagement-setup.md\nA\tworkflows/evidence-review.md\nA\tworkflows/field-evidence-capture.md\nA\tworkflows/mate-assessment.md\nA\tworkflows/relationship-review.md\n",
+    "stderr": "",
+    "seconds": 0.084
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "ls-tree",
+      "-r",
+      "--full-tree",
+      "windows-main"
+    ],
+    "exit_code": 0,
+    "stdout": "100644 blob a43af230e5a8d207ef09a9fef4ceb0af3becea16\t.gitignore\n100644 blob deb5dce8eb457b73244df2a22c8edbf929b68126\tACE_PROGRESS_GUIDE.html\n100644 blob 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9\tAGENTS.md\n100644 blob 67e1a1c66f4c48bee1c6faf5baf5390680fae1df\tDEV_STATE.md\n100644 blob 1dcf1584e2acd898986553fccfc73db812994714\tREADME.md\n100644 blob 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163\tapps/relationship-review-pilot/.env.example\n100644 blob 830932714370a9751e228be3aa1d9ea1177177df\tapps/relationship-review-pilot/.gitignore\n100644 blob 9ce958e3e4c536fa65ab53cd9424dbe462b2b208\tapps/relationship-review-pilot/README.md\n100644 blob 661243a5c37be5f34414e17c5b764f1d84072869\tapps/relationship-review-pilot/app/error.tsx\n100644 blob 08d5ca0c046f8832984e609959bb13999b054275\tapps/relationship-review-pilot/app/globals.css\n100644 blob 8ad36db97cfc844408ceca643c58de4181bdb4c2\tapps/relationship-review-pilot/app/layout.tsx\n100644 blob b7fe1709c171c5122d71476fc3b8913e33b92842\tapps/relationship-review-pilot/app/page.tsx\n100644 blob d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9\tapps/relationship-review-pilot/components.json\n100644 blob 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc\tapps/relationship-review-pilot/components/convex-client-provider.tsx\n100644 blob 04fc774ed5e59f587636417a528bbd5234bcd045\tapps/relationship-review-pilot/components/relationship-review-workbench.tsx\n100644 blob f4c0ff7be212c0a96e925282a75f13798359059d\tapps/relationship-review-pilot/components/ui/alert.tsx\n100644 blob 302196895e4b92ca76ea4ab7a8a899ecc0760c30\tapps/relationship-review-pilot/components/ui/card.tsx\n100644 blob 8b52a14188fcbf7c18a5393aac47453894365699\tapps/relationship-review-pilot/components/ui/skeleton.tsx\n100644 blob df98f6b72a7967e91b95939590c877ce72f798d8\tapps/relationship-review-pilot/components/ui/table.tsx\n100644 blob a5ef193506d07d0459fec4f187af08283094d7c8\tapps/relationship-review-pilot/components/ui/utils.ts\n100644 blob c049816b49eb290630ffeed9abb27776c05dc1f5\tapps/relationship-review-pilot/convex/_generated/api.d.ts\n100644 blob 44bf98583204c1f9474b38f84b48659b192eea8b\tapps/relationship-review-pilot/convex/_generated/api.js\n100644 blob f97fd1942151eef5b818c0679f7a12f2c22557b5\tapps/relationship-review-pilot/convex/_generated/dataModel.d.ts\n100644 blob f235db4a112ece75f7698b191532048a98270c21\tapps/relationship-review-pilot/convex/_generated/server.d.ts\n100644 blob 2dbe0dbd475de29f550f222942597ef9f5dc8654\tapps/relationship-review-pilot/convex/_generated/server.js\n100644 blob ef4cf74f8dcc9f7413c1516e81368048a1234cf1\tapps/relationship-review-pilot/convex/relationships.ts\n100644 blob 8351fca4541f2ca58c8851c79c64fe93407eb6a2\tapps/relationship-review-pilot/convex/schema.ts\n100644 blob fa69fa296c815263b1a7bd9f761c992e74860e4c\tapps/relationship-review-pilot/convex/seed.ts\n100644 blob 73649cf0b74e85f4b015115564c41397fb5bd92a\tapps/relationship-review-pilot/convex/tsconfig.json\n100644 blob fe04c1f8ad833e39504ba140c495f3c5246ca44f\tapps/relationship-review-pilot/eslint.config.mjs\n100644 blob 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a\tapps/relationship-review-pilot/next-env.d.ts\n100644 blob cb651cdc007c4c5087ea7b4e61981bb2733f7d92\tapps/relationship-review-pilot/next.config.ts\n100644 blob 134c3e8e9d9e27b17c850cab9285e72bcea99f4a\tapps/relationship-review-pilot/package-lock.json\n100644 blob ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b\tapps/relationship-review-pilot/package.json\n100644 blob 999cd7b9d2cd26ba7b02c69c272868b39bea0674\tapps/relationship-review-pilot/postcss.config.mjs\n100644 blob 6d61af4e7cd5de8a51826f5246c7eb346e2de888\tapps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\n100644 blob 85ff3f3796415d3470f7fccb52b9e3bfb10df425\tapps/relationship-review-pilot/tests/relationships.test.ts\n100644 blob b456a6eb10ddb1e591185f66b20379c7a022f55b\tapps/relationship-review-pilot/tsconfig.json\n100644 blob d9481977b149f5238f1810595402583135c18f1c\tapps/relationship-review-pilot/vitest.config.ts\n100644 blob f149f27ae4bbd7cc4f6253570176a4fce144ef95\tapps/relationship-review-pilot/vitest.setup.ts\n100644 blob a2ae1946089598f970d8929dec6e2ff912ed0db0\tdocs/agents/agent-permissions.md\n100644 blob 908b1896120f4280ab1e73f661dbe6801c1a5ca2\tdocs/agents/issue-tracker.md\n100644 blob a60efb08bdf4056bddab837f1e0f831fe8f273c6\tdocs/specs/2026-08-24-ace-ios-read-only-client-application.md\n100644 blob d8ca7db85bbb8f8bda10295369fc2a8efb2098a0\tdocs/specs/autonomous-delivery-workflow-repair.md\n100644 blob 15d38ed62aa565365f9be1419804152b8eff4a2b\tdocs/specs/phase6-stage1-release-service-boundary.md\n100644 blob 43f3a2141f1836d7d281e84e99dfc8c5d2eab56a\tdocs/specs/phase6-stage2-release-workflow.md\n100644 blob 1be8f9466a3891af465a387d555c8b55b0708a35\tdocs/specs/phase6-stage3-release-trigger-decisions.md\n100644 blob 96d281352a47b8cc976d709d6cea4d5b09700c26\tdocs/specs/phase6b2-read-only-client-release-projection.md\n100644 blob e3bcef77922f4885bb0385b816e93bf2442b7153\tdocs/superpowers/plans/2026-07-26-ace-sprint-1.md\n100644 blob 346121bc97971423554ed9b833902bcc901269c4\tdocs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\n100644 blob 027237e08feeec1b8213e2e5ca30dbc7f627da9f\tdocs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\n100644 blob b5b37978b25914f1abdfe07f82569f0ed800ccab\tdocs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\n100644 blob f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5\tdocs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\n100644 blob 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc\tdocs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\n100644 blob c887e61e1bb3f53649c84b9fc2e26d5a2789460b\tdocs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\n100644 blob cd729d22a55808e3d07d1257bbc31af7a90e486b\tdocs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\n100644 blob 8fb6ba4b4a23167c25376caf50fa8121f4e191f9\tdocs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\n100644 blob f78980429b5792417de0217fcd65226aa2fdbfd3\tpyproject.toml\n100644 blob 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e\tsecurity/deepsec/deepsec-residual-risk.yaml\n100644 blob ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46\tsecurity/deepsec/results/pr-26/PILOT_RESULT.json\n100644 blob 92a0079a2ca3831b91f097f5ab7de38694c759ce\tsecurity/deepsec/results/pr-26/SUMMARY.md\n100644 blob fe51488c7066f6687ef680d6bfaa4f7768ef205c\tsecurity/deepsec/results/pr-26/findings.json\n100644 blob 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb\tsrc/__init__.py\n100644 blob af245d52ea1b3f9a9728cc3198e42f6f09f23c19\tsrc/ace/__init__.py\n100644 blob a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7\tsrc/ace/app.py\n100644 blob 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b\tsrc/ace/domain/__init__.py\n100644 blob 23c00ad0252331dd523f79b8c724e5fedef7404f\tsrc/ace/domain/assessment.py\n100644 blob 5e4c7a3b8aaaedde1e7034b3f614a3298935c741\tsrc/ace/domain/enums.py\n100644 blob 9b7332ae80cea46c4e0c2e13408a879194639958\tsrc/ace/domain/models.py\n100644 blob d3052b39d92d500bcea16a1938822162f9c6e784\tsrc/ace/domain/release.py\n100644 blob 24c035f305bd307a12e3a012f8e67693f01931b2\tsrc/ace/domain/trace.py\n100644 blob a6a85eba2c2881370e265f55374ed5fd029ba40c\tsrc/ace/engine/__init__.py\n100644 blob 5a4e723461d6cf5f72842c62492f17eb13348a2d\tsrc/ace/engine/approval.py\n100644 blob 6f734719daf96ce5620a52de31d5ee6a8c82ebc9\tsrc/ace/engine/evaluator.py\n100644 blob b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9\tsrc/ace/engine/tracing.py\n100644 blob c2421621a45852c1edd4e893d8f31c542df829e4\tsrc/ace/workbench/__init__.py\n100644 blob 009b7ce18c8073cdbf68d0641ede1837f68167f5\tsrc/ace/workbench/action_result.py\n100644 blob 3a46f45a5f21d53ea229e0476148d751e21d15bf\tsrc/ace/workbench/change_record.py\n100644 blob fc15024e81ebe5d8311b1700216856c62deaf24b\tsrc/ace/workbench/client_auth.py\n100644 blob 50c3e8ea5a72d622a314ff4c234182fffe5661bc\tsrc/ace/workbench/client_release_projection.py\n100644 blob 152da398adbed0554046cbef1ca5d1bd620a25ef\tsrc/ace/workbench/client_release_service.py\n100644 blob fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa\tsrc/ace/workbench/client_routes.py\n100644 blob bb70fa5b69c6e7267000cf295c3d38009c00a73e\tsrc/ace/workbench/document_toolchain_doctor.py\n100644 blob 1efc7f447dc242e84db7496dc43261e7a3d5f244\tsrc/ace/workbench/engagement.py\n100644 blob 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7\tsrc/ace/workbench/evidence_review.py\n100644 blob e65b9dba49512ce16311137575826ddc1ee5d6c8\tsrc/ace/workbench/export_builder.py\n100644 blob a3ddfe4931417f5d942b26c148ddf1ef5b3d9058\tsrc/ace/workbench/extraction.py\n100644 blob c281f9ed242707201c160379b741cc1559120833\tsrc/ace/workbench/notion_publisher.py\n100644 blob a054b5838083ca6c5290786a3d8ee65f422c55e3\tsrc/ace/workbench/relationship_review.py\n100644 blob ca55b5f8eee6923c0c3f1728f22077d04ac5b174\tsrc/ace/workbench/relationship_review_storage.py\n100644 blob 44632c998c369086d7886668e67086b48ba33c39\tsrc/ace/workbench/release_storage.py\n100644 blob 4e69f1d29d95914ecfac3b29511aa66063707ce2\tsrc/ace/workbench/routes.py\n100644 blob 9f310dfbeeeb128ce4c30fb152027ac9cf15df4a\tsrc/ace/workbench/storage.py\n100644 blob f102e61d370776570f1c6a6d02237463cec87a0e\ttests/test_action_result.py\n100644 blob 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72\ttests/test_app.py\n100644 blob 06d504606e7b262b3ed5014d9903cf7c5c81181b\ttests/test_approval_gate.py\n100644 blob 41f3ba179143ba75ecb3151341527a2c11e11653\ttests/test_capture.py\n100644 blob 0fc7d84aff5f7120039f8e5083999358ea53e7d7\ttests/test_change_export.py\n100644 blob b79457826591c81352c0eeeb1888240bf30856bd\ttests/test_client_release.py\n100644 blob 16d8e3b5cc936a501f31980d36004aef86f70c07\ttests/test_client_release_projection.py\n100644 blob c5b215a4274be1856365f5f3835fdd0a88f7c4e4\ttests/test_engagement_setup.py\n100644 blob b6c8b0cf9fe636ced590ba82c19908bc93f2d328\ttests/test_engagement_summary.py\n100644 blob 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925\ttests/test_evidence_review.py\n100644 blob 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0\ttests/test_extraction.py\n100644 blob 920fe93267ae8072a95d2d847967959c75ccbe3c\ttests/test_graph_projection.py\n100644 blob aedfe16bbd3c28d1e8cf790eaed715205f9c232d\ttests/test_offline_drafts.py\n100644 blob 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59\ttests/test_planning_trace.py\n100644 blob 58fba2594c184ad4adcad05ec22677168115da08\ttests/test_rating_engine.py\n100644 blob c3fdcdc54e02cdffc63f7aa6064b206c21952ff0\ttests/test_relationship_review.py\n100644 blob ef468f24f98f0cf80aed282549d0a6e2f9bee452\ttests/test_workbench.py\n100644 blob 3151880ae3453321bfc19ad1be84ac2376606886\tuv.lock\n100644 blob d336ae5ee0724121cef0662d5dc37f3d7b242ee2\tworkflows/codex-autonomous-delivery.md\n",
+    "stderr": "",
+    "seconds": 0.086
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "LOCAL_HOME/ace-private/sqe-consolidation-20260918/comparison.git",
+      "ls-tree",
+      "-r",
+      "--full-tree",
+      "mac-delivery"
+    ],
+    "exit_code": 0,
+    "stdout": "100644 blob c1f1d23f1e40634afc41d884cc0a809b1a47722b\t.github/workflows/quality-gates.yml\n100644 blob f65423462344828c38a1688836143c0f2b13d594\t.github/workflows/release-quality.yml\n100644 blob 988fb818746db74a2896a5df60efe62dd07616ed\t.gitignore\n100644 blob 3e756556e4f6248897535fe1aaca834d6596b390\tACE_PROGRESS_GUIDE.html\n100644 blob 855d07fa1145e30afd2cb6c178aab3b493dd6b45\tACE_VISION_AND_ROADMAP.md\n100644 blob 30f5ade7d676bb097d555de40282907380b5c163\tAGENTS.md\n100644 blob c3226c28c5b1935870c645d8a35b5d1266f028bc\tCONTEXT.md\n100644 blob 3d1b4cfd6d3ed152d2f489f76ddd566f7f1b43a5\tDEV_STATE.md\n100644 blob e67ca1bdafc81b03a8e17385e0565b864c1871ea\tREADME.md\n100644 blob 637edd14d2901e3de8f8ec361643cc4976ba03be\tWORKFLOW-NOTES.md\n100644 blob 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163\tapps/relationship-review-pilot/.env.example\n100644 blob 830932714370a9751e228be3aa1d9ea1177177df\tapps/relationship-review-pilot/.gitignore\n100644 blob 9ce958e3e4c536fa65ab53cd9424dbe462b2b208\tapps/relationship-review-pilot/README.md\n100644 blob 661243a5c37be5f34414e17c5b764f1d84072869\tapps/relationship-review-pilot/app/error.tsx\n100644 blob 08d5ca0c046f8832984e609959bb13999b054275\tapps/relationship-review-pilot/app/globals.css\n100644 blob 8ad36db97cfc844408ceca643c58de4181bdb4c2\tapps/relationship-review-pilot/app/layout.tsx\n100644 blob b7fe1709c171c5122d71476fc3b8913e33b92842\tapps/relationship-review-pilot/app/page.tsx\n100644 blob d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9\tapps/relationship-review-pilot/components.json\n100644 blob 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc\tapps/relationship-review-pilot/components/convex-client-provider.tsx\n100644 blob 04fc774ed5e59f587636417a528bbd5234bcd045\tapps/relationship-review-pilot/components/relationship-review-workbench.tsx\n100644 blob f4c0ff7be212c0a96e925282a75f13798359059d\tapps/relationship-review-pilot/components/ui/alert.tsx\n100644 blob 302196895e4b92ca76ea4ab7a8a899ecc0760c30\tapps/relationship-review-pilot/components/ui/card.tsx\n100644 blob 8b52a14188fcbf7c18a5393aac47453894365699\tapps/relationship-review-pilot/components/ui/skeleton.tsx\n100644 blob df98f6b72a7967e91b95939590c877ce72f798d8\tapps/relationship-review-pilot/components/ui/table.tsx\n100644 blob a5ef193506d07d0459fec4f187af08283094d7c8\tapps/relationship-review-pilot/components/ui/utils.ts\n100644 blob c049816b49eb290630ffeed9abb27776c05dc1f5\tapps/relationship-review-pilot/convex/_generated/api.d.ts\n100644 blob 44bf98583204c1f9474b38f84b48659b192eea8b\tapps/relationship-review-pilot/convex/_generated/api.js\n100644 blob f97fd1942151eef5b818c0679f7a12f2c22557b5\tapps/relationship-review-pilot/convex/_generated/dataModel.d.ts\n100644 blob f235db4a112ece75f7698b191532048a98270c21\tapps/relationship-review-pilot/convex/_generated/server.d.ts\n100644 blob 2dbe0dbd475de29f550f222942597ef9f5dc8654\tapps/relationship-review-pilot/convex/_generated/server.js\n100644 blob ef4cf74f8dcc9f7413c1516e81368048a1234cf1\tapps/relationship-review-pilot/convex/relationships.ts\n100644 blob 8351fca4541f2ca58c8851c79c64fe93407eb6a2\tapps/relationship-review-pilot/convex/schema.ts\n100644 blob fa69fa296c815263b1a7bd9f761c992e74860e4c\tapps/relationship-review-pilot/convex/seed.ts\n100644 blob 73649cf0b74e85f4b015115564c41397fb5bd92a\tapps/relationship-review-pilot/convex/tsconfig.json\n100644 blob fe04c1f8ad833e39504ba140c495f3c5246ca44f\tapps/relationship-review-pilot/eslint.config.mjs\n100644 blob 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a\tapps/relationship-review-pilot/next-env.d.ts\n100644 blob cb651cdc007c4c5087ea7b4e61981bb2733f7d92\tapps/relationship-review-pilot/next.config.ts\n100644 blob 134c3e8e9d9e27b17c850cab9285e72bcea99f4a\tapps/relationship-review-pilot/package-lock.json\n100644 blob ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b\tapps/relationship-review-pilot/package.json\n100644 blob 999cd7b9d2cd26ba7b02c69c272868b39bea0674\tapps/relationship-review-pilot/postcss.config.mjs\n100644 blob 6d61af4e7cd5de8a51826f5246c7eb346e2de888\tapps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\n100644 blob 85ff3f3796415d3470f7fccb52b9e3bfb10df425\tapps/relationship-review-pilot/tests/relationships.test.ts\n100644 blob b456a6eb10ddb1e591185f66b20379c7a022f55b\tapps/relationship-review-pilot/tsconfig.json\n100644 blob d9481977b149f5238f1810595402583135c18f1c\tapps/relationship-review-pilot/vitest.config.ts\n100644 blob f149f27ae4bbd7cc4f6253570176a4fce144ef95\tapps/relationship-review-pilot/vitest.setup.ts\n100644 blob e9563d00b4d0630a5b556ad66ad933fd64f85945\tcodemagic.yaml\n100644 blob 0ae4ecf1fcddf1fdd0b08f23782b4d64fb52e1a6\tdocs/DOCUMENTATION-INVENTORY.md\n100644 blob 50a087af26e859eaa72b6738e8adb0bc628f6fee\tdocs/adr/0001-human-auditor-controls-final-decisions.md\n100644 blob b2650e3448688a5fdf196dcef518342a8cef4c18\tdocs/adr/0002-g0-protects-the-data-boundary.md\n100644 blob b32de4ad02ad12d94aae50fa8e3165ac05f34c33\tdocs/adr/0003-approved-records-use-versioned-history.md\n100644 blob 0ed9469bc18bafa404ce120bffba0d2fecfbdb67\tdocs/adr/0004-release-projection-is-read-only.md\n100644 blob a2ae1946089598f970d8929dec6e2ff912ed0db0\tdocs/agents/agent-permissions.md\n100644 blob e29624de32681197b8ebe5ac74ca4b23671feffd\tdocs/agents/domain.md\n100644 blob 908b1896120f4280ab1e73f661dbe6801c1a5ca2\tdocs/agents/issue-tracker.md\n100644 blob 829c6967660988d60e4ebd7ce5baf73da06a7daf\tdocs/agents/triage-labels.md\n100644 blob ba73f6803620381f8b773b77a8dafc07561024c8\tdocs/diagrams/README.md\n100644 blob 4d96b623f240ae8e79e2cc4749a69a6807eb061e\tdocs/diagrams/controlled/mermaid/approval-review-states.mmd\n100644 blob 9f4e5c2aafef9e94f84ca9aa0ba3b69455565f1e\tdocs/diagrams/controlled/mermaid/auditor-workflow.mmd\n100644 blob 2d9095b8a19f7b64baa5385b07733d89abee81cb\tdocs/diagrams/controlled/mermaid/evidence-relationship-map.mmd\n100644 blob ea0d6b009d24d42a239e2434ff089c9771c121d3\tdocs/diagrams/diagram-manifest.json\n100644 blob 20f2b0ad7569f377dfb0376b94c3e4dacfbc27b8\tdocs/plans/2026-09-14-ace-ios-local-verification.md\n100644 blob 3b5a2da7fdd6c3f19a4ed322c01ab6576c72a4ee\tdocs/plans/2026-09-17-ace-ios-discovery-candidate.md\n100644 blob ce352bd2f44526422ffce398f3f49eb84da24539\tdocs/specs/2026-08-24-ace-ios-read-only-client-application.md\n100644 blob d8ca7db85bbb8f8bda10295369fc2a8efb2098a0\tdocs/specs/autonomous-delivery-workflow-repair.md\n100644 blob f4e122c27a4a6bf1419fe107c40db6922cd1989c\tdocs/specs/documentation-control.md\n100644 blob 15d38ed62aa565365f9be1419804152b8eff4a2b\tdocs/specs/phase6-stage1-release-service-boundary.md\n100644 blob 43f3a2141f1836d7d281e84e99dfc8c5d2eab56a\tdocs/specs/phase6-stage2-release-workflow.md\n100644 blob 1be8f9466a3891af465a387d555c8b55b0708a35\tdocs/specs/phase6-stage3-release-trigger-decisions.md\n100644 blob 96d281352a47b8cc976d709d6cea4d5b09700c26\tdocs/specs/phase6b2-read-only-client-release-projection.md\n100644 blob e3bcef77922f4885bb0385b816e93bf2442b7153\tdocs/superpowers/plans/2026-07-26-ace-sprint-1.md\n100644 blob 346121bc97971423554ed9b833902bcc901269c4\tdocs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\n100644 blob 027237e08feeec1b8213e2e5ca30dbc7f627da9f\tdocs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\n100644 blob b5b37978b25914f1abdfe07f82569f0ed800ccab\tdocs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\n100644 blob f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5\tdocs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\n100644 blob 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc\tdocs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\n100644 blob c887e61e1bb3f53649c84b9fc2e26d5a2789460b\tdocs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\n100644 blob cd729d22a55808e3d07d1257bbc31af7a90e486b\tdocs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\n100644 blob 8fb6ba4b4a23167c25376caf50fa8121f4e191f9\tdocs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\n100644 blob d8c921d3de4849ab73de58a3925761789efcefcc\tios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj\n100644 blob aa82130565c15085d1e2bebfbea31a2644b2a543\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme\n100644 blob 697df2c6d8653ab95d8465f52c4d95530a814d59\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme\n100644 blob f8a9bcee7039cf97bb3270ba890753d13e7e8d11\tios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\n100644 blob f51d2b28d7dc79352a216a6949104d9a853a9f5f\tios/ACEClientApp/ACEClientApp/Configuration.swift\n100644 blob c93b91867bab745c22646ed0c2bed6c0b3edc90e\tios/ACEClientApp/ACEClientApp/DebugScenario.swift\n100644 blob b26fe330361b313f651f34adb2391eaf4e8f7c49\tios/ACEClientApp/ACEClientApp/Info.plist\n100644 blob 333506cfd67e186439ca1bf4d5f8be86ea3b4734\tios/ACEClientApp/ACEClientApp/KeychainStore.swift\n100644 blob fbba5660ace68df9fb25228b9fa325266cf82224\tios/ACEClientApp/ACEClientApp/Network.swift\n100644 blob 17c5efa9886867531294a2a0a72adb448960b4a5\tios/ACEClientApp/ACEClientApp/ReleaseModels.swift\n100644 blob 21d5d70a35651836807c9e19da6c62487b754cf6\tios/ACEClientApp/ACEClientApp/SessionState.swift\n100644 blob aca017f06d6b29f81b894dc5fb85079f694e316b\tios/ACEClientApp/ACEClientApp/Views.swift\n100644 blob 97ae5cecdcdad318d18ac7ef5ee5dfd942498523\tios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift\n100644 blob 30afc85efe57e82f9fd6bcda454b64dbeaeb53a5\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift\n100644 blob 70c20446002bb7c1619a80ba3ad96558936bac41\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift\n100644 blob 54db2a6c0dc7abdd218215f9596531ec3bcff39a\tios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\n100644 blob da381ce3b8c8cc390ea7db513370ccc8aeb1054e\tios/ACEClientApp/Makefile\n100644 blob 91d770692558e913629b359ced00fae0c5de91d8\tios/ACEClientApp/Phase6_1EvidenceRegister.json\n100644 blob bf076600ad7516d5f12bad6f5cebf02af19a8117\tios/ACEClientApp/Phase6_1EvidenceRegister.md\n100644 blob c75b14a5873f4c1f22df9923cc7a375c542493cf\tios/ACEClientApp/RuntimeEvidencePlan.json\n100644 blob a1b7101ec8d75c6412052243cf37d1ffc6510d9d\tios/ACEClientApp/RuntimeEvidencePlan.md\n100644 blob d928fbf82ab9fc92cf80ab7f9c95a01f9677590f\tios/ACEClientApp/TEST_EXECUTION_LIMITATION.md\n100644 blob 0764f192cd9c0945585fd27cf6c98c7a5b495c65\tios/ACEClientApp/evidence-matrix-audit.md\n100644 blob f78980429b5792417de0217fcd65226aa2fdbfd3\tpyproject.toml\n100644 blob b10d83c649b488b48649f53312e1a85c74417ab4\tquality/test-groups.json\n100644 blob 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e\tsecurity/deepsec/deepsec-residual-risk.yaml\n100644 blob 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb\tsrc/__init__.py\n100644 blob af245d52ea1b3f9a9728cc3198e42f6f09f23c19\tsrc/ace/__init__.py\n100644 blob a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7\tsrc/ace/app.py\n100644 blob 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b\tsrc/ace/domain/__init__.py\n100644 blob b2bc4a09af434c7f31bfde8c02178afd7c64016c\tsrc/ace/domain/assessment.py\n100644 blob 5e4c7a3b8aaaedde1e7034b3f614a3298935c741\tsrc/ace/domain/enums.py\n100644 blob 9b7332ae80cea46c4e0c2e13408a879194639958\tsrc/ace/domain/models.py\n100644 blob d3052b39d92d500bcea16a1938822162f9c6e784\tsrc/ace/domain/release.py\n100644 blob 24c035f305bd307a12e3a012f8e67693f01931b2\tsrc/ace/domain/trace.py\n100644 blob a6a85eba2c2881370e265f55374ed5fd029ba40c\tsrc/ace/engine/__init__.py\n100644 blob 3fb703a3c7bfe15b9f87e919c236f99eea92011f\tsrc/ace/engine/approval.py\n100644 blob 6f734719daf96ce5620a52de31d5ee6a8c82ebc9\tsrc/ace/engine/evaluator.py\n100644 blob b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9\tsrc/ace/engine/tracing.py\n100644 blob c2421621a45852c1edd4e893d8f31c542df829e4\tsrc/ace/workbench/__init__.py\n100644 blob 009b7ce18c8073cdbf68d0641ede1837f68167f5\tsrc/ace/workbench/action_result.py\n100644 blob 3a46f45a5f21d53ea229e0476148d751e21d15bf\tsrc/ace/workbench/change_record.py\n100644 blob fc15024e81ebe5d8311b1700216856c62deaf24b\tsrc/ace/workbench/client_auth.py\n100644 blob 50c3e8ea5a72d622a314ff4c234182fffe5661bc\tsrc/ace/workbench/client_release_projection.py\n100644 blob 152da398adbed0554046cbef1ca5d1bd620a25ef\tsrc/ace/workbench/client_release_service.py\n100644 blob fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa\tsrc/ace/workbench/client_routes.py\n100644 blob a157b2260adf3d7d05d10f3ccb95fae7a7e68b5b\tsrc/ace/workbench/document_toolchain_doctor.py\n100644 blob 1efc7f447dc242e84db7496dc43261e7a3d5f244\tsrc/ace/workbench/engagement.py\n100644 blob 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7\tsrc/ace/workbench/evidence_review.py\n100644 blob 88f482a8c81cf33bdbe6c58f8a525e5e6f2a88ae\tsrc/ace/workbench/export_builder.py\n100644 blob a3ddfe4931417f5d942b26c148ddf1ef5b3d9058\tsrc/ace/workbench/extraction.py\n100644 blob c281f9ed242707201c160379b741cc1559120833\tsrc/ace/workbench/notion_publisher.py\n100644 blob a054b5838083ca6c5290786a3d8ee65f422c55e3\tsrc/ace/workbench/relationship_review.py\n100644 blob 662f239a839f67d88440b7ff2dbb8592418b76fd\tsrc/ace/workbench/relationship_review_storage.py\n100644 blob 44632c998c369086d7886668e67086b48ba33c39\tsrc/ace/workbench/release_storage.py\n100644 blob 4e69f1d29d95914ecfac3b29511aa66063707ce2\tsrc/ace/workbench/routes.py\n100644 blob 9f310dfbeeeb128ce4c30fb152027ac9cf15df4a\tsrc/ace/workbench/storage.py\n100644 blob f102e61d370776570f1c6a6d02237463cec87a0e\ttests/test_action_result.py\n100644 blob 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72\ttests/test_app.py\n100644 blob 0e2b0bc40b49101fdecf9248bef4d60e7a016714\ttests/test_approval_gate.py\n100644 blob 41f3ba179143ba75ecb3151341527a2c11e11653\ttests/test_capture.py\n100644 blob f26b200d4802e65c3c75b9ca741103f35a4bf8a8\ttests/test_change_export.py\n100644 blob b79457826591c81352c0eeeb1888240bf30856bd\ttests/test_client_release.py\n100644 blob 16d8e3b5cc936a501f31980d36004aef86f70c07\ttests/test_client_release_projection.py\n100644 blob d08f9db8a19889176411e6c35d8edafffb8752b3\ttests/test_diagnose_ios.py\n100644 blob c5b215a4274be1856365f5f3835fdd0a88f7c4e4\ttests/test_engagement_setup.py\n100644 blob b6c8b0cf9fe636ced590ba82c19908bc93f2d328\ttests/test_engagement_summary.py\n100644 blob 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925\ttests/test_evidence_review.py\n100644 blob 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0\ttests/test_extraction.py\n100644 blob 920fe93267ae8072a95d2d847967959c75ccbe3c\ttests/test_graph_projection.py\n100644 blob 39b1ac861f4a1440aaff46fb3d2fe74902d16c4c\ttests/test_ios_accessibility_layout.py\n100644 blob 74fc1ef263a00f3148c924f483cdb4c832062eab\ttests/test_ios_action_targets.py\n100644 blob aedfe16bbd3c28d1e8cf790eaed715205f9c232d\ttests/test_offline_drafts.py\n100644 blob b2c207300da093dd24b25000a1d3d2b136d67f7b\ttests/test_planning_trace.py\n100644 blob 816b77c170a3a46030769ec6f08f31ca5d281940\ttests/test_quality_gates_workflow.py\n100644 blob 58fba2594c184ad4adcad05ec22677168115da08\ttests/test_rating_engine.py\n100644 blob b8b43d3fed573ffe0aa4becd1bb9fc672a3f96e3\ttests/test_relationship_review.py\n100644 blob c799dab52ed6961b5c25cf7a4a83c60824dc5882\ttests/test_run_tests.py\n100644 blob 6ef5893612f58493ee1b2069304e232d96639932\ttests/test_workbench.py\n100644 blob a31950b5d56c4b8421a05609c904bba714e92ade\ttools/ace_ios_local.py\n100644 blob f2ea1ccb696db88a8d69ae0e992850b0718d5fa1\ttools/diagnose_ios.py\n100644 blob 2d88789c53013971b156a4cd088a28b720cc066b\ttools/run_tests.py\n100644 blob fbddcf603d392fd86097624b921c1e1e286e02f2\ttools/tests/test_ace_ios_local.py\n100644 blob 3151880ae3453321bfc19ad1be84ac2376606886\tuv.lock\n100644 blob d336ae5ee0724121cef0662d5dc37f3d7b242ee2\tworkflows/codex-autonomous-delivery.md\n100644 blob 389fc7bd1c3d4f9bd8a4312d16270abdbf6e89e0\tworkflows/conclusion-review.md\n100644 blob 27352c110def06d809cd9f8e55836efd1b502b42\tworkflows/engagement-setup.md\n100644 blob eeca34452b870119de4dd0efb9c8f17012d6c0db\tworkflows/evidence-review.md\n100644 blob 3c2e27f90dd20ad38ac002a383af22db5ad2c294\tworkflows/field-evidence-capture.md\n100644 blob 0b78e693a94fd89d9c68cfb9c1dd21418cf6a960\tworkflows/mate-assessment.md\n100644 blob 21bbe0f760cf376107850fe76dfa767d4075328a\tworkflows/relationship-review.md\n",
+    "stderr": "",
+    "seconds": 0.069
+  }
+]

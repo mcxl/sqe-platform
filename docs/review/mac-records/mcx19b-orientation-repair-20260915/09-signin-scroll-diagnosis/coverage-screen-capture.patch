@@ -1,0 +1,13 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+index 25d0d9e..29f56b9 100644
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -377,7 +377,7 @@ final class ACEClientAppUITests: XCTestCase {
+     private func captureCoverageViewport(in app: XCUIApplication, caseID: String, viewport: String,
+                                          screenshots: inout [String]) {
+         let name = "Coverage \(caseID) viewport \(viewport)"
+-        addScreenshot(of: app, named: name)
++        addScreenshot(of: app, named: name, snapshot: XCUIScreen.main.screenshot())
+         screenshots.append(name)
+     }
+ 

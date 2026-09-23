@@ -1,0 +1,36 @@
+test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) ... 
+  test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'bad') ... FAIL
+  test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'\x00\x01\x02\x03\x04\x05') ... FAIL
+  test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'\x05\x01\x02\x03\x04') ... FAIL
+
+======================================================================
+FAIL: test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'bad')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests/test_ace_ios_local.py", line 836, in test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks
+    with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RunnerError not raised
+
+======================================================================
+FAIL: test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'\x00\x01\x02\x03\x04\x05')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests/test_ace_ios_local.py", line 836, in test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks
+    with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RunnerError not raised
+
+======================================================================
+FAIL: test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks (tools.tests.test_ace_ios_local.DiscoveryNativeEvidenceTests.test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks) (raw=b'\x05\x01\x02\x03\x04')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "LOCAL_HOME/Developer/sqe-platform-release-layout/tools/tests/test_ace_ios_local.py", line 836, in test_png_with_valid_crc_and_zlib_but_invalid_scanlines_blocks
+    with self.assertRaisesRegex(ace.RunnerError, "corrupt"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RunnerError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+FAILED (failures=3)

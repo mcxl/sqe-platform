@@ -1,0 +1,10 @@
+{
+  "recordedUTC": "2026-09-15T11:36:08.312616+00:00",
+  "base": "e4264d27aeff1fc53accf84b39e48249ecb89b5e",
+  "patchSHA256": "48f23096377611c83cf218d676f8374e613b753acaea18258560a33d7aec7422",
+  "scope": "one captureCoverageViewport call uses the existing full-screen snapshot option",
+  "primaryCompleteDiffInspection": "passed",
+  "primarySyntaxAndDiffChecks": "passed",
+  "integrated": false,
+  "nativeEvidence": "pending"
+}

@@ -1,0 +1,45 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "x86_64",
+        "deviceId": "D1BAA05C-52DD-4E57-832F-C0A75718E085",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "ACEClientAppUITests \u00b7 Built with macOS 26.6.2",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1789373416.175,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1789373270.63,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "failed - Settings control Bold Text did not reach requested value",
+      "targetName": "ACEClientAppUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ACEClientAppUITests/testConfigureAccessibilitySettings()",
+      "testIdentifierURL": "test://com.apple.xcode/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+      "testName": "testConfigureAccessibilitySettings()"
+    }
+  ],
+  "title": "Test - ACEClientAppUITests",
+  "topInsights": [],
+  "totalTestCount": 1
+}

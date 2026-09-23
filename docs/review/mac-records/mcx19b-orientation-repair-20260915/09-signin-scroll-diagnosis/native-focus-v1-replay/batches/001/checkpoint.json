@@ -1,0 +1,58 @@
+{
+  "record": {
+    "attachmentDirectory": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/batches/001/attachments",
+    "attachmentSha256": "2d78b29b7a8e241ee308b9f13686da017e2255982c35900c20272ca307a5dd36",
+    "auditCount": 1,
+    "caseCount": 1,
+    "caseRecords": [
+      {
+        "auditInvocations": 1,
+        "id": "pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1",
+        "observed": {
+          "appearance": "dark",
+          "boldText": true,
+          "contentSize": "accessibility-extra-extra-extra-large",
+          "increaseContrast": true,
+          "orientation": "landscape",
+          "reduceMotion": true
+        },
+        "result": "passed",
+        "scenario": "signIn",
+        "screenshots": [
+          "Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport initial",
+          "Coverage pilot.iPhone-17.signIn.dark.accessibility-extra-extra-extra-large.landscape.1.1.1 viewport control-Sign in"
+        ]
+      }
+    ],
+    "command": [
+      "xcodebuild",
+      "test-without-building",
+      "-xctestrun",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/batches/001/ACEClientAppUITests.xctestrun",
+      "-destination",
+      "id=2EB0863C-470E-467D-A0C6-CD216DA70C67",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+      "-resultBundlePath",
+      "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/batches/001/result.xcresult"
+    ],
+    "device": "iPhone 17",
+    "exit": 0,
+    "logSha256": "19002ee0dd28837d4909f52858653c44155782335e65d0b7d5976cbf4ce9e1b5",
+    "nativeTestCount": 1,
+    "resultBundle": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/native-focus-v1-replay/batches/001/result.xcresult",
+    "resultBundleSha256": "17e48f69a8808b4b050ed820dba9fe0ce2958614bc532b78907725467f127ea1",
+    "runfileSha256": "f4d9a39278502906de2a927a83146209ada4bb433cf812b6b19407e896dd03e9",
+    "settings": {
+      "appearance": "dark",
+      "boldText": true,
+      "contentSize": "accessibility-extra-extra-extra-large",
+      "increaseContrast": true,
+      "orientation": "landscape",
+      "reduceMotion": true
+    },
+    "summarySha256": "1927c802ae387971832f22a90c28d18e682f0332723606b99acc908ea4a2bcd8"
+  },
+  "status": "passed"
+}

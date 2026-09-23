@@ -1,0 +1,31 @@
+Failed to synthesize event: Neither element nor any descendant has keyboard focus. Event dispatch snapshot: TextField, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+Element debug description:
+Attributes: TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+Element subtree:
+ →TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+Path to element:
+ →Application, 0x102705a70, pid: 46852, label: 'ACE Client'
+  ↳Window (Main), 0x1027191b0, {{0.0, 0.0}, {440.0, 956.0}}
+   ↳Other, 0x10271c030, {{0.0, 0.0}, {440.0, 956.0}}
+    ↳Other, 0x1027228a0, {{0.0, 0.0}, {440.0, 956.0}}
+     ↳Other, 0x10272e4c0, {{0.0, 0.0}, {440.0, 956.0}}
+      ↳Other, 0x102715900, {{0.0, 0.0}, {440.0, 956.0}}
+       ↳CollectionView, 0x102722c30, {{16.0, 114.3}, {408.0, 791.7}}
+        ↳Cell, 0x10271ec90, {{36.0, 240.7}, {368.0, 52.0}}
+         ↳Other, 0x10271fed0, {{36.0, 240.7}, {368.0, 52.0}}
+          ↳Other, 0x102720a80, {{36.0, 240.7}, {368.0, 52.0}}
+           ↳Other, 0x10271f010, {{36.0, 240.7}, {368.0, 52.0}}
+            ↳TextField, 0x102723dd0, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+Query chain:
+ →Find: Target Application 'com.example.aceclientapp'
+  Output: {
+    Application, 0x105826cf0, pid: 46852, label: 'ACE Client'
+  }
+  ↪︎Find: Descendants matching type TextField
+    Output: {
+      TextField, 0x10be09a20, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+    }
+    ↪︎Find: Elements matching predicate '"Username" IN identifiers'
+      Output: {
+        TextField, 0x105827550, {{56.0, 255.7}, {328.0, 22.0}}, label: 'Username', placeholderValue: 'Username'
+      }

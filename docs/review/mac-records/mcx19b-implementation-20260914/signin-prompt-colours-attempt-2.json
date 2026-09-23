@@ -1,0 +1,273 @@
+{
+  "nativeIntegration": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/integration.json",
+  "regions": [
+    {
+      "analysisColourSpace": "sRGB",
+      "blackPixels": 1742,
+      "file": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/000/attachments/52CDFE35-1ADE-4513-B8AE-428DD4211F7D.png|150|775|430|70",
+      "height": 70,
+      "mostFrequentOpaqueColours": [
+        {
+          "contrastAgainstBlack": 21,
+          "pixelCount": 27021,
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1,
+          "pixelCount": 1742,
+          "rgb": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.0485643173678139,
+          "pixelCount": 91,
+          "rgb": [
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "contrastAgainstBlack": 8.226135595670188,
+          "pixelCount": 58,
+          "rgb": [
+            162,
+            162,
+            162
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.524824437896998,
+          "pixelCount": 36,
+          "rgb": [
+            45,
+            45,
+            45
+          ]
+        },
+        {
+          "contrastAgainstBlack": 20.46890580796825,
+          "pixelCount": 34,
+          "rgb": [
+            252,
+            252,
+            252
+          ]
+        }
+      ],
+      "sourceColourSpace": "kCGColorSpaceSRGB",
+      "width": 430,
+      "dominantForegroundBackgroundContrast": 21.0
+    },
+    {
+      "analysisColourSpace": "sRGB",
+      "blackPixels": 1778,
+      "file": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/000/attachments/52CDFE35-1ADE-4513-B8AE-428DD4211F7D.png|150|930|430|70",
+      "height": 70,
+      "mostFrequentOpaqueColours": [
+        {
+          "contrastAgainstBlack": 21,
+          "pixelCount": 26966,
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1,
+          "pixelCount": 1778,
+          "rgb": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "contrastAgainstBlack": 7.010875888315529,
+          "pixelCount": 40,
+          "rgb": [
+            149,
+            149,
+            149
+          ]
+        },
+        {
+          "contrastAgainstBlack": 19.093223487822993,
+          "pixelCount": 39,
+          "rgb": [
+            244,
+            244,
+            244
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.0485643173678139,
+          "pixelCount": 33,
+          "rgb": [
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "contrastAgainstBlack": 18.263144269082044,
+          "pixelCount": 30,
+          "rgb": [
+            239,
+            239,
+            239
+          ]
+        }
+      ],
+      "sourceColourSpace": "kCGColorSpaceSRGB",
+      "width": 430,
+      "dominantForegroundBackgroundContrast": 21.0
+    },
+    {
+      "analysisColourSpace": "sRGB",
+      "blackPixels": 0,
+      "file": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/001/attachments/4DBD42BD-D3D9-452C-9250-5DD902977AB2.png|150|775|430|70",
+      "height": 70,
+      "mostFrequentOpaqueColours": [
+        {
+          "contrastAgainstBlack": 1.2342243202574255,
+          "pixelCount": 27021,
+          "rgb": [
+            28,
+            28,
+            30
+          ]
+        },
+        {
+          "contrastAgainstBlack": 21,
+          "pixelCount": 1742,
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "contrastAgainstBlack": 19.77371456915776,
+          "pixelCount": 91,
+          "rgb": [
+            248,
+            248,
+            248
+          ]
+        },
+        {
+          "contrastAgainstBlack": 4.1836476738125725,
+          "pixelCount": 58,
+          "rgb": [
+            111,
+            111,
+            112
+          ]
+        },
+        {
+          "contrastAgainstBlack": 14.590849392661877,
+          "pixelCount": 36,
+          "rgb": [
+            215,
+            215,
+            215
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.2762169478521934,
+          "pixelCount": 34,
+          "rgb": [
+            31,
+            31,
+            33
+          ]
+        }
+      ],
+      "sourceColourSpace": "kCGColorSpaceSRGB",
+      "width": 430,
+      "dominantForegroundBackgroundContrast": 17.01473521087315
+    },
+    {
+      "analysisColourSpace": "sRGB",
+      "blackPixels": 0,
+      "file": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/001/attachments/4DBD42BD-D3D9-452C-9250-5DD902977AB2.png|150|930|430|70",
+      "height": 70,
+      "mostFrequentOpaqueColours": [
+        {
+          "contrastAgainstBlack": 1.2342243202574255,
+          "pixelCount": 26966,
+          "rgb": [
+            28,
+            28,
+            30
+          ]
+        },
+        {
+          "contrastAgainstBlack": 21,
+          "pixelCount": 1778,
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "contrastAgainstBlack": 4.8973405591184465,
+          "pixelCount": 40,
+          "rgb": [
+            122,
+            122,
+            123
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.3902993408998483,
+          "pixelCount": 39,
+          "rgb": [
+            38,
+            38,
+            40
+          ]
+        },
+        {
+          "contrastAgainstBlack": 19.77371456915776,
+          "pixelCount": 33,
+          "rgb": [
+            248,
+            248,
+            248
+          ]
+        },
+        {
+          "contrastAgainstBlack": 1.466003688102927,
+          "pixelCount": 30,
+          "rgb": [
+            42,
+            42,
+            44
+          ]
+        }
+      ],
+      "sourceColourSpace": "kCGColorSpaceSRGB",
+      "width": 430,
+      "dominantForegroundBackgroundContrast": 17.01473521087315
+    }
+  ],
+  "review": "Both unique images inspected at original resolution. Both prompts readable; no cut text in these portrait/default-size captures. Native all audits passed in both appearances. This does not establish full sign-in acceptance.",
+  "sourceSha256": "fd198b1845d32ec20cc00e9c550a16e0b1b436de640f5252c54bd061b9fec662",
+  "imageHashes": {
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/000/attachments/52CDFE35-1ADE-4513-B8AE-428DD4211F7D.png": "1a6037bddda8fdcfb4ec03fe18c3f862c6aead403fb61af0132f4832a62f50f9",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/000/attachments/A02994BC-CAEA-4CB8-A22A-3F07E3B19E2B.png": "1a6037bddda8fdcfb4ec03fe18c3f862c6aead403fb61af0132f4832a62f50f9",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/001/attachments/4DBD42BD-D3D9-452C-9250-5DD902977AB2.png": "be08ebaa686baf7148813f9673c1ca5cee257e5b9a25ed87615ace57367ba46f",
+    "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/signin-prompts-after-2/batches/001/attachments/69D75E38-524E-4284-9259-8C07D6E8418A.png": "be08ebaa686baf7148813f9673c1ca5cee257e5b9a25ed87615ace57367ba46f"
+  }
+}

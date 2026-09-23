@@ -1,0 +1,21 @@
+diff --git a/ios/ACEClientApp/ACEClientApp/Views.swift b/ios/ACEClientApp/ACEClientApp/Views.swift
+--- a/ios/ACEClientApp/ACEClientApp/Views.swift
++++ b/ios/ACEClientApp/ACEClientApp/Views.swift
+@@ -268,7 +268,7 @@ struct ValueRow: View {
+             if let confirmation {
+                 Text(confirmation)
+                     .font(.body)
+-                    .foregroundStyle(.secondary)
++                    .foregroundStyle(.primary)
+             }
+         }
+     }
+@@ -277,7 +277,7 @@ struct ValueRow: View {
+         VStack(alignment: .leading, spacing: 6) {
+             Text(field.label)
+                 .font(.subheadline)
+-                .foregroundStyle(.secondary)
++                .foregroundStyle(.primary)
+             Text(value)
+                 .font(.body)
+                 .frame(maxWidth: .infinity, alignment: .leading)

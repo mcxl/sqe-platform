@@ -1,0 +1,1056 @@
+{
+  "stage_start": "2026-09-18T14:45:10+10:00",
+  "hard_stop": "2026-09-18T15:45:10+10:00",
+  "captured_at": "2026-09-18T14:47:11.298859+10:00",
+  "authority": "User replied Proceed to the exact Stage 3 proposal",
+  "proposal_sha256": "e3003ce2da0fc22503b5b3afc8b38c5781526ef97b9d7616b41b685f1cfa9372",
+  "windows": {
+    "head": "478a7d8cd9c97d0bc43bd4d41ea460d589d4003a",
+    "branch": "main",
+    "refs": "refs/heads/main 478a7d8cd9c97d0bc43bd4d41ea460d589d4003a\nrefs/remotes/origin/main 29b62df901af9833be334392d97a6b45a42d1962\n",
+    "index": "100644 a43af230e5a8d207ef09a9fef4ceb0af3becea16 0\t.gitignore\u0000100644 deb5dce8eb457b73244df2a22c8edbf929b68126 0\tACE_PROGRESS_GUIDE.html\u0000100644 865eaff1c1b88ce4bdb6cd1ed5db8c9445833de9 0\tAGENTS.md\u0000100644 67e1a1c66f4c48bee1c6faf5baf5390680fae1df 0\tDEV_STATE.md\u0000100644 1dcf1584e2acd898986553fccfc73db812994714 0\tREADME.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tapps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tapps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tapps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tapps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tapps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tapps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tapps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tapps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tapps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tapps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tapps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tapps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tapps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tapps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tapps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tapps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tapps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tapps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tapps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tapps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tapps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tapps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tapps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tapps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tapps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tapps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tapps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tapps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tapps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tapps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tapps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tapps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tapps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tapps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tapps/relationship-review-pilot/vitest.setup.ts\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tdocs/agents/agent-permissions.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tdocs/agents/issue-tracker.md\u0000100644 a60efb08bdf4056bddab837f1e0f831fe8f273c6 0\tdocs/specs/2026-08-24-ace-ios-read-only-client-application.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tdocs/specs/autonomous-delivery-workflow-repair.md\u0000100644 15d38ed62aa565365f9be1419804152b8eff4a2b 0\tdocs/specs/phase6-stage1-release-service-boundary.md\u0000100644 43f3a2141f1836d7d281e84e99dfc8c5d2eab56a 0\tdocs/specs/phase6-stage2-release-workflow.md\u0000100644 1be8f9466a3891af465a387d555c8b55b0708a35 0\tdocs/specs/phase6-stage3-release-trigger-decisions.md\u0000100644 96d281352a47b8cc976d709d6cea4d5b09700c26 0\tdocs/specs/phase6b2-read-only-client-release-projection.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tdocs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tdocs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tdocs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tdocs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tdocs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tdocs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tdocs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tdocs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tdocs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tpyproject.toml\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsecurity/deepsec/deepsec-residual-risk.yaml\u0000100644 ccdb9b7c5ebb56f072e0b014ed87e1e79e898b46 0\tsecurity/deepsec/results/pr-26/PILOT_RESULT.json\u0000100644 92a0079a2ca3831b91f097f5ab7de38694c759ce 0\tsecurity/deepsec/results/pr-26/SUMMARY.md\u0000100644 fe51488c7066f6687ef680d6bfaa4f7768ef205c 0\tsecurity/deepsec/results/pr-26/findings.json\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsrc/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsrc/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsrc/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsrc/ace/domain/__init__.py\u0000100644 23c00ad0252331dd523f79b8c724e5fedef7404f 0\tsrc/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsrc/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsrc/ace/domain/models.py\u0000100644 d3052b39d92d500bcea16a1938822162f9c6e784 0\tsrc/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsrc/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsrc/ace/engine/__init__.py\u0000100644 5a4e723461d6cf5f72842c62492f17eb13348a2d 0\tsrc/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsrc/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsrc/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsrc/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsrc/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsrc/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsrc/ace/workbench/client_auth.py\u0000100644 50c3e8ea5a72d622a314ff4c234182fffe5661bc 0\tsrc/ace/workbench/client_release_projection.py\u0000100644 152da398adbed0554046cbef1ca5d1bd620a25ef 0\tsrc/ace/workbench/client_release_service.py\u0000100644 fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa 0\tsrc/ace/workbench/client_routes.py\u0000100644 bb70fa5b69c6e7267000cf295c3d38009c00a73e 0\tsrc/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsrc/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsrc/ace/workbench/evidence_review.py\u0000100644 e65b9dba49512ce16311137575826ddc1ee5d6c8 0\tsrc/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsrc/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsrc/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsrc/ace/workbench/relationship_review.py\u0000100644 ca55b5f8eee6923c0c3f1728f22077d04ac5b174 0\tsrc/ace/workbench/relationship_review_storage.py\u0000100644 44632c998c369086d7886668e67086b48ba33c39 0\tsrc/ace/workbench/release_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsrc/ace/workbench/routes.py\u0000100644 9f310dfbeeeb128ce4c30fb152027ac9cf15df4a 0\tsrc/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\ttests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\ttests/test_app.py\u0000100644 06d504606e7b262b3ed5014d9903cf7c5c81181b 0\ttests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\ttests/test_capture.py\u0000100644 0fc7d84aff5f7120039f8e5083999358ea53e7d7 0\ttests/test_change_export.py\u0000100644 b79457826591c81352c0eeeb1888240bf30856bd 0\ttests/test_client_release.py\u0000100644 16d8e3b5cc936a501f31980d36004aef86f70c07 0\ttests/test_client_release_projection.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\ttests/test_engagement_setup.py\u0000100644 b6c8b0cf9fe636ced590ba82c19908bc93f2d328 0\ttests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\ttests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\ttests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\ttests/test_graph_projection.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\ttests/test_offline_drafts.py\u0000100644 3c6de45c0d4e9a9fbc71ec2fc2f9b2f6aff66d59 0\ttests/test_planning_trace.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\ttests/test_rating_engine.py\u0000100644 c3fdcdc54e02cdffc63f7aa6064b206c21952ff0 0\ttests/test_relationship_review.py\u0000100644 ef468f24f98f0cf80aed282549d0a6e2f9bee452 0\ttests/test_workbench.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tuv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tworkflows/codex-autonomous-delivery.md\u0000",
+    "status": "?? .snapshots/config.json\u0000?? .snapshots/readme.md\u0000?? .snapshots/sponsors.md\u0000?? docs/plans/2026-09-18-sqe-consolidation-web-showcase-plan.md\u0000?? docs/plans/2026-09-18-sqe-stage-3-execution-proposal.md\u0000",
+    "cloud_roots_observed": [
+      "C:\\Users\\AlanRichardson\\OneDrive - AuditCo",
+      "C:\\Users\\AlanRichardson\\OneDrive"
+    ],
+    "free_bytes": 11412344832,
+    "recovery_bytes": 2368399,
+    "recovery_files": [
+      {
+        "path": ".gitignore",
+        "kind": "tracked",
+        "bytes": 77,
+        "sha256": "1f90252a3578f140325405c592d56634e94fba592400578f14de7973a03b1df4"
+      },
+      {
+        "path": "ACE_PROGRESS_GUIDE.html",
+        "kind": "tracked",
+        "bytes": 27430,
+        "sha256": "7c37db063573b36142c4625d9bc02b006a2dc468dae0d151cf5413c610d55c00"
+      },
+      {
+        "path": "AGENTS.md",
+        "kind": "tracked",
+        "bytes": 5298,
+        "sha256": "eba25bf11a0a012e420fc5bf6bcb80e87161518efae244916c41e58eeb064380"
+      },
+      {
+        "path": "DEV_STATE.md",
+        "kind": "tracked",
+        "bytes": 35340,
+        "sha256": "003615091d1d1ff0c0a31bf82ce5b0caadcf9ec3d1c20aea3294acac4090ca3e"
+      },
+      {
+        "path": "README.md",
+        "kind": "tracked",
+        "bytes": 1748,
+        "sha256": "097a4c60e027f1bce5054e2d2a0cb5e81bcc6b178dbb2023e44ee79d9b3bc47f"
+      },
+      {
+        "path": "apps/relationship-review-pilot/.env.example",
+        "kind": "tracked",
+        "bytes": 92,
+        "sha256": "db98faf2f59fc7050d597d896cbef2405a1fba345cd01ba676c03871b609593e"
+      },
+      {
+        "path": "apps/relationship-review-pilot/.gitignore",
+        "kind": "tracked",
+        "bytes": 46,
+        "sha256": "f8d5ffe8887620a60efedad375e52b1b8a6ac6d39d3892bb751d18d162a1a474"
+      },
+      {
+        "path": "apps/relationship-review-pilot/README.md",
+        "kind": "tracked",
+        "bytes": 482,
+        "sha256": "289e62234a8155ca8907c984953f3bf2c56138693b9a926f6b222f52c1705549"
+      },
+      {
+        "path": "apps/relationship-review-pilot/app/error.tsx",
+        "kind": "tracked",
+        "bytes": 474,
+        "sha256": "99cbb245a7b55d49b524155ce0e5e43b9fb54d977d27a90b728ebcf815255dcd"
+      },
+      {
+        "path": "apps/relationship-review-pilot/app/globals.css",
+        "kind": "tracked",
+        "bytes": 187,
+        "sha256": "be3e3bdadfcb7b709ea2ebeae2d66e4ef86c66d91f816c81edc99847d46dc3de"
+      },
+      {
+        "path": "apps/relationship-review-pilot/app/layout.tsx",
+        "kind": "tracked",
+        "bytes": 397,
+        "sha256": "c07d9e6ae5c214ea0abe8ecf2e75a931a4e393ae504b3d0a6b627d45e599c1a0"
+      },
+      {
+        "path": "apps/relationship-review-pilot/app/page.tsx",
+        "kind": "tracked",
+        "bytes": 1158,
+        "sha256": "ae2155b612231cb8701fb3b0c6590390451bf66ad14c91342a799e4ab073a1d8"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components.json",
+        "kind": "tracked",
+        "bytes": 428,
+        "sha256": "c3e91b4ab640333e9ed9ea8fbabe0009385117b9343b538b3daed9abbe164122"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/convex-client-provider.tsx",
+        "kind": "tracked",
+        "bytes": 390,
+        "sha256": "5f41346add3e2e9ff5c1ff74dd721e61498afd944be9305c2c526a982ff2bb08"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/relationship-review-workbench.tsx",
+        "kind": "tracked",
+        "bytes": 8120,
+        "sha256": "064f8aee1684823e93ab4827ce96bf2918a584f631c5dc76a5c036ab55ec1b03"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/ui/alert.tsx",
+        "kind": "tracked",
+        "bytes": 682,
+        "sha256": "c883faa9b22ff1506209c6578a84bcee9aeede0500d34cb23dcdc2969f883511"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/ui/card.tsx",
+        "kind": "tracked",
+        "bytes": 837,
+        "sha256": "e60c6aa75616e21b76f5ddb18e8dc9b786242d151a8b5499098862c5c18047b2"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/ui/skeleton.tsx",
+        "kind": "tracked",
+        "bytes": 323,
+        "sha256": "5ed67915985ae90110f2d417e1d737ac86da99cdd46f42a6a0cbb3bc6a7acbda"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/ui/table.tsx",
+        "kind": "tracked",
+        "bytes": 1192,
+        "sha256": "f6bc35e6130b058ebef3622e5304d891162b7c26dd7a376ed011092672652539"
+      },
+      {
+        "path": "apps/relationship-review-pilot/components/ui/utils.ts",
+        "kind": "tracked",
+        "bytes": 175,
+        "sha256": "c0adf27efbfa148d5abcf99e860f8e3e6c8fc77a1f99e023c08ef4f12e6ece29"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/_generated/api.d.ts",
+        "kind": "tracked",
+        "bytes": 1073,
+        "sha256": "fc180f2ccf3b258dcb9f75d11b3738b2a33314b61795ddfb96129a3b4a0a0b3d"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/_generated/api.js",
+        "kind": "tracked",
+        "bytes": 503,
+        "sha256": "fbe8bcf881ddae62c14ae6e6fe286cae256714b761dfa0682958e7fb0e4d8940"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/_generated/dataModel.d.ts",
+        "kind": "tracked",
+        "bytes": 1796,
+        "sha256": "5df8434fdc274c6421f16b2db48b54eeba1781929298cee95424fd4b03cd2f87"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/_generated/server.d.ts",
+        "kind": "tracked",
+        "bytes": 6170,
+        "sha256": "1da230ff2fbae6a7f7a40e373a0fc7492b3ca3159e54fb81dcfa224ba210816c"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/_generated/server.js",
+        "kind": "tracked",
+        "bytes": 3973,
+        "sha256": "71f80aeb307b3d20c55aee732a4c8fdc23641d50c080661dcdc8ca6ccf16a9f7"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/relationships.ts",
+        "kind": "tracked",
+        "bytes": 5453,
+        "sha256": "9b287e111a3b71e9a0969404f98c52525766265a8289c8da15ef19c60fd76af3"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/schema.ts",
+        "kind": "tracked",
+        "bytes": 1936,
+        "sha256": "95438847698afd4340df709ff914e4692dc598680788c9e683a429d33ae0f563"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/seed.ts",
+        "kind": "tracked",
+        "bytes": 6575,
+        "sha256": "1becf6067c3bc8a58924821c543bc45da4a521aff13ef324d1c31c4dc0ef3d7e"
+      },
+      {
+        "path": "apps/relationship-review-pilot/convex/tsconfig.json",
+        "kind": "tracked",
+        "bytes": 240,
+        "sha256": "6a961eb26dfe68b53804569b58d92ab0bfb4adf8ee5d9f418dd13119c317bb70"
+      },
+      {
+        "path": "apps/relationship-review-pilot/eslint.config.mjs",
+        "kind": "tracked",
+        "bytes": 246,
+        "sha256": "3352be307044d091ad31bfe77bdf1d144825b52b424f7c759b143407ab5d5c5b"
+      },
+      {
+        "path": "apps/relationship-review-pilot/next-env.d.ts",
+        "kind": "tracked",
+        "bytes": 156,
+        "sha256": "0d2c2c17415e048e032a0fb477db9a9857af9e66da2be6ed4cceb51497b37581"
+      },
+      {
+        "path": "apps/relationship-review-pilot/next.config.ts",
+        "kind": "tracked",
+        "bytes": 109,
+        "sha256": "2530fde99f735a7a52404eb7632bb471925c2e16930a88140faf8ebdb5f6832f"
+      },
+      {
+        "path": "apps/relationship-review-pilot/package-lock.json",
+        "kind": "tracked",
+        "bytes": 329539,
+        "sha256": "b6cb41a29b2ae8b259aeae7e9305de4c1db9379c9acab5be0e7d58bb65ba3b9f"
+      },
+      {
+        "path": "apps/relationship-review-pilot/package.json",
+        "kind": "tracked",
+        "bytes": 956,
+        "sha256": "414cf5dfc2d0f710b14c09da3e22940675a80cd041fe752d74308741bafe7dad"
+      },
+      {
+        "path": "apps/relationship-review-pilot/postcss.config.mjs",
+        "kind": "tracked",
+        "bytes": 115,
+        "sha256": "8c8f7393ac19372ce0f496da88ab4a9ca56f9823185dcc964d9281f19c0fc942"
+      },
+      {
+        "path": "apps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx",
+        "kind": "tracked",
+        "bytes": 8425,
+        "sha256": "310c3d019f7925703764bba42316258613da5f6a1fcd813ae0fdfdf949c56e89"
+      },
+      {
+        "path": "apps/relationship-review-pilot/tests/relationships.test.ts",
+        "kind": "tracked",
+        "bytes": 4631,
+        "sha256": "3edc779a1ea0bc526bdb4473f13178771c9447047ae7e59df1884a217773e927"
+      },
+      {
+        "path": "apps/relationship-review-pilot/tsconfig.json",
+        "kind": "tracked",
+        "bytes": 597,
+        "sha256": "64633472b43e82c042820efec292a0e19a6e112382a6986fb79b799ee5aad21f"
+      },
+      {
+        "path": "apps/relationship-review-pilot/vitest.config.ts",
+        "kind": "tracked",
+        "bytes": 535,
+        "sha256": "a122c41f5e443de55f40e0b6d5c6fe9d7f7770542c67c562c96ff45160e2a645"
+      },
+      {
+        "path": "apps/relationship-review-pilot/vitest.setup.ts",
+        "kind": "tracked",
+        "bytes": 44,
+        "sha256": "60aa525f7ffa6bfd3045d22710d4eeef3a5ff2074ecc3dbcef99374badebad17"
+      },
+      {
+        "path": "docs/agents/agent-permissions.md",
+        "kind": "tracked",
+        "bytes": 626,
+        "sha256": "e7760d353b3d87351c319563590ff3e896f2a4d7a674f7ff4c063a7f3532b6a2"
+      },
+      {
+        "path": "docs/agents/issue-tracker.md",
+        "kind": "tracked",
+        "bytes": 967,
+        "sha256": "631dfc12a81ca1370ebe64e88cea3fafb6f64b2ed687dfa89460c6580744b5a2"
+      },
+      {
+        "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+        "kind": "tracked",
+        "bytes": 73061,
+        "sha256": "8554f30cef98768615461af36c5798ec4b91280396fc3d685e0a7dc4ef9161a5"
+      },
+      {
+        "path": "docs/specs/autonomous-delivery-workflow-repair.md",
+        "kind": "tracked",
+        "bytes": 1253,
+        "sha256": "41bbb91076bfff2258a75ad53b724662460aea7594761706240c5e687cf7a0e2"
+      },
+      {
+        "path": "docs/specs/phase6-stage1-release-service-boundary.md",
+        "kind": "tracked",
+        "bytes": 16606,
+        "sha256": "8507666ee4d04e512279cd4e1867ad26dd1a5634ed15e5190d9b00bd491e9510"
+      },
+      {
+        "path": "docs/specs/phase6-stage2-release-workflow.md",
+        "kind": "tracked",
+        "bytes": 6342,
+        "sha256": "f0575cbfba982201be440cdbfd517de69a6852f9b6942330487e309775adf279"
+      },
+      {
+        "path": "docs/specs/phase6-stage3-release-trigger-decisions.md",
+        "kind": "tracked",
+        "bytes": 11378,
+        "sha256": "8e3ed212a71f19ec0a21bb63163224d21d7089e2f0a51f6d3eb4d06bf1057d07"
+      },
+      {
+        "path": "docs/specs/phase6b2-read-only-client-release-projection.md",
+        "kind": "tracked",
+        "bytes": 11098,
+        "sha256": "dbc852acf81e16d5d87276c7517c5ef13faf89ab881bb644d31b8132dbff52cb"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-07-26-ace-sprint-1.md",
+        "kind": "tracked",
+        "bytes": 33887,
+        "sha256": "94feea419d7142861636b9de40063d45ca131ed72e61095ba73da813fd678820"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md",
+        "kind": "tracked",
+        "bytes": 58628,
+        "sha256": "0c4f0a9f1e7cbd34a1ad35fddcb6803ff8ad890cbbaa5e61f03dcfd2bcf824f5"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md",
+        "kind": "tracked",
+        "bytes": 65666,
+        "sha256": "3de5bc7219fdec4e700a3b8bb030eb24492b8e33b7493a9551933c31a6f6535c"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md",
+        "kind": "tracked",
+        "bytes": 89123,
+        "sha256": "5d48d2ee191f99836f994303b7c94cd0a34e903ef0d7619238b5850f31638e59"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-07-26-ace-sprint-1-design.md",
+        "kind": "tracked",
+        "bytes": 11095,
+        "sha256": "b3b05b3612315717fd05349e60145c360976587b07eaeff3c900937d3b91f9f9"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md",
+        "kind": "tracked",
+        "bytes": 21783,
+        "sha256": "36cfc1f89ce5abf8ff69bf90dc7735ec38c68d17ed6fb8d9682100e448e59fc8"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md",
+        "kind": "tracked",
+        "bytes": 26588,
+        "sha256": "e781d5533df5877900236974d54307ce148bbec0e4cb3f7d38f4984f7042ff65"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md",
+        "kind": "tracked",
+        "bytes": 33813,
+        "sha256": "3ebe9ffc036fe128681bb67727a453ca5bfb6192721b5ef2f2699a96a2968bb2"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md",
+        "kind": "tracked",
+        "bytes": 13918,
+        "sha256": "96e1c0e85791c5956d78c851e1913db3d924acf3777228b6a3cb6119b2f9e23b"
+      },
+      {
+        "path": "pyproject.toml",
+        "kind": "tracked",
+        "bytes": 729,
+        "sha256": "18494500291ea662c95776dcb6798222f434c15d540192cd7ea4473d1b8d59bc"
+      },
+      {
+        "path": "security/deepsec/deepsec-residual-risk.yaml",
+        "kind": "tracked",
+        "bytes": 748,
+        "sha256": "03a2819f26dfaf578012bd9066d41d07d82969f1885c6f5883633b7dc62f7a30"
+      },
+      {
+        "path": "security/deepsec/results/pr-26/PILOT_RESULT.json",
+        "kind": "tracked",
+        "bytes": 339,
+        "sha256": "e7a07ac1b0844f34506e797b37b879774041d3263318ea5c1b9cbaab9bdaf27a"
+      },
+      {
+        "path": "security/deepsec/results/pr-26/SUMMARY.md",
+        "kind": "tracked",
+        "bytes": 362,
+        "sha256": "8d485ab624f8539d20b8d323810a01b91286534261a7d8ff3b258b8e0cd90bdf"
+      },
+      {
+        "path": "security/deepsec/results/pr-26/findings.json",
+        "kind": "tracked",
+        "bytes": 4,
+        "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+      },
+      {
+        "path": "src/__init__.py",
+        "kind": "tracked",
+        "bytes": 83,
+        "sha256": "c1374ed203c5fb351b43679b8e8099756fc2f2d0b1a420d15fc9460a57b90fd6"
+      },
+      {
+        "path": "src/ace/__init__.py",
+        "kind": "tracked",
+        "bytes": 58,
+        "sha256": "ff725b2c00dee17e74cba18978fa928735b2b119abe9fb5ea2270ee0aa4dd5a0"
+      },
+      {
+        "path": "src/ace/app.py",
+        "kind": "tracked",
+        "bytes": 3242,
+        "sha256": "7fb3fa94bd09c0d8650e7d05361a3975343403d46272296acb729dc28a6e846e"
+      },
+      {
+        "path": "src/ace/domain/__init__.py",
+        "kind": "tracked",
+        "bytes": 1582,
+        "sha256": "e8d3be06d5e18c9066db51f28fc50b8e0194b3f56106ab80e69e689f7a19c0c4"
+      },
+      {
+        "path": "src/ace/domain/assessment.py",
+        "kind": "tracked",
+        "bytes": 8883,
+        "sha256": "009f2b4f49940529a0180711479fb04cef1ab0fbbcf04bc7c110949351681819"
+      },
+      {
+        "path": "src/ace/domain/enums.py",
+        "kind": "tracked",
+        "bytes": 688,
+        "sha256": "1a77127a426344628c5dff51367e272e6611ef7ff4af053a4a227bde870053fa"
+      },
+      {
+        "path": "src/ace/domain/models.py",
+        "kind": "tracked",
+        "bytes": 3986,
+        "sha256": "2fe5bd2ac582ef7e291b52dbc1db7098dd276daf90f7c297d2e3c057b6f5c25d"
+      },
+      {
+        "path": "src/ace/domain/release.py",
+        "kind": "tracked",
+        "bytes": 4283,
+        "sha256": "3e99149f7a1878db19d7c0c292a27abe686b2abe957a384763bbc2d6e16473e6"
+      },
+      {
+        "path": "src/ace/domain/trace.py",
+        "kind": "tracked",
+        "bytes": 7033,
+        "sha256": "68e3248691f15e66cc185271be5c13a4d72f25625354df5c7c389199ae333af5"
+      },
+      {
+        "path": "src/ace/engine/__init__.py",
+        "kind": "tracked",
+        "bytes": 633,
+        "sha256": "61bffca0cc6f36119bcd6b075130f3773859813b92dab982c6e945f5b8ace302"
+      },
+      {
+        "path": "src/ace/engine/approval.py",
+        "kind": "tracked",
+        "bytes": 8848,
+        "sha256": "59a655711d77020a5755ae65168454bf6dc8d055af4788c07de51fd14dd316c6"
+      },
+      {
+        "path": "src/ace/engine/evaluator.py",
+        "kind": "tracked",
+        "bytes": 2570,
+        "sha256": "4173ef5cfb8674fe4ec1fdc7c15efdba849d5e1476457447c9aad728b35dc0ec"
+      },
+      {
+        "path": "src/ace/engine/tracing.py",
+        "kind": "tracked",
+        "bytes": 13779,
+        "sha256": "19445e32d44449df3e838eb971633b26e7f5b055ec8ff403e4bc8f268368004d"
+      },
+      {
+        "path": "src/ace/workbench/__init__.py",
+        "kind": "tracked",
+        "bytes": 368,
+        "sha256": "d461947895533b254be097ae26c203a82428c1e4ac45c167b9b1d0fc0f5ed5b5"
+      },
+      {
+        "path": "src/ace/workbench/action_result.py",
+        "kind": "tracked",
+        "bytes": 2163,
+        "sha256": "d92b004c835f2fa0a1647e02570ba7d4c155784372b703661caccf8e7849bd03"
+      },
+      {
+        "path": "src/ace/workbench/change_record.py",
+        "kind": "tracked",
+        "bytes": 2542,
+        "sha256": "ab07a6ebdcf415c45fa91d673537c76894341e40a19a3df9372079154c6563c8"
+      },
+      {
+        "path": "src/ace/workbench/client_auth.py",
+        "kind": "tracked",
+        "bytes": 1953,
+        "sha256": "f88f8de8c8f7f28483fdd2925e9422c762ef0236f4e6028542db6a97bd9a4f90"
+      },
+      {
+        "path": "src/ace/workbench/client_release_projection.py",
+        "kind": "tracked",
+        "bytes": 3099,
+        "sha256": "53f6f95eb88911d22694c631687120d2ebf6aecba508a24465071118c55e5046"
+      },
+      {
+        "path": "src/ace/workbench/client_release_service.py",
+        "kind": "tracked",
+        "bytes": 12601,
+        "sha256": "ff7423d93a91c480a1fa55b19950fff31911751147f1395bf4c51ac8aca628db"
+      },
+      {
+        "path": "src/ace/workbench/client_routes.py",
+        "kind": "tracked",
+        "bytes": 7571,
+        "sha256": "029e2cfb7316021e42f8006bdacc7e591a61f4738232ee7106ec07692fb1f884"
+      },
+      {
+        "path": "src/ace/workbench/document_toolchain_doctor.py",
+        "kind": "tracked",
+        "bytes": 3411,
+        "sha256": "fa76c7062286915bedbd4877d8670c66a8a93521a4419e3391e73033a720de32"
+      },
+      {
+        "path": "src/ace/workbench/engagement.py",
+        "kind": "tracked",
+        "bytes": 9241,
+        "sha256": "5c04dffe7bde01538e8b613d29822fac538c334dcf7ece32e15840c8e966214b"
+      },
+      {
+        "path": "src/ace/workbench/evidence_review.py",
+        "kind": "tracked",
+        "bytes": 4009,
+        "sha256": "49ca955e804a6e601dc264ce387e1ad915c47f5120880bb37119bda581a4e30e"
+      },
+      {
+        "path": "src/ace/workbench/export_builder.py",
+        "kind": "tracked",
+        "bytes": 24338,
+        "sha256": "29a76206052853628a78991224bd36d751ce9f368d400a9bda0f9f14da8f6479"
+      },
+      {
+        "path": "src/ace/workbench/extraction.py",
+        "kind": "tracked",
+        "bytes": 6868,
+        "sha256": "46c1e5e5b15ee8fd53fecff57523a6482c43f8500bde83be90e4bcaebf769c11"
+      },
+      {
+        "path": "src/ace/workbench/notion_publisher.py",
+        "kind": "tracked",
+        "bytes": 3498,
+        "sha256": "7ab5982bc74a74ea49f11e1824d9f908193685fb81c2af3c81ac585684667797"
+      },
+      {
+        "path": "src/ace/workbench/relationship_review.py",
+        "kind": "tracked",
+        "bytes": 19725,
+        "sha256": "9441de0056be78f51e120e504dd5eaf5a38547955654939769cbd6f46ed6d6ad"
+      },
+      {
+        "path": "src/ace/workbench/relationship_review_storage.py",
+        "kind": "tracked",
+        "bytes": 51940,
+        "sha256": "0fdb60bd9605d9583e5527fd9b5867ce333a0010dd27c23abecc0934e6fe32c1"
+      },
+      {
+        "path": "src/ace/workbench/release_storage.py",
+        "kind": "tracked",
+        "bytes": 6639,
+        "sha256": "94974a68e250593394d985f4982a96085c223747bbe90e5cbfa5a7e0d74204a4"
+      },
+      {
+        "path": "src/ace/workbench/routes.py",
+        "kind": "tracked",
+        "bytes": 99887,
+        "sha256": "ad05d4fb9010ad3ea41149baa3ceafebb68cd824f9ef53762726b228d142810b"
+      },
+      {
+        "path": "src/ace/workbench/storage.py",
+        "kind": "tracked",
+        "bytes": 216315,
+        "sha256": "a71edc92f08345391d9a459bc43c4353fd71de3ea0e0fe6fb4e3ab42f0d52c14"
+      },
+      {
+        "path": "tests/test_action_result.py",
+        "kind": "tracked",
+        "bytes": 2051,
+        "sha256": "ef41657f03a914825d27a99b1e8cdcf25814ed18dc249a9c20a9b17ba4f328c3"
+      },
+      {
+        "path": "tests/test_app.py",
+        "kind": "tracked",
+        "bytes": 9906,
+        "sha256": "6269a8cff411ee49c7991b92afb9964a2939b7860fbf6c40b5b87c6be4f9bd2e"
+      },
+      {
+        "path": "tests/test_approval_gate.py",
+        "kind": "tracked",
+        "bytes": 25636,
+        "sha256": "724ef467fd4b30365062dec408344af50f13965d9a48d9d6f3c0963acc2884bf"
+      },
+      {
+        "path": "tests/test_capture.py",
+        "kind": "tracked",
+        "bytes": 10188,
+        "sha256": "56530fafa68901d0d944ea874f6b9c3e388b4939d96383c092fb788f61434b10"
+      },
+      {
+        "path": "tests/test_change_export.py",
+        "kind": "tracked",
+        "bytes": 28813,
+        "sha256": "cd3870109f9a1b21c4f3e1dfb3c79d95fccf2023c7702bf1efe7b62d70f22cbd"
+      },
+      {
+        "path": "tests/test_client_release.py",
+        "kind": "tracked",
+        "bytes": 394917,
+        "sha256": "f9ea6d4411d9f7ae6c56a42c85d788fc491b4d4c9acf61fc78e3ec62c6c9347b"
+      },
+      {
+        "path": "tests/test_client_release_projection.py",
+        "kind": "tracked",
+        "bytes": 7293,
+        "sha256": "d53e7652eda5a4ca057c41b8428904ca69fe811656ae9f7609c5190d1b7d4251"
+      },
+      {
+        "path": "tests/test_engagement_setup.py",
+        "kind": "tracked",
+        "bytes": 31117,
+        "sha256": "aa143e6548ad2ce3c797c934be3b40db4b11a9e571c5726d5d858ffab271db18"
+      },
+      {
+        "path": "tests/test_engagement_summary.py",
+        "kind": "tracked",
+        "bytes": 12720,
+        "sha256": "8f69ccb834d4557d9ad47dc618bf1b5b3ee56750e28e10f6092fdd92a4e588b8"
+      },
+      {
+        "path": "tests/test_evidence_review.py",
+        "kind": "tracked",
+        "bytes": 53070,
+        "sha256": "859cac9569e59524270a39b360a1e292bef73dbb48d53e450a38939e6f0ba3ed"
+      },
+      {
+        "path": "tests/test_extraction.py",
+        "kind": "tracked",
+        "bytes": 11120,
+        "sha256": "41df2984b5f9be35eff2aa0671a040bc6a2af7d3ed155f5a61e27cd2a42da7a8"
+      },
+      {
+        "path": "tests/test_graph_projection.py",
+        "kind": "tracked",
+        "bytes": 19561,
+        "sha256": "f44dd6b4eb0eac66c3640676b5d86575d34ac805f217d199ceb430de6db630c3"
+      },
+      {
+        "path": "tests/test_offline_drafts.py",
+        "kind": "tracked",
+        "bytes": 5620,
+        "sha256": "2e6d2b856b4a377d6671268fa20db715fabfd5d8bb51687d1b064d8dd33cc1bd"
+      },
+      {
+        "path": "tests/test_planning_trace.py",
+        "kind": "tracked",
+        "bytes": 39186,
+        "sha256": "7ea0535389057550539c48b7aaedb8294d3ccdd1ef5abea25c3d580d0286d849"
+      },
+      {
+        "path": "tests/test_rating_engine.py",
+        "kind": "tracked",
+        "bytes": 10531,
+        "sha256": "d6b421d2c62c38ef661333537d0628d69970dd16e701ae20e8c8b986886ca34d"
+      },
+      {
+        "path": "tests/test_relationship_review.py",
+        "kind": "tracked",
+        "bytes": 55402,
+        "sha256": "021dc35b8b300244d2160b5beec575ef056e21582d5082547ddd1246134960d8"
+      },
+      {
+        "path": "tests/test_workbench.py",
+        "kind": "tracked",
+        "bytes": 23818,
+        "sha256": "0aefaaf1e108b90cc4e8739db73324118f2e04e1e0b14968ded0e2a55a642cfe"
+      },
+      {
+        "path": "uv.lock",
+        "kind": "tracked",
+        "bytes": 72449,
+        "sha256": "1ee546742a8658ae6e32380997e6922731cec0617cd374d9b1b3917cc7c44393"
+      },
+      {
+        "path": "workflows/codex-autonomous-delivery.md",
+        "kind": "tracked",
+        "bytes": 9408,
+        "sha256": "47ebf3b851be73c612b8a2248836c06a97b6ff89fd651b2f27b4ecddbb8b877c"
+      },
+      {
+        "path": ".snapshots/config.json",
+        "kind": "untracked",
+        "bytes": 2855,
+        "sha256": "062cb76690bb6fc4a32b799b36968458628854b650937e90d91e2163f43a76b7"
+      },
+      {
+        "path": ".snapshots/readme.md",
+        "kind": "untracked",
+        "bytes": 409,
+        "sha256": "0ab695ae4c6c2bae966a796fa9c1c29fce82c4381dc5ca6fad2cdf38f5f8af64"
+      },
+      {
+        "path": ".snapshots/sponsors.md",
+        "kind": "untracked",
+        "bytes": 2391,
+        "sha256": "b255d6d45f4f0f2476c5294f04a2f5681a7e9bf7259b4e3f1f0899f12759bbc3"
+      },
+      {
+        "path": "docs/plans/2026-09-18-sqe-consolidation-web-showcase-plan.md",
+        "kind": "untracked",
+        "bytes": 60248,
+        "sha256": "652096c5829970b747e58e9db3a52426bdf0d692293676bbc7062760760bc6be"
+      },
+      {
+        "path": "docs/plans/2026-09-18-sqe-stage-3-execution-proposal.md",
+        "kind": "untracked",
+        "bytes": 11892,
+        "sha256": "e3003ce2da0fc22503b5b3afc8b38c5781526ef97b9d7616b41b685f1cfa9372"
+      }
+    ]
+  },
+  "mac": {
+    "head": "40bae2640b23eb05496a093d09a4c20186403879",
+    "status": "",
+    "refs": "refs/heads/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\nrefs/heads/codex/mcx19b-release-layout 40bae2640b23eb05496a093d09a4c20186403879\nrefs/remotes/origin/codex/mcx-19-live-evidence-harness 7dc7cee7654ae8cc002da54324c3d1475a8494e6\n",
+    "index": "100644 c1f1d23f1e40634afc41d884cc0a809b1a47722b 0\t.github/workflows/quality-gates.yml\u0000100644 f65423462344828c38a1688836143c0f2b13d594 0\t.github/workflows/release-quality.yml\u0000100644 988fb818746db74a2896a5df60efe62dd07616ed 0\t.gitignore\u0000100644 3e756556e4f6248897535fe1aaca834d6596b390 0\tACE_PROGRESS_GUIDE.html\u0000100644 855d07fa1145e30afd2cb6c178aab3b493dd6b45 0\tACE_VISION_AND_ROADMAP.md\u0000100644 30f5ade7d676bb097d555de40282907380b5c163 0\tAGENTS.md\u0000100644 c3226c28c5b1935870c645d8a35b5d1266f028bc 0\tCONTEXT.md\u0000100644 3d1b4cfd6d3ed152d2f489f76ddd566f7f1b43a5 0\tDEV_STATE.md\u0000100644 e67ca1bdafc81b03a8e17385e0565b864c1871ea 0\tREADME.md\u0000100644 637edd14d2901e3de8f8ec361643cc4976ba03be 0\tWORKFLOW-NOTES.md\u0000100644 1bb2ed6a2c4a6c776c1ee0bb36a0b79edc888163 0\tapps/relationship-review-pilot/.env.example\u0000100644 830932714370a9751e228be3aa1d9ea1177177df 0\tapps/relationship-review-pilot/.gitignore\u0000100644 9ce958e3e4c536fa65ab53cd9424dbe462b2b208 0\tapps/relationship-review-pilot/README.md\u0000100644 661243a5c37be5f34414e17c5b764f1d84072869 0\tapps/relationship-review-pilot/app/error.tsx\u0000100644 08d5ca0c046f8832984e609959bb13999b054275 0\tapps/relationship-review-pilot/app/globals.css\u0000100644 8ad36db97cfc844408ceca643c58de4181bdb4c2 0\tapps/relationship-review-pilot/app/layout.tsx\u0000100644 b7fe1709c171c5122d71476fc3b8913e33b92842 0\tapps/relationship-review-pilot/app/page.tsx\u0000100644 d2d7e55d6c4f59d43e37caf0d38a4e5ce80939f9 0\tapps/relationship-review-pilot/components.json\u0000100644 17e0fddebdf56b3fe2b26dc9c78276b52300b5bc 0\tapps/relationship-review-pilot/components/convex-client-provider.tsx\u0000100644 04fc774ed5e59f587636417a528bbd5234bcd045 0\tapps/relationship-review-pilot/components/relationship-review-workbench.tsx\u0000100644 f4c0ff7be212c0a96e925282a75f13798359059d 0\tapps/relationship-review-pilot/components/ui/alert.tsx\u0000100644 302196895e4b92ca76ea4ab7a8a899ecc0760c30 0\tapps/relationship-review-pilot/components/ui/card.tsx\u0000100644 8b52a14188fcbf7c18a5393aac47453894365699 0\tapps/relationship-review-pilot/components/ui/skeleton.tsx\u0000100644 df98f6b72a7967e91b95939590c877ce72f798d8 0\tapps/relationship-review-pilot/components/ui/table.tsx\u0000100644 a5ef193506d07d0459fec4f187af08283094d7c8 0\tapps/relationship-review-pilot/components/ui/utils.ts\u0000100644 c049816b49eb290630ffeed9abb27776c05dc1f5 0\tapps/relationship-review-pilot/convex/_generated/api.d.ts\u0000100644 44bf98583204c1f9474b38f84b48659b192eea8b 0\tapps/relationship-review-pilot/convex/_generated/api.js\u0000100644 f97fd1942151eef5b818c0679f7a12f2c22557b5 0\tapps/relationship-review-pilot/convex/_generated/dataModel.d.ts\u0000100644 f235db4a112ece75f7698b191532048a98270c21 0\tapps/relationship-review-pilot/convex/_generated/server.d.ts\u0000100644 2dbe0dbd475de29f550f222942597ef9f5dc8654 0\tapps/relationship-review-pilot/convex/_generated/server.js\u0000100644 ef4cf74f8dcc9f7413c1516e81368048a1234cf1 0\tapps/relationship-review-pilot/convex/relationships.ts\u0000100644 8351fca4541f2ca58c8851c79c64fe93407eb6a2 0\tapps/relationship-review-pilot/convex/schema.ts\u0000100644 fa69fa296c815263b1a7bd9f761c992e74860e4c 0\tapps/relationship-review-pilot/convex/seed.ts\u0000100644 73649cf0b74e85f4b015115564c41397fb5bd92a 0\tapps/relationship-review-pilot/convex/tsconfig.json\u0000100644 fe04c1f8ad833e39504ba140c495f3c5246ca44f 0\tapps/relationship-review-pilot/eslint.config.mjs\u0000100644 428f5ce1e15d8f5364679a301a1bbbed7ebdd86a 0\tapps/relationship-review-pilot/next-env.d.ts\u0000100644 cb651cdc007c4c5087ea7b4e61981bb2733f7d92 0\tapps/relationship-review-pilot/next.config.ts\u0000100644 134c3e8e9d9e27b17c850cab9285e72bcea99f4a 0\tapps/relationship-review-pilot/package-lock.json\u0000100644 ea3a4b975ca74ad5655d3d0c10bfa3ee3de6986b 0\tapps/relationship-review-pilot/package.json\u0000100644 999cd7b9d2cd26ba7b02c69c272868b39bea0674 0\tapps/relationship-review-pilot/postcss.config.mjs\u0000100644 6d61af4e7cd5de8a51826f5246c7eb346e2de888 0\tapps/relationship-review-pilot/tests/relationship-review-workbench.test.tsx\u0000100644 85ff3f3796415d3470f7fccb52b9e3bfb10df425 0\tapps/relationship-review-pilot/tests/relationships.test.ts\u0000100644 b456a6eb10ddb1e591185f66b20379c7a022f55b 0\tapps/relationship-review-pilot/tsconfig.json\u0000100644 d9481977b149f5238f1810595402583135c18f1c 0\tapps/relationship-review-pilot/vitest.config.ts\u0000100644 f149f27ae4bbd7cc4f6253570176a4fce144ef95 0\tapps/relationship-review-pilot/vitest.setup.ts\u0000100644 e9563d00b4d0630a5b556ad66ad933fd64f85945 0\tcodemagic.yaml\u0000100644 0ae4ecf1fcddf1fdd0b08f23782b4d64fb52e1a6 0\tdocs/DOCUMENTATION-INVENTORY.md\u0000100644 50a087af26e859eaa72b6738e8adb0bc628f6fee 0\tdocs/adr/0001-human-auditor-controls-final-decisions.md\u0000100644 b2650e3448688a5fdf196dcef518342a8cef4c18 0\tdocs/adr/0002-g0-protects-the-data-boundary.md\u0000100644 b32de4ad02ad12d94aae50fa8e3165ac05f34c33 0\tdocs/adr/0003-approved-records-use-versioned-history.md\u0000100644 0ed9469bc18bafa404ce120bffba0d2fecfbdb67 0\tdocs/adr/0004-release-projection-is-read-only.md\u0000100644 a2ae1946089598f970d8929dec6e2ff912ed0db0 0\tdocs/agents/agent-permissions.md\u0000100644 e29624de32681197b8ebe5ac74ca4b23671feffd 0\tdocs/agents/domain.md\u0000100644 908b1896120f4280ab1e73f661dbe6801c1a5ca2 0\tdocs/agents/issue-tracker.md\u0000100644 829c6967660988d60e4ebd7ce5baf73da06a7daf 0\tdocs/agents/triage-labels.md\u0000100644 ba73f6803620381f8b773b77a8dafc07561024c8 0\tdocs/diagrams/README.md\u0000100644 4d96b623f240ae8e79e2cc4749a69a6807eb061e 0\tdocs/diagrams/controlled/mermaid/approval-review-states.mmd\u0000100644 9f4e5c2aafef9e94f84ca9aa0ba3b69455565f1e 0\tdocs/diagrams/controlled/mermaid/auditor-workflow.mmd\u0000100644 2d9095b8a19f7b64baa5385b07733d89abee81cb 0\tdocs/diagrams/controlled/mermaid/evidence-relationship-map.mmd\u0000100644 ea0d6b009d24d42a239e2434ff089c9771c121d3 0\tdocs/diagrams/diagram-manifest.json\u0000100644 20f2b0ad7569f377dfb0376b94c3e4dacfbc27b8 0\tdocs/plans/2026-09-14-ace-ios-local-verification.md\u0000100644 3b5a2da7fdd6c3f19a4ed322c01ab6576c72a4ee 0\tdocs/plans/2026-09-17-ace-ios-discovery-candidate.md\u0000100644 ce352bd2f44526422ffce398f3f49eb84da24539 0\tdocs/specs/2026-08-24-ace-ios-read-only-client-application.md\u0000100644 d8ca7db85bbb8f8bda10295369fc2a8efb2098a0 0\tdocs/specs/autonomous-delivery-workflow-repair.md\u0000100644 f4e122c27a4a6bf1419fe107c40db6922cd1989c 0\tdocs/specs/documentation-control.md\u0000100644 15d38ed62aa565365f9be1419804152b8eff4a2b 0\tdocs/specs/phase6-stage1-release-service-boundary.md\u0000100644 43f3a2141f1836d7d281e84e99dfc8c5d2eab56a 0\tdocs/specs/phase6-stage2-release-workflow.md\u0000100644 1be8f9466a3891af465a387d555c8b55b0708a35 0\tdocs/specs/phase6-stage3-release-trigger-decisions.md\u0000100644 96d281352a47b8cc976d709d6cea4d5b09700c26 0\tdocs/specs/phase6b2-read-only-client-release-projection.md\u0000100644 e3bcef77922f4885bb0385b816e93bf2442b7153 0\tdocs/superpowers/plans/2026-07-26-ace-sprint-1.md\u0000100644 346121bc97971423554ed9b833902bcc901269c4 0\tdocs/superpowers/plans/2026-07-27-ace-sprint-2-controlled-evidence.md\u0000100644 027237e08feeec1b8213e2e5ca30dbc7f627da9f 0\tdocs/superpowers/plans/2026-07-28-ace-sprint-3-connected-assurance-trace.md\u0000100644 b5b37978b25914f1abdfe07f82569f0ed800ccab 0\tdocs/superpowers/plans/2026-07-28-ace-sprint-4-evidence-to-conclusion.md\u0000100644 f1bd83d9d4d2a454ccdfe3f829b964df06ce36d5 0\tdocs/superpowers/specs/2026-07-26-ace-sprint-1-design.md\u0000100644 70fbf6cd959aa03867c89d33ec5c1c2acb0573dc 0\tdocs/superpowers/specs/2026-07-27-ace-sprint-2-controlled-evidence-design.md\u0000100644 c887e61e1bb3f53649c84b9fc2e26d5a2789460b 0\tdocs/superpowers/specs/2026-07-28-ace-sprint-3-connected-assurance-trace-design.md\u0000100644 cd729d22a55808e3d07d1257bbc31af7a90e486b 0\tdocs/superpowers/specs/2026-07-28-ace-sprint-4-evidence-to-conclusion-design.md\u0000100644 8fb6ba4b4a23167c25376caf50fa8121f4e191f9 0\tdocs/superpowers/specs/2026-07-28-sqe-reference-learning-review-design.md\u0000100644 d8c921d3de4849ab73de58a3925761789efcefcc 0\tios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj\u0000100644 aa82130565c15085d1e2bebfbea31a2644b2a543 0\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme\u0000100644 697df2c6d8653ab95d8465f52c4d95530a814d59 0\tios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme\u0000100644 f8a9bcee7039cf97bb3270ba890753d13e7e8d11 0\tios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift\u0000100644 f51d2b28d7dc79352a216a6949104d9a853a9f5f 0\tios/ACEClientApp/ACEClientApp/Configuration.swift\u0000100644 c93b91867bab745c22646ed0c2bed6c0b3edc90e 0\tios/ACEClientApp/ACEClientApp/DebugScenario.swift\u0000100644 b26fe330361b313f651f34adb2391eaf4e8f7c49 0\tios/ACEClientApp/ACEClientApp/Info.plist\u0000100644 333506cfd67e186439ca1bf4d5f8be86ea3b4734 0\tios/ACEClientApp/ACEClientApp/KeychainStore.swift\u0000100644 fbba5660ace68df9fb25228b9fa325266cf82224 0\tios/ACEClientApp/ACEClientApp/Network.swift\u0000100644 17c5efa9886867531294a2a0a72adb448960b4a5 0\tios/ACEClientApp/ACEClientApp/ReleaseModels.swift\u0000100644 21d5d70a35651836807c9e19da6c62487b754cf6 0\tios/ACEClientApp/ACEClientApp/SessionState.swift\u0000100644 aca017f06d6b29f81b894dc5fb85079f694e316b 0\tios/ACEClientApp/ACEClientApp/Views.swift\u0000100644 97ae5cecdcdad318d18ac7ef5ee5dfd942498523 0\tios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift\u0000100644 30afc85efe57e82f9fd6bcda454b64dbeaeb53a5 0\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift\u0000100644 70c20446002bb7c1619a80ba3ad96558936bac41 0\tios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift\u0000100644 54db2a6c0dc7abdd218215f9596531ec3bcff39a 0\tios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift\u0000100644 da381ce3b8c8cc390ea7db513370ccc8aeb1054e 0\tios/ACEClientApp/Makefile\u0000100644 91d770692558e913629b359ced00fae0c5de91d8 0\tios/ACEClientApp/Phase6_1EvidenceRegister.json\u0000100644 bf076600ad7516d5f12bad6f5cebf02af19a8117 0\tios/ACEClientApp/Phase6_1EvidenceRegister.md\u0000100644 c75b14a5873f4c1f22df9923cc7a375c542493cf 0\tios/ACEClientApp/RuntimeEvidencePlan.json\u0000100644 a1b7101ec8d75c6412052243cf37d1ffc6510d9d 0\tios/ACEClientApp/RuntimeEvidencePlan.md\u0000100644 d928fbf82ab9fc92cf80ab7f9c95a01f9677590f 0\tios/ACEClientApp/TEST_EXECUTION_LIMITATION.md\u0000100644 0764f192cd9c0945585fd27cf6c98c7a5b495c65 0\tios/ACEClientApp/evidence-matrix-audit.md\u0000100644 f78980429b5792417de0217fcd65226aa2fdbfd3 0\tpyproject.toml\u0000100644 b10d83c649b488b48649f53312e1a85c74417ab4 0\tquality/test-groups.json\u0000100644 81f1e60c506b4923fdddb793ca4d0e2d28c9fc4e 0\tsecurity/deepsec/deepsec-residual-risk.yaml\u0000100644 1e81120586fb5e0e92fbd1ca4a8c6789470d32eb 0\tsrc/__init__.py\u0000100644 af245d52ea1b3f9a9728cc3198e42f6f09f23c19 0\tsrc/ace/__init__.py\u0000100644 a6a2b1f0f7254d073f57bbd3ffc941b92a72bce7 0\tsrc/ace/app.py\u0000100644 0ddf4c4a6bc16485f1c55d2334a2ae3364a1a42b 0\tsrc/ace/domain/__init__.py\u0000100644 b2bc4a09af434c7f31bfde8c02178afd7c64016c 0\tsrc/ace/domain/assessment.py\u0000100644 5e4c7a3b8aaaedde1e7034b3f614a3298935c741 0\tsrc/ace/domain/enums.py\u0000100644 9b7332ae80cea46c4e0c2e13408a879194639958 0\tsrc/ace/domain/models.py\u0000100644 d3052b39d92d500bcea16a1938822162f9c6e784 0\tsrc/ace/domain/release.py\u0000100644 24c035f305bd307a12e3a012f8e67693f01931b2 0\tsrc/ace/domain/trace.py\u0000100644 a6a85eba2c2881370e265f55374ed5fd029ba40c 0\tsrc/ace/engine/__init__.py\u0000100644 3fb703a3c7bfe15b9f87e919c236f99eea92011f 0\tsrc/ace/engine/approval.py\u0000100644 6f734719daf96ce5620a52de31d5ee6a8c82ebc9 0\tsrc/ace/engine/evaluator.py\u0000100644 b0f809c1ceb0dd1d33f5dcc395bf5f6e59e7bdd9 0\tsrc/ace/engine/tracing.py\u0000100644 c2421621a45852c1edd4e893d8f31c542df829e4 0\tsrc/ace/workbench/__init__.py\u0000100644 009b7ce18c8073cdbf68d0641ede1837f68167f5 0\tsrc/ace/workbench/action_result.py\u0000100644 3a46f45a5f21d53ea229e0476148d751e21d15bf 0\tsrc/ace/workbench/change_record.py\u0000100644 fc15024e81ebe5d8311b1700216856c62deaf24b 0\tsrc/ace/workbench/client_auth.py\u0000100644 50c3e8ea5a72d622a314ff4c234182fffe5661bc 0\tsrc/ace/workbench/client_release_projection.py\u0000100644 152da398adbed0554046cbef1ca5d1bd620a25ef 0\tsrc/ace/workbench/client_release_service.py\u0000100644 fa1ff8fa92ed2afb675d0368f7cf2fc003c0fbfa 0\tsrc/ace/workbench/client_routes.py\u0000100644 a157b2260adf3d7d05d10f3ccb95fae7a7e68b5b 0\tsrc/ace/workbench/document_toolchain_doctor.py\u0000100644 1efc7f447dc242e84db7496dc43261e7a3d5f244 0\tsrc/ace/workbench/engagement.py\u0000100644 7ebdb1dd0d9abc58c602275ba18162b7ac57c7a7 0\tsrc/ace/workbench/evidence_review.py\u0000100644 88f482a8c81cf33bdbe6c58f8a525e5e6f2a88ae 0\tsrc/ace/workbench/export_builder.py\u0000100644 a3ddfe4931417f5d942b26c148ddf1ef5b3d9058 0\tsrc/ace/workbench/extraction.py\u0000100644 c281f9ed242707201c160379b741cc1559120833 0\tsrc/ace/workbench/notion_publisher.py\u0000100644 a054b5838083ca6c5290786a3d8ee65f422c55e3 0\tsrc/ace/workbench/relationship_review.py\u0000100644 662f239a839f67d88440b7ff2dbb8592418b76fd 0\tsrc/ace/workbench/relationship_review_storage.py\u0000100644 44632c998c369086d7886668e67086b48ba33c39 0\tsrc/ace/workbench/release_storage.py\u0000100644 4e69f1d29d95914ecfac3b29511aa66063707ce2 0\tsrc/ace/workbench/routes.py\u0000100644 9f310dfbeeeb128ce4c30fb152027ac9cf15df4a 0\tsrc/ace/workbench/storage.py\u0000100644 f102e61d370776570f1c6a6d02237463cec87a0e 0\ttests/test_action_result.py\u0000100644 8b8ab2b0fd991cbc2246a5ca69fb029e3097ca72 0\ttests/test_app.py\u0000100644 0e2b0bc40b49101fdecf9248bef4d60e7a016714 0\ttests/test_approval_gate.py\u0000100644 41f3ba179143ba75ecb3151341527a2c11e11653 0\ttests/test_capture.py\u0000100644 f26b200d4802e65c3c75b9ca741103f35a4bf8a8 0\ttests/test_change_export.py\u0000100644 b79457826591c81352c0eeeb1888240bf30856bd 0\ttests/test_client_release.py\u0000100644 16d8e3b5cc936a501f31980d36004aef86f70c07 0\ttests/test_client_release_projection.py\u0000100644 d08f9db8a19889176411e6c35d8edafffb8752b3 0\ttests/test_diagnose_ios.py\u0000100644 c5b215a4274be1856365f5f3835fdd0a88f7c4e4 0\ttests/test_engagement_setup.py\u0000100644 b6c8b0cf9fe636ced590ba82c19908bc93f2d328 0\ttests/test_engagement_summary.py\u0000100644 16e51f95bdb3f7a89c7c27aa02f38e09bc08c925 0\ttests/test_evidence_review.py\u0000100644 47ae7ec3b9629fd9ff14a11bc851011a75d1fbf0 0\ttests/test_extraction.py\u0000100644 920fe93267ae8072a95d2d847967959c75ccbe3c 0\ttests/test_graph_projection.py\u0000100644 39b1ac861f4a1440aaff46fb3d2fe74902d16c4c 0\ttests/test_ios_accessibility_layout.py\u0000100644 74fc1ef263a00f3148c924f483cdb4c832062eab 0\ttests/test_ios_action_targets.py\u0000100644 aedfe16bbd3c28d1e8cf790eaed715205f9c232d 0\ttests/test_offline_drafts.py\u0000100644 b2c207300da093dd24b25000a1d3d2b136d67f7b 0\ttests/test_planning_trace.py\u0000100644 816b77c170a3a46030769ec6f08f31ca5d281940 0\ttests/test_quality_gates_workflow.py\u0000100644 58fba2594c184ad4adcad05ec22677168115da08 0\ttests/test_rating_engine.py\u0000100644 b8b43d3fed573ffe0aa4becd1bb9fc672a3f96e3 0\ttests/test_relationship_review.py\u0000100644 c799dab52ed6961b5c25cf7a4a83c60824dc5882 0\ttests/test_run_tests.py\u0000100644 6ef5893612f58493ee1b2069304e232d96639932 0\ttests/test_workbench.py\u0000100644 a31950b5d56c4b8421a05609c904bba714e92ade 0\ttools/ace_ios_local.py\u0000100644 f2ea1ccb696db88a8d69ae0e992850b0718d5fa1 0\ttools/diagnose_ios.py\u0000100644 2d88789c53013971b156a4cd088a28b720cc066b 0\ttools/run_tests.py\u0000100644 fbddcf603d392fd86097624b921c1e1e286e02f2 0\ttools/tests/test_ace_ios_local.py\u0000100644 3151880ae3453321bfc19ad1be84ac2376606886 0\tuv.lock\u0000100644 d336ae5ee0724121cef0662d5dc37f3d7b242ee2 0\tworkflows/codex-autonomous-delivery.md\u0000100644 389fc7bd1c3d4f9bd8a4312d16270abdbf6e89e0 0\tworkflows/conclusion-review.md\u0000100644 27352c110def06d809cd9f8e55836efd1b502b42 0\tworkflows/engagement-setup.md\u0000100644 eeca34452b870119de4dd0efb9c8f17012d6c0db 0\tworkflows/evidence-review.md\u0000100644 3c2e27f90dd20ad38ac002a383af22db5ad2c294 0\tworkflows/field-evidence-capture.md\u0000100644 0b78e693a94fd89d9c68cfb9c1dd21418cf6a960 0\tworkflows/mate-assessment.md\u0000100644 21bbe0f760cf376107850fe76dfa767d4075328a 0\tworkflows/relationship-review.md\u0000",
+    "free": 227352666112,
+    "stage3_absent": true,
+    "parent_real": "LOCAL_HOME/ace-private/sqe-consolidation-20260918",
+    "parent_mode": "0o700",
+    "report_sha256": "73268fb7ed667d3018b835e7806487b4ea738b5858f1c517ba5d1212993774f8",
+    "mac_bundle_sha256": "f0e4a471530900ab29248c456f5442f16f9394c68499c84f6588bf936ebc76f7",
+    "mac_bundle_bytes": 1062189,
+    "windows_bundle_sha256": "971b35017becc953fbf4a7922fa0f4463e024af2973cb30795d14ef48615ea98",
+    "selected": [
+      {
+        "path": "docs/plans/2026-09-14-ace-ios-local-verification.md",
+        "blob": "20f2b0ad7569f377dfb0376b94c3e4dacfbc27b8",
+        "mode": "100644",
+        "bytes": 9731,
+        "sha256": "82ed627b02513b6b52c90244cb93d9a2dcc8738a8f06ec8cbb899255423156f4"
+      },
+      {
+        "path": "docs/plans/2026-09-17-ace-ios-discovery-candidate.md",
+        "blob": "3b5a2da7fdd6c3f19a4ed322c01ab6576c72a4ee",
+        "mode": "100644",
+        "bytes": 4633,
+        "sha256": "9228d23e71fbd649ffe6dd23cbbe416d71f75e7fc127f6c6d1f231eda5a54dfd"
+      },
+      {
+        "path": "docs/specs/2026-08-24-ace-ios-read-only-client-application.md",
+        "blob": "ce352bd2f44526422ffce398f3f49eb84da24539",
+        "mode": "100644",
+        "bytes": 86223,
+        "sha256": "3ac56988d48275947cadf0a69e15fd9ddb160eb524174e7a0acef9a47f20b1c9"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/project.pbxproj",
+        "blob": "d8c921d3de4849ab73de58a3925761789efcefcc",
+        "mode": "100644",
+        "bytes": 14409,
+        "sha256": "2ba7ea49661480948b95866f9319dfba68284fc71b740b43170b53e6202ac2b8"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientApp.xcscheme",
+        "blob": "aa82130565c15085d1e2bebfbea31a2644b2a543",
+        "mode": "100644",
+        "bytes": 1580,
+        "sha256": "cde11943b9ee6e9b7979bd6ee0a75d9e9f49324b294c61cf929202915f137549"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp.xcodeproj/xcshareddata/xcschemes/ACEClientAppUITests.xcscheme",
+        "blob": "697df2c6d8653ab95d8465f52c4d95530a814d59",
+        "mode": "100644",
+        "bytes": 1964,
+        "sha256": "2f8916e3734cb0b92cc44f1637bbbef1e696ec9d88016fe867066608e627e490"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/ACEClientAppApp.swift",
+        "blob": "f8a9bcee7039cf97bb3270ba890753d13e7e8d11",
+        "mode": "100644",
+        "bytes": 5242,
+        "sha256": "b71f7ca67328f58783647154cccbf6d9bfe84c2a802afb1cc9f4fafc20744eb3"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/Configuration.swift",
+        "blob": "f51d2b28d7dc79352a216a6949104d9a853a9f5f",
+        "mode": "100644",
+        "bytes": 2500,
+        "sha256": "84826793f9d24459970ef9dcb7d176dd5a435262147882266712d584d0b5fbb9"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/DebugScenario.swift",
+        "blob": "c93b91867bab745c22646ed0c2bed6c0b3edc90e",
+        "mode": "100644",
+        "bytes": 6761,
+        "sha256": "8d48d34e3fe45544eb209e760c6dceb12be0e7c7f5aa7b8521bada0ec9d17f7a"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/Info.plist",
+        "blob": "b26fe330361b313f651f34adb2391eaf4e8f7c49",
+        "mode": "100644",
+        "bytes": 917,
+        "sha256": "c460bf0367029391f04015138fdead183cbead7dfbef08e9a4eec76f134e2315"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/KeychainStore.swift",
+        "blob": "333506cfd67e186439ca1bf4d5f8be86ea3b4734",
+        "mode": "100644",
+        "bytes": 8714,
+        "sha256": "d3175a4720c36278eb3f23b1950e8c0640399f767dc8e2b5b2b496e1d8a2e226"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/Network.swift",
+        "blob": "fbba5660ace68df9fb25228b9fa325266cf82224",
+        "mode": "100644",
+        "bytes": 4415,
+        "sha256": "8ffa10f0452a5b1d80742e48796988f6d81aa48f704c9d4f1bf7472c948cb809"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/ReleaseModels.swift",
+        "blob": "17c5efa9886867531294a2a0a72adb448960b4a5",
+        "mode": "100644",
+        "bytes": 3137,
+        "sha256": "24a84751b5daf2de0c1e5a17ca83948f35d2402bf371b2bb7fae35c40378d486"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/SessionState.swift",
+        "blob": "21d5d70a35651836807c9e19da6c62487b754cf6",
+        "mode": "100644",
+        "bytes": 10382,
+        "sha256": "ae715959755de6f4229a010f8a85fdd78a6d4acdbbda44f3120fe504085fa908"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientApp/Views.swift",
+        "blob": "aca017f06d6b29f81b894dc5fb85079f694e316b",
+        "mode": "100644",
+        "bytes": 13305,
+        "sha256": "3635901a1aa80410bbfeb138a5dafd3b233c2b4b312b8c90ee6fd57a29aa10dd"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientAppTests/ACEClientAppTests.swift",
+        "blob": "97ae5cecdcdad318d18ac7ef5ee5dfd942498523",
+        "mode": "100644",
+        "bytes": 28636,
+        "sha256": "baef764ae9309c1d32d195a766d2db412a97e85d80bad4532898626daf689ef7"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceCatalogue.swift",
+        "blob": "30afc85efe57e82f9fd6bcda454b64dbeaeb53a5",
+        "mode": "100644",
+        "bytes": 17495,
+        "sha256": "3199250c32a3b8ee1c639893d55e02ec0a06e8e534b6ff934567fd40c7087a75"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientAppTests/AcceptanceEvidenceContractTests.swift",
+        "blob": "70c20446002bb7c1619a80ba3ad96558936bac41",
+        "mode": "100644",
+        "bytes": 124519,
+        "sha256": "20f89ce35b08c2829a3661d5cf25d6b8456edae4941af52fb39dfdda89c39e37"
+      },
+      {
+        "path": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+        "blob": "54db2a6c0dc7abdd218215f9596531ec3bcff39a",
+        "mode": "100644",
+        "bytes": 61477,
+        "sha256": "87fa1c681b2fe70bd04c8cfb938c570f828a1c72bd8702ddc63bb3a0c756766d"
+      },
+      {
+        "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.json",
+        "blob": "91d770692558e913629b359ced00fae0c5de91d8",
+        "mode": "100644",
+        "bytes": 22358,
+        "sha256": "fd94b26a332db4664e58f9416b1efe68f5af6760921f5580bcd6eae369ae861b"
+      },
+      {
+        "path": "ios/ACEClientApp/Phase6_1EvidenceRegister.md",
+        "blob": "bf076600ad7516d5f12bad6f5cebf02af19a8117",
+        "mode": "100644",
+        "bytes": 5342,
+        "sha256": "dc358aa54efe92d282b04dd63554e767171b5163883ec0f0a7812b1ebd006754"
+      },
+      {
+        "path": "ios/ACEClientApp/RuntimeEvidencePlan.json",
+        "blob": "c75b14a5873f4c1f22df9923cc7a375c542493cf",
+        "mode": "100644",
+        "bytes": 14690,
+        "sha256": "4f4aa397311a99975733429c02a8ba9811f4e17db9ba0d548c8b6af490d399b5"
+      },
+      {
+        "path": "ios/ACEClientApp/RuntimeEvidencePlan.md",
+        "blob": "a1b7101ec8d75c6412052243cf37d1ffc6510d9d",
+        "mode": "100644",
+        "bytes": 7541,
+        "sha256": "e451785cb65c592482bb7d0fce34390fe4b4e8234e914f422a4aa6e2238a9cb4"
+      },
+      {
+        "path": "ios/ACEClientApp/TEST_EXECUTION_LIMITATION.md",
+        "blob": "d928fbf82ab9fc92cf80ab7f9c95a01f9677590f",
+        "mode": "100644",
+        "bytes": 447,
+        "sha256": "ad820c377c2400da2f47746d35bee55d1e3d46caf4eda69a3e562ec8c1d7eabb"
+      },
+      {
+        "path": "ios/ACEClientApp/evidence-matrix-audit.md",
+        "blob": "0764f192cd9c0945585fd27cf6c98c7a5b495c65",
+        "mode": "100644",
+        "bytes": 28593,
+        "sha256": "bc8f8d2e8ee3dc43c5498d78cdcfb3a1ddc87e7142e7af95830f763372458c88"
+      },
+      {
+        "path": "tests/test_ios_accessibility_layout.py",
+        "blob": "39b1ac861f4a1440aaff46fb3d2fe74902d16c4c",
+        "mode": "100644",
+        "bytes": 2476,
+        "sha256": "c2431a64a423d1a93bb0174b6bc4a94267c303f51474eaab6b845ce55be42761"
+      },
+      {
+        "path": "tests/test_ios_action_targets.py",
+        "blob": "74fc1ef263a00f3148c924f483cdb4c832062eab",
+        "mode": "100644",
+        "bytes": 4081,
+        "sha256": "c5e989b26d2d32fce76e0f5d740e8c905100f52743fbc3564b2004c0a7478bd8"
+      },
+      {
+        "path": "tools/ace_ios_local.py",
+        "blob": "a31950b5d56c4b8421a05609c904bba714e92ade",
+        "mode": "100644",
+        "bytes": 88874,
+        "sha256": "a845006181f8587fff520fee7c7df7ee359d36a3c7ce14ed41a98eebd507b8d5"
+      },
+      {
+        "path": "tools/tests/test_ace_ios_local.py",
+        "blob": "fbddcf603d392fd86097624b921c1e1e286e02f2",
+        "mode": "100644",
+        "bytes": 64974,
+        "sha256": "1518a50db3d0ef58069a432876761e829b8724d091c69772c4c9051e6f205e0d"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "for-each-ref",
+        "--format=%(refname) %(objectname)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "remote"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "diff",
+        "--name-only"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-C",
+        "C:\\Users\\AlanRichardson\\Documents\\sqe-platform",
+        "ls-files",
+        "-z"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

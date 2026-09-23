@@ -1,0 +1,170 @@
+{
+  "updatedUTC": "2026-09-15T13:40:25.614094+00:00",
+  "goal": "Complete22-case pilot with retained native evidence on one clean candidate",
+  "status": "Full22pilot running on clean52b212a after focused Settingson/off,restoration,and source review passed.",
+  "currentCommit": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "currentGate": "Complete22pilot followed by native integrity,allimageinspection,archive/retrieval,and freshSol",
+  "diagnosis": {
+    "source": "tools/ace_ios_local.py:401-403",
+    "caller": "run_coverage:893 then913",
+    "expected": "Leave original Shutdown device shut down without invalid second command",
+    "actual": "Second simctl shutdown returned149, CoreSimulator.SimError405: Unable to shutdown device in current state: Shutdown",
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-already-shutdown-diagnostic.json",
+    "category": "runner defect",
+    "firstCorrectiveAttempt": "37Python tests, focused native shutdown and complete failure/pass gate passed"
+  },
+  "scopeLimits": [
+    "Preserve initial application design and margins",
+    "No836cases",
+    "No paid services",
+    "No push or merge",
+    "Unrelated16ProMax left running pending ownership reply"
+  ],
+  "next": [
+    "Inspect retained Settings event and video",
+    "Run smallest justified Settings diagnostic",
+    "Correct only demonstrated fault; verify focused behaviour",
+    "Complete pilot and retained evidence on one unchanged candidate"
+  ],
+  "checks": {
+    "sourceReview": "fresh v3 source review passed for exact3f57e1cdpatch",
+    "primaryDiff": "complete diff inspected",
+    "primaryTests": "37Python tests passed",
+    "fullPilot": "failed"
+  },
+  "currentSourceState": "clean c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+  "currentCorrection": {
+    "attempt": 2,
+    "patchSha256": "3f57e1cd13b0496861254c0b64898cd2b4e4e3975fb27fb99b675779d4da254f",
+    "change": "Add clipped modifier to release ScrollView; retain inner margins and native audits",
+    "jobId": "1789465528734-ace-margin-bounds-58ea2720",
+    "startedUTC": "2026-09-15T09:45:28.735Z",
+    "nativeResult": "one case and two unrestricted audits passed",
+    "imageResult": "passed; all10captures/3distinctimages inspected, status bar clear",
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3",
+    "sourceReview": "fresh v3 source review passed",
+    "restoration": "passed",
+    "acceptance": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/07-scroll-margin-diagnosis/native-focus-v3/acceptance.json"
+  },
+  "additionalFaults": [
+    {
+      "type": "compile",
+      "record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-build-failure.json",
+      "status": "corrected; current focused execution passed"
+    },
+    {
+      "type": "temporary launcher path",
+      "record": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/margin-launcher-path-failure.json",
+      "status": "corrected; current focused execution passed"
+    }
+  ],
+  "previousMarginResult": {
+    "candidate": "026dd4bf75c341ec4c4cb2100855b724c60d6f4f",
+    "nativeExit": 0,
+    "nativeCases": 1,
+    "nativeAuditInvocations": 2,
+    "imageAcceptance": "failed status-bar overlap",
+    "restoration": "passed",
+    "finishedUTC": "2026-09-15T09:42:05.682394+00:00"
+  },
+  "historicalPilot": {
+    "jobId": "1789462498456-ace-final-pilot-22-b7986f86",
+    "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/shutdown-pilot-runs/20260915T085501Z-pilot-a40a74500076",
+    "startedUTC": "2026-09-15T08:54:58.457Z",
+    "expectedCases": 22,
+    "expectedAuditedCases": 20,
+    "expectedLayoutOnlyCases": 2,
+    "expectedNativeAuditInvocations": 36,
+    "expectedNativeCoverageBatches": 6,
+    "images": "All27PNG inspected through10distincthashes",
+    "retentionAndRetrieval": "pending",
+    "result": "failed",
+    "finishedUTC": "2026-09-15T09:07:02.956791+00:00",
+    "exit": 2,
+    "acceptedCases": 0,
+    "restoration": "passed"
+  },
+  "historicalFailure": {
+    "selector": "ACEClientAppUITests/ACEClientAppUITests/testCoverageBatch",
+    "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:373",
+    "case": "pilot.iPhone-17.noConclusion.light.large.portrait.0.0.0",
+    "expected": "Unrestricted native audit has no issues",
+    "actual": "Contrast failed for SwiftUI.AccessibilityNode",
+    "label": "Release Details",
+    "category": "rendered heading clipping observed; exact native audit mechanism not established",
+    "nativeExit": 65,
+    "pilotExit": 2,
+    "acceptedPilotCases": 0,
+    "earlierWithinFailedBatch": [
+      "signIn passed",
+      "release passed"
+    ],
+    "restorationFailures": []
+  },
+  "currentPilot": {
+    "candidate": "15e4363c2ac074ceeea71599d1f2b64f67446487",
+    "job": "1789470396178-ace-complete-pilot-after-diagnosis-6472a478",
+    "startedUTC": "2026-09-15T11:06:36.179Z",
+    "evidence": "post-diagnostic-pilot-runs/20260915T110638Z-pilot-71f4f52cf8a8",
+    "requiredCases": 22,
+    "requiredAuditCases": 20,
+    "requiredLayoutCases": 2,
+    "requiredAuditInvocations": 36,
+    "acceptedCases": 0,
+    "acceptance": "Pending; historical Copy contrast failure unresolved",
+    "status": "failed",
+    "finishedUTC": "2026-09-15T11:20:13.021940+00:00",
+    "nativePassedCases": 5,
+    "nativeAuditInvocations": 9,
+    "batch001Images": "inspected all11distinct hashes from36captures",
+    "restoration": "passed",
+    "newFailureRecord": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/09-signin-scroll-diagnosis/failure-record.json"
+  },
+  "currentFailure": {
+    "updatedUTC": "2026-09-15T13:16:55.180186+00:00",
+    "candidate": "c0e53738d15f677f9fd69b4d1eeba9f228ac51d1",
+    "selector": "ACEClientAppUITests/ACEClientAppUITests/testConfigureAccessibilitySettings",
+    "source": "ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift:451",
+    "expected": "Bold Text true",
+    "actual": "Settings control Bold Text: expected true, actual Optional(false)",
+    "nativeExit": 65,
+    "pilotExit": 2,
+    "run": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/10-target-size-diagnosis/complete-pilot-runs/20260915T125618Z-pilot-b5a15e274c09",
+    "passedCases": 5,
+    "passedNativeAudits": 9,
+    "wholePilot": "failed",
+    "sourceUnchanged": true,
+    "restoration": "all native restore phases and boot states passed",
+    "classification": "Settings automation/environment fault; mechanism unresolved",
+    "observations": [
+      "Retained synthesized event touch x333,y160.3333282470703; down/up0.05seconds apart, same coordinate.",
+      "Touch coordinate lies within the visible Bold Text switch.",
+      "Original-resolution frames actual48.9417,52.2233,53.1683seconds show switch off, no dialog or overlay.",
+      "Video is sparse; these frames do not exclude a brief intermediate state.",
+      "Retained passing run used the same switch frame, point and helper.",
+      "No Settings correction has been attempted."
+    ],
+    "correctionAttempts": 0
+  },
+  "currentDiagnostic": {
+    "type": "full22pilot",
+    "candidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+    "status": "running",
+    "evidence": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/11-settings-toggle-diagnosis/complete-pilot-runs",
+    "requiredCases": 22,
+    "requiredAuditCases": 20,
+    "requiredLayoutCases": 2,
+    "requiredAuditInvocations": 36,
+    "jobID": "1789479497064-ace-pilot-settings-recovery-4d2cbede",
+    "startedUTC": "2026-09-15T13:38:18.728434+00:00"
+  },
+  "currentCandidate": "52b212aca02190ee0e742debe383fa6016fe36b9",
+  "focusedSettings": {
+    "actualCandidate": "af8c82dc2e7e3faec77e03d8d902e1642943f29c",
+    "nativeTests": 6,
+    "pass": true,
+    "restoration": true,
+    "actualRetryExercised": false,
+    "scope": "Policy retry branches tested separately; final52delta failurewording only"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "rawLogPreserved": true,
+  "note": "Raw stream ended without closing array after owned logger termination. Complete eventMessage entries parsed individually. Passing diagnostic does not exclude cover during a failure.",
+  "audits": [
+    {
+      "audit": "release-initial",
+      "startEpoch": 1789423074.209261,
+      "endEpoch": 1789423080.621718,
+      "events": [
+        "text-size-change size=extra-small epoch=1789423076.165418 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=small epoch=1789423076.487932 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=medium epoch=1789423076.750830 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423076.999053 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-large epoch=1789423077.243262 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-large epoch=1789423077.577732 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-extra-large epoch=1789423077.801707 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-medium epoch=1789423078.042466 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-large epoch=1789423078.295637 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-large epoch=1789423078.553155 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-large epoch=1789423078.796850 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-extra-large epoch=1789423079.015602 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423079.346603 appState=0 visibleWindowLevels=0.0"
+      ],
+      "allLoggedEventsActiveWithOnlyNormalWindow": true
+    },
+    {
+      "audit": "release-after-scroll",
+      "startEpoch": 1789423124.122373,
+      "endEpoch": 1789423130.486816,
+      "events": [
+        "text-size-change size=extra-small epoch=1789423125.854033 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=small epoch=1789423126.128454 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=medium epoch=1789423126.455218 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423126.813866 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-large epoch=1789423127.099721 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-large epoch=1789423127.357500 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-extra-large epoch=1789423127.663215 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-medium epoch=1789423127.910032 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-large epoch=1789423128.171759 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-large epoch=1789423128.486737 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-large epoch=1789423128.747193 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-extra-large epoch=1789423129.046706 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423129.376326 appState=0 visibleWindowLevels=0.0"
+      ],
+      "allLoggedEventsActiveWithOnlyNormalWindow": true
+    },
+    {
+      "audit": "copyConfirmation-after-copy",
+      "startEpoch": 1789423150.070221,
+      "endEpoch": 1789423158.174254,
+      "events": [
+        "text-size-change size=extra-small epoch=1789423151.951110 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=small epoch=1789423152.274224 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=medium epoch=1789423152.575918 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423153.083362 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-large epoch=1789423153.380861 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-large epoch=1789423153.926708 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=extra-extra-extra-large epoch=1789423154.221214 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-medium epoch=1789423154.751180 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-large epoch=1789423155.288031 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-large epoch=1789423155.704409 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-large epoch=1789423156.130925 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=accessibility-extra-extra-extra-large epoch=1789423156.434972 appState=0 visibleWindowLevels=0.0",
+        "text-size-change size=large epoch=1789423156.760877 appState=0 visibleWindowLevels=0.0"
+      ],
+      "allLoggedEventsActiveWithOnlyNormalWindow": true
+    }
+  ]
+}

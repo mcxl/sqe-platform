@@ -1,0 +1,90 @@
+{
+  "candidate": "6718b437b10a51eeee0e5c6b3918dc2d5e052260",
+  "caseCount": 1,
+  "auditInvocations": 2,
+  "nativeExit": 0,
+  "imageInspection": "passed",
+  "frames": [
+    {
+      "copyActionExists": true,
+      "frames": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "confirmation": {
+          "height": 20.33333333333337,
+          "width": 123.33333333333331,
+          "x": 32,
+          "y": 688.0000000000001
+        },
+        "copyAction": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 622
+        },
+        "copyAction1": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 622
+        },
+        "scroll": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "phase": "before",
+      "queryFinishUptimeSeconds": 180933.629714379,
+      "queryStartUptimeSeconds": 180932.87606241
+    },
+    {
+      "copyActionExists": true,
+      "frames": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "confirmation": {
+          "height": 20.333333333333485,
+          "width": 123.33333333333331,
+          "x": 32,
+          "y": 751.6666666666666
+        },
+        "copyAction": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 685.6666666666666
+        },
+        "copyAction1": {
+          "height": 58,
+          "width": 144,
+          "x": 32,
+          "y": 685.6666666666666
+        },
+        "scroll": {
+          "height": 873.9999999999999,
+          "width": 402,
+          "x": 0,
+          "y": -2.842170943040401e-14
+        }
+      },
+      "phase": "after",
+      "queryFinishUptimeSeconds": 180938.10920081602,
+      "queryStartUptimeSeconds": 180937.533718048
+    }
+  ],
+  "copyDeltaY": 63.66666666666663,
+  "conclusion": "The unrestricted audit moved content in a passing run. Movement alone is insufficient to explain the failed contrast result. Isolation and logging differ from the failed pilot; root cause remains unresolved.",
+  "pilotCredit": 0,
+  "sourceUnchanged": true,
+  "settingsAndBootStatesRestored": true
+}

@@ -1,0 +1,8 @@
+{
+  "question": "Does the app reach its visible release state in both appearances on required iPhone17ProMax?",
+  "selector": "ACEClientAppUITests/ACEClientAppUITests/testBothAppearances",
+  "expected_tests": 1,
+  "expected_named_images": 2,
+  "scope": "focused execution preflight; not full accessibility acceptance",
+  "test_sha256": "aeeee9381dc99a3c978d8879aa353a13434ea3bdffd3b4485976535b0b9bc2b7"
+}

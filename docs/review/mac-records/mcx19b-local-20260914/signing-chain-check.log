@@ -1,0 +1,56 @@
+---
+Trust evaluation results
+{
+    RevocationInfo =     (
+                {
+            ocsp =             {
+            };
+        },
+                {
+            ocsp =             {
+            };
+            valid =             {
+                anchorHash = {length = 32, bytes = 0xb0b1730e cbc7ff45 05142c49 f1295e6e ... be91b5a1 1001f024 };
+                certHash = {length = 32, bytes = 0xdcf21878 c77f4198 e4b4614f 03d696d8 ... 1b99161a ac91601f };
+                checkOCSP = 0;
+                complete = 1;
+                format = 1;
+                hasDateConstraints = 0;
+                hasNameConstraints = 0;
+                hasPolicyConstraints = 0;
+                isDefinitive = 1;
+                isOnList = 0;
+                isRevoked = 0;
+                issuerHash = {length = 32, bytes = 0xb0b1730e cbc7ff45 05142c49 f1295e6e ... be91b5a1 1001f024 };
+                knownOnly = 0;
+                noCACheck = 0;
+                overridable = 0;
+                requireCT = 0;
+                valid = 0;
+            };
+        },
+                {
+            ocsp =             {
+            };
+        }
+    );
+    TrustEvaluationDate = "2026-09-14 02:35:04 +0000";
+    TrustResultDetails =     (
+                {
+        },
+                {
+        },
+                {
+        }
+    );
+    TrustResultValue = 4;
+}
+...certificate verification successful.
+---
+Certificate chain
+ 0: Apple Development: alanricho@mac.com (97PU6JYD6F)
+    <cert(0x7fd96e00ee00) s: Apple Development: alanricho@mac.com (97PU6JYD6F) i: Apple Worldwide Developer Relations Certification Authority>
+ 1: Apple Worldwide Developer Relations Certification Authority
+    <cert(0x7fd96e00f800) s: Apple Worldwide Developer Relations Certification Authority i: Apple Root CA>
+ 2: Apple Root CA
+    <cert(0x7fd96e010000) s: Apple Root CA i: Apple Root CA>

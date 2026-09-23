@@ -1,0 +1,79 @@
+{
+  "createdAtUTC": "2026-09-14T20:59:18.605333+00:00",
+  "base": "1b38b90e9a949b7e73965602612c11be6f19e9fc",
+  "trial": "LOCAL_HOME/Developer/sqe-platform-native-list-trial",
+  "control": "LOCAL_HOME/Developer/sqe-platform-native-list-control",
+  "authority": "User approved the recommended isolated list comparison and parallel access/service work. Existing unbounded time authority remains. Two failed corrective attempts per fault remain.",
+  "question": "Does replacing custom scrolling cards with standard list sections remove the post-scroll native audit finding while preserving every field and complete-action Copy?",
+  "acceptance": [
+    "Same audit types and assertions in both variants.",
+    "All displayed fields and Copy payload/options preserved.",
+    "All required images retained and inspected.",
+    "One pass is a diagnostic observation, not final acceptance or proof of mechanism."
+  ],
+  "scope": "Small focused comparison, not 836-case expansion. Source stays isolated until demonstrated improvement and affected validation.",
+  "highCostCommands": [
+    "Generic xcodebuild build-for-testing",
+    "selected xcodebuild test-without-building"
+  ],
+  "estimate": "Prior focused native command used about 4.5 minutes including build and collection. Comparison duration also depends on test adaptation; unresolved work has no established duration.",
+  "hardLimit": "No total time limit under prior user authority. Stop at two failed corrective attempts for one fault.",
+  "gate": {
+    "verifiedAtUTC": "2026-09-14T11:03:08.451869+00:00",
+    "commit": "7fee853aef52e85a813368a51d833c134710186d",
+    "runnerSha256": "941849ed593aac7bcff6153e7ae9d9e3fb2cb87d278a65cea986775b002b5a3f",
+    "selector": "ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache",
+    "sourceLine": 59,
+    "failure": {
+      "expected": "POST",
+      "actual": "GET",
+      "exactAssertion": "XCTAssertEqual failed: (\"Optional(\"GET\")\") is not equal to (\"Optional(\"POST\")\")",
+      "runnerExit": 2,
+      "nativeExit": 65,
+      "total": 1,
+      "failed": 1,
+      "skipped": 0,
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105104Z-selected-54d47b72224d"
+    },
+    "restoredPass": {
+      "expected": "GET",
+      "actual": "GET",
+      "runnerExit": 0,
+      "nativeExit": 0,
+      "total": 1,
+      "passed": 1,
+      "skipped": 0,
+      "evidence": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/ace-ios-local-runs/20260914T105749Z-selected-a3ce7a2127bf"
+    },
+    "sourceRestoredExactly": true,
+    "worktreeClean": true,
+    "result": "passed",
+    "limit": "This verifies selected-test failure/pass retention. It does not establish pilot/full mode or application acceptance."
+  },
+  "macFreeGiB": 228.27,
+  "comparisonTestAdaptation": {
+    "path": "shared-scroll-test.patch",
+    "appliesEquallyTo": [
+      "control",
+      "trial"
+    ],
+    "changes": [
+      "Choose ScrollView, CollectionView or Table as the scroll container.",
+      "Check all Copy controls after all eleven fields have been traversed, allowing native rows to be created on demand."
+    ],
+    "unchanged": [
+      "All eleven field/value checks",
+      "All Copy presence/absence/count assertions",
+      "All minimum target checks",
+      "All three unrestricted .all audit calls",
+      "Native audit issue handler returns false"
+    ],
+    "scopeLimit": "No production or final acceptance based only on this comparison. Native List may expose fewer off-screen elements."
+  },
+  "positiveSignalFollowUp": "Audit intermediate viewports containing every required field, then affected light/dark/maximum-text and Copy behaviour. First-pair pass alone is not sufficient.",
+  "missingInputs": {
+    "phone": "Requested reconnection/unlock; latest native discovery paired but tunnel unavailable.",
+    "privateService": "Approved setup record requested. No credential requested in chat.",
+    "historicalBaseline": "Specific decision remains missing."
+  }
+}

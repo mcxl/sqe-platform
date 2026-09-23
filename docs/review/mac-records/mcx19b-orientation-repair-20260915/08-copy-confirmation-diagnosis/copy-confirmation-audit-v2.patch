@@ -1,0 +1,42 @@
+diff --git a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -298,11 +298,38 @@
+                                  audit: Bool, screenshots: inout [String], audits: inout Int) -> Bool {
+         captureCoverageViewport(in: app, caseID: caseID, viewport: viewport, screenshots: &screenshots)
+         guard audit else { return true }
++        let isCopyConfirmationAudit = scenario == "copyConfirmation" && viewport == "copy-confirmation"
++        if isCopyConfirmationAudit {
++            emitCopyConfirmationAuditFrames(in: app, phase: "before")
++        }
++        defer {
++            if isCopyConfirmationAudit {
++                emitCopyConfirmationAuditFrames(in: app, phase: "after")
++            }
++        }
+         guard runCoverageAudit(in: app, scenario: scenario, viewport: viewport) else { return false }
+         audits += 1
+         return true
+     }
+ 
++    private func emitCopyConfirmationAuditFrames(in app: XCUIApplication, phase: String) {
++        let scroll = app.scrollViews.firstMatch
++        let copyAction1 = app.buttons["Copy action 1"]
++        let copyAction = app.staticTexts["Copy action"]
++        let confirmation = coverageElement(in: app, labeled: "Copied Action 1.")
++        emitJSON(marker: "ACE_COPY_CONFIRMATION_AUDIT_FRAMES", payload: [
++            "phase": phase,
++            "uptimeSeconds": ProcessInfo.processInfo.systemUptime,
++            "frames": [
++                "app": Self.frameJSON(app.frame),
++                "scroll": Self.frameJSON(scroll.frame),
++                "copyAction1": Self.frameJSON(copyAction1.frame),
++                "copyAction": Self.frameJSON(copyAction.frame),
++                "confirmation": Self.frameJSON(confirmation.frame)
++            ]
++        ])
++    }
++
+     private func coverageActionLabels(for scenario: String) -> [String] {
+         switch scenario {
+         case "signIn", "denied", "keychainWrite":

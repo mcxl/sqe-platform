@@ -1,0 +1,33 @@
+--- a/docs/plans/2026-09-14-ace-ios-local-verification.md
++++ b/docs/plans/2026-09-14-ace-ios-local-verification.md
+@@ -50,7 +50,7 @@
+ 
+ Use generic `build-for-testing`, the generated `xctestrun`, and `test-without-building`.
+ 
+-The starting inventory contained 65 tests, including 42 contract tests. The new composed credential-lifecycle test raises the source inventory to 66, including 43 contract tests. These are source counts until native execution confirms them. Do not count the subset twice.
++The current inventory contains 68 unit and contract tests, including 43 contract tests. The retained action-Copy run confirms these counts on its earlier candidate. Run the required current-candidate checks. Do not count the subset twice.
+ 
+ Record each test count and its evidence inside the native result bundle.
+ 
+@@ -84,6 +84,10 @@
+ ## Pilot And Resource Gates
+ 
+ Run 22 pilot cases on one unchanged candidate.
++
++The approved plan permits independent simulator work while service checks are blocked. The simulator pilot uses built-in fictional fixtures. Its private-input record must identify these fixtures, their source hashes, and private evidence access. Confirm that fixture launch skips service startup. Do not record the missing approved service address, certificate, account, phone access, or signed-device checks as passed. Those inputs remain required before their dependent checks and final delivery.
++
++Record the pilot readiness scope explicitly as simulator fixtures and private evidence. This does not waive the historical baseline, security, service, physical-device, or final review gates.
+ 
+ For every complex state and required simulator, run A at `DEFAULT`, portrait, light appearance, and all toggles off. Run B at `MAX`, landscape, dark appearance, and all toggles on.
+ 
+--- a/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
++++ b/docs/specs/2026-08-24-ace-ios-read-only-client-application.md
+@@ -1187,7 +1187,7 @@
+ 
+ ### Verification Sequence
+ 
+-1. Confirm the required simulators, approved iPhone 15 Pro Max, signing, Keychain access group, storage, private evidence retrieval, private service, certificate, and fictional account.
++1. Confirm required access before dependent checks. For the simulator fixture programme, confirm the required simulators, built-in fictional inputs, storage, and private evidence retrieval. Confirm the approved iPhone 15 Pro Max, signing, Keychain access group, private service, certificate, and fictional account before their dependent checks. Missing service or phone access does not prevent independent simulator work, as authorised in the approved plan. All these inputs remain mandatory for final delivery.
+ 2. Run focused functional checks and the local runner evidence gate. Retain the deliberate failure assertion and its corrected passing result.
+ 3. Freeze a clean candidate at one exact commit.
+ 4. Obtain Pocock review for that clean candidate.

@@ -1,0 +1,17 @@
+{
+  "pid": 34564,
+  "port": 60097,
+  "command": [
+    "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "uvicorn",
+    "src.ace.app:app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "60097"
+  ],
+  "data_dir": "C:\\Users\\AlanRichardson\\sqe-private\\consolidation-20260918\\stage4\\journey-data",
+  "started": "2026-09-19T05:44:54.395973+10:00"
+}

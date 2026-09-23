@@ -1,0 +1,36 @@
+--- a/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
++++ b/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift
+@@ -952,20 +952,24 @@
+         let after = releaseContrastProbeFrames(in: app)
+         print("ACE_MCX19_CONTRAST_PROBE \(Self.releaseContrastProbeJSON(before: before, after: after))")
+         XCTAssertEqual(after.actionHeader, before.actionHeader, "Action 1 frame changed during the release contrast probe")
+-        XCTAssertEqual(after.actionStatus, before.actionStatus, "OPEN frame changed during the release contrast probe")
+-    }
+-
+-    private func releaseContrastProbeFrames(in app: XCUIApplication) -> (actionHeader: CGRect, actionStatus: CGRect) {
+-        (app.staticTexts["Action 1"].frame, app.staticTexts["OPEN"].frame)
++        XCTAssertEqual(
++            after.actionStatusField,
++            before.actionStatusField,
++            "Action status: OPEN frame changed during the release contrast probe"
++        )
++    }
++
++    private func releaseContrastProbeFrames(in app: XCUIApplication) -> (actionHeader: CGRect, actionStatusField: CGRect) {
++        (app.staticTexts["Action 1"].frame, app.staticTexts["Action status: OPEN"].frame)
+     }
+ 
+     private static func releaseContrastProbeJSON(
+-        before: (actionHeader: CGRect, actionStatus: CGRect),
+-        after: (actionHeader: CGRect, actionStatus: CGRect)
++        before: (actionHeader: CGRect, actionStatusField: CGRect),
++        after: (actionHeader: CGRect, actionStatusField: CGRect)
+     ) -> String {
+         let payload: [String: Any] = [
+-            "after": ["Action 1": frameJSON(after.actionHeader), "OPEN": frameJSON(after.actionStatus)],
+-            "before": ["Action 1": frameJSON(before.actionHeader), "OPEN": frameJSON(before.actionStatus)]
++            "after": ["Action 1": frameJSON(after.actionHeader), "Action status: OPEN": frameJSON(after.actionStatusField)],
++            "before": ["Action 1": frameJSON(before.actionHeader), "Action status: OPEN": frameJSON(before.actionStatusField)]
+         ]
+         guard let data = try? JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]),
+               let text = String(data: data, encoding: .utf8) else {

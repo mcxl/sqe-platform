@@ -1,0 +1,22 @@
+{
+  "atUTC": "2026-09-15T06:44:25.749229+00:00",
+  "decision": "Run pilot on unchanged a84f670 after normal approved-simulator restart and passing isolated startup check. No runner change.",
+  "basis": [
+    "Exact previous Code18 failure occurred before test body, not in the orientation helper.",
+    "Idle required ProMax mediaanalysisd used400-600percent CPU before shutdown.",
+    "Required ProMax restart removed that persistent high-CPU process at observed readbacks.",
+    "Unchanged iPhone17 settings-read passed and original boot states were restored."
+  ],
+  "limits": [
+    "A passing retry does not prove why AX initialization failed.",
+    "The unrelated16ProMax remains unchanged. Its background CPU use remains visible.",
+    "Stop next pilot at first unresolved failure; no automatic retry loop."
+  ],
+  "diagnostic": "LOCAL_HOME/ace-private/mcx19b-orientation-repair-20260915/03-ax-startup-isolation/result.json",
+  "currentMediaProcesses": [
+    "  681     1  12.4 243572 R    /System/Library/PrivateFrameworks/MediaAnalysis.framework/Versions/A/mediaanalysisd",
+    " 3623     1   0.0   5792 Ss   /System/Library/PrivateFrameworks/MediaAnalysisAccess.framework/Versions/A/XPCServices/mediaanalysisd-access.xpc/Contents/MacOS/mediaanalysisd-access",
+    "26237 25828   0.0  74848 Ss   /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd",
+    "34721 34529 852.7 396200 Rs   /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MediaAnalysis.framework/mediaanalysisd"
+  ]
+}

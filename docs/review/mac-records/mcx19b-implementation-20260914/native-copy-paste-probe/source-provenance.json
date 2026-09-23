@@ -1,0 +1,9 @@
+{
+  "parentCommit": "7fee853aef52e85a813368a51d833c134710186d",
+  "question": "Does tapping the actual release Copy control place the exact engagement value on the simulator clipboard, verified through the native Paste command?",
+  "appSourceChanged": false,
+  "testFile": "LOCAL_HOME/ace-private/mcx19b-implementation-20260914/native-copy-paste-probe/source/ios/ACEClientApp/ACEClientAppUITests/ACEClientAppUITests.swift",
+  "oldTestSha256": "01751e452c0f35bc7ecb613b899504702b79da9ef029023b6f87341ae6a71787",
+  "newTestSha256": "c5e041819981f3c748df7d52b3372bd53e493a6cf73e6663a850004932d77451",
+  "acceptanceUse": "Focused functional evidence only. No accessibility or physical acceptance."
+}

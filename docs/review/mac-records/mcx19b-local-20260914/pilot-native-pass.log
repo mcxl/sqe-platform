@@ -1,0 +1,31 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun LOCAL_HOME/ace-private/mcx19b-local-20260914/derived-debug/Build/Products/ACEClientApp_iphonesimulator26.4-x86_64.xctestrun -destination "platform=iOS Simulator,arch=x86_64,id=2EB0863C-470E-467D-A0C6-CD216DA70C67" -resultBundlePath LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-pass.xcresult "-only-testing:ACEClientAppTests/ACEClientAppTests/testRequestIsGETAndHasNoCache" -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 60 -maximum-test-execution-time-allowance 60
+
+2026-09-14 12:24:32.437 xcodebuild[36904:1145365] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-pass.xcresult
+
+2026-09-14 12:24:32.659 xcodebuild[36904:1145365] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 12:24:33.608 xcodebuild[36904:1145365] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-09-14 12:24:33.815 xcodebuild[36904:1145365] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Test Suite 'Selected tests' started at 2026-09-14 12:24:38.029.
+Test Suite 'ACEClientAppTests.xctest' started at 2026-09-14 12:24:38.031.
+Test Suite 'ACEClientAppTests' started at 2026-09-14 12:24:38.031.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' started.
+Test Case '-[ACEClientAppTests.ACEClientAppTests testRequestIsGETAndHasNoCache]' passed (0.019 seconds).
+Test Suite 'ACEClientAppTests' passed at 2026-09-14 12:24:38.055.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.019 (0.024) seconds
+Test Suite 'ACEClientAppTests.xctest' passed at 2026-09-14 12:24:38.057.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.019 (0.026) seconds
+Test Suite 'Selected tests' passed at 2026-09-14 12:24:38.058.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.019 (0.029) seconds
+2026-09-14 12:24:38.380 xcodebuild[36904:1145365] [MT] IDETestOperationsObserverDebug: 4.545 elapsed -- Testing started completed.
+2026-09-14 12:24:38.380 xcodebuild[36904:1145365] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-14 12:24:38.380 xcodebuild[36904:1145365] [MT] IDETestOperationsObserverDebug: 4.545 sec, +4.545 sec -- end
+
+Test session results, code coverage, and logs:
+	LOCAL_HOME/ace-private/mcx19b-local-20260914/pilot-native-pass.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
