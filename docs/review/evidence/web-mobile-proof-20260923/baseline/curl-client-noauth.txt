@@ -1,0 +1,7 @@
+HTTP/1.1 403 Forbidden
+date: Wed, 23 Sep 2026 07:40:24 GMT
+server: uvicorn
+content-length: 26
+content-type: application/json
+
+{"detail":"Access denied"}
