@@ -17,8 +17,9 @@ a fresh Codex task and invoke `$sol-advisor:orchestration`.
 - Use the installed Terra lane for implementation and obtain the Fresh Sol review.
 - These document rules, specialist SQE workflow, human decisions, and final review
   requirements remain authoritative; Sol Advisor does not replace professional review.
-- The primary session must inspect the complete diff and rerun the relevant verification
-  before accepting the Sol verdict.
+- The primary session must inspect the complete diff and the current-candidate verification
+  evidence before accepting the review verdict. Rerun verification only when that evidence
+  is stale or the change affects it.
 
 ## Bounded Work Policy
 
