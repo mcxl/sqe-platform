@@ -78,9 +78,11 @@ Roles per AGENTS.md "Implementation And Review Roles":
 | Independent standards reviewer | Vorflux review subagent (same session) | No blocker; six should-fix items on README honesty and one on auth order, all addressed in `75e6a14` and this README |
 | Code reviewer with risk assessment | Vorflux review subagent (same session) | Risk 3/10, Low; "ship with mitigations"; mitigations applied in `75e6a14` |
 | Exact-candidate final reviewer | Vorflux review subagent (same session), reviewed head `8b55f09` | `fix-first` for one stale pin figure in this README (fixed here); code ships as-is; focused subset 13 passed |
+| Greptile (external, on the pull request) | `greptile-apps[bot]`, https://github.com/mcxl/sqe-platform/pull/7 | First `@greptileai review` on the `main`-based diff failed with an internal error (reference `0ff161fb-d153-453f-af0d-bbff0dd0c250`). After the base moved to `codex/vorflux-review-20260923`, one approved retry reviewed `317e11f`: confidence 4/5, one P1 "Sign-Out Is Unreliable". Accepted as the Known Limit already recorded here; the Signed Out page wording now states the browser limit. |
+| Codex (external, on the pull request) | `chatgpt-codex-connector[bot]` | On the `main`-based diff it raised two P1 findings against `src/ace/engine/approval.py` and `src/ace/workbench/relationship_review_storage.py`, files this task does not touch. They belong to the review snapshot and are handled in https://github.com/mcxl/sqe-platform/pull/8. |
 
-No Greptile configuration exists in this repository. A Greptile review, if wanted, runs on a
-pull request by one manual `@greptileai` comment with user approval (delivery workflow step 4).
+The delivery workflow allows one manual `@greptileai` trigger; the retry was a separate user
+approval.
 
 ## Human Decisions Recorded
 
@@ -127,7 +129,10 @@ Write observations to `iphone/tester-notes.md`. Do not write credentials.
 ## Known Limits
 
 - HTTP Basic sign-out is browser dependent. The 401 on `/client/signout` is the strongest
-  server-side signal available without changing the auth model.
+  server-side signal available without changing the auth model. Some browsers keep the cached
+  credentials until every window closes, and some do not render the 401 body. The Signed Out page
+  states this and tells the user to close all browser windows. Greptile raised this as a P1 on
+  the pull request; it is accepted as a limit of HTTP Basic, not fixed.
 - Clipboard write needs a secure context (`https` or `localhost`). Over LAN `http` the fallback path runs.
 - The proof used one agreed action. `test_copy_buttons_are_indexed_per_action` covers three.
 
