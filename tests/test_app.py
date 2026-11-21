@@ -87,6 +87,7 @@ def test_only_the_approved_routes_are_exposed() -> None:
         "/workbench/api/v1/engagements/export": {"POST"},
         "/workbench/api/v1/engagements/export/{export_id}": {"GET"},
         "/client": {"GET"},
+        "/client/signout": {"GET"},
         "/client/api/v1/release/current": {"GET"},
     }
 

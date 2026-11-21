@@ -9,16 +9,20 @@ Apply these rules to every Word document created or edited in this workspace, wi
 - Use the retained AuditCo template as the visual authority.
   Recreate editable covers with Word-native paragraphs, table shading and rules.
 
-## Sol Advisor implementation lane
+## Implementation And Review Roles
 
-For implementation, refactoring, debugging, pipeline, template, and test changes, start
-a fresh Codex task and invoke `$sol-advisor:orchestration`.
+Implementation, refactoring, debugging, pipeline, template, and test changes use three roles:
 
-- Use the installed Terra lane for implementation and obtain the Fresh Sol review.
-- These document rules, specialist SQE workflow, human decisions, and final review
-  requirements remain authoritative; Sol Advisor does not replace professional review.
-- The primary session must inspect the complete diff and rerun the relevant verification
-  before accepting the Sol verdict.
+- Implementation owner: makes the change and runs the focused tests.
+- Independent standards reviewer: reviews the diff against these rules and the specialist SQE
+  workflow.
+- Exact-candidate final reviewer: reviews the exact final head and its evidence.
+
+Record the real identity of each reviewer (a person, or a named tool and version) in the task
+record. These document rules, specialist SQE workflow, human decisions, and final review
+requirements remain authoritative; no tool replaces professional review. The primary session
+must inspect the complete diff and the current-candidate verification evidence before accepting
+the review verdict. Rerun verification only when that evidence is stale or the change affects it.
 
 ## Bounded Work Policy
 
@@ -32,6 +36,9 @@ Before work that can take more than 30 minutes:
 - Identify commands that can use much time, compute, storage, or tokens.
 - Separate pilot work from production hardening.
 - Wait for user approval before execution.
+
+A detailed Autonomous Delivery Workflow approval that states these items also satisfies this
+approval.
 
 Use 60 minutes as the default hard limit when the user gives no limit.
 
